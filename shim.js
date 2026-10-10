@@ -9,11 +9,12 @@
     const body={tier:opts.modelTier||"default"};
     if(typeof input==="string")body.prompt=input;else body.turns=input;
     let r;
-    try{r=await fetch(window.SOB_AI,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(body),signal:opts.signal})}
-    catch(e){if(e&&e.name==="AbortError")throw{code:"cancelled",message:"cancelled"};throw{code:"network",message:String(e)}}
-    if(r.status===429)throw{code:"rate_limited",message:"rate_limited"};
-    if(!r.ok||!r.body)throw{code:"http"+r.status,message:"http"+r.status};
-    return read(r.body,opts,false)
+    const ac=new AbortController();const to=setTimeout(()=>ac.abort("timeout"),40000);if(opts.signal)opts.signal.addEventListener("abort",()=>ac.abort());
+    try{r=await fetch(window.SOB_AI,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(body),signal:ac.signal})}
+    catch(e){clearTimeout(to);if(opts.signal&&opts.signal.aborted)throw{code:"cancelled",message:"cancelled"};if(e&&e.name==="AbortError")throw{code:"timeout",message:"timeout"};throw{code:"network",message:String(e)}}
+    if(r.status===429){clearTimeout(to);throw{code:"rate_limited",message:"rate_limited"}}
+    if(!r.ok||!r.body){clearTimeout(to);throw{code:"http"+r.status,message:"http"+r.status}}
+    try{return await read(r.body,opts,false)}finally{clearTimeout(to)}
   }
   async function read(stream,opts,sse){
     const rd=stream.getReader(),dec=new TextDecoder();let text="",buf="";

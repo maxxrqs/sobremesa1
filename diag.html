@@ -1,0 +1,21 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Diagnostic IA</title>
+<style>body{font:16px system-ui;margin:16px;background:#0b1f1c;color:#e8f3f0}button{font:inherit;padding:12px 16px;border-radius:10px;border:0;background:#5fd1b5;color:#032}pre{white-space:pre-wrap;word-break:break-word;background:#12302b;padding:12px;border-radius:10px}</style></head><body>
+<h2>Diagnostic de l'IA</h2><p>Touche le bouton et envoie-moi une capture du résultat.</p>
+<button id="b">Tester le relais</button><pre id="o">…</pre>
+<script src="config.js"></script>
+<script>
+const o=document.getElementById("o");let L=[];const log=s=>{L.push(s);o.textContent=L.join("\n")};
+document.getElementById("b").onclick=async()=>{
+ L=[];log("Adresse : "+window.SOB_AI);log("Origine de la page : "+location.origin);
+ const t0=Date.now(),ac=new AbortController(),to=setTimeout(()=>ac.abort(),30000);
+ try{
+  const r=await fetch(window.SOB_AI,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({tier:"quick",prompt:"Dis bonjour en espagnol en une phrase."}),signal:ac.signal});
+  log("Statut HTTP : "+r.status+" (après "+(Date.now()-t0)+" ms)");
+  log("Type : "+r.headers.get("content-type"));
+  const rd=r.body.getReader(),dec=new TextDecoder();let txt="";
+  for(;;){const {done,value}=await rd.read();if(done)break;txt+=dec.decode(value,{stream:true});log("… reçu "+txt.length+" caractères à "+(Date.now()-t0)+" ms")}
+  log("RÉPONSE : "+txt);log("Terminé en "+(Date.now()-t0)+" ms");
+ }catch(e){log("ERREUR : "+(e&&e.name)+" "+(e&&e.message)+" après "+(Date.now()-t0)+" ms")}
+ clearTimeout(to);
+};
+</script></body></html>
