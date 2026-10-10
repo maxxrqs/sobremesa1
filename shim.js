@@ -2,7 +2,7 @@
 // Hors de Claude : 1) relais IA (Worker) si window.SOB_AI est défini, 2) sinon clé Gemini gratuite de l'utilisateur, enregistrée sur son appareil.
 (function(){
   if(window.claude&&window.claude.use)return;
-  window.SOB_KEYUI=true;
+  window.SOB_KEYUI=!window.SOB_AI;
   const key=()=>{try{return localStorage.getItem("sob_gkey")||""}catch(e){return""}};
   const mk=(input)=>typeof input==="string"?[{role:"user",content:input}]:input;
   async function relay(input,opts){
