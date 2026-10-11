@@ -1137,8 +1137,8 @@ const axNk=t=>String(t).replace(/\s+/g," ").trim();
 function vxMan(){return AX.man||(AX.man=fetch("v/voices.json?v=1").then(r=>r.ok?r.json():null).catch(()=>null))}
 function vxList(l){return AX.manv&&AX.manv[l]||[]}
 function vxPick(l){const c=ST.get("sobv_"+l),L=vxList(l);if(c==="0"||!L.length)return"";if(c&&L.some(v=>v.id===c))return c;return L[0].id}
-function axIdx(l,v){const k=v||l;return AX.idx[k]||(AX.idx[k]=fetch(v?"v/"+v+"/"+v+".json?v=1":"a/"+l+".json?v=11").then(r=>r.ok?r.json():null).catch(()=>null))}
-function axPack(l,i,n,v){const k=(v||l)+i;return AX.pk[k]||(AX.pk[k]=fetch(v?"v/"+v+"/"+n:"a/"+n).then(r=>{if(!r.ok)throw 0;return r.arrayBuffer()}).catch(()=>{delete AX.pk[k];return null}))}
+function axIdx(l,v){const k=v||l;return AX.idx[k]||(AX.idx[k]=fetch(v?"v/"+v+"/"+v+".json?v=2":"a/"+l+".json?v=12").then(r=>r.ok?r.json():null).catch(()=>null))}
+function axPack(l,i,n,v){const k=(v||l)+i;return AX.pk[k]||(AX.pk[k]=fetch(v?"v/"+v+"/"+n+"?v=2":"a/"+n+"?v=2").then(r=>{if(!r.ok)throw 0;return r.arrayBuffer()}).catch(()=>{delete AX.pk[k];return null}))}
 function axDec(ab){const c=axCtx();return new Promise((res,rej)=>{if(!c){rej("noctx");return}let d=0;const to=setTimeout(()=>{if(!d){d=1;rej("timeout")}},4000);try{const p=c.decodeAudioData(ab,v=>{if(!d){d=1;clearTimeout(to);res(v)}},e=>{if(!d){d=1;clearTimeout(to);rej(e||"dec")}});if(p&&p.catch)p.catch(()=>{})}catch(e){if(!d){d=1;clearTimeout(to);rej(e)}}})}
 async function axGet(l,t){
   if(!AX.manv){const m=await vxMan();AX.manv=m||{}}
@@ -1180,7 +1180,7 @@ async function axPlay(texts,tok,done){
   let i=0;const next=()=>{
     if(AU.tok!==tok)return;
     if(i>=os.length){done();return}
-    const s=c.createBufferSource();s.buffer=os[i++].b;const g=c.createGain();g.gain.value=1.7;let o=c.destination;try{if(!AX.cp){AX.cp=c.createDynamicsCompressor();AX.cp.threshold.value=-8;AX.cp.knee.value=6;AX.cp.ratio.value=8;AX.cp.connect(c.destination)}o=AX.cp}catch(e){}s.connect(g);g.connect(o);AX.src=s;s.onended=()=>setTimeout(next,i<os.length?260:0);s.start(0);
+    const s=c.createBufferSource();s.buffer=os[i++].b;const g=c.createGain();g.gain.value=1.7;let o=c.destination;try{if(!AX.cp){AX.cp=c.createDynamicsCompressor();AX.cp.threshold.value=-8;AX.cp.knee.value=6;AX.cp.ratio.value=8;AX.cp.connect(c.destination)}o=AX.cp}catch(e){}s.connect(g);g.connect(o);AX.src=s;s.onended=()=>setTimeout(next,i<os.length?260:0);s.start(c.currentTime+(i===1?.12:0));
   };next();return true;
 }
 function axWarm(){const l=lg();vxMan().then(m=>{AX.manv=m||{};const v=vxPick(l);axIdx(l,v).then(ix=>{if(ix&&ix.p&&ix.p[0])axPack(l,0,ix.p[0],v)})})}
@@ -2851,7 +2851,7 @@ function mkQ(ty,l){
 const RLs=()=>R&&R.mode==="lesson"?R:null;
 const selP=l=>{const r=!l&&RLs();return r&&r.pp&&r.pp.length?pick(r.pp):sel(PH,l)};
 let UWC=null;function uniqW(){if(!UWC||UWC.s!==ALL){const c={};ALL.forEach(w=>c[w[1]]=(c[w[1]]||0)+1);UWC={s:ALL,a:ALL.filter(w=>c[w[1]]===1&&!/[\/(|]/.test(w[0]+w[1]))}}return UWC.a}
-function chkT(){const q=R.q,i=document.getElementById("ti");if(R.done||!i||!i.value.trim())return;const v=i.value.trim(),g=(q.acc||[q.es]).some(a=>nzI(v)===nzI(a)),lo=x=>x.toLowerCase().replace(/[.!?¿¡,]/g,"").trim(),ac=g&&lo(v)!==lo(q.es);i.disabled=true;fin(g,q.sol+(ac?" · "+tr("attention aux accents et aux signes"):""),q.key);if(R.mode!=="test")speak(q.es)}
+function chkT(){const q=R.q,i=document.getElementById("ti");if(R.done||!i||!i.value.trim())return;const v=i.value.trim(),g=(q.acc||[q.es]).some(a=>nzI(v)===nzI(a)),lo=x=>x.toLowerCase().replace(/[.!?¿¡,]/g,"").trim(),ac=g&&lo(v)!==lo(q.es);i.disabled=true;fin(g,q.sol+(ac?" · "+tr("attention aux accents et aux signes"):""),q.key);if(R.mode!=="test"&&q.ty!=="dict")speak(q.es)}
 function pickType(){
   const t=R.t,l=lv();let a=t==="CE"?["read"]:t==="CO"?["listen","listenP","dict"]:t==="EE"?["build","type","cloze"]:t==="EO"?(SR?["speak"]:["build","type"]):t==="Conjugaison"?["conj"]:t==="Exceptions"?["exc"]:t==="Expressions"?["exM","exE","exL"]:t==="Listes"||t==="Révision"?["es2fr","fr2es","listen","type","cloze","tf","dict"]:t==="Frases"?["build","listenP","type","dict","cloze",...(SR?["speak"]:[])]:t==="Mélange"?["es2fr","fr2es","listen","build","type","dict","cloze",...(l>=2?["listenP","read",...(SR?["speak"]:[])]:[]),...(l>=3?["read","build"]:[]),"conj","exM",...(l>=2?["exc","exE"]:[])]:["es2fr","fr2es","listen","cloze",...(l>=2?["type"]:[])];
   if(R&&R.pt&&R.pt.length)a=R.pt.filter(x=>x!=="speak"||SR);
@@ -2927,7 +2927,7 @@ function fin(good,sol,key){
   save();
   fxOk(good);document.getElementById("fb").innerHTML=`<div class="fb fbm ${good?"ok":"ko"}">${mas(good?"bravo":"triste",76)}<div><span>${good?"¡Muy bien!":"Pas tout à fait."}</span> ${sol}</div></div>${good?"":`<button class="btn" onclick="adv()">Continuer</button>`}`;
   const c=document.getElementById("chk");if(c)c.remove();
-  if(good)setTimeout(()=>{if(R.q===q&&R.done&&document.querySelector(".fbm"))adv()},1600);
+  if(good){const t0=Date.now(),w=()=>{if(R.q!==q||!R.done||!document.querySelector(".fbm"))return;const el=Date.now()-t0;if(el<1600||(AU.id&&el<10000)){setTimeout(w,150);return}adv()};setTimeout(w,1600)}
 }
 function cuRun(){document.querySelectorAll(".cu").forEach(e=>{const to=+e.dataset.to||0,t0=performance.now(),d=700+to*8;const f=t=>{const p=Math.min(1,(t-t0)/d);e.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)})}
 function end(){
