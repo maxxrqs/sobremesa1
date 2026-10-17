@@ -14,7 +14,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Sobremesa — les langues d'Espagne</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Figtree:wght@400;500;600;700;800&family=Nunito:wght@400;600;700&family=Baloo+2:wght@500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Figtree:wght@400;500;600;700;800&family=Nunito:wght@400;600;700&family=Baloo+2:wght@500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Figtree:wght@400;500;600;700;800&family=Nunito:wght@400;600;700&family=Baloo+2:wght@500;600;700;800&family=DynaPuff:wght@700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Figtree:wght@400;500;600;700;800&family=Nunito:wght@400;600;700&family=Baloo+2:wght@500;600;700;800&family=DynaPuff:wght@700&display=swap" rel="stylesheet"></noscript>
 <style>
 :root{--bg:#F5EDDD;--card:#FFFAF0;--ink:#1B2A4A;--mut:#667089;--az:#1F4FA3;--azk:#FFF8EA;--pk:#6B8FD1;--tl:#1F4FA3;--or:#C4502F;--sol:#E3A52E;--solk:#3A2500;--line:#DCCEB2;--g1:#EEE3CC;--g2:#EEE3CC;--g3:#EEE3CC;--mx1:#1F4FA3;--mx2:#1F4FA3;--okb:#DCEBD6;--ok:#2B7A4B;--kob:#F6D8CC;--ko:#B3391F;--sh:none;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 html[data-mas="toro"]{--az:#B5462C;--pk:#D98468;--tl:#B5462C;--or:#1F4FA3;--mx1:#B5462C;--mx2:#B5462C}
@@ -727,6 +727,9 @@ html[data-scr="home"] .pn>span{display:none}
 html[data-scr="home"] .path{gap:14px!important}
 html[data-scr="home"] .pn{margin-left:var(--o,0)}
 </style>
+<style id="sm-logo">html body header h1,html body header h1 span{font-family:DynaPuff,"Baloo 2",system-ui,sans-serif!important;font-weight:700!important;font-style:normal!important;font-size:22px!important;letter-spacing:-.3px;text-transform:lowercase;color:var(--az)!important;-webkit-text-fill-color:var(--az)!important}
+html[data-scr="home"] header .hl{flex:none}html[data-scr="home"] header h1{overflow:visible}
+@media (max-width:360px){html body header h1,html body header h1 span{font-size:18px!important}html[data-scr="home"] .stats{gap:6px}html[data-scr="home"] .stk{display:none}html[data-scr="home"] .stats .sel{max-width:118px;font-size:14px}}</style>
 <main id="app"></main>
 <script>
 const ST=(()=>{const m={};let ok=false;try{localStorage.setItem("_t","1");localStorage.removeItem("_t");ok=true}catch(e){}return{ok,get:k=>{if(ok){try{return localStorage.getItem(k)}catch(e){}}return k in m?m[k]:null},set:(k,v)=>{m[k]=String(v);if(ok){try{localStorage.setItem(k,v)}catch(e){}}},del:k=>{delete m[k];if(ok){try{localStorage.removeItem(k)}catch(e){}}}}})();
