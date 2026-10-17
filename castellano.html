@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -594,6 +594,7 @@ html[data-theme="dark"] body .pn.cur em,html[data-theme="dark"] body .pn.done em
 @keyframes dcin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.dc{animation:none}}
 </style>
+<style id="sm-light">:root,:root[data-theme]{color-scheme:light}</style>
 <style id="sm-fluid">
 /* ===== Fluidité : seules transform/opacity bougent, sur le compositeur ===== */
 html{-webkit-tap-highlight-color:transparent}
@@ -4313,7 +4314,7 @@ applyUI();
   let su=null;try{su=ST.get("cast_user")}catch(e){}
   const dbp=withTimeout(Promise.resolve().then(()=>claude.use("db")),1200).then(d=>{DB=d}).catch(()=>{DB=null});
   if(UI!=="fr"){await trLoad(UI);applyUI()}
-  const sp=document.getElementById("splash"),hs=()=>{if(!sp||sp.dataset.h)return;sp.dataset.h=1;requestAnimationFrame(()=>requestAnimationFrame(()=>{sp.classList.add("out");setTimeout(()=>sp.remove(),340);try{const m=document.querySelector('meta[name=theme-color]');if(m)m.content="#1B2A4A"}catch(e){}}))};setTimeout(hs,9000);
+  const sp=document.getElementById("splash"),hs=()=>{if(!sp||sp.dataset.h)return;sp.dataset.h=1;requestAnimationFrame(()=>requestAnimationFrame(()=>{sp.classList.add("out");setTimeout(()=>sp.remove(),340);try{const m=document.querySelector('meta[name=theme-color]');if(m){const u=()=>{try{m.content=getComputedStyle(document.documentElement).getPropertyValue("--bg").trim()||"#CFE9DC"}catch(e){}};u();new MutationObserver(u).observe(document.documentElement,{attributes:true,attributeFilter:["data-mas"]})}}catch(e){}}))};setTimeout(hs,9000);
   if(su){loginL(su);dbp.then(()=>syncDb(su))}else{landing();dbp.then(()=>{if(!U&&DB){const f=document.querySelector("form input");if(f&&!f.value)auth(AUM||"login")}})}
   hs();try{axWarm()}catch(e){}
 })();
