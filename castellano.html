@@ -1280,10 +1280,10 @@ function sysVoice(l,strict){
   let vs=[];try{vs=speechSynthesis.getVoices()||[]}catch(e){}
   /* sans le mode dépannage, les voix système connues pour être robotiques (eSpeak, Pico, anciennes voix Windows « Desktop », voix compactes) sont écartées ; celles du moteur Google/Samsung/Apple du téléphone sont admises */
   if(!lofi())vs=vs.filter(v=>!BADV.test((v.name||"")+" "+(v.voiceURI||"")));
-  const want=LANGS[l].s.toLowerCase(),pre=want.slice(0,2),nm=v=>(v.lang||"").replace("_","-").toLowerCase();
+  const want=LANGS[l].s.toLowerCase(),pre=want.slice(0,2),I3={spa:"es",cat:"ca",glg:"gl",eus:"eu",baq:"eu",fra:"fr",eng:"en"},nm=v=>{let x=(v.lang||"").replace("_","-").toLowerCase();const m=x.match(/^([a-z]{3})(-|$)/);if(m&&I3[m[1]])x=I3[m[1]]+x.slice(3);return x};
   let c=vs.filter(v=>nm(v).slice(0,2)===pre);
   if(l==="va"){const w=c.filter(v=>/valenc/i.test(v.name+" "+nm(v)));if(w.length)c=w;else if(strict)return null}
-  if(!c.length)return l==="es"&&!vs.length?{v:null,lang:"es-ES"}:null;
+  if(!c.length)return l==="es"&&(!vs.length||/android/i.test(navigator.userAgent))?{v:null,lang:"es-ES"}:null;
   const sc=v=>(nm(v)===want?8:0)+(/natural|neural|premium|enhanced|siri|google|online|multilingual/i.test(v.name)?3:0)+(v.localService?0:1)+(v.default?.5:0);
   c.sort((a,b)=>sc(b)-sc(a));return{v:c[0],lang:c[0].lang||LANGS[l].s}}
 function aud(id,texts){const was=AU.id===id;stopSp();if(was||!texts||!texts.length)return;const tok=AU.tok;AU.id=id;auSync();const t0=performance.now();
@@ -1297,7 +1297,7 @@ function aud(id,texts){const was=AU.id===id;stopSp();if(was||!texts||!texts.leng
   /* 2) voix du système (neuronale sur la plupart des téléphones récents), seulement si elle existe pour cette langue */
   const viaSys=strict=>new Promise((res,rej)=>{
     if(!("speechSynthesis" in window)||typeof SpeechSynthesisUtterance==="undefined")return rej("nosys");
-    const sv=sysVoice(l,strict);if(!sv)return rej("novoice");
+    const sv=sysVoice(l,strict);if(!sv){let d="";try{const a=speechSynthesis.getVoices()||[];d=":"+a.length+" "+a.slice(0,3).map(v=>v.lang).join(",")}catch(x){}return rej("novoice"+d)}
     try{speechSynthesis.resume()}catch(e){}
     const droid=/android/i.test(navigator.userAgent);let started=false,done=false;UQ.length=0;
     const to=setTimeout(()=>{if(!started&&!done&&AU.tok===tok){done=true;try{speechSynthesis.cancel()}catch(x){}rej("nostart")}},2200);
@@ -1315,10 +1315,10 @@ function aud(id,texts){const was=AU.id===id;stopSp();if(was||!texts||!texts.leng
     finally{TV.busy=0;if(l!=="gl")tvNote("")}};
   const steps=[["sys",()=>viaSys(l==="va")]];if(lofi()&&l!=="gl")steps.push(["piper",viaPiper]);
   const chain=async()=>{const why=[];
-    for(const[n,f]of steps){if(AU.tok!==tok)return;try{await f();if(AU.tok===tok){AX.m[n]++;AX.last={l,v:n,t:texts[0],s:n};fin2()}return}catch(e){why.push(n+":"+String(e&&e.message||e).slice(0,40))}}
+    for(const[n,f]of steps){if(AU.tok!==tok)return;try{await f();if(AU.tok===tok){AX.m[n]++;AX.last={l,v:n,t:texts[0],s:n};fin2()}return}catch(e){why.push(n+":"+String(e&&e.message||e).slice(0,70))}}
     if(AU.tok!==tok)return;
     AX.m.fail++;AX.m.miss.push([l,texts[0]]);if(AX.m.miss.length>60)AX.m.miss.shift();
-    if(AX.why!=="off"&&AX.why!=="net")AX.why=why.join(" ").slice(0,90);AU.id=null;auSync();ttsFail()};
+    if(AX.why!=="off"&&AX.why!=="net")AX.why=why.join(" ").slice(0,140);AU.id=null;auSync();ttsFail()};
   /* 1) enregistrements (humains/neuronaux) : démarrage immédiat, hors ligne si déjà téléchargés */
   axPlay(texts,tok,fin2).then(ok=>{if(ok){AX.m.rec++;AX.lat=Math.round(performance.now()-t0);return}if(AU.tok===tok){AX.m.miss.push([l,texts[0]]);if(AX.m.miss.length>60)AX.m.miss.shift();chain()}},()=>{if(AU.tok===tok)chain()})}
 function speak(t){aud("auto"+Math.random(),[t])}
