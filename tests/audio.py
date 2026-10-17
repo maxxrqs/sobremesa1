@@ -151,7 +151,7 @@ with sync_playwright() as p:
     c,pg,er=newpg(b,VMX);pg.evaluate("S.lang='es';build()");play(pg,["Esta frase no está grabada en el paquete de voces."],5000);ut=pg.evaluate("window.__utt")
     ck("castellano : voix es-ES préférée à es-MX (accent d'Espagne)",ut and ut[0]["voice"]=="Google Spain",ut);c.close()
     # --- qualité d'abord : pas de voix robotique silencieuse
-    VP=[["Voz ca","ca-ES"],["Voz es","es-ES"]]
+    VP=[["eSpeak ca","ca-ES"],["Voz es compact","es-ES"]]
     c,pg,er=newpg(b,VP);pg.evaluate("S.lang='ca';build()");play(pg,["Aquesta frase no està enregistrada enlloc del paquet."],4000);ut=pg.evaluate("window.__utt")
     ck("voix système non réputée naturelle : refusée par défaut (aucune lecture robotique silencieuse)",not ut,ut)
     c,pg,er=newpg(b,VP);pg.evaluate("localStorage.setItem('sob_lofi','1');S.lang='ca';build()");play(pg,["Aquesta frase no està enregistrada enlloc del paquet."],4000);ut=pg.evaluate("window.__utt")

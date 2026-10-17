@@ -1274,16 +1274,16 @@ function msLoad(){if(MSP)return MSP;MSP=new Promise((ok,ko)=>{const sc=document.
 /* texte prêt à être lu par un moteur de synthèse (les clés d'enregistrement gardent le texte d'origine) */
 function ttsSan(t){let s=String(t).replace(/\([^)]*\)/g,"");[["→",", "],["«",""],["»",""],[" / ",", "],["/",", "],["+"," "],["—",", "],["€"," euros"]].forEach(a=>{s=s.split(a[0]).join(a[1])});return s.replace(/\s+/g," ").replace(/\s+,/g,",").trim().replace(/^[ ,]+|[ ,]+$/g,"")||String(t)}
 /* voix du système pour la langue : jamais une autre langue à la place (le valencien exige une voix valencienne ou catalane, pas une voix castillane) */
-const VET=/natural|neural|premium|enhanced|siri|google|online|multilingual|network/i;
+const BADV=/espeak|pico|festival|compact|desktop|mbrola|flite/i;
 function lofi(){try{return localStorage.getItem("sob_lofi")==="1"}catch(e){return false}}
 function sysVoice(l,strict){
   let vs=[];try{vs=speechSynthesis.getVoices()||[]}catch(e){}
-  /* qualité d'abord : sans le mode dépannage, seules les voix système réputées naturelles sont admises */
-  if(!lofi())vs=vs.filter(v=>VET.test(v.name||"")||(!v.localService&&/google|microsoft/i.test((v.name||"")+(v.voiceURI||""))));
+  /* sans le mode dépannage, les voix système connues pour être robotiques (eSpeak, Pico, anciennes voix Windows « Desktop », voix compactes) sont écartées ; celles du moteur Google/Samsung/Apple du téléphone sont admises */
+  if(!lofi())vs=vs.filter(v=>!BADV.test((v.name||"")+" "+(v.voiceURI||"")));
   const want=LANGS[l].s.toLowerCase(),pre=want.slice(0,2),nm=v=>(v.lang||"").replace("_","-").toLowerCase();
   let c=vs.filter(v=>nm(v).slice(0,2)===pre);
   if(l==="va"){const w=c.filter(v=>/valenc/i.test(v.name+" "+nm(v)));if(w.length)c=w;else if(strict)return null}
-  if(!c.length)return l==="es"&&!vs.length&&lofi()?{v:null,lang:"es-ES"}:null;
+  if(!c.length)return l==="es"&&!vs.length?{v:null,lang:"es-ES"}:null;
   const sc=v=>(nm(v)===want?8:0)+(/natural|neural|premium|enhanced|siri|google|online|multilingual/i.test(v.name)?3:0)+(v.localService?0:1)+(v.default?.5:0);
   c.sort((a,b)=>sc(b)-sc(a));return{v:c[0],lang:c[0].lang||LANGS[l].s}}
 function aud(id,texts){const was=AU.id===id;stopSp();if(was||!texts||!texts.length)return;const tok=AU.tok;AU.id=id;auSync();const t0=performance.now();
