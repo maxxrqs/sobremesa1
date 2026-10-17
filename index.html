@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr" data-theme="light">
 <head>
+<script>(function(){var r=document.documentElement,f=function(){if(r.getAttribute("data-theme")!=="light")r.setAttribute("data-theme","light");r.style.colorScheme="light"};f();try{new MutationObserver(f).observe(r,{attributes:true,attributeFilter:["data-theme","style","class"]})}catch(e){}})()</script>
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#CFE9DC">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -690,7 +691,7 @@ html body .bk{border:2.5px solid var(--sk)!important;border-radius:14px;box-shad
 html body .pn.lock.lock>i{background:var(--card);color:#8A93A8;border-style:dashed!important;box-shadow:none!important}
 html body .pn b{font-weight:800}
 /* barre du bas flottante */
-html body .bnav{left:12px;right:12px;bottom:calc(10px + env(safe-area-inset-bottom,0px));width:auto;border:2.5px solid var(--sk);border-radius:22px;box-shadow:var(--hs);background:var(--card);padding:6px;box-sizing:border-box}
+html body .bnav{left:max(12px,calc(50% - 268px));right:max(12px,calc(50% - 268px));bottom:calc(10px + env(safe-area-inset-bottom,0px));width:auto;border:2.5px solid var(--sk);border-radius:22px;box-shadow:var(--hs);background:var(--card);padding:6px;box-sizing:border-box}
 html body .bnav button{border-radius:16px;color:var(--sk)}
 html body .bnav button::before,html body .bnav button::after{display:none!important}
 html body .bnav button.on{background:var(--az);color:#fff}
@@ -2836,7 +2837,7 @@ function head(){document.documentElement.dataset.mas=S.mas||"gecko";document.doc
 function home(){
   if(S.mode==="sc")S.mode="im";LK2=0;INL=0;stopSp();SCR="home";axWarm();
   const talkM=S.mode==="im"||S.mode==="cv"||S.mode==="sc";
-  $.innerHTML=head()+tabs("home")+notes()+(talkM?`<h2 class="ptitle">${tr("Discuter")}</h2>${seg()}${S.mode==="cv"?cvHome():immList()}`:`${pathItems().length?"":hero()}${srDue().length?`<button class="theme rev" onclick="start('Révision')"><b>Réviser</b><span>${tr("À revoir aujourd'hui : {0}",srDue().length)}</span></button>`:""}${pathHtml()}`);
+  $.innerHTML=head()+tabs("home")+notes()+(talkM?`<h2 class="ptitle">${tr("Discuter")}</h2>${seg()}${S.mode==="cv"?cvHome():immList()}`:`${pathItems().length?"":hero()}${pathHtml()}`);
 }
 /* ---- scénarios de la vie courante ---- */
 const SCN_T=[["☕","Au café",0],["🏦","À la mairie",4],["💊","Chez le médecin",8],["🏠","Chercher un logement",12]];
@@ -3031,7 +3032,7 @@ function pathHtml(){
   const cu=cur>=0?it[cur].u:pl.units.length;let ix=0;
   const us=pl.units.map(u=>{const n=u.steps.length,base=ix;ix+=n;const d=it.slice(base,base+n).filter(x=>x.done).length,open=u.n===cu;
     return `<details class="unit"${open?" open":""}><summary style="cursor:pointer;font-weight:700;padding:10px 0;list-style:none">${d===n?"✅":open?"▶":"🔒"} ${tr("Unité {0}",u.n)} · ${u.title} <small style="font-weight:400;color:var(--mut)">${d}/${n}</small></summary>${u.obj?`<p class="sub" style="margin:0 0 6px">${u.obj}</p>`:""}<div class="path" style="margin:4px 0 14px">${it.slice(base,base+n).map((x,k)=>node(x,base+k)).join("")}</div></details>`}).join("");
-  return lvBanner()+head+hero()+lvHdr(pl)+`<h3>${tr("Ton parcours")} · ${dn}/${it.length}</h3>${us}`;
+  return lvBanner()+head+hero()+(srDue().length?`<button class="theme rev" onclick="start('Révision')"><b>${tr("Réviser")}</b><span>${tr("À revoir aujourd'hui : {0}",srDue().length)}</span></button>`:"")+lvHdr(pl)+`<h3>${tr("Ton parcours")} · ${dn}/${it.length}</h3>${us}`;
 }
 function hero(){const i=xpInfo();return `<button class="stlvl" onclick="prog()"><b>${tr("Niv. {0}",i.L)}</b><span class="bar"><i style="width:${i.pc}%"></i></span><span>${i.L>=50?i.x:(i.x-i.lo)+"/"+(i.hi-i.lo)}</span></button>`}
 function heroOld(){const i=xpInfo(),d=S.last?Math.floor((Date.now()-new Date(S.last).getTime())/864e5):0;return `<button class="hero2" onclick="prog()"><span class="hm">${mas(d>=3?"dodo":"content",52)}</span><span class="hi"><span class="lt"><b>${tr("Niv. {0}",i.L)} · ${titleOf(i.L)}</b><em${S.last===dayK()?"":' class="dim"'}>🔥 ${curStreak()} · 🪙 ${S.co||0}</em></span><div class="bar"><i style="width:${i.pc}%"></i></div><small>${i.L>=50?i.x+" XP":(i.x-i.lo)+" / "+(i.hi-i.lo)+" XP"} · 🎯 ${dxp()>=goal()?tr("Objectif atteint ✅"):tr("{0} / {1} XP aujourd'hui",dxp(),goal())}</small></span></button>`}
