@@ -89,7 +89,7 @@ with sync_playwright() as p:
       const o={disc:!!DISC,n:DISC?DISC.items.length:0,txt:document.body.innerText,q:R.q?R.q.ty:null,ws:st.ws.map(w=>w[0]),items:DISC?DISC.items.map(x=>x.es):[],ex:DISC?DISC.items.filter(x=>x.ex).length:0};return o}""")
     ck("nouvelle étape de vocabulaire : écran de découverte AVANT toute question",r["disc"] and r["q"] is None and r["n"]>=3,r)
     ck("découverte : tous les mots de l'étape présentés (sens + exemple pour la plupart)",set(r["ws"])<=set(r["items"]) and r["ex"]>=1,[r["ws"],r["items"],r["ex"]])
-    ck("découverte : orthographe, audio, sens affichés",("Découvre" in r["txt"]) and pg.query_selector("ul.disc button.spk"))
+    ck("découverte : orthographe, audio, sens affichés",("Découvre" in r["txt"]) and pg.query_selector(".dsc .dc button.spk") and pg.evaluate("getComputedStyle(document.querySelector('.dw')).textDecorationLine")=='none')
     q=pg.evaluate("""()=>{discGo();const ty=R.q.ty;const seen=[];for(let i=0;i<40;i++){R.n=i%10;const q=mkQ(pickType(),0);seen.push([q.ty,q.key||q.wk||null])}
        return{ty,ds:Object.keys(S.ds).length,seen}}""")
     ck("après « C'est parti » : l'exercice démarre, mots marqués vus",q["ds"]>=3 and q["ty"],q["ty"])
