@@ -644,6 +644,54 @@ html body .conf i{animation:smConf var(--t,1.9s) cubic-bezier(.3,.55,.55,1) forw
 html body .bar>i{will-change:width}
 @media (prefers-reduced-motion:reduce){html body #app>*,html body .fb,html body .opt.ok,html body .bnav button.on,html body .mpick.pulse::after,html body #tour .tring.on::after,html body .conf i{animation:none!important}html body .btn,html body .opt,html body .chip,html body .theme{transition:none}}
 </style>
+<style id="sm-landing">
+/* ===== Accueil avant connexion : écran d'application plein cadre ===== */
+html body .lx{position:fixed;inset:0;z-index:5;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;display:flex;flex-direction:column;align-items:stretch;text-align:center;min-height:0;padding:calc(env(safe-area-inset-top,0px) + 12px) 16px 0;background:var(--bg)}
+html body .lx>*{width:100%;max-width:440px;margin-left:auto;margin-right:auto}
+html body .lxt{height:44px}
+html body .lxlogo{display:flex;align-items:center;gap:9px;font-family:inherit;font-weight:800;font-size:19px;line-height:1;font-style:normal;letter-spacing:-.4px}
+html body .lxlogo::before{content:"S";display:grid;place-items:center;width:32px;height:32px;border-radius:10px;background:var(--az);color:var(--azk);font-size:18px;font-weight:900;box-shadow:0 2px 0 color-mix(in srgb,var(--az) 60%,#000)}
+html body .lxt .sel{background:var(--card);border:1.5px solid var(--line);-webkit-backdrop-filter:none;backdrop-filter:none;padding:7px 12px;font-size:14px}
+/* scène : bulle + compagnon */
+.lxstage{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;margin-top:10px;padding:18px 12px 16px;border-radius:28px;min-height:318px;position:relative;overflow:hidden;background:color-mix(in srgb,var(--az) 9%,var(--card));border:1.5px solid color-mix(in srgb,var(--az) 16%,var(--line));transition:background-color .45s ease,border-color .45s ease}
+.lxstage>small{font-size:12px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--mut)}
+.lxbub{position:relative;height:66px;min-width:190px;margin-top:6px;border-radius:20px;background:var(--card);border:1.5px solid var(--line);box-shadow:0 8px 20px rgba(0,0,0,.07)}
+.lxbub::after{content:"";position:absolute;left:50%;bottom:-8px;width:14px;height:14px;margin-left:-7px;background:var(--card);border-right:1.5px solid var(--line);border-bottom:1.5px solid var(--line);transform:rotate(45deg);border-bottom-right-radius:3px}
+.lxbub span{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;animation:smGreet 13s infinite both;animation-delay:calc(var(--i)*2.6s);will-change:transform,opacity}
+.lxbub b{font-size:25px;font-weight:850;line-height:1.05;letter-spacing:-.4px;color:var(--ink)}
+.lxbub small{margin-top:3px;font-size:11px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;color:var(--or)}
+@keyframes smGreet{0%{opacity:0;transform:translate3d(0,10px,0) scale(.96)}4%,17%{opacity:1;transform:none}21%,100%{opacity:0;transform:translate3d(0,-8px,0) scale(.98)}}
+html body .lxm{margin-top:4px;height:210px;max-width:320px}
+html body .lxm::before{background:radial-gradient(closest-side,color-mix(in srgb,var(--az) 22%,transparent),transparent);top:-14px}
+html body .lxnm{margin-top:0;gap:9px}
+html body .lxnm b{font-family:inherit;font-weight:800;font-size:18px;line-height:1;font-style:normal;letter-spacing:-.2px}
+html body .lxdt button.on{background:var(--az)}
+/* les 5 langues, synchronisées avec la bulle */
+.lxlg{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:12px}
+.lxlg span{position:relative;display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 2px 9px;border-radius:14px;background:var(--card);border:1.5px solid var(--line);overflow:hidden}
+.lxlg span::before{content:"";position:absolute;inset:0;background:color-mix(in srgb,var(--az) 16%,transparent);opacity:0;animation:smTile 13s infinite both;animation-delay:calc(var(--i)*2.6s)}
+.lxlg span::after{content:"";position:absolute;left:22%;right:22%;bottom:4px;height:3px;border-radius:2px;background:var(--az);transform:scaleX(0);animation:smTileB 13s infinite both;animation-delay:calc(var(--i)*2.6s)}
+.lxlg b{position:relative;font-size:15px;font-weight:900;color:var(--ink)}
+.lxlg small{position:relative;max-width:100%;font-size:10.5px;font-weight:700;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@keyframes smTile{0%,21%,100%{opacity:0}4%,17%{opacity:1}}
+@keyframes smTileB{0%,21%,100%{transform:scaleX(0)}5%,17%{transform:scaleX(1)}}
+/* feuille du bas */
+html body .lx>.lxf{position:sticky;bottom:0;z-index:2;max-width:none;width:auto;margin:14px -16px 0;padding:20px 20px calc(env(safe-area-inset-bottom,0px) + 16px);gap:10px;align-items:stretch;background:var(--card);border-radius:28px 28px 0 0;box-shadow:0 -10px 30px rgba(0,0,0,.08);border-top:1.5px solid var(--line)}
+html body .lxf>*{width:100%;max-width:440px;margin-left:auto;margin-right:auto}
+html body .lxh{margin:0 auto 4px;max-width:440px;font-family:inherit;font-weight:800;font-size:21px;line-height:1.25;letter-spacing:-.3px;text-wrap:balance}
+html body .lxcta{border-radius:16px;background:var(--az);color:var(--azk);padding:17px 20px;font-size:17px;box-shadow:0 4px 0 color-mix(in srgb,var(--az) 60%,#000)}
+html body .lxcta:active{transform:translateY(3px);box-shadow:0 1px 0 color-mix(in srgb,var(--az) 60%,#000)}
+html body .lxlk{border:1.5px solid var(--line);border-radius:16px;background:var(--card);padding:15px 20px;font-size:16px;font-weight:800;color:var(--az);text-decoration:none;box-shadow:0 3px 0 var(--line);transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .15s}
+html body .lxlk:active{transform:translateY(2px);box-shadow:0 1px 0 var(--line);transition-duration:.06s}
+html body .lxfine{margin:2px auto 0;font-size:12px}
+/* entrées */
+@keyframes smSheet{from{opacity:0;transform:translate3d(0,48px,0)}to{opacity:1;transform:none}}
+html body .lx>*{animation:lxin .7s cubic-bezier(.22,1,.36,1) backwards}
+html body .lx>.lxstage{animation-delay:.06s}html body .lx>.lxlg{animation-delay:.14s}
+html body .lx>.lxf{animation:smSheet .6s cubic-bezier(.22,1,.36,1) .2s backwards}
+@media (max-height:620px){html body .lxstage{flex:none;min-height:0;padding:10px 10px 12px}.lxstage>small{display:none}.lxbub{height:56px}.lxbub b{font-size:21px}html body .lxh{font-size:19px}}
+@media (prefers-reduced-motion:reduce){.lxbub span,.lxlg span::before,.lxlg span::after,html body .lx>*{animation:none!important}.lxbub span:first-child{opacity:1}}
+</style>
 <main id="app"></main>
 <script>
 const ST=(()=>{const m={};let ok=false;try{localStorage.setItem("_t","1");localStorage.removeItem("_t");ok=true}catch(e){}return{ok,get:k=>{if(ok){try{return localStorage.getItem(k)}catch(e){}}return k in m?m[k]:null},set:(k,v)=>{m[k]=String(v);if(ok){try{localStorage.setItem(k,v)}catch(e){}}},del:k=>{delete m[k];if(ok){try{localStorage.removeItem(k)}catch(e){}}}}})();
@@ -4149,11 +4197,12 @@ function landing(){
   AUM=null;try{if(OBT)tourEnd(1)}catch(e){}
   const ms=Object.keys(FX.A);LXI=Math.max(0,ms.indexOf(S.mas||"gecko"));
   const G=[["¡Hola!","Castellano"],["Bon dia","Valencià"],["Bona tarda","Català"],["Ola!","Galego"],["Kaixo!","Euskara"]];
-  $.innerHTML=`<div class="lxbg"><i class="lxb a"></i><i class="lxb b"></i><i class="lxb c"></i></div><div class="lx">
+  $.innerHTML=`<div class="lx">
   <div class="lxt"><span class="lxlogo" translate="no">sobremesa</span>${uisel()}</div>
-  <div class="lxm" id="lxm">${ms.map((k,i)=>`<div class="lxs" data-k="${k}">${mas("bravo",210,k)}</div>`).join("")}</div><div class="lxnm"><b id="lxn" translate="no"></b><div class="lxdt">${ms.map((k,i)=>`<button aria-label="${FX.A[k].n}" onclick="lxGo(${i})"></button>`).join("")}</div></div>
-  <div><div class="lxg" aria-hidden="true">${G.map((g,i)=>`<span style="--i:${i}"><b>${g[0]}</b><small>${g[1]}</small></span>`).join("")}</div><h1 class="lxh">${tr("Les langues d'Espagne, à ton rythme.")}</h1></div>
-  <div class="lxf"><button class="lxcta" onclick="auth('reg')">${tr("Commencer gratuitement")}<i>→</i></button><button class="lxlk" onclick="auth('login')">${tr("J'ai déjà un compte")}</button><p class="lxfine">${tr("Gratuit · Illimité · Sans publicité")}</p></div></div>`;
+  <div class="lxstage"><small>${tr("Choisir mon compagnon")}</small><div class="lxbub" aria-hidden="true">${G.map((g,i)=>`<span style="--i:${i}"><b>${g[0]}</b><small>${g[1]}</small></span>`).join("")}</div>
+  <div class="lxm" id="lxm">${ms.map((k,i)=>`<div class="lxs" data-k="${k}">${mas("bravo",210,k)}</div>`).join("")}</div><div class="lxnm"><b id="lxn" translate="no"></b><div class="lxdt">${ms.map((k,i)=>`<button aria-label="${FX.A[k].n}" onclick="lxGo(${i})"></button>`).join("")}</div></div></div>
+  <div class="lxlg" aria-hidden="true">${G.map((g,i)=>`<span style="--i:${i}"><b>${["ES","VA","CA","GL","EU"][i]}</b><small>${g[1]}</small></span>`).join("")}</div>
+  <div class="lxf"><h1 class="lxh">${tr("Les langues d'Espagne, à ton rythme.")}</h1><button class="lxcta" onclick="auth('reg')">${tr("Commencer gratuitement")}<i>→</i></button><button class="lxlk" onclick="auth('login')">${tr("J'ai déjà un compte")}</button><p class="lxfine">${tr("Gratuit · Illimité · Sans publicité")}</p></div></div>`;
   try{window.scrollTo(0,0)}catch(e){}
   lxInit();
 }
