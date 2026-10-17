@@ -1,0 +1,52 @@
+<title>Écoute Sobremesa</title>
+<style>
+:root{--bg:#faf7f2;--fg:#2a2420;--mut:#7a6f66;--card:#fff;--line:#e6dfd5;--acc:#c2410c;--ok:#2f7d4f;--mid:#b7791f;--ko:#b3261e}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1c1917;--fg:#f1ebe3;--mut:#a39a90;--card:#26211e;--line:#3a332e;--acc:#fb923c;--ok:#5fc08a;--mid:#e0b25a;--ko:#f28b82;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1c1917;--fg:#f1ebe3;--mut:#a39a90;--card:#26211e;--line:#3a332e;--acc:#fb923c;--ok:#5fc08a;--mid:#e0b25a;--ko:#f28b82;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:Georgia,'Iowan Old Style',serif;padding-inline:16px;padding-block:20px;max-width:760px;margin:0 auto;line-height:1.45}
+h1{font-size:26px;margin:0 0 6px}h2{font-size:19px;margin:28px 0 8px;border-bottom:2px solid var(--line);padding-bottom:4px}
+p,li{font-size:15px}.mut{color:var(--mut);font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin:8px 0;display:grid;gap:6px}
+.t{font-size:16px;overflow-wrap:anywhere}audio{width:100%;max-width:100%;height:36px}
+.r{display:flex;gap:6px;flex-wrap:wrap}.r button{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:20px;padding:6px 12px;cursor:pointer;min-height:36px}
+.r button.on[data-v="ok"]{background:var(--ok);color:#fff;border-color:var(--ok)}.r button.on[data-v="mid"]{background:var(--mid);color:#fff;border-color:var(--mid)}.r button.on[data-v="ko"]{background:var(--ko);color:#fff;border-color:var(--ko)}.r button.on.ab{background:var(--acc);color:#fff;border-color:var(--acc)}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding:8px 0;border-bottom:1px solid var(--line);z-index:5;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.go{font:inherit;background:var(--acc);color:#fff;border:0;border-radius:8px;padding:8px 14px;cursor:pointer}
+textarea{width:100%;box-sizing:border-box;min-height:140px;background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:8px;font:12px monospace;padding:8px}
+.ab3{display:grid;gap:6px}.lab{font-size:13px;font-weight:bold;color:var(--mut)}
+</style>
+<h1>Écoute Sobremesa</h1>
+<p>Objectif : juger à l'oreille si les voix sonnent <b>naturelles</b>. Les scores automatiques ne remplacent pas ton oreille. Écoute chaque clip (casque ou haut-parleur du téléphone) et choisis : <b>Naturelle</b>, <b>Passable</b> ou <b>Robotique</b>. À la fin, copie le résultat en bas et envoie-le moi : les clips « Robotique » seront regénérés ou remplacés.</p>
+<p class="mut">Les clips viennent d'un tirage : les 2 plus mal notés par le modèle automatique, 1 médian et 5 au hasard par voix. Le score automatique n'est montré qu'à l'export, pour ne pas t'influencer.</p>
+<div class="bar"><span id="prog" class="mut"></span><button class="go" onclick="exp()">Générer le résultat</button></div>
+<div id="root"></div>
+<h2>Résultat à copier</h2><textarea id="out" readonly placeholder="Appuie sur « Générer le résultat »"></textarea>
+<p><button class="go" onclick="cp()">Copier</button> <span id="cpm" class="mut"></span></p>
+<script>
+const D=__DATA__;const R={};
+const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e};
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;");
+const aud=b=>`<audio controls preload="none" src="data:audio/mpeg;base64,${b}"></audio>`;
+const root=document.getElementById("root");
+// A/B castillan
+{const h=el("h2",0,"Castellano : l'enregistrement d'origine contre Kokoro");root.appendChild(h);
+root.appendChild(el("p","mut","Trois versions du même texte, dans un ordre mélangé. Choisis celle qui sonne le plus humaine."));
+D.ab.forEach((e,i)=>{const o=[["origine",e.o],["kokoro_dora",e.ef_dora],["kokoro_alex",e.em_alex]];
+ const ord=o.map((x,j)=>[Math.sin((i+1)*(j+3)*12.9898)*43758,x]).sort((a,b)=>(a[0]%1)-(b[0]%1)).map(x=>x[1]);
+ const c=el("div","card");c.appendChild(el("div","t",esc(e.t)));const g=el("div","ab3");
+ ord.forEach((x,j)=>{const L="ABC"[j];g.appendChild(el("div","lab","Version "+L));g.appendChild(el("div",0,aud(x[1])))});c.appendChild(g);
+ const r=el("div","r");ord.forEach((x,j)=>{const b=el("button","ab","La meilleure : "+"ABC"[j]);b.dataset.v=x[0];b.onclick=()=>{r.querySelectorAll("button").forEach(y=>y.classList.remove("on"));b.classList.add("on");R["ab|"+e.t]=x[0];prog()};r.appendChild(b)});
+ const none=el("button","ab","Aucune n'est bonne");none.onclick=()=>{r.querySelectorAll("button").forEach(y=>y.classList.remove("on"));none.classList.add("on");R["ab|"+e.t]="aucune";prog()};r.appendChild(none);
+ c.appendChild(r);root.appendChild(c)})}
+let cur="";
+D.items.forEach((it,i)=>{if(it.g!==cur){cur=it.g;root.appendChild(el("h2",0,esc(D.names[it.g])))}
+ const c=el("div","card");c.appendChild(el("div","mut",it.c==="gap"?"clip ajouté (v179)":"enregistrement d'origine"));
+ c.appendChild(el("div","t",esc(it.t)));c.appendChild(el("div",0,aud(it.a)));const r=el("div","r");
+ [["ok","Naturelle"],["mid","Passable"],["ko","Robotique"]].forEach(([v,l])=>{const b=el("button",0,l);b.dataset.v=v;b.onclick=()=>{r.querySelectorAll("button").forEach(y=>y.classList.remove("on"));b.classList.add("on");R[i]=v;prog()};r.appendChild(b)});
+ c.appendChild(r);root.appendChild(c)});
+function prog(){document.getElementById("prog").textContent=Object.keys(R).length+" / "+(D.items.length+D.ab.length)+" jugés"}
+function exp(){const L=["# voix\tclasse\tnote\tscore_auto\ttexte"];D.items.forEach((it,i)=>{if(R[i])L.push([it.g,it.c,R[i],it.m,it.t].join("\t"))});
+ L.push("# A/B castillan (meilleure version)");D.ab.forEach(e=>{const k="ab|"+e.t;if(R[k])L.push(["ab",R[k],e.t].join("\t"))});document.getElementById("out").value=L.join("\n")}
+async function cp(){const t=document.getElementById("out");if(!t.value)exp();try{await navigator.clipboard.writeText(t.value);document.getElementById("cpm").textContent="Copié."}catch(e){t.select();document.getElementById("cpm").textContent="Sélectionné : copie manuellement."}}
+prog();
+</script>

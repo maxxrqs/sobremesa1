@@ -142,14 +142,24 @@ with sync_playwright() as p:
     ck("euskara sans voix basque sur l'appareil : le texte basque n'est JAMAIS lu avec une voix espagnole",all(not x["lang"].startswith("es") for x in ut),ut);c.close()
     c,pg,er=newpg(b,VES);pg.evaluate("S.lang='gl';build()");d=play(pg,["Isto non está gravado en ningún paquete galego."],5000);ut=pg.evaluate("window.__utt")
     ck("galego sans voix galicienne : jamais lu avec une voix espagnole",all(not x["lang"].startswith("es") for x in ut),ut);c.close()
-    VCA=[["Voz ca","ca-ES"],["Voz valenciana","ca-ES-valencia"],["Voz es","es-ES"]]
+    VCA=[["Google català","ca-ES"],["Google valencià","ca-ES-valencia"],["Google español","es-ES"]]
     c,pg,er=newpg(b,VCA);pg.evaluate("S.lang='va';build()");play(pg,["Aquesta frase no està enregistrada enlloc del paquet."],5000);ut=pg.evaluate("window.__utt")
-    ck("valencià : la voix valencienne est préférée à la voix catalane générique",ut and ut[0]["voice"]=="Voz valenciana",ut);c.close()
-    c,pg,er=newpg(b,[["Voz ca","ca-ES"],["Voz es","es-ES"]]);pg.evaluate("S.lang='ca'");pg.evaluate("S.lang='ca';build()");play(pg,["Aquesta frase no està enregistrada enlloc del paquet."],5000);ut=pg.evaluate("window.__utt")
+    ck("valencià : la voix valencienne est préférée à la voix catalane générique",ut and ut[0]["voice"]=="Google valencià",ut);c.close()
+    c,pg,er=newpg(b,[["Google català","ca-ES"],["Google español","es-ES"]]);pg.evaluate("S.lang='ca'");pg.evaluate("S.lang='ca';build()");play(pg,["Aquesta frase no està enregistrada enlloc del paquet."],5000);ut=pg.evaluate("window.__utt")
     ck("català : la voix catalane est utilisée, pas l'espagnole",ut and ut[0]["lang"].startswith("ca"),ut);c.close()
-    VMX=[["Mexico","es-MX"],["Spain","es-ES"]]
+    VMX=[["Google Mexico","es-MX"],["Google Spain","es-ES"]]
     c,pg,er=newpg(b,VMX);pg.evaluate("S.lang='es';build()");play(pg,["Esta frase no está grabada en el paquete de voces."],5000);ut=pg.evaluate("window.__utt")
-    ck("castellano : voix es-ES préférée à es-MX (accent d'Espagne)",ut and ut[0]["voice"]=="Spain",ut);c.close()
+    ck("castellano : voix es-ES préférée à es-MX (accent d'Espagne)",ut and ut[0]["voice"]=="Google Spain",ut);c.close()
+    # --- qualité d'abord : pas de voix robotique silencieuse
+    VP=[["Voz ca","ca-ES"],["Voz es","es-ES"]]
+    c,pg,er=newpg(b,VP);pg.evaluate("S.lang='ca';build()");play(pg,["Aquesta frase no està enregistrada enlloc del paquet."],4000);ut=pg.evaluate("window.__utt")
+    ck("voix système non réputée naturelle : refusée par défaut (aucune lecture robotique silencieuse)",not ut,ut)
+    c,pg,er=newpg(b,VP);pg.evaluate("localStorage.setItem('sob_lofi','1');S.lang='ca';build()");play(pg,["Aquesta frase no està enregistrada enlloc del paquet."],4000);ut=pg.evaluate("window.__utt")
+    ck("mode dépannage activé par la personne : la voix système quelconque (bonne langue) est admise",ut and ut[0]["lang"].startswith("ca"),ut);c.close()
+    c,pg,er=newpg(b);reqs=[];pg.on("request",lambda r:reqs.append(r.url));pg.evaluate("S.lang='ca';build()");play(pg,["Aquesta frase no està enregistrada enlloc del paquet."],4000)
+    ck("eSpeak et Piper : jamais téléchargés dans le parcours normal",not any("/a/ms/" in u or "piper" in u.lower() or ".onnx" in u for u in reqs),[u for u in reqs if "ms/" in u or "onnx" in u][:3]);c.close()
+    c,pg,er=newpg(b);ok=pg.evaluate("S.lang='gl';(()=>{localStorage.setItem('sob_lofi','1');return tvSup('gl')})()");ck("galego : Piper (modèle catalan) jamais proposé, même en mode dépannage",ok is False,ok)
+    ok2=pg.evaluate("localStorage.removeItem('sob_lofi');tvSup('ca')");ck("catalan : Piper désactivé par défaut",ok2 is False,ok2);c.close()
     # --- cache des voix générées (traducteur, conversation)
     c,pg,er=newpg(b);r=pg.evaluate("""async()=>{const pcm=new Float32Array(2000).map((_,i)=>Math.sin(i/9)*.5);tvPPut('ca','Bon dia',{pcm,sr:22050});await new Promise(r=>setTimeout(r,400));const g=await tvPGet('ca','Bon dia');const h=await tvPGet('gl','Bon dia');return[g&&g.pcm.length,g&&g.sr,g&&Math.abs(g.pcm[100]-pcm[100])<1e-3,h]}""")
     ck("voix générées : aller-retour du cache persistant (clé langue+texte), autre langue = pas de collision",r[0]==2000 and r[1]==22050 and r[2] and r[3] is None,r);c.close()
