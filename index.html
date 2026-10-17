@@ -74,7 +74,7 @@ header h1{display:flex;align-items:center;gap:8px}.mnr{display:flex;align-items:
 .vl{background:none;border:0;padding:6px 0;font:700 1em inherit;font-family:inherit;color:var(--az);cursor:pointer;text-decoration:underline;text-align:left}.vl small{font-weight:400;color:var(--mut);text-decoration:none}
 .spk{background:var(--az);color:var(--azk);border:0;border-radius:50%;width:48px;height:48px;font-size:22px;cursor:pointer;vertical-align:middle;margin-left:8px}
 .fb{margin-top:12px;padding:12px 14px;border-radius:12px;font-weight:600}
-.fb.ok{background:var(--okb);color:var(--ok)}.fb.ko{background:var(--kob);color:var(--ko)}
+.fb.ok{background:var(--okb);color:var(--ok)}.fb.ko{background:var(--kob);color:var(--ko)}.fb.pt{background:var(--g1);color:var(--ink)}
 .line{min-height:54px;border-bottom:2px solid var(--line);padding:6px 0;display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
 .chips{display:flex;flex-wrap:wrap;gap:8px}.sl{display:inline-block;box-sizing:border-box;border-radius:14px;background:var(--g1);vertical-align:top}@keyframes lkshake{0%,100%{transform:translateX(0)}12%{transform:translateX(-10px)}27%{transform:translateX(9px)}42%{transform:translateX(-8px)}57%{transform:translateX(6px)}72%{transform:translateX(-3px)}}
 @keyframes lkshake2{0%,100%{transform:translateX(0)}20%{transform:translateX(-4px)}40%{transform:translateX(4px)}60%{transform:translateX(-2.5px)}80%{transform:translateX(1.5px)}}
@@ -128,7 +128,7 @@ header h1 *{-webkit-text-fill-color:initial}
 .spk{background:var(--az);color:var(--azk);box-shadow:0 5px 12px color-mix(in srgb,var(--az) 35%,transparent);border-bottom:3px solid rgba(0,0,0,.2);transition:transform .1s}
 .spk:hover{transform:scale(1.06)}.spk:active{transform:scale(.94)}
 .fb{border-radius:18px;font-weight:800;animation:pop .3s both}
-.fb.ok{border:2px solid var(--ok)}.fb.ko{border:2px solid var(--ko)}
+.fb.ok{border:2px solid var(--ok)}.fb.ko{border:2px solid var(--ko)}.fb.pt{border:2px solid var(--sol)}
 .bub{border-radius:20px}.bub.me{background:var(--az)}.bub.me,.bub.me.ok,.bub.me.ko{color:var(--azk)}
 .bub.npc{background:var(--card);border-width:2px}
 .mh .bubble{border-radius:20px;border-color:var(--pk);background:var(--g1)}
@@ -588,7 +588,7 @@ function hpJS(pw,salt){let x=salt+":"+pw;for(let i=0;i<3000;i++)x=sha256(x+salt)
 const withTimeout=(p,ms)=>Promise.race([p,new Promise(r=>setTimeout(()=>r(null),ms))]);
 var UI="fr";
 const UIL={fr:"Français",en:"English",it:"Italiano",de:"Deutsch",pt:"Português"};
-const TR={};const trLoad=l=>(l==="fr"||TR[l])?Promise.resolve():fetch("tr/"+l+".json?v=20").then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{TR[l]=j}).catch(()=>{});
+const TR={};const trLoad=l=>(l==="fr"||TR[l])?Promise.resolve():fetch("tr/"+l+".json?v=21").then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{TR[l]=j}).catch(()=>{});
 try{const s=ST.get("cast_ui"),n=(navigator.language||"fr").slice(0,2);UI=UIL[s]?s:(UIL[n]?n:"fr")}catch(e){}
 const gl=s=>{if(UI==="fr"||!TR[UI])return s;let t=TR[UI][s];if(t!=null)return t;const n=s.match(NUMRE);if(n){t=TR[UI][s.replace(NUMRE,"#")];if(t!=null){let i=0;return t.replace(/#/g,()=>i<n.length?n[i++]:"#")}}return s};
 const tr=(s,...a)=>gl(s).replace(/\{(\d)\}/g,(m,i)=>a[i]);
@@ -2715,7 +2715,7 @@ function endErr(){
   q.classList.remove("errc");void q.offsetWidth;q.classList.add("errc");
   try{navigator.vibrate&&navigator.vibrate([50,60,50])}catch(e){}try{FX.play("bad")}catch(e){}
   setTimeout(()=>q.classList.remove("errc"),1500);
-  if(!document.getElementById("endm")){const b=document.querySelector(".btn.dis");if(b){const m=document.createElement("p");m.id="endm";m.className="lkm";m.setAttribute("role","alert");m.innerHTML="<b>❌ "+tr("Étape ratée : {0}/10.",R.ok)+"</b><br>"+tr("Il faut au moins 6/10 pour continuer le parcours : recommence l'étape.");b.insertAdjacentElement("beforebegin",m)}}
+  if(!document.getElementById("endm")){const b=document.querySelector(".btn.dis");if(b){const m=document.createElement("p");m.id="endm";m.className="lkm";m.setAttribute("role","alert");m.innerHTML="<b>❌ "+tr("Étape ratée : {0}/10.",sf(R.ok))+"</b><br>"+tr("Il faut au moins 6/10 pour continuer le parcours : recommence l'étape.");b.insertAdjacentElement("beforebegin",m)}}
 }
 function miniRev(pid){
   xens();const keys=(S.fm||{})[pthK(pid)]||[],wm={};[...ALL,...LP].forEach(w=>{if(!wm[w[0]])wm[w[0]]=w});
@@ -2764,7 +2764,7 @@ function pathHtml(){
   const it=pathItems();if(!it.length)return "";
   const cur=it.findIndex(x=>!x.done),offs=[0,44,76,44,0,-0];
   const U=["var(--p0)","var(--p1)","var(--p2)","var(--p3)","var(--p4)","var(--p5)"],node=(x,i)=>{const st=x.done?"done":x.lock?"lock":i===cur?"cur":"open";
-    return `<button class="pn ${st}" style="--o:${offs[i%6]}px;--u:${U[i%6]}" ${x.lock?`onclick="lkErr(this)" aria-disabled="true"`:`onclick="${x.go}"`}><i>${x.done?"✓":x.lock?"🔒":x.ic}</i><span><b>${x.lab}</b>${x.sub?`<small>${x.sub}</small>`:""}<em>${x.done?(x.best?x.best+"/10":"✅"):x.lock?"":i===cur?(x.last!=null?`<span style="color:var(--ko)">${tr("Dernier essai : {0}/10",x.last)}</span>`:tr("À toi de jouer")):""}</em></span></button>`};
+    return `<button class="pn ${st}" style="--o:${offs[i%6]}px;--u:${U[i%6]}" ${x.lock?`onclick="lkErr(this)" aria-disabled="true"`:`onclick="${x.go}"`}><i>${x.done?"✓":x.lock?"🔒":x.ic}</i><span><b>${x.lab}</b>${x.sub?`<small>${x.sub}</small>`:""}<em>${x.done?(x.best?sf(x.best)+"/10":"✅"):x.lock?"":i===cur?(x.last!=null?`<span style="color:var(--ko)">${tr("Dernier essai : {0}/10",sf(x.last))}</span>`:tr("À toi de jouer")):""}</em></span></button>`};
   const dn=it.filter(x=>x.done).length,pl=pathPlan();
   const head=cur>=0?`<button class="theme mix go" style="width:100%;--u:${U[cur%6]}" onclick="${it[cur].go}"><b>${it[cur].lab}</b>${it[cur].sub||tr("Étape suivante")}</button>`:`<div class="empty">${mas("bravo",110)}<b>${tr("Parcours terminé ! Continue avec les révisions ou le mélange.")}</b></div>`;
   const cu=cur>=0?it[cur].u:pl.units.length;let ix=0;
@@ -2851,7 +2851,7 @@ function mkQ(ty,l){
 const RLs=()=>R&&R.mode==="lesson"?R:null;
 const selP=l=>{const r=!l&&RLs();return r&&r.pp&&r.pp.length?pick(r.pp):sel(PH,l)};
 let UWC=null;function uniqW(){if(!UWC||UWC.s!==ALL){const c={};ALL.forEach(w=>c[w[1]]=(c[w[1]]||0)+1);UWC={s:ALL,a:ALL.filter(w=>c[w[1]]===1&&!/[\/(|]/.test(w[0]+w[1]))}}return UWC.a}
-function chkT(){const q=R.q,i=document.getElementById("ti");if(R.done||!i||!i.value.trim())return;const v=i.value.trim(),g=(q.acc||[q.es]).some(a=>nzI(v)===nzI(a)),lo=x=>x.toLowerCase().replace(/[.!?¿¡,]/g,"").trim(),ac=g&&lo(v)!==lo(q.es);i.disabled=true;fin(g,q.sol+(ac?" · "+tr("attention aux accents et aux signes"):""),q.key);if(R.mode!=="test"&&q.ty!=="dict")speak(q.es)}
+function chkT(){const q=R.q,i=document.getElementById("ti");if(R.done||!i||!i.value.trim())return;const r=EV.grade(i.value.trim(),q);i.disabled=true;fin(r.s,q.sol,q.key,r.m);if(R.mode!=="test"&&q.ty!=="dict")speak(q.es)}
 function pickType(){
   const t=R.t,l=lv();let a=t==="CE"?["read"]:t==="CO"?["listen","listenP","dict"]:t==="EE"?["build","type","cloze"]:t==="EO"?(SR?["speak"]:["build","type"]):t==="Conjugaison"?["conj"]:t==="Exceptions"?["exc"]:t==="Expressions"?["exM","exE","exL"]:t==="Listes"||t==="Révision"?["es2fr","fr2es","listen","type","cloze","tf","dict"]:t==="Frases"?["build","listenP","type","dict","cloze",...(SR?["speak"]:[])]:t==="Mélange"?["es2fr","fr2es","listen","build","type","dict","cloze",...(l>=2?["listenP","read",...(SR?["speak"]:[])]:[]),...(l>=3?["read","build"]:[]),"conj","exM",...(l>=2?["exc","exE"]:[])]:["es2fr","fr2es","listen","cloze",...(l>=2?["type"]:[])];
   if(R&&R.pt&&R.pt.length)a=R.pt.filter(x=>x!=="speak"||SR);
@@ -2918,25 +2918,28 @@ async function rec(){
   r.onend=()=>{if(!got&&!R.done&&!er)fb.innerHTML=micErr("","recType()")};
   try{r.start()}catch(e){fb.innerHTML=micErr((e&&e.name)||"error","recType()")}
 }
-function fin(good,sol,key){
-  const q=R.q,k=TYK[q.ty];R.done=true;
-  if(R.mode==="test"){const w=q.wt||1,mc=!!(q.o&&q.o.length>1),z=T.k[k]=T.k[k]||{c:0,n:0};T.m+=w;z.n++;if(good){T.p+=w;z.c++}else if(mc&&!R.idk)T.p-=w/(q.o.length-1);return adv()}
-  S.sk=S.sk||{};S.sk[k]=.9*sk(k)+.1*(good?1:0);
-  if(key){S.sc[key]=good?Math.min(5,(S.sc[key]||0)+1):Math.max(0,(S.sc[key]||0)-1);srUp(key,good);S.mi=S.mi||{};const m=S.mi[key]||{n:0,t:0};if(good)m.n=Math.max(0,m.n-1);else{m.n++;m.t++;m.d=dayN()}if(m.n||m.t)S.mi[key]=m}
-  if(good){R.ok++;R.xp+=10}else if(key)(R.miss=R.miss||[]).push(key);
+function fin(good,sol,key,msg){
+  const q=R.q,k=TYK[q.ty],s=good===true?1:good===false?0:Math.max(0,Math.min(1,+good||0)),full=s>=1,half=s>0&&s<1;R.done=true;
+  if(R.mode==="test"){const w=q.wt||1,mc=!!(q.o&&q.o.length>1),z=T.k[k]=T.k[k]||{c:0,n:0};T.m+=w;z.n++;if(s>0){T.p+=w*s;z.c+=s}else if(mc&&!R.idk)T.p-=w/(q.o.length-1);return adv()}
+  S.sk=S.sk||{};S.sk[k]=.9*sk(k)+.1*s;
+  if(key){if(full){S.sc[key]=Math.min(5,(S.sc[key]||0)+1);srUp(key,true)}else if(!half){S.sc[key]=Math.max(0,(S.sc[key]||0)-1);srUp(key,false)}
+    S.mi=S.mi||{};const m=S.mi[key]||{n:0,t:0};if(full)m.n=Math.max(0,m.n-1);else if(!half){m.n++;m.t++;m.d=dayN()}if(m.n||m.t)S.mi[key]=m}
+  if(s>0){R.ok+=s;R.xp+=Math.round(10*s)}else if(key)(R.miss=R.miss||[]).push(key);
+  if(half&&key)(R.miss=R.miss||[]).push(key);
   save();
-  fxOk(good);document.getElementById("fb").innerHTML=`<div class="fb fbm ${good?"ok":"ko"}">${mas(good?"bravo":"triste",76)}<div><span>${good?"¡Muy bien!":"Pas tout à fait."}</span> ${sol}</div></div>${good?"":`<button class="btn" onclick="adv()">Continuer</button>`}`;
+  fxOk(s>0);const hd=full?"¡Muy bien!":half?tr("Presque !"):"Pas tout à fait.",mm=msg?(half?msg+" · ":" · "+msg):"";
+  document.getElementById("fb").innerHTML=`<div class="fb fbm ${full?"ok":half?"pt":"ko"}">${mas(full?"bravo":half?"content":"triste",76)}<div><span>${hd}</span> ${half?mm+sol:sol+(full?mm:"")}</div></div>${full?"":`<button class="btn" onclick="adv()">Continuer</button>`}`;
   const c=document.getElementById("chk");if(c)c.remove();
-  if(good){const t0=Date.now(),w=()=>{if(R.q!==q||!R.done||!document.querySelector(".fbm"))return;const el=Date.now()-t0;if(el<1600||(AU.id&&el<10000)){setTimeout(w,150);return}adv()};setTimeout(w,1600)}
+  if(full){const t0=Date.now(),dl=msg?2800:1600,w=()=>{if(R.q!==q||!R.done||!document.querySelector(".fbm"))return;const el=Date.now()-t0;if(el<dl||(AU.id&&el<10000)){setTimeout(w,150);return}adv()};setTimeout(w,dl)}
 }
-function cuRun(){document.querySelectorAll(".cu").forEach(e=>{const to=+e.dataset.to||0,t0=performance.now(),d=700+to*8;const f=t=>{const p=Math.min(1,(t-t0)/d);e.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)})}
+function cuRun(){document.querySelectorAll(".cu").forEach(e=>{const to=+e.dataset.to||0,t0=performance.now(),d=700+to*8;const f=t=>{const p=Math.min(1,(t-t0)/d);e.textContent=p<1?Math.round(to*(1-Math.pow(1-p,3))):sf(to);if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)})}
 function end(){
   INL=0;
   const bonus=R.ok===10?5:0;dayTick();addXp(R.xp+bonus);qTick(R.ok,10);
   let pm="",mrv="";if(R.pid){const pk=pthK(R.pid),pb=(S.pth||{})[pk]||0;S.pa=S.pa||{};S.pa[pk]=R.ok;S.fl=S.fl||{};S.fm=S.fm||{};
-    if(R.ok>=6){S.pth=S.pth||{};S.pth[pk]=Math.max(pb,R.ok);S.fl[pk]=0;pm=`<p><b>✅ ${tr("Étape validée !")}</b>${pb>R.ok?`<br><small>${tr("Meilleur score : {0}/10",pb)}</small>`:""}</p>`}
+    if(R.ok>=6){S.pth=S.pth||{};S.pth[pk]=Math.max(pb,R.ok);S.fl[pk]=0;pm=`<p><b>✅ ${tr("Étape validée !")}</b>${pb>R.ok?`<br><small>${tr("Meilleur score : {0}/10",sf(pb))}</small>`:""}</p>`}
     else{S.fl[pk]=(S.fl[pk]||0)+1;S.fm[pk]=(R.miss||[]).slice(0,12);
-      pm=pb>=6?`<p>${tr("Cette étape était déjà validée (meilleur score : {0}/10).",pb)}</p>`:`<p style="color:var(--ko);font-weight:700">🔒 ${tr("Il faut 6 bonnes réponses sur 10 pour valider l'étape.")}</p>`;
+      pm=pb>=6?`<p>${tr("Cette étape était déjà validée (meilleur score : {0}/10).",sf(pb))}</p>`:`<p style="color:var(--ko);font-weight:700">🔒 ${tr("Il faut 6 bonnes réponses sur 10 pour valider l'étape.")}</p>`;
       if(pb<6&&S.fl[pk]>=2)mrv=`<p class="sub">${tr("Tu bloques sur cette étape ? Fais une mini-révision de tes erreurs, puis retente.")}</p><button class="btn ghost" onclick="miniRev('${R.pid}')">${tr("Mini-révision")}</button><br>`}}
   if(R.pid){S.sh=S.sh||{};const hk=lg()+":"+lv();(S.sh[hk]=S.sh[hk]||[]).push(R.ok);if(S.sh[hk].length>12)S.sh[hk].shift()}const up=0;save();const rdy=lvReady(),nv=!!(R.pid&&R.ok<6&&((S.pth||{})[pthK(R.pid)]||0)<6);
   $.innerHTML=head()+`<div class="q end win">${notes()}<div class="wm">${mas(R.ok>=7?"bravo":R.ok<=3?"triste":"content",150)}</div><div class="stars">${[1,2,3].map(n=>`<svg class="st${R.ok>=(n===1?4:n===2?7:9)?" on":""}" style="--d:${n*.22+.3}s" viewBox="0 0 24 24"><path d="M12 2.6l2.9 6 6.5.8-4.8 4.5 1.3 6.5L12 17.2 6.1 20.4l1.3-6.5L2.6 9.4l6.5-.8z"/></svg>`).join("")}</div><div class="big"><span class="cu" data-to="${R.ok}">0</span>/10</div><div class="chips2"><span class="pill xp">+<span class="cu" data-to="${R.xp+bonus}">0</span> XP</span><span class="pill fl">🔥 ${curStreak()}</span>${bonus?`<span class="pill">${tr("série parfaite !")}</span>`:""}</div>${up?`<p><b>${tr("Niveau supérieur débloqué : {0} 🎉",NL[lv()])}</b></p>`:""}${pm}${rdy?`<p><b>🎓 ${tr("Prêt pour {0} ?",NL[lv()+1].split(" ")[0])}</b></p><button class="btn" onclick="lvTest()">${tr("Passer le test")}</button><br>`:""}${R.pid?(nv?`<button class="btn dis" aria-disabled="true" onclick="endErr()">${tr("Continuer le parcours")}</button><br>`:`<button class="btn" onclick="home()">${tr("Continuer le parcours")}</button><br>`):""}<button class="btn${R.pid&&!nv?" ghost":""}" onclick="${R.pid||R.back?`pstart('${R.pid||R.back}')`:`start('${R.t}'${R.cat?","+JSON.stringify(R.cat).replace(/"/g,"&quot;"):""})`}">${R.back?tr("Retenter l'étape"):nv?tr("Recommencer"):"Encore une série"}</button><br>${mrv}<button class="btn ghost" onclick="home()">Changer de thème</button></div>`;FX.play(up?"level":R.ok>=7?"streak":R.ok<=3?"bad":"good");if(up||R.ok>=8)FX.confetti();cuRun();
@@ -3080,6 +3083,113 @@ function tend(){
   $.innerHTML=head()+`<div class="q end">${mas("bravo",110)}<p>${tr("Niveau estimé")}</p><div class="big" style="font-size:32px">${T.pass?NL[T.pass]:tr("Débutant (pas encore A1)")}</div>${part}${T.pass&&!solid?`<p class="skl">${tr("Palier validé de justesse : on le consolide avant de passer au suivant.")}</p>`:""}<p>${tr("Les exercices se concentrent maintenant sur {0}, avec plus d'entraînement sur tes points faibles.",`<b>${NL[S.lvl]}</b>`)}</p>${S.lvl>1?`<p class="skl">${tr("Les mots des niveaux précédents sont comptés comme déjà vus : ils reviennent en révision, pas en découverte.")}</p>`:""}<p class="skl">${rows}</p><p class="skl">${tr("Score par palier, corrigé du hasard : une mauvaise réponse fait perdre des points, « Je ne sais pas » n'en fait pas perdre. Il faut 60 % pour valider un palier.")}</p>${T.skipAll?`<p class="skl">${tr("{0} question(s) d'écoute ignorée(s) : l'écoute n'a pas été testée à fond.",T.skipAll)}</p>`:""}${T.pass===5?`<p class="skl">${tr("Tu as validé tous les paliers, jusqu'au C1 : excellent niveau !")}</p>`:""}<button class="btn" onclick="obNext()">${tr("Commencer")}</button></div>`;
 }
 const XI=/*XI*/{};
+/*EV-BEGIN*/
+/* Évaluation centralisée des réponses écrites (exercices « écris » et dictée).
+   Retourne s = 1 (correct / variante / faute mineure), .5 (presque : genre, nombre, conjugaison, accent qui change le mot) ou 0.
+   Les QCM, l'ordre des mots et l'oral gardent leur logique propre. */
+const EV={
+  raw:s=>String(s==null?"":s).toLowerCase().normalize("NFC").replace(/[^\p{L}\p{N}\s]/gu," ").replace(/\s+/g," ").trim(),
+  fold:s=>String(s).normalize("NFD").replace(/[̀-ͯ]/g,""),
+  PR:{es:"yo tú él ella usted nosotros nosotras vosotros vosotras ellos ellas ustedes vos",gl:"eu ti ela nós vós eles elas vostede vostedes",ca:"jo tu ell ella vostè nosaltres vosaltres ells elles",va:"jo tu ell ella vostè nosaltres vosaltres ells elles"},
+  DET:"el la los las un una unos unas mi mis tu tus su sus este esta estos estas ese esa esos esas nuestro nuestra".split(" "),
+  DP:[["el","la"],["los","las"],["un","una"],["unos","unas"],["este","esta"],["estos","estas"],["ese","esa"],["esos","esas"]],
+  DN:[["el","los"],["la","las"],["un","unos"],["una","unas"],["este","estos"],["esta","estas"],["ese","esos"],["esa","esas"]],
+  HOMO:[["papá","papa"],["té","te"],["él","el"],["más","mas"],["sí","si"],["tú","tu"],["mí","mi"],["sé","se"],["dé","de"],["está","esta"],["esté","este"],["año","ano"],["caña","cana"],["peña","pena"],["sueño","sueno"],["moño","mono"]],
+  NOUNE:"café bebé sofá papá mamá menú champú bambú canapé comité carné bufé puré bidé".split(" "),
+  /* variantes réellement utilisées en Espagne (et courantes ailleurs) : familier, registre, synonymes d'usage */
+  AL:[["vale","de acuerdo","ok","okey","okay"],["genial","guay","estupendo","fenomenal"],["adiós","chao","chau"],["hola","buenas"],["móvil","celular","teléfono móvil"],["ordenador","computadora","computador"],["piso","apartamento"],["perdón","perdona","disculpa","disculpe"],["gracias","muchas gracias","mil gracias"],["cómo estás","qué tal","qué tal estás"],["de nada","no hay de qué"]],
+  VE:/(o|as|a|amos|ais|an|es|e|emos|eis|en|imos|is|aste|aron|io|iste|ieron|aba|abas|abamos|aban|ia|ias|iamos|ian|are|aras|ara|aremos|aran|ere|eras|era|eremos|eran|ire|iras|ira|iremos|iran|aria|arias|ariamos|arian|eria|erias|eriamos|erian|iria|irias|iriamos|irian|ado|ido|ando|iendo|ar|er|ir)$/,
+  dl(a,b){const m=a.length,n=b.length,d=[];for(let i=0;i<=m;i++)d[i]=[i];for(let j=1;j<=n;j++)d[0][j]=j;
+    for(let i=1;i<=m;i++)for(let j=1;j<=n;j++){const c=a[i-1]===b[j-1]?0:1;d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+c);if(i>1&&j>1&&a[i-1]===b[j-2]&&a[i-2]===b[j-1])d[i][j]=Math.min(d[i][j],d[i-2][j-2]+1)}return d[m][n]},
+  voc(){const k=lg()+"|"+ALL.length+"|"+PH.length+"|"+(typeof UI!=="undefined"?UI:"");if(EV._k===k)return EV._v;
+    const W=new Map(),A=new Set(),VB=new Set(),PA=Object.values(EV.PR).join(" ").split(" ").concat(["no","me","te","se","lo","le"]),NX="un una el la los las mucho poco hambre sed frío calor que en".split(" ");
+    const add=(s,hw,fr)=>{const t=EV.raw(s).split(" ").filter(Boolean);t.forEach(x=>A.add(EV.fold(x)));if(hw&&t.length===1&&!W.has(EV.fold(t[0])))W.set(EV.fold(t[0]),fr||"")};
+    ALL.forEach(w=>add(w[0],1,w[1]));PH.forEach(p=>{add(p[0],0);const t=EV.raw(p[0]).split(" ").filter(Boolean);t.forEach((x,i)=>{if(i&&PA.includes(t[i-1]))VB.add(EV.fold(x));if(!i&&t.length>1&&/o$/.test(x)&&NX.includes(t[1]))VB.add(EV.fold(x))})});EV._k=k;return EV._v={W,A,V:VB}},
+  frClose(a,b){const f=x=>EV.fold(String(x||"").toLowerCase()).replace(/[^a-z ]/g,"").trim();a=f(a);b=f(b);return !!a&&!!b&&a.slice(0,3)===b.slice(0,3)&&EV.dl(a,b)<=2},
+  /* compare deux mots (déjà en minuscules sans ponctuation) : renvoie {k,d,m} avec k ∈ = a acc n g c t x */
+  pair(t,e,c){
+    if(t===e)return{k:"="};
+    const ft=EV.fold(t),fe=EV.fold(e),V=EV.voc(),L=c.L;
+    if(ft===fe){
+      if(!c.lenient&&EV.HOMO.some(h=>(h[0]===e&&h[1]===t)||(h[1]===e&&h[0]===t)))return{k:"acc",m:tr("L'accent change le sens : on attend « {1} » (et non « {0} »).",t,e)};
+      if(!c.lenient&&L==="es"&&/[óé]$/.test(e)&&e.length>=5&&!EV.NOUNE.includes(e)&&t===ft&&!c.dict)return{k:"acc",m:tr("L'accent change le sens : on attend « {1} » (et non « {0} »).",t,e)};
+      return{k:"a"};
+    }
+    const lat=L==="es"||L==="gl",nm=L==="es"||L==="gl"||L==="ca"||L==="va";
+    if(nm){
+      let r=0;const isV=c.verb||V.V.has(fe)||V.V.has(ft);
+      if(ft.length>=3&&fe.length>=3){if(ft===fe+"s"||ft===fe+"es"||(fe.endsWith("z")&&ft===fe.slice(0,-1)+"ces"))r=1;else if(fe===ft+"s"||fe===ft+"es"||(ft.endsWith("z")&&fe===ft.slice(0,-1)+"ces"))r=2}
+      if(!r&&L==="es"&&EV.DN.some(p=>(p[0]===fe&&p[1]===ft)||(p[1]===fe&&p[0]===ft)))r=ft.length>fe.length?1:2;
+      if(!r&&(L==="ca"||L==="va")&&fe.length>=3&&ft.length>=3){if(fe.endsWith("a")&&ft===fe.slice(0,-1)+"es")r=1;else if(ft.endsWith("a")&&fe===ft.slice(0,-1)+"es")r=2}
+      if(r&&V.W.has(ft)&&V.W.has(fe)&&!EV.frClose(V.W.get(ft),V.W.get(fe)))return{k:"x"};
+      if(r)return{k:"n",m:isV?tr("La terminaison du verbe n'est pas la bonne : on attend « {1} » (tu as écrit « {0} »).",t,e):r===1?tr("« {0} » est le pluriel de « {1} ». Ici, on attend « {1} ».",t,e):tr("« {0} » est au singulier. Ici, on attend le pluriel : « {1} ».",t,e)};
+    }
+    if(lat){
+      const gp=L==="es"&&EV.DP.some(p=>(p[0]===fe&&p[1]===ft)||(p[1]===fe&&p[0]===ft));let g=gp;
+      if(!g&&ft.length===fe.length&&ft.length>=3){const s1=ft.endsWith("s")&&fe.endsWith("s"),x=s1?ft.slice(0,-1):ft,y=s1?fe.slice(0,-1):fe;g=x.slice(0,-1)===y.slice(0,-1)&&((x.slice(-1)==="o"&&y.slice(-1)==="a")||(x.slice(-1)==="a"&&y.slice(-1)==="o"))}
+      if(g&&!gp){const both=V.W.has(ft)&&V.W.has(fe);if(!(both&&EV.frClose(V.W.get(ft),V.W.get(fe)))&&(both||V.A.has(ft)))return{k:"x"}}
+      if(g)
+        return{k:"g",m:c.verb||V.V.has(fe)||V.V.has(ft)?tr("La terminaison du verbe n'est pas la bonne : on attend « {1} » (tu as écrit « {0} »).",t,e):tr("Attention au genre : on attend « {1} » (tu as écrit « {0} »).",t,e)};
+    }
+    if(L==="es"&&ft.length>=4&&fe.length>=4&&!V.W.has(ft)){
+      const sr=w=>{const m=EV.VE.exec(w);return m&&w.length-m[0].length>=2?w.slice(0,w.length-m[0].length):null},st=sr(ft),se=sr(fe);
+      if(st&&st===se&&(!V.A.has(ft)||(V.V.has(ft)&&V.V.has(fe))))return{k:"c",m:tr("La terminaison du verbe n'est pas la bonne : on attend « {1} » (tu as écrit « {0} »).",t,e)};
+    }
+    const n=Math.min(ft.length,fe.length),d=EV.dl(ft,fe),max=n>=8?2:c.a1&&n>=6?2:n>=4?1:0;
+    if(d&&d<=max&&!V.A.has(ft))return{k:"t",d};
+    return{k:"x"};
+  },
+  cmp(tv,ta,c){
+    if(tv.join(" ")===ta.join(" "))return{s:1};
+    const ft=tv.map(EV.fold),fa=ta.map(EV.fold);
+    if(tv.length!==ta.length)return ft.join("")===fa.join("")?{s:1,n:"t"}:{s:0};
+    let half=0,typo=0,acc=0,msg="",why="";
+    const B=(c.a1?2:1)+(ta.length>=6?1:0),H=ta.length>=7?2:1;
+    for(let i=0;i<ta.length;i++){
+      const r=EV.pair(tv[i],ta[i],{...c,noun:EV.DET.includes(ta[i-1]||"")&&!EV.PRs(c.L).includes(ta[i-1]||""),verb:i>0&&(EV.PRs(c.L).includes(ta[i-1])||["no","me","te","se","lo","la","le"].includes(ta[i-1])),});
+      if(r.k==="=")continue;
+      if(r.k==="x")return{s:0};
+      if(r.k==="a"){if(c.strict){half++;msg=msg||tr("L'orthographe compte dans cet exercice : « {0} ».",c.show);why="strict"}else acc++;continue}
+      if(r.k==="t"){if(c.strict){half++;msg=msg||tr("L'orthographe compte dans cet exercice : « {0} ».",c.show);why="strict"}else typo+=r.d;continue}
+      if((r.k==="n"||r.k==="g"||r.k==="c")&&c.dict)return{s:0};
+      if((r.k==="n"||r.k==="g"||r.k==="c")&&c.noPartial)return{s:0};
+      half++;msg=msg||r.m;why=why||r.k;
+    }
+    if(typo>B||half>H)return{s:0};
+    if(half)return{s:.5,m:msg,k:why};
+    return{s:1,n:typo?"t":acc?"a":""};
+  },
+  PRs:L=>(EV.PR[L]||"").split(" ").filter(Boolean),
+  alts(ta){
+    const out=[],fa=ta.map(EV.fold);
+    EV.AL.forEach(g=>g.forEach(m=>{const fm=EV.raw(m).split(" ").map(EV.fold);
+      for(let i=0;i+fm.length<=fa.length;i++){if(fm.every((w,k)=>fa[i+k]===w)){g.forEach(o=>{if(o!==m)out.push(ta.slice(0,i).concat(EV.raw(o).split(" "),ta.slice(i+fm.length)))})}}}));
+    return out.slice(0,60);
+  },
+  grade(v,q){
+    const L=lg(),dict=q.ty==="dict",lvl=q.lv||lv(),strict=!!q.strict&&lvl>=2,a1=lvl===1;
+    const tv=EV.raw(v).split(" ").filter(Boolean);if(!tv.length)return{s:0,m:""};
+    const na=x=>(String(x).toLowerCase().match(/[áéíóúüñàèòçïíı]/g)||[]).length,c={L,dict,strict,a1,noPartial:!!q.pr,lenient:na(v)===0&&Math.max(...(q.acc||[q.es]).map(x=>EV.raw(x).split(" ").length))>=3};
+    let best={s:-1},bn=99;
+    (q.acc||[q.es]).forEach(a=>{
+      const ta=EV.raw(a).split(" ").filter(Boolean),cs=[ta];
+      if(!dict){
+        const P=EV.PRs(L),p0=ta[0];
+        if(P.includes(p0)&&ta.length>1&&!(tv[0]&&P.includes(tv[0])))cs.push(ta.slice(1));
+        if(L==="es")EV.alts(ta).forEach(x=>cs.push(x));
+      }
+      cs.forEach((t,i)=>{const r=EV.cmp(tv,t,{...c,show:i?t.join(" "):EV.show(a)});const w=(r.s===1?0:r.s>0?1:9)+(r.n?.5:0)+i*.01;
+        if(r.s>best.s||(r.s===best.s&&w<bn)){best=r;bn=w;best.cand=i?t.join(" "):EV.show(a)}})
+    });
+    if(best.s<0)best={s:0};
+    if(best.s===1&&best.n==="a")best.m=tr("Petit rappel : ça s'écrit « {0} ».",best.cand||EV.show(q.es));
+    else if(best.s===1&&best.n==="t")best.m=tr("Bien vu ! Petite faute de frappe, ça s'écrit « {0} ».",best.cand||EV.show(q.es));
+    return best;
+  },
+  show:a=>String(a==null?"":a).replace(/\s+/g," ").trim()
+};
+/*EV-END*/
+const sf=n=>Number.isInteger(n)?String(n):String(n).replace(".",",");
 const nzI=x=>String(x).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^\p{L}\p{N}\s]/gu," ").replace(/\s+/g," ").trim();
 const XIT={};
 function scT(s){const x=(XIT[UI]||{})[lg()+":"+s.id];return x?{t:x.t,c:x.c}:{t:s.ti,c:s.cx}}
