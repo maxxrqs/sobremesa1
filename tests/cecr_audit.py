@@ -12,7 +12,7 @@ SIM="""([lang,lvl,N])=>{
  const capP=CAPW.p[lvl],capC=CAPW.c[lvl];
  const lvOf=(arr,i,v)=>{const m=arr.filter(x=>x[i]===v).map(x=>x[2]||1);return m.length?Math.min(...m):0};
  start('Mélange');
- const types=['type','dict','build','speak','cloze','listenP','readP','fr2P','listen','es2fr','fr2es','tf','conj','exM','exE','exL'];
+ const types=['type','dict','build','speak','cloze','listenP','readP','fr2P','listen','es2fr','fr2es','tf','conj','exM','exE','exL','listenT'];
  for(let k=0;k<N;k++){
   const ty=types[k%types.length];R.lock=0;let q;try{q=mkQ0(ty,0)}catch(e){out.bad.push(['EXC',ty,String(e)]);continue}
   out.n++;out.types[q.ty]=(out.types[q.ty]||0)+1;
@@ -25,6 +25,7 @@ SIM="""([lang,lvl,N])=>{
   if(q.ty==='cloze'){const f=PH.find(x=>x[0]===q.say);if(f&&(f[2]||1)>lvl)out.bad.push(['phrase-lvl',q.ty,q.say])}
   if(q.ty==='es2fr'||q.ty==='fr2es'||q.ty==='listen'||q.ty==='tf'){const L=lvOf(ALL,0,q.say);if(L>lvl&&L>0)out.bad.push(['word-lvl',q.ty,q.say,L])}
   if(q.ty==='es2fr'||q.ty==='fr2es'){q.o.forEach(o=>{const L=lvOf(ALL,q.ty==='es2fr'?1:0,o);if(L>lvl&&L>0)out.bad.push(['dist-lvl',q.ty,o,L])})}
+  if(q.ty==='listenT'){const tx=TX.filter(x=>x[0]===q.say);if(!tx.length||Math.min(...tx.map(x=>x[2]))>lvl)out.bad.push(['text-lvl',q.say.slice(0,30)]);if(!q.o.includes(q.g)||q.o.length!==4||!q.sa.length)out.bad.push(['listenT-shape',q.say.slice(0,30)])}
   if(q.ty==='conj'){const v=q.verb,L=vLvl(lang,v);if(L>lvl)out.convBad.push(['verb-lvl',v,L]);
     const lad=tLad(lang);if(lad){const t=vlist(lang,VD[lang][v]).find(t=>gl(t.fr)===q.tn||t.fr===q.tn);if(t&&!lad.includes(t.k))out.convBad.push(['tense',v,t.k])}}
  }
@@ -47,6 +48,8 @@ with sync_playwright() as p:
       o.ph1=Math.max(...PH.filter(x=>(x[2]||1)===1).map(x=>x[0].trim().split(/\\s+/).length));
       return o}""")
     ck("XE (5 langues, %d lignes) : aucun idiome/proverbe sous B1, aucun exemple long sous B1"%d['xe'],not d['idio'],d['idio'][:5])
+    xq=pg.evaluate("()=>XC.gl.split('\\n').map(r=>r.split('|')).filter(c=>c.length===9&&c[0]==='Q'&&c[1]==='Infinitif personnel'&&+c[8]<3).length")
+    ck("XC gl : infinitif personnel conjugué ≥ B1",xq==0,xq)
     ck("XE : connecteurs formels ≥ B1",not d['conn'],d['conn'][:5])
     ck("RW : mots reclassés (ayuntamiento, mil, el primero, cuatrocientos)",not d['rw'],d['rw'])
     ck("REF : verbes peu fréquents ≥ A2",not d['verbs'],d['verbs'])
@@ -63,6 +66,14 @@ with sync_playwright() as p:
                 ck(f"{lang} niv.1 : dictée mot-d'abord ≥ 45 % (obs. {o['dictWord']}/{o['dictN']})",o['dictWord']/o['dictN']>=.45)
             if lvl>=4:
                 ck(f"{lang} niv.{lvl} : dictée = phrases (mots isolés {o['dictWord']}/{o['dictN']})",o['dictWord']<=o['dictN']*.1)
+    # ---- C. écoute de texte continu : jamais en A1, présente dès A2 en compréhension orale, texte caché avant la réponse
+    r=pg.evaluate("""()=>{S.lang='es';build();const o={};for(const v of [1,2,3]){S.lvl=v;start('CO');R.hist=[];const c={};for(let i=0;i<400;i++){const t=pickType();c[t]=(c[t]||0)+1}o[v]=c.listenT||0}
+      S.lvl=3;start('CO');R.q=mkQ0('listenT',0);R.done=false;draw();const h=document.querySelector('.q').innerText;const hidden=!h.includes(R.q.say.slice(0,25));const n=document.querySelectorAll('.opt').length;
+      const spk=document.querySelector('.spk')!=null;const okAns=R.q.o.indexOf(R.q.g);ans(okAns);const fb=document.querySelector('#fb').innerText;return{o,hidden,n,spk,fbOk:fb.includes(R.q.say.slice(0,15)),cls:document.querySelector('#fb .fb').className}}""")
+    pl=pg.evaluate("()=>{const o=[];for(const l of Object.keys(PTB))PTB[l].forEach(x=>{if(x[1]==='l'&&x[0]<=3&&/hubiera sabido|haguera sabut|hagués sabut|soubese|jakin izan banu/i.test(x[2]))o.push([l,x[2]])});return o}")
+    ck("test de niveau : plus de condicional passé (B2) en écoute de niveau ≤ B1",not pl,pl)
+    ck("listenT : 0 en A1, présent en A2 et B1 (tirages %s)"%r['o'],r['o']['1']==0 and r['o']['2']>40 and r['o']['3']>40,r['o'])
+    ck("listenT : texte caché, 4 réponses, bouton audio, bonne réponse reconnue, transcription affichée après",r['hidden'] and r['n']==4 and r['spk'] and 'ok' in r['cls'].split() and r['fbOk'],r)
     ck("aucune erreur JS",not err,err[:3])
     b.close()
 print(f"\n{sum(R)}/{len(R)} contrôles OK");sys.exit(0 if all(R) else 1)
