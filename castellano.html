@@ -1160,7 +1160,7 @@ function axFind(ix,t){if(ix.k[t])return t;if(!ix.n){ix.n=new Map();for(const k i
 function axCache(n){try{return window.caches?caches.open(n||"sobclips-v1"):Promise.resolve(null)}catch(e){return Promise.resolve(null)}}
 async function axTrim(n,max){try{const c=await axCache(n);if(!c)return;const ks=await c.keys();if(ks.length>max)for(const k of ks.slice(0,ks.length-Math.round(max*.8)))await c.delete(k)}catch(e){}}
 /* voix neuronales humaines : catalogue v/voices.json, un jeu de fichiers par voix */
-function vxMan(){return AX.man||(AX.man=fetch("v/voices.json?v=1").then(r=>r.ok?r.json():null).catch(()=>{AX.man=null;return null}))}
+function vxMan(){return AX.man||(AX.man=fetch("v/voices.json?v=2").then(r=>r.ok?r.json():null).catch(()=>{AX.man=null;return null}))}
 function vxList(l){return AX.manv&&AX.manv[l]||[]}
 function vxPick(l){const c=ST.get("sobv_"+l),L=vxList(l);if(c==="0"||!L.length)return"";if(c&&L.some(v=>v.id===c))return c;return L[0].id}
 function axFetchJ(u,tries){const go=async()=>{const ac=new AbortController(),to=setTimeout(()=>ac.abort(),9000);try{const r=await fetch(u,{signal:ac.signal});if(!r.ok)throw "http"+r.status;return await r.json()}finally{clearTimeout(to)}};

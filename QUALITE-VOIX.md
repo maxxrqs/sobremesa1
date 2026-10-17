@@ -7,6 +7,11 @@
 - **Signalement** : bouton « Signaler le dernier son » (liste locale copiable : langue, voix, texte). Les textes signalés sont regénérés avec `tools/audio_*`.
 - Performance, cache, préchargement, hors ligne : inchangés (batterie `tests/audio.py` : 81/81, exercices 49/49, mobile 22/22, splash 12/12).
 
+## Mise à jour (écoute de Max, 2026-10-17)
+- Phrases de plus de 2 mots : catalan et basque « naturelle » ; castillan d'origine « robotique » ou « passable » ; Kokoro préféré à l'aveugle dans 12 comparaisons sur 12.
+- Mots courts : voix ca/va/gl/eu jugées « naturelle » (deux « passable » en catalan) ; castillan d'origine « robotique » sur 3 mots sur 4 ; réglage Kokoro actuel préféré 5 fois sur 8 ; mots d'une syllabe (« ve », « de ») mauvais dans les trois réglages.
+- Conséquence : nouvelle voix par défaut `es_dora` (Kokoro ef_dora, 12 993 des 13 044 textes). Les 51 textes de 3 lettres ou moins restent sur l'ancienne voix (« Voix d'origine »), qui reste choisissable. Un défaut connu : les listes qui contiennent un tel mot sont lues en entier avec l'ancienne voix.
+
 ## Ce qui n'a PAS été prouvé
 - Aucun clip n'a été écouté par moi. Les scores UTMOS (`qa/utmos_echantillon_v181.csv`, 120 clips par voix et par classe) sont des **indices** : le modèle est entraîné sur l'anglais et ne dit rien de l'exactitude de la prononciation ni du naturel réel en euskara, galego ou valencià.
 - Échantillon UTMOS moyen : eu 3,6–3,7 ; gl 3,15–3,6 ; ca 3,3–3,5 ; va 3,3–3,4 ; es d'origine 2,78 (26 % sous 2,5), es Kokoro ≈ 3,3. Le castillan d'origine est le plus bas du tableau mais c'est un enregistrement d'IA commerciale que je ne peux ni regénérer ni juger : **à trancher à l'oreille** (comparaison à l'aveugle dans le kit d'écoute).

@@ -66,7 +66,7 @@ PH2=lambda l:"v/" if l!="es" else "a/"
 with sync_playwright() as p:
     b=p.chromium.launch(args=["--autoplay-policy=no-user-gesture-required"])
     # --- langue / variante / voix : seules les voix de la langue choisie sont demandées
-    exp={"es":r"^a/es",  "va":r"^v/va_(lluc|gina)/","ca":r"^v/ca_(grau|elia)/","gl":r"^v/gl_[abc]/","eu":r"^v/eu_antton/"}
+    exp={"es":r"^(a/es|v/es_dora/)",  "va":r"^v/va_(lluc|gina)/","ca":r"^v/ca_(grau|elia)/","gl":r"^v/gl_[abc]/","eu":r"^v/eu_antton/"}
     for l in ["es","va","ca","gl","eu"]:
         c,pg,er=newpg(b);pg.evaluate("l=>{S.lang=l;build();}",l);pg.evaluate("axWarm()");pg.wait_for_timeout(500)
         d=play(pg,[sample(l,1)[0]]);reqs=[u for u,_ in pg.evaluate("window.__req") if re.search(r"\.(mp3|json)",u)]
