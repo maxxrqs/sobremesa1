@@ -603,6 +603,47 @@ html[data-theme="dark"] body .pn.cur em,html[data-theme="dark"] body .pn.done em
 @keyframes dcin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.dc{animation:none}}
 </style>
+<style id="sm-fluid">
+/* ===== Fluidité : seules transform/opacity bougent, sur le compositeur ===== */
+html{-webkit-tap-highlight-color:transparent}
+button,a,select,[onclick]{touch-action:manipulation}
+/* écrans : le contenu entre, l'en-tête et la barre du bas restent immobiles */
+@keyframes smIn{from{opacity:0;transform:translate3d(0,8px,0)}to{opacity:1;transform:none}}
+html body #app>*:not(nav){animation:smIn .34s cubic-bezier(.22,1,.36,1) backwards}
+html body #app>*:nth-child(4){animation-delay:.03s}html body #app>*:nth-child(5){animation-delay:.06s}html body #app>*:nth-child(6){animation-delay:.09s}html body #app>*:nth-child(n+7){animation-delay:.12s}
+html body #app.sm-keepH>header,html body #app.sm-keepN>nav,html body #app.sm-still>*:not(.qin):not(.qout){animation:none!important}
+html body #app.sm-still .bar>i{animation:none!important}
+/* appui : enfoncement immédiat, rebond doux au relâchement */
+html body .btn,html body .opt,html body .chip,html body .tab,html body .seg button,html body .theme,html body .hero2,html body .spk,html body .bk,html body .mpo,html body .lxcta,html body .bnav button,html body .pn>i,html body .mpick{transition:transform .32s cubic-bezier(.34,1.56,.64,1),background-color .18s ease,border-color .18s ease,box-shadow .18s ease,color .18s ease}
+html body .btn:active,html body .opt:active,html body .chip:active,html body .tab:active,html body .seg button:active,html body .theme:active,html body .hero2:active,html body .spk:active,html body .bk:active,html body .mpo:active,html body .lxcta:active,html body .bnav button:active,html body .pn:active>i,html body .mpick:active{transition-duration:.06s,.06s,.06s,.06s,.06s}
+html body .bnav button:active{transform:scale(.94)}html body .mpick:active{transform:scale(.95)}
+/* onglet actif : petit rebond quand on change d'onglet */
+@keyframes smTab{0%{transform:scale(.86)}55%{transform:scale(1.05)}100%{transform:none}}
+html body #app:not(.sm-still) .bnav button.on{animation:smTab .45s cubic-bezier(.34,1.56,.64,1)}
+/* retour (bon/mauvais) : glisse vers le haut */
+@keyframes smFb{from{opacity:0;transform:translate3d(0,16px,0) scale(.98)}to{opacity:1;transform:none}}
+html body .fb{animation:smFb .42s cubic-bezier(.22,1,.36,1) both}
+/* bonne réponse : léger éclat */
+@keyframes smOk{0%{transform:scale(1)}35%{transform:scale(1.035)}100%{transform:none}}
+html body .opt.ok{animation:smOk .4s cubic-bezier(.34,1.56,.64,1)}
+/* pulsations : anneau en transform/opacity au lieu de box-shadow (plus de repeint) */
+@keyframes smRing{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.14,1.4);opacity:0}}
+html body .mpick.pulse{animation:none!important}
+html body .mpick.pulse::after{content:"";position:absolute;inset:-2px;border-radius:inherit;border:2px solid var(--az);pointer-events:none;animation:smRing 1.6s cubic-bezier(.22,1,.36,1) infinite;will-change:transform,opacity}
+html body #tour .tring.on{animation:none!important}
+@keyframes smRing2{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.12);opacity:0}}
+html body #tour .tring.on::after{content:"";position:absolute;inset:-3px;border-radius:inherit;border:3px solid var(--sol);pointer-events:none;animation:smRing2 1.8s ease-out .8s infinite;will-change:transform,opacity}
+/* question : entrée/sortie plus douces */
+html body .q.qin{will-change:transform,opacity}
+html body .qout,html body .q.qout{animation:qout .17s cubic-bezier(.4,0,1,1) forwards!important}
+/* confettis : dérive latérale, chute naturelle */
+@keyframes smConf{0%{transform:translate3d(0,0,0) rotate(0);opacity:1}100%{transform:translate3d(var(--dx,0),110vh,0) rotate(var(--r,600deg));opacity:.15}}
+html body .conf i{animation:smConf var(--t,1.9s) cubic-bezier(.3,.55,.55,1) forwards;will-change:transform,opacity}
+/* calques dédiés pour les grandes animations en boucle */
+.lxb{will-change:transform}.lxg span{will-change:opacity,transform}.lxm .mas{will-change:transform}
+html body .bar>i{will-change:width}
+@media (prefers-reduced-motion:reduce){html body #app>*,html body .fb,html body .opt.ok,html body .bnav button.on,html body .mpick.pulse::after,html body #tour .tring.on::after,html body .conf i{animation:none!important}html body .btn,html body .opt,html body .chip,html body .theme{transition:none}}
+</style>
 <main id="app"></main>
 <script>
 const ST=(()=>{const m={};let ok=false;try{localStorage.setItem("_t","1");localStorage.removeItem("_t");ok=true}catch(e){}return{ok,get:k=>{if(ok){try{return localStorage.getItem(k)}catch(e){}}return k in m?m[k]:null},set:(k,v)=>{m[k]=String(v);if(ok){try{localStorage.setItem(k,v)}catch(e){}}},del:k=>{delete m[k];if(ok){try{localStorage.removeItem(k)}catch(e){}}}}})();
@@ -3984,7 +4025,7 @@ function svg0(k,s,ax){
 function confetti(){
   const el=document.body,box=document.createElement("div");box.className="conf";
   const cols=["#C4502F","#1F4FA3","#E3A52E","#2F8F70","#F5EDDD"];
-  for(let i=0;i<26;i++){const p=document.createElement("i");p.style.left=Math.random()*100+"%";p.style.background=cols[i%5];p.style.animationDelay=Math.random()*.4+"s";box.appendChild(p)}
+  for(let i=0;i<26;i++){const p=document.createElement("i");p.style.left=Math.random()*100+"%";p.style.background=cols[i%5];p.style.animationDelay=Math.random()*.4+"s";p.style.setProperty("--dx",(Math.random()*60-30).toFixed(0)+"vw");p.style.setProperty("--r",(Math.random()*900-450).toFixed(0)+"deg");p.style.setProperty("--t",(1.6+Math.random()*.7).toFixed(2)+"s");box.appendChild(p)}
   el.appendChild(box);setTimeout(()=>box.remove(),2400);
 }
 /* sons */
@@ -4287,5 +4328,18 @@ applyUI();
 })();
 </script>
 <script>if("serviceWorker"in navigator&&location.protocol!=="file:"){addEventListener("load",()=>navigator.serviceWorker.register("sw.js").then(r=>{r.addEventListener("updatefound",()=>{const w=r.installing;w&&w.addEventListener("statechange",()=>{if(w.state==="installed"&&navigator.serviceWorker.controller&&document.getElementById("splash"))location.reload()})})}).catch(()=>{}))}</script>
+<script id="sm-fluid-js">
+/* Fluidité : n'anime l'écran que s'il change vraiment ; la barre de progression glisse depuis sa valeur précédente */
+(function(){const a=document.getElementById("app");if(!a||!window.MutationObserver)return;
+let pk=null,ph=0,pn=0,pw=null;
+const key=()=>{const q=a.querySelector(":scope>.q");let t="";if(!q){const h=a.querySelector(":scope>h2,:scope>.ptitle,:scope h2.ptitle");t=h?h.textContent.slice(0,40):""}
+let s="";try{s=typeof SCR!=="undefined"?SCR:""}catch(e){}
+return s+"|"+(document.documentElement.dataset.scr||"")+"|"+(q?"q":t)+"|"+[...a.children].filter(e=>e.tagName!=="HEADER"&&e.tagName!=="NAV").slice(0,3).map(e=>e.tagName+"."+(e.className||"").toString().split(" ")[0]).join(",")};
+new MutationObserver(()=>{const k=key(),hh=!!a.querySelector(":scope>header"),hn=!!a.querySelector(":scope>nav"),same=k===pk;
+a.classList.toggle("sm-still",same);a.classList.toggle("sm-keepH",hh&&!!ph);a.classList.toggle("sm-keepN",hn&&!!pn);
+const b=a.querySelector(".bar>i"),nw=b?b.style.width:null;
+if(b&&same&&pw&&nw&&pw!==nw&&!matchMedia("(prefers-reduced-motion:reduce)").matches){b.style.transition="none";b.style.width=pw;void b.offsetWidth;b.style.transition="";b.style.width=nw}
+pk=k;ph=hh;pn=hn;pw=nw}).observe(a,{childList:true})})();
+</script>
 </body>
 </html>
