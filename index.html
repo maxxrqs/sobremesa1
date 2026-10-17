@@ -601,7 +601,7 @@ function hpJS(pw,salt){let x=salt+":"+pw;for(let i=0;i<3000;i++)x=sha256(x+salt)
 const withTimeout=(p,ms)=>Promise.race([p,new Promise(r=>setTimeout(()=>r(null),ms))]);
 var UI="fr";
 const UIL={fr:"Français",en:"English",it:"Italiano",de:"Deutsch",pt:"Português"};
-const TR={};const trLoad=l=>(l==="fr"||TR[l])?Promise.resolve():fetch("tr/"+l+".json?v=27").then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{TR[l]=j}).catch(()=>{});
+const TR={};const trLoad=l=>(l==="fr"||TR[l])?Promise.resolve():fetch("tr/"+l+".json?v=29").then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{TR[l]=j}).catch(()=>{});
 try{const s=ST.get("cast_ui"),n=(navigator.language||"fr").slice(0,2);UI=UIL[s]?s:(UIL[n]?n:"fr")}catch(e){}
 const gl=s=>{if(UI==="fr"||!TR[UI])return s;let t=TR[UI][s];if(t!=null)return t;const n=s.match(NUMRE);if(n){t=TR[UI][s.replace(NUMRE,"#")];if(t!=null){let i=0;return t.replace(/#/g,()=>i<n.length?n[i++]:"#")}}return s};
 const tr=(s,...a)=>gl(s).replace(/\{(\d)\}/g,(m,i)=>a[i]);
@@ -1305,7 +1305,7 @@ async function tvSay(){
 try{speechSynthesis.getVoices();addEventListener("pointerdown",()=>{if(!TTSW){TTSW=1;try{speechSynthesis.getVoices()}catch(e){}}},{once:true,passive:true})}catch(e){}
 const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
 const SK={voc:"Vocabulaire",ce:"Compréhension écrite",co:"Compréhension orale",ee:"Expression écrite",eo:"Expression orale",conj:"Conjugaison",exc:"Exceptions",exp:"Expressions"},SKOLD={co:"ecoute",ce:"lect",ee:"expr",eo:"expr"};
-const TYK={cloze:"ce",es2fr:"voc",fr2es:"voc",listen:"co",listenP:"co",listenT:"co",read:"ce",build:"ee",speak:"eo",type:"ee",dict:"co",conj:"conj",exc:"exc",exM:"exp",exE:"exp",exL:"co",tf:"voc",odd:"voc",readP:"ce",fr2P:"ee"};
+const TYK={cloze:"ce",es2fr:"voc",fr2es:"voc",listen:"co",listenP:"co",listenT:"co",read:"ce",build:"ee",speak:"eo",type:"ee",dict:"co",conj:"conj",exc:"exc",exM:"exp",exE:"exp",exL:"co",tf:"voc",odd:"voc",readP:"ce",fr2P:"ee",rep:"eo",speakF:"eo",speakC:"eo",speakQ:"eo",replyQ:"ee"};
 const sk=k=>S.sk&&S.sk[k]!=null?S.sk[k]:S.sk&&S.sk[SKOLD[k]]!=null?S.sk[SKOLD[k]]:.5;
 const wsum=a=>a.reduce((m,c)=>m+c,0);
 const sel=(a,l)=>{if(l)return pick(a.filter(x=>(x[2]||1)===l));const p=a.filter(x=>(x[2]||1)<=lv()),w=p.map(x=>(x[2]||1)===lv()?3:1);let r=Math.random()*wsum(w);for(let i=0;i<p.length;i++){r-=w[i];if(r<=0)return p[i]}return p[0]};
@@ -2684,7 +2684,7 @@ function pathPlanMain(){
   if(PLC&&PLC.k===ck&&PLC.d===ALL)return PLC;
   const cu=CURR[L]||CURR[1],pd=S.pth||{},dn=id=>(pd[pthK(id)]||0)>=6;
   const th=Object.keys(D),chunk=(a,n)=>{if(!a.length)return[];const k=Math.max(1,Math.round(a.length/n)),sz=Math.ceil(a.length/k),o=[];for(let i=0;i<a.length;i+=sz)o.push(a.slice(i,i+sz));return o};
-  const WT=["es2fr","fr2es","listen","tf","odd"],WT2=L>=2?[...WT,"type"]:WT,RT=["es2fr","fr2es","listen","type","dict","tf","odd"],BT=["es2fr","fr2es","listen","type","cloze","listenP","dict","tf"];
+  const WT=["es2fr","fr2es","listen","tf","dict","rep","speakF"],WT2=[...WT,"type"],RT=["es2fr","fr2es","listen","type","dict","tf","odd","rep","speakF"],BT=["es2fr","fr2es","listen","type","cloze","listenP","dict","tf","rep","speakF","speakC"];
   const BS=[],TH=th.map((t,ti)=>{const all=D[t].filter(w=>(w[2]||1)<=L),nw=all.filter(w=>(w[2]||1)===L),base=nw.length>=4?nw:all,pts=chunk(base,5),go=th.filter(x=>x!==t).flatMap(x=>D[x].filter(w=>(w[2]||1)<=L));
     if(base.length<4)return [];BS[ti]=base;
     const st=pts.map((c,pi)=>({id:"W"+ti+"."+pi,ic:PIC[t]||"📚",lab:pts.length>1?t+" "+(pi+1):t,pt:WT2,ws:c,dp:all,gp:all,go}));
@@ -2709,7 +2709,7 @@ function pathPlanMain(){
   ord.forEach((ti,pos)=>{
     const t=th[ti],k=ti%6,pp=phc.length?phc[ti%phc.length]:null;
     const st=[...TH[ti],...LSu[ti],...GSu[ti],...XSu[ti],...(keep[ti]||[])];
-    st.push([{id:"K"+ti,ic:"🎧",lab:gl(SK.co),pt:["listen","listenP","dict"],pp,t:"CO"},{id:"K"+ti,ic:"🗣️",lab:tr("Phrases"),pt:["build","readP","fr2P","cloze","listenP","type"],pp},{id:"K"+ti,ic:"✍️",lab:gl(SK.ee),pt:["build","type","cloze","fr2P"],pp,t:"EE"},{id:"K"+ti,ic:"📖",lab:gl(SK.ce),pt:["read","readP"],pp,t:"CE"},{id:"K"+ti,ic:"🔄",lab:tr("Conjugaison"),pt:["conj"],t:"Conjugaison",vs:vk.length?Array.from({length:6},(_,j)=>vk[((L-1)*18+ti*6+j)%vk.length]):null},{id:"K"+ti,ic:"🎤",lab:gl(SK.eo),pt:SR?["speak","build"]:["build","type","fr2P"],pp,t:"EO"}][k]);
+    st.push([{id:"K"+ti,ic:"🎧",lab:gl(SK.co),pt:L>=2?["listen","listenP","dict","listenT"]:["listen","listenP","dict"],pp,t:"CO"},{id:"K"+ti,ic:"🗣️",lab:tr("Phrases"),pt:["build","readP","fr2P","cloze","listenP","type","rep"],pp},{id:"K"+ti,ic:"✍️",lab:gl(SK.ee),pt:["build","type","cloze","fr2P"],pp,t:"EE"},{id:"K"+ti,ic:"📖",lab:gl(SK.ce),pt:["read","readP"],pp,t:"CE"},{id:"K"+ti,ic:"🔄",lab:tr("Conjugaison"),pt:["conj"],t:"Conjugaison",vs:vk.length?Array.from({length:6},(_,j)=>vk[((L-1)*18+ti*6+j)%vk.length]):null},{id:"K"+ti,ic:"🎤",lab:gl(SK.eo),pt:SR?["speak","rep","speakF","speakC","speakQ"]:["build","type","fr2P","replyQ"],pp,t:"EO"}][k]);
     const cum=ord.slice(0,pos+1).flatMap(j=>BS[j]||[]),prev=L>1?ord.slice(0,pos+1).flatMap(j=>D[th[j]].filter(w=>(w[2]||1)===L-1)).slice(-6):[];
     st.push({id:"M"+ti,ic:"🏆",lab:gl(CL.bil),pt:BT,ws:[...new Set([...cum,...prev])],dp:allW,gp:allW,go:allW,pp:phl,rev:1});
     const cx=(cu.u||{})[t]||[t,""];
@@ -2720,7 +2720,7 @@ function pathPlanMain(){
     skS("BCO","🎧","co",L>=2?["listen","listenP","dict","listenT"]:["listen","listenP","dict"],"CO"),
     skS("BCE","📖","ce",["read","readP"],"CE"),
     skS("BEE","✍️","ee",["build","type","cloze","fr2P"],"EE"),
-    skS("BEO","🎤","eo",SR?["speak","build"]:["build","type","fr2P"],"EO"),
+    skS("BEO","🎤","eo",SR?["speak","rep","speakF","speakC","speakQ"]:["build","type","fr2P","replyQ"],"EO"),
     {id:"BM",ic:"🏆",lab:gl(CL.mix),t:"Mélange"}];
   if(L<5)cs.push({id:"TEST",ic:"🎓",lab:gl(CL.fin),sub:NL[L+1].split(" ")[0],test:1});
   push({n:units.length+1,title:"🎓 "+gl(CL.cons),obj:gl(CL.consobj),steps:cs});
@@ -2741,7 +2741,7 @@ function mkRat(){
   const xe=XP.filter(x=>x.l<=L).sort((a,b)=>((mi["e:"+b.e]?mi["e:"+b.e].n*3:0)+(3-Math.min(3,sc("e:"+b.e))))-((mi["e:"+a.e]?mi["e:"+a.e].n*3:0)+(3-Math.min(3,sc("e:"+a.e))))+Math.random()-.5).slice(0,12);
   if(xe.length>=6)steps.push({id:"R"+n+".x",ic:"💬",lab:tr("Expressions"),sub:tr("Expressions"),t:"Expressions",pt:["exM","exE","exL"],xk:xe.map(x=>x.e)});
   let phl=PH.filter(x=>(x[2]||1)<=L);const pk=shuf(phl).slice(0,6).map(x=>x[0]);
-  const SKS={co:{ic:"🎧",lab:gl(SK.co),pt:["listen","listenP","dict"],t:"CO"},ce:{ic:"📖",lab:gl(SK.ce),pt:["read","readP"],t:"CE"},ee:{ic:"✍️",lab:gl(SK.ee),pt:["build","type","cloze","fr2P"],t:"EE"},eo:{ic:"🎤",lab:gl(SK.eo),pt:SR?["speak","build"]:["build","type","fr2P"],t:"EO"},conj:{ic:"🔄",lab:tr("Conjugaison"),pt:["conj"],t:"Conjugaison"}};
+  const SKS={co:{ic:"🎧",lab:gl(SK.co),pt:["listen","listenP","dict"],t:"CO"},ce:{ic:"📖",lab:gl(SK.ce),pt:["read","readP"],t:"CE"},ee:{ic:"✍️",lab:gl(SK.ee),pt:["build","type","cloze","fr2P"],t:"EE"},eo:{ic:"🎤",lab:gl(SK.eo),pt:SR?["speak","rep","speakF","speakC","speakQ"]:["build","type","fr2P","replyQ"],t:"EO"},conj:{ic:"🔄",lab:tr("Conjugaison"),pt:["conj"],t:"Conjugaison"}};
   Object.keys(SKS).sort((a,b)=>sk(a)-sk(b)).slice(0,2).forEach((k,i)=>steps.push({id:"R"+n+".k"+i,...SKS[k],pk}));
   steps.push({id:"R"+n+".m",ic:"🏆",lab:tr("Mélange"),t:"Mélange"});
   S.rat=S.rat||{};S.rat[l]={lvl:L,n,steps};
@@ -2784,7 +2784,10 @@ function pstart(id){
   const st=pathPlan().map[id];if(!st)return;
   const it0=pathItems().find(x=>x.id===id);if(it0&&it0.lock)return;
   LK2=1;FXS=0;xens();SCR="home";INL=1;
-  R={mode:"lesson",t:st.t||"Chunk",n:0,ok:0,xp:0,cat:null,pid:id,pt:st.pt||null,ws:st.ws||null,dp:st.dp||null,gp:st.gp||null,go:st.go||null,xs:st.xs||null,qs:st.qs||null,vs:st.vs||null,pp:st.pp||null};next();
+  R={mode:"lesson",t:st.t||"Chunk",n:0,ok:0,xp:0,cat:null,pid:id,pt:st.pt||null,ws:st.ws||null,dp:st.dp||null,gp:st.gp||null,go:st.go||null,xs:st.xs||null,qs:st.qs||null,vs:st.vs||null,pp:st.pp||null};
+  if(st.t==="EO"&&!SR)R.note=1;
+  const di=discItems(st);if(di.length>=2){discShow(di,()=>{SCR="home";INL=1;next()});return}
+  next();
 }
 function pathItems(){
   const pl=pathPlan(),pd=S.pth||{},all=!!S.pthAll,out=[];
@@ -2841,6 +2844,7 @@ function mkQ0(ty,l){
       return{ty,txt:tx,fr:f[1],g,o,say:f[0],es:f[0],key:null,sol:`${f[0]} = ${f[1]}`}}
     return mkQ0("build",l);
   }
+  if(ty==="rep"||ty==="speakF"||ty==="speakC"||ty==="speakQ"||ty==="replyQ")return mkEO(ty,l);
   if(ty==="build"||ty==="speak"||ty==="listenP"){
     const f=selP(l,"c"),b={ty,es:f[0],fr:f[1],say:f[0],sol:`${f[0]} = ${f[1]}`};
     if(ty==="build")return{...b,toks:shuf(f[0].split(" ")),cur:[]};
@@ -2878,6 +2882,7 @@ function mkQ0(ty,l){
 /* variété : on garde la répétition des mots mais on change le type de question, jamais deux fois la même d'affilée */
 function rqD(ex,key){const a=(S.rq||{})[lg()]||[],n=a.length;for(let i=n-1;i>=0;i--)if(ex?a[i]===ex:a[i].endsWith("|"+key))return n-1-i;return -1}
 const qkey=q=>q.key||q.es||q.say||q.txt||q.g||"";
+const STG0=["es2fr","listen","tf","rep"],STG1=["fr2es","dict","rep","tf","es2fr","speakF"],STG2=["type","speakF","dict","fr2es"];
 function mkQ(ty,l){
   if(!R||R.mode!=="lesson"||R.lock)return mkQ0(ty,l);
   R.hist=R.hist||[];R.seen=R.seen||{};R.ph=R.ph||{};
@@ -2890,6 +2895,7 @@ function mkQ(ty,l){
     if(sn.length>=2)sc-=3;
     if(R.n>=3&&sn.length===1&&!sn.includes(q.ty))sc+=2.5;
     if(key&&R.ph[key]>=2)sc-=4;
+    {const wkk=q.key||q.wk;if(wkk&&!/^e:/.test(wkk)&&STG0.concat(STG1,STG2).includes(q.ty)){const sv=S.sc[wkk]||0,al=sv<=1?STG0:sv<=3?STG1:STG2;sc+=al.includes(q.ty)?(sv<=1||sv>=4?3:2.2):(sv<=1?-3:sv>=4?-2:-1.2)}}
     if(key){const d1=rqD(q.ty+"|"+key),d2=rqD(0,key);if(d1>=0)sc-=d1<30?30:d1<100?12:4;if(d2>=0)sc-=d2<8?5:d2<30?2:0}
     if(sc>bs){bs=sc;best=q}
     if(sc>2.9)break;
@@ -2907,22 +2913,124 @@ const selP=(l,k)=>{const r=!l&&RLs();if(r&&r.pp&&r.pp.length)return pick(r.pp);i
 /*CECRL-END*/
 let UWC=null;function uniqW(){if(!UWC||UWC.s!==ALL){const c={};ALL.forEach(w=>c[w[1]]=(c[w[1]]||0)+1);UWC={s:ALL,a:ALL.filter(w=>c[w[1]]===1&&!/[\/(|]/.test(w[0]+w[1]))}}return UWC.a}
 function chkT(){const q=R.q,i=document.getElementById("ti");if(R.done||!i||!i.value.trim())return;const r=EV.grade(i.value.trim(),q);i.disabled=true;fin(r.s,q.sol,q.key,r.m);if(R.mode!=="test"&&q.ty!=="dict")speak(q.es)}
+/*EO-BEGIN : expression orale réelle (reconnaissance vocale), notation tolérante, formats oraux, équilibre des 4 compétences, découverte avant test*/
+const EOT=["speak","rep","speakF","speakC","speakQ"],EOFB={speak:[],rep:["dict"],speakF:["type"],speakC:["cloze"],speakQ:["replyQ"]};
+const MODL={listen:"co",listenP:"co",listenT:"co",exL:"co",dict:"co",speak:"eo",rep:"eo",speakF:"eo",speakC:"eo",speakQ:"eo",read:"ce",readP:"ce",es2fr:"ce",tf:"ce",odd:"ce",cloze:"ce",exM:"ce",exc:"ce",build:"ee",type:"ee",fr2P:"ee",fr2es:"ee",conj:"ee",exE:"ee",replyQ:"ee"};
+const EOTH=[0,.6,.66,.72,.78,.8];
+function modF(m){const a=((S.md||{})[lg()]||[]).slice(-60),n=a.length,c=a.filter(x=>x===m).length,sh=(c+1.5)/(n+6);return Math.max(.35,Math.min(3,Math.pow(.25/sh,1.2)))}
+function phon(w){let x=w.replace(/ch/g,"1");if(lg()==="es")x=x.replace(/qu/g,"k").replace(/gu(?=[ei])/g,"2").replace(/c(?=[ei])/g,"s").replace(/z/g,"s").replace(/c/g,"k").replace(/ll/g,"y").replace(/g(?=[ei])/g,"x").replace(/j/g,"x").replace(/v/g,"b").replace(/h/g,"").replace(/w/g,"u");else x=x.replace(/v/g,"b").replace(/h/g,"");return x.replace(/(.)\1+/g,"$1").replace(/1/g,"ch").replace(/2/g,"g")}
+function lev(a,b){const m=a.length,n=b.length;if(!m)return n;if(!n)return m;let p=Array.from({length:n+1},(_,i)=>i);for(let i=1;i<=m;i++){const c=[i];for(let j=1;j<=n;j++)c[j]=Math.min(p[j]+1,c[j-1]+1,p[j-1]+(a[i-1]===b[j-1]?0:1));p=c}return p[n]}
+/* même radical, terminaison différente (hablo/habla, casa/casas) : plutôt une erreur de forme qu'une erreur de prononciation */
+function sameStem(a,b){if(a===b||Math.min(a.length,b.length)<4)return false;let i=0;while(i<a.length&&i<b.length&&a[i]===b[i])i++;return i>=3&&i>=Math.min(a.length,b.length)-2&&a.length-i<=2&&b.length-i<=2}
+let KNW=null;function knownTok(){if(!KNW||KNW.s!==ALL){const st=new Set();[...ALL,...PH].forEach(x=>nzI(x[0]).split(" ").forEach(t=>t&&st.add(t)));KNW={s:ALL,set:st}}return KNW.set}
+/* notation : accents et variantes régionales (seseo, ceceo, b/v, ll/y, h muette) tolérés ; mot réel différent = forme grammaticale ; mot inconnu proche = prononciation */
+function eoGrade(alts,target,L,o){
+  o=o||{};const T=nzI(target).split(" ").filter(Boolean);if(!T.length)return{s:0,full:false,pct:0,msg:"",heard:""};
+  const need=o.need?nzI(o.need).split(" ").filter(Boolean):[];let best=null;
+  for(const al of alts){
+    const H=nzI(al).split(" ").filter(Boolean),used=H.map(()=>0),r=[];
+    T.forEach(t=>{const pt=phon(t),w=t.length<=2?.35:1;let k=-1,kind="";
+      for(let i=0;i<H.length&&k<0;i++)if(!used[i]&&H[i]===t){k=i;kind="ok"}
+      for(let i=0;i<H.length&&k<0;i++)if(!used[i]&&phon(H[i])===pt){k=i;kind="ok"}
+      if(k<0){let bd=9;for(let i=0;i<H.length;i++)if(!used[i]){const d=lev(phon(H[i]),pt);if(d<bd){bd=d;k=i}}
+        const lim=pt.length>=8?2:pt.length>=4?1:0;if(k>=0&&bd<=lim)kind=sameStem(H[k],t)||(knownTok().has(H[k])&&H[k]!==t)?"gram":"near";else k=-1}
+      if(k>=0)used[k]=1;r.push({t,w,k,kind:kind||"miss",h:k>=0?H[k]:""})});
+    r.forEach(x=>{if(x.kind==="miss"&&x.t.length>=4)for(let i=0;i<H.length;i++)if(!used[i]&&H[i].length>=4&&H[i].slice(0,3)===x.t.slice(0,3)&&knownTok().has(H[i])){used[i]=1;x.kind="gram";x.h=H[i];break}});
+    const sc=r.reduce((a,x)=>a+x.w*(x.kind==="ok"?1:x.kind==="near"?.85:x.kind==="gram"?.55:0),0)/r.reduce((a,x)=>a+x.w,0);
+    if(!best||sc>best.s)best={s:sc,r,heard:al}}
+  let s=best.s;const nd=best.r.filter(x=>need.includes(x.t));if(nd.some(x=>x.kind==="miss"||x.kind==="gram"))s=Math.min(s,.55);
+  const full=s>=EOTH[Math.max(1,Math.min(5,L||1))],pr=best.r.filter(x=>x.kind==="near").map(x=>"« "+x.t+" »"),gr=best.r.filter(x=>x.kind==="gram").map(x=>"« "+x.h+" » → « "+x.t+" »"),ms=best.r.filter(x=>x.kind==="miss"&&x.t.length>2).map(x=>"« "+x.t+" »");
+  const n=[];if(pr.length)n.push(tr("Prononciation à travailler : {0}.",pr.join(", ")));if(gr.length)n.push(tr("Mot différent entendu : {0} (vérifie la forme ou la terminaison).",gr.join(", ")));if(ms.length)n.push(tr("Non reconnu : {0}.",ms.join(", ")));
+  if(s<1&&best.heard)n.push(tr("J'ai entendu : « {0} ».",best.heard));if(n.length&&!full)n.push(tr("Astuce : réécoute le modèle, puis répète en détachant les mots."));
+  return{s,full,pct:Math.round(s*100),msg:n.join(" "),heard:best.heard,score:full?1:s>=.45?Math.max(.3,Math.min(.75,s*.8)):0}
+}
+/* formats oraux : mêmes données que le reste de l'appli (mots de l'étape, phrases plafonnées par niveau, scènes de dialogue) */
+function eoItem(ty,l){
+  const r=!l&&RLs(),ws=r&&r.ws&&r.ws.length>=2?r.ws.filter(w=>(w[2]||1)<=lv()):null,cap=CAPW[ty==="rep"?"c":"p"][lvC(l)];
+  if(ws&&ws.length>=2){
+    const pw=ty==="speakF"?(lvC()<=1?.85:.5):ty==="rep"?.55:0;
+    if(Math.random()<pw){const w=wpick(ws);return{es:w[0],fr:w[1],wk:w[0],word:1}}
+    const ph=PHL(l).filter(x=>nwd(x)<=cap),pk=shuf(ws).slice(0,6);
+    for(const w of pk){const k=nzI(w[0]);if(!k)continue;const m=ph.filter(x=>(" "+nzI(x[0])+" ").includes(" "+k+" "));if(m.length)return{es:pick(m)[0],fr:pick(m)[1],wk:w[0]}}
+  }
+  const f=selP(l,ty==="rep"?"c":"p");return{es:f[0],fr:f[1]}
+}
+const XD={"es": "1|Au café|¿Qué desea tomar?|Commande un café.|Un café, por favor.|Quiero un café, por favor.;;Un café con leche, por favor.\n1|Au café|¿Algo más?|Dis que c'est tout.|No, nada más, gracias.|No, eso es todo, gracias.;;Nada más, gracias.\n1|Se présenter|¿De dónde eres?|Dis que tu es français(e).|Soy francés.|Soy de Francia.;;Soy francesa.\n1|Se présenter|¿Hablas español?|Réponds que tu en parles un peu.|Sí, hablo un poco de español.|Hablo un poco.;;Sí, un poco.\n1|En ville|Perdone, ¿sabe dónde está la plaza?|Tu ne sais pas : excuse-toi.|Lo siento, no lo sé.|Perdone, no lo sé.;;No lo sé, lo siento.\n1|Au restaurant|¿Qué quiere beber?|Commande de l'eau.|Agua, por favor.|Quiero agua, por favor.;;Un agua, por favor.\n1|Au restaurant|¿Y de comer?|Commande une paella.|Una paella, por favor.|Quiero una paella, por favor.;;Quisiera una paella, por favor.\n1|Dans un magasin|Son diez euros.|Demande si tu peux payer par carte.|¿Puedo pagar con tarjeta?|¿Se puede pagar con tarjeta?;;¿Aceptan tarjeta?\n1|Salutations|Buenos días, ¿qué tal?|Salue et dis que ça va bien.|Buenos días, muy bien, gracias.|Muy bien, gracias.;;Bien, gracias.\n2|Au travail|¿Qué tal el fin de semana?|Dis que tu as visité la ville.|He visitado la ciudad.|Visité la ciudad.;;Fui a visitar la ciudad.\n2|Au travail|¿A qué hora empiezas a trabajar?|Dis que tu commences à neuf heures.|Empiezo a las nueve.|Empiezo a trabajar a las nueve.;;A las nueve.\n2|Transports|¿Adónde vas?|Dis que tu vas à la gare.|Voy a la estación.|Voy a la estación de tren.\n2|À la pharmacie|¿Qué le pasa?|Dis que tu as mal à la tête.|Me duele la cabeza.|Tengo dolor de cabeza.\n2|Avec un collègue|¿Quieres un café?|Accepte poliment.|Sí, gracias, con mucho gusto.|Sí, por favor.;;Sí, gracias.\n2|Logement|¿Cuántas habitaciones necesita?|Dis que tu en veux deux.|Necesito dos habitaciones.|Quiero dos habitaciones.;;Dos habitaciones, por favor.\n3|Donner son avis|¿Qué opinas de esta ciudad?|Dis que tu aimes la ville parce qu'elle est tranquille.|Me gusta porque es tranquila.|Me encanta porque es muy tranquila.;;Me gusta mucho porque es tranquila.\n3|Projets|¿Qué vas a hacer mañana?|Dis que tu vas travailler puis dîner avec des amis.|Voy a trabajar y luego voy a cenar con unos amigos.|Voy a trabajar y después cenaré con amigos.;;Mañana trabajo y luego ceno con amigos.\n3|Raconter le passé|¿Qué hiciste el año pasado?|Dis que tu as voyagé en Espagne l'an dernier.|El año pasado viajé por España.|Viajé por España el año pasado.;;Viajé a España el año pasado.\n3|Demande polie|Perdona, hablo muy rápido, ¿verdad?|Demande de parler plus lentement.|Sí, ¿puede hablar más despacio, por favor?|Sí, habla más despacio, por favor.;;Un poco, ¿puedes hablar más despacio?\n3|Donner un conseil|Estoy muy cansado. ¿Qué me recomiendas?|Conseille-lui de se reposer un peu.|Te recomiendo que descanses un poco.|Deberías descansar un poco.;;Creo que deberías descansar.\n4|Débat|Creo que trabajar desde casa es mejor. ¿Tú qué piensas?|Donne une opinion nuancée.|Depende, aunque a mí me parece que tiene ventajas y desventajas.|No estoy del todo de acuerdo, tiene ventajas pero también inconvenientes.\n4|Hypothèse|¿Qué harías si te tocara la lotería?|Dis ce que tu ferais.|Viajaría por el mundo y compraría una casa.|Si me tocara la lotería, viajaría por todo el mundo.\n4|Expliquer un choix|¿Por qué dejaste tu trabajo anterior?|Explique que tu cherchais de nouveaux défis.|Lo dejé porque buscaba nuevos retos.|Porque quería afrontar nuevos desafíos.\n5|Argumenter|Algunos dicen que las redes sociales dañan la sociedad. ¿Qué opina usted?|Réponds avec nuance et un contre-argument.|Si bien tienen riesgos, creo que también ofrecen oportunidades que no podemos ignorar.|Aunque presentan peligros, considero que su impacto depende del uso que se haga de ellas.\n5|Entretien d'embauche|¿Cómo se describiría profesionalmente?|Présente-toi avec assurance.|Soy una persona organizada, resolutiva y acostumbrada a trabajar en equipo.|Me considero metódico y con capacidad para adaptarme rápidamente.", "ca": "1|Au café|Què vol prendre?|Commande un café.|Un cafè, si us plau.|Vull un cafè, si us plau.;;Un cafè amb llet, si us plau.\n1|Au café|Alguna cosa més?|Dis que c'est tout.|No, res més, gràcies.|No, això és tot, gràcies.;;Res més, gràcies.\n1|Se présenter|De on ets?|Dis que tu es français(e).|Sóc francès.|Sóc de França.;;Sóc francesa.\n1|Se présenter|Parles català?|Réponds que tu en parles un peu.|Sí, en parlo una mica.|Parlo una mica de català.;;Sí, una mica.\n1|En ville|Perdoni, sap on és la plaça?|Tu ne sais pas : excuse-toi.|Ho sento, no ho sé.|Perdoni, no ho sé.;;No ho sé, ho sento.\n1|Au restaurant|Què vol beure?|Commande de l'eau.|Aigua, si us plau.|Vull aigua, si us plau.;;Una aigua, si us plau.\n1|Au restaurant|I per menjar?|Commande une paella.|Una paella, si us plau.|Vull una paella, si us plau.;;Voldria una paella, si us plau.\n1|Dans un magasin|Són deu euros.|Demande si tu peux payer par carte.|Puc pagar amb targeta?|Es pot pagar amb targeta?;;Accepten targeta?\n1|Salutations|Bon dia, com va?|Salue et dis que ça va bien.|Bon dia, molt bé, gràcies.|Molt bé, gràcies.;;Bé, gràcies.\n2|Au travail|Què tal el cap de setmana?|Dis que tu as visité la ville.|He visitat la ciutat.|Vaig visitar la ciutat.;;Vaig anar a visitar la ciutat.\n2|Au travail|A quina hora comences a treballar?|Dis que tu commences à neuf heures.|Començo a les nou.|Començo a treballar a les nou.;;A les nou.\n2|Transports|On vas?|Dis que tu vas à la gare.|Vaig a l'estació.|Vaig a l'estació de tren.\n2|À la pharmacie|Què li passa?|Dis que tu as mal à la tête.|Em fa mal el cap.|Tinc mal de cap.\n2|Avec un collègue|Vols un cafè?|Accepte poliment.|Sí, gràcies, amb molt de gust.|Sí, si us plau.;;Sí, gràcies.\n2|Logement|Quantes habitacions necessita?|Dis que tu en veux deux.|Necessito dues habitacions.|Vull dues habitacions.;;Dues habitacions, si us plau.\n3|Donner son avis|Què en penses d'aquesta ciutat?|Dis que tu aimes la ville parce qu'elle est tranquille.|M'agrada perquè és tranquil·la.|M'encanta perquè és molt tranquil·la.;;M'agrada molt perquè és tranquil·la.\n3|Projets|Què faràs demà?|Dis que tu vas travailler puis dîner avec des amis.|Aniré a treballar i després sopar amb uns amics.|Aniré a treballar i després sopar amb amics.;;Demà treballo i després sopo amb amics.\n3|Raconter le passé|Què vas fer l'any passat?|Dis que tu as voyagé en Espagne l'an dernier.|L'any passat vaig viatjar per Espanya.|Vaig viatjar per Espanya l'any passat.;;Vaig viatjar a Espanya l'any passat.\n3|Demande polie|Perdona, parlo molt de pressa, oi?|Demande de parler plus lentement.|Sí, podries parlar més a poc a poc, si us plau?|Sí, parla més a poc a poc, si us plau.;;Una mica, pots parlar més a poc a poc?\n3|Donner un conseil|Estic molt cansat. Què em recomanes?|Conseille-lui de se reposer un peu.|Et recomano que descansis una mica.|Hauries de descansar una mica.;;Crec que hauries de descansar.\n4|Débat|Crec que treballar des de casa és millor. Tu què en penses?|Donne une opinion nuancée.|Depèn, però a mi em sembla que té avantatges i inconvenients.|No hi estic del tot d'acord, té avantatges però també inconvenients.\n4|Hypothèse|Què faries si et toqués la loteria?|Dis ce que tu ferais.|Viatjaria pel món i compraria una casa.|Si em toqués la loteria, viatjaria per tot el món.\n4|Expliquer un choix|Per què vas deixar la teva feina anterior?|Explique que tu cherchais de nouveaux défis.|La vaig deixar perquè buscava nous reptes.|Perquè volia afrontar nous reptes.\n5|Argumenter|Alguns diuen que les xarxes socials perjudiquen la societat. Què en pensa vostè?|Réponds avec nuance et un contre-argument.|Tot i que tenen riscos, crec que també ofereixen oportunitats que no podem ignorar.|Encara que presenten perills, considero que el seu impacte depèn de l'ús que se'n faci.\n5|Entretien d'embauche|Com es descriuria professionalment?|Présente-toi avec assurance.|Sóc una persona organitzada, resolutiva i acostumada a treballar en equip.|Em considero metòdic i amb capacitat per adaptar-me ràpidament.", "va": "1|Au café|Què vol prendre?|Commande un café.|Un cafè, per favor.|Vull un cafè, per favor.;;Un cafè amb llet, per favor.\n1|Au café|Alguna cosa més?|Dis que c'est tout.|No, res més, gràcies.|No, això és tot, gràcies.;;Res més, gràcies.\n1|Se présenter|D'on eres?|Dis que tu es français(e).|Sóc francés.|Sóc de França.;;Sóc francesa.\n1|Se présenter|Parles valencià?|Réponds que tu en parles un peu.|Sí, en parle una mica.|Parle una mica de valencià.;;Sí, una mica.\n1|En ville|Perdone, sap on està la plaça?|Tu ne sais pas : excuse-toi.|Ho sent, no ho sé.|Perdone, no ho sé.;;No ho sé, ho sent.\n1|Au restaurant|Què vol beure?|Commande de l'eau.|Aigua, per favor.|Vull aigua, per favor.;;Una aigua, per favor.\n1|Au restaurant|I per a menjar?|Commande une paella.|Una paella, per favor.|Vull una paella, per favor.;;Voldria una paella, per favor.\n1|Dans un magasin|Són deu euros.|Demande si tu peux payer par carte.|Puc pagar amb targeta?|Es pot pagar amb targeta?;;Accepten targeta?\n1|Salutations|Bon dia, com va?|Salue et dis que ça va bien.|Bon dia, molt bé, gràcies.|Molt bé, gràcies.;;Bé, gràcies.\n2|Au travail|Què tal el cap de setmana?|Dis que tu as visité la ville.|He visitat la ciutat.|Vaig visitar la ciutat.;;Vaig anar a visitar la ciutat.\n2|Au travail|A quina hora comences a treballar?|Dis que tu commences à neuf heures.|Comence a les nou.|Comence a treballar a les nou.;;A les nou.\n2|Transports|On vas?|Dis que tu vas à la gare.|Vaig a l'estació.|Vaig a l'estació de tren.\n2|À la pharmacie|Què li passa?|Dis que tu as mal à la tête.|Em fa mal el cap.|Tinc mal de cap.\n2|Avec un collègue|Vols un cafè?|Accepte poliment.|Sí, gràcies, amb molt de gust.|Sí, per favor.;;Sí, gràcies.\n2|Logement|Quantes habitacions necessita?|Dis que tu en veux deux.|Necessite dos habitacions.|Vull dos habitacions.;;Dos habitacions, per favor.\n3|Donner son avis|Què en penses d'esta ciutat?|Dis que tu aimes la ville parce qu'elle est tranquille.|M'agrada perquè és tranquil·la.|M'encanta perquè és molt tranquil·la.;;M'agrada molt perquè és tranquil·la.\n3|Projets|Què faràs demà?|Dis que tu vas travailler puis dîner avec des amis.|Aniré a treballar i després a sopar amb uns amics.|Aniré a treballar i després sopar amb amics.;;Demà treballe i després sope amb amics.\n3|Raconter le passé|Què vas fer l'any passat?|Dis que tu as voyagé en Espagne l'an dernier.|L'any passat vaig viatjar per Espanya.|Vaig viatjar per Espanya l'any passat.;;Vaig viatjar a Espanya l'any passat.\n3|Demande polie|Perdona, parle molt ràpid, oi?|Demande de parler plus lentement.|Sí, pots parlar més a poc a poc, per favor?|Sí, parla més a poc a poc, per favor.;;Un poc, pots parlar més a poc a poc?\n3|Donner un conseil|Estic molt cansat. Què em recomanes?|Conseille-lui de se reposer un peu.|Et recomane que descanses un poc.|Hauries de descansar un poc.;;Crec que hauries de descansar.\n4|Débat|Crec que treballar des de casa és millor. Tu què en penses?|Donne une opinion nuancée.|Depén, però a mi em pareix que té avantatges i inconvenients.|No estic del tot d'acord, té avantatges però també inconvenients.\n4|Hypothèse|Què faries si et tocara la loteria?|Dis ce que tu ferais.|Viatjaria pel món i compraria una casa.|Si em tocara la loteria, viatjaria per tot el món.\n4|Expliquer un choix|Per què vas deixar la teua faena anterior?|Explique que tu cherchais de nouveaux défis.|La vaig deixar perquè buscava nous reptes.|Perquè volia afrontar nous reptes.\n5|Argumenter|Alguns diuen que les xarxes socials perjudiquen la societat. Què en pensa vosté?|Réponds avec nuance et un contre-argument.|Encara que tenen riscos, crec que també oferixen oportunitats que no podem ignorar.|Tot i que presenten perills, considere que el seu impacte depén de l'ús que se'n faça.\n5|Entretien d'embauche|Com es descriuria professionalment?|Présente-toi avec assurance.|Sóc una persona organitzada, resolutiva i acostumada a treballar en equip.|Em considere metòdic i amb capacitat per a adaptar-me ràpidament.", "gl": "1|Au café|Que desexa tomar?|Commande un café.|Un café, por favor.|Quero un café, por favor.;;Un café con leite, por favor.\n1|Au café|Algo máis?|Dis que c'est tout.|Non, nada máis, grazas.|Non, iso é todo, grazas.;;Nada máis, grazas.\n1|Se présenter|De onde es?|Dis que tu es français(e).|Son francés.|Son de Francia.;;Son francesa.\n1|Se présenter|Falas galego?|Réponds que tu en parles un peu.|Si, falo un pouco.|Falo un pouco de galego.;;Si, un pouco.\n1|En ville|Perdoe, sabe onde está a praza?|Tu ne sais pas : excuse-toi.|Síntoo, non o sei.|Perdoe, non o sei.;;Non o sei, síntoo.\n1|Au restaurant|Que quere beber?|Commande de l'eau.|Auga, por favor.|Quero auga, por favor.;;Unha auga, por favor.\n1|Au restaurant|E para comer?|Commande une paella.|Unha paella, por favor.|Quero unha paella, por favor.;;Quixera unha paella, por favor.\n1|Dans un magasin|Son dez euros.|Demande si tu peux payer par carte.|Podo pagar con tarxeta?|Pódese pagar con tarxeta?;;Aceptan tarxeta?\n1|Salutations|Bos días, que tal?|Salue et dis que ça va bien.|Bos días, moi ben, grazas.|Moi ben, grazas.;;Ben, grazas.\n2|Au travail|Que tal o fin de semana?|Dis que tu as visité la ville.|Visitei a cidade.|Estiven visitando a cidade.;;Fun visitar a cidade.\n2|Au travail|A que hora comezas a traballar?|Dis que tu commences à neuf heures.|Comezo ás nove.|Comezo a traballar ás nove.;;Ás nove.\n2|Transports|Onde vas?|Dis que tu vas à la gare.|Vou á estación.|Vou á estación de tren.\n2|À la pharmacie|Que lle pasa?|Dis que tu as mal à la tête.|Dóeme a cabeza.|Teño dor de cabeza.\n2|Avec un collègue|Queres un café?|Accepte poliment.|Si, grazas, con moito gusto.|Si, por favor.;;Si, grazas.\n2|Logement|Cantas habitacións necesita?|Dis que tu en veux deux.|Necesito dúas habitacións.|Quero dúas habitacións.;;Dúas habitacións, por favor.\n3|Donner son avis|Que opinas desta cidade?|Dis que tu aimes la ville parce qu'elle est tranquille.|Gústame porque é tranquila.|Encántame porque é moi tranquila.;;Gústame moito porque é tranquila.\n3|Projets|Que vas facer mañá?|Dis que tu vas travailler puis dîner avec des amis.|Vou traballar e logo vou cear con uns amigos.|Vou traballar e despois cearei con amigos.;;Mañá traballo e logo ceo con amigos.\n3|Raconter le passé|Que fixeches o ano pasado?|Dis que tu as voyagé en Espagne l'an dernier.|O ano pasado viaxei por España.|Viaxei por España o ano pasado.;;Viaxei a España o ano pasado.\n3|Demande polie|Perdoa, falo moi rápido, verdade?|Demande de parler plus lentement.|Si, podes falar máis amodo, por favor?|Si, fala máis amodo, por favor.;;Un pouco, podes falar máis amodo?\n3|Donner un conseil|Estou moi canso. Que me recomendas?|Conseille-lui de se reposer un peu.|Recomédoche que descanses un pouco.|Deberías descansar un pouco.;;Creo que deberías descansar.\n4|Débat|Creo que traballar desde a casa é mellor. Ti que opinas?|Donne une opinion nuancée.|Depende, pero a min paréceme que ten vantaxes e inconvenientes.|Non estou de todo de acordo, ten vantaxes pero tamén inconvenientes.\n4|Hypothèse|Que farías se che tocase a lotaría?|Dis ce que tu ferais.|Viaxaría polo mundo e compraría unha casa.|Se me tocase a lotaría, viaxaría por todo o mundo.\n4|Expliquer un choix|Por que deixaches o teu traballo anterior?|Explique que tu cherchais de nouveaux défis.|Deixeino porque buscaba novos retos.|Porque quería afrontar novos desafíos.\n5|Argumenter|Algúns din que as redes sociais prexudican a sociedade. Que opina vostede?|Réponds avec nuance et un contre-argument.|Aínda que teñen riscos, creo que tamén ofrecen oportunidades que non podemos ignorar.|Malia que presentan perigos, considero que o seu impacto depende do uso que se faga delas.\n5|Entretien d'embauche|Como se describiría profesionalmente?|Présente-toi avec assurance.|Son unha persoa organizada, resolutiva e afeita a traballar en equipo.|Considérome metódico e con capacidade para adaptarme rapidamente.", "eu": "1|Au café|Zer hartuko duzu?|Commande un café.|Kafe bat, mesedez.|Kafe bat nahi dut, mesedez.\n1|Au café|Beste zerbait?|Dis que c'est tout.|Ez, besterik ez, eskerrik asko.|Ez, hori da dena, eskerrik asko.\n1|Se présenter|Nongoa zara?|Dis que tu es français(e).|Frantsesa naiz.|Frantziakoa naiz.\n1|Se présenter|Euskaraz hitz egiten duzu?|Réponds que tu en parles un peu.|Bai, pixka bat egiten dut.|Euskaraz pixka bat hitz egiten dut.\n1|En ville|Barkatu, badakizu non dagoen plaza?|Tu ne sais pas : excuse-toi.|Barkatu, ez dakit.|Sentitzen dut, ez dakit.\n1|Au restaurant|Zer edango duzu?|Commande de l'eau.|Ura, mesedez.|Ura nahi dut, mesedez.\n1|Au restaurant|Eta jateko?|Commande une paella.|Paella bat, mesedez.|Paella bat nahi dut, mesedez.\n1|Dans un magasin|Hamar euro dira.|Demande si tu peux payer par carte.|Txartelarekin ordaindu dezaket?|Txartelaz ordain daiteke?\n1|Salutations|Egun on, zer moduz?|Salue et dis que ça va bien.|Egun on, oso ondo, eskerrik asko.|Oso ondo, eskerrik asko.\n2|Au travail|Zer moduz asteburua?|Dis que tu as visité la ville.|Hiria bisitatu dut.|Hiria ikusi dut.\n2|Au travail|Zer ordutan hasten zara lanean?|Dis que tu commences à neuf heures.|Bederatzietan hasten naiz.|Bederatzietan hasten naiz lanean.\n2|Transports|Nora zoaz?|Dis que tu vas à la gare.|Geltokira noa.|Tren-geltokira noa.\n2|À la pharmacie|Zer duzu?|Dis que tu as mal à la tête.|Buruko mina dut.|Buruan mina dut.\n2|Avec un collègue|Kafea nahi duzu?|Accepte poliment.|Bai, eskerrik asko, pozik.|Bai, mesedez.\n2|Logement|Zenbat gela behar dituzu?|Dis que tu en veux deux.|Bi gela behar ditut.|Bi gela nahi ditut.\n3|Donner son avis|Zer iruditzen zaizu hiri hau?|Dis que tu aimes la ville parce qu'elle est tranquille.|Gustatzen zait lasaia delako.|Asko gustatzen zait, oso lasaia delako.\n3|Projets|Zer egingo duzu bihar?|Dis que tu vas travailler puis dîner avec des amis.|Lan egingo dut eta gero lagunekin afalduko dut.|Bihar lan egingo dut eta gero afalduko dut lagunekin.\n3|Raconter le passé|Zer egin zenuen iaz?|Dis que tu as voyagé en Espagne l'an dernier.|Iaz Espainian zehar bidaiatu nuen.|Espainian zehar bidaiatu nuen iaz.\n3|Demande polie|Barkatu, oso azkar hitz egiten dut, ezta?|Demande de parler plus lentement.|Bai, poliago hitz egin dezakezu, mesedez?|Bai, hitz egin poliki, mesedez.\n3|Donner un conseil|Oso nekatuta nago. Zer gomendatzen didazu?|Conseille-lui de se reposer un peu.|Atseden pixka bat hartzea gomendatzen dizut.|Atseden hartu beharko zenuke."};
+let XDC={};function xdP(l){if(XDC[l])return XDC[l];return XDC[l]=(XD[l]||"").split("\n").filter(Boolean).map(r=>{const f=r.split("|");return{l:+f[0],cx:f[1],n:f[2],i:f[3],m:f[4],va:f[5]?f[5].split(";;"):[]}})}
+/* échanges de dialogue (une réplique de l'interlocuteur, une réponse attendue avec variantes acceptées), du niveau courant et des niveaux précédents */
+function eoScene(ty){
+  const pool=[];xdP(lg()).forEach(z=>{if(z.l<=lv())for(let i=0;i<(z.l===lv()?3:1);i++)pool.push(z)});
+  if(!pool.length)return null;const z=pick(pool);
+  return{ty,npc:z.n,hint:z.i,models:[z.m,...z.va],es:z.m,fr:z.i,say:z.n,sol:z.m,key:null,cx:z.cx}
+}
+function mkEO(ty,l){
+  if(ty==="speakQ"||ty==="replyQ"){const q=eoScene(ty);if(q)return q;ty=ty==="speakQ"?"speakF":"type"}
+  if(ty==="type")return mkQ0("type",l);
+  const it=eoItem(ty,l);
+  if(ty==="speakC"){
+    const ws=it.es.split(" "),core=w=>w.replace(/^[¿¡"«(]+|[?!.,;:"»)]+$/g,""),ix=ws.map((w,i)=>core(w).length>=4?i:-1).filter(i=>i>=0);
+    if(ix.length&&ws.length>=3){let i=ix[Math.floor(Math.random()*ix.length)];if(it.wk){const j=ws.findIndex(w=>nzI(core(w))===nzI(it.wk));if(j>=0)i=j}
+      const g=core(ws[i]);return{ty,txt:ws.map((w,k)=>k===i?w.replace(g,"_____"):w).join(" "),fr:it.fr,es:it.es,g,say:it.es,key:null,wk:it.wk,sol:`${it.es} = ${it.fr}`}}
+    ty="speakF"
+  }
+  const q={ty,es:it.es,fr:it.fr,say:it.es,key:ty==="speakF"&&it.word?it.es:null,wk:it.wk,sol:`${it.es} = ${it.fr}`};
+  if(ty==="rep"&&lvC()>=3&&!it.word&&nwd([it.es])>=3&&Math.random()<.5)q.hide=1;
+  return q
+}
+function repShow(){if(R.q&&R.q.hide){R.q.hide=0;draw()}}
+function oralCheck(alts){
+  const q=R.q,tg=q.ty==="speakQ"?q.models:[q.es];let best=null;
+  for(const t of tg){const g=eoGrade(alts,t,lv(),{need:q.ty==="speakC"?q.g:null});if(!best||g.s>best.s)best=g}
+  const mm=best.pct+" % "+tr("reconnu")+(best.msg?" · "+best.msg:"");
+  fin(best.score,best.score>0?tg[0]:tg[0]+" · "+mm,q.ty==="speakF"?q.key:null,mm);
+  if(q.ty==="speakF"||q.ty==="speakQ"||q.ty==="speakC")try{speak(q.es)}catch(e){}
+}
+function chkR(){
+  const q=R.q,i=document.getElementById("ti");if(R.done||!i||!i.value.trim())return;i.disabled=true;
+  let best=null;for(const t of q.models){const g=eoGrade([i.value.trim()],t,lv());if(!best||g.s>best.s)best=g}
+  fin(best.score,best.score>0?q.models[0]:q.models[0]+(best.msg?" · "+best.msg:""),null,best.pct+" % "+tr("reconnu")+(best.msg&&!best.full?" · "+best.msg:""));
+  if(R.mode!=="test")try{speak(q.es)}catch(e){}
+}
+/* découverte avant évaluation : orthographe, audio, sens, exemple en contexte */
+let DISC=null;
+function discItems(st){
+  xens();const seen=S.ds||{},out=[];
+  if(st.xs&&st.xs.size){XP.filter(x=>st.xs.has(x.e)&&!seen["e:"+x.e]&&!(S.sc["e:"+x.e]>0)).slice(0,6).forEach(x=>out.push({k:"e:"+x.e,es:x.e,fr:x.m,lit:x.lit}));return out}
+  if(st.ws&&!st.rev&&!st.t){const ex=[...PHL(),...XP.filter(x=>x.x&&(x.l||1)<=lvC()).map(x=>[x.x,x.xf]),...TX.filter(x=>(x[2]||1)<=lvC()).flatMap(x=>(x[0].match(/[^.!?]+[.!?]+/g)||[]).map(z=>[z.trim(),""]))].filter(x=>x[0]&&nwd(x)<=12);
+    st.ws.filter(w=>!seen[w[0]]&&!(S.sc[w[0]]>0)).slice(0,8).forEach(w=>{const k=nzI(w[0]),m=k?ex.filter(x=>(" "+nzI(x[0])+" ").includes(" "+k+" ")&&nzI(x[0])!==k):[];m.sort((a,b)=>(b[1]?1:0)-(a[1]?1:0)||a[0].length-b[0].length);out.push({k:w[0],es:w[0],fr:w[1],ex:m[0]?[m[0][0],m[0][1]]:null})})}
+  return out
+}
+function discShow(items,go){
+  stopSp();SCR="home";INL=1;DISC={items,go};
+  $.innerHTML=head()+`<div class="q"><h2>${tr("Découvre avant de t'entraîner")}</h2><p class="sub">${tr("Écoute chaque élément, lis son sens et son exemple. Ensuite, on s'entraîne.")}</p><ul class="vl disc">${items.map((x,i)=>`<li style="margin:12px 0"><button class="spk sm" data-a="d${i}" onclick="aud('d${i}',[DISC.items[${i}].es])" aria-label="Écouter">🔊</button> <b translate="no">${esc(x.es)}</b> — ${esc(x.fr)}${x.lit?` <small class="sub">(${tr("mot à mot : {0}",esc(x.lit))})</small>`:""}${x.ex?`<br><small class="sub" translate="no">${esc(x.ex[0])}${x.ex[1]?` <span translate="yes">· ${esc(x.ex[1])}</span>`:""}</small>`:""}</li>`).join("")}</ul><button class="btn" onclick="discGo()">${tr("C'est parti")}</button></div>`;auSync();
+}
+function discGo(){stopSp();const d=DISC;if(!d)return;S.ds=S.ds||{};d.items.forEach(x=>{S.ds[x.k]=1});save();DISC=null;d.go()}
+/*EO-END*/
 function pickType(){
-  const t=R.t,l=lv();let a=t==="CE"?["read"]:t==="CO"?(l<2?["listen","listen","listenP","dict"]:["listen","listenP","dict"]):t==="EE"?["build","type","cloze"]:t==="EO"?(SR?["speak"]:["build","type"]):t==="Conjugaison"?["conj"]:t==="Exceptions"?["exc"]:t==="Expressions"?["exM","exE","exL"]:t==="Listes"||t==="Révision"?["es2fr","fr2es","listen","type","cloze","tf","dict"]:t==="Frases"?["build","listenP","type","dict","cloze",...(SR?["speak"]:[])]:t==="Mélange"?["es2fr","fr2es","listen","build","type","dict","cloze",...(l>=2?["listenP","read",...(SR?["speak"]:[])]:[]),...(l>=3?["read","build"]:[]),"conj","exM",...(l>=2?["exc","exE"]:[])]:["es2fr","fr2es","listen","cloze",...(l>=2?["type"]:[])];
-  if(R&&R.pt&&R.pt.length)a=R.pt.filter(x=>x!=="speak"||SR);
+  const t=R.t,l=lv();let a=t==="CE"?["read"]:t==="CO"?(l<2?["listen","listen","listenP","dict"]:["listen","listenP","dict"]):t==="EE"?["build","type","cloze"]:t==="EO"?["speak","rep","speakF","speakC","speakQ"]:t==="Conjugaison"?["conj"]:t==="Exceptions"?["exc"]:t==="Expressions"?["exM","exE","exL"]:t==="Listes"||t==="Révision"?["es2fr","fr2es","listen","type","cloze","tf","dict","rep","speakF"]:t==="Frases"?["build","listenP","type","dict","cloze","rep","speakC"]:t==="Mélange"?["es2fr","fr2es","listen","build","type","dict","cloze","rep","speakF",...(l>=2?["listenP","read","speakC"]:[]),...(l>=3?["read","build","speakQ"]:[]),"conj","exM",...(l>=2?["exc","exE"]:[])]:["es2fr","fr2es","listen","cloze","rep","speakF",...(l>=2?["type"]:[])];
+  if(R&&R.pt&&R.pt.length)a=R.pt.slice();
   if(l>=2&&(t==="CO"||t==="Mélange"||t==="Listes")&&!a.includes("listenT")&&(t!=="Listes"||l>=3))a=[...a,"listenT"];
-  const lt=R&&R.hist&&R.hist.length?R.hist[R.hist.length-1].t:null,l2=R&&R.hist&&R.hist.length>1?R.hist[R.hist.length-2].t:null;
-  const w=a.map(x=>Math.max(.05,(2-sk(TYK[x]))*(x===lt?.08:x===l2?.5:1)));let r=Math.random()*wsum(w);for(let i=0;i<a.length;i++){r-=w[i];if(r<=0)return a[i]}return a[0];
+  /* formats vocaux réels si la reconnaissance vocale existe ; sinon remplacement par un équivalent écrit (jamais de reconnaissance simulée) */
+  a=[...new Set(a.flatMap(x=>EOT.includes(x)?(SR?[x]:EOFB[x]):[x]))];if(!a.length)a=["build","type"];
+  const lt=R&&R.hist&&R.hist.length?R.hist[R.hist.length-1].t:null,l2=R&&R.hist&&R.hist.length>1?R.hist[R.hist.length-2].t:null,cnt=k=>((R&&R.hist)||[]).filter(h=>h.t===k).length,mix=new Set(a.map(x=>MODL[x])).size>1;
+  const w=a.map(x=>{let m=Math.max(.05,(2-sk(TYK[x]))*(x===lt?.08:x===l2?.5:1));if(mix&&MODL[x])m*=modF(MODL[x]);
+    if(x==="odd")m*=cnt("odd")?.02:.2;else if(x==="es2fr")m*=cnt("es2fr")>=2?.05:.55;else if(x==="listen")m*=cnt("listen")>=2?.05:.6;else if(x==="tf")m*=cnt("tf")>=2?.1:.7;return m});
+  let r=Math.random()*wsum(w);for(let i=0;i<a.length;i++){r-=w[i];if(r<=0)return a[i]}return a[0];
 }
 var INL=0;function start(t,cat,pid){LK2=1;FXS=0;xens();SCR="home";INL=1;R={mode:"lesson",t,n:0,ok:0,xp:0,cat:cat||null,pid:pid||null};next()}
 function next(){if(R.n>=10)return end();R.q=mkQ(pickType(),0);show()}
-function show(){stopSp();R.done=false;R.idk=0;draw();try{const e=document.querySelector('.q');if(e){e.classList.remove('qin');void e.offsetWidth;e.classList.add('qin')}}catch(x){}if(R.q.ty==="listen"||R.q.ty==="listenP"||R.q.ty==="listenT"||R.q.ty==="exL"||R.q.ty==="dict")aud("q",R.q.sa||[R.q.say]);setTimeout(()=>{const e=document.getElementById("ti");if(e&&!R.done)e.focus()},60)}
+function show(){stopSp();R.done=false;R.idk=0;draw();try{const e=document.querySelector('.q');if(e){e.classList.remove('qin');void e.offsetWidth;e.classList.add('qin')}}catch(x){}if(["listen","listenP","listenT","exL","dict","rep","speakQ"].includes(R.q.ty))aud("q",R.q.sa||[R.q.say]);setTimeout(()=>{const e=document.getElementById("ti");if(e&&!R.done)e.focus()},60)}
 var ADVB=0;
 function qOut(f){const e=document.querySelector('.q');if(!e||ADVB){f();return}ADVB=1;e.classList.remove('qin');e.classList.add('qout');setTimeout(()=>{ADVB=0;f()},170)}
 function adv(){if(ADVB)return;if(R.mode==="test"){qOut(()=>{T.i++;tnext()})}else{qOut(()=>{R.n++;next()})}}
 function draw(){
   const q=R.q,t=R.mode==="test",sp=`<button class="spk" data-a="q" onclick="aud('q',R.q.sa||[R.q.say])" aria-label="Écouter ou arrêter">🔊</button>`;let b="";
   if(q.ty==="build")b=`<h2>Traduis : <span class="w">${q.fr}</span></h2><div class="line" id="bl">${q.cur.map(i=>`<button class="chip wk" data-i="${i}" onclick="tk(${i})">${q.toks[i]}</button>`).join("")}</div><div class="chips" id="bc">${q.toks.map((x,i)=>`<span class="sl" data-i="${i}">${q.cur.includes(i)?"":`<button class="chip wk" data-i="${i}" onclick="tk(${i})">${x}</button>`}</span>`).join("")}</div><button class="btn" id="chk" onclick="chk()">Vérifier</button>${t?`<button class="btn ghost" onclick="tidk()">${tr("Je ne sais pas")}</button>`:""}`;
+  else if(q.ty==="rep")b=`<h2>${tr("Écoute et répète :")} ${q.hide?`<button class="chip" onclick="repShow()">${tr("Voir le texte")}</button>`:`<span class="w">${q.es}</span>`}${sp}</h2><p class="sub">${q.fr}</p><button class="btn" onclick="rec()">🎤 Parler</button> <button class="btn ghost" onclick="adv()">Passer</button>`;
+  else if(q.ty==="speakF")b=`<h2>${tr("Dis en {0} : {1}",tr(LFR[lg()]),`<span class="w">${q.fr}</span>`)}</h2><button class="btn" onclick="rec()">🎤 Parler</button> <button class="btn ghost" onclick="adv()">Passer</button>`;
+  else if(q.ty==="speakC")b=`<h2>${tr("Complète à voix haute :")} <span class="w" translate="no">${q.txt}</span></h2><p class="sub">${q.fr}</p><p class="sub" style="margin:0 0 8px">${tr("Dis la phrase entière.")}</p><button class="btn" onclick="rec()">🎤 Parler</button> <button class="btn ghost" onclick="adv()">Passer</button>`;
+  else if(q.ty==="speakQ")b=`<h2>${tr("Réponds à voix haute")}${sp}</h2>${q.cx?`<p class="skl">🎭 ${tr(q.cx)}</p>`:""}<div class="txt" translate="no">${esc(q.npc)}</div>${q.hint?`<p class="sub">${esc(q.hint)}</p>`:""}<button class="btn" onclick="rec()">🎤 Parler</button> <button class="btn ghost" onclick="adv()">Passer</button>`;
+  else if(q.ty==="replyQ")b=`<h2>${tr("Réponds par écrit")}${sp}</h2>${q.cx?`<p class="skl">🎭 ${tr(q.cx)}</p>`:""}<div class="txt" translate="no">${esc(q.npc)}</div>${q.hint?`<p class="sub">${esc(q.hint)}</p>`:""}<input class="in" id="ti" autocomplete="off" autocapitalize="none" spellcheck="false" onkeydown="if(event.key==='Enter')chkR()"><button class="btn" id="chk" onclick="chkR()">Vérifier</button>`;
   else if(q.ty==="speak")b=`<h2>Dis à voix haute : <span class="w">${q.es}</span>${sp}</h2><p class="sub">${q.fr}</p><button class="btn" onclick="rec()">🎤 Parler</button> <button class="btn ghost" onclick="adv()">Passer</button>`;
   else if(q.ty==="type"||q.ty==="dict")b=`<h2>${q.ty==="dict"?"Écoute, puis écris ce que tu entends"+sp:q.pr?String(q.pr).replace(/</g,"&lt;"):tr("Écris en {0} : {1}",tr(LFR[lg()]),`<span class="w">${q.fr}</span>`)}</h2><input class="in" id="ti" autocomplete="off" autocapitalize="none" spellcheck="false" onkeydown="if(event.key==='Enter')chkT()"><button class="btn" id="chk" onclick="chkT()">Vérifier</button>${t?`<button class="btn ghost" onclick="tidk()">${tr("Je ne sais pas")}</button>`:""}`;
   else{
@@ -2930,7 +3038,7 @@ function draw(){
     const xh=XH(q,sp);if(xh)h=xh;if(q.rev)h=`<span class="skl" style="display:block;margin:0 0 6px">🔁 ${tr("Révision d'une étape précédente")}</span>`+h;
     b=`<h2>${h}</h2>`+q.o.map((o,i)=>`<button class="opt"${["cloze","fr2es","listen","odd","fr2P"].includes(q.ty)?' translate="no"':""} onclick="ans(${i})">${o}</button>`).join("")+(t?`<button class="opt" onclick="ans(-1)">${tr("Je ne sais pas")}</button>`:"");
   }
-  const pct=t?T.i*100/Math.max(1,T.list.length):R.n*10,lab=t?`<p class="skl">${tr("Test de niveau · palier {0}",NL[T.l].split(" ")[0])}</p>`:"";
+  const pct=t?T.i*100/Math.max(1,T.list.length):R.n*10,lab=t?`<p class="skl">${tr("Test de niveau · palier {0}",NL[T.l].split(" ")[0])}</p>`:(R.note&&R.n===0?`<p class="skl">🎤 ${tr("Reconnaissance vocale indisponible sur cet appareil : les exercices oraux sont remplacés par des exercices écrits.")}</p>`:"");
   const nl=(q.say&&(q.ty==="listen"||q.ty==="listenP"||q.ty==="listenT"||q.ty==="exL"||q.ty==="dict"))?`<p style="margin:10px 0 0"><button class="btn ghost" id="nol" onclick="${t?"tskip()":"noListen()"}">🔇 ${tr("Je n'arrive pas à écouter")}${t?" "+tr("(question ignorée)"):""}</button></p><div id="nolt"></div>`:"";
   $.innerHTML=head()+lab+`<div class="bar" style="margin:0 0 6px"><i style="width:${pct}%"></i></div><div class="lm">${mas("content",96)}</div><div class="q">${b}${nl}<div id="fb"></div></div>`;
   if(q.ty==="build")bkInit();
@@ -2999,20 +3107,20 @@ function micErr(code,fb,rt,st){
   return `<div class="fb ko">${m}</div>${rt&&can?`<button class="btn" style="margin-top:8px" onclick="${rt}">🎤 ${tr("Réessayer")}</button> `:""}${fb?`<button class="btn ghost" style="margin-top:8px" onclick="${fb}">⌨️ ${tr("Écrire à la place")}</button>`:""}`;
 }
 /*MIC-END*/
-function recType(){const q=R.q;if(!q||R.done)return;R.q={ty:"type",fr:q.fr,es:q.es,say:q.es,key:null,sol:q.sol};draw()}
+function recType(){const q=R.q;if(!q||R.done)return;R.q=q.ty==="speakQ"?{ty:"replyQ",npc:q.npc,hint:q.hint,models:q.models,es:q.es,fr:q.fr,say:q.say,sol:q.sol,key:null}:q.ty==="rep"?{ty:"dict",fr:q.fr,es:q.es,say:q.es,key:null,sol:q.sol}:{ty:"type",fr:q.fr,es:q.es,say:q.es,key:null,sol:q.sol};draw()}
 async function rec(){
-  const fb=document.getElementById("fb"),nz=x=>x.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f¿¡?!.,]/g,"").split(/\s+/).filter(Boolean);
+  const fb=document.getElementById("fb");
   const r=new SR();r.lang=LANGS[lg()].s;r.maxAlternatives=3;
   fb.innerHTML=`<p class="sub">Je t'écoute…</p>`;
   const pre=await micPre();if(pre){fb.innerHTML=micErr(pre,"recType()","rec()");return}
-  srAttach(r,alts=>{if(R.done)return;const tg=nz(R.q.es);let best=0;for(const a of alts){const h=nz(a);best=Math.max(best,tg.filter(w=>h.includes(w)).length/tg.length)}fin(best>=.7,`${R.q.es} (${tr("{0} % reconnu",Math.round(best*100))})`,null)},
+  srAttach(r,alts=>{if(R.done)return;oralCheck(alts)},
     (code,st)=>{if(R.done)return;fb.innerHTML=micErr(code,"recType()","rec()",st)});
   try{r.start()}catch(e){fb.innerHTML=micErr((e&&e.name)||"error","recType()","rec()")}
 }
 function fin(good,sol,key,msg){
   const q=R.q,k=TYK[q.ty],s=good===true?1:good===false?0:Math.max(0,Math.min(1,+good||0)),full=s>=1,half=s>0&&s<1;R.done=true;
   if(R.mode==="test"){const w=q.wt||1,mc=!!(q.o&&q.o.length>1),z=T.k[k]=T.k[k]||{c:0,n:0};T.m+=w;z.n++;if(s>0){T.p+=w*s;z.c+=s}else if(mc&&!R.idk)T.p-=w/(q.o.length-1);return adv()}
-  S.sk=S.sk||{};S.sk[k]=.9*sk(k)+.1*s;
+  S.sk=S.sk||{};S.sk[k]=.9*sk(k)+.1*s;{const md=MODL[q.ty];if(md){S.md=S.md||{};const a=S.md[lg()]=S.md[lg()]||[];a.push(md);if(a.length>80)a.shift()}}
   if(key){if(full){S.sc[key]=Math.min(5,(S.sc[key]||0)+1);srUp(key,true)}else if(!half){S.sc[key]=Math.max(0,(S.sc[key]||0)-1);srUp(key,false)}
     S.mi=S.mi||{};const m=S.mi[key]||{n:0,t:0};if(full)m.n=Math.max(0,m.n-1);else if(!half){m.n++;m.t++;m.d=dayN()}if(m.n||m.t)S.mi[key]=m}
   if(s>0){R.ok+=s;R.xp+=Math.round(10*s)}else if(key)(R.miss=R.miss||[]).push(key);
