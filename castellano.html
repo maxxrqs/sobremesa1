@@ -1310,10 +1310,10 @@ function aud(id,texts){const was=AU.id===id;stopSp();if(was||!texts||!texts.leng
   const viaPiper=async()=>{
     if(!tvSup(l))throw (TV.bad?"bad:"+(TV.why||"?"):typeof Worker==="undefined"?"noworker":"nowasm");
     axUnlock();const first=!TV.w&&!TV.cache.size;if(first)tvNote(tr("Préparation de la voix de dépannage… (≈ 20 Mo, une seule fois)"));TV.busy=1;
-    try{for(let i=0;i<texts.length;i++){const r=await tvGen(l,ttsSan(texts[i]));if(i===0){TV.busy=0;tvNote("");tvNote(tr("Mode dépannage : voix de qualité moyenne"),3500)}if(AU.tok!==tok)return;
+    try{for(let i=0;i<texts.length;i++){const r=await tvGen(l,ttsSan(texts[i]));if(i===0){TV.busy=0;tvNote("");tvNote("",0)}if(AU.tok!==tok)return;
       const c=axCtx();if(!r||!c)throw "pcm";const bf=c.createBuffer(1,r.pcm.length,r.sr);bf.getChannelData(0).set(r.pcm);await playBuf(bf,peak(r.pcm));if(AU.tok!==tok)return}}
     finally{TV.busy=0;if(l!=="gl")tvNote("")}};
-  const steps=[["sys",()=>viaSys(l==="va")]];if(lofi()&&l!=="gl")steps.push(["piper",viaPiper]);
+  const steps=[["sys",()=>viaSys(l==="va")]];if(l!=="gl")steps.push(["piper",viaPiper]);
   const chain=async()=>{const why=[];
     for(const[n,f]of steps){if(AU.tok!==tok)return;try{await f();if(AU.tok===tok){AX.m[n]++;AX.last={l,v:n,t:texts[0],s:n};fin2()}return}catch(e){why.push(n+":"+String(e&&e.message||e).slice(0,70))}}
     if(AU.tok!==tok)return;
@@ -1324,8 +1324,8 @@ function aud(id,texts){const was=AU.id===id;stopSp();if(was||!texts||!texts.leng
 function speak(t){aud("auto"+Math.random(),[t])}
 /* voix neuronale du traducteur : Piper int8 + onnxruntime-web dans un Worker, chargée à la demande */
 const TVL=["es","va","ca","gl","eu","fr","en","it","de","pt"];
-/* Piper = voix de dépannage : seulement si la personne l'a activée, et jamais pour le galicien (aucun modèle galicien) */
-function tvSup(l){try{return lofi()&&l!=="gl"&&!TV.bad&&TVL.includes(l)&&typeof Worker!=="undefined"&&typeof WebAssembly==="object"}catch(e){return false}}
+/* Piper (voix du traducteur et de la conversation, jugée bonne à l'écoute) ; jamais pour le galicien (aucun modèle galicien) */
+function tvSup(l){try{return l!=="gl"&&!TV.bad&&TVL.includes(l)&&typeof Worker!=="undefined"&&typeof WebAssembly==="object"}catch(e){return false}}
 function tvNote(m,ms){let d=document.getElementById("tvn");if(!m){if(d)d.remove();return}
   if(!d){d=document.createElement("div");d.id="tvn";d.className="fb";d.style.cssText="position:fixed;left:16px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:60;margin:0 auto;max-width:528px;box-shadow:0 10px 30px rgba(0,0,0,.3);background:var(--card,#fff);border:1px solid var(--bd,#ccc)";document.body.appendChild(d)}
   d.textContent=m;clearTimeout(TV.note);if(ms)TV.note=setTimeout(()=>tvNote(""),ms)}
