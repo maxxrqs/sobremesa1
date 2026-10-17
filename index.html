@@ -1177,7 +1177,7 @@ function axFetchJ(u,tries){const go=async()=>{const ac=new AbortController(),to=
 /* index d'une voix (v) ; sans voix choisie : ancien jeu castillan uniquement */
 function axIdx(l,v){const k=v||l;if(!v&&l!=="es")return Promise.resolve(null);
   const t=AX.ixt[k];if(AX.idx[k])return AX.idx[k];if(t&&Date.now()-t<4000)return Promise.resolve(null);
-  return AX.idx[k]=axFetchJ(v?"v/"+v+"/"+v+".json?v=3":"a/"+l+".json?v=14",2).then(x=>{if(!v&&l==="es"){AX.okes=1;try{vnote()}catch(e){}}return x}).catch(e=>{delete AX.idx[k];AX.ixt[k]=/^http4/.test(String(e))?Date.now()+3e10:Date.now();return null})}
+  return AX.idx[k]=axFetchJ(v?"v/"+v+"/"+v+".json?v=4":"a/"+l+".json?v=14",2).then(x=>{if(!v&&l==="es"){AX.okes=1;try{vnote()}catch(e){}}return x}).catch(e=>{delete AX.idx[k];AX.ixt[k]=/^http4/.test(String(e))?Date.now()+3e10:Date.now();return null})}
 const axUrl=(v,n)=>v?"v/"+v+"/"+n+"?v=2":"a/"+n+"?v=2";
 function axPack(l,v,i,n){const k=(v||l)+"/"+n;return AX.pk[k]||(AX.pk[k]=fetch(axUrl(v,n)).then(r=>{if(!r.ok)throw 0;return r.arrayBuffer()}).then(b=>(AX.pkd[k]=b)).catch(()=>{delete AX.pk[k];return null}))}
 const axMp3=b=>{if(!b||b.byteLength<4)return false;const u=new Uint8Array(b,0,3);return(u[0]===73&&u[1]===68&&u[2]===51)||(u[0]===255&&(u[1]&224)===224)};
