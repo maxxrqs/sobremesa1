@@ -601,7 +601,7 @@ function hpJS(pw,salt){let x=salt+":"+pw;for(let i=0;i<3000;i++)x=sha256(x+salt)
 const withTimeout=(p,ms)=>Promise.race([p,new Promise(r=>setTimeout(()=>r(null),ms))]);
 var UI="fr";
 const UIL={fr:"Français",en:"English",it:"Italiano",de:"Deutsch",pt:"Português"};
-const TR={};const trLoad=l=>(l==="fr"||TR[l])?Promise.resolve():fetch("tr/"+l+".json?v=25").then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{TR[l]=j}).catch(()=>{});
+const TR={};const trLoad=l=>(l==="fr"||TR[l])?Promise.resolve():fetch("tr/"+l+".json?v=26").then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{TR[l]=j}).catch(()=>{});
 try{const s=ST.get("cast_ui"),n=(navigator.language||"fr").slice(0,2);UI=UIL[s]?s:(UIL[n]?n:"fr")}catch(e){}
 const gl=s=>{if(UI==="fr"||!TR[UI])return s;let t=TR[UI][s];if(t!=null)return t;const n=s.match(NUMRE);if(n){t=TR[UI][s.replace(NUMRE,"#")];if(t!=null){let i=0;return t.replace(/#/g,()=>i<n.length?n[i++]:"#")}}return s};
 const tr=(s,...a)=>gl(s).replace(/\{(\d)\}/g,(m,i)=>a[i]);
@@ -2971,10 +2971,20 @@ async function micPre(){
   MICWHY="";
   const md=navigator.mediaDevices;
   if(!md||!md.getUserMedia){MICWHY=window.isSecureContext===false?"insecure":"";return "NoMediaDevices"}
+  try{if(navigator.permissions&&navigator.permissions.query){const q=await navigator.permissions.query({name:"microphone"});if(q.state==="granted")return ""}}catch(e){}
   try{const st=await md.getUserMedia({audio:true});st.getTracks().forEach(t=>t.stop());return ""}
   catch(e){const n=(e&&e.name)||"error";if(/NotAllowed|Security|Permission/i.test(n))MICWHY=await micWhy();return n}
 }
-function micErr(code,fb,rt){
+function srAttach(r,onAlts,fail){
+  /* branche les événements de reconnaissance : résultat final, résultat intermédiaire gardé si la session se termine sans final, et étapes atteintes (micro démarré, son capté, voix détectée) pour un message précis */
+  const st={a:0,s:0,sp:0,i:null,done:0,er:""};r.interimResults=true;
+  r.onaudiostart=()=>{st.a=1};r.onsoundstart=()=>{st.s=1};r.onspeechstart=()=>{st.sp=1};
+  r.onresult=e=>{const rs=e.results[e.results.length-1],alts=[...rs].map(x=>x.transcript);if(rs.isFinal){if(st.done)return;st.done=1;onAlts(alts)}else st.i=alts};
+  r.onerror=e=>{if(st.done)return;st.er=(e&&e.error)||"";fail(st.er,st)};
+  r.onend=()=>{if(st.done||st.er)return;if(st.i&&st.i[0]&&st.i[0].trim()){st.done=1;onAlts(st.i);return}fail("",st)};
+  return st
+}
+function micErr(code,fb,rt,st){
   const bl=/^(NotAllowedError|SecurityError|PermissionDeniedError|not-allowed)$/.test(code),w=MICWHY;let m,can=1;
   if(bl&&w==="policy"||bl&&w==="frame"){m=tr("Le micro est bloqué dans cette fenêtre intégrée (code : {0}). Ouvre Sobremesa directement dans ton navigateur ou depuis son icône installée, ou écris ta réponse à la place.",code);can=0}
   else if(bl&&w==="insecure"){m=tr("Le micro exige une connexion sécurisée (https). Ouvre Sobremesa depuis son adresse https, ou écris ta réponse à la place.");can=0}
@@ -2984,7 +2994,7 @@ function micErr(code,fb,rt){
   else if(code==="service-not-allowed")m=tr("La reconnaissance vocale est désactivée sur ce navigateur ou cet appareil (service vocal de Google). Écris ta réponse à la place.");
   else if(code==="network")m=tr("La reconnaissance vocale a besoin d'une connexion internet. Vérifie ton réseau puis réessaie.");
   else if(code==="NoMediaDevices"||code==="language-not-supported")m=tr("Reconnaissance vocale indisponible sur ce navigateur. Écris ta réponse à la place.");
-  else if(!code||code==="no-speech")m=tr("Rien reconnu (micro bloqué ou trop bas). Réessaie ou passe.");
+  else if(!code||code==="no-speech"){m=st&&!st.a?tr("Le micro n'a pas démarré (une autre appli l'utilise peut-être). Ferme-la puis réessaie."):st&&!st.s?tr("Aucun son capté. Vérifie que le micro n'est pas coupé et parle plus près du téléphone, puis réessaie."):st&&st.s&&!st.sp?tr("Je n'ai entendu qu'un bruit, pas de voix. Parle plus fort, plus près, puis réessaie."):st?tr("Je n'ai pas compris. Parle plus lentement et distinctement, puis réessaie."):tr("Rien reconnu (micro bloqué ou trop bas). Réessaie ou passe.")}
   else m=tr("Reconnaissance vocale indisponible (code : {0}). Écris ta réponse à la place.",code);
   return `<div class="fb ko">${m}</div>${rt&&can?`<button class="btn" style="margin-top:8px" onclick="${rt}">🎤 ${tr("Réessayer")}</button> `:""}${fb?`<button class="btn ghost" style="margin-top:8px" onclick="${fb}">⌨️ ${tr("Écrire à la place")}</button>`:""}`;
 }
@@ -2992,13 +3002,11 @@ function micErr(code,fb,rt){
 function recType(){const q=R.q;if(!q||R.done)return;R.q={ty:"type",fr:q.fr,es:q.es,say:q.es,key:null,sol:q.sol};draw()}
 async function rec(){
   const fb=document.getElementById("fb"),nz=x=>x.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f¿¡?!.,]/g,"").split(/\s+/).filter(Boolean);
-  let got=0;const r=new SR();r.lang=LANGS[lg()].s;r.maxAlternatives=3;
+  const r=new SR();r.lang=LANGS[lg()].s;r.maxAlternatives=3;
   fb.innerHTML=`<p class="sub">Je t'écoute…</p>`;
   const pre=await micPre();if(pre){fb.innerHTML=micErr(pre,"recType()","rec()");return}
-  let er="";
-  r.onresult=e=>{got=1;const tg=nz(R.q.es);let best=0;for(const a of e.results[0]){const h=nz(a.transcript);best=Math.max(best,tg.filter(w=>h.includes(w)).length/tg.length)}fin(best>=.7,`${R.q.es} (${tr("{0} % reconnu",Math.round(best*100))})`,null)};
-  r.onerror=e=>{if(got||R.done)return;er=(e&&e.error)||"";fb.innerHTML=micErr(er,"recType()","rec()")};
-  r.onend=()=>{if(!got&&!R.done&&!er)fb.innerHTML=micErr("","recType()","rec()")};
+  srAttach(r,alts=>{if(R.done)return;const tg=nz(R.q.es);let best=0;for(const a of alts){const h=nz(a);best=Math.max(best,tg.filter(w=>h.includes(w)).length/tg.length)}fin(best>=.7,`${R.q.es} (${tr("{0} % reconnu",Math.round(best*100))})`,null)},
+    (code,st)=>{if(R.done)return;fb.innerHTML=micErr(code,"recType()","rec()",st)});
   try{r.start()}catch(e){fb.innerHTML=micErr((e&&e.name)||"error","recType()","rec()")}
 }
 function fin(good,sol,key,msg){
@@ -3486,14 +3494,12 @@ function imW(){
 function imO(alts,st){let b=0;[st.m,...st.va].forEach(c=>{const t=nzI(c).split(" ").filter(Boolean);if(!t.length)return;alts.forEach(a=>{const h=nzI(a).split(" ");b=Math.max(b,t.filter(w=>h.includes(w)).length/t.length)})});return b}
 function imSkip(){const st=IM.s.st[IM.i];if(IM.done)return;imDone(false,imKey(st),"…",tr("Modèle : {0}",st.m||st.g))}
 async function imRec(){
-  const fb=document.getElementById("ifb"),st=IM.s.st[IM.i];let got=0;const r=new SR();r.lang=LANGS[lg()].s;r.maxAlternatives=3;
+  const fb=document.getElementById("ifb"),st=IM.s.st[IM.i];const r=new SR();r.lang=LANGS[lg()].s;r.maxAlternatives=3;
   fb.innerHTML=`<p class="sub">Je t'écoute…</p>`;
   const pre=await micPre();if(pre){fb.innerHTML=micErr(pre,"IM.typed=true;imDraw()","imRec()");return}
-  let er="";
-  r.onresult=e=>{got=1;const a=[...e.results[0]].map(x=>x.transcript),b=imO(a,st);imDone(b>=.7,"eo",a[0],tr("Modèle : {0}",st.m)+" · "+tr("Reconnu : {0} %",Math.round(b*100)))};
-  r.onerror=e=>{if(got||IM.done)return;er=(e&&e.error)||"";fb.innerHTML=micErr(er,"IM.typed=true;imDraw()","imRec()")};
-  r.onend=()=>{if(!got&&!IM.done&&!er)fb.innerHTML=micErr("","IM.typed=true;imDraw()","imRec()")};
-  try{r.start()}catch(e){fb.innerHTML=micErr((e&&e.name)||"error","IM.typed=true;imDraw()")}
+  srAttach(r,a=>{if(IM.done)return;const b=imO(a,st);imDone(b>=.7,"eo",a[0],tr("Modèle : {0}",st.m)+" · "+tr("Reconnu : {0} %",Math.round(b*100)))},
+    (code,ss)=>{if(IM.done)return;fb.innerHTML=micErr(code,"IM.typed=true;imDraw()","imRec()",ss)});
+  try{r.start()}catch(e){fb.innerHTML=micErr((e&&e.name)||"error","IM.typed=true;imDraw()","imRec()")}
 }
 function imEnd(){
   stopSp();const s=IM.s,p=Math.round(100*IM.ok/Math.max(1,IM.n)),bonus=IM.ok===IM.n?10:0;

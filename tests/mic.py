@@ -11,8 +11,13 @@ window.__tr={started:0,stopped:0};window.__srErr=null;window.__srRes=null;window
 navigator.mediaDevices.getUserMedia=async()=>{if(window.__gum!=='ok'){const e=new Error('x');e.name=window.__gum;throw e}
  return {getTracks:()=>[{stop(){window.__tr.stopped++}}]}};
 window.__sr=1;
-class FSR{constructor(){}start(){window.__tr.started++;setTimeout(()=>{if(window.__srErr){this.onerror&&this.onerror({error:window.__srErr});this.onend&&this.onend()}
- else if(window.__srRes){this.onresult&&this.onresult({results:[[{transcript:window.__srRes}]]});this.onend&&this.onend()}else{this.onend&&this.onend()}},20)}abort(){}stop(){}}
+window.__ev={a:1,s:1,sp:1};window.__srInt=null;window.__gumN=0;
+const _g=navigator.mediaDevices.getUserMedia;navigator.mediaDevices.getUserMedia=async(...a)=>{window.__gumN++;return _g(...a)};
+class FSR{start(){window.__tr.started++;const t=this,E=window.__ev;setTimeout(()=>{E.a&&t.onaudiostart&&t.onaudiostart();E.s&&t.onsoundstart&&t.onsoundstart();E.sp&&t.onspeechstart&&t.onspeechstart();
+ if(window.__srErr){t.onerror&&t.onerror({error:window.__srErr})}
+ else if(window.__srInt){t.onresult&&t.onresult({results:[Object.assign([{transcript:window.__srInt}],{isFinal:false})]})}
+ else if(window.__srRes){t.onresult&&t.onresult({results:[Object.assign([{transcript:window.__srRes}],{isFinal:true})]})}
+ t.onend&&t.onend()},20)}abort(){}stop(){}}
 window.SpeechRecognition=FSR;window.webkitSpeechRecognition=FSR;
 """
 def setup(b,init=INIT,**kw):
@@ -42,7 +47,7 @@ with sync_playwright() as p:
     pg.evaluate("window.__gum='ok';window.__srRes='dónde está la playa'");pg.click("button:has-text('Réessayer')");pg.wait_for_timeout(500)
     ck("Réessayer après autorisation → fonctionne",pg.evaluate("R.ok")>0,fbt(pg))
     # 5 politique de permissions (iframe) : pas de Réessayer inutile
-    ask(pg);pg.evaluate("window.__gum='NotAllowedError';navigator.permissions.query=async()=>({state:'granted'});Object.defineProperty(document,'permissionsPolicy',{value:{allowsFeature:()=>false},configurable:true})")
+    ask(pg);pg.evaluate("window.__gum='NotAllowedError';navigator.permissions.query=async()=>({state:'prompt'});Object.defineProperty(document,'permissionsPolicy',{value:{allowsFeature:()=>false},configurable:true})")
     pg.click("button[onclick='rec()']");pg.wait_for_timeout(400);t=fbt(pg)
     ck("cadre sans droit micro : message dédié, sans Réessayer",("fenêtre intégrée" in t) and "Réessayer" not in t and "Écrire à la place" in t,t)
     # 6 Écrire à la place fonctionne
@@ -53,8 +58,20 @@ with sync_playwright() as p:
         pg.evaluate("Object.defineProperty(document,'permissionsPolicy',{value:undefined,configurable:true});window.__gum='ok';navigator.permissions.query=async()=>({state:'prompt'})")
         ask(pg);pg.evaluate(f"window.__srRes=null;window.__srErr='{code}'");pg.click("button[onclick='rec()']");pg.wait_for_timeout(500)
         ck(f"erreur SR {code}",frag in fbt(pg),fbt(pg))
+    # 7b événements : micro non démarré / aucun son / bruit seul / non compris / résultat intermédiaire seul accepté
+    pg.evaluate("Object.defineProperty(document,'permissionsPolicy',{value:undefined,configurable:true});window.__gum='ok';window.__srErr=null;navigator.permissions.query=async()=>({state:'prompt'})")
+    for ev,res,frag in [({'a':0,'s':0,'sp':0},None,"n'a pas démarré"),({'a':1,'s':0,'sp':0},None,"Aucun son capté"),({'a':1,'s':1,'sp':0},None,"qu'un bruit"),({'a':1,'s':1,'sp':1},None,"pas compris")]:
+        ask(pg);pg.evaluate(f"window.__ev={ev!r}".replace("'a'","a").replace("'s'","s").replace("'sp'","sp"));pg.evaluate("window.__srRes=null;window.__srInt=null")
+        pg.click("button[onclick='rec()']");pg.wait_for_timeout(500)
+        ck(f"fin sans résultat ({frag})",frag in fbt(pg),fbt(pg))
+    ask(pg);pg.evaluate("window.__ev={a:1,s:1,sp:1};window.__srRes=null;window.__srInt='dónde está la playa'");pg.click("button[onclick='rec()']");pg.wait_for_timeout(500)
+    ck("résultat intermédiaire seul (pas de final) : accepté à la fin de session",pg.evaluate("R.ok")>0,fbt(pg))
+    # permission déjà accordée : pas de getUserMedia (évite de bloquer le micro avant la reconnaissance)
+    ask(pg);pg.evaluate("window.__srInt=null;window.__srRes='dónde está la playa';navigator.permissions.query=async()=>({state:'granted'});window.__gumN=0");pg.click("button[onclick='rec()']");pg.wait_for_timeout(500)
+    ck("permission accordée : getUserMedia non appelé, reconnaissance lancée",pg.evaluate("__gumN")==0 and pg.evaluate("R.ok")>0,pg.evaluate("__gumN"))
+    pg.evaluate("window.__srRes=null")
     # 8 NotFoundError (aucun micro)
-    ask(pg);pg.evaluate("window.__srErr=null;window.__gum='NotFoundError'");pg.click("button[onclick='rec()']");pg.wait_for_timeout(400)
+    ask(pg);pg.evaluate("navigator.permissions.query=async()=>({state:'prompt'});window.__srErr=null;window.__gum='NotFoundError'");pg.click("button[onclick='rec()']");pg.wait_for_timeout(400)
     ck("aucun micro détecté",("Aucun micro" in fbt(pg)),fbt(pg))
     ck("aucune erreur JavaScript",not er,er);c.close()
     # 9 API absentes : pas de bouton oral (SR absente) / mediaDevices absent
