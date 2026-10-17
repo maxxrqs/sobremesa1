@@ -3771,7 +3771,7 @@ function fxOk(good){try{if(!MS().mute&&navigator.vibrate)navigator.vibrate(good?
 function mascMsg(){const d=S.last?Math.floor((Date.now()-new Date(S.last).getTime())/864e5):0,h=new Date().getHours();return d>=3?tr("Ça fait un moment… on s'y remet ?"):(S.last===dayK()&&curStreak()>1?tr("{0} jours d'affilée, continue !",curStreak()):S.last!==dayK()&&curStreak()>0?tr("Ta série de {0} jours t'attend : fais un exercice pour la garder !",curStreak()):h<12?tr("¡Buenos días ! Prêt pour une petite série ?"):tr("¡Hola ! Prêt pour une petite série ?"))}
 function mascHome(){const d=S.last?Math.floor((Date.now()-new Date(S.last).getTime())/864e5):0;return `<div class="mh">${mas(d>=3?"dodo":"content",84)}<div class="bubble">${mascMsg()}</div></div>`}
 function setSty(k,v){S[k]=v;save();document.documentElement.dataset.mas=S.mas||"gecko";FX.play("tap");const o=document.getElementById("mn");if(o)o.remove();document.querySelectorAll(".mas").length&&(SCR==="home"&&!INL?home():0);menu()}
-document.addEventListener("click",e=>{try{if(e.target.closest(".chip,.tab,.theme,.btn,.seg button"))FX.play("tap")}catch(x){}},true);
+document.addEventListener("click",e=>{try{const b=e.target.closest("button,.btn,.chip,.tab,.theme,[role=button],a[onclick],summary");if(b&&!b.disabled&&!b.closest(".opt,.spk,[data-nosnd]"))FX.play("tap")}catch(x){}},true);
 function mpick(){
   const o=document.getElementById("mp");if(o){o.remove();return}
   S.masSeen=1;save();document.querySelectorAll(".mhint").forEach(x=>x.remove());document.querySelectorAll(".mpick").forEach(x=>x.classList.remove("pulse"));FX.play("tap");
