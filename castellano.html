@@ -688,6 +688,35 @@ html body .bnav button.on{background:var(--az);color:#fff}
 html body .bnav button.on *{color:#fff}
 body{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
 </style>
+<style id="sm-sthome">
+/* ===== Accueil « Stickers » (maquette 4) ===== */
+html[data-scr="home"] header .mpick{display:none}
+html body .stk{display:inline-flex;align-items:center;gap:4px;height:38px;padding:0 10px;border-radius:12px;border:2.5px solid var(--sk);background:var(--card);box-shadow:var(--hs2);font:800 16px "Baloo 2",system-ui,sans-serif;color:var(--sk);cursor:pointer;flex:none}
+html body .stk:active{transform:translate(2px,2px);box-shadow:none}
+html[data-scr="home"] header h1,html[data-scr="home"] header h1 span{font-size:23px!important;text-transform:lowercase}
+html[data-scr="home"] .stats .sel{max-width:118px}
+.sthero{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:4px;margin:30px 0 18px;padding:18px 18px 20px;border-radius:24px;border:2.5px solid var(--sk);background:var(--az);color:#fff;box-shadow:5px 5px 0 var(--sk)}
+.sthero .stbadge{padding:1px 10px;border-radius:8px;border:2px solid var(--sk);background:var(--sol,#EDB24A);color:var(--sk);font:800 13px "Baloo 2",system-ui,sans-serif;transform:rotate(-3deg)}
+.sthero>b{max-width:58%;margin-top:4px;font:800 30px/1.05 "Baloo 2",system-ui,sans-serif;color:#fff;overflow-wrap:anywhere}
+.sthero>small{max-width:58%;font-size:15px;font-weight:600;color:#fff;opacity:.95}
+.sthero .stgo{margin-top:10px;height:48px;padding:0 22px;border-radius:16px;border:2.5px solid var(--sk);background:var(--card);color:var(--sk);box-shadow:var(--hs2);font:800 17px "Baloo 2",system-ui,sans-serif;cursor:pointer}
+.sthero .stgo:active{transform:translate(2px,2px);box-shadow:none}
+.sthero .stmas{position:absolute;right:-10px;top:-30px;width:150px;height:150px;padding:0;border:0;background:none;cursor:pointer;transform:rotate(8deg)}
+.sthero .stmas .mas{width:150px!important}
+html body .stlvl{display:flex;align-items:center;gap:12px;width:100%;margin:0 0 20px;padding:12px 16px;border-radius:18px;border:2.5px solid var(--sk);background:var(--card);box-shadow:var(--hs);font:inherit;color:var(--sk);cursor:pointer;text-align:left}
+html body .stlvl:active{transform:translate(3px,3px);box-shadow:var(--hs1)}
+html body .stlvl b{font:800 18px "Baloo 2",system-ui,sans-serif;white-space:nowrap}
+html body .stlvl .bar{flex:1;margin:0;height:14px}
+html body .stlvl>span:last-child{font-weight:700;font-size:14px;white-space:nowrap}
+/* unités : plus de grande carte, juste un badge */
+html[data-scr="home"] details.unit{border:0!important;box-shadow:none!important;background:none!important;padding:0;margin:0 0 6px}
+html[data-scr="home"] details.unit>summary{display:inline-block;padding:2px 12px!important;margin:4px 0 8px;border-radius:10px;border:2.5px solid var(--sk)!important;background:var(--card)!important;box-shadow:var(--hs2)!important;font:800 15px "Baloo 2",system-ui,sans-serif!important}
+html[data-scr="home"] details.unit[open]>summary{background:var(--sol,#EDB24A)!important}
+html[data-scr="home"] details.unit>.sub{margin:4px 2px 10px!important}
+html[data-scr="home"] .pn>span{display:none}
+html[data-scr="home"] .path{gap:14px!important}
+html[data-scr="home"] .pn{margin-left:var(--o,0)}
+</style>
 <main id="app"></main>
 <script>
 const ST=(()=>{const m={};let ok=false;try{localStorage.setItem("_t","1");localStorage.removeItem("_t");ok=true}catch(e){}return{ok,get:k=>{if(ok){try{return localStorage.getItem(k)}catch(e){}}return k in m?m[k]:null},set:(k,v)=>{m[k]=String(v);if(ok){try{localStorage.setItem(k,v)}catch(e){}}},del:k=>{delete m[k];if(ok){try{localStorage.removeItem(k)}catch(e){}}}}})();
@@ -2794,11 +2823,11 @@ function bkBtn(){let f="";
   else if(LK2)f="home()";
   else if(["lists","conj","exc","expr","trad","verb"].includes(SCR))f="tools()";
   return f?`<button class="bk" onclick="${f}" aria-label="Retour">${BKI}</button>`:""}
-function head(){document.documentElement.dataset.mas=S.mas||"gecko";document.documentElement.dataset.scr=(CV?"chat":SCR);return `<header><div class="hl">${bkBtn()}<button class="mpick${S.masSeen?"":" pulse"}" onclick="mpick()" aria-label="${tr("Choisir mon compagnon")}">${mas("content",28)}<i class="mcar">▾</i></button><h1 onclick="setMode('cl')"><span>Sobremesa</span></h1></div><div class="stats"><select class="sel" onchange="setLang(this.value)" aria-label="Langue">${LK.map(k=>`<option value="${k}"${k===lg()?" selected":""}>${LANGS[k].n}</option>`).join("")}</select><button class="chip ico" onclick="menu()" aria-label="Menu">${S.av||"🙂"}</button></div></header>`}
+function head(){document.documentElement.dataset.mas=S.mas||"gecko";document.documentElement.dataset.scr=(CV?"chat":SCR);return `<header><div class="hl">${bkBtn()}<button class="mpick${S.masSeen?"":" pulse"}" onclick="mpick()" aria-label="${tr("Choisir mon compagnon")}">${mas("content",28)}<i class="mcar">▾</i></button><h1 onclick="setMode('cl')"><span>Sobremesa</span></h1></div><div class="stats">${SCR==="home"&&!CV?`<button class="stk" onclick="prog()" aria-label="${tr("Série")}">🔥 ${curStreak()}</button>`:""}<select class="sel" onchange="setLang(this.value)" aria-label="Langue">${LK.map(k=>`<option value="${k}"${k===lg()?" selected":""}>${LANGS[k].n}</option>`).join("")}</select><button class="chip ico" onclick="menu()" aria-label="Menu">${S.av||"🙂"}</button></div></header>`}
 function home(){
   if(S.mode==="sc")S.mode="im";LK2=0;INL=0;stopSp();SCR="home";axWarm();
   const talkM=S.mode==="im"||S.mode==="cv"||S.mode==="sc";
-  $.innerHTML=head()+tabs("home")+notes()+(talkM?`<h2 class="ptitle">${tr("Discuter")}</h2>${seg()}${S.mode==="cv"?cvHome():immList()}`:`${hero()}${srDue().length?`<button class="theme rev" onclick="start('Révision')"><b>Réviser</b><span>${tr("À revoir aujourd'hui : {0}",srDue().length)}</span></button>`:""}${pathHtml()}`);
+  $.innerHTML=head()+tabs("home")+notes()+(talkM?`<h2 class="ptitle">${tr("Discuter")}</h2>${seg()}${S.mode==="cv"?cvHome():immList()}`:`${pathItems().length?"":hero()}${srDue().length?`<button class="theme rev" onclick="start('Révision')"><b>Réviser</b><span>${tr("À revoir aujourd'hui : {0}",srDue().length)}</span></button>`:""}${pathHtml()}`);
 }
 /* ---- scénarios de la vie courante ---- */
 const SCN_T=[["☕","Au café",0],["🏦","À la mairie",4],["💊","Chez le médecin",8],["🏠","Chercher un logement",12]];
@@ -2984,17 +3013,19 @@ function lvHdr(pl){
 }
 function pathHtml(){
   const it=pathItems();if(!it.length)return "";
-  const cur=it.findIndex(x=>!x.done),offs=[0,44,76,44,0,-0];
+  const cur=it.findIndex(x=>!x.done),offs=[16,112,208,112,16,112];
   const U=["var(--p0)","var(--p1)","var(--p2)","var(--p3)","var(--p4)","var(--p5)"],node=(x,i)=>{const st=x.done?"done":x.lock?"lock":i===cur?"cur":"open";
-    return `<button class="pn ${st}" style="--o:${offs[i%6]}px;--u:${U[i%6]}" ${x.lock?`onclick="lkErr(this)" aria-disabled="true"`:`onclick="${x.go}"`}><i>${x.done?"✓":x.lock?"🔒":x.ic}</i><span><b>${x.lab}</b>${x.sub?`<small>${x.sub}</small>`:""}<em>${x.done?(x.best?sf(x.best)+"/10":"✅"):x.lock?"":i===cur?(x.last!=null?`<span style="color:var(--ko)">${tr("Dernier essai : {0}/10",sf(x.last))}</span>`:tr("À toi de jouer")):""}</em></span></button>`};
+    return `<button class="pn ${st}" aria-label="${String(x.lab).replace(/"/g,"&quot;")}" style="--o:${offs[i%6]}px;--u:${U[i%6]}" ${x.lock?`onclick="lkErr(this)" aria-disabled="true"`:`onclick="${x.go}"`}><i>${x.done?"✓":x.lock?"🔒":x.ic}</i><span><b>${x.lab}</b>${x.sub?`<small>${x.sub}</small>`:""}<em>${x.done?(x.best?sf(x.best)+"/10":"✅"):x.lock?"":i===cur?(x.last!=null?`<span style="color:var(--ko)">${tr("Dernier essai : {0}/10",sf(x.last))}</span>`:tr("À toi de jouer")):""}</em></span></button>`};
   const dn=it.filter(x=>x.done).length,pl=pathPlan();
-  const head=cur>=0?`<button class="theme mix go" style="width:100%;--u:${U[cur%6]}" onclick="${it[cur].go}"><b>${it[cur].lab}</b>${it[cur].sub||tr("Étape suivante")}</button>`:`<div class="empty">${mas("bravo",110)}<b>${tr("Parcours terminé ! Continue avec les révisions ou le mélange.")}</b></div>`;
+  const cuu=cur>=0?pl.units.find(u=>u.n===it[cur].u):null,cub=cuu?(()=>{let b=0;for(const u of pl.units){if(u===cuu)break;b+=u.steps.length}return b})():0,cud=cuu?it.slice(cub,cub+cuu.steps.length).filter(x=>x.done).length:0;
+  const head=cur>=0?`<div class="sthero">${cuu?`<span class="stbadge">${tr("Unité {0}",cuu.n)} · ${cud}/${cuu.steps.length}</span>`:""}<b>${it[cur].lab}</b><small>${it[cur].sub||(cuu?cuu.title:tr("Étape suivante"))}</small><button class="stgo" onclick="${it[cur].go}">${tr("C'est parti !")}</button><button class="stmas" onclick="mpick()" aria-label="${tr("Choisir mon compagnon")}">${mas("bravo",150)}</button></div>`:`<div class="empty">${mas("bravo",110)}<b>${tr("Parcours terminé ! Continue avec les révisions ou le mélange.")}</b></div>`;
   const cu=cur>=0?it[cur].u:pl.units.length;let ix=0;
   const us=pl.units.map(u=>{const n=u.steps.length,base=ix;ix+=n;const d=it.slice(base,base+n).filter(x=>x.done).length,open=u.n===cu;
     return `<details class="unit"${open?" open":""}><summary style="cursor:pointer;font-weight:700;padding:10px 0;list-style:none">${d===n?"✅":open?"▶":"🔒"} ${tr("Unité {0}",u.n)} · ${u.title} <small style="font-weight:400;color:var(--mut)">${d}/${n}</small></summary>${u.obj?`<p class="sub" style="margin:0 0 6px">${u.obj}</p>`:""}<div class="path" style="margin:4px 0 14px">${it.slice(base,base+n).map((x,k)=>node(x,base+k)).join("")}</div></details>`}).join("");
-  return lvBanner()+lvHdr(pl)+head+`<h3>${tr("Ton parcours")} · ${dn}/${it.length}</h3>${us}`;
+  return lvBanner()+head+hero()+lvHdr(pl)+`<h3>${tr("Ton parcours")} · ${dn}/${it.length}</h3>${us}`;
 }
-function hero(){const i=xpInfo(),d=S.last?Math.floor((Date.now()-new Date(S.last).getTime())/864e5):0;return `<button class="hero2" onclick="prog()"><span class="hm">${mas(d>=3?"dodo":"content",52)}</span><span class="hi"><span class="lt"><b>${tr("Niv. {0}",i.L)} · ${titleOf(i.L)}</b><em${S.last===dayK()?"":' class="dim"'}>🔥 ${curStreak()} · 🪙 ${S.co||0}</em></span><div class="bar"><i style="width:${i.pc}%"></i></div><small>${i.L>=50?i.x+" XP":(i.x-i.lo)+" / "+(i.hi-i.lo)+" XP"} · 🎯 ${dxp()>=goal()?tr("Objectif atteint ✅"):tr("{0} / {1} XP aujourd'hui",dxp(),goal())}</small></span></button>`}
+function hero(){const i=xpInfo();return `<button class="stlvl" onclick="prog()"><b>${tr("Niv. {0}",i.L)}</b><span class="bar"><i style="width:${i.pc}%"></i></span><span>${i.L>=50?i.x:(i.x-i.lo)+"/"+(i.hi-i.lo)}</span></button>`}
+function heroOld(){const i=xpInfo(),d=S.last?Math.floor((Date.now()-new Date(S.last).getTime())/864e5):0;return `<button class="hero2" onclick="prog()"><span class="hm">${mas(d>=3?"dodo":"content",52)}</span><span class="hi"><span class="lt"><b>${tr("Niv. {0}",i.L)} · ${titleOf(i.L)}</b><em${S.last===dayK()?"":' class="dim"'}>🔥 ${curStreak()} · 🪙 ${S.co||0}</em></span><div class="bar"><i style="width:${i.pc}%"></i></div><small>${i.L>=50?i.x+" XP":(i.x-i.lo)+" / "+(i.hi-i.lo)+" XP"} · 🎯 ${dxp()>=goal()?tr("Objectif atteint ✅"):tr("{0} / {1} XP aujourd'hui",dxp(),goal())}</small></span></button>`}
 function welcome(){welcomeOb()}
 let R,T;
 const uq=(a,i)=>{const s=new Set();return a.filter(x=>{const k=String(x[i]).trim().toLowerCase();if(s.has(k))return false;s.add(k);return true})};
