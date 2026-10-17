@@ -7,7 +7,7 @@ VO=json.load(open(ROOT+"/v/voices.json"));ALLV=[v["id"] for l in VO for v in VO[
 voices=sys.argv[2:] or ALLV;bad_total=0
 for v in voices:
     ip,d=(ROOT+"/a/es.json",ROOT+"/a") if v=="es" else (ROOT+f"/v/{v}/{v}.json",ROOT+f"/v/{v}")
-    ix=json.load(open(ip));gp=[i for i,n in enumerate(ix["p"]) if "_g" in n]
+    ix=json.load(open(ip));import re;gp=[i for i,n in enumerate(ix["p"]) if re.search(r"_g\d+\.mp3$",n)]
     if not gp:print(v,"aucun clip ajouté");continue
     packs={i:open(f"{d}/{ix['p'][i]}","rb").read() for i in gp};R=[];bad=[]
     for k,(pi,o,l) in ix["k"].items():
