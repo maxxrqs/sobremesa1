@@ -589,7 +589,7 @@ function hpJS(pw,salt){let x=salt+":"+pw;for(let i=0;i<3000;i++)x=sha256(x+salt)
 const withTimeout=(p,ms)=>Promise.race([p,new Promise(r=>setTimeout(()=>r(null),ms))]);
 var UI="fr";
 const UIL={fr:"Français",en:"English",it:"Italiano",de:"Deutsch",pt:"Português"};
-const TR={};const trLoad=l=>(l==="fr"||TR[l])?Promise.resolve():fetch("tr/"+l+".json?v=23").then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{TR[l]=j}).catch(()=>{});
+const TR={};const trLoad=l=>(l==="fr"||TR[l])?Promise.resolve():fetch("tr/"+l+".json?v=24").then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{TR[l]=j}).catch(()=>{});
 try{const s=ST.get("cast_ui"),n=(navigator.language||"fr").slice(0,2);UI=UIL[s]?s:(UIL[n]?n:"fr")}catch(e){}
 const gl=s=>{if(UI==="fr"||!TR[UI])return s;let t=TR[UI][s];if(t!=null)return t;const n=s.match(NUMRE);if(n){t=TR[UI][s.replace(NUMRE,"#")];if(t!=null){let i=0;return t.replace(/#/g,()=>i<n.length?n[i++]:"#")}}return s};
 const tr=(s,...a)=>gl(s).replace(/\{(\d)\}/g,(m,i)=>a[i]);
@@ -2661,34 +2661,60 @@ const pthK=id=>lg()+":"+lv()+":"+id;
 const PIC={Saludos:"👋",Comida:"🍽️",Ciudad:"🏙️",Trabajo:"💼",Verbos:"🏃","Números":"🔢",CO:"🎧",CE:"📖",EE:"✍️",EO:"🎤",Conjugaison:"🔄",Expressions:"💬",Exceptions:"⚡",Frases:"🗣️",I:"🎭","Mélange":"🏆"};
 let PLC=null;
 const LIC={"Verbes":"🏃","Noms":"📦","Adjectifs":"🎨","Adverbes":"⚡","Expressions":"💬"};
+/*PATH-BEGIN : cursus CECRL — unités à objectifs, bilans cumulatifs, unité de consolidation, évaluation finale*/
+const CURR={"1":{"g":"Communiquer de façon très simple sur toi et sur tes besoins immédiats.","c":["Saluer, te présenter et demander poliment.","Comprendre et dire des phrases très courtes au présent.","Commander, te repérer et compter pour donner un prix."],"o":[0,4,5,1,2,3],"u":{"Saludos":["Saluer et se présenter","Tu sauras saluer, te présenter, remercier et t'excuser poliment."],"Verbos":["Les verbes de base","Tu sauras dire qui tu es, ce que tu as et ce que tu fais, au présent."],"Números":["Compter et donner un prix","Tu sauras compter, donner un prix, un âge et une quantité simple."],"Comida":["Manger et boire","Tu sauras commander un repas simple et dire ce que tu aimes."],"Ciudad":["Se repérer en ville","Tu sauras demander où se trouve un lieu et comprendre une indication simple."],"Trabajo":["Parler de son travail","Tu sauras dire où tu travailles, avec qui, et parler d'une réunion simple."]}},"2":{"g":"Gérer les situations du quotidien et raconter brièvement au passé et au futur proche.","c":["Échanger sur des sujets familiers : courses, transports, logement.","Parler du passé récent et de projets simples.","Comprendre des textes courts et des annonces simples."],"o":null,"u":{"Saludos":["Prendre contact","Tu sauras accueillir, prendre des nouvelles et prendre congé naturellement."],"Comida":["Au restaurant et au marché","Tu sauras commander, demander l'addition et faire tes courses."],"Ciudad":["Logement et déplacements","Tu sauras chercher un logement, demander ton chemin et prendre les transports."],"Trabajo":["Vie professionnelle courante","Tu sauras parler de tes horaires, de tes tâches et de ton équipe."],"Verbos":["Routine et passé simple","Tu sauras raconter ta journée et un événement passé en phrases simples."],"Números":["Dates, heures et quantités","Tu sauras donner une date, une heure, une quantité et comparer des prix."]}},"3":{"g":"Te débrouiller dans la plupart des situations et exprimer expériences, projets et opinions.","c":["Raconter des expériences et des événements avec plusieurs temps.","Donner un avis, exprimer un souhait et une hypothèse simple.","Comprendre l'essentiel d'un texte ou d'un échange sur un sujet connu."],"o":null,"u":{"Saludos":["Relations et politesse","Tu sauras entretenir une relation et nuancer ta politesse selon la situation."],"Comida":["Cuisine, régime et alimentation","Tu sauras parler de cuisine, de régime et d'allergies."],"Ciudad":["Logement et démarches","Tu sauras gérer un contrat de location, une panne et les démarches courantes."],"Trabajo":["Le monde du travail","Tu sauras parler de candidature, de contrat, de stage et de télétravail."],"Verbos":["Sentiments et décisions","Tu sauras exprimer un regret, une décision et un point de vue."],"Números":["Grands nombres et proportions","Tu sauras lire de grands nombres, des fractions et des proportions."]}},"4":{"g":"Argumenter, nuancer et comprendre des textes complexes sur des sujets variés.","c":["Défendre un point de vue et répondre à des objections.","Utiliser le subjonctif et des connecteurs variés.","Suivre un discours continu et un article de presse."],"o":null,"u":{"Saludos":["Débattre et nuancer","Tu sauras donner ton opinion, nuancer et reconnaître un désaccord."],"Comida":["Alimentation et consommation","Tu sauras discuter de nutrition, de produits de saison et de gaspillage."],"Ciudad":["Ville et société","Tu sauras parler d'urbanisme, de mobilité et de logement social."],"Trabajo":["Entreprise et emploi","Tu sauras parler de droit du travail, de licenciement et de rémunération."],"Verbos":["Verbes de l'argumentation","Tu sauras présenter, remettre en cause et nuancer une idée."],"Números":["Données et tendances","Tu sauras commenter des chiffres, des pourcentages et une évolution."]}},"5":{"g":"T'exprimer avec aisance et précision, en maîtrisant registres, implicite et expressions idiomatiques.","c":["Adapter ton registre à la situation, soutenu comme familier.","Comprendre l'implicite, l'ironie et les expressions figées.","Argumenter et rédiger avec précision."],"o":null,"u":{"Saludos":["Formules et diplomatie","Tu sauras manier les formules soutenues et les subtilités de la politesse."],"Comida":["Gastronomie et terroir","Tu sauras parler de terroir, d'appellations et de sécurité alimentaire."],"Ciudad":["Politiques urbaines","Tu sauras débattre d'aménagement, de gentrification et de spéculation."],"Trabajo":["Économie et droit","Tu sauras traiter de rentabilité, de clauses et de restructuration."],"Verbos":["L'argumentation fine","Tu sauras démentir, atténuer, dissuader et nuancer avec précision."],"Números":["Statistiques et analyse","Tu sauras lire et commenter des données avec précision."]}}},CL={"bil":"Bilan d'unité","r1":"Révision cumulative : vocabulaire","r2":"Révision cumulative : grammaire et expressions","bsk":"Bilan : {0}","mix":"Mélange du niveau","fin":"Évaluation finale","cons":"Bilan du niveau","consobj":"Tu consolides tout le niveau avec des révisions cumulatives et un bilan de chaque compétence, puis tu passes l'évaluation finale.","obj":"Objectifs du niveau","how":"Pour passer au niveau suivant : valide toutes les unités, puis réussis l'évaluation finale (60 % minimum).","bt":"Évaluation finale du niveau {0}","bb":"Toutes les unités sont validées. Réussis l'évaluation finale (60 % minimum) pour débloquer le niveau {0}.","bgo":"Passer l'évaluation finale","ok1":"Niveau validé","ok2":"Tu passes au niveau {0}. Les mots que tu viens de valider reviendront en révision, pas en découverte.","ok3":"Commencer le nouveau niveau"};
+/* rattachement des contenus (catégories des données) aux unités thématiques : expressions, grammaire, listes */
+const PUX=c=>/^(Salutations|Politesse|Se présenter)$/.test(c)?"Saludos":/^Restaurant/.test(c)?"Comida":/^(Logement|Transports|Fêtes)/.test(c)?"Ciudad":/^(Travail|Droit|Registre)/.test(c)?"Trabajo":/^Courses/.test(c)?"Números":/^(Au quotidien|Santé|Opinions|Connecteurs|Collocations)/.test(c)?"Verbos":null;
+const PUG=c=>/^(Orthographe|Genre|Article|Déclinaison|Apostrophe|Dialectes)/.test(c)?"Saludos":/^Nombres/.test(c)?"Números":/^(Verbes|Temps|Modes|Aspect|Ergativité|Infinitif|Alternances|Subjonctif)/.test(c)?"Verbos":/^(Pronoms|Prépositions)/.test(c)?"Ciudad":/^(Syntaxe|Ordre|Subordonnées|Particules|Connecteurs|Registre|Nuances)/.test(c)?"Trabajo":/^Faux amis/.test(c)?"Comida":null;
+const PUL={Saludos:["Mots-outils"],Comida:["Noms utiles"],Ciudad:["Adverbes","Noms utiles"],Trabajo:["Verbes"],Verbos:["Verbes","Adjectifs"],"Números":["Nombres et dates","Adjectifs"]};
 function pathPlanMain(){
   xens();const L=lv(),l=lg(),ck=l+L+"|"+LP.length;
   if(PLC&&PLC.k===ck&&PLC.d===ALL)return PLC;
+  const cu=CURR[L]||CURR[1],pd=S.pth||{},dn=id=>(pd[pthK(id)]||0)>=6;
   const th=Object.keys(D),chunk=(a,n)=>{if(!a.length)return[];const k=Math.max(1,Math.round(a.length/n)),sz=Math.ceil(a.length/k),o=[];for(let i=0;i<a.length;i+=sz)o.push(a.slice(i,i+sz));return o};
-  const WT=["es2fr","fr2es","listen","tf","odd"],WT2=L>=2?[...WT,"type"]:WT,RT=["es2fr","fr2es","listen","type","dict","tf","odd"];
-  const TH=th.map((t,ti)=>{const all=D[t].filter(w=>(w[2]||1)<=L),nw=all.filter(w=>(w[2]||1)===L),base=nw.length>=4?nw:all,pts=chunk(base,5),go=th.filter(x=>x!==t).flatMap(x=>D[x].filter(w=>(w[2]||1)<=L));
-    if(base.length<4)return [];
+  const WT=["es2fr","fr2es","listen","tf","odd"],WT2=L>=2?[...WT,"type"]:WT,RT=["es2fr","fr2es","listen","type","dict","tf","odd"],BT=["es2fr","fr2es","listen","type","cloze","listenP","dict","tf"];
+  const BS=[],TH=th.map((t,ti)=>{const all=D[t].filter(w=>(w[2]||1)<=L),nw=all.filter(w=>(w[2]||1)===L),base=nw.length>=4?nw:all,pts=chunk(base,5),go=th.filter(x=>x!==t).flatMap(x=>D[x].filter(w=>(w[2]||1)<=L));
+    if(base.length<4)return [];BS[ti]=base;
     const st=pts.map((c,pi)=>({id:"W"+ti+"."+pi,ic:PIC[t]||"📚",lab:pts.length>1?t+" "+(pi+1):t,pt:WT2,ws:c,dp:all,gp:all,go}));
     st.push({id:"V"+ti,ic:"🔁",lab:tr("Révision")+" · "+t,pt:RT,ws:base,dp:all,gp:all,go,rev:1});return st});
   const LC={},LS=[],cats=[...new Set(LP.filter(x=>x[2]===L).map(x=>x.c))];
   cats.forEach((c,ci)=>{const items=LP.filter(x=>x[2]===L&&x.c===c),all=LP.filter(x=>x.c===c&&x[2]<=L),go=LP.filter(x=>x.c!==c&&x[2]<=L).concat(ALL);
     chunk(items,8).forEach((p,pi)=>{if(p.length<4)return;const sub=p[0].s||c;LC[sub]=(LC[sub]||0)+1;const ls=sub+(LC[sub]>1?" "+LC[sub]:"");
-      LS.push({id:"L"+ci+"."+pi,ic:LIC[c]||"📋",lab:gl(ls),sub:gl(c),pt:WT2,ws:p,dp:all.length>3?all:ALL,gp:all.length>=4?all:ALL,go})})});
-  const XS=[];[...new Set(XP.filter(x=>x.l===L).map(x=>x.c))].forEach((c,ci)=>{chunk(XP.filter(x=>x.l===L&&x.c===c),10).forEach((p,pi)=>{if(p.length<4)return;XS.push({id:"X"+ci+"."+pi,ic:"💬",lab:G(c)+(pi?" "+(pi+1):""),sub:tr("Expressions"),t:"Expressions",pt:["exM","exE","exL"],xs:new Set(p.map(x=>x.e))})})});
-  const GS=[];[...new Set(EQ.filter(x=>x.l===L).map(x=>x.c))].forEach((c,ci)=>{chunk(EQ.filter(x=>x.l===L&&x.c===c),10).forEach((p,pi)=>{if(p.length<4)return;GS.push({id:"G"+ci+"."+pi,ic:"📐",lab:G(c)+(pi?" "+(pi+1):""),sub:tr("Grammaire"),t:"Exceptions",pt:["exc"],qs:new Set(p.map(x=>x.k))})})});
+      LS.push({id:"L"+ci+"."+pi,cat:c,ic:LIC[c]||"📋",lab:gl(ls),sub:gl(c),pt:WT2,ws:p,dp:all.length>3?all:ALL,gp:all.length>=4?all:ALL,go})})});
+  const XS=[];[...new Set(XP.filter(x=>x.l===L).map(x=>x.c))].forEach((c,ci)=>{chunk(XP.filter(x=>x.l===L&&x.c===c),10).forEach((p,pi)=>{if(p.length<4)return;XS.push({id:"X"+ci+"."+pi,cat:c,ic:"💬",lab:G(c)+(pi?" "+(pi+1):""),sub:tr("Expressions"),t:"Expressions",pt:["exM","exE","exL"],xs:new Set(p.map(x=>x.e))})})});
+  const GS=[];[...new Set(EQ.filter(x=>x.l===L).map(x=>x.c))].forEach((c,ci)=>{chunk(EQ.filter(x=>x.l===L&&x.c===c),10).forEach((p,pi)=>{if(p.length<4)return;GS.push({id:"G"+ci+"."+pi,cat:c,ic:"📐",lab:G(c)+(pi?" "+(pi+1):""),sub:tr("Grammaire"),t:"Exceptions",pt:["exc"],qs:new Set(p.map(x=>x.k))})})});
   let phl=PH.filter(x=>(x[2]||1)===L);if(phl.length<6)phl=PH.filter(x=>(x[2]||1)<=L);const phc=chunk(phl,6),vk=Object.keys(VD[l]||{});
-  const THf=TH.filter(x=>x.length),N=Math.max(THf.length,4),units=[],map={},flat=[],ev=(a,n)=>a.length<=n?a:Array.from({length:n},(_,k)=>a[Math.floor(k*a.length/n)]);
-  const LSs=ev(LS,N*2),XSs=ev(XS,N),GSs=ev(GS,N);
-  for(let i=0;i<N;i++){
-    const st=[...(THf[i]||[]),...LSs.slice(i*2,i*2+2)];if(XSs[i])st.push(XSs[i]);if(GSs[i])st.push(GSs[i]);
-    const pp=phc.length?phc[i%phc.length]:null,k=i%6;
-    st.push([{id:"K"+i,ic:"🎧",lab:gl(SK.co),pt:["listen","listenP","dict"],pp,t:"CO"},{id:"K"+i,ic:"🗣️",lab:tr("Phrases"),pt:["build","readP","fr2P","cloze","listenP","type"],pp},{id:"K"+i,ic:"✍️",lab:gl(SK.ee),pt:["build","type","cloze","fr2P"],pp,t:"EE"},{id:"K"+i,ic:"📖",lab:gl(SK.ce),pt:["read","readP"],pp,t:"CE"},{id:"K"+i,ic:"🔄",lab:tr("Conjugaison"),pt:["conj"],t:"Conjugaison",vs:vk.length?Array.from({length:6},(_,j)=>vk[((L-1)*18+i*6+j)%vk.length]):null},{id:"K"+i,ic:"🎤",lab:gl(SK.eo),pt:SR?["speak","build"]:["build","type","fr2P"],pp,t:"EO"}][k]);
-    st.push({id:"M"+i,ic:"🏆",lab:tr("Mélange"),t:"Mélange"});
-    const fw=(THf[i]||[])[0],title=fw?fw.ic+" "+fw.lab.replace(/ \d+$/,""):(LSs[i*2]?(LSs[i*2].ic+" "+LSs[i*2].sub):"⭐");
-    if(i===N-1&&L<5)st.push({id:"TEST",ic:"🎓",lab:tr("Test de niveau"),sub:NL[L+1].split(" ")[0],test:1});
-    units.push({n:i+1,title,steps:st});st.forEach(x=>{map[x.id]=x;flat.push(x)})}
+  const ord=(cu.o||[]).concat(th.map((_,i)=>i)).filter((v,i,a)=>a.indexOf(v)===i&&v<th.length&&TH[v].length);
+  /* chaque unité reçoit les listes, expressions et points de grammaire qui correspondent à son thème ; ce qui reste complète les unités qui n'ont rien de rattaché */
+  const used=new Set(),pick=(arr,fit,k)=>{const o=[];for(const x of arr){if(o.length>=k)break;if(!used.has(x.id)&&fit(x)){o.push(x);used.add(x.id)}}return o};
+  const LSu={},XSu={},GSu={};
+  ord.forEach(ti=>{const t=th[ti];LSu[ti]=pick(LS,x=>(PUL[t]||[]).includes(x.cat),2);XSu[ti]=pick(XS,x=>PUX(x.cat)===t,1);GSu[ti]=pick(GS,x=>PUG(x.cat)===t,1)});
+  ord.forEach(ti=>{if(LSu[ti].length<2)LSu[ti].push(...pick(LS,()=>true,2-LSu[ti].length));if(XSu[ti].length<1)XSu[ti].push(...pick(XS,x=>PUX(x.cat)==null,1));if(GSu[ti].length<1)GSu[ti].push(...pick(GS,x=>PUG(x.cat)==null,1))});
+  ord.forEach(ti=>{if(!XSu[ti].length)XSu[ti].push(...pick(XS,()=>true,1));if(!GSu[ti].length)GSu[ti].push(...pick(GS,()=>true,1))});
+  /* progression déjà acquise : une étape validée de l'ancien parcours reste dans l'unité correspondante */
+  const keep={};[[LS,x=>ord.find(ti=>(PUL[th[ti]]||[]).includes(x.cat))],[XS,x=>ord.find(ti=>PUX(x.cat)===th[ti])],[GS,x=>ord.find(ti=>PUG(x.cat)===th[ti])]].forEach(([arr,home])=>arr.forEach(x=>{if(!used.has(x.id)&&dn(x.id)){const h=home(x);const ti=h==null?ord[ord.length-1]:h;(keep[ti]=keep[ti]||[]).push(x);used.add(x.id)}}));
+  const allW=ALL.filter(w=>(w[2]||1)<=L),units=[],map={},flat=[],push=(u)=>{units.push(u);u.steps.forEach(x=>{map[x.id]=x;flat.push(x)})};
+  ord.forEach((ti,pos)=>{
+    const t=th[ti],k=ti%6,pp=phc.length?phc[ti%phc.length]:null;
+    const st=[...TH[ti],...LSu[ti],...GSu[ti],...XSu[ti],...(keep[ti]||[])];
+    st.push([{id:"K"+ti,ic:"🎧",lab:gl(SK.co),pt:["listen","listenP","dict"],pp,t:"CO"},{id:"K"+ti,ic:"🗣️",lab:tr("Phrases"),pt:["build","readP","fr2P","cloze","listenP","type"],pp},{id:"K"+ti,ic:"✍️",lab:gl(SK.ee),pt:["build","type","cloze","fr2P"],pp,t:"EE"},{id:"K"+ti,ic:"📖",lab:gl(SK.ce),pt:["read","readP"],pp,t:"CE"},{id:"K"+ti,ic:"🔄",lab:tr("Conjugaison"),pt:["conj"],t:"Conjugaison",vs:vk.length?Array.from({length:6},(_,j)=>vk[((L-1)*18+ti*6+j)%vk.length]):null},{id:"K"+ti,ic:"🎤",lab:gl(SK.eo),pt:SR?["speak","build"]:["build","type","fr2P"],pp,t:"EO"}][k]);
+    const cum=ord.slice(0,pos+1).flatMap(j=>BS[j]||[]),prev=L>1?ord.slice(0,pos+1).flatMap(j=>D[th[j]].filter(w=>(w[2]||1)===L-1)).slice(-6):[];
+    st.push({id:"M"+ti,ic:"🏆",lab:gl(CL.bil),pt:BT,ws:[...new Set([...cum,...prev])],dp:allW,gp:allW,go:allW,pp:phl,rev:1});
+    const cx=(cu.u||{})[t]||[t,""];
+    push({n:pos+1,title:(PIC[t]||"📚")+" "+gl(cx[0]),obj:gl(cx[1]),steps:st})});
+  const allB=ord.flatMap(j=>BS[j]||[]),skS=(id,ic,key,pt,t,extra)=>({id,ic,lab:tr(CL.bsk,gl(SK[key])),pt,t,pp:phl,...(extra||{})});
+  const cs=[{id:"BR1",ic:"🔁",lab:gl(CL.r1),pt:RT,ws:allB,dp:allW,gp:allW,go:allW,rev:1},
+    {id:"BR2",ic:"🔁",lab:gl(CL.r2),pt:["exc","exM","exE","conj"],rev:1},
+    skS("BCO","🎧","co",L>=2?["listen","listenP","dict","listenT"]:["listen","listenP","dict"],"CO"),
+    skS("BCE","📖","ce",["read","readP"],"CE"),
+    skS("BEE","✍️","ee",["build","type","cloze","fr2P"],"EE"),
+    skS("BEO","🎤","eo",SR?["speak","build"]:["build","type","fr2P"],"EO"),
+    {id:"BM",ic:"🏆",lab:gl(CL.mix),t:"Mélange"}];
+  if(L<5)cs.push({id:"TEST",ic:"🎓",lab:gl(CL.fin),sub:NL[L+1].split(" ")[0],test:1});
+  push({n:units.length+1,title:"🎓 "+gl(CL.cons),obj:gl(CL.consobj),steps:cs});
   return PLC={k:ck,d:ALL,units,map,flat};
 }
+/*PATH-END*/
 function mkRat(){
   xens();const L=lv(),l=lg(),old=(S.rat||{})[l],n=old&&old.lvl===L?old.n+1:1,mi=S.mi||{},sc=k=>S.sc[k]||0;
   const wt=k=>(mi[k]?mi[k].n*3+(mi[k].t||0):0)+(3-Math.min(3,sc(k)))+Math.random()*.6;
@@ -2756,17 +2782,18 @@ function pathItems(){
 }
 function lvReady(){
   if(lv()>=5||(S.lvSnz&&Date.now()<S.lvSnz))return false;
-  const pd=S.pth||{},pre=lg()+":"+lv()+":",nd=Object.keys(pd).filter(k=>k.startsWith(pre)&&pd[k]>=6).length;
-  const h=((S.sh||{})[lg()+":"+lv()]||[]).slice(-5);
-  if(nd>=5&&h.length>=5&&h.reduce((a,b)=>a+b,0)/5>=8.6&&Math.min(...h)>=7)return true;
-  const c=ALL.filter(w=>(w[2]||1)===lv());
-  return !!c.length&&nd>=8&&c.filter(w=>(S.sc[w[0]]||0)>=3).length/c.length>=.7;
+  const pd=S.pth||{};return pathPlan().flat.filter(x=>!x.test).every(x=>(pd[pthK(x.id)]||0)>=6);
 }
-function lvTest(){test(lv())}
+function lvTest(){test(lv(),1)}
 function lvLater(){S.lvSnz=Date.now()+3*864e5;save();home()}
 function lvBanner(){
   if(!lvReady())return "";
-  return `<div class="q end" style="margin:0 0 14px;text-align:left"><b>🎓 ${tr("Prêt pour {0} ?",NL[lv()+1].split(" ")[0])}</b><p class="sub" style="margin:6px 0 10px">${tr("Tu maîtrises bien ton niveau actuel. Passe un court test pour confirmer et débloquer le niveau suivant.")}</p><button class="btn" onclick="lvTest()">${tr("Passer le test")}</button> <button class="btn ghost" onclick="lvLater()">${tr("Plus tard")}</button></div>`;
+  const nx=NL[lv()+1].split(" ")[0];
+  return `<div class="q end" style="margin:0 0 14px;text-align:left"><b>🎓 ${tr(CL.bt,NL[lv()].split(" ")[0])}</b><p class="sub" style="margin:6px 0 10px">${tr(CL.bb,nx)}</p><button class="btn" onclick="lvTest()">${gl(CL.bgo)}</button> <button class="btn ghost" onclick="lvLater()">${tr("Plus tard")}</button></div>`;
+}
+function lvHdr(pl){
+  const cu=CURR[lv()];if(!cu||pl.k==="rat")return "";
+  return `<details class="unit"><summary style="cursor:pointer;font-weight:700;padding:10px 0;list-style:none">🎯 ${NL[lv()]} · ${gl(CL.obj)}</summary><p class="sub" style="margin:0 0 6px">${gl(cu.g)}</p><ul style="margin:0 0 8px;padding-left:20px">${cu.c.map(x=>`<li class="sub">${gl(x)}</li>`).join("")}</ul><p class="sub" style="margin:0 0 10px">${gl(CL.how)}</p></details>`;
 }
 function pathHtml(){
   const it=pathItems();if(!it.length)return "";
@@ -2777,8 +2804,8 @@ function pathHtml(){
   const head=cur>=0?`<button class="theme mix go" style="width:100%;--u:${U[cur%6]}" onclick="${it[cur].go}"><b>${it[cur].lab}</b>${it[cur].sub||tr("Étape suivante")}</button>`:`<div class="empty">${mas("bravo",110)}<b>${tr("Parcours terminé ! Continue avec les révisions ou le mélange.")}</b></div>`;
   const cu=cur>=0?it[cur].u:pl.units.length;let ix=0;
   const us=pl.units.map(u=>{const n=u.steps.length,base=ix;ix+=n;const d=it.slice(base,base+n).filter(x=>x.done).length,open=u.n===cu;
-    return `<details class="unit"${open?" open":""}><summary style="cursor:pointer;font-weight:700;padding:10px 0;list-style:none">${d===n?"✅":open?"▶":"🔒"} ${tr("Unité {0}",u.n)} · ${u.title} <small style="font-weight:400;color:var(--mut)">${d}/${n}</small></summary><div class="path" style="margin:4px 0 14px">${it.slice(base,base+n).map((x,k)=>node(x,base+k)).join("")}</div></details>`}).join("");
-  return lvBanner()+head+`<h3>${tr("Ton parcours")} · ${dn}/${it.length}</h3>${us}`;
+    return `<details class="unit"${open?" open":""}><summary style="cursor:pointer;font-weight:700;padding:10px 0;list-style:none">${d===n?"✅":open?"▶":"🔒"} ${tr("Unité {0}",u.n)} · ${u.title} <small style="font-weight:400;color:var(--mut)">${d}/${n}</small></summary>${u.obj?`<p class="sub" style="margin:0 0 6px">${u.obj}</p>`:""}<div class="path" style="margin:4px 0 14px">${it.slice(base,base+n).map((x,k)=>node(x,base+k)).join("")}</div></details>`}).join("");
+  return lvBanner()+lvHdr(pl)+head+`<h3>${tr("Ton parcours")} · ${dn}/${it.length}</h3>${us}`;
 }
 function hero(){const i=xpInfo(),d=S.last?Math.floor((Date.now()-new Date(S.last).getTime())/864e5):0;return `<button class="hero2" onclick="prog()"><span class="hm">${mas(d>=3?"dodo":"content",52)}</span><span class="hi"><span class="lt"><b>${tr("Niv. {0}",i.L)} · ${titleOf(i.L)}</b><em${S.last===dayK()?"":' class="dim"'}>🔥 ${curStreak()} · 🪙 ${S.co||0}</em></span><div class="bar"><i style="width:${i.pc}%"></i></div><small>${i.L>=50?i.x+" XP":(i.x-i.lo)+" / "+(i.hi-i.lo)+" XP"} · 🎯 ${dxp()>=goal()?tr("Objectif atteint ✅"):tr("{0} / {1} XP aujourd'hui",dxp(),goal())}</small></span></button>`}
 function welcome(){welcomeOb()}
@@ -2960,7 +2987,7 @@ function end(){
       pm=pb>=6?`<p>${tr("Cette étape était déjà validée (meilleur score : {0}/10).",sf(pb))}</p>`:`<p style="color:var(--ko);font-weight:700">🔒 ${tr("Il faut 6 bonnes réponses sur 10 pour valider l'étape.")}</p>`;
       if(pb<6&&S.fl[pk]>=2)mrv=`<p class="sub">${tr("Tu bloques sur cette étape ? Fais une mini-révision de tes erreurs, puis retente.")}</p><button class="btn ghost" onclick="miniRev('${R.pid}')">${tr("Mini-révision")}</button><br>`}}
   if(R.pid){S.sh=S.sh||{};const hk=lg()+":"+lv();(S.sh[hk]=S.sh[hk]||[]).push(R.ok);if(S.sh[hk].length>12)S.sh[hk].shift()}const up=0;save();const rdy=lvReady(),nv=!!(R.pid&&R.ok<6&&((S.pth||{})[pthK(R.pid)]||0)<6);
-  $.innerHTML=head()+`<div class="q end win">${notes()}<div class="wm">${mas(R.ok>=7?"bravo":R.ok<=3?"triste":"content",150)}</div><div class="stars">${[1,2,3].map(n=>`<svg class="st${R.ok>=(n===1?4:n===2?7:9)?" on":""}" style="--d:${n*.22+.3}s" viewBox="0 0 24 24"><path d="M12 2.6l2.9 6 6.5.8-4.8 4.5 1.3 6.5L12 17.2 6.1 20.4l1.3-6.5L2.6 9.4l6.5-.8z"/></svg>`).join("")}</div><div class="big"><span class="cu" data-to="${R.ok}">0</span>/10</div><div class="chips2"><span class="pill xp">+<span class="cu" data-to="${R.xp+bonus}">0</span> XP</span><span class="pill fl">🔥 ${curStreak()}</span>${bonus?`<span class="pill">${tr("série parfaite !")}</span>`:""}</div>${up?`<p><b>${tr("Niveau supérieur débloqué : {0} 🎉",NL[lv()])}</b></p>`:""}${pm}${rdy?`<p><b>🎓 ${tr("Prêt pour {0} ?",NL[lv()+1].split(" ")[0])}</b></p><button class="btn" onclick="lvTest()">${tr("Passer le test")}</button><br>`:""}${R.pid?(nv?`<button class="btn dis" aria-disabled="true" onclick="endErr()">${tr("Continuer le parcours")}</button><br>`:`<button class="btn" onclick="home()">${tr("Continuer le parcours")}</button><br>`):""}<button class="btn${R.pid&&!nv?" ghost":""}" onclick="${R.pid||R.back?`pstart('${R.pid||R.back}')`:`start('${R.t}'${R.cat?","+JSON.stringify(R.cat).replace(/"/g,"&quot;"):""})`}">${R.back?tr("Retenter l'étape"):nv?tr("Recommencer"):"Encore une série"}</button><br>${mrv}<button class="btn ghost" onclick="home()">Changer de thème</button></div>`;FX.play(up?"level":R.ok>=7?"streak":R.ok<=3?"bad":"good");if(up||R.ok>=8)FX.confetti();cuRun();
+  $.innerHTML=head()+`<div class="q end win">${notes()}<div class="wm">${mas(R.ok>=7?"bravo":R.ok<=3?"triste":"content",150)}</div><div class="stars">${[1,2,3].map(n=>`<svg class="st${R.ok>=(n===1?4:n===2?7:9)?" on":""}" style="--d:${n*.22+.3}s" viewBox="0 0 24 24"><path d="M12 2.6l2.9 6 6.5.8-4.8 4.5 1.3 6.5L12 17.2 6.1 20.4l1.3-6.5L2.6 9.4l6.5-.8z"/></svg>`).join("")}</div><div class="big"><span class="cu" data-to="${R.ok}">0</span>/10</div><div class="chips2"><span class="pill xp">+<span class="cu" data-to="${R.xp+bonus}">0</span> XP</span><span class="pill fl">🔥 ${curStreak()}</span>${bonus?`<span class="pill">${tr("série parfaite !")}</span>`:""}</div>${up?`<p><b>${tr("Niveau supérieur débloqué : {0} 🎉",NL[lv()])}</b></p>`:""}${pm}${rdy?`<p><b>🎓 ${tr(CL.bt,NL[lv()].split(" ")[0])}</b></p><button class="btn" onclick="lvTest()">${gl(CL.bgo)}</button><br>`:""}${R.pid?(nv?`<button class="btn dis" aria-disabled="true" onclick="endErr()">${tr("Continuer le parcours")}</button><br>`:`<button class="btn" onclick="home()">${tr("Continuer le parcours")}</button><br>`):""}<button class="btn${R.pid&&!nv?" ghost":""}" onclick="${R.pid||R.back?`pstart('${R.pid||R.back}')`:`start('${R.t}'${R.cat?","+JSON.stringify(R.cat).replace(/"/g,"&quot;"):""})`}">${R.back?tr("Retenter l'étape"):nv?tr("Recommencer"):"Encore une série"}</button><br>${mrv}<button class="btn ghost" onclick="home()">Changer de thème</button></div>`;FX.play(up?"level":R.ok>=7?"streak":R.ok<=3?"bad":"good");if(up||R.ok>=8)FX.confetti();cuRun();
 }
 /* Test de niveau : banque rédigée sur le modèle des épreuves DELE / Instituto Cervantes (A1 → B1).
    c = phrase à compléter (grammaire/lexique), r = compréhension écrite, l = compréhension orale, y = production écrite, d = dictée.
@@ -3071,7 +3098,7 @@ function ptList(l){
   return shuf(ptGen(l));
 }
 
-function test(from){LK2=1;SCR="home";const f=from>1?from:1;R={mode:"test"};T={l:f,list:ptList(f),i:0,p:0,m:0,skip:0,skipAll:0,res:{},pass:0,k:{},from:from?f:0};tnext()}
+function test(from,cap){LK2=1;SCR="home";const f=from>1?from:1;R={mode:"test"};T={l:f,list:ptList(f),i:0,p:0,m:0,skip:0,skipAll:0,res:{},pass:0,k:{},from:from?f:0,cap:cap?1:0};tnext()}
 function tnext(){
   if(T.i>=T.list.length)return tstage();
   if(T.i>=4){const rem=T.list.slice(T.i),wR=rem.reduce((a,q)=>a+(q.wt||1),0),pen=rem.reduce((a,q)=>a+(q.o&&q.o.length>1?(q.wt||1)/(q.o.length-1):0),0),den=T.m+wR;
@@ -3080,7 +3107,7 @@ function tnext(){
 }
 function tstage(){
   const sc=T.m>0?Math.max(0,T.p)/T.m:0;T.res[T.l]={sc,n:T.list.length-T.skip};
-  if(sc>=.6){T.pass=T.l;if(T.l<5){const l=T.l+1,ls=ptList(l);if(ls.length){T.l=l;T.list=ls;T.i=0;T.p=0;T.m=0;T.skip=0;return tnext()}}}
+  if(sc>=.6){T.pass=T.l;if(T.l<5&&!T.cap){const l=T.l+1,ls=ptList(l);if(ls.length){T.l=l;T.list=ls;T.i=0;T.p=0;T.m=0;T.skip=0;return tnext()}}}
   tend();
 }
 function tskip(){if(R.done)return;R.done=true;T.skip++;T.skipAll++;adv()}
@@ -3092,10 +3119,11 @@ function tend(){
     const r=T.res[T.from],v=r?Math.round(r.sc*100):0;
     $.innerHTML=head()+`<div class="q end">${mas("content",110)}<p><b>${tr("Pas encore tout à fait.")}</b></p><p>${rat?tr("Ton niveau reste {0}. J'ai préparé un parcours de rattrapage sur tes points faibles : à la fin, tu repasseras le test.",`<b>${NL[lv()]}</b>`):tr("Ton niveau reste {0}. Continue le parcours : l'appli te reproposera un test quand tu seras prêt(e).",`<b>${NL[lv()]}</b>`)}</p><p class="skl">${NL[T.from]} : <b>${v} %</b></p><button class="btn" onclick="home()">${tr("Continuer le parcours")}</button></div>`;return}
   const ps=T.pass?T.res[T.pass].sc:0,solid=!T.pass||ps>=.75;
-  S.lvl=T.pass===0?1:T.pass>=5?5:(solid?T.pass+1:T.pass);S.sk=S.sk||{};
+  S.lvl=T.cap?Math.min(5,T.pass+1):T.pass===0?1:T.pass>=5?5:(solid?T.pass+1:T.pass);S.sk=S.sk||{};
   ALL.forEach(w=>{if((w[2]||1)<S.lvl)S.sc[w[0]]=Math.max(S.sc[w[0]]||0,2)});
   Object.keys(SK).forEach(k=>{const z=T.k[k];if(z&&z.n)S.sk[k]=z.c/z.n});save();
   FX.play("level");
+  if(T.cap){const v=Math.round(T.res[T.pass].sc*100);$.innerHTML=head()+`<div class="q end">${mas("bravo",110)}<p>${gl(CL.ok1)}</p><div class="big" style="font-size:32px">${NL[T.pass]}</div><p>${tr(CL.ok2,`<b>${NL[S.lvl]}</b>`)}</p><p class="skl">${NL[T.pass]} : <b>${v} %</b> ✅</p><button class="btn" onclick="home()">${gl(CL.ok3)}</button></div>`;try{FX.confetti()}catch(e){}return}
   const nxt=T.res[T.pass+1],part=!T.pass&&T.res[1]&&T.res[1].sc>=.35?`<p class="skl">${tr("Tu connais déjà quelques bases : le niveau A1 est en cours d'acquisition.")}</p>`:"";
   const rows=[1,2,3,4,5].filter(l=>T.res[l]).map(l=>{const r=T.res[l],v=Math.round(r.sc*100);return `${NL[l]} : <b>${v} %</b> ${r.sc>=.6?"✅":"—"}`}).join("<br>");
   $.innerHTML=head()+`<div class="q end">${mas("bravo",110)}<p>${tr("Niveau estimé")}</p><div class="big" style="font-size:32px">${T.pass?NL[T.pass]:tr("Débutant (pas encore A1)")}</div>${part}${T.pass&&!solid?`<p class="skl">${tr("Palier validé de justesse : on le consolide avant de passer au suivant.")}</p>`:""}<p>${tr("Les exercices se concentrent maintenant sur {0}, avec plus d'entraînement sur tes points faibles.",`<b>${NL[S.lvl]}</b>`)}</p>${S.lvl>1?`<p class="skl">${tr("Les mots des niveaux précédents sont comptés comme déjà vus : ils reviennent en révision, pas en découverte.")}</p>`:""}<p class="skl">${rows}</p><p class="skl">${tr("Score par palier, corrigé du hasard : une mauvaise réponse fait perdre des points, « Je ne sais pas » n'en fait pas perdre. Il faut 60 % pour valider un palier.")}</p>${T.skipAll?`<p class="skl">${tr("{0} question(s) d'écoute ignorée(s) : l'écoute n'a pas été testée à fond.",T.skipAll)}</p>`:""}${T.pass===5?`<p class="skl">${tr("Tu as validé tous les paliers, jusqu'au C1 : excellent niveau !")}</p>`:""}<button class="btn" onclick="obNext()">${tr("Commencer")}</button></div>`;
