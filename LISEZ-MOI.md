@@ -15,3 +15,17 @@ Nouveau : le dossier `v/` contient les voix neuronales humaines (euskara : Antto
 4. Copie l'adresse du Worker dans `config.js` : `window.SOB_AI="https://….workers.dev";` puis recommit.
 
 Sans cette étape, l'appli marche avec le dictionnaire local et les fonctions IA affichent « indisponible ».
+
+
+## 3. Système audio (voix)
+
+**Ordre de lecture d'un son** (tout est dans `castellano.html`, fonction `aud`) :
+1. **Enregistrements** (`a/` pour le castillan, `v/<voix>/` pour valencià, català, galego, euskara) : clips MP3 mono 22 kHz regroupés en paquets de ~4,8 Mo avec un index `.json`. L'appli ne télécharge **que le clip demandé** (requête HTTP `Range`, quelques ko), le garde dans un cache persistant (`sobclips-v1`, ≈ 3000 clips max) et le rejoue sans réseau. Si le serveur ignore `Range`, elle prend le paquet entier et découpe.
+2. **Voix du système** (Android, iOS, Windows, macOS), seulement si l'appareil a une voix **de la bonne langue** (castillan d'Espagne de préférence ; valencià : voix valencienne, sinon catalane). Jamais une voix d'une autre langue.
+3. **Piper** (voix neuronale en WebAssembly, ~20 Mo, une fois) pour les textes dynamiques (traducteur, conversation). Le galicien est lu avec un modèle catalan : l'appli l'indique.
+4. **eSpeak** en dernier recours, pour castillan/català/valencià seulement.
+5. Sinon un message clair (hors ligne / réseau / pas de voix), sans lecture dans une mauvaise langue.
+
+**Compléter les enregistrements** quand le contenu change : `tools/audio_enum.py` liste tous les textes que l'appli peut dire (`tests/audio_texts.json`), `tools/audio_merge.py` fusionne de nouveaux clips dans l'index d'une voix sans toucher aux paquets existants. Les clips ajoutés sont dans les paquets `*_g0.mp3`, `*_g1.mp3`…
+
+**Tests** : `python3 tests/rangesrv.py 8774 .` (serveur avec `Range`, comme GitHub Pages) puis `python3 tests/audio.py http://127.0.0.1:8774/` (intégrité, couverture, langue/variante/voix, latence réseau bridé, hors ligne, secours) et `python3 tests/audio_quality.py` (signal des clips ajoutés).
