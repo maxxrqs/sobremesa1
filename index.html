@@ -13,7 +13,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Sobremesa — les langues d'Espagne</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Figtree:wght@400;500;600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Figtree:wght@400;500;600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Figtree:wght@400;500;600;700;800&family=Nunito:wght@400;600;700&family=Baloo+2:wght@500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Figtree:wght@400;500;600;700;800&family=Nunito:wght@400;600;700&family=Baloo+2:wght@500;600;700;800&display=swap" rel="stylesheet"></noscript>
 <style>
 :root{--bg:#F5EDDD;--card:#FFFAF0;--ink:#1B2A4A;--mut:#667089;--az:#1F4FA3;--azk:#FFF8EA;--pk:#6B8FD1;--tl:#1F4FA3;--or:#C4502F;--sol:#E3A52E;--solk:#3A2500;--line:#DCCEB2;--g1:#EEE3CC;--g2:#EEE3CC;--g3:#EEE3CC;--mx1:#1F4FA3;--mx2:#1F4FA3;--okb:#DCEBD6;--ok:#2B7A4B;--kob:#F6D8CC;--ko:#B3391F;--sh:none;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 html[data-mas="toro"]{--az:#B5462C;--pk:#D98468;--tl:#B5462C;--or:#1F4FA3;--mx1:#B5462C;--mx2:#B5462C}
@@ -644,6 +644,58 @@ html body .conf i{animation:smConf var(--t,1.9s) cubic-bezier(.3,.55,.55,1) forw
 .lxb{will-change:transform}.lxg span{will-change:opacity,transform}.lxm .mas{will-change:transform}
 html body .bar>i{will-change:width}
 @media (prefers-reduced-motion:reduce){html body #app>*,html body .fb,html body .opt.ok,html body .bnav button.on,html body .mpick.pulse::after,html body #tour .tring.on::after,html body .conf i{animation:none!important}html body .btn,html body .opt,html body .chip,html body .theme{transition:none}}
+</style>
+<style id="sm-sticker">
+/* ===== Design « Stickers » : contours encrés, ombres décalées, formes rondes ===== */
+:root{--sk:#1B2A4A;--hs:4px 4px 0 var(--sk);--hs2:3px 3px 0 var(--sk);--hs1:1px 1px 0 var(--sk)}
+html body{font-family:"Baloo 2",Figtree,"Nunito",system-ui,sans-serif;font-weight:600;color:var(--sk)}
+html body h1,html body h2,html body h3,html body .ptitle,html body b,html body strong{font-family:"Baloo 2",Figtree,system-ui,sans-serif}
+html body h1,html body h2,html body h3,html body .ptitle{font-weight:800;letter-spacing:-.3px}
+html body header h1,html body header h1 span{font-family:"Baloo 2",system-ui,sans-serif!important;font-style:normal!important;font-weight:800!important;font-size:24px;letter-spacing:-.5px}
+html body h1,html body h2,html body h3,html body .big,html body .pn b,html body .theme b,html body .lvl .lt b,html body .hero2 .lt b,html body details.more summary,html body .empty b,html body .dw{font-family:"Baloo 2",Figtree,system-ui,sans-serif;font-style:normal;font-weight:800}
+/* cartes */
+html body .q,html body .theme,html body .hero,html body .hero2,html body .lvl,html body .mb,html body .cvc,html body .stile,html body .qst,html body .shi,html body .dc,html body .obt div,html body .unit>summary,html body details.unit{border:2.5px solid var(--sk)!important;border-radius:20px;box-shadow:var(--hs)!important;background-color:var(--card)}
+html body details.unit{padding:10px 12px;margin-bottom:14px}
+html body details.unit>summary{border:0!important;box-shadow:none!important;background:none}
+html body .theme:active,html body .hero2:active{transform:translate(3px,3px);box-shadow:var(--hs1)!important}
+html body .theme.mix.go{background:var(--az)!important;color:#fff;border-radius:24px;box-shadow:5px 5px 0 var(--sk)!important}
+html body .theme.mix.go *{color:#fff}
+/* boutons */
+html body .btn{background:var(--az);color:#fff;border:2.5px solid var(--sk)!important;border-radius:16px;box-shadow:var(--hs2);font-family:"Baloo 2",system-ui,sans-serif;font-weight:800}
+html body .btn:active{transform:translate(2px,2px);box-shadow:var(--hs1)}
+html body .btn.ghost{background:var(--card);color:var(--sk)}
+html body .opt{background:var(--card);border:2.5px solid var(--sk)!important;border-radius:16px;box-shadow:var(--hs2);color:var(--sk)}
+html body .opt:active{transform:translate(2px,2px);box-shadow:var(--hs1)}
+html body .opt.ok{background:var(--okb)!important;box-shadow:var(--hs2),inset 0 0 0 3px var(--ok)}
+html body .opt.ko{background:var(--kob)!important;box-shadow:var(--hs2),inset 0 0 0 3px var(--ko)}
+html body .chip,html body .tab,html body .seg button{border:2.5px solid var(--sk)!important;border-radius:12px;box-shadow:2px 2px 0 var(--sk);background:var(--card);color:var(--sk);font-weight:800}
+html body .chip:active,html body .tab:active,html body .seg button:active{transform:translate(2px,2px);box-shadow:none}
+html body .chip.on,html body .tab.on,html body .seg button.on{background:var(--az);color:#fff}
+html body .spk{background:var(--az);color:#fff;border:2.5px solid var(--sk)!important;box-shadow:var(--hs2)}
+html body .fb{border:2.5px solid var(--sk)!important;border-radius:18px;box-shadow:var(--hs)}
+html body .in,html body input:not([type=checkbox]):not([type=radio]):not([type=range]),html body textarea,html body .sel,html body select{border:2.5px solid var(--sk)!important;border-radius:12px;background:var(--card);color:var(--sk)}
+html body header .sel{box-shadow:var(--hs2);font-weight:800}
+html body .mpick{border:2.5px solid var(--sk)!important;border-radius:14px;box-shadow:var(--hs2);background:var(--card)}
+html body .toast{border:2.5px solid var(--sk)!important;box-shadow:var(--hs)!important}
+/* barres de progression */
+html body .bar{height:14px;border:2px solid var(--sk);background:var(--card);border-radius:8px;overflow:hidden;box-sizing:border-box}
+html body .bar>i{background:var(--sol,#EDB24A)!important;border-radius:0;box-shadow:inset -2px 0 0 var(--sk)}
+/* parcours : gros boutons ronds */
+html body .pn.pn>i{width:74px;height:74px;border-radius:50%;background:var(--az);color:#fff;border:2.5px solid var(--sk)!important;border-width:2.5px!important;box-shadow:0 5px 0 var(--sk)!important}
+html body .pn:active>i{transform:translateY(4px);box-shadow:0 1px 0 var(--sk)!important}
+html body .pn.done.done>i{background:var(--az)}
+html body .pn.cur.cur>i{width:88px;height:88px;border-radius:50%;background:var(--sol,#EDB24A);color:var(--sk);border-width:2.5px!important;box-shadow:0 6px 0 var(--sk)!important}
+html body .pn.cur.cur>i,html body .pn.cur.cur>i *{color:var(--sk)!important}
+html body .bk{border:2.5px solid var(--sk)!important;border-radius:14px;box-shadow:var(--hs2);background:var(--card);color:var(--sk)}
+html body .pn.lock.lock>i{background:var(--card);color:#8A93A8;border-style:dashed!important;box-shadow:none!important}
+html body .pn b{font-weight:800}
+/* barre du bas flottante */
+html body .bnav{left:12px;right:12px;bottom:calc(10px + env(safe-area-inset-bottom,0px));width:auto;border:2.5px solid var(--sk);border-radius:22px;box-shadow:var(--hs);background:var(--card);padding:6px;box-sizing:border-box}
+html body .bnav button{border-radius:16px;color:var(--sk)}
+html body .bnav button::before,html body .bnav button::after{display:none!important}
+html body .bnav button.on{background:var(--az);color:#fff}
+html body .bnav button.on *{color:#fff}
+body{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
 </style>
 <main id="app"></main>
 <script>
