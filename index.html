@@ -1318,7 +1318,7 @@ function aud(id,texts){const was=AU.id===id;stopSp();if(was||!texts||!texts.leng
   /* 3) voix neuronale embarquée (Piper, WebAssembly) */
   const viaPiper=async()=>{
     if(!tvSup(l))throw (TV.bad?"bad:"+(TV.why||"?"):typeof Worker==="undefined"?"noworker":"nowasm");
-    axUnlock();const first=!TV.w&&!TV.cache.size;if(first)tvNote(tr("Préparation de la voix de dépannage… (≈ 20 Mo, une seule fois)"));TV.busy=1;
+    axUnlock();const first=!TV.w&&!TV.cache.size;if(first)tvNote(tr("Préparation de la voix… (premier chargement ≈ 20 Mo, une seule fois)"));TV.busy=1;
     try{for(let i=0;i<texts.length;i++){const r=await tvGen(l,ttsSan(texts[i]));if(i===0){TV.busy=0;tvNote("");tvNote("",0)}if(AU.tok!==tok)return;
       const c=axCtx();if(!r||!c)throw "pcm";const bf=c.createBuffer(1,r.pcm.length,r.sr);bf.getChannelData(0).set(r.pcm);await playBuf(bf,peak(r.pcm));if(AU.tok!==tok)return}}
     finally{TV.busy=0;if(l!=="gl")tvNote("")}};
@@ -1364,21 +1364,25 @@ function tvGen2(lang,text){
     const id=++TV.n,tm=setTimeout(()=>{if(TV.cb[id]){delete TV.cb[id];ko("timeout")}},120000);
     TV.cb[id]={ok:d=>{clearTimeout(tm);const r={pcm:d.pcm,sr:d.sr};if(TV.cache.size>40)TV.cache.delete(TV.cache.keys().next().value);TV.cache.set(key,r);tvPPut(lang,text,r);ok(r)},ko:m=>{clearTimeout(tm);ko(m)}};
     w.postMessage({t:"say",id,lang,text,speed:1.05})})}
+/* lecture d'un son généré : reprise du contexte audio bornée (sinon Android attend sans fin), puis repli sur un élément <audio> */
+async function tvPlayPcm(r,tok){
+  const c=axCtx();let pk=0;const a=r.pcm;for(let i=0;i<a.length;i++){const v=Math.abs(a[i]);if(v>pk)pk=v}const gain=pk>0?Math.min(4,.99/pk):1;
+  if(c){try{if(c.state!=="running")await Promise.race([c.resume(),new Promise(z=>setTimeout(z,600))]);
+    if(c.state==="running"){const b=c.createBuffer(1,a.length,r.sr);b.getChannelData(0).set(a);const s=c.createBufferSource();s.buffer=b;const g=c.createGain();g.gain.value=gain;s.connect(g);g.connect(c.destination);AX.src=s;
+      await new Promise(res=>{s.onended=res;s.start(0);AU.go=true;AU.ld=false;auSync()});return true}}catch(e){}}
+  try{const n=a.length,buf=new ArrayBuffer(44+n*2),d=new DataView(buf),W=(o,t)=>{for(let i=0;i<t.length;i++)d.setUint8(o+i,t.charCodeAt(i))};
+    W(0,"RIFF");d.setUint32(4,36+n*2,true);W(8,"WAVEfmt ");d.setUint32(16,16,true);d.setUint16(20,1,true);d.setUint16(22,1,true);d.setUint32(24,r.sr,true);d.setUint32(28,r.sr*2,true);d.setUint16(32,2,true);d.setUint16(34,16,true);W(36,"data");d.setUint32(40,n*2,true);
+    for(let i=0;i<n;i++)d.setInt16(44+i*2,Math.max(-1,Math.min(1,a[i]*gain))*32767,true);
+    const au=new Audio(URL.createObjectURL(new Blob([buf],{type:"audio/wav"})));await au.play();AU.go=true;AU.ld=false;auSync();await new Promise(res=>{au.onended=res;au.onerror=res});return true}catch(e){return false}}
 async function tvSay(){
   const o=TS.out;if(!o||!o.t)return;const lang=TS.dst,text=o.t;
   if(AU.id==="tq"){stopSp();TV.busy=0;tvNote("");return}
   stopSp();AU.id="tq";const tok=AU.tok;TV.busy=1;auSync();
-  const first=!TV.w&&!TV.cache.size;if(first)tvNote(tr("Préparation de la voix de dépannage… (≈ 20 Mo, une seule fois)"));
+  const first=!TV.w&&!TV.cache.size;if(first)tvNote(tr("Préparation de la voix… (premier chargement ≈ 20 Mo, une seule fois)"));
   let r=null;try{axUnlock();r=await tvGen(lang,text)}catch(e){r=null}
   TV.busy=0;tvNote("");
   if(AU.tok!==tok)return;
-  const c=axCtx();
-  if(r&&c){try{
-    if(c.state!=="running")await c.resume();
-    let pk=0;const a=r.pcm;for(let i=0;i<a.length;i++){const v=Math.abs(a[i]);if(v>pk)pk=v}
-    const b=c.createBuffer(1,a.length,r.sr);b.getChannelData(0).set(a);
-    const s=c.createBufferSource();s.buffer=b;const g=c.createGain();g.gain.value=pk>0?Math.min(4,.99/pk):1;s.connect(g);g.connect(c.destination);
-    AX.src=s;s.onended=()=>{if(AU.tok===tok){AU.id=null;auSync()}};s.start(0);auSync();return}catch(e){}}
+  if(r){const ok=await tvPlayPcm(r,tok);if(AU.tok===tok){AU.id=null;AU.ld=false;auSync()}if(ok)return}
   AU.id=null;auSync();
   if(lang===lg()){aud("tq",[text])}else{tvNote(tr("Voix indisponible sur cet appareil."),3500)}
 }
@@ -3601,11 +3605,11 @@ async function cvPlay(i,auto){
   const c=CV;if(!c)return;const m=c.msgs[i];if(!m||!m.t)return;const lang=lg(),id="cv"+i;
   if(AU.id===id){stopSp();return}
   if(tvSup(lang)){
-    stopSp();AU.id=id;const tok=AU.tok;auSync();let r=null;try{axUnlock();r=await tvGen(lang,m.t)}catch(e){r=null}
-    if(AU.tok!==tok)return;const cx=axCtx();
-    if(r&&cx){try{if(cx.state!=="running")await cx.resume();let pk=0;const a=r.pcm;for(let k=0;k<a.length;k++){const v=Math.abs(a[k]);if(v>pk)pk=v}
-      const b=cx.createBuffer(1,a.length,r.sr);b.getChannelData(0).set(a);const s=cx.createBufferSource();s.buffer=b;const g=cx.createGain();g.gain.value=pk>0?Math.min(4,.99/pk):1;s.connect(g);g.connect(cx.destination);
-      AX.src=s;s.onended=()=>{if(AU.tok===tok){AU.id=null;auSync()}};s.start(0);auSync();return}catch(e){}}
+    stopSp();AU.id=id;const tok=AU.tok;auSync();let r=null;const first=!TV.w&&!TV.cache.size;if(first)tvNote(tr("Préparation de la voix… (premier chargement ≈ 20 Mo, une seule fois)"));
+    setTimeout(()=>{if(AU.tok===tok&&AU.id===id&&!AU.go){AU.ld=true;auSync()}},350);
+    try{axUnlock();r=await tvGen(lang,m.t)}catch(e){r=null}
+    tvNote("");if(AU.tok!==tok)return;
+    if(r){const ok=await tvPlayPcm(r,tok);if(AU.tok===tok){AU.id=null;AU.ld=false;auSync()}if(ok||auto)return}
     AU.id=null;auSync()}
   aud(id,[m.t])}
 function cvTr(i){const m=CV&&CV.msgs[i];if(m){m.show=!m.show;cvDraw(1)}}
