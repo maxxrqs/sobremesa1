@@ -12,6 +12,9 @@
 - Mots courts : voix ca/va/gl/eu jugées « naturelle » (deux « passable » en catalan) ; castillan d'origine « robotique » sur 3 mots sur 4 ; réglage Kokoro actuel préféré 5 fois sur 8 ; mots d'une syllabe (« ve », « de ») mauvais dans les trois réglages.
 - Conséquence : nouvelle voix par défaut `es_dora` (Kokoro ef_dora, 12 993 des 13 044 textes). Les 51 textes de 3 lettres ou moins restent sur l'ancienne voix (« Voix d'origine »), qui reste choisissable. Un défaut connu : les listes qui contiennent un tel mot sont lues en entier avec l'ancienne voix.
 
+## Castillan : voix par défaut `es_laura` (v188)
+Les voix castillanes AhoTTS (Aholab) figuraient dans les modèles fournis par Max mais n'avaient pas été utilisées. Test à l'aveugle (15 textes, mots courts compris) : la voix B (« Laura ») gagne 15/15 contre la voix A et Kokoro. 13 042 clips générés ; `es_dora` (Kokoro) et l'ancienne voix restent choisissables. UTMOS test : B 3,71, Kokoro 3,14, A 2,18. Intelligibilité Whisper (100 clips) 0,948.
+
 ## Ce qui n'a PAS été prouvé
 - Aucun clip n'a été écouté par moi. Les scores UTMOS (`qa/utmos_echantillon_v181.csv`, 120 clips par voix et par classe) sont des **indices** : le modèle est entraîné sur l'anglais et ne dit rien de l'exactitude de la prononciation ni du naturel réel en euskara, galego ou valencià.
 - Échantillon UTMOS moyen : eu 3,6–3,7 ; gl 3,15–3,6 ; ca 3,3–3,5 ; va 3,3–3,4 ; es d'origine 2,78 (26 % sous 2,5), es Kokoro ≈ 3,3. Le castillan d'origine est le plus bas du tableau mais c'est un enregistrement d'IA commerciale que je ne peux ni regénérer ni juger : **à trancher à l'oreille** (comparaison à l'aveugle dans le kit d'écoute).
