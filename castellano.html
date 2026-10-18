@@ -859,7 +859,7 @@ function hpJS(pw,salt){let x=salt+":"+pw;for(let i=0;i<3000;i++)x=sha256(x+salt)
 const withTimeout=(p,ms)=>Promise.race([p,new Promise(r=>setTimeout(()=>r(null),ms))]);
 var UI="fr";
 const UIL={fr:"Français",en:"English",it:"Italiano",de:"Deutsch",pt:"Português"};
-const TR={};const trLoad=l=>(l==="fr"||TR[l])?Promise.resolve():fetch("tr/"+l+".json?v=32").then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{TR[l]=j}).catch(()=>{});
+const TR={};const trLoad=l=>(l==="fr"||TR[l])?Promise.resolve():fetch("tr/"+l+".json?v=33").then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{TR[l]=j}).catch(()=>{});
 try{const s=ST.get("cast_ui"),n=(navigator.language||"fr").slice(0,2);UI=UIL[s]?s:(UIL[n]?n:"fr")}catch(e){}
 const gl=s=>{if(UI==="fr"||!TR[UI])return s;let t=TR[UI][s];if(t!=null)return t;const n=s.match(NUMRE);if(n){t=TR[UI][s.replace(NUMRE,"#")];if(t!=null){let i=0;return t.replace(/#/g,()=>i<n.length?n[i++]:"#")}const b=s.match(/^(.*\S)\s+(\d+)$/);if(b&&TR[UI][b[1]]!=null)return TR[UI][b[1]]+" "+b[2]}return s};
 const tr=(s,...a)=>gl(s).replace(/\{(\d)\}/g,(m,i)=>a[i]);
@@ -4751,7 +4751,7 @@ function menu(){
   const o=document.getElementById("mn");if(o){o.remove();return}
   const d=document.createElement("div");d.id="mn";d.className="mn";
   const mk=S.mas||"gecko",md=S.mood||"vivo",sn=S.snd||"cristal",row=(l,k,v,opts)=>`<div class="mnr"><span>${l}</span><span>${opts.map(([x,n])=>`<button class="chip${v===x?" on":""}" onclick="setSty('${k}','${x}')">${n}</button>`).join(" ")}</span></div>`;
-  d.innerHTML=`<b>${U||""}</b><div class="mnr"><span>Langue de l'interface</span>${uisel()}</div>${row("Mascotte","mas",mk,[["gecko","Geco"],["toro","Torito"],["lora","Lora"]])}${row("Sons","snd",sn,[["cristal","Cristal"],["arcade","Arcade"]])}<div class="mnr"><span>Son</span><button class="chip${S.mute?"":" on"}" onclick="setSty('mute',${!S.mute})">${S.mute?"Coupé":"Activé"}</button></div><p class="skl">${(typeof CR!=="undefined"&&CR)?tr("☁️ Progression sauvegardée en ligne et synchronisée entre tes appareils"):tr("📴 Pas de synchronisation : progression sauvegardée sur cet appareil seulement")}</p><button class="chip" onclick="logout()">Se déconnecter</button>`;
+  d.innerHTML=`<b>${U||""}</b><div class="mnr"><span>Langue de l'interface</span>${uisel()}</div>${row("Mascotte","mas",mk,[["gecko","Geco"],["toro","Torito"],["lora","Lora"]])}${row("Sons","snd",sn,[["cristal","Cristal"],["arcade","Arcade"]])}<div class="mnr"><span>Son</span><button class="chip${S.mute?"":" on"}" onclick="setSty('mute',${!S.mute})">${S.mute?"Coupé":"Activé"}</button></div><p class="skl">${(typeof CR!=="undefined"&&CR)?tr("☁️ Progression sauvegardée en ligne et synchronisée entre tes appareils"):tr("📴 Pas de synchronisation : progression sauvegardée sur cet appareil seulement")}</p><button class="chip" onclick="document.getElementById('mn').remove();obTour(1)">${tr("Revoir le tour")}</button> <button class="chip" onclick="logout()">Se déconnecter</button>`;
   document.querySelector("header").appendChild(d);
 }
 /* ===== v153 accueil + onboarding ===== */
@@ -4818,12 +4818,15 @@ function obTips(){
 let OBT=0,OBR=0;
 const TOURS=[
  {t:"Petit tour de l'appli",d:"En quelques secondes, découvre à quoi sert chaque onglet. Tu pourras le revoir quand tu veux depuis le menu.",f:()=>{S.mode="cl";home()}},
+ {s:".sthero",t:"Ta prochaine leçon",d:"Ta prochaine étape t'attend ici : touche « C'est parti ! » pour la lancer.",f:()=>{S.mode="cl";home()}},
+ {s:".sthero .stmas",t:"Ton compagnon",d:"Touche {0} pour le chatouiller. Reste appuyé dessus pour choisir un autre compagnon.",f:()=>{S.mode="cl";home()}},
+ {s:".chh",opt:1,t:"Tes chapitres",d:"Ton parcours est découpé en chapitres de quelques unités. Seul le chapitre en cours est affiché : les suivants se débloquent au fur et à mesure.",f:()=>{S.mode="cl";home()}},
  {s:".bnav button:nth-child(1)",t:"Apprendre",d:"Ton chemin pas à pas : des étapes courtes qui s'enchaînent jusqu'au test du niveau suivant. Il faut six bonnes réponses sur dix pour valider une étape.",f:()=>{S.mode="cl";home()}},
  {s:".bnav button:nth-child(2)",t:"Discuter",d:"Des scènes de la vie courante : café, marché, logement… En mode guidé, tu choisis parmi trois réponses ; en mode libre, {0} te répond vraiment.",f:()=>{S.mode="im";home()}},
  {s:".bnav button:nth-child(3)",t:"Outils",d:"Ta boîte à outils : réviser tes mots, listes, conjugaison, exceptions, expressions et traducteur.",f:()=>tools()},
  {s:".bnav button:nth-child(4)",t:"Profil",d:"Ton XP, ta série, tes quêtes du jour et la boutique pour habiller ton compagnon.",f:()=>prog()},
  {s:"header .stats .sel",t:"Ta langue",d:"Change de langue ici : castillan, valencià, català, galego ou euskara. Ta progression est séparée pour chaque langue.",f:()=>{S.mode="cl";home()}},
- {s:"header .mpick",t:"Ton compagnon",d:"Touche ta mascotte pour en choisir une autre. Ton avatar, à droite, ouvre le menu : son, objectif du jour, thème.",f:()=>{S.mode="cl";home()}},
+ {s:"header .stats .chip.ico",t:"Ton menu",d:"Langue de l'interface, compagnon et sons. Tu peux aussi y revoir ce tour quand tu veux.",f:()=>{S.mode="cl";home()}},
  {t:"Tu es prêt(e) !",d:"Choisis ce que tu veux : suis ton chemin, discute, ou ouvre les outils. Bon apprentissage !",f:()=>{S.mode="cl";home()}}];
 function obTour(replay){
   OBR=replay?1:0;if(OBT)tourEnd(1);try{stopSp()}catch(e){}
@@ -4842,6 +4845,7 @@ function tourDim(x,y,w,h,inst){
 }
 function tourGo(i){
   if(!OBT)return;const st=TOURS[i];if(!st)return tourEnd();
+  if(st.opt){try{st.f&&st.f()}catch(e){}if(!document.querySelector(st.s))return tourGo(i+1)}
   const n=++OBT.n,cd=document.querySelector("#tour .tcard"),c=cd.querySelector(".tin"),first=OBT.first;OBT.first=0;OBT.i=i;
   try{FX.play("tap")}catch(e){}
   const m=FX.A[S.mas||"gecko"].n,last=i===TOURS.length-1;
