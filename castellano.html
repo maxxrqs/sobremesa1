@@ -2700,7 +2700,7 @@ const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"
 const G=s=>s?gl(s):s;
 function xbuild(){
   const l=lg();EX=[];EQ=[];XP=[];
-  (XC[l]||"").trim().split("\n").forEach(L=>{const f=L.split("|");if(f[0]==="R")EX.push({c:f[1],t:G(f[2]),r:G(f[3]),e:f[4].split(" ; ").map(x=>{const p=x.split(" = ");return[p[0],G(p.slice(1).join(" = "))]}),n:G(f[5]),l:+f[6]});else if(f[0]==="Q")EQ.push({c:f[1],q:G(f[2]),k:f[2],a:f[3],w:f.slice(4,7),x:G(f[7]),l:+f[8]})});
+  (XC[l]||"").trim().split("\n").forEach(L=>{const f=L.split("|");if(f[0]==="R")EX.push({c:f[1],t:G(f[2]),r:G(f[3]),e:f[4].split(" ; ").map(x=>{const p=x.split(" = ");return[p[0],G(p.slice(1).join(" = "))]}),n:G(f[5]),l:+f[6]});else if(f[0]==="Q"){/* options en français (pas en langue étudiée) : traduites seulement si les 4 ont une clé */const o=f.slice(3,7),D=UI!=="fr"&&TR[UI],T=D&&o.every(v=>D[v]!=null)?gl:v=>v;EQ.push({c:f[1],q:G(f[2]),k:f[2],a:T(f[3]),w:f.slice(4,7).map(T),x:G(f[7]),l:+f[8]})}});
   (XE[l]||"").trim().split("\n").forEach(L=>{const f=L.split("|");if(f[0]==="E")XP.push({c:f[1],e:f[2],m:G(f[3]),lit:G(f[4]),x:f[5],xf:G(f[6]),g:G(f[7]),l:+f[8]})});
   const k=LK.indexOf(l),seen=new Set();LP=[];
   REF.forEach(r=>{const w=r.t[k];if(w&&!seen.has(w)){seen.add(w);const rc=[w,gl(r.fr),r.l];rc.c=r.c;rc.s=r.s;LP.push(rc)}});
@@ -3168,7 +3168,7 @@ let XDC={};function xdP(l){if(XDC[l])return XDC[l];return XDC[l]=(XD[l]||"").spl
 function eoScene(ty){
   const pool=[];xdP(lg()).forEach(z=>{if(z.l<=lv())for(let i=0;i<(z.l===lv()?3:1);i++)pool.push(z)});
   if(!pool.length)return null;const z=pick(pool);
-  return{ty,npc:z.n,hint:z.i,models:[z.m,...z.va],es:z.m,fr:z.i,say:z.n,sol:z.m,key:null,cx:z.cx}
+  return{ty,npc:z.n,hint:gl(z.i),models:[z.m,...z.va],es:z.m,fr:gl(z.i),say:z.n,sol:z.m,key:null,cx:z.cx}
 }
 function mkEO(ty,l){
   if(ty==="speakQ"||ty==="replyQ"){const q=eoScene(ty);if(q)return q;ty=ty==="speakQ"?"speakF":"type"}

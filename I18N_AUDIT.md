@@ -25,8 +25,20 @@
   3. Questions/réponses de compréhension C1 et phrases C1 hors `RT`/`RP` (ex. « Il ne manquait plus qu'on nous augmente le loyer… ») : source à localiser.
   4. Aria-label « Série » et 16 autres textes d'interface sans clé.
 
+## Étape 2 — Chemins de code (terminée)
+- `eoScene` : consigne des dialogues `XD` passée par `gl` (hint, fr).
+- `xbuild` : options des QCM d'exceptions traduites seulement si les 4 options ont une clé (options en langue étudiée jamais touchées).
+- Points 3-4 : ce sont des clés manquantes (RP/RT), pas du code ; traitées à l'étape 3.
+- Inventaire étendu (consignes XD, catégories XD, options françaises des QCM) : 16 237 textes ; manquants en 6 130, it 6 159, de 6 156, pt 6 133.
+- Test ajouté : `tests/i18n_keys.py` sort en échec (code 1) si une clé manque (hors `tr/nofr.json`) ou si une traduction est vide.
+
+## Étape 3 — Traductions (en cours)
+- Entrées : 6 213 textes uniques, en 2 lots, traduits par langue (en, it, de, pt) ; sorties à fusionner dans `tr/*.json` après contrôle des marqueurs.
+- Penser à passer `tr/…json?v=31` à `v=32` (castellano.html + index.html) et changer la version de `sw.js` pour que les téléphones rechargent.
+
 ## Prochaine action
-Étape 2 : corriger les chemins de code 1-4 (passage par `gl`), puis étape 3 : traduire les clés manquantes par lots (en, it, de, pt), étape 4 : test de non-régression.
+Fusionner les traductions contrôlées, créer `tr/nofr.json` (textes non français laissés tels quels), relancer `tests/i18n_keys.py` (doit afficher OK) et `tests/i18n_crawl.py` dans les 4 langues, puis les tests existants (mobile, exercices).
 
 ## Fichiers modifiés
+- Modifiés : `castellano.html`, `index.html` (eoScene, xbuild).
 - Ajoutés : `I18N_AUDIT.md`, `tests/i18n_keys.py`, `tests/i18n_crawl.py`, `tools/i18n_frdetect.py`.
