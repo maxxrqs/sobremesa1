@@ -568,6 +568,25 @@ html[data-theme="dark"] body .pn.cur em,html[data-theme="dark"] body .pn.done em
 #tour .tnx{background:var(--or);color:#fff;box-shadow:0 4px 0 color-mix(in srgb,var(--or) 55%,#000);margin-left:auto;transition:transform .12s}#tour .tnx:active{transform:translateY(2px)}#tour .tsk{background:transparent;color:var(--mut);padding:10px 6px !important}
 @media (prefers-reduced-motion:reduce){#tour .td,#tour .tring,#tour .tcard,#tour .tin{transition:none}#tour .tring.on,#tour .tin.inn{animation:none}}
 </style>
+<style id="wk2">
+.wkpage .wkhero{display:flex;align-items:center;gap:12px;margin:0 0 14px}
+.wkpage .wkhero h2{margin:0 0 4px;font-size:22px}
+.wkpage .wkhero p{margin:0;color:var(--mut);font-size:15px;line-height:1.4}
+.wkpage .wkgo{display:block;width:100%;margin:4px 0 6px;text-align:center}
+.wkpage .wkst{margin:20px 0 8px;font-size:17px}
+.wkf{display:flex;align-items:center;gap:12px;width:100%;margin:0 0 10px;padding:12px 14px;text-align:left;font:inherit;color:var(--ink);background:var(--card);border:2px solid var(--line);border-bottom-width:5px;border-radius:16px;cursor:pointer}
+.wkf:active{transform:translateY(3px);border-bottom-width:2px}
+.wkf .wki{flex:none;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:20px;background:color-mix(in srgb,var(--az) 12%,var(--card));color:var(--az)}
+.wkf .wkm{flex:1;min-width:0}.wkf .wkm b{display:block;font-size:16px}
+.wkf .wkm small{display:block;color:var(--mut);font-size:13px;line-height:1.3;margin-top:2px}
+.wkf .wkb{height:7px;border:0;margin:8px 0 0;background:color-mix(in srgb,var(--line) 70%,var(--card))}
+.wkf .wkb i{display:block;height:100%;border-radius:99px;background:var(--az)}
+.wkf .wkar{font-style:normal;font-size:22px;color:var(--mut)}
+.wkws{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 6px}
+.wkwd{display:flex;flex-direction:column;align-items:flex-start;padding:8px 12px;border-radius:14px;border:2px solid var(--line);border-bottom-width:4px;background:var(--card);color:var(--ink);font:inherit;cursor:pointer;text-align:left}
+.wkwd:active{transform:translateY(2px);border-bottom-width:2px}
+.wkwd b{font-size:15px;color:var(--az)}.wkwd small{font-size:12px;color:var(--mut);font-weight:600}
+</style>
 </head>
 <body>
 <style id="splash-css">
@@ -1738,21 +1757,19 @@ function weakData(){
 }
 function weakHtml(){
   const d=weakData(),n=d.sks.filter(x=>x[1]<.7).length;
-  return `<button class="wkcard" onclick="weak()"><span><b>${tr("Points à travailler")}</b><small>${tr("Clique pour plus de détails")}</small></span>${n||d.ws.length?`<em>${n+d.ws.length}</em>`:""}<i aria-hidden="true">›</i></button>`;
+  return `<button class="wkcard" onclick="weak()"><span><b>${tr("Points à travailler")}</b><small>${n||d.ws.length?tr("Quelques minutes pour transformer tes erreurs en acquis"):tr("Rien à revoir pour l'instant")}</small></span><i aria-hidden="true">›</i></button>`;
 }
 function weak(){LK2=0;stopSp();SCR="weak";
-  const d=weakData(),pc=v=>Math.round(v*100),tone=v=>v<.4?"lo":v<.7?"mid":"hi",esq=t=>t.replace(/'/g,"\\'");
-  const nf=d.sks.filter(x=>x[1]<.7).length;
-  let b=`<h2>${tr("Points à travailler")}</h2>`;
-  if(!d.sks.length&&!d.ws.length)b+=`<p class="sub">${tr("Fais quelques séries : ici apparaîtront tes points faibles, avec les mots et les thèmes précis à retravailler.")}</p>`;
-  else{
-    b+=`<div class="wksum"><div><b>${nf}</b><span>${tr("compétences à renforcer")}</span></div><div><b>${d.th.length}</b><span>${tr("thèmes à revoir")}</span></div><div><b>${d.ws.length}</b><span>${tr("mots fragiles")}</span></div></div><div class="wk">`;
-    if(d.sks.length)b+=`<section class="wkc"><div class="wkh"><span aria-hidden="true">🎯</span>${tr("Tes compétences")}</div><p class="wkx">${tr("De la plus fragile à la plus solide, d'après tes dernières réponses.")}</p>${d.sks.map(([k,v])=>`<div class="wks ${tone(v)}"><div class="wkt"><span><i aria-hidden="true">${d.SKI[k]||"•"}</i>${gl(SK[k])}</span><b>${pc(v)} %</b></div><div class="wkb"><i style="width:${pc(v)}%"></i></div><div class="wka"><small>${tr(d.SKH[k])}</small><button class="chip" onclick="start('${d.SKG[k]}')">${tr("S'entraîner")}</button></div></div>`).join("")}</section>`;
-    if(d.th.length)b+=`<section class="wkc"><div class="wkh"><span aria-hidden="true">📚</span>${tr("Thèmes à retravailler")}</div><p class="wkx">${tr("Les thèmes où tu as le plus de mots fragiles. Touche un thème pour le travailler.")}</p>${d.th.map(([t,f,n])=>`<button class="wkth" onclick="start('${esq(t)}')"><span><b>${t}</b><small>${tr("{0} mots fragiles sur {1}",f,n)}</small><span class="wkb"><i style="width:${Math.round(100*f/n)}%"></i></span></span><i aria-hidden="true">›</i></button>`).join("")}</section>`;
-    if(d.ws.length)b+=`<section class="wkc"><div class="wkh"><span aria-hidden="true">✏️</span>${tr("Mots où tu te trompes le plus")}</div><p class="wkx">${tr("Classés par nombre d'erreurs. Touche 🔊 pour réécouter un mot.")}</p><ul class="wkw">${d.ws.slice(0,25).map(k=>`<li><button class="spk sm" onclick="speak(${JSON.stringify(k).replace(/"/g,"&quot;")})" aria-label="${tr("Écouter")}">🔊</button><div><b translate="no">${k}</b>${d.fr[k]?`<span>${d.fr[k]}</span>`:""}</div><em title="${tr("{0} erreur(s)",d.mi[k].t)}">×${d.mi[k].t}</em></li>`).join("")}</ul><button class="btn" onclick="start('Révision')">${tr("Réviser ces mots")}</button></section>`;
-    b+=`</div>`;
+  const d=weakData(),esq=t=>t.replace(/'/g,"\\'"),due=(typeof srDue==="function"?srDue().length:0);
+  const sk2=d.sks.filter(x=>x[1]<.7).slice(0,2),th1=d.th.slice(0,1),w=d.ws.slice(0,6),none=!sk2.length&&!th1.length&&!w.length;
+  let b=`<div class="wkhero">${mas(none?"bravo":"content",76)}<div><h2>${tr("Tes points à consolider")}</h2><p>${none?tr("Rien à revoir pour l'instant. Continue tes séries : on te dira ici quoi consolider."):tr("Chaque erreur est une occasion d'apprendre. Voici l'essentiel, en quelques minutes.")}</p></div></div>`;
+  if(!none){
+    b+=`<button class="btn wkgo" onclick="start('Révision')">${tr("Réviser mes erreurs")}${due?` · ${due}`:""}</button>`;
+    const f=sk2.map(([k,v])=>({i:d.SKI[k]||"🎯",t:gl(SK[k]),s:tr(d.SKH[k]),g:`start('${d.SKG[k]}')`,p:Math.round(v*100)})).concat(th1.map(([t,fr,n])=>({i:"📚",t,s:tr("{0} mots à revoir",fr),g:`start('${esq(t)}')`,p:Math.round(100*(1-fr/n))})));
+    if(f.length)b+=`<h3 class="wkst">${tr("À consolider")}</h3>`+f.map(x=>`<button class="wkf" onclick="${x.g}"><span class="wki" aria-hidden="true">${x.i}</span><span class="wkm"><b>${x.t}</b><small>${x.s}</small></span><i class="wkar" aria-hidden="true">›</i></button>`).join("");
+    if(w.length)b+=`<h3 class="wkst">${tr("Mots à revoir")}</h3><p class="wkx">${tr("Touche un mot pour l'écouter.")}</p><div class="wkws">${w.map(k=>`<button class="wkwd" data-nosnd="1" onclick="speak(${JSON.stringify(k).replace(/"/g,"&quot;")})"><b translate="no">${k}</b>${d.fr[k]?`<small>${d.fr[k]}</small>`:""}</button>`).join("")}</div>`;
   }
-  $.innerHTML=head()+bnav("prof")+`<div class="q">${b}<button class="btn ghost" onclick="prog('p')">${tr("Retour")}</button></div>`;scrollTo(0,0);
+  $.innerHTML=head()+bnav("prof")+`<div class="q wkpage">${b}<button class="btn ghost" onclick="prog('p')">${tr("Retour")}</button></div>`;scrollTo(0,0);
 }
 function prog(t){LK2=0;
   SCR="home";PT=t||PT||"p";const i=xpInfo(),u=unl();
@@ -1767,7 +1784,6 @@ function prog(t){LK2=0;
     <div class="stiles">${tile("🔥",curStreak(),tr("série"))}${tile("🏆",S.best||0,tr("record"))}${tile("📅",S.days||0,tr("jours étudiés"))}${tile("🪙",S.co||0,tr("pièces"))}</div>
     ${calHtml()}<h3>${tr("Cette semaine")}</h3>${wkChart()}<p class="skl">${tr("XP par jour · trait pointillé = objectif du jour")}</p>
     <h3>${tr("Mots maîtrisés")}</h3><p class="sub">${done} / ${tot} · ${LN()}</p><div class="bar" style="margin:-8px 0 14px"><i style="width:${Math.round(100*done/tot)}%"></i></div>
-    ${due?`<button class="btn" onclick="start('Révision')">${tr("À réviser aujourd'hui : {0}",due)}</button>`:""}
     ${weakHtml()}
     ${badgesHtml()}<details><summary>${tr("Comment ça marche")}</summary><p class="sub">${tr("Chaque bonne réponse dans une série vaut 10 XP, et une série parfaite (10/10) ajoute 5 XP, comptés à la fin de la série. Les XP font monter ton niveau de joueur, qui débloque des récompenses. La série 🔥 compte les jours d'affilée où tu termines au moins une série : si tu en manques un, elle repart à 1. Ton niveau de langue (A1, A2, B1) est à part : il dépend des mots que tu maîtrises, pas des XP.")}</p><p class="sub">${tr("Les pièces 🪙 s'obtiennent avec les XP, les quêtes, l'objectif du jour et les montées de niveau. Elles s'échangent dans la boutique.")}</p></details>
     <details><summary>${tr("Récompenses de niveau")}</summary><ul class="rw">${lr}</ul></details><details><summary>${tr("Récompenses de série")}</summary><ul class="rw">${sr}</ul></details>`;
