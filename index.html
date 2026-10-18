@@ -12,8 +12,10 @@
 <link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png">
 <script src="config.js"></script><script src="shim.js"></script>
 
+<meta name="google" content="notranslate">
+<script>(function(){var r=document.documentElement,f=function(){if(r.getAttribute("data-theme")!=="light")r.setAttribute("data-theme","light");r.style.colorScheme="light"};f();try{new MutationObserver(f).observe(r,{attributes:true,attributeFilter:["data-theme","style","class"]})}catch(e){}})()</script>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"><style>html{touch-action:pan-x pan-y;-webkit-text-size-adjust:100%}</style><script>(function(){var p=function(e){e.preventDefault()};["gesturestart","gesturechange","gestureend"].forEach(function(t){document.addEventListener(t,p,{passive:false})});document.addEventListener("touchmove",function(e){if(e.touches&&e.touches.length>1)e.preventDefault()},{passive:false})})()</script>
 <title>Sobremesa — les langues d'Espagne</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Figtree:wght@400;500;600;700;800&family=Nunito:wght@400;600;700&family=Baloo+2:wght@500;600;700;800&family=DynaPuff:wght@700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Figtree:wght@400;500;600;700;800&family=Nunito:wght@400;600;700&family=Baloo+2:wght@500;600;700;800&family=DynaPuff:wght@700&display=swap" rel="stylesheet"></noscript>
 <style>
@@ -851,7 +853,7 @@ function setUI2(l){
   UI=l;try{ST.set("cast_ui",l)}catch(e){}
   applyUI();build();
   if(!U){AUM?auth(AUM):landing();return}
-  if(SCR==="lists")lists();else if(SCR==="verb")verb();else if(SCR==="exc")exc();else if(SCR==="expr")expr();else if(SCR==="conj")conj();else if(INL&&R&&R.q&&R.mode==="lesson")draw();else entry();
+  if(SCR==="lists")lists();else if(SCR==="verb")verb();else if(SCR==="exc")exc();else if(SCR==="expr")expr();else if(SCR==="conj")conj();else if(INL&&R&&R.q&&R.mode==="lesson")draw();else if(!INL&&!LK2&&window.SBRR&&SBRR());else entry();
 }
 const uisel=()=>`<select class="sel" data-nt="1" translate="no" onchange="setUI(this.value)" aria-label="Langue de l'interface">${Object.keys(UIL).map(k=>`<option value="${k}"${k===UI?" selected":""}>${UIL[k]}</option>`).join("")}</select>`;
 var AUM="login";
@@ -4231,7 +4233,7 @@ let FXS=0;
 function fxOk(good){try{if(!MS().mute&&navigator.vibrate)navigator.vibrate(good?12:[25,35,25])}catch(e){}FXS=good?FXS+1:0;if(good)FX.play(FXS>=5?"streak":"good",Math.min(FXS-1,6)*2);else FX.play("bad")}
 function mascMsg(){const d=S.last?Math.floor((Date.now()-new Date(S.last).getTime())/864e5):0,h=new Date().getHours();return d>=3?tr("Ça fait un moment… on s'y remet ?"):(S.last===dayK()&&curStreak()>1?tr("{0} jours d'affilée, continue !",curStreak()):S.last!==dayK()&&curStreak()>0?tr("Ta série de {0} jours t'attend : fais un exercice pour la garder !",curStreak()):h<12?tr("¡Buenos días ! Prêt pour une petite série ?"):tr("¡Hola ! Prêt pour une petite série ?"))}
 function mascHome(){const d=S.last?Math.floor((Date.now()-new Date(S.last).getTime())/864e5):0;return `<div class="mh">${mas(d>=3?"dodo":"content",84)}<div class="bubble">${mascMsg()}</div></div>`}
-function setSty(k,v){S[k]=v;save();document.documentElement.dataset.mas=S.mas||"gecko";FX.play("tap");const o=document.getElementById("mn");if(o)o.remove();document.querySelectorAll(".mas").length&&(SCR==="home"&&!INL?home():0);menu()}
+function setSty(k,v){S[k]=v;save();document.documentElement.dataset.mas=S.mas||"gecko";FX.play("tap");const o=document.getElementById("mn");if(o)o.remove();document.querySelectorAll(".mas").length&&(SCR==="home"&&!INL&&!LK2?(window.SBRR&&SBRR()||home()):0);menu()}
 document.addEventListener("click",e=>{try{const b=e.target.closest("button,.btn,.chip,.tab,.theme,[role=button],a[onclick],summary");if(b&&!b.disabled&&!b.closest(".opt,.spk,[data-nosnd]"))FX.play("tap")}catch(x){}},true);
 function mpick(){
   const o=document.getElementById("mp");if(o){o.remove();return}
@@ -4318,7 +4320,7 @@ function setLang(l){
   S.PL=S.PL||{};S.PL[lg()]={sc:S.sc,lvl:S.lvl,sk:S.sk,sr:S.sr,mi:S.mi,xp:S.xp||0,xh:S.xh||{},dx:S.dx||null};
   const o=S.PL[l]||{};S.lang=l;S.sc=o.sc||{};S.lvl=o.lvl||0;S.sk=o.sk;S.sr=o.sr||{};S.mi=o.mi||{};S.xp=o.xp||0;S.xh=o.xh||{};S.dx=o.dx||null;
   try{speechSynthesis.cancel()}catch(e){}
-  build();R=undefined;save();if(SCR==="lists"||SCR==="verb")lists();else if(SCR==="exc")exc();else if(SCR==="expr")expr();else if(SCR==="conj")conj();else entry();
+  build();R=undefined;save();if(SCR==="lists"||SCR==="verb")lists();else if(SCR==="exc")exc();else if(SCR==="expr")expr();else if(SCR==="conj")conj();else if(!INL&&!LK2&&window.SBRR&&SBRR());else entry();
 }
 function menu(){
   const o=document.getElementById("mn");if(o){o.remove();return}
@@ -4496,22 +4498,37 @@ CMX.init();
 applyUI();
 /* historique : le bouton « retour » ramène à l'écran précédent, pas au menu (pile en mémoire + une entrée-garde dans l'historique du navigateur) */
 (function(){
-  const SCREENS=["home","tools","lists","conj","exc","expr","trad","scn","verb","setMode"],SESS=["start","test","cvStart","imStart","scnStart"];
-  let stack=[],busy=0,armed=0;
-  const same=(a,b)=>a.n===b.n&&JSON.stringify(a.a)===JSON.stringify(b.a);
+  const SCREENS=["home","tools","lists","conj","exc","expr","trad","scn","verb","setMode","prog","weak"],SESS=["start","test","cvStart","imStart","scnStart"];
+  let stack=[],busy=0,armed=0,depth=0,cur=null,lastKey=null;
+  const tk=m=>m==="im"||m==="cv"||m==="sc"?"t":"l";
+  const same=(a,b)=>a.n===b.n&&JSON.stringify(a.a)===JSON.stringify(b.a)&&(a.n!=="home"||tk(a.m)===tk(b.m));
   const arm=()=>{try{history.replaceState({r:1},"");history.pushState({g:1},"");armed=1}catch(e){}};
   const rec=(n,a)=>{if(busy)return;const e={n,a:Array.prototype.slice.call(a),m:S.mode};if(!armed)arm();
     const top=stack[stack.length-1];if(top&&same(top,e))return;
     if(!SESS.includes(n)){const i=stack.map((x,k)=>!SESS.includes(x.n)&&same(x,e)?k:-1).filter(k=>k>=0).pop();if(i!==undefined){stack.length=i+1;return}}
     stack.push(e);if(stack.length>40)stack.shift()};
-  SCREENS.concat(SESS).forEach(n=>{const f=window[n];if(typeof f!=="function")return;window[n]=function(){rec(n,arguments);return f.apply(this,arguments)}});
-  const fl=window.landing;if(typeof fl==="function")window.landing=function(){stack=[];return fl.apply(this,arguments)};
+  /* identité de l'onglet affiché : change → on remonte en haut de page */
+  const onT=q=>{const x=document.querySelector(q);return x?x.textContent.trim():""};
+  const keyNow=()=>(typeof SCR!=="undefined"?SCR:"")+"|"+onT(".bnav .on")+"|"+onT("nav.tabs .tab.on")+"|"+onT(".seg .on")+"|"+(onT(".bnav .on")&&typeof PT!=="undefined"?PT:"");
+  const top0=()=>{try{window.scrollTo(0,0);document.documentElement.scrollTop=0;document.body.scrollTop=0}catch(e){}};
+  let keep=0;
+  SCREENS.concat(SESS).forEach(n=>{const f=window[n];if(typeof f!=="function")return;window[n]=function(){
+    const outer=depth===0;if(outer){rec(n,arguments);if(!SESS.includes(n))cur={n,a:Array.prototype.slice.call(arguments)};else lastKey=null}
+    depth++;let r;try{r=f.apply(this,arguments)}finally{depth--}
+    if(outer&&!SESS.includes(n)){const k=keyNow();if(k!==lastKey&&!keep)top0();lastKey=k}
+    return r}});
+  const fl=window.landing;if(typeof fl==="function")window.landing=function(){stack=[];cur=null;return fl.apply(this,arguments)};
+  /* re-dessine l'écran courant (après un changement de paramètre) sans changer d'onglet ni de position */
+  window.SBRR=function(){if(!cur||typeof window[cur.n]!=="function")return false;const y=window.scrollY;busy=1;keep=1;
+    try{window[cur.n].apply(null,cur.a)}catch(x){busy=0;keep=0;return false}busy=0;keep=0;try{window.scrollTo(0,y)}catch(e){}return true};
   window.addEventListener("popstate",()=>{
     if(!armed)return;
+    const ov=document.getElementById("mn")||document.getElementById("mp");
+    if(ov){ov.remove();try{history.pushState({g:1},"")}catch(e){}return}
     stack.pop();while(stack.length&&SESS.includes(stack[stack.length-1].n))stack.pop();
     if(!stack.length){armed=0;try{history.back()}catch(e){}return}
     try{history.pushState({g:1},"")}catch(e){}
-    const e=stack[stack.length-1];busy=1;try{stopSp()}catch(x){}try{if(e.m!==undefined&&e.m!==S.mode&&e.n!=="setMode")S.mode=e.m;window[e.n].apply(null,e.a)}catch(x){}busy=0});
+    const e=stack[stack.length-1];busy=1;try{stopSp()}catch(x){}try{if(e.m!==undefined&&e.m!==S.mode&&e.n!=="setMode")S.mode=e.m;window[e.n].apply(null,e.a)}catch(x){}busy=0;top0()});
 })();
 (async function(){
   let su=null;try{su=ST.get("cast_user")}catch(e){}
@@ -4521,6 +4538,19 @@ applyUI();
   if(su){loginL(su);dbp.then(()=>syncDb(su))}else{landing();dbp.then(()=>{if(!U&&DB){const f=document.querySelector("form input");if(f&&!f.value)auth(AUM||"login")}})}
   hs();try{axWarm()}catch(e){}
 })();
+</script>
+<script id="sm-fluid-js">
+/* Fluidité : n'anime l'écran que s'il change vraiment ; la barre de progression glisse depuis sa valeur précédente */
+(function(){const a=document.getElementById("app");if(!a||!window.MutationObserver)return;
+let pk=null,ph=0,pn=0,pw=null;
+const key=()=>{const q=a.querySelector(":scope>.q");let t="";if(!q){const h=a.querySelector(":scope>h2,:scope>.ptitle,:scope h2.ptitle");t=h?h.textContent.slice(0,40):""}
+let s="";try{s=typeof SCR!=="undefined"?SCR:""}catch(e){}
+return s+"|"+(document.documentElement.dataset.scr||"")+"|"+(q?"q":t)+"|"+[...a.children].filter(e=>e.tagName!=="HEADER"&&e.tagName!=="NAV").slice(0,3).map(e=>e.tagName+"."+(e.className||"").toString().split(" ")[0]).join(",")};
+new MutationObserver(()=>{const k=key(),hh=!!a.querySelector(":scope>header"),hn=!!a.querySelector(":scope>nav"),same=k===pk;
+a.classList.toggle("sm-still",same);a.classList.toggle("sm-keepH",hh&&!!ph);a.classList.toggle("sm-keepN",hn&&!!pn);
+const b=a.querySelector(".bar>i"),nw=b?b.style.width:null;
+if(b&&same&&pw&&nw&&pw!==nw&&!matchMedia("(prefers-reduced-motion:reduce)").matches){b.style.transition="none";b.style.width=pw;void b.offsetWidth;b.style.transition="";b.style.width=nw}
+pk=k;ph=hh;pn=hn;pw=nw}).observe(a,{childList:true})})();
 </script>
 <script>if("serviceWorker"in navigator&&location.protocol!=="file:"){addEventListener("load",()=>navigator.serviceWorker.register("sw.js").then(r=>{r.addEventListener("updatefound",()=>{const w=r.installing;w&&w.addEventListener("statechange",()=>{if(w.state==="installed"&&navigator.serviceWorker.controller&&document.getElementById("splash"))location.reload()})})}).catch(()=>{}))}</script>
 <script id="sm-fluid-js">
