@@ -32,13 +32,26 @@
 - Inventaire étendu (consignes XD, catégories XD, options françaises des QCM) : 16 237 textes ; manquants en 6 130, it 6 159, de 6 156, pt 6 133.
 - Test ajouté : `tests/i18n_keys.py` sort en échec (code 1) si une clé manque (hors `tr/nofr.json`) ou si une traduction est vide.
 
-## Étape 3 — Traductions (en cours)
-- Entrées : 6 213 textes uniques, en 2 lots, traduits par langue (en, it, de, pt) ; sorties à fusionner dans `tr/*.json` après contrôle des marqueurs.
-- Penser à passer `tr/…json?v=31` à `v=32` (castellano.html + index.html) et changer la version de `sw.js` pour que les téléphones rechargent.
+## Étape 3 — Traductions (terminée, 2026-10-18)
+- Ajoutées et contrôlées (marqueurs {n} = ; → identiques, aucune vide) : en 5 939, it 5 944, de 5 936, pt 5 938, + 71 options de QCM d'exceptions en français × 4 langues (284).
+- `tr/nofr.json` : 267 textes non français (langue étudiée) volontairement non traduits ; 18 de ces textes, traduits par erreur dans certaines langues, retirés.
+- Cache : `tr/…json?v=32`, version `sw.js` changée.
+
+## Étape 4 — Vérifications (terminée)
+- `tests/i18n_keys.py` : 0 clé manquante, 0 vide dans les 4 langues → OK.
+- `tests/i18n_crawl.py` (4 langues × 5 langues étudiées × niveaux 1/3/5, 25 types d'exercices) : 0 erreur ; français visible avant 423 (en) → après : seulement des textes en langue étudiée détectés à tort.
+- `tests/mobile.py` : 22/22.
+
+## Anomalies restantes
+- Traductions générées par IA, non relues par un locuteur natif.
+- Guillemets allemands mixtes (« » anciens, „ “ nouveaux).
+- QCM « pois » (galicien) et « o, sans accent / ò / ô / ó » laissés en français (options ambiguës avec la langue étudiée).
+- Le traducteur DOM remplace tout nœud texte égal à une clé : un mot en langue étudiée affiché sans `translate="no"` et identique à une clé française pourrait être traduit (risque ancien, non mesuré).
 
 ## Prochaine action
-Fusionner les traductions contrôlées, créer `tr/nofr.json` (textes non français laissés tels quels), relancer `tests/i18n_keys.py` (doit afficher OK) et `tests/i18n_crawl.py` dans les 4 langues, puis les tests existants (mobile, exercices).
+Aucune. Pour tout nouveau texte : ajouter la clé dans les 4 `tr/*.json`, puis lancer `tests/i18n_keys.py`.
 
 ## Fichiers modifiés
-- Modifiés : `castellano.html`, `index.html` (eoScene, xbuild).
+- Modifiés : `castellano.html`, `index.html` (eoScene, xbuild, `?v=32`), `sw.js`, `tr/en.json`, `tr/it.json`, `tr/de.json`, `tr/pt.json`.
+- Ajouté : `tr/nofr.json`.
 - Ajoutés : `I18N_AUDIT.md`, `tests/i18n_keys.py`, `tests/i18n_crawl.py`, `tools/i18n_frdetect.py`.
