@@ -774,7 +774,7 @@ var UI="fr";
 const UIL={fr:"Français",en:"English",it:"Italiano",de:"Deutsch",pt:"Português"};
 const TR={};const trLoad=l=>(l==="fr"||TR[l])?Promise.resolve():fetch("tr/"+l+".json?v=32").then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{TR[l]=j}).catch(()=>{});
 try{const s=ST.get("cast_ui"),n=(navigator.language||"fr").slice(0,2);UI=UIL[s]?s:(UIL[n]?n:"fr")}catch(e){}
-const gl=s=>{if(UI==="fr"||!TR[UI])return s;let t=TR[UI][s];if(t!=null)return t;const n=s.match(NUMRE);if(n){t=TR[UI][s.replace(NUMRE,"#")];if(t!=null){let i=0;return t.replace(/#/g,()=>i<n.length?n[i++]:"#")}}return s};
+const gl=s=>{if(UI==="fr"||!TR[UI])return s;let t=TR[UI][s];if(t!=null)return t;const n=s.match(NUMRE);if(n){t=TR[UI][s.replace(NUMRE,"#")];if(t!=null){let i=0;return t.replace(/#/g,()=>i<n.length?n[i++]:"#")}const b=s.match(/^(.*\S)\s+(\d+)$/);if(b&&TR[UI][b[1]]!=null)return TR[UI][b[1]]+" "+b[2]}return s};
 const tr=(s,...a)=>gl(s).replace(/\{(\d)\}/g,(m,i)=>a[i]);
 const NUMRE=/\d+(?:[.,]\d+)?/g;
 function trText(s){
@@ -782,7 +782,7 @@ function trText(s){
   const m=s.match(/^(\s*)([\s\S]*?)(\s*)$/),c=m[2];
   if(c.length<2||!/[A-Za-zÀ-ÿ]/.test(c))return s;
   const nums=c.match(NUMRE)||[],t=TR[UI][c.replace(NUMRE,"#")]??TR[UI][c];
-  if(t==null)return s;
+  if(t==null){const b=c.match(/^(.*\S)\s+(\d+)$/);return b&&TR[UI][b[1]]!=null?m[1]+TR[UI][b[1]]+" "+b[2]+m[3]:s}
   let i=0;return m[1]+t.replace(/#/g,()=>i<nums.length?nums[i++]:"#")+m[3];
 }
 const TRA=["placeholder","aria-label","title","alt"];
