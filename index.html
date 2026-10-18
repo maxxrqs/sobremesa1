@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="fr" data-theme="light">
+<html lang="fr" data-theme="light" translate="no" class="notranslate">
 <head>
+<meta name="google" content="notranslate">
 <script>(function(){var r=document.documentElement,f=function(){if(r.getAttribute("data-theme")!=="light")r.setAttribute("data-theme","light");r.style.colorScheme="light"};f();try{new MutationObserver(f).observe(r,{attributes:true,attributeFilter:["data-theme","style","class"]})}catch(e){}})()</script>
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#CFE9DC">
@@ -761,7 +762,7 @@ function trText(s){
 const TRA=["placeholder","aria-label","title","alt"];
 function trNode(n){
   if(UI==="fr"||!TR[UI])return;
-  if(n.nodeType===3){if(n.parentNode&&n.parentNode.closest&&n.parentNode.closest('[translate="no"]'))return;const v=trText(n.nodeValue);if(v!==n.nodeValue)n.nodeValue=v;return}
+  if(n.nodeType===3){if(n.parentNode&&n.parentNode.closest&&n.parentNode.closest('[translate="no"]:not(html)'))return;const v=trText(n.nodeValue);if(v!==n.nodeValue)n.nodeValue=v;return}
   if(n.nodeType!==1||n.getAttribute("translate")==="no"||/^(SCRIPT|STYLE)$/.test(n.tagName)||(n.tagName==="OPTION"&&n.parentNode&&n.parentNode.dataset&&n.parentNode.dataset.nt))return;
   TRA.forEach(a=>{if(n.hasAttribute&&n.hasAttribute(a)){const v=trText(n.getAttribute(a));if(v!==n.getAttribute(a))n.setAttribute(a,v)}});
   if(n.tagName!=="TEXTAREA")n.childNodes.forEach(trNode);

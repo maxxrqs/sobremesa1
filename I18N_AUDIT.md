@@ -55,3 +55,6 @@ Aucune. Pour tout nouveau texte : ajouter la clé dans les 4 `tr/*.json`, puis l
 - Modifiés : `castellano.html`, `index.html` (eoScene, xbuild, `?v=32`), `sw.js`, `tr/en.json`, `tr/it.json`, `tr/de.json`, `tr/pt.json`.
 - Ajouté : `tr/nofr.json`.
 - Ajoutés : `I18N_AUDIT.md`, `tests/i18n_keys.py`, `tests/i18n_crawl.py`, `tools/i18n_frdetect.py`.
+
+## Traduction automatique du navigateur (2026-10-18)
+- Bloquée : `<html translate="no" class="notranslate">` + `<meta name="google" content="notranslate">` (Chrome, Edge, Safari, Firefox). Le traducteur interne ignore désormais `translate="no"` sur `<html>` (`:not(html)`).

@@ -8,7 +8,7 @@ HOOK="""(()=>{window.__miss=new Map();window.__scr='';
 window.__col=function(){const NUM=/\\d+(?:[.,]\\d+)?/g;const D=TR[UI]||{};const V=window.__vals||(window.__vals=new Set(Object.values(D).map(x=>String(x).trim())));const VN=window.__valsn||(window.__valsn=new Set([...V].map(x=>x.replace(NUM,'#'))));
  const look=c=>{c=c.trim();if(c.length<2||!/[A-Za-zÀ-ÿ]/.test(c))return true;return D[c]!=null||D[c.replace(NUM,'#')]!=null||V.has(c)||VN.has(c.replace(NUM,'#'))};
  const add=(t,k)=>{t=t.replace(/\\s+/g,' ').trim();if(!t||look(t))return;const v=window.__miss.get(t)||{n:0,s:new Set(),k};v.n++;v.s.add(window.__scr);window.__miss.set(t,v)};
- const walk=n=>{if(n.nodeType===3){if(n.parentNode.closest('[translate="no"],script,style,svg'))return;add(n.nodeValue,'txt');return}
+ const walk=n=>{if(n.nodeType===3){if(n.parentNode.closest('[translate="no"]:not(html),script,style,svg'))return;add(n.nodeValue,'txt');return}
   if(n.nodeType!==1||n.getAttribute('translate')==='no'||/^(SCRIPT|STYLE|SVG)$/i.test(n.tagName))return;
   ['placeholder','aria-label','title','alt'].forEach(a=>{if(n.hasAttribute(a))add(n.getAttribute(a),'@'+a)});n.childNodes.forEach(walk)};
  walk(document.body)};
