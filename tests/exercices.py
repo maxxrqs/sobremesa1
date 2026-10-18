@@ -14,7 +14,7 @@ window.SpeechRecognition=FSR;window.webkitSpeechRecognition=FSR;"""
 NOSR="delete window.SpeechRecognition;delete window.webkitSpeechRecognition;"
 DIST="""(a)=>{const out={};for(const lang of a.langs){for(let L=1;L<=5;L++){S.lang=lang;S.lvl=L;S.pth={};S.rat={};S.rq={};S.md={};build();PLC=null;const T={};let n=0,er=0;
  for(const st of pathPlanMain().flat){if(st.test)continue;
-  R={mode:'lesson',t:st.t||'Chunk',n:0,ok:0,xp:0,cat:null,pid:st.id,pt:st.pt||null,ws:st.ws||null,dp:st.dp||null,gp:st.gp||null,go:st.go||null,xs:st.xs||null,qs:st.qs||null,vs:st.vs||null,pp:st.pp||null};
+  R={mode:'lesson',t:st.t||'Chunk',n:0,ok:0,xp:0,cat:null,pid:st.id,pt:st.pt||null,ws:st.ws||null,dp:st.dp||null,gp:st.gp||null,go:st.go||null,xs:st.xs||null,qs:st.qs||null,vs:st.vs||null,pp:st.pp||null,kn:st.kn||null,tn:st.tn||null};
   for(let i=0;i<10;i++){R.n=i;try{const q=mkQ(pickType(),0);T[q.ty]=(T[q.ty]||0)+1;n++;const m=MODL[q.ty];if(m){S.md[lang]=S.md[lang]||[];S.md[lang].push(m);if(S.md[lang].length>80)S.md[lang].shift()}}catch(e){er++}}}
  out[lang+L]={n,T,er}}}return out}"""
 def shares(res,sr):
@@ -85,7 +85,7 @@ with sync_playwright() as p:
     ck("aucune erreur JS (formats oraux)",not er,er);c.close()
     # ---------- E. apprendre avant de tester
     c=b.new_context(locale="fr-FR",viewport={"width":390,"height":844});pg=c.new_page();er=[];pg.on("pageerror",lambda e:er.append(str(e)));pg.add_init_script(FAKE);pg.goto(BASE+"index.html");pg.wait_for_timeout(2000)
-    r=pg.evaluate("""()=>{S.lang='es';S.lvl=1;S.pth={};S.sc={};S.ds={};build();PLC=null;const st=pathPlanMain().flat.find(x=>x.id.startsWith('W'));pstart(st.id);
+    r=pg.evaluate("""()=>{S.lang='es';S.lvl=1;S.pth={};S.sc={};S.ds={};build();PLC=null;const st=pathPlanMain().flat.find(x=>x.id.startsWith('v'));pstart(st.id);
       const o={disc:!!DISC,n:DISC?DISC.items.length:0,txt:document.body.innerText,q:R.q?R.q.ty:null,ws:st.ws.map(w=>w[0]),items:DISC?DISC.items.map(x=>x.es):[],ex:DISC?DISC.items.filter(x=>x.ex).length:0};return o}""")
     ck("nouvelle étape de vocabulaire : écran de découverte AVANT toute question",r["disc"] and r["q"] is None and r["n"]>=3,r)
     ck("découverte : tous les mots de l'étape présentés (sens + exemple pour la plupart)",set(r["ws"])<=set(r["items"]) and r["ex"]>=1,[r["ws"],r["items"],r["ex"]])
@@ -93,11 +93,11 @@ with sync_playwright() as p:
     q=pg.evaluate("""()=>{discGo();const ty=R.q.ty;const seen=[];for(let i=0;i<40;i++){R.n=i%10;const q=mkQ(pickType(),0);seen.push([q.ty,q.key||q.wk||null])}
        return{ty,ds:Object.keys(S.ds).length,seen}}""")
     ck("après « C'est parti » : l'exercice démarre, mots marqués vus",q["ds"]>=3 and q["ty"],q["ty"])
-    r2=pg.evaluate("""()=>{const st=pathPlanMain().flat.find(x=>x.id.startsWith('W'));pstart(st.id);return{disc:!!DISC,q:R.q?R.q.ty:null}}""")
+    r2=pg.evaluate("""()=>{const st=pathPlanMain().flat.find(x=>x.id.startsWith('v'));pstart(st.id);return{disc:!!DISC,q:R.q?R.q.ty:null}}""")
     ck("même étape rejouée : pas de redite de la découverte",not r2["disc"] and r2["q"])
-    r3=pg.evaluate("""()=>{S.ds={};const st=pathPlanMain().flat.find(x=>x.id.startsWith('W'));st.ws.forEach(w=>S.sc[w[0]]=3);pstart(st.id);return{disc:!!DISC}}""")
+    r3=pg.evaluate("""()=>{S.ds={};const st=pathPlanMain().flat.find(x=>x.id.startsWith('v'));st.ws.forEach(w=>S.sc[w[0]]=3);pstart(st.id);return{disc:!!DISC}}""")
     ck("mots déjà acquis : pas de découverte inutile",not r3["disc"])
-    r4=pg.evaluate("""()=>{S.ds={};S.sc={};const st=pathPlanMain().flat.find(x=>x.id.startsWith('M'));pstart(st.id);return{disc:!!DISC}}""")
+    r4=pg.evaluate("""()=>{S.ds={};S.sc={};const st=pathPlanMain().flat.find(x=>x.id.startsWith('m'));pstart(st.id);return{disc:!!DISC}}""")
     ck("bilan/révision : pas de découverte (on évalue du déjà vu)",not r4["disc"])
     # progression des formats selon l'acquisition du mot : reconnaissance → rappel → production
     d=pg.evaluate("""()=>{const o={};for(const sc of [0,5]){S.lang='es';S.lvl=1;build();const ws=ALL.filter(w=>(w[2]||1)===1).slice(0,6);ws.forEach(w=>S.sc[w[0]]=sc);const T={};let n=0;
@@ -114,12 +114,12 @@ with sync_playwright() as p:
     ck("chaque niveau A1→C1 contient une étape dédiée aux 4 compétences (CO, CE, EE, EO) et l'EO est vocal",all(v["co"] and v["ce"] and v["ee"] and v["eo"] and v["eoSR"] for v in sk.values()),sk)
     # parcours complet : à CHAQUE niveau, les 4 compétences sont travaillées ; bilans d'unité de plus en plus larges (cumul), vocabulaire du niveau d'abord
     lv=pg.evaluate("""()=>{const o={};for(let L=1;L<=5;L++){S.lang='es';S.lvl=L;S.pth={};S.rat={};S.rq={};S.md={};build();PLC=null;const T={};let n=0;const pl=pathPlanMain();
-      for(const st of pl.flat){if(st.test)continue;R={mode:'lesson',t:st.t||'Chunk',n:0,ok:0,xp:0,pid:st.id,pt:st.pt||null,ws:st.ws||null,dp:st.dp||null,gp:st.gp||null,go:st.go||null,xs:st.xs||null,qs:st.qs||null,vs:st.vs||null,pp:st.pp||null};
+      for(const st of pl.flat){if(st.test)continue;R={mode:'lesson',t:st.t||'Chunk',n:0,ok:0,xp:0,pid:st.id,pt:st.pt||null,ws:st.ws||null,dp:st.dp||null,gp:st.gp||null,go:st.go||null,xs:st.xs||null,qs:st.qs||null,vs:st.vs||null,pp:st.pp||null,kn:st.kn||null,tn:st.tn||null};
         for(let i=0;i<10;i++){R.n=i;const q=mkQ(pickType(),0);const m=MODL[q.ty];if(m){T[m]=(T[m]||0)+1;n++}}}
-      const ms=pl.units.map(u=>{const m=u.steps.find(x=>x.id.startsWith('M'));return m?m.ws.length:null}).filter(x=>x!=null);
-      o[L]={sh:Object.fromEntries(Object.entries(T).map(([k,v])=>[k,Math.round(100*v/n)])),ms,inc:ms.every((x,i)=>i===0||x>=ms[i-1])}}return o}""")
+      const us=pl.units.slice(0,-1),inc=us.every((u,i)=>{const m=new Set(u.steps.find(x=>x.id.startsWith('m')).ws.map(w=>w[0]));return u.uw.every(w=>m.has(w[0]))&&(i===0||us[i-1].uw.length===0||us[i-1].uw.some(w=>m.has(w[0])))});
+      o[L]={sh:Object.fromEntries(Object.entries(T).map(([k,v])=>[k,Math.round(100*v/n)])),inc}}return o}""")
     ck("chaque niveau A1→C1 : les 4 compétences ≥ 12 % du travail (parcours complet)",all(all(v["sh"].get(k,0)>=12 for k in ["co","eo","ce","ee"]) for v in lv.values()),lv)
-    ck("bilans d'unité cumulatifs : taille croissante d'une unité à l'autre, à chaque niveau",all(v["inc"] for v in lv.values()),lv)
+    ck("bilans d'unité : tous les mots de l'unité + rappels espacés des unités précédentes, à chaque niveau",all(v["inc"] for v in lv.values()),lv)
     ck("aucune erreur JS (progression)",not er,er);c.close()
     b.close()
 print(sum(R),"/",len(R),"OK");sys.exit(0 if all(R) else 1)
