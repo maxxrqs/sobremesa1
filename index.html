@@ -698,6 +698,32 @@ html body .bnav button::before,html body .bnav button::after{display:none!import
 html body .bnav button.on{background:var(--az);color:#fff}
 html body .bnav button.on *{color:#fff}
 body{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+
+/* Points à travailler : cartes rangées */
+html body .wk{display:grid;gap:14px;margin:6px 0 18px}
+html body .wkc{background:var(--card);border:2.5px solid var(--sk);border-radius:20px;box-shadow:var(--hs);padding:14px 14px 12px}
+html body .wkh{display:flex;align-items:center;gap:8px;font-weight:800;font-size:16px;margin:0 0 10px;color:var(--sk)}
+html body .wks{padding:10px 0;border-top:1.5px dashed var(--line)}
+html body .wkh+.wks{border-top:0;padding-top:2px}
+html body .wkt{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:15px}
+html body .wkt b{font-size:14px;padding:1px 9px;border-radius:99px;border:2px solid var(--sk);background:var(--card)}
+html body .wks.lo .wkt b{background:#FFD9D2}html body .wks.mid .wkt b{background:#FFEDB8}html body .wks.hi .wkt b{background:#CFEFD9}
+html body .wkb{height:10px;border-radius:99px;border:2px solid var(--sk);background:color-mix(in srgb,var(--line) 50%,var(--card));overflow:hidden;margin:7px 0 6px}
+html body .wkb i{display:block;height:100%;background:var(--az);border-radius:99px}
+html body .wks small{display:block;font-size:13px;color:var(--mut);line-height:1.35}
+html body .wkth{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;text-align:left;font:inherit;color:var(--sk);background:color-mix(in srgb,var(--az) 7%,var(--card));border:2px solid var(--sk);border-radius:14px;box-shadow:var(--hs2);padding:10px 12px;margin:0 0 9px;cursor:pointer;transition:transform .12s,box-shadow .12s}
+html body .wkth:last-child{margin-bottom:0}
+html body .wkth:active{transform:translate(2px,2px);box-shadow:var(--hs1)}
+html body .wkth b{display:block;font-size:16px;line-height:1.2}
+html body .wkth small{display:block;font-size:13px;color:var(--mut)}
+html body .wkth i{font-style:normal;font-size:24px;font-weight:800;color:var(--az)}
+html body .wkw{list-style:none;padding:0;margin:0 0 12px}
+html body .wkw li{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 0;border-top:1.5px dashed var(--line);font-size:15px}
+html body .wkw li div{min-width:0}html body .wkw li b{display:block;line-height:1.25}
+html body .wkw li:first-child{border-top:0;padding-top:0}
+html body .wkw li span{display:block;color:var(--mut);font-size:13.5px;line-height:1.3}
+html body .wkw li em{flex:none;font-style:normal;font-size:13px;font-weight:800;min-width:38px;text-align:center;padding:2px 8px;border-radius:99px;background:#FFD9D2;border:2px solid var(--sk)}
+html body .wkc .btn{width:100%;margin:0}
 </style>
 <style id="sm-sthome">
 /* ===== Accueil « Stickers » (maquette 4) ===== */
@@ -1667,10 +1693,12 @@ function weakHtml(){
   const ws=Object.keys(mi).filter(k=>mi[k].n>0&&(S.sc[k]||0)<4).sort((a,b)=>mi[b].n-mi[a].n||(mi[b].d||0)-(mi[a].d||0)).slice(0,6);
   const th=Object.keys(D).map(t=>{const c=D[t].filter(w=>(w[2]||1)<=lv()),f=c.filter(w=>mi[w[0]]&&mi[w[0]].n>0&&(S.sc[w[0]]||0)<4).length;return [t,f,c.length]}).filter(x=>x[1]>0).sort((a,b)=>b[1]/b[2]-a[1]/a[2]||b[1]-a[1]).slice(0,3);
   if(!sks.length&&!ws.length)return `<h3>${tr("Points à travailler")}</h3><p class="sub">${tr("Fais quelques séries : ici apparaîtront tes points faibles, avec les mots et les thèmes précis à retravailler.")}</p>`;
-  let h=`<h3>${tr("Points à travailler")}</h3>`;
-  if(sks.length)h+=`<p class="sub">${tr("Compétences les plus fragiles")}</p>`+sks.map(([k,v])=>`<div class="wkr"><span>${gl(SK[k])} · <b>${Math.round(v*100)} %</b></span><div class="bar"><i style="width:${Math.round(v*100)}%"></i></div></div><p class="sub" style="margin:-2px 0 8px">→ ${tr(SKH[k])}</p>`).join("");
-  if(th.length)h+=`<p class="sub">${tr("Thèmes à retravailler")}</p>`+th.map(([t,f,n])=>`<button class="theme" onclick="start('${t.replace(/'/g,"\\'")}')"><b>${t}</b>${tr("{0} mots fragiles sur {1}",f,n)}</button>`).join("");
-  if(ws.length)h+=`<p class="sub">${tr("Mots où tu te trompes le plus")}</p><ul class="rw">${ws.map(k=>`<li><b>${k}</b>${fr[k]?" — "+fr[k]:""} <small>(${tr("{0} erreur(s)",mi[k].t)})</small></li>`).join("")}</ul><button class="btn" onclick="start('Révision')">${tr("Réviser ces mots")}</button>`;
+  const pc=v=>Math.round(v*100),tone=v=>v<.4?"lo":v<.7?"mid":"hi";
+  let h=`<h3>${tr("Points à travailler")}</h3><div class="wk">`;
+  if(sks.length)h+=`<section class="wkc"><div class="wkh"><span aria-hidden="true">🎯</span>${tr("Compétences les plus fragiles")}</div>${sks.map(([k,v])=>`<div class="wks ${tone(v)}"><div class="wkt"><span>${gl(SK[k])}</span><b>${pc(v)} %</b></div><div class="wkb"><i style="width:${pc(v)}%"></i></div><small>${tr(SKH[k])}</small></div>`).join("")}</section>`;
+  if(th.length)h+=`<section class="wkc"><div class="wkh"><span aria-hidden="true">📚</span>${tr("Thèmes à retravailler")}</div>${th.map(([t,f,n])=>`<button class="wkth" onclick="start('${t.replace(/'/g,"\\'")}')"><span><b>${t}</b><small>${tr("{0} mots fragiles sur {1}",f,n)}</small></span><i aria-hidden="true">›</i></button>`).join("")}</section>`;
+  if(ws.length)h+=`<section class="wkc"><div class="wkh"><span aria-hidden="true">✏️</span>${tr("Mots où tu te trompes le plus")}</div><ul class="wkw">${ws.map(k=>`<li><div><b translate="no">${k}</b>${fr[k]?`<span>${fr[k]}</span>`:""}</div><em title="${tr("{0} erreur(s)",mi[k].t)}">×${mi[k].t}</em></li>`).join("")}</ul><button class="btn" onclick="start('Révision')">${tr("Réviser ces mots")}</button></section>`;
+  h+=`</div>`;
   return h;
 }
 function prog(t){LK2=0;
@@ -2880,7 +2908,7 @@ function scnEnd(){
 let TLS=0;function tools(){TLS=Date.now();LK2=0;
   INL=0;stopSp();SCR="home";axWarm();
   const tl=Object.keys(D).map(t=>{const c=D[t].filter(w=>(w[2]||1)===lv()),m=Math.round(100*c.filter(w=>(S.sc[w[0]]||0)>=3).length/c.length);return `<button class="theme" onclick="start('${t}')"><b>${t}</b>${m}% du niveau<div class="bar"><i style="width:${m}%"></i></div></button>`}).join("");
-  $.innerHTML=head()+tabs("tools")+notes()+`<h2 class="ptitle">${tr("Outils")}</h2><button class="theme rev" onclick="start('Révision')"><b>Réviser</b><span>${srDue().length?tr("À revoir aujourd'hui : {0}",srDue().length):tr("Révision libre, sans fin")}</span></button><h3>${tr("Consulter")}</h3><div class="grid sm"><button class="theme" data-i="📋" onclick="go('lists')"><b>Listes</b></button><button class="theme" data-i="🔄" onclick="go('conj')"><b>Conjugaison</b></button><button class="theme" data-i="⚡" onclick="go('exc')"><b>Exceptions</b></button><button class="theme" data-i="💬" onclick="go('expr')"><b>Expressions</b></button><button class="theme" data-i="🌐" style="grid-column:1/-1" onclick="go('trad')"><b>Traducteur</b></button></div><h3>${tr("S'entraîner")}</h3><button class="theme mix go" style="width:100%;margin-top:12px" onclick="start('Mélange')"><b>Mélange</b>Un peu de tout, adapté à ton niveau</button><h3>Par compétence</h3><div class="grid sk"><button class="theme" data-i="📖" onclick="start('CE')"><b>Compréhension écrite</b></button><button class="theme" data-i="🎧" onclick="start('CO')"><b>Compréhension orale</b></button><button class="theme" data-i="✍️" onclick="start('EE')"><b>Expression écrite</b></button><button class="theme" data-i="🎤" onclick="start('EO')"><b>Expression orale</b></button></div>${SR?"":`<p class="skl">Micro indisponible : exercices écrits à la place</p>`}<h3>Autres exercices</h3><div class="grid sm"><button class="theme" onclick="start('Conjugaison')"><b>Conjugaison</b></button><button class="theme" onclick="start('Listes')"><b>Listes</b></button><button class="theme" onclick="start('Exceptions')"><b>Exceptions</b></button><button class="theme" onclick="start('Expressions')"><b>Expressions</b></button>${tl}<button class="theme" style="grid-column:1/-1" onclick="start('Frases')"><b>Frases</b>Phrases : écrire, écouter, dire à voix haute</button></div>${vxUI()}${qaUI()}${aiUI()}<h3>${tr("Mon niveau")}</h3><div class="mb"><p><b>${tr("Niveau {0}",NL[lv()])}</b></p><button class="chip" onclick="test()">Refaire le test</button> <button class="chip" onclick="S.pthAll=1;save();home()">Débloquer tout le parcours</button></div>`;
+  $.innerHTML=head()+tabs("tools")+notes()+`<h2 class="ptitle">${tr("Outils")}</h2><button class="theme rev" onclick="start('Révision')"><b>Réviser</b><span>${srDue().length?tr("À revoir aujourd'hui : {0}",srDue().length):tr("Révision libre, sans fin")}</span></button><h3>${tr("Consulter")}</h3><div class="grid sm"><button class="theme" data-i="📋" onclick="go('lists')"><b>Listes</b></button><button class="theme" data-i="🔄" onclick="go('conj')"><b>Conjugaison</b></button><button class="theme" data-i="⚡" onclick="go('exc')"><b>Exceptions</b></button><button class="theme" data-i="💬" onclick="go('expr')"><b>Expressions</b></button><button class="theme" data-i="🌐" style="grid-column:1/-1" onclick="go('trad')"><b>Traducteur</b></button></div><h3>${tr("S'entraîner")}</h3><button class="theme mix go" style="width:100%;margin-top:12px" onclick="start('Mélange')"><b>Mélange</b>Un peu de tout, adapté à ton niveau</button><h3>Par compétence</h3><div class="grid sk"><button class="theme" data-i="📖" onclick="start('CE')"><b>Compréhension écrite</b></button><button class="theme" data-i="🎧" onclick="start('CO')"><b>Compréhension orale</b></button><button class="theme" data-i="✍️" onclick="start('EE')"><b>Expression écrite</b></button><button class="theme" data-i="🎤" onclick="start('EO')"><b>Expression orale</b></button></div>${SR?"":`<p class="skl">Micro indisponible : exercices écrits à la place</p>`}<h3>Autres exercices</h3><div class="grid sm"><button class="theme" onclick="start('Conjugaison')"><b>Conjugaison</b></button><button class="theme" onclick="start('Listes')"><b>Listes</b></button><button class="theme" onclick="start('Exceptions')"><b>Exceptions</b></button><button class="theme" onclick="start('Expressions')"><b>Expressions</b></button>${tl}<button class="theme" style="grid-column:1/-1" onclick="start('Frases')"><b>Frases</b>Phrases : écrire, écouter, dire à voix haute</button></div>${aiUI()}<h3>${tr("Mon niveau")}</h3><div class="mb"><p><b>${tr("Niveau {0}",NL[lv()])}</b></p><button class="chip" onclick="test()">Refaire le test</button> <button class="chip" onclick="S.pthAll=1;save();home()">Débloquer tout le parcours</button></div>`;
 }
 
 /* ---- parcours guidé ---- */
