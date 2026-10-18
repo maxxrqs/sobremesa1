@@ -110,9 +110,9 @@ with sync_playwright() as p:
     ck(f"le niveau ne change qu'à {len(ctx_)} endroits : fin d'une évaluation, chargement du profil, « Je débute » à l'accueil",len(ctx_)==3 and all(okc),ctx_)
     # ---- F. affichage et traductions
     ui=pg.evaluate("""(langs)=>{const bad=[];for(const lang of langs)for(let L=1;L<=5;L++){S.lang=lang;S.lvl=L;S.pth={};S.rat={};build();PLC=null;
-      try{const pl=pathPlanMain(),h=pathHtml();if(!h.includes('Unité '+pl.units.length)||!h.includes(CURR[L].g))bad.push([lang+L,'affichage'])}catch(e){bad.push([lang+L,String(e)])}}
+      try{const pl=pathPlanMain(),h=pathHtml();const CH=chaps(pl.units),okU=CH.length<2?h.includes('Unité '+pl.units.length):CH.every((c,i)=>h.includes(tr('Chapitre {0}',i+1)+' · '+chName(i,CH.length)));if(!okU||!h.includes(CURR[L].g))bad.push([lang+L,'affichage'])}catch(e){bad.push([lang+L,String(e)])}}
       const strs=[...Object.values(CL),...Object.values(CURR).flatMap(c=>[c.g,...c.c,...Object.values(c.u).flat()])];return{bad,strs}}""",LANGS)
-    ck("affichage du parcours (en-tête d'objectifs, toutes les unités) sans erreur pour 5 langues × 5 niveaux",not ui['bad'],ui['bad'][:3])
+    ck("affichage du parcours (en-tête d'objectifs, tous les chapitres ou toutes les unités) sans erreur pour 5 langues × 5 niveaux",not ui['bad'],ui['bad'][:3])
     mt={}
     for uil in ["en","it","de","pt"]:
         tr=json.load(urllib.request.urlopen(BASE+f"tr/{uil}.json"))

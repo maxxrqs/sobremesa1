@@ -852,6 +852,9 @@ html body .chok>div{display:flex;flex-direction:column;align-items:flex-start;ga
 html body .chok b{font:800 19px "Baloo 2",system-ui,sans-serif}
 html body .chok span{font-size:14px;font-weight:600}
 html body .chok .stgo{margin-top:8px;height:42px;padding:0 18px;border-radius:14px;border:2.5px solid var(--sk);background:var(--card);color:var(--sk);box-shadow:var(--hs2);font:800 16px "Baloo 2",system-ui,sans-serif;cursor:pointer}
+/* pas de défilement horizontal : le compagnon de la carte de leçon dépasse volontairement du bord */
+@supports (overflow:clip){html body #app{overflow-x:clip}}
+@media (max-width:360px){html body table.tb{width:100%;table-layout:fixed}html body .tb td,html body .tb th{overflow-wrap:anywhere}}
 @keyframes chIn{from{opacity:0;transform:translateY(-10px) scale(.97)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){html body .chok{animation:none}}
 </style>
@@ -870,7 +873,7 @@ function hpJS(pw,salt){let x=salt+":"+pw;for(let i=0;i<3000;i++)x=sha256(x+salt)
 const withTimeout=(p,ms)=>Promise.race([p,new Promise(r=>setTimeout(()=>r(null),ms))]);
 var UI="fr";
 const UIL={fr:"Français",en:"English",it:"Italiano",de:"Deutsch",pt:"Português"};
-const TR={};const trLoad=l=>(l==="fr"||TR[l])?Promise.resolve():fetch("tr/"+l+".json?v=33").then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{TR[l]=j}).catch(()=>{});
+const TR={};const trLoad=l=>(l==="fr"||TR[l])?Promise.resolve():fetch("tr/"+l+".json?v=34").then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{TR[l]=j}).catch(()=>{});
 try{const s=ST.get("cast_ui"),n=(navigator.language||"fr").slice(0,2);UI=UIL[s]?s:(UIL[n]?n:"fr")}catch(e){}
 const gl=s=>{if(UI==="fr"||!TR[UI])return s;let t=TR[UI][s];if(t!=null)return t;const n=s.match(NUMRE);if(n){t=TR[UI][s.replace(NUMRE,"#")];if(t!=null){let i=0;return t.replace(/#/g,()=>i<n.length?n[i++]:"#")}const b=s.match(/^(.*\S)\s+(\d+)$/);if(b&&TR[UI][b[1]]!=null)return TR[UI][b[1]]+" "+b[2]}return s};
 const tr=(s,...a)=>gl(s).replace(/\{(\d)\}/g,(m,i)=>a[i]);
@@ -1429,7 +1432,7 @@ function axFetchJ(u,tries){const go=async()=>{const ac=new AbortController(),to=
 /* index d'une voix (v) ; sans voix choisie : ancien jeu castillan uniquement */
 function axIdx(l,v){const k=v||l;if(!v&&l!=="es")return Promise.resolve(null);
   const t=AX.ixt[k];if(AX.idx[k])return AX.idx[k];if(t&&Date.now()-t<4000)return Promise.resolve(null);
-  return AX.idx[k]=axFetchJ(v?"v/"+v+"/"+v+".json?v=8":"a/"+l+".json?v=14",2).then(x=>{if(!v&&l==="es"){AX.okes=1;try{vnote()}catch(e){}}return x}).catch(e=>{delete AX.idx[k];AX.ixt[k]=/^http4/.test(String(e))?Date.now()+3e10:Date.now();return null})}
+  return AX.idx[k]=axFetchJ(v?"v/"+v+"/"+v+".json?v=9":"a/"+l+".json?v=14",2).then(x=>{if(!v&&l==="es"){AX.okes=1;try{vnote()}catch(e){}}return x}).catch(e=>{delete AX.idx[k];AX.ixt[k]=/^http4/.test(String(e))?Date.now()+3e10:Date.now();return null})}
 const axUrl=(v,n)=>v?"v/"+v+"/"+n+"?v=2":"a/"+n+"?v=2";
 function axPack(l,v,i,n){const k=(v||l)+"/"+n;return AX.pk[k]||(AX.pk[k]=fetch(axUrl(v,n)).then(r=>{if(!r.ok)throw 0;return r.arrayBuffer()}).then(b=>(AX.pkd[k]=b)).catch(()=>{delete AX.pk[k];return null}))}
 const axMp3=b=>{if(!b||b.byteLength<4)return false;const u=new Uint8Array(b,0,3);return(u[0]===73&&u[1]===68&&u[2]===51)||(u[0]===255&&(u[1]&224)===224)};
@@ -3301,7 +3304,7 @@ function planCore(L){
     st.push({id:"k"+ui,sk:SKK[ui%6],ic:"🎯",lab:""});
     st.push({id:"m"+ui,ic:"🏆",lab:gl(CL.bil),pt:["es2fr","fr2es","listen","type","cloze","listenP","dict","tf","rep","speakF","speakC"],ws:[],rev:1,ui});
     const cx=(cu.u||{})[t]||[t,""];
-    push({n:ui+1,title:(PIC[t]||"📚")+" "+gl(cx[0])+(u.part?" · "+(u.part+1):""),obj:gl(cx[1]),steps:st,uw:u.c.flatMap(z=>z.ws||[]),ux:u.c.flatMap(z=>z.xi||[])})});
+    push({n:ui+1,title:(PIC[t]||"📚")+" "+uName(t,u.c,u.part,gl(cx[0])),obj:gl(cx[1]),steps:st,uw:u.c.flatMap(z=>z.ws||[]),ux:u.c.flatMap(z=>z.xi||[])})});
   /* libellés identiques numérotés (Saludos 1, Saludos 2…) */
   const lc={},ln={};flat.forEach(x=>{if(x.nw&&!x.tn)lc[x.lab]=(lc[x.lab]||0)+1});flat.forEach(x=>{if(x.nw&&!x.tn&&lc[x.lab]>1){ln[x.lab]=(ln[x.lab]||0)+1;x.lab=x.lab+" "+ln[x.lab]}});
   const cs=[{id:"BR1",ic:"🔁",lab:gl(CL.r1),pt:["es2fr","fr2es","listen","type","dict","tf","odd","rep","speakF"],rev:1},
@@ -3521,11 +3524,19 @@ function pathHtml(){
   const okc=cc>0&&!S.chs[ck]?`<div class="chok">${mas("bravo",78)}<div><b>${tr("Chapitre {0} terminé !",cc)}</b><span>${tr("Place au chapitre {0} : {1}",cc+1,prv(CH[cc]))}</span><button class="stgo" onclick="chSeen('${ck}')">${tr("Continuer")}</button></div></div>`:"";
   if(okc&&!window.CHCF){window.CHCF=1;setTimeout(()=>{try{FX.confetti();FX.play("level")}catch(e){}},350)}
   const cur3=CH[cc],cd=cur3.filter(u=>u._d).length;
-  const past=CH.slice(0,cc).map((c,i)=>`<details class="chap"><summary><span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><b>${tr("Chapitre {0}",i+1)}</b><small>${prv(c)}</small></summary>${c.map((u,k)=>uh(u,k+1)).join("")}</details>`).join("");
-  const now=`<div class="chh"><b>${tr("Chapitre {0}",cc+1)}</b><span>${tr("{0}/{1} unités",cd,cur3.length)}</span><i class="bar"><i style="width:${Math.round(cd/cur3.length*100)}%"></i></i></div>`+cur3.map((u,k)=>uh(u,k+1)).join("");
-  const next=CH.slice(cc+1).map((c,i)=>`<div class="chlock" aria-disabled="true"><span aria-hidden="true">🔒</span><b>${tr("Chapitre {0}",cc+i+2)}</b><small>${prv(c)}</small></div>`).join("");
+  const past=CH.slice(0,cc).map((c,i)=>`<details class="chap"><summary><span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><b>${tr("Chapitre {0}",i+1)} · ${chName(i,CH.length)}</b><small>${prv(c)}</small></summary>${c.map((u,k)=>uh(u,k+1)).join("")}</details>`).join("");
+  const now=`<div class="chh"><b>${tr("Chapitre {0}",cc+1)} · ${chName(cc,CH.length)}</b><span>${tr("{0}/{1} unités",cd,cur3.length)}</span><i class="bar"><i style="width:${Math.round(cd/cur3.length*100)}%"></i></i></div>`+cur3.map((u,k)=>uh(u,k+1)).join("");
+  const next=CH.slice(cc+1).map((c,i)=>`<div class="chlock" aria-disabled="true"><span aria-hidden="true">🔒</span><b>${tr("Chapitre {0}",cc+i+2)} · ${chName(cc+i+1,CH.length)}</b><small>${prv(c)}</small></div>`).join("");
   return lvBanner()+okc+head.replace(/<span class="stbadge">[^<]*<\/span>/,`<span class="stbadge">${tr("Chapitre {0}",cc+1)} · ${tr("Unité {0}/{1}",Math.max(1,cur3.findIndex(u=>u.n===cu)+1),cur3.length)}</span>`)+hero()+(srDue().length?`<button class="theme rev" onclick="start('Révision')"><b>${tr("Réviser")}</b><span>${tr("À revoir aujourd'hui : {0}",srDue().length)}</span></button>`:"")+lvHdr(pl)+past+now+next;
 }
+/* nom d'une unité : le thème pour la première, puis ses vrais sous-thèmes (vocabulaire d'abord, grammaire en dernier) au lieu de « thème · 2 » */
+function uName(t,c,part,base){if(!part)return base;const pr=x=>x.t==="Exceptions"||x.t==="Conjugaison"||x.tn?2:x.t==="Expressions"?1:0,L=[],seen=new Set();
+  c.map((x,i)=>[x,i]).sort((a,b)=>pr(a[0])-pr(b[0])||a[1]-b[1]).forEach(([x])=>{const l=String(x.lab||"").trim();if(!l||l===t||seen.has(l))return;seen.add(l);L.push(l)});
+  if(!L.length)return base+" · "+(part+1);const w1=s=>s.split(/[\s,]+/)[0].toLowerCase(),sec=L.slice(1).find(x=>w1(x)!==w1(L[0]));if(!sec)return L[0];
+  const b2=UI==="de"?sec:sec.charAt(0).toLocaleLowerCase()+sec.slice(1),j=tr("{0} et {1}","","").trim(),has=x=>new RegExp("\\s"+j+"\\s").test(x);
+  return has(L[0])||has(b2)?L[0]+", "+b2:tr("{0} et {1}",L[0],b2)}
+/* nom d'un chapitre selon sa place dans le niveau */
+function chName(i,n){const N=["Premiers pas","Prendre ses marques","Gagner en aisance","Dernière ligne droite"];return gl(i===0?N[0]:i===n-1?N[3]:N[Math.min(2,i)])}
 /* découpe en chapitres de 5 à 7 unités ; l'unité de consolidation reste dans le dernier */
 function chaps(us){const m=us.filter(u=>!u.cons),c=us.filter(u=>u.cons);if(m.length<=8)return [us];
   const n=Math.ceil(m.length/7),sz=Math.ceil(m.length/n),o=[];for(let i=0;i<m.length;i+=sz)o.push(m.slice(i,i+sz));o[o.length-1].push(...c);return o}
@@ -4974,7 +4985,7 @@ applyUI();
   let su=null;try{su=ST.get("cast_user")}catch(e){}
   const dbp=withTimeout(Promise.resolve().then(()=>claude.use("db")),1200).then(d=>{DB=d}).catch(()=>{DB=null});
   if(UI!=="fr"){await trLoad(UI);applyUI()}
-  const sp=document.getElementById("splash"),hs=()=>{if(!sp||sp.dataset.h)return;sp.dataset.h=1;requestAnimationFrame(()=>requestAnimationFrame(()=>{sp.classList.add("out");setTimeout(()=>sp.remove(),340);try{const m=document.querySelector('meta[name=theme-color]');if(m){const u=()=>{try{m.content=getComputedStyle(document.documentElement).getPropertyValue("--bg").trim()||"#CFE9DC"}catch(e){}};u();new MutationObserver(u).observe(document.documentElement,{attributes:true,attributeFilter:["data-mas"]})}}catch(e){}}))};setTimeout(hs,9000);
+  const sp=document.getElementById("splash"),hs=()=>{if(!sp||sp.dataset.h)return;sp.dataset.h=1;requestAnimationFrame(()=>requestAnimationFrame(()=>{sp.classList.add("out");setTimeout(()=>sp.remove(),340);try{const m=document.querySelector('meta[name=theme-color]');if(m){const u=()=>{try{const l=document.querySelector(".ldp"),c=l?getComputedStyle(l).backgroundColor:"";m.content=(c&&c!=="rgba(0, 0, 0, 0)"?c:"")||getComputedStyle(document.documentElement).getPropertyValue("--bg").trim()||"#CFE9DC"}catch(e){}};u();new MutationObserver(u).observe(document.documentElement,{attributes:true,attributeFilter:["data-mas"]});try{new MutationObserver(u).observe(document.getElementById("app"),{childList:true})}catch(e){}}}catch(e){}}))};setTimeout(hs,9000);
   if(su){loginL(su);dbp.then(()=>syncDb(su))}else{landing();dbp.then(()=>{if(!U&&DB){const f=document.querySelector("form input");if(f&&!f.value)auth(AUM||"login")}})}
   hs();try{axWarm()}catch(e){}
 })();

@@ -18,7 +18,7 @@ with sync_playwright() as p:
         pg.wait_for_function("!document.getElementById('splash')",timeout=9000)
         ck(f"{name} : splash retiré",True)
         ck(f"{name} : contenu de l'appli affiché",pg.evaluate("document.getElementById('app').innerText.length")>10)
-        ck(f"{name} : theme-color restauré",pg.evaluate("document.querySelector('meta[name=theme-color]').content")=="#1B2A4A")
+        ck(f"{name} : theme-color restauré",pg.evaluate("document.querySelector('meta[name=theme-color]').content")==pg.evaluate("(()=>{const l=document.querySelector('.ldp');return l?getComputedStyle(l).backgroundColor:getComputedStyle(document.documentElement).getPropertyValue('--bg').trim()})()"))
         ck(f"{name} : aucune erreur JS",not er,er);c.close()
     # sécurité : si le script plante, le splash ne bloque pas l'écran
     c=b.new_context();pg=c.new_page();pg.goto(BASE+"index.html");pg.wait_for_timeout(3000)
