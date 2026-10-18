@@ -3433,7 +3433,7 @@ function fin(good,sol,key,msg){
   S.sk=S.sk||{};S.sk[k]=.9*sk(k)+.1*s;{const md=MODL[q.ty];if(md){S.md=S.md||{};const a=S.md[lg()]=S.md[lg()]||[];a.push(md);if(a.length>80)a.shift()}}
   if(key){if(full){S.sc[key]=Math.min(5,(S.sc[key]||0)+1);srUp(key,true)}else if(!half){S.sc[key]=Math.max(0,(S.sc[key]||0)-1);srUp(key,false)}
     S.mi=S.mi||{};const m=S.mi[key]||{n:0,t:0};if(full)m.n=Math.max(0,m.n-1);else if(!half){m.n++;m.t++;m.d=dayN()}if(m.n||m.t)S.mi[key]=m}
-  if(s>0){R.ok+=s;R.xp+=Math.round(10*s)}else if(key)(R.miss=R.miss||[]).push(key);
+  if(s>0){R.ok=Math.round((R.ok+s)*10)/10;R.xp+=Math.round(10*s)}else if(key)(R.miss=R.miss||[]).push(key);
   if(half&&key)(R.miss=R.miss||[]).push(key);
   const tp=tpGet(q);
   save();
@@ -3442,7 +3442,7 @@ function fin(good,sol,key,msg){
   const c=document.getElementById("chk");if(c)c.remove();
   if(full){const t0=Date.now(),dl=tp?7000:msg?2800:1600,w=()=>{if(R.q!==q||!R.done||!document.querySelector(".fbm"))return;const el=Date.now()-t0;if(el<dl||(AU.id&&el<10000)){setTimeout(w,150);return}adv()};setTimeout(w,dl)}
 }
-function cuRun(){document.querySelectorAll(".cu").forEach(e=>{const to=+e.dataset.to||0,t0=performance.now(),d=700+to*8;const f=t=>{const p=Math.min(1,(t-t0)/d);e.textContent=p<1?Math.round(to*(1-Math.pow(1-p,3))):sf(to);if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)})}
+function cuRun(){document.querySelectorAll(".cu").forEach(e=>{const to=Math.round((+e.dataset.to||0)*10)/10,t0=performance.now(),d=700+to*8;const f=t=>{const p=Math.min(1,(t-t0)/d);e.textContent=p<1?Math.round(to*(1-Math.pow(1-p,3))):sf(to);if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)})}
 function end(){
   INL=0;
   const bonus=R.ok===10?5:0;dayTick();addXp(R.xp+bonus);qTick(R.ok,10);
