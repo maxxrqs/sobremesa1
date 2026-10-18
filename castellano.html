@@ -4270,7 +4270,7 @@ async function sub(mode){
       if(!done){if((await lref.get()).exists)e="Cet identifiant existe déjà.";else e=await mk(lref)}
       if(e)return err(e);
       let init=FRESH();try{const o=JSON.parse(ST.get("cast")||"null");if(o&&o.v===2)init=Object.assign(init,o)}catch(x){}
-      if(!init.lvl)init.ob=1;if(LMAS)init.mas=LMAS;try{ST.set("cast:"+u,JSON.stringify(init))}catch(x){}
+      if(!init.lvl)init.ob=1;if(LMAS){init.mas=LMAS;if(LMPICK)init.masSeen=1}try{ST.set("cast:"+u,JSON.stringify(init))}catch(x){}
       return login(u);
     }
     let ok=null;
@@ -4284,7 +4284,10 @@ async function login(u){loginL(u);return syncDb(u)}
 function loginL(u){
   U=u;try{ST.set("cast_user",u)}catch(e){}
   let l=null;try{l=JSON.parse(ST.get("cast:"+u)||"null")}catch(e){}
-  S=Object.assign(FRESH(),l||{});build();applyTheme();R=undefined;CR=null;
+  S=Object.assign(FRESH(),l||{});
+  /* compagnon choisi sur l'accueil avant connexion : on le garde, avec son thème */
+  if(LMPICK&&LMAS&&FX.A[LMAS]){S.mas=LMAS;S.masSeen=1;S.t=Date.now();lsw()}LMPICK=0;
+  build();applyTheme();R=undefined;CR=null;
   entry();
   return syncDb(u)}
 async function syncDb(u){
@@ -4337,10 +4340,10 @@ function lmSwipe(){const m=document.getElementById("lmmas");if(!m)return;let x0=
     if(Math.abs(dx)>40)lmGo(LXI+(dx<0?1:-1));else if(Math.abs(dx)<10&&dy<10)lmGo(LXI+1)};
   m.addEventListener("pointerup",end);m.addEventListener("pointercancel",()=>{act=0;m.style.transform="";m.style.animation=""});
   m.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();lmGo(LXI+1)}});}
-function lmGo(i){const ms=Object.keys(FX.A),n=ms.length;LXI=((i%n)+n)%n;LMAS=ms[LXI];document.documentElement.dataset.mas=LMAS;
+function lmGo(i){const ms=Object.keys(FX.A),n=ms.length;LXI=((i%n)+n)%n;LMAS=ms[LXI];LMPICK=1;document.documentElement.dataset.mas=LMAS;
   const m=document.getElementById("lmmas");if(m){m.innerHTML=mas("bravo",190,LMAS);m.classList.remove("hop");void m.offsetWidth;m.classList.add("hop")}
   document.querySelectorAll(".lmdt button").forEach((b,k)=>b.classList.toggle("on",k===LXI));try{FX.play("tap")}catch(e){}}
-let LXI=0,LMAS=null;
+let LXI=0,LMAS=null,LMPICK=0;
 function lxPlace(dx){
   const ss=document.querySelectorAll(".lxs");if(!ss.length)return;const n=ss.length;
   ss.forEach((e,i)=>{const d=((i-LXI+1)%n+n)%n-1,o=d*150+(dx||0),a=Math.max(0,1-Math.abs(o)/260);e.style.transform=`translate3d(${o}px,0,0) scale(${(.55+.45*a).toFixed(3)})`;e.style.opacity=(.3+.7*a).toFixed(3);e.style.filter=`blur(${((1-a)*13).toFixed(1)}px)`;e.style.zIndex=d===0?3:1;e.style.pointerEvents="none"});
