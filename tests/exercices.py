@@ -22,7 +22,7 @@ def shares(res,sr):
     for v in res.values():
         err+=v["er"]
         for a,c in v["T"].items():tot[a]=tot.get(a,0)+c
-    N=sum(tot.values());MOD={"co":["listen","listenP","listenT","exL","dict"],"eo":["speak","rep","speakF","speakC","speakQ"],"ce":["read","readP","es2fr","tf","odd","cloze","exM","exc"],"ee":["build","type","fr2P","fr2es","conj","exE","replyQ"]}
+    N=sum(tot.values());MOD={"co":["listen","listenP","listenT","exL","dict"],"eo":["speak","rep","speakF","speakC","speakQ"],"ce":["read","readP","es2fr","tf","odd","cloze","exM","exc","excV"],"ee":["build","type","fr2P","fr2es","conj","exE","replyQ","excT","conjT"]}
     return {m:100*sum(tot.get(t,0) for t in ts)/N for m,ts in MOD.items()},{a:100*c/N for a,c in tot.items()},err,N
 with sync_playwright() as p:
     b=p.chromium.launch()

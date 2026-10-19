@@ -862,7 +862,7 @@ function hpJS(pw,salt){let x=salt+":"+pw;for(let i=0;i<3000;i++)x=sha256(x+salt)
 const withTimeout=(p,ms)=>Promise.race([p,new Promise(r=>setTimeout(()=>r(null),ms))]);
 var UI="fr";
 const UIL={fr:"Français",en:"English",it:"Italiano",de:"Deutsch",pt:"Português"};
-const TR={};const trLoad=l=>(l==="fr"||TR[l])?Promise.resolve():fetch("tr/"+l+".json?v=34").then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{TR[l]=j}).catch(()=>{});
+const TR={};const trLoad=l=>(l==="fr"||TR[l])?Promise.resolve():fetch("tr/"+l+".json?v=35").then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{TR[l]=j}).catch(()=>{});
 try{const s=ST.get("cast_ui"),n=(navigator.language||"fr").slice(0,2);UI=UIL[s]?s:(UIL[n]?n:"fr")}catch(e){}
 const gl=s=>{if(UI==="fr"||!TR[UI])return s;let t=TR[UI][s];if(t!=null)return t;const n=s.match(NUMRE);if(n){t=TR[UI][s.replace(NUMRE,"#")];if(t!=null){let i=0;return t.replace(/#/g,()=>i<n.length?n[i++]:"#")}const b=s.match(/^(.*\S)\s+(\d+)$/);if(b&&TR[UI][b[1]]!=null)return TR[UI][b[1]]+" "+b[2]}return s};
 const tr=(s,...a)=>gl(s).replace(/\{(\d)\}/g,(m,i)=>a[i]);
@@ -1634,7 +1634,7 @@ async function tvSay(){
 try{speechSynthesis.getVoices();addEventListener("pointerdown",()=>{if(!TTSW){TTSW=1;try{speechSynthesis.getVoices()}catch(e){}}},{once:true,passive:true})}catch(e){}
 const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
 const SK={voc:"Vocabulaire",ce:"Compréhension écrite",co:"Compréhension orale",ee:"Expression écrite",eo:"Expression orale",conj:"Conjugaison",exc:"Exceptions",exp:"Expressions"},SKOLD={co:"ecoute",ce:"lect",ee:"expr",eo:"expr"};
-const TYK={cloze:"ce",es2fr:"voc",fr2es:"voc",listen:"co",listenP:"co",listenT:"co",read:"ce",build:"ee",speak:"eo",type:"ee",dict:"co",conj:"conj",exc:"exc",exM:"exp",exE:"exp",exL:"co",tf:"voc",odd:"voc",readP:"ce",fr2P:"ee",rep:"eo",speakF:"eo",speakC:"eo",speakQ:"eo",replyQ:"ee"};
+const TYK={cloze:"ce",es2fr:"voc",fr2es:"voc",listen:"co",listenP:"co",listenT:"co",read:"ce",build:"ee",speak:"eo",type:"ee",dict:"co",conj:"conj",exc:"exc",excV:"exc",excT:"exc",conjT:"conj",exM:"exp",exE:"exp",exL:"co",tf:"voc",odd:"voc",readP:"ce",fr2P:"ee",rep:"eo",speakF:"eo",speakC:"eo",speakQ:"eo",replyQ:"ee"};
 const sk=k=>S.sk&&S.sk[k]!=null?S.sk[k]:S.sk&&S.sk[SKOLD[k]]!=null?S.sk[SKOLD[k]]:.5;
 const wsum=a=>a.reduce((m,c)=>m+c,0);
 const sel=(a,l)=>{if(l)return pick(a.filter(x=>(x[2]||1)===l));const p=a.filter(x=>(x[2]||1)<=lv()),w=p.map(x=>(x[2]||1)===lv()?3:1);let r=Math.random()*wsum(w);for(let i=0;i<p.length;i++){r-=w[i];if(r<=0)return p[i]}return p[0]};
@@ -3034,7 +3034,19 @@ function mkExp(ty){
   if(ty==="exE"){const o=uniq4(x.e,oth.map(z=>z.e));return o&&{ty,key:"e:"+x.e,g:x.e,o,m:x.m,sol}}
   const o=uniq4(x.m,oth.map(z=>z.m));return o&&{ty,key:"e:"+x.e,say:x.e,g:x.m,o,e:x.e,sol}
 }
+/* variantes des exercices de grammaire et de conjugaison : vrai/faux sur la phrase complétée, réponse à écrire */
+function excPool(){let p=EQ.filter(x=>x.l<=lv()&&(!R.cat||x.c===R.cat));if(!p.length)p=EQ.filter(x=>!R.cat||x.c===R.cat);if(RLs()&&R.qs){const f=p.filter(x=>R.qs.has(x.k));if(f.length>=3||(R.kn&&f.length))p=f}return p}
+function mkExcV(ty){const p=excPool().filter(x=>x.w&&x.w.length&&(ty!=="excT"?true:/_{3}/.test(x.q)&&String(x.a).length<=24));if(!p.length)return null;
+  const x=wk(p,z=>"q:"+z.k,z=>z.l),body=x.q.replace(/^[^:_]{0,40}:\s*(?=.*_{3})/,""),sol=`${x.a}. ${x.x}`;
+  if(ty==="excT")return{ty,key:"q:"+x.k,g:x.a,acc:[x.a],h:body,sol};
+  const ok=Math.random()<.5,wf=x.w.filter(w=>String(w)!==String(x.a)),c=ok?x.a:pick(wf.length?wf:x.w),o=[tr("Vrai"),tr("Faux")];
+  if(!c)return null;return /_{3}/.test(x.q)?{ty,key:"q:"+x.k,g:ok?o[0]:o[1],o,h:body.replace(/_{3,}/,c),sol}:{ty,key:"q:"+x.k,g:ok?o[0]:o[1],o,h:x.q,pa:c,sol}}
+function mkConjT(){const q=mkConj();if(!q)return null;return Object.assign({},q,{ty:"conjT",o:null,acc:String(q.g).split("|").map(x=>x.trim()).filter(Boolean)})}
+function chkX(){const q=R.q,i=document.getElementById("ti");if(R.done||!i||!i.value.trim())return;
+  const n=x=>String(x).toLowerCase().replace(/[.,;:!?¡¿«»"()]/g,"").replace(/\s+/g," ").trim(),d=x=>x.normalize("NFD").replace(/[\u0300-\u036f]/g,""),v=n(i.value),A=(q.acc||[q.g]).map(n);
+  const s=A.includes(v)?1:A.some(a=>d(a)===d(v))?.5:0;i.disabled=true;fin(s,q.sol,q.key,s===.5?tr("Presque : attention aux accents."):"")}
 function XH(q,sp){
+  if(q.ty==="excV")return q.pa!=null?`${tr("Vrai ou faux ?")}<div class="txt">${esc(q.h)}</div><p class="sub" style="margin:8px 0 0">${tr("Réponse proposée :")} <b translate="no">${esc(q.pa)}</b></p>`:`${tr("Cette phrase est-elle correcte ?")}<div class="txt" translate="no">${esc(q.h)}</div>`;
   if(q.ty==="conj")return tr("Conjugue {0}",`<span class="w">${esc(q.verb)}</span>`)+(q.fr?` <span class="sub">(${esc(q.fr)})</span>`:"")+`<br><small>${esc(q.tn)} · <b>${esc(q.pn)}</b></small>${sp}`;
   if(q.ty==="exc")return `<div class="txt">${esc(q.h)}</div>`;
   if(q.ty==="exM")return tr("Que veut dire {0} ?",`<span class="w">${esc(q.e)}</span>`)+sp;
@@ -3539,6 +3551,8 @@ function mkQ0(ty,l){
   xens();
   if(ty==="conj")return mkConj()||mkQ("es2fr",0);
   if(ty==="exc")return mkExc()||mkQ("es2fr",0);
+  if(ty==="excV"||ty==="excT"){const lt=R&&R.hist&&R.hist.length?R.hist[R.hist.length-1].t:"";return mkExcV(ty)||(ty==="excT"&&lt!=="excV"?mkExcV("excV"):null)||mkExc()||mkQ("es2fr",0)}
+  if(ty==="conjT")return mkConjT()||mkConj()||mkQ("es2fr",0);
   if(ty==="exM"||ty==="exE"||ty==="exL")return mkExp(ty)||mkQ("es2fr",0);
   if(ty==="type"||ty==="dict"){
     const rw=!l&&RLs(),rws=!!(rw&&rw.ws&&rw.ws.length>=(rw.kn?1:4));
@@ -3599,7 +3613,7 @@ function mkQ(ty,l){
   for(let k=0;k<26;k++){
     R.lock=1;let q;try{q=mkQ0(ty,l)}finally{R.lock=0}
     const key=qkey(q),sn=R.seen[key]||[];let sc=Math.random();
-    if(last.some(h=>h.k===key))sc-=10;
+    if(last.some(h=>h.k===key))sc-=10;if(key&&R.hist.length&&R.hist[R.hist.length-1].k===key)sc-=60;
     if(sn.includes(q.ty))sc-=6;
     if(sn.length>=2)sc-=3;
     if(R.n>=3&&sn.length===1&&!sn.includes(q.ty))sc+=2.5;
@@ -3625,7 +3639,7 @@ let UWC=null;function uniqW(){if(!UWC||UWC.s!==ALL){const c={};ALL.forEach(w=>c[
 function chkT(){const q=R.q,i=document.getElementById("ti");if(R.done||!i||!i.value.trim())return;const r=EV.grade(i.value.trim(),q);i.disabled=true;fin(r.s,q.sol,q.key,r.m);if(R.mode!=="test"&&q.ty!=="dict")speak(q.es)}
 /*EO-BEGIN : expression orale réelle (reconnaissance vocale), notation tolérante, formats oraux, équilibre des 4 compétences, découverte avant test*/
 const EOT=["speak","rep","speakF","speakC","speakQ"],EOFB={speak:[],rep:["dict"],speakF:["type"],speakC:["cloze"],speakQ:["replyQ"]};
-const MODL={listen:"co",listenP:"co",listenT:"co",exL:"co",dict:"co",speak:"eo",rep:"eo",speakF:"eo",speakC:"eo",speakQ:"eo",read:"ce",readP:"ce",es2fr:"ce",tf:"ce",odd:"ce",cloze:"ce",exM:"ce",exc:"ce",build:"ee",type:"ee",fr2P:"ee",fr2es:"ee",conj:"ee",exE:"ee",replyQ:"ee"};
+const MODL={listen:"co",listenP:"co",listenT:"co",exL:"co",dict:"co",speak:"eo",rep:"eo",speakF:"eo",speakC:"eo",speakQ:"eo",read:"ce",readP:"ce",es2fr:"ce",tf:"ce",odd:"ce",cloze:"ce",exM:"ce",exc:"ce",excV:"ce",excT:"ee",conjT:"ee",build:"ee",type:"ee",fr2P:"ee",fr2es:"ee",conj:"ee",exE:"ee",replyQ:"ee"};
 const EOTH=[0,.6,.66,.72,.78,.8];
 function modF(m){const a=((S.md||{})[lg()]||[]).slice(-60),n=a.length,c=a.filter(x=>x===m).length,sh=(c+1.5)/(n+6);return Math.max(.35,Math.min(3,Math.pow(.25/sh,1.2)))}
 function phon(w){let x=w.replace(/ch/g,"1");if(lg()==="es")x=x.replace(/qu/g,"k").replace(/gu(?=[ei])/g,"2").replace(/c(?=[ei])/g,"s").replace(/z/g,"s").replace(/c/g,"k").replace(/ll/g,"y").replace(/g(?=[ei])/g,"x").replace(/j/g,"x").replace(/v/g,"b").replace(/h/g,"").replace(/w/g,"u");else x=x.replace(/v/g,"b").replace(/h/g,"");return x.replace(/(.)\1+/g,"$1").replace(/1/g,"ch").replace(/2/g,"g")}
@@ -3727,12 +3741,14 @@ function discGo(){stopSp();const d=DISC;if(!d)return;S.ds=S.ds||{};d.items.forEa
 function pickType(){
   const t=R.t,l=lv();let a=t==="CE"?["read"]:t==="CO"?(l<2?["listen","listen","listenP","dict"]:["listen","listenP","dict"]):t==="EE"?["build","type","cloze"]:t==="EO"?["speak","rep","speakF","speakC","speakQ"]:t==="Conjugaison"?["conj"]:t==="Exceptions"?["exc"]:t==="Expressions"?["exM","exE","exL"]:t==="Listes"||t==="Révision"?["es2fr","fr2es","listen","type","cloze","tf","dict","rep","speakF"]:t==="Frases"?["build","listenP","type","dict","cloze","rep","speakC"]:t==="Mélange"?["es2fr","fr2es","listen","build","type","dict","cloze","rep","speakF",...(l>=2?["listenP","read","speakC"]:[]),...(l>=3?["read","build","speakQ"]:[]),"conj","exM",...(l>=2?["exc","exE"]:[])]:["es2fr","fr2es","listen","cloze","rep","speakF",...(l>=2?["type"]:[])];
   if(R&&R.pt&&R.pt.length)a=R.pt.slice();
+  /* grammaire et conjugaison : plusieurs formats pour ne pas enchaîner dix fois le même */
+  if(R&&R.mode==="lesson")a=[...new Set(a.flatMap(x=>x==="exc"?["exc","excV","excT"]:x==="conj"?["conj","conjT"]:[x]))];
   if(l>=2&&(t==="CO"||t==="Mélange"||t==="Listes")&&!a.includes("listenT")&&(t!=="Listes"||l>=3))a=[...a,"listenT"];
   if(R&&R.kn){const b=pqFit(a,R.kn);a=b.length?b:["es2fr","fr2es","listen","type"]}
   /* formats vocaux réels si la reconnaissance vocale existe ; sinon remplacement par un équivalent écrit (jamais de reconnaissance simulée) */
   a=[...new Set(a.flatMap(x=>EOT.includes(x)?(SR?[x]:EOFB[x]):[x]))];if(!a.length)a=["build","type"];
   const lt=R&&R.hist&&R.hist.length?R.hist[R.hist.length-1].t:null,l2=R&&R.hist&&R.hist.length>1?R.hist[R.hist.length-2].t:null,cnt=k=>((R&&R.hist)||[]).filter(h=>h.t===k).length,mix=new Set(a.map(x=>MODL[x])).size>1;
-  const w=a.map(x=>{let m=Math.max(.05,(2-sk(TYK[x]))*(x===lt?.08:x===l2?.5:1));if(mix&&MODL[x])m*=modF(MODL[x]);
+  const alt=a.some(x=>x!==lt),w=a.map(x=>{if(alt&&x===lt)return 0;let m=Math.max(.05,(2-sk(TYK[x]))*(x===l2?.35:1));if(alt&&cnt(x)>=4)m*=.03;if(mix&&MODL[x])m*=modF(MODL[x]);
     if(x==="odd")m*=cnt("odd")?.02:.2;else if(x==="es2fr")m*=cnt("es2fr")>=2?.05:.55;else if(x==="listen")m*=cnt("listen")>=2?.05:.6;else if(x==="tf")m*=cnt("tf")>=2?.1:.7;return m});
   let r=Math.random()*wsum(w);for(let i=0;i<a.length;i++){r-=w[i];if(r<=0)return a[i]}return a[0];
 }
@@ -3751,6 +3767,7 @@ function draw(){
   else if(q.ty==="speakQ")b=`<h2>${tr("Réponds à voix haute")}${sp}</h2>${q.cx?`<p class="skl">🎭 ${tr(q.cx)}</p>`:""}<div class="txt" translate="no">${esc(q.npc)}</div>${q.hint?`<p class="sub">${esc(q.hint)}</p>`:""}<button class="btn" onclick="rec()">🎤 Parler</button> <button class="btn ghost" onclick="adv()">Passer</button>`;
   else if(q.ty==="replyQ")b=`<h2>${tr("Réponds par écrit")}${sp}</h2>${q.cx?`<p class="skl">🎭 ${tr(q.cx)}</p>`:""}<div class="txt" translate="no">${esc(q.npc)}</div>${q.hint?`<p class="sub">${esc(q.hint)}</p>`:""}<input class="in" id="ti" autocomplete="off" autocapitalize="none" spellcheck="false" onkeydown="if(event.key==='Enter')chkR()"><button class="btn" id="chk" onclick="chkR()">Vérifier</button>`;
   else if(q.ty==="speak")b=`<h2>Dis à voix haute : <span class="w">${q.es}</span>${sp}</h2><p class="sub">${q.fr}</p><button class="btn" onclick="rec()">🎤 Parler</button> <button class="btn ghost" onclick="adv()">Passer</button>`;
+  else if(q.ty==="excT"||q.ty==="conjT")b=`<h2>${q.ty==="excT"?tr("Écris le mot manquant :")+`<div class="txt" translate="no">${esc(q.h)}</div>`:XH(Object.assign({},q,{ty:"conj"}),sp)}</h2><input class="in" id="ti" autocomplete="off" autocapitalize="none" spellcheck="false" onkeydown="if(event.key==='Enter')chkX()"><button class="btn" id="chk" onclick="chkX()">Vérifier</button>`;
   else if(q.ty==="type"||q.ty==="dict")b=`<h2>${q.ty==="dict"?"Écoute, puis écris ce que tu entends"+sp:q.pr?String(q.pr).replace(/</g,"&lt;"):tr("Écris en {0} : {1}",tr(LFR[lg()]),`<span class="w">${q.fr}</span>`)}</h2><input class="in" id="ti" autocomplete="off" autocapitalize="none" spellcheck="false" onkeydown="if(event.key==='Enter')chkT()"><button class="btn" id="chk" onclick="chkT()">Vérifier</button>${t?`<button class="btn ghost" onclick="tidk()">${tr("Je ne sais pas")}</button>`:""}`;
   else{
     let h=q.ty==="tf"?tr("Vrai ou faux : {0} veut dire « {1} »",`<span class="w" translate="no">${q.txt}</span>`,q.m)+sp:q.ty==="odd"?tr("Quel mot n'appartient pas au même groupe ?"):q.ty==="fr2P"?tr("Comment dit-on {0} en {1} ?",`<span class="w">${q.fr}</span>`,tr(LFR[lg()])):q.ty==="es2fr"?tr("Que veut dire {0} ?",`<span class="w" translate="no">${q.w[0]}</span>`)+sp:q.ty==="fr2es"?tr("Comment dit-on {0} en {1} ?",`<span class="w">${q.w[1]}</span>`,tr(LFR[lg()])):q.ty==="listen"?`Écoute, puis choisis le mot${sp}`:q.ty==="listenP"?`Écoute la phrase, puis choisis sa traduction${sp}`:q.ty==="listenT"?`Écoute le texte, puis réponds à la question${sp}<p class="sub" style="margin:8px 0 0">${q.p}</p>`:q.ty==="cloze"?`${tr("Complète la phrase :")} <span class="w" translate="no">${q.txt}</span><p class="sub" style="margin:6px 0 0">${q.fr}</p>`:`<div class="txt" translate="no">${q.txt}</div>${q.p}`;
