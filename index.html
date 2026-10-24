@@ -598,7 +598,7 @@ html[data-theme="dark"] body .pn.cur em,html[data-theme="dark"] body .pn.done em
 .wkwd:active{transform:translateY(2px);border-bottom-width:2px}
 .wkwd b{font-size:15px;color:var(--az)}.wkwd small{font-size:12px;color:var(--mut);font-weight:600}
 </style>
-</head>
+<style id="sm-app">body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}input,textarea,select,[contenteditable],[contenteditable] *{-webkit-user-select:text;user-select:text;-webkit-touch-callout:default}img,svg{-webkit-user-drag:none}</style></head>
 <body>
 <style id="splash-css">
 #splash{position:fixed;inset:0;z-index:99999;background:#CFE9DC;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;transition:opacity .3s ease;font-family:Nunito,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
@@ -881,7 +881,7 @@ function hpJS(pw,salt){let x=salt+":"+pw;for(let i=0;i<3000;i++)x=sha256(x+salt)
 const withTimeout=(p,ms)=>Promise.race([p,new Promise(r=>setTimeout(()=>r(null),ms))]);
 var UI="fr";
 const UIL={fr:"Français",en:"English",it:"Italiano",de:"Deutsch",pt:"Português"};
-const TR={};const trLoad=l=>(l==="fr"||TR[l])?Promise.resolve():fetch("tr/"+l+".json?v=36").then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{TR[l]=j}).catch(()=>{});
+const TR={};const trLoad=l=>(l==="fr"||TR[l])?Promise.resolve():fetch("tr/"+l+".json?v=37").then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{TR[l]=j}).catch(()=>{});
 try{const s=ST.get("cast_ui"),n=(navigator.language||"fr").slice(0,2);UI=UIL[s]?s:(UIL[n]?n:"fr")}catch(e){}
 const gl=s=>{if(UI==="fr"||!TR[UI])return s;let t=TR[UI][s];if(t!=null)return t;const n=s.match(NUMRE);if(n){t=TR[UI][s.replace(NUMRE,"#")];if(t!=null){let i=0;return t.replace(/#/g,()=>i<n.length?n[i++]:"#")}const b=s.match(/^(.*\S)\s+(\d+)$/);if(b&&TR[UI][b[1]]!=null)return TR[UI][b[1]]+" "+b[2]}return s};
 const tr=(s,...a)=>gl(s).replace(/\{(\d)\}/g,(m,i)=>a[i]);
@@ -3223,7 +3223,7 @@ function scnEnd(){
 let TLS=0;function tools(){TLS=Date.now();LK2=0;
   INL=0;stopSp();SCR="home";axWarm();
   const tl=Object.keys(D).map(t=>{const c=D[t].filter(w=>(w[2]||1)===lv()),m=Math.round(100*c.filter(w=>(S.sc[w[0]]||0)>=3).length/c.length);return `<button class="theme" onclick="start('${t}')"><b>${t}</b>${m}% du niveau<div class="bar"><i style="width:${m}%"></i></div></button>`}).join("");
-  $.innerHTML=head()+tabs("tools")+notes()+`<h2 class="ptitle">${tr("Outils")}</h2><button class="theme rev" onclick="start('Révision')"><b>Réviser</b><span>${srDue().length?tr("À revoir aujourd'hui : {0}",srDue().length):tr("Révision libre, sans fin")}</span></button><h3>${tr("Consulter")}</h3><div class="grid sm"><button class="theme" data-i="📋" onclick="go('lists')"><b>Listes</b></button><button class="theme" data-i="🔄" onclick="go('conj')"><b>Conjugaison</b></button><button class="theme" data-i="⚡" onclick="go('exc')"><b>Exceptions</b></button><button class="theme" data-i="💬" onclick="go('expr')"><b>Expressions</b></button><button class="theme" data-i="🌐" style="grid-column:1/-1" onclick="go('trad')"><b>Traducteur</b></button></div><h3>${tr("S'entraîner")}</h3><button class="theme mix go" style="width:100%;margin-top:12px" onclick="start('Mélange')"><b>Mélange</b>Un peu de tout, adapté à ton niveau</button><h3>Par compétence</h3><div class="grid sk"><button class="theme" data-i="📖" onclick="start('CE')"><b>Compréhension écrite</b></button><button class="theme" data-i="🎧" onclick="start('CO')"><b>Compréhension orale</b></button><button class="theme" data-i="✍️" onclick="start('EE')"><b>Expression écrite</b></button><button class="theme" data-i="🎤" onclick="start('EO')"><b>Expression orale</b></button></div>${SR?"":`<p class="skl">Micro indisponible : exercices écrits à la place</p>`}<h3>Autres exercices</h3><div class="grid sm"><button class="theme" onclick="start('Conjugaison')"><b>Conjugaison</b></button><button class="theme" onclick="start('Listes')"><b>Listes</b></button><button class="theme" onclick="start('Exceptions')"><b>Exceptions</b></button><button class="theme" onclick="start('Expressions')"><b>Expressions</b></button>${tl}<button class="theme" style="grid-column:1/-1" onclick="start('Frases')"><b>Frases</b>Phrases : écrire, écouter, dire à voix haute</button></div>${aiUI()}<h3>${tr("Mon niveau")}</h3><div class="mb"><p><b>${tr("Niveau {0}",NL[lv()])}</b></p><button class="chip" onclick="test()">Refaire le test</button> <button class="chip" onclick="S.pthAll=1;save();home()">Débloquer tout le parcours</button></div>`;
+  $.innerHTML=head()+tabs("tools")+notes()+`<h2 class="ptitle">${tr("Outils")}</h2><button class="theme rev" onclick="start('Révision')"><b>Réviser</b><span>${srDue().length?tr("À revoir aujourd'hui : {0}",srDue().length):tr("Révision libre, sans fin")}</span></button><h3>${tr("Consulter")}</h3><div class="grid sm"><button class="theme" data-i="📋" onclick="go('lists')"><b>Listes</b></button><button class="theme" data-i="🔄" onclick="go('conj')"><b>Conjugaison</b></button><button class="theme" data-i="⚡" onclick="go('exc')"><b>Exceptions</b></button><button class="theme" data-i="💬" onclick="go('expr')"><b>Expressions</b></button><button class="theme" data-i="🌐" style="grid-column:1/-1" onclick="go('trad')"><b>Traducteur</b></button></div><h3>${tr("S'entraîner")}</h3><button class="theme mix go" style="width:100%;margin-top:12px" onclick="start('Mélange')"><b>Mélange</b>Un peu de tout, adapté à ton niveau</button><h3>Par compétence</h3><div class="grid sk"><button class="theme" data-i="📖" onclick="start('CE')"><b>Compréhension écrite</b></button><button class="theme" data-i="🎧" onclick="start('CO')"><b>Compréhension orale</b></button><button class="theme" data-i="✍️" onclick="start('EE')"><b>Expression écrite</b></button><button class="theme" data-i="🎤" onclick="start('EO')"><b>Expression orale</b></button></div>${SR?"":`<p class="skl">Micro indisponible : exercices écrits à la place</p>`}<h3>Autres exercices</h3><div class="grid sm"><button class="theme" onclick="start('Conjugaison')"><b>Conjugaison</b></button><button class="theme" onclick="start('Listes')"><b>Listes</b></button><button class="theme" onclick="start('Exceptions')"><b>Exceptions</b></button><button class="theme" onclick="start('Expressions')"><b>Expressions</b></button>${tl}<button class="theme" style="grid-column:1/-1" onclick="start('Frases')"><b>Frases</b>Phrases : écrire, écouter, dire à voix haute</button></div>${aiUI()}<h3>${tr("Mon niveau")}</h3><div class="mb"><p><b>${tr("Niveau {0}",NL[lv()])}</b></p><button class="chip" onclick="test()">Refaire le test</button> <button class="chip" onclick="S.pthAll=1;save();home()">Débloquer tout le parcours</button></div><h3>${tr("Ma progression")}</h3><div class="mb"><p>${tr("Garde une copie de ta progression : utile si tu changes de téléphone ou si tu vides ton navigateur.")}</p><button class="chip" onclick="bkExp()">${tr("Enregistrer une copie")}</button> <button class="chip" onclick="bkImp()">${tr("Restaurer une copie")}</button></div>`;
 }
 
 /* ---- parcours guidé ---- */
@@ -5114,6 +5114,25 @@ a.classList.toggle("sm-still",same);a.classList.toggle("sm-keepH",hh&&!!ph);a.cl
 const b=a.querySelector(".bar>i"),nw=b?b.style.width:null;
 if(b&&same&&pw&&nw&&pw!==nw&&!matchMedia("(prefers-reduced-motion:reduce)").matches){b.style.transition="none";b.style.width=pw;void b.offsetWidth;b.style.transition="";b.style.width=nw}
 pk=k;ph=hh;pn=hn;pw=nw}).observe(a,{childList:true})})();
+</script>
+<script id="sm-app-js">
+/* Comportement d'appli : pas de menu « appui long » hors des champs de saisie ; stockage protégé contre le nettoyage automatique */
+document.addEventListener("contextmenu",e=>{if(!(e.target.closest&&e.target.closest("input,textarea,[contenteditable]")))e.preventDefault()});
+try{const n=navigator.storage;if(n&&n.persist&&!/Firefox/.test(navigator.userAgent))n.persisted().then(p=>p||n.persist()).catch(()=>{})}catch(e){}
+/* Copie de la progression : fichier .json (partage natif sur téléphone, téléchargement sinon) */
+const BKK=k=>/^(cast|acct:|sobv_|sob_lofi)/.test(k);
+function bkExp(){try{if(typeof save==="function")save()}catch(e){}
+  const d={app:"sobremesa",v:1,date:new Date().toISOString(),data:{}};
+  try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(BKK(k))d.data[k]=localStorage.getItem(k)}}catch(e){}
+  const name="sobremesa-"+d.date.slice(0,10)+".json",txt=JSON.stringify(d);
+  try{const f=new File([txt],name,{type:"application/json"});if(navigator.canShare&&navigator.canShare({files:[f]})){navigator.share({files:[f],title:"Sobremesa"}).catch(()=>{});return}}catch(e){}
+  const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([txt],{type:"application/json"}));a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1500)}
+function bkImp(){const i=document.createElement("input");i.type="file";i.accept=".json,application/json";
+  i.onchange=()=>{const f=i.files&&i.files[0];if(!f)return;f.text().then(t=>{let d=null;try{d=JSON.parse(t)}catch(e){}
+    if(!d||d.app!=="sobremesa"||!d.data||typeof d.data!=="object"){alert(tr("Ce fichier n'est pas une copie Sobremesa."));return}
+    if(!confirm(tr("Remplacer ta progression actuelle par cette copie ?")))return;
+    try{Object.keys(d.data).filter(BKK).forEach(k=>localStorage.setItem(k,String(d.data[k])))}catch(e){}
+    alert(tr("Copie restaurée."));location.reload()})};i.click()}
 </script>
 </body>
 </html>
