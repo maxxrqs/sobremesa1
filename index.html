@@ -3758,8 +3758,10 @@ function pickType(){
   if(R&&R.kn){const b=pqFit(a,R.kn);a=b.length?b:["es2fr","fr2es","listen","type"]}
   /* formats vocaux réels si la reconnaissance vocale existe ; sinon remplacement par un équivalent écrit (jamais de reconnaissance simulée) */
   a=[...new Set(a.flatMap(x=>EOT.includes(x)?(SR?[x]:EOFB[x]):[x]))];if(!a.length)a=["build","type"];
+  /* étape 100 % orale : on intercale de l'écoute et de l'écrit pour ne jamais enchaîner les exercices oraux */
+  const allEO=a.length&&a.every(x=>MODL[x]==="eo");if(allEO&&R&&R.mode==="lesson"){const ex=["listen","dict","type","fr2es"].filter(x=>!R.kn||pqFit([x],R.kn).length);a=[...a,...(ex.length?ex:["dict","type"])]}
   const lt=R&&R.hist&&R.hist.length?R.hist[R.hist.length-1].t:null,l2=R&&R.hist&&R.hist.length>1?R.hist[R.hist.length-2].t:null,cnt=k=>((R&&R.hist)||[]).filter(h=>h.t===k).length,mix=new Set(a.map(x=>MODL[x])).size>1;
-  const alt=a.some(x=>x!==lt),w=a.map(x=>{if(alt&&x===lt)return 0;let m=Math.max(.05,(2-sk(TYK[x]))*(x===l2?.35:1));if(alt&&cnt(x)>=4)m*=.03;if(mix&&MODL[x])m*=modF(MODL[x]);
+  const alt=a.some(x=>x!==lt),lm=MODL[lt],altM=lm&&a.some(x=>x!==lt&&MODL[x]!==lm),neo=((R&&R.hist)||[]).filter(h=>MODL[h.t]==="eo").length,w=a.map(x=>{if(alt&&x===lt)return 0;/* deux exercices oraux jamais d'affilée, trois au plus par série ; même compétence deux fois de suite rarement */if(altM&&MODL[x]===lm&&lm==="eo")return 0;if(MODL[x]==="eo"&&neo>=(allEO?5:3)&&a.some(y=>MODL[y]!=="eo"))return 0;let m=Math.max(.05,(2-sk(TYK[x]))*(x===l2?.35:1));if(altM&&MODL[x]===lm)m*=.5;if(R&&R.ws&&R.ws.length){const av=R.ws.reduce((t,w)=>t+((S.sc||{})[w[0]]||0),0)/R.ws.length;if(STG2.includes(x))m*=av>=4?2.2:av<=1?.6:1;else if(STG0.includes(x)&&x!=="listen")m*=av<=1?1.6:av>=4?.6:1}if(alt&&cnt(x)>=4)m*=.03;if(mix&&MODL[x])m*=modF(MODL[x]);
     if(x==="odd")m*=cnt("odd")?.02:.2;else if(x==="es2fr")m*=cnt("es2fr")>=2?.05:.55;else if(x==="listen")m*=cnt("listen")>=2?.05:.6;else if(x==="tf")m*=cnt("tf")>=2?.1:.7;return m});
   let r=Math.random()*wsum(w);for(let i=0;i<a.length;i++){r-=w[i];if(r<=0)return a[i]}return a[0];
 }
