@@ -1,0 +1,41 @@
+{
+  "packageId": "io.github.maxxrqs.sobremesa",
+  "host": "maxxrqs.github.io",
+  "name": "Sobremesa",
+  "launcherName": "Sobremesa",
+  "display": "standalone",
+  "themeColor": "#CFE9DC",
+  "themeColorDark": "#CFE9DC",
+  "navigationColor": "#CFE9DC",
+  "navigationColorDark": "#CFE9DC",
+  "navigationDividerColor": "#CFE9DC",
+  "navigationDividerColorDark": "#CFE9DC",
+  "backgroundColor": "#CFE9DC",
+  "enableNotifications": true,
+  "startUrl": "/sobremesa1/",
+  "iconUrl": "http://127.0.0.1:8775/icon-512.png",
+  "maskableIconUrl": "http://127.0.0.1:8775/icon-512.png",
+  "splashScreenFadeOutDuration": 300,
+  "signingKey": {
+    "path": "./sobremesa.keystore",
+    "alias": "sobremesa"
+  },
+  "appVersionCode": 1,
+  "shortcuts": [],
+  "generatorApp": "bubblewrap-cli",
+  "fallbackType": "customtabs",
+  "features": {},
+  "alphaDependencies": {
+    "enabled": false
+  },
+  "enableSiteSettingsShortcut": false,
+  "isChromeOSOnly": false,
+  "isMetaQuest": false,
+  "fullScopeUrl": "https://maxxrqs.github.io/sobremesa1/",
+  "minSdkVersion": 21,
+  "orientation": "portrait",
+  "fingerprints": [],
+  "additionalTrustedOrigins": [],
+  "retainedBundles": [],
+  "displayOverride": []
+}
