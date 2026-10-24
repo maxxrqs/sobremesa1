@@ -11,8 +11,10 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
         with: { distribution: temurin, java-version: 17 }
-      - run: chmod +x gradlew && ./gradlew --no-daemon assembleRelease
+      - run: chmod +x gradlew && (./gradlew --no-daemon assembleRelease 2>&1 | tee /tmp/build.log; exit ${PIPESTATUS[0]})
+        shell: bash
+        continue-on-error: true
       - run: |
-          mkdir -p /tmp/out && cp app/build/outputs/apk/release/*.apk /tmp/out/sobremesa-unsigned.apk
+          mkdir -p /tmp/out && cp /tmp/build.log /tmp/out/ && (cp app/build/outputs/apk/release/*.apk /tmp/out/sobremesa-unsigned.apk || true)
           cd /tmp/out && git init -q -b android-out && git add . && git -c user.name=ci -c user.email=ci@local commit -qm "APK non signé ${GITHUB_SHA::7}"
           git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" android-out
