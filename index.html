@@ -1421,9 +1421,30 @@ function auSync(){try{document.querySelectorAll("[data-a]").forEach(b=>{const on
 function stopSp(){AU.tok++;AU.id=null;AU.ld=false;try{axStop()}catch(e){}try{speechSynthesis.cancel()}catch(e){}auSync()}
 /* ---- voix pré-enregistrées : un clip à la fois (requête Range), cache persistant, lecture planifiée ---- */
 const AX={ctx:null,idx:{},ixt:{},pk:{},pkd:{},dec:new Map(),raw:new Map(),fl:new Map(),src:null,srcs:[],un:0,why:"",m:{rec:0,sys:0,piper:0,esp:0,fail:0,hit:0,net:0,miss:[]}};
-function axCtx(){if(!AX.ctx){try{const C=window.AudioContext||window.webkitAudioContext;if(C)AX.ctx=new C()}catch(e){}}return AX.ctx}
-function axUnlock(){const c=axCtx();if(!c)return;try{if(c.state!=="running")c.resume();if(!AX.un){AX.un=1;const b=c.createBuffer(1,1,22050),s=c.createBufferSource();s.buffer=b;s.connect(c.destination);s.start(0)}}catch(e){}}
-["pointerdown","touchstart","click","keydown"].forEach(ev=>addEventListener(ev,axUnlock,{capture:true,passive:true}));
+function axCtx(){if(AX.ctx&&AX.ctx.state==="closed")AX.ctx=null;if(!AX.ctx){try{const C=window.AudioContext||window.webkitAudioContext;if(C)AX.ctx=new C()}catch(e){}}return AX.ctx}
+/*IOS-BEGIN iPhone/iPad : seuls touchend/click débloquent le son ; après une mise en arrière-plan, un appel ou le micro, le contexte audio peut rester « interrupted » ou muet : il est recréé au geste suivant */
+const IOSW=(()=>{try{const u=navigator.userAgent||"";return /iP(hone|ad|od)/.test(u)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1)}catch(e){return false}})();
+function axRenew(){if(AX.srcs.length&&AU.id)return;const o=AX.ctx;AX.ctx=null;AX.cp=null;AX.un=0;AX.stale=0;AX.srcs=[];try{if(o&&o.close){const p=o.close();if(p&&p.catch)p.catch(()=>{})}}catch(e){}}
+function axSilUrl(sec){const k="sil"+sec;if(AX[k])return AX[k];const n=Math.round(8000*sec),b=new ArrayBuffer(44+n*2),d=new DataView(b),W=(o,t)=>{for(let i=0;i<t.length;i++)d.setUint8(o+i,t.charCodeAt(i))};
+  W(0,"RIFF");d.setUint32(4,36+n*2,true);W(8,"WAVEfmt ");d.setUint32(16,16,true);d.setUint16(20,1,true);d.setUint16(22,1,true);d.setUint32(24,8000,true);d.setUint32(28,16000,true);d.setUint16(32,2,true);d.setUint16(34,16,true);W(36,"data");d.setUint32(40,n*2,true);
+  return AX[k]=URL.createObjectURL(new Blob([b],{type:"audio/wav"}))}
+/* élément <audio> « béni » par un geste : iOS l'autorise ensuite à jouer sans nouveau geste (repli quand le contexte audio est bloqué) */
+function axBless(){if(!IOSW||AX.pel)return;try{const el=new Audio();el.setAttribute("playsinline","");el.src=axSilUrl(.05);AX.pel=el;const p=el.play();if(p&&p.then)p.then(()=>{if(AX.el!==el)el.pause()},()=>{if(AX.pel===el)AX.pel=null})}catch(e){AX.pel=null}}
+/* iOS < 17 (sans navigator.audioSession) : un son muet en boucle fait passer la page en catégorie « lecture », sinon l'interrupteur silence coupe les voix */
+function axKeep(){if(!IOSW||navigator.audioSession)return;try{let el=AX.kel;if(!el){el=AX.kel=new Audio();el.setAttribute("playsinline","");el.loop=true;el.src=axSilUrl(1)}if(el.paused){const p=el.play();if(p&&p.catch)p.catch(()=>{})}}catch(e){}}
+/* la voix du système d'iOS ne parle hors geste qu'après une première phrase lancée pendant un geste */
+function axTtsPrime(){if(!IOSW||AX.tp)return;try{if(!("speechSynthesis" in window)||typeof SpeechSynthesisUtterance==="undefined")return;AX.tp=1;const u=new SpeechSynthesisUtterance(" ");u.volume=0;speechSynthesis.speak(u)}catch(e){}}
+function axStale(){if(!IOSW)return;AX.stale=1;AX.fxs=1}
+document.addEventListener("visibilitychange",()=>{if(IOSW&&document.visibilityState==="hidden"){axStale();try{AX.kel&&AX.kel.pause()}catch(e){}}});
+addEventListener("pageshow",e=>{if(e&&e.persisted)axStale()});
+/*IOS-END*/
+function axUnlock(ev){
+  if(IOSW&&ev&&(ev.type==="pointerdown"||ev.type==="touchstart"))return;
+  if(IOSW&&AX.ctx&&(AX.stale||AX.ctx.state==="interrupted"))axRenew();
+  const c=axCtx();
+  if(c)try{if(c.state!=="running"){const p=c.resume();if(p&&p.catch)p.catch(()=>{})}if(!AX.un||c.state!=="running"){AX.un=1;const b=c.createBuffer(1,1,22050),s=c.createBufferSource();s.buffer=b;s.connect(c.destination);s.start(0)}}catch(e){}
+  if(IOSW){axBless();axKeep();axTtsPrime()}}
+["pointerdown","touchstart","touchend","pointerup","click","keydown"].forEach(ev=>addEventListener(ev,axUnlock,{capture:true,passive:true}));
 const axNk=t=>String(t).replace(/\s+/g," ").trim();
 /* clé de recherche tolérante : sans casse ni point final (la ponctuation ¿ ? ¡ ! reste exacte : elle porte l'intonation) */
 const axN=t=>axNk(t).toLowerCase().replace(/[.…]+$/,"").trim();
@@ -1483,7 +1504,7 @@ function axPlayEl(os,tok,done){
     if(AU.tok!==tok)return;
     if(i>=os.length){done();return}
     const o=os[i++];let u;try{u=URL.createObjectURL(new Blob([o.raw],{type:"audio/mpeg"}))}catch(e){done();return}
-    const el=new Audio(u);AX.el=el;el.volume=1;
+    const el=IOSW&&AX.pel?AX.pel:new Audio(u);if(el===AX.pel){el.src=u;try{el.currentTime=0}catch(e){}}AX.el=el;el.volume=1;
     const nx=()=>{try{URL.revokeObjectURL(u)}catch(e){}setTimeout(next,i<os.length?200:0)};
     el.onended=nx;el.onerror=()=>{AX.why="el";nx()};
     const pr=el.play();if(pr&&pr.then)pr.then(()=>{AU.go=true;AU.ld=false;auSync()},()=>{AX.why="blocked";nx()});
@@ -1572,7 +1593,7 @@ function aud(id,texts){const was=AU.id===id;stopSp();if(was||!texts||!texts.leng
     const sv=sysVoice(l,strict);if(!sv){let d="";try{const a=speechSynthesis.getVoices()||[];d=":"+a.length+" "+a.slice(0,3).map(v=>v.lang).join(",")}catch(x){}return rej("novoice"+d)}
     try{speechSynthesis.resume()}catch(e){}
     const droid=/android/i.test(navigator.userAgent);let started=false,done=false;UQ.length=0;
-    const to=setTimeout(()=>{if(!started&&!done&&AU.tok===tok){done=true;try{speechSynthesis.cancel()}catch(x){}rej("nostart")}},2200);
+    const to=setTimeout(()=>{if(!started&&!done&&AU.tok===tok){done=true;try{speechSynthesis.cancel()}catch(x){}rej("nostart")}},IOSW?3500:2200);
     texts.forEach((t,i)=>{const u=new SpeechSynthesisUtterance(ttsSan(t));u.lang=sv.lang;if(sv.v&&!droid)u.voice=sv.v;u.rate=texts.length===1&&t.split(/\s+/).length<3?.92:1;
       u.onstart=()=>{started=true;AU.go=true;AU.ld=false;clearTimeout(to);auSync()};
       u.onend=()=>{if(i===texts.length-1&&!done){done=true;clearTimeout(to);res()}};
@@ -1636,7 +1657,7 @@ async function tvPlayPcm(r,tok){
   try{const n=a.length,buf=new ArrayBuffer(44+n*2),d=new DataView(buf),W=(o,t)=>{for(let i=0;i<t.length;i++)d.setUint8(o+i,t.charCodeAt(i))};
     W(0,"RIFF");d.setUint32(4,36+n*2,true);W(8,"WAVEfmt ");d.setUint32(16,16,true);d.setUint16(20,1,true);d.setUint16(22,1,true);d.setUint32(24,r.sr,true);d.setUint32(28,r.sr*2,true);d.setUint16(32,2,true);d.setUint16(34,16,true);W(36,"data");d.setUint32(40,n*2,true);
     for(let i=0;i<n;i++)d.setInt16(44+i*2,Math.max(-1,Math.min(1,a[i]*gain))*32767,true);
-    const au=new Audio(URL.createObjectURL(new Blob([buf],{type:"audio/wav"})));await au.play();AU.go=true;AU.ld=false;auSync();await new Promise(res=>{au.onended=res;au.onerror=res});return true}catch(e){return false}}
+    const bu=URL.createObjectURL(new Blob([buf],{type:"audio/wav"})),au=IOSW&&AX.pel?AX.pel:new Audio(bu);if(au===AX.pel)au.src=bu;AX.el=au;await au.play();AU.go=true;AU.ld=false;auSync();await new Promise(res=>{au.onended=res;au.onerror=res});return true}catch(e){return false}}
 async function tvSay(){
   const o=TS.out;if(!o||!o.t)return;const lang=TS.dst,text=o.t;
   if(AU.id==="tq"){stopSp();TV.busy=0;tvNote("");return}
@@ -3884,13 +3905,18 @@ async function micPre(){
   try{const st=await md.getUserMedia({audio:true});st.getTracks().forEach(t=>t.stop());return ""}
   catch(e){const n=(e&&e.name)||"error";if(/NotAllowed|Security|Permission/i.test(n))MICWHY=await micWhy();return n}
 }
+/* iOS : session « lecture + enregistrement » pendant la dictée, puis retour à « lecture » ; le contexte audio est recréé au geste suivant (sinon voix muettes ou dans l'écouteur) */
+function micSess(on){if(!IOSW)return;try{if(navigator.audioSession)navigator.audioSession.type=on?"play-and-record":"playback"}catch(e){}if(!on)axStale()}
 function srAttach(r,onAlts,fail){
   /* branche les événements de reconnaissance : résultat final, résultat intermédiaire gardé si la session se termine sans final, et étapes atteintes (micro démarré, son capté, voix détectée) pour un message précis */
   const st={a:0,s:0,sp:0,i:null,done:0,er:""};r.interimResults=true;
   r.onaudiostart=()=>{st.a=1};r.onsoundstart=()=>{st.s=1};r.onspeechstart=()=>{st.sp=1};
-  r.onresult=e=>{const rs=e.results[e.results.length-1],alts=[...rs].map(x=>x.transcript);if(rs.isFinal){if(st.done)return;st.done=1;onAlts(alts)}else st.i=alts};
-  r.onerror=e=>{if(st.done)return;st.er=(e&&e.error)||"";fail(st.er,st)};
-  r.onend=()=>{if(st.done||st.er)return;if(st.i&&st.i[0]&&st.i[0].trim()){st.done=1;onAlts(st.i);return}fail("",st)};
+  const end=()=>{clearTimeout(st.wd);clearTimeout(st.wd2);micSess(0)};
+  r.onresult=e=>{const rs=e.results[e.results.length-1],alts=[...rs].map(x=>x.transcript);if(rs.isFinal){if(st.done)return;st.done=1;end();onAlts(alts)}else st.i=alts};
+  r.onerror=e=>{end();if(st.done)return;st.er=(e&&e.error)||"";fail(st.er,st)};
+  r.onend=()=>{end();if(st.done||st.er)return;if(st.i&&st.i[0]&&st.i[0].trim()){st.done=1;onAlts(st.i);return}fail("",st)};
+  /* iOS : la dictée peut rester bloquée sans jamais finir ; arrêt forcé, puis résultat partiel ou message */
+  if(IOSW){micSess(1);st.wd=setTimeout(()=>{if(st.done||st.er)return;try{r.stop()}catch(e){}st.wd2=setTimeout(()=>{if(st.done||st.er)return;end();if(st.i&&st.i[0]&&st.i[0].trim()){st.done=1;onAlts(st.i);return}st.er="no-speech";fail("",st)},2500)},15000)}
   return st
 }
 function micErr(code,fb,rt,st){
@@ -3912,11 +3938,11 @@ function recType(){const q=R.q;if(!q||R.done)return;R.q=q.ty==="speakQ"?{ty:"rep
 async function rec(){
   const fb=document.getElementById("fb");
   const r=new SR();r.lang=LANGS[lg()].s;r.maxAlternatives=3;
-  fb.innerHTML=`<p class="sub">Je t'écoute…</p>`;
-  const pre=await micPre();if(pre){fb.innerHTML=micErr(pre,"recType()","rec()");return}
+  fb.innerHTML=`<p class="sub">Je t'écoute…</p>`;if(IOSW)stopSp();
+  const pre=IOSW?"":await micPre();if(pre){fb.innerHTML=micErr(pre,"recType()","rec()");return}
   srAttach(r,alts=>{if(R.done)return;oralCheck(alts)},
     (code,st)=>{if(R.done)return;fb.innerHTML=micErr(code,"recType()","rec()",st)});
-  try{r.start()}catch(e){fb.innerHTML=micErr((e&&e.name)||"error","recType()","rec()")}
+  try{r.start()}catch(e){micSess(0);fb.innerHTML=micErr((e&&e.name)||"error","recType()","rec()")}
 }
 function fin(good,sol,key,msg){
   const q=R.q,k=TYK[q.ty],s=good===true?1:good===false?0:Math.max(0,Math.min(1,+good||0)),full=s>=1,half=s>0&&s<1;R.done=true;
@@ -4338,11 +4364,12 @@ function cvTr(i){const m=CV&&CV.msgs[i];if(m){m.show=!m.show;cvDraw(1)}}
 function cvAuto(){CV.auto=!CV.auto;S.cvAuto=CV.auto?1:0;save();if(!CV.auto)stopSp();cvDraw(1)}
 async function cvMic(){
   const c=CV;if(!c||c.busy||!SR)return;stopSp();if(c.rec){try{c.rec.stop()}catch(e){}return}
-  const pre=await micPre(),ce=document.getElementById("cverr");if(pre){if(ce)ce.innerHTML=micErr(pre,"");return}if(ce)ce.innerHTML="";
+  const pre=IOSW?"":await micPre(),ce=document.getElementById("cverr");if(pre){if(ce)ce.innerHTML=micErr(pre,"");return}if(ce)ce.innerHTML="";
   const r=new SR();r.lang=LANGS[lg()].s;r.interimResults=true;r.maxAlternatives=1;c.rec=r;let fin="";
   r.onresult=e=>{let t="";for(const x of e.results)t+=x[0].transcript;fin=t;const i=document.getElementById("cvin");if(i)i.value=t};
-  r.onend=()=>{c.rec=0;const i=document.getElementById("cvin");if(CV===c){cvDraw(1);if(fin.trim())cvSend(fin)}};
-  r.onerror=e=>{const x=document.getElementById("cverr"),k=(e&&e.error)||"";if(x&&k&&k!=="no-speech"&&k!=="aborted")x.innerHTML=micErr(k,"")};try{r.start();cvDraw(1)}catch(e){c.rec=0;const x=document.getElementById("cverr");if(x)x.innerHTML=micErr((e&&e.name)||"error","")}}
+  r.onend=()=>{clearTimeout(r.wd);micSess(0);c.rec=0;const i=document.getElementById("cvin");if(CV===c){cvDraw(1);if(fin.trim())cvSend(fin)}};
+  r.onerror=e=>{micSess(0);const x=document.getElementById("cverr"),k=(e&&e.error)||"";if(x&&k&&k!=="no-speech"&&k!=="aborted")x.innerHTML=micErr(k,"")};
+  if(IOSW){micSess(1);r.wd=setTimeout(()=>{try{r.stop()}catch(e){}},20000)}try{r.start();cvDraw(1)}catch(e){micSess(0);c.rec=0;const x=document.getElementById("cverr");if(x)x.innerHTML=micErr((e&&e.name)||"error","")}}
 function cvBub(){const c=CV;return c.msgs.map((x,i)=>x.w==="me"?`<div class="bub me">${esc(x.t)}</div>${x.fix?`<div class="cvfix">✏️ ${esc(x.fix)}</div>`:""}`:`<div class="brow"><span class="av">${mas(x.live&&!x.t?"content":(i===c.msgs.length-1&&i>0&&c.msgs[i-1].w==="me"&&!c.msgs[i-1].fix?"bravo":"content"),46)}</span><div class="bub npc cvn">${x.live&&!x.t?`<span class="dots"><i></i><i></i><i></i></span>`:`${esc(x.t)}`}${x.t&&!x.live?`<div class="cvact"><button class="spk sm${AU.id==="cv"+i?" on":""}" data-a="cv${i}" onclick="cvPlay(${i})" aria-label="Écouter">🔊</button><button class="chip" onclick="cvTr(${i})">🌐 ${tr("Traduire")}</button></div>`:""}${x.show&&x.tr?`<div class="cvt">${esc(x.tr)}</div>`:""}</div></div>`).join("")}
 function cvDraw(keep){
   const c=CV;if(!c)return;const m=FX.A[S.mas||"gecko"].n;
@@ -4413,10 +4440,10 @@ function imSkip(){const st=IM.s.st[IM.i];if(IM.done)return;imDone(false,imKey(st
 async function imRec(){
   const fb=document.getElementById("ifb"),st=IM.s.st[IM.i];const r=new SR();r.lang=LANGS[lg()].s;r.maxAlternatives=3;
   fb.innerHTML=`<p class="sub">Je t'écoute…</p>`;
-  const pre=await micPre();if(pre){fb.innerHTML=micErr(pre,"IM.typed=true;imDraw()","imRec()");return}
+  if(IOSW)stopSp();const pre=IOSW?"":await micPre();if(pre){fb.innerHTML=micErr(pre,"IM.typed=true;imDraw()","imRec()");return}
   srAttach(r,a=>{if(IM.done)return;const b=imO(a,st);imDone(b>=.7,"eo",a[0],tr("Modèle : {0}",st.m)+" · "+tr("Reconnu : {0} %",Math.round(b*100)))},
     (code,ss)=>{if(IM.done)return;fb.innerHTML=micErr(code,"IM.typed=true;imDraw()","imRec()",ss)});
-  try{r.start()}catch(e){fb.innerHTML=micErr((e&&e.name)||"error","IM.typed=true;imDraw()","imRec()")}
+  try{r.start()}catch(e){micSess(0);fb.innerHTML=micErr((e&&e.name)||"error","IM.typed=true;imDraw()","imRec()")}
 }
 function imEnd(){
   stopSp();const s=IM.s,p=Math.round(100*IM.ok/Math.max(1,IM.n)),bonus=IM.ok===IM.n?10:0;
@@ -4724,7 +4751,7 @@ function confetti(){
 }
 /* sons */
 let AC=null;
-function ctx(){try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();if(AC.state==="suspended")AC.resume()}catch(e){}return AC}
+function ctx(){try{if(AC&&(AC.state==="closed"||(IOSW&&AX.fxs&&(!navigator.userActivation||navigator.userActivation.isActive)))){AX.fxs=0;if(AC.state!=="closed")try{AC.close()}catch(e){}AC=null}AC=AC||new (window.AudioContext||window.webkitAudioContext)();if(AC.state==="suspended"||AC.state==="interrupted"){const p=AC.resume();if(p&&p.catch)p.catch(()=>{})}}catch(e){}return AC}
 function tone(f,t0,d,type,g){const a=ctx();if(!a)return;const o=a.createOscillator(),v=a.createGain();o.type=type;o.frequency.value=f;const t=a.currentTime+t0;v.gain.setValueAtTime(0,t);v.gain.linearRampToValueAtTime(Math.min(g,.9),t+.012);v.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(v);v.connect(a.destination);o.start(t);o.stop(t+d+.02)}
 const N=(n)=>440*Math.pow(2,(n-9)/12);
 function play(k,st){
@@ -5016,7 +5043,7 @@ CMX.init();
 /*CMX-END*/
 /* iOS/Android : débloquer l'audio au premier geste, jouer même quand l'interrupteur « silence » de l'iPhone est activé */
 (function(){try{if(navigator.audioSession)navigator.audioSession.type="playback"}catch(e){}
-  const u=()=>{try{axUnlock()}catch(e){}try{ctx()}catch(e){}};["pointerdown","touchend","click","keydown"].forEach(ev=>addEventListener(ev,function f(){u();["pointerdown","touchend","click","keydown"].forEach(x=>removeEventListener(x,f,true))},{capture:true,passive:true}))})();
+  const u=e=>{try{axUnlock(e)}catch(x){}try{ctx()}catch(x){}};["pointerdown","touchend","click","keydown"].forEach(ev=>addEventListener(ev,function f(e){if(IOSW&&e&&e.type==="pointerdown")return;u(e);["pointerdown","touchend","click","keydown"].forEach(x=>removeEventListener(x,f,true))},{capture:true,passive:true}))})();
 applyUI();
 /* historique : le bouton « retour » ramène à l'écran précédent, pas au menu (pile en mémoire + une entrée-garde dans l'historique du navigateur) */
 (function(){
