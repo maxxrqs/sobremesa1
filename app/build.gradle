@@ -55,7 +55,7 @@ android {
     namespace "io.github.maxxrqs.sobremesa"
     defaultConfig {
         applicationId "io.github.maxxrqs.sobremesa"
-        minSdkVersion 21
+        minSdkVersion 24
         targetSdkVersion 36
         versionCode 1
         versionName ""
