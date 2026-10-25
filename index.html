@@ -606,8 +606,17 @@ html body .lm.mlko .mas{animation:mlNo .55s ease-in-out}
 html body .lm.mlwow .mas{animation:mlWow .9s cubic-bezier(.3,1.5,.5,1)}
 .mlb{position:absolute;left:calc(50% + 52px);top:6px;max-width:42%;background:var(--card);color:var(--ink);border:2.5px solid var(--ink);border-radius:16px 16px 16px 4px;box-shadow:3px 3px 0 var(--ink);padding:6px 11px;font-weight:800;font-size:15px;line-height:1.2;white-space:nowrap;animation:mlBub .32s cubic-bezier(.3,1.6,.5,1) both}
 .mlb.out{animation:mlBubOut .25s ease-in both}
-.cmb{position:absolute;right:calc(50% + 58px);bottom:14px;display:flex;align-items:center;gap:2px;background:var(--sol);color:var(--solk);border:2.5px solid var(--ink);border-radius:999px;box-shadow:3px 3px 0 var(--ink);padding:3px 10px 3px 7px;font-weight:900;font-size:17px;animation:mlBub .35s cubic-bezier(.3,1.6,.5,1) both}
-.cmb.big{animation:mlCmb .7s cubic-bezier(.3,1.6,.5,1) both}
+.cmb{position:absolute;right:calc(50% + 50px);bottom:2px;width:52px;height:64px;display:block;transform-origin:50% 100%;animation:fmIn .4s cubic-bezier(.3,1.6,.5,1) both}
+.cmb.big{animation:fmBig .75s cubic-bezier(.3,1.6,.5,1) both}
+.cmb svg{width:100%;height:100%;overflow:visible;filter:drop-shadow(2px 3px 0 rgba(27,42,74,.9))}
+.cmb .fo{transform-origin:50% 100%;animation:fmFlick 1.1s ease-in-out infinite}
+.cmb .fi{transform-origin:50% 100%;animation:fmFlick2 .8s ease-in-out infinite}
+.cmb b{position:absolute;left:0;right:0;bottom:9px;text-align:center;font:900 20px/1 "Baloo 2",Nunito,sans-serif;color:#fff;-webkit-text-stroke:3.5px #1B2A4A;paint-order:stroke fill;letter-spacing:-.5px}
+.cmb.n2 b{font-size:17px}
+@keyframes fmFlick{0%,100%{transform:scale(1,1) skewX(0)}25%{transform:scale(.97,1.05) skewX(-3deg)}50%{transform:scale(1.03,.96) skewX(2deg)}75%{transform:scale(.98,1.03) skewX(-1deg)}}
+@keyframes fmFlick2{0%,100%{transform:scale(1,1)}30%{transform:scale(.9,1.12) skewX(4deg)}60%{transform:scale(1.06,.92) skewX(-3deg)}}
+@keyframes fmIn{0%{opacity:0;transform:scale(.2)}70%{opacity:1;transform:scale(1.15)}100%{transform:none}}
+@keyframes fmBig{0%{opacity:0;transform:scale(.2) rotate(-12deg)}55%{opacity:1;transform:scale(1.45) rotate(6deg)}100%{transform:none}}
 @keyframes mlIdle{0%,100%{transform:translateY(0) scale(1,1)}50%{transform:translateY(-2px) scale(1.015,.985)}}
 @keyframes mlHop{0%{transform:translateY(0) scale(1)}25%{transform:translateY(0) scale(1.08,.9)}55%{transform:translateY(-18px) scale(.95,1.06)}80%{transform:translateY(0) scale(1.05,.95)}100%{transform:none}}
 @keyframes mlNo{0%,100%{transform:none}20%{transform:rotate(-7deg)}45%{transform:rotate(6deg)}70%{transform:rotate(-3deg)}}
@@ -615,8 +624,8 @@ html body .lm.mlwow .mas{animation:mlWow .9s cubic-bezier(.3,1.5,.5,1)}
 @keyframes mlBub{from{opacity:0;transform:scale(.4) translateY(8px)}to{opacity:1;transform:none}}
 @keyframes mlBubOut{to{opacity:0;transform:scale(.7)}}
 @keyframes mlCmb{0%{opacity:0;transform:scale(.3) rotate(-20deg)}60%{opacity:1;transform:scale(1.35) rotate(6deg)}100%{transform:none}}
-@media (prefers-reduced-motion:reduce){html body .lm .mas,html body .lm.mlok .mas,html body .lm.mlko .mas,html body .lm.mlwow .mas,.mlb,.cmb{animation:none!important}}
-@media (max-width:360px){.mlb{font-size:13px;left:calc(50% + 44px)}.cmb{right:calc(50% + 48px)}}
+@media (prefers-reduced-motion:reduce){html body .lm .mas,html body .lm.mlok .mas,html body .lm.mlko .mas,html body .lm.mlwow .mas,.mlb,.cmb,.cmb .fo,.cmb .fi{animation:none!important}}
+@media (max-width:360px){.mlb{font-size:13px;left:calc(50% + 44px)}.cmb{right:calc(50% + 44px);width:44px;height:54px}.cmb b{font-size:17px;bottom:7px}}
 </style><style id="sm-end">
 .q.end.win .wm{position:relative;display:flex;flex-direction:column;align-items:center}
 .q.end.win .wm.dance .mas{transform-origin:50% 100%;animation:enDance 1.1s cubic-bezier(.3,1.4,.5,1) 3 1.1s,mlIdle 3.4s ease-in-out 4.5s infinite}
@@ -5502,7 +5511,7 @@ const MLW={es:[["¡Muy bien!","¡Eso es!","¡Genial!","¡Perfecto!","¡Olé!"],[
  eu:[["Oso ondo!","Hori da!","Bikain!","Primeran!"],["Animo!","Ez dago arazorik","Ia-ia!","Zuk ahal duzu!"],"{0} jarraian!"]};
 let MLP="";
 function mlPick(a){let t=a[Math.floor(Math.random()*a.length)];if(t===MLP&&a.length>1)t=a[(a.indexOf(t)+1)%a.length];MLP=t;return t}
-function cmbHtml(big){return `<span class="cmb${big?" big":""}" aria-label="${FXS}">🔥${FXS}</span>`}
+function cmbHtml(big){return `<span class="cmb${big?" big":""}${FXS>9?" n2":""}" role="img" aria-label="${FXS}"><svg viewBox="0 0 52 64" aria-hidden="true"><path class="fo" d="M26 2C29 13 41 19 45 32C50 47 41 62 26 62C11 62 2 50 6 36C8 28 13 24 15 18C17 25 20 28 23 29C21 20 22 10 26 2Z" fill="#F2762E" stroke="#1B2A4A" stroke-width="2.5" stroke-linejoin="round"/><path class="fi" d="M26 24C28 31 36 35 37 44C38 53 33 59 26 59C19 59 14 54 15 46C16 40 20 37 21 32C23 36 25 37 26 37C25 33 25 28 26 24Z" fill="#FFC93C"/></svg><b>${FXS}</b></span>`}
 function mLive(good){try{
   const box=document.querySelector("#app .lm"),m=box&&box.querySelector(".mas");if(!m)return;
   const W=MLW[lg()]||MLW.es,mile=good&&FXS>=5&&FXS%5===0,st=good?(mile?"rire":"bravo"):"triste";
