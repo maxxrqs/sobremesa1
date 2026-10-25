@@ -1,5 +1,5 @@
-const V="sobremesa-1792920655",SHELL=["./","index.html","config.js","shim.js","manifest.webmanifest","icon-192.png","icon-512.png"],STA="sobstatic-v1";
-self.addEventListener("install",e=>{e.waitUntil(caches.open(V).then(c=>c.addAll(SHELL)).then(()=>self.skipWaiting()))});
+const V="sobremesa-1792920925",SHELL=["./","index.html","config.js","shim.js","manifest.webmanifest","icon-192.png","icon-512.png"],STA="sobstatic-v1";
+self.addEventListener("install",e=>{e.waitUntil(caches.open(V).then(c=>c.addAll(SHELL.map(u=>new Request(u,{cache:"reload"})))).then(()=>self.skipWaiting()))});
 /* supprime toutes les anciennes versions de l'appli (avant : elles s'empilaient à chaque mise à jour) ; les caches durables (voix, clips) sont gardés */
 self.addEventListener("activate",e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x.startsWith("sobremesa-")&&x!==V).map(x=>caches.delete(x)))).then(()=>self.clients.claim()))});
 /* fichiers dont l'URL porte ?v= (traductions, index des voix, moteur de secours, voix du traducteur) : cache durable, gardé entre les mises à jour */
@@ -10,7 +10,8 @@ self.addEventListener("fetch",e=>{
   if(r.method!=="GET"||u.origin!==location.origin||r.headers.has("range"))return; // Range : directement au réseau (clips audio) ; le relais IA et les autres sites ne sont jamais mis en cache
   if(r.mode==="navigate"||u.pathname.endsWith("/index.html")||u.pathname.endsWith("config.js")){
     /* réseau d'abord, mais si la connexion traîne (métro, 4G faible) on ouvre la version enregistrée au bout de 3,5 s */
-    const net=fetch(r).then(x=>{if(x.ok){const c=x.clone();caches.open(V).then(ch=>ch.put(r,c))}return x});
+    /* cache:"no-cache" : on redemande toujours au serveur (sinon le navigateur garde l'ancienne page jusqu'à 10 min) */
+    const net=fetch(r.mode==="navigate"?new Request(r.url,{cache:"no-cache",credentials:"same-origin"}):new Request(r,{cache:"no-cache"})).then(x=>{if(x.ok){const c=x.clone();caches.open(V).then(ch=>ch.put(r,c))}return x});
     const cached=()=>caches.match(r).then(m=>m||caches.match("index.html"));
     /* si la copie enregistrée a été affichée, on prévient la page dès que la nouvelle version est arrivée : elle se recharge seule */
     e.respondWith(new Promise(ok=>{let done=0,stale=0;const t=setTimeout(()=>cached().then(m=>{if(m&&!done){done=1;stale=1;ok(m)}}),8000);

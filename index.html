@@ -5468,8 +5468,8 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.getElement
 @keyframes unUp{to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){#unl,#unl *{animation-duration:.01s!important;animation-delay:0s!important;animation-iteration-count:1!important}}
 </style>
-<script>if("serviceWorker"in navigator)navigator.serviceWorker.addEventListener("message",e=>{if(e.data!=="sob-new")return;let busy=0;try{busy=!!INL}catch(x){}if(!busy)location.reload()});</script>
-<script>if("serviceWorker"in navigator&&location.protocol!=="file:"){addEventListener("load",()=>navigator.serviceWorker.register("sw.js").then(r=>{r.addEventListener("updatefound",()=>{const w=r.installing;w&&w.addEventListener("statechange",()=>{if(w.state==="installed"&&navigator.serviceWorker.controller&&document.getElementById("splash"))location.reload()})})}).catch(()=>{}))}</script>
+<script>if("serviceWorker"in navigator){const sobRl=()=>{let busy=0;try{busy=!!INL}catch(x){}if(!busy)location.reload()};navigator.serviceWorker.addEventListener("message",e=>{if(e.data==="sob-new")sobRl()});const had=!!navigator.serviceWorker.controller;let done=0;navigator.serviceWorker.addEventListener("controllerchange",()=>{if(had&&!done){done=1;sobRl()}})}</script>
+<script>if("serviceWorker"in navigator&&location.protocol!=="file:"){addEventListener("load",()=>navigator.serviceWorker.register("sw.js",{updateViaCache:"none"}).then(r=>{const up=()=>{try{r.update()}catch(e){}};document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")up()});r.addEventListener("updatefound",()=>{const w=r.installing;w&&w.addEventListener("statechange",()=>{if(w.state==="installed"&&navigator.serviceWorker.controller&&document.getElementById("splash"))location.reload()})})}).catch(()=>{}))}</script>
 <script id="sm-fluid-js">
 /* Fluidité : n'anime l'écran que s'il change vraiment ; la barre de progression glisse depuis sa valeur précédente */
 (function(){const a=document.getElementById("app");if(!a||!window.MutationObserver)return;

@@ -14,8 +14,8 @@ head='''<link rel="manifest" href="manifest.webmanifest">
 '''
 assert "<head>" in s
 s=s.replace("<head>","<head>\n"+head,1)
-reg='''<script>if("serviceWorker"in navigator)navigator.serviceWorker.addEventListener("message",e=>{if(e.data!=="sob-new")return;let busy=0;try{busy=!!INL}catch(x){}if(!busy)location.reload()});</script>
-<script>if("serviceWorker"in navigator&&location.protocol!=="file:"){addEventListener("load",()=>navigator.serviceWorker.register("sw.js").then(r=>{r.addEventListener("updatefound",()=>{const w=r.installing;w&&w.addEventListener("statechange",()=>{if(w.state==="installed"&&navigator.serviceWorker.controller&&document.getElementById("splash"))location.reload()})})}).catch(()=>{}))}</script>
+reg='''<script>if("serviceWorker"in navigator){const sobRl=()=>{let busy=0;try{busy=!!INL}catch(x){}if(!busy)location.reload()};navigator.serviceWorker.addEventListener("message",e=>{if(e.data==="sob-new")sobRl()});const had=!!navigator.serviceWorker.controller;let done=0;navigator.serviceWorker.addEventListener("controllerchange",()=>{if(had&&!done){done=1;sobRl()}})}</script>
+<script>if("serviceWorker"in navigator&&location.protocol!=="file:"){addEventListener("load",()=>navigator.serviceWorker.register("sw.js",{updateViaCache:"none"}).then(r=>{const up=()=>{try{r.update()}catch(e){}};document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")up()});r.addEventListener("updatefound",()=>{const w=r.installing;w&&w.addEventListener("statechange",()=>{if(w.state==="installed"&&navigator.serviceWorker.controller&&document.getElementById("splash"))location.reload()})})}).catch(()=>{}))}</script>
 '''
 s=s.replace("</body>",reg+"</body>",1)
 open(os.path.join(here,"index.html"),"w",encoding="utf-8").write(s)
