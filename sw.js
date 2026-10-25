@@ -1,4 +1,4 @@
-const V="sobremesa-1792939836",SHELL=["./","index.html","config.js","shim.js","manifest.webmanifest","icon-192.png","icon-512.png"],STA="sobstatic-v1";
+const V="sobremesa-1792940018",SHELL=["./","index.html","config.js","shim.js","manifest.webmanifest","icon-192.png","icon-512.png"],STA="sobstatic-v1";
 self.addEventListener("install",e=>{e.waitUntil(caches.open(V).then(c=>c.addAll(SHELL.map(u=>new Request(u,{cache:"reload"})))).then(()=>self.skipWaiting()))});
 /* supprime toutes les anciennes versions de l'appli (avant : elles s'empilaient à chaque mise à jour) ; les caches durables (voix, clips) sont gardés */
 self.addEventListener("activate",e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x.startsWith("sobremesa-")&&x!==V).map(x=>caches.delete(x)))).then(()=>self.clients.claim()))});
