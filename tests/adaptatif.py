@@ -33,7 +33,7 @@ with sync_playwright() as p:
     # ---- profil vierge (utilisateur existant sans profil) : aucune erreur, rien d'inventé
     pg.evaluate("()=>{S.ad=null;prog('p')}")
     t=pg.inner_text("#app")
-    ck("ancienne progression sans profil : carte affichée, 4 compétences « pas encore évaluées »",t.count("Pas encore évalué")==4,t[:400])
+    ck("ancienne progression sans profil : carte affichée, 4 compétences « pas encore évaluées »",t.count("À évaluer")==4,t[:400])
     # ---- A : fort en compréhension orale, faible en expression écrite
     A=pg.evaluate(SIM,["es",2,{"co":.95,"ce":.8,"ee":.35,"eo":.75},6])
     ck("réponses passées par fin() sans erreur",not A['errs'] and A['n']>300,A['errs'])
@@ -53,7 +53,7 @@ with sync_playwright() as p:
     ck("pratique des 4 compétences dans les deux profils (≥ 8 % chacune)",all(v>=.08 for v in list(dA.values())+list(dB.values())),(dA,dB))
     ck("difficulté par compétence : A tire plus d'items du niveau en cours à l'écoute (listen) qu'en expression écrite (fr2es)",fA['listen']>fA['fr2es']+.05,fA)
     ck("difficulté par compétence : B l'inverse",fB['fr2es']>fB['listen']+.05,fB)
-    ck("carte Progrès : CO et EE affichées séparément avec le niveau de parcours à part","Ton niveau par compétence" in cardA and "Compréhension orale ·" in cardA and "Expression écrite ·" in cardA and "niveau de parcours" in cardA,cardA[:600])
+    ck("carte Progrès : 4 tuiles (CO et EE séparées), niveau de parcours expliqué à part","Ton niveau par compétence" in cardA and "Écouter" in cardA and "Écrire" in cardA and pg.evaluate("()=>document.querySelectorAll('.adt[data-sk]').length===4&&/niveau de parcours/.test(document.querySelector('.adx').textContent)"),cardA[:600])
     # ---- robustesse : profil A établi, puis 3 erreurs d'écoute
     pg.evaluate(SIM,["es",2,{"co":.95,"ce":.8,"ee":.35,"eo":.75},6])
     r=pg.evaluate("""()=>{const e0=adpEst('co').lvl,f0=adpF('co');for(let i=0;i<3;i++){R={mode:"lesson",t:"CO",n:0,ok:0,xp:0};const q=mkQ('dict',0);R.q=q;R.done=false;fin(false,q.sol,q.key)}return{e0,e1:adpEst('co').lvl,f0,f1:adpF('co')}}""")

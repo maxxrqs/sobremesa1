@@ -672,6 +672,22 @@ html[data-fit="4"] #app .txt.lng,html[data-fit="5"] #app .txt.lng{max-height:32v
 html[data-fit="5"] #app>.q{overflow-y:auto;overscroll-behavior:contain;scroll-behavior:smooth}
 html[data-fit] body{overflow-x:hidden}
 html[data-ex] body{padding-bottom:env(safe-area-inset-bottom,0px)!important}
+</style><style id="sm-adp">
+.adgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:4px 0 10px}
+.adt{background:var(--card);border:2.5px solid var(--ink);border-radius:18px;box-shadow:3px 3px 0 var(--ink);padding:10px 12px 11px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.adt.no{opacity:.72}
+.adh{display:flex;align-items:center;gap:6px;font-weight:800;font-size:14px;color:var(--mut)}
+.adi{font-size:15px;line-height:1}
+.adl2{display:flex;align-items:baseline;gap:6px;min-height:30px}
+.adl2 b{font-size:26px;line-height:1;color:var(--ink);letter-spacing:-.5px}
+.adl2 small{font-size:11.5px;font-weight:700;color:var(--mut)}
+.adt .bar{height:8px;margin:0}
+.adf{display:flex;flex-wrap:wrap;gap:4px}
+.ads,.adg{font-size:11.5px;font-weight:800;padding:2px 8px;border-radius:999px;background:var(--g1);color:var(--mut)}
+.ads.ok{background:var(--okb);color:var(--ok)}.ads.fr{background:var(--kob);color:var(--ko)}
+.adg{background:color-mix(in srgb,var(--sol) 30%,var(--card));color:var(--solk)}
+.adx{margin-top:2px}
+@media (max-width:340px){.adgrid{grid-template-columns:1fr}}
 </style></head>
 <body>
 <style id="splash-css">
@@ -956,7 +972,7 @@ function hpJS(pw,salt){let x=salt+":"+pw;for(let i=0;i<3000;i++)x=sha256(x+salt)
 const withTimeout=(p,ms)=>Promise.race([p,new Promise(r=>setTimeout(()=>r(null),ms))]);
 var UI="fr";
 const UIL={fr:"Français",en:"English",it:"Italiano",de:"Deutsch",pt:"Português"};
-const TR={};const trLoad=l=>(l==="fr"||TR[l])?Promise.resolve():fetch("tr/"+l+".json?v=45").then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{TR[l]=j}).catch(()=>{});
+const TR={};const trLoad=l=>(l==="fr"||TR[l])?Promise.resolve():fetch("tr/"+l+".json?v=46").then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{TR[l]=j}).catch(()=>{});
 try{const s=ST.get("cast_ui"),n=(navigator.language||"fr").slice(0,2);UI=UIL[s]?s:(UIL[n]?n:"fr")}catch(e){}
 const gl=s=>{if(UI==="fr"||!TR[UI])return s;let t=TR[UI][s];if(t!=null)return t;const n=s.match(NUMRE);if(n){t=TR[UI][s.replace(NUMRE,"#")];if(t!=null){let i=0;return t.replace(/#/g,()=>i<n.length?n[i++]:"#")}const b=s.match(/^(.*\S)\s+(\d+)$/);if(b&&TR[UI][b[1]]!=null)return TR[UI][b[1]]+" "+b[2]}return s};
 const tr=(s,...a)=>gl(s).replace(/\{(\d)\}/g,(m,i)=>a[i]);
@@ -5376,12 +5392,13 @@ function adpLab(e){
 }
 function adpHtml(){
   try{
-    const t=adpT(),ks=ADP.SKS,wn=adpWeakNot();
-    const rows=ks.map(k=>{const e=adpEst(k),z=adpStr(k),f=adpF(k),p=Math.round(z.s*100);
-      const stt=e.lvl===null?tr("Il faut quelques séries de plus pour l'estimer."):e.why==="frag"&&e.st!=="stable"?tr("Acquis fragile : quelques erreurs récentes, on le réactive"):e.st==="stable"?tr("Estimation fiable"):e.why==="contra"?tr("Estimation incertaine : résultats contradictoires"):tr("Estimation provisoire, à confirmer");
-      const foc=k==="eo"&&!adpEO()?tr("Micro indisponible sur cet appareil : pas d'exercice oral"):f>=1.25?tr("Renforcée dans tes séries"):f<=.8?tr("Solide : moins fréquente, jamais supprimée"):tr("Pratique normale");
-      return `<div class="qst adp" data-sk="${k}"><div><b>${ADP.ICO[k]} ${gl(ADP.NAME[k])} · <span class="adl">${adpLab(e)}</span></b><small>${stt}${e.cap==="rep"?" · "+tr("surtout de la répétition : la prise de parole libre n'est pas encore évaluée"):""}</small></div>${e.lvl===null?"":`<div class="bar"><i style="width:${p}%"></i></div>`}<small>${foc}${e.lvl===null?"":" · "+tr("réussite récente au niveau du parcours : {0} %",p)}</small></div>`}).join("");
-    return `<h3>${tr("Ton niveau par compétence")}</h3><p class="sub">${tr("Estimations CECRL séparées, construites au fil des exercices. Elles ne se confondent pas avec ton niveau de parcours ({0}).",NL[lv()].split(" ")[0])}</p>${rows}${wn.length?`<p class="skl">${tr("Grammaire à consolider : {0}",wn.join(", "))}</p>`:""}<details><summary>${tr("Comment c'est estimé")}</summary><p class="sub">${tr("Chaque compétence est jugée sur plusieurs exercices, sur au moins deux jours. Un QCM compte moitié et le hasard est corrigé ; à partir du B1, il faut aussi des réponses produites (écrites ou dites). Les résultats anciens comptent moins que les récents. Les estimations vont de A1 à C1 : l'appli n'a pas de contenu C2.")}</p></details>`;
+    const ks=ADP.SKS,wn=adpWeakNot(),C=ADP.CEFR,SH={co:"Écouter",ce:"Lire",ee:"Écrire",eo:"Parler"};
+    const tiles=ks.map(k=>{const e=adpEst(k),z=adpStr(k),f=adpF(k),p=Math.round(z.s*100),none=e.lvl===null;
+      const lvl=none?"–":(e.lvl?C[e.lvl]:"A1");
+      const st=none?["",tr("À évaluer")]:e.why==="frag"&&e.st!=="stable"?["fr",tr("Fragile")]:e.st==="stable"?["ok",tr("Fiable")]:e.why==="contra"?["",tr("Incertain")]:["",tr("Provisoire")];
+      const tag=k==="eo"&&!adpEO()?tr("Pas de micro"):f>=1.25?tr("Renforcé"):f<=.8?tr("Solide"):"";
+      return `<div class="adt${none?" no":""}" data-sk="${k}"><div class="adh"><span class="adi">${ADP.ICO[k]}</span><span class="adn">${tr(SH[k])}</span></div><div class="adl2"><b>${lvl}</b>${!none&&e.hi>e.lvl?`<small>${tr("peut-être {0}",C[e.hi])}</small>`:""}</div>${none?"":`<div class="bar"><i style="width:${p}%"></i></div>`}<div class="adf"><span class="ads ${st[0]}">${st[1]}</span>${tag?`<span class="adg">${tag}</span>`:""}</div></div>`}).join("");
+    return `<h3>${tr("Ton niveau par compétence")}</h3><div class="adgrid">${tiles}</div>${wn.length?`<p class="skl">${tr("Grammaire à consolider : {0}",wn.join(", "))}</p>`:""}<details class="adx"><summary>${tr("Comment c'est estimé")}</summary><p class="sub">${tr("Estimations CECRL séparées, construites au fil des exercices. Elles ne se confondent pas avec ton niveau de parcours ({0}).",NL[lv()].split(" ")[0])}</p><p class="sub">${tr("Chaque compétence est jugée sur plusieurs exercices, sur au moins deux jours. Un QCM compte moitié et le hasard est corrigé ; à partir du B1, il faut aussi des réponses produites (écrites ou dites). Les résultats anciens comptent moins que les récents. Les estimations vont de A1 à C1 : l'appli n'a pas de contenu C2.")}</p><p class="sub">${tr("La barre montre ta réussite récente au niveau du parcours. « Renforcé » : la compétence revient plus souvent dans tes séries ; « Solide » : un peu moins souvent, jamais supprimée.")}</p></details>`;
   }catch(e){return ""}
 }
 function adpPick(a){try{const w=a.map(t=>{const k=adpSk(t);return k?adpF(k):1});let r=Math.random()*w.reduce((x,y)=>x+y,0);for(let i=0;i<a.length;i++){r-=w[i];if(r<=0)return a[i]}}catch(e){}return pick(a)}
