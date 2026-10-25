@@ -149,7 +149,7 @@ header h1 *{-webkit-text-fill-color:initial}
 .end .big{font-size:56px;font-weight:800;background:linear-gradient(90deg,var(--az),var(--pk));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .tb th{color:var(--az)}
 button:focus-visible{outline:3px solid var(--pk);outline-offset:2px}
-@keyframes pop{from{opacity:0;transform:translateY(8px) scale(.97)}to{opacity:1;transform:none}}
+
 @keyframes bounceok{0%{transform:scale(1)}40%{transform:scale(1.04)}100%{transform:scale(1)}}
 .grid .theme:nth-child(2){animation-delay:.04s}.grid .theme:nth-child(3){animation-delay:.08s}.grid .theme:nth-child(4){animation-delay:.12s}.grid .theme:nth-child(5){animation-delay:.16s}
 @media (prefers-reduced-motion:reduce){.theme,.fb,.opt.ok,.opt.ko{animation:none}.bar i{transition:none}}
@@ -722,7 +722,7 @@ button,a,select,[onclick]{touch-action:manipulation}
 /* écrans : le contenu entre, l'en-tête et la barre du bas restent immobiles */
 @keyframes smIn{from{opacity:0;transform:translate3d(0,8px,0)}to{opacity:1;transform:none}}
 html body #app>*:not(nav){animation:smIn .34s cubic-bezier(.22,1,.36,1) backwards}
-html body #app>*:nth-child(4){animation-delay:.03s}html body #app>*:nth-child(5){animation-delay:.06s}html body #app>*:nth-child(6){animation-delay:.09s}html body #app>*:nth-child(n+7){animation-delay:.12s}
+html body #app>*:nth-child(4){animation-delay:.02s}html body #app>*:nth-child(5){animation-delay:.04s}html body #app>*:nth-child(6){animation-delay:.06s}html body #app>*:nth-child(n+7){animation-delay:.08s}
 html body #app.sm-keepH>header,html body #app.sm-keepN>nav,html body #app.sm-still>*:not(.qin):not(.qout){animation:none!important}
 html body #app.sm-still .bar>i{animation:none!important}
 /* appui : enfoncement immédiat, rebond doux au relâchement */
@@ -746,14 +746,12 @@ html body #tour .tring.on{animation:none!important}
 @keyframes smRing2{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.12);opacity:0}}
 html body #tour .tring.on::after{content:"";position:absolute;inset:-3px;border-radius:inherit;border:3px solid var(--sol);pointer-events:none;animation:smRing2 1.8s ease-out .8s infinite;will-change:transform,opacity}
 /* question : entrée/sortie plus douces */
-html body .q.qin{will-change:transform,opacity}
-html body .qout,html body .q.qout{animation:qout .17s cubic-bezier(.4,0,1,1) forwards!important}
+html body .qout,html body .q.qout{animation:qout .12s cubic-bezier(.4,0,1,1) forwards!important;pointer-events:none}
 /* confettis : dérive latérale, chute naturelle */
 @keyframes smConf{0%{transform:translate3d(0,0,0) rotate(0);opacity:1}100%{transform:translate3d(var(--dx,0),110vh,0) rotate(var(--r,600deg));opacity:.15}}
 html body .conf i{animation:smConf var(--t,1.9s) cubic-bezier(.3,.55,.55,1) forwards;will-change:transform,opacity}
 /* calques dédiés pour les grandes animations en boucle */
 .lxb{will-change:transform}.lxg span{will-change:opacity,transform}.lxm .mas{will-change:transform}
-html body .bar>i{will-change:width}
 @media (prefers-reduced-motion:reduce){html body #app>*,html body .fb,html body .opt.ok,html body .bnav button.on,html body .mpick.pulse::after,html body #tour .tring.on::after,html body .conf i{animation:none!important}html body .btn,html body .opt,html body .chip,html body .theme{transition:none}}
 </style>
 <style id="sm-sticker">
@@ -955,6 +953,28 @@ html body .chok .stgo{margin-top:8px;height:42px;padding:0 18px;border-radius:14
 @keyframes chIn{from{opacity:0;transform:translateY(-10px) scale(.97)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){html body .chok{animation:none}}
 </style>
+<style id="sm-motion">
+/* ===== Mouvement : le personnage bouge sur le compositeur (racine du SVG), plus de repeinture à chaque image ===== */
+html body svg g.breathe,html body svg g.bounce,html body svg g.shake{animation:none!important}
+html body .mas>svg.mv-breathe,html body .mas>svg.mv-bounce,html body .mas>svg.mv-shake{transform-origin:50% 94%}
+html body .mas>svg.mv-breathe{animation:mvBreathe 3.8s cubic-bezier(.45,0,.55,1) infinite}
+html body .mas>svg.mv-bounce{animation:mvHop 1.15s linear infinite}
+html body .mas>svg.mv-shake{animation:mvNo .75s cubic-bezier(.36,.07,.19,.97) both}
+@keyframes mvBreathe{0%,100%{transform:none}50%{transform:translate3d(0,-.8%,0) scale(1.018,1.032)}}
+@keyframes mvHop{0%{transform:none;animation-timing-function:cubic-bezier(.3,0,.5,1)}12%{transform:scale(1.05,.95);animation-timing-function:cubic-bezier(.2,.7,.4,1)}42%{transform:translate3d(0,-4.5%,0) scale(.98,1.03);animation-timing-function:cubic-bezier(.6,0,.8,.4)}66%{transform:scale(1.045,.955);animation-timing-function:cubic-bezier(.3,0,.4,1)}82%{transform:scale(.99,1.01)}100%{transform:none}}
+@keyframes mvNo{0%,100%{transform:none}18%{transform:translate3d(-3%,0,0) rotate(-3deg)}40%{transform:translate3d(2.5%,0,0) rotate(2deg)}62%{transform:translate3d(-1.5%,0,0) rotate(-1deg)}82%{transform:translate3d(.5%,0,0)}}
+html body .brow .av svg{animation:none!important}
+/* pulsation invisible (icône intérieure sans ombre) qui tournait en boucle sur l'étape en cours */
+html body .pn i i{animation:none!important}
+/* notifications : leur repli ne recalcule plus la page entière */
+#toasts{contain:layout style}
+@media (prefers-reduced-motion:reduce){
+html body .mas>svg,html body .cvav,html body .cvav.think{animation:none!important}
+html body .conf{display:none!important}
+html body *,html body *::before,html body *::after{animation-iteration-count:1!important;scroll-behavior:auto!important}
+}
+</style>
+
 <main id="app"></main>
 <script>
 const ST=(()=>{const m={};let ok=false;try{localStorage.setItem("_t","1");localStorage.removeItem("_t");ok=true}catch(e){}return{ok,get:k=>{if(ok){try{return localStorage.getItem(k)}catch(e){}}return k in m?m[k]:null},set:(k,v)=>{m[k]=String(v);if(ok){try{localStorage.setItem(k,v)}catch(e){}}},del:k=>{delete m[k];if(ok){try{localStorage.removeItem(k)}catch(e){}}}}})();
@@ -4032,9 +4052,9 @@ function rvQ(){
   try{R.ws=due;if(!R.dp||R.dp.length<4)R.dp=ALLL(0);R.lock=1;q=mkQ0(ty,0)}catch(e){q=null}finally{R.lock=0;R.ws=ows;R.dp=odp}
   if(!q||!q.key||!due.some(w=>w[0]===q.key))return null;q.rvw=1;return q}
 function next(){if(R.n>=10)return end();let q=null;try{q=rvQ()}catch(e){q=null}if(!q){const ty=pickType(),ad=typeof ADP!=="undefined";if(ad)ADP.cur=adpSk(ty);try{q=mkQ(ty,0)}finally{if(ad)ADP.cur=null}}R.q=q;show()}
-function show(){stopSp();R.done=false;R.idk=0;R.mf=0;draw();try{if(R.q&&R.q.rvw){const e=document.querySelector('.q');if(e&&!e.querySelector('.rvb'))e.insertAdjacentHTML('afterbegin','<span class="rvb">🔁 '+tr("Révision")+'</span>')}}catch(x){}try{const e=document.querySelector('.q');if(e){e.classList.remove('qin');void e.offsetWidth;e.classList.add('qin')}}catch(x){}try{axPre(R.q.sa||(R.q.say?[R.q.say]:[]));if(R.q.es&&["speak","speakF","speakC","speakQ"].includes(R.q.ty))axPre([R.q.es])}catch(x){}if(["listen","listenP","listenT","exL","dict","rep","speakQ"].includes(R.q.ty))aud("q",R.q.sa||[R.q.say]);setTimeout(()=>{const e=document.getElementById("ti");if(e&&!R.done)e.focus()},60)}
+function show(){stopSp();R.done=false;R.idk=0;R.mf=0;draw();try{if(R.q&&R.q.rvw){const e=document.querySelector('.q');if(e&&!e.querySelector('.rvb'))e.insertAdjacentHTML('afterbegin','<span class="rvb">🔁 '+tr("Révision")+'</span>')}}catch(x){}try{const e=document.querySelector('.q');if(e){if(e.classList.contains('qin')){e.classList.remove('qin');void e.offsetWidth}e.classList.add('qin')}}catch(x){}try{axPre(R.q.sa||(R.q.say?[R.q.say]:[]));if(R.q.es&&["speak","speakF","speakC","speakQ"].includes(R.q.ty))axPre([R.q.es])}catch(x){}if(["listen","listenP","listenT","exL","dict","rep","speakQ"].includes(R.q.ty))aud("q",R.q.sa||[R.q.say]);setTimeout(()=>{const e=document.getElementById("ti");if(e&&!R.done)e.focus()},60)}
 var ADVB=0;
-function qOut(f){const e=document.querySelector('.q');if(!e||ADVB){f();return}ADVB=1;e.classList.remove('qin');e.classList.add('qout');setTimeout(()=>{ADVB=0;f()},170)}
+function qOut(f){const e=document.querySelector('.q');if(!e||ADVB){f();return}ADVB=1;if(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches){try{f()}finally{setTimeout(()=>{ADVB=0},120)}return}e.classList.remove('qin');e.classList.add('qout');setTimeout(()=>{ADVB=0;f()},120)}
 function adv(){if(ADVB)return;if(R.mode==="test"){qOut(()=>{T.i++;tnext()})}else{qOut(()=>{R.n++;next()})}}
 function draw(){
   const q=R.q,t=R.mode==="test",sp=`<button class="spk" data-a="q" onclick="aud('q',R.q.sa||[R.q.say])" aria-label="Écouter ou arrêter">🔊</button>`;let b="";
@@ -4940,7 +4960,7 @@ function svg0(k,s,ax){
   });
   const cls=s==="bravo"?"bounce":s==="triste"?"shake":s==="dodo"?"":"breathe";
   const acc=ax===undefined?(S.acc||""):ax,bh=k==="gecko"&&ACB.has(acc),as=accSvg(k,acc);
-  return `<svg viewBox="0 0 200 200" role="img" aria-label="${a.n}, ${s}"><g class="${cls}" style="transform-origin:100px 140px;transform-box:fill-box">${L1}${bh?as:""}<g>${back}</g><g transform="translate(-3.5 -3.5)">${fill}</g><g>${line}</g>${bh?"":as}</g>${zz(s,150,38)}</svg>`;
+  return `<svg viewBox="0 0 200 200"${cls?` class="mv-${cls}"`:""} role="img" aria-label="${a.n}, ${s}"><g class="${cls}" style="transform-origin:100px 140px;transform-box:fill-box">${L1}${bh?as:""}<g>${back}</g><g transform="translate(-3.5 -3.5)">${fill}</g><g>${line}</g>${bh?"":as}</g>${zz(s,150,38)}</svg>`;
 }
 function confetti(){
   const el=document.body,box=document.createElement("div");box.className="conf";
@@ -5284,7 +5304,7 @@ applyUI();
   let su=null;try{su=ST.get("cast_user")}catch(e){}
   const dbp=withTimeout(Promise.resolve().then(()=>claude.use("db")),1200).then(d=>{DB=d}).catch(()=>{DB=null});
   if(UI!=="fr"){await trLoad(UI);applyUI()}
-  const sp=document.getElementById("splash"),hs=()=>{if(!sp||sp.dataset.h)return;sp.dataset.h=1;requestAnimationFrame(()=>requestAnimationFrame(()=>{sp.classList.add("out");setTimeout(()=>sp.remove(),340);try{const m=document.querySelector('meta[name=theme-color]');if(m){const u=()=>{try{const l=document.querySelector(".ldp"),c=l?getComputedStyle(l).backgroundColor:"";m.content=(c&&c!=="rgba(0, 0, 0, 0)"?c:"")||getComputedStyle(document.documentElement).getPropertyValue("--bg").trim()||"#CFE9DC"}catch(e){}};u();new MutationObserver(u).observe(document.documentElement,{attributes:true,attributeFilter:["data-mas"]});try{new MutationObserver(u).observe(document.getElementById("app"),{childList:true})}catch(e){}}}catch(e){}}))};setTimeout(hs,9000);
+  const sp=document.getElementById("splash"),hs=()=>{if(!sp||sp.dataset.h)return;sp.dataset.h=1;requestAnimationFrame(()=>requestAnimationFrame(()=>{sp.classList.add("out");setTimeout(()=>sp.remove(),340);try{const m=document.querySelector('meta[name=theme-color]');if(m){let uk=null;const u=()=>{try{const l=document.querySelector(".ldp"),rt=document.documentElement,k=(l?"l"+l.className:"")+"|"+(rt.dataset.mas||"")+"|"+(rt.dataset.theme||"")+"|"+(rt.dataset.bg||"");if(k===uk)return;uk=k;const c=l?getComputedStyle(l).backgroundColor:"";m.content=(c&&c!=="rgba(0, 0, 0, 0)"?c:"")||getComputedStyle(document.documentElement).getPropertyValue("--bg").trim()||"#CFE9DC"}catch(e){}};u();new MutationObserver(u).observe(document.documentElement,{attributes:true,attributeFilter:["data-mas"]});try{new MutationObserver(u).observe(document.getElementById("app"),{childList:true})}catch(e){}}}catch(e){}}))};setTimeout(hs,9000);
   if(su){loginL(su);dbp.then(()=>syncDb(su))}else{landing();dbp.then(()=>{if(!U&&DB){const f=document.querySelector("form input");if(f&&!f.value)auth(AUM||"login")}})}
   hs();try{axWarm()}catch(e){}
 })();
@@ -5413,7 +5433,7 @@ return s+"|"+(document.documentElement.dataset.scr||"")+"|"+(q?"q":t)+"|"+[...a.
 new MutationObserver(()=>{const k=key(),hh=!!a.querySelector(":scope>header"),hn=!!a.querySelector(":scope>nav"),same=k===pk;
 a.classList.toggle("sm-still",same);a.classList.toggle("sm-keepH",hh&&!!ph);a.classList.toggle("sm-keepN",hn&&!!pn);
 const b=a.querySelector(".bar>i"),nw=b?b.style.width:null;
-if(b&&same&&pw&&nw&&pw!==nw&&!matchMedia("(prefers-reduced-motion:reduce)").matches){b.style.transition="none";b.style.width=pw;void b.offsetWidth;b.style.transition="";b.style.width=nw}
+if(b&&same&&pw&&nw&&pw!==nw&&b.animate&&!matchMedia("(prefers-reduced-motion:reduce)").matches){const o=parseFloat(pw),n=parseFloat(nw);if(n>0&&o>=0&&/%$/.test(pw)===/%$/.test(nw))b.animate([{transform:"scaleX("+(o/n).toFixed(4)+")"},{transform:"none"}],{duration:520,easing:"cubic-bezier(.22,1,.36,1)"})}
 pk=k;ph=hh;pn=hn;pw=nw}).observe(a,{childList:true})})();
 </script>
 <style id="sm-lgi">
@@ -5595,9 +5615,10 @@ function unitCelebrate(u){
   d.addEventListener("click",e=>{if(e.target===d)unitClose()});
   document.body.appendChild(d);
   const rm=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
-  setTimeout(()=>{try{FX.play("level")}catch(e){}},rm?0:1150);
-  setTimeout(()=>{try{FX.confetti()}catch(e){}try{navigator.vibrate&&navigator.vibrate([30,40,60])}catch(e){}},rm?0:1250);
-  setTimeout(()=>{try{d.querySelector(".ungo").focus({preventScroll:true})}catch(e){}},rm?0:1700);
+  setTimeout(()=>{try{FX.play("level")}catch(e){}},rm?0:860);
+  setTimeout(()=>{try{FX.confetti()}catch(e){}try{navigator.vibrate&&navigator.vibrate([30,40,60])}catch(e){}},rm?0:940);
+  setTimeout(()=>{try{d.querySelector(".ungo").focus({preventScroll:true})}catch(e){}},rm?0:1300);
+  try{d.querySelector(".unc").addEventListener("pointerdown",e=>{if(e.target.closest("button")||!d.getAnimations)return;d.getAnimations({subtree:true}).forEach(a=>{try{if(a.effect.getTiming().iterations!==Infinity)a.finish()}catch(x){}})})}catch(e){}
 }
 function unitClose(h){const d=document.getElementById("unl");if(!d)return;d.classList.add("out");setTimeout(()=>{d.remove();if(h)home()},220)}
 function unitGo(id){const d=document.getElementById("unl");if(d)d.remove();pstart(id)}
@@ -5608,16 +5629,16 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.getElement
 #unl.out{animation:unFadeOut .22s ease-in forwards}
 #unl .unc{width:100%;max-width:400px;background:var(--card);color:var(--ink);border:3px solid var(--sk);border-radius:28px;box-shadow:6px 6px 0 var(--sk);padding:22px 20px calc(20px + env(safe-area-inset-bottom,0px));text-align:center;animation:unPop .5s cubic-bezier(.34,1.56,.64,1) both}
 #unl .unstage{position:relative;height:150px;display:flex;align-items:center;justify-content:center;margin:0 0 6px}
-#unl .unrays{position:absolute;width:210px;height:210px;border-radius:50%;background:repeating-conic-gradient(color-mix(in srgb,var(--sol) 55%,transparent) 0 10deg,transparent 10deg 30deg);-webkit-mask:radial-gradient(circle,#000 30%,transparent 68%);mask:radial-gradient(circle,#000 30%,transparent 68%);opacity:0;animation:unRays .6s ease-out 1.15s forwards,unSpin 14s linear 1.15s infinite}
-#unl .unlock{position:absolute;width:82px;animation:unShake .45s ease-in-out .35s 2,unGone .35s ease-in 1.05s forwards}
+#unl .unrays{position:absolute;width:210px;height:210px;border-radius:50%;background:repeating-conic-gradient(color-mix(in srgb,var(--sol) 55%,transparent) 0 10deg,transparent 10deg 30deg);-webkit-mask:radial-gradient(circle,#000 30%,transparent 68%);mask:radial-gradient(circle,#000 30%,transparent 68%);opacity:0;animation:unRays .5s ease-out .86s forwards,unSpin 14s linear .86s infinite}
+#unl .unlock{position:absolute;width:82px;animation:unShake .36s ease-in-out .26s 2,unGone .3s ease-in .8s forwards}
 #unl .unlock svg{width:100%;height:auto;overflow:visible}
-#unl .unsh{transform-origin:46px 32px;animation:unOpen .35s cubic-bezier(.34,1.56,.64,1) .85s forwards}
-#unl .unbadge{position:absolute;width:104px;height:104px;border-radius:30px;display:flex;align-items:center;justify-content:center;font-size:56px;line-height:1;background:var(--az);border:3px solid var(--sk);box-shadow:4px 4px 0 var(--sk);transform:scale(0) rotate(-25deg);animation:unBadge .6s cubic-bezier(.34,1.56,.64,1) 1.15s forwards}
-#unl .unmas{position:absolute;right:calc(50% - 150px);bottom:-6px;opacity:0;transform:translateY(16px);animation:unUp .45s cubic-bezier(.22,1,.36,1) 1.45s forwards}
-#unl .unk{margin:6px 0 2px;font:800 14px Nunito,system-ui,sans-serif;letter-spacing:.6px;text-transform:uppercase;color:var(--az);opacity:0;animation:unUp .4s ease-out 1.4s forwards}
-#unl .unt{margin:0 0 6px;font:800 26px/1.15 "Baloo 2",system-ui,sans-serif;opacity:0;animation:unUp .4s ease-out 1.5s forwards}
-#unl .uno{margin:0 0 14px;color:var(--mut);font-size:15px;opacity:0;animation:unUp .4s ease-out 1.6s forwards}
-#unl .unb{display:flex;flex-direction:column;gap:8px;opacity:0;animation:unUp .4s ease-out 1.7s forwards}
+#unl .unsh{transform-origin:46px 32px;animation:unOpen .32s cubic-bezier(.34,1.56,.64,1) .64s forwards}
+#unl .unbadge{position:absolute;width:104px;height:104px;border-radius:30px;display:flex;align-items:center;justify-content:center;font-size:56px;line-height:1;background:var(--az);border:3px solid var(--sk);box-shadow:4px 4px 0 var(--sk);transform:scale(0) rotate(-25deg);animation:unBadge .55s cubic-bezier(.34,1.56,.64,1) .86s forwards}
+#unl .unmas{position:absolute;right:calc(50% - 150px);bottom:-6px;opacity:0;transform:translateY(16px);animation:unUp .4s cubic-bezier(.22,1,.36,1) 1.08s forwards}
+#unl .unk{margin:6px 0 2px;font:800 14px Nunito,system-ui,sans-serif;letter-spacing:.6px;text-transform:uppercase;color:var(--az);opacity:0;animation:unUp .35s cubic-bezier(.22,1,.36,1) 1.02s forwards}
+#unl .unt{margin:0 0 6px;font:800 26px/1.15 "Baloo 2",system-ui,sans-serif;opacity:0;animation:unUp .35s cubic-bezier(.22,1,.36,1) 1.1s forwards}
+#unl .uno{margin:0 0 14px;color:var(--mut);font-size:15px;opacity:0;animation:unUp .35s cubic-bezier(.22,1,.36,1) 1.18s forwards}
+#unl .unb{display:flex;flex-direction:column;gap:8px;opacity:0;animation:unUp .35s cubic-bezier(.22,1,.36,1) 1.26s forwards}
 #unl .unb .btn{margin:0;width:100%}
 @keyframes unFade{from{opacity:0}}@keyframes unFadeOut{to{opacity:0}}
 @keyframes unPop{from{opacity:0;transform:scale(.7) translateY(30px)}}
@@ -5631,19 +5652,6 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.getElement
 </style>
 <script>if("serviceWorker"in navigator){const sobRl=()=>{let busy=0;try{busy=!!INL}catch(x){}if(!busy)location.reload()};navigator.serviceWorker.addEventListener("message",e=>{if(e.data==="sob-new")sobRl()});const had=!!navigator.serviceWorker.controller;let done=0;navigator.serviceWorker.addEventListener("controllerchange",()=>{if(had&&!done){done=1;sobRl()}})}</script>
 <script>if("serviceWorker"in navigator&&location.protocol!=="file:"){addEventListener("load",()=>navigator.serviceWorker.register("sw.js",{updateViaCache:"none"}).then(r=>{const up=()=>{try{r.update()}catch(e){}};document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")up()});r.addEventListener("updatefound",()=>{const w=r.installing;w&&w.addEventListener("statechange",()=>{if(w.state==="installed"&&navigator.serviceWorker.controller&&document.getElementById("splash"))location.reload()})})}).catch(()=>{}))}</script>
-<script id="sm-fluid-js">
-/* Fluidité : n'anime l'écran que s'il change vraiment ; la barre de progression glisse depuis sa valeur précédente */
-(function(){const a=document.getElementById("app");if(!a||!window.MutationObserver)return;
-let pk=null,ph=0,pn=0,pw=null;
-const key=()=>{const q=a.querySelector(":scope>.q");let t="";if(!q){const h=a.querySelector(":scope>h2,:scope>.ptitle,:scope h2.ptitle");t=h?h.textContent.slice(0,40):""}
-let s="";try{s=typeof SCR!=="undefined"?SCR:""}catch(e){}
-return s+"|"+(document.documentElement.dataset.scr||"")+"|"+(q?"q":t)+"|"+[...a.children].filter(e=>e.tagName!=="HEADER"&&e.tagName!=="NAV").slice(0,3).map(e=>e.tagName+"."+(e.className||"").toString().split(" ")[0]).join(",")};
-new MutationObserver(()=>{const k=key(),hh=!!a.querySelector(":scope>header"),hn=!!a.querySelector(":scope>nav"),same=k===pk;
-a.classList.toggle("sm-still",same);a.classList.toggle("sm-keepH",hh&&!!ph);a.classList.toggle("sm-keepN",hn&&!!pn);
-const b=a.querySelector(".bar>i"),nw=b?b.style.width:null;
-if(b&&same&&pw&&nw&&pw!==nw&&!matchMedia("(prefers-reduced-motion:reduce)").matches){b.style.transition="none";b.style.width=pw;void b.offsetWidth;b.style.transition="";b.style.width=nw}
-pk=k;ph=hh;pn=hn;pw=nw}).observe(a,{childList:true})})();
-</script>
 <script id="sm-app-js">
 /* Comportement d'appli : pas de menu « appui long » hors des champs de saisie ; stockage protégé contre le nettoyage automatique */
 document.addEventListener("contextmenu",e=>{if(!(e.target.closest&&e.target.closest("input,textarea,[contenteditable]")))e.preventDefault()});
