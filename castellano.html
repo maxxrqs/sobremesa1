@@ -4277,7 +4277,7 @@ function fin(good,sol,key,msg){
   document.getElementById("fb").innerHTML=`<div class="fb fbm ${full?"ok":half?"pt":"ko"}">${mas(full?"bravo":half?"content":"triste",76)}<div><span>${hd}</span> ${half?mm+sol:sol+(full?mm:"")}${tp?`<small class="tip">💡 <b>${gl("Bon à savoir")}</b> · ${gl(tp[2])}</small>`:""}</div></div>${full&&!tp?"":`<button class="btn" onclick="adv()">Continuer</button>`}`;
   const c=document.getElementById("chk");if(c)c.remove();
   if(!full)try{erRec(sol,msg,tp)}catch(e){}
-  if(full){const t0=Date.now(),dl=tp?7000:msg?2800:1600,w=()=>{if(R.q!==q||!R.done||!document.querySelector(".fbm"))return;const el=Date.now()-t0;if(el<dl||(AU.id&&el<10000)){setTimeout(w,150);return}adv()};setTimeout(w,dl)}
+  const oral=EOT.includes(q.ty);if(full||oral){const t0=Date.now(),dl=tp?7000:!full?4500:msg?2800:1600,w=()=>{if(R.q!==q||!R.done||!document.querySelector(".fbm"))return;const el=Date.now()-t0;if(el<dl||(AU.id&&el<10000)){setTimeout(w,150);return}adv()};setTimeout(w,dl)}
 }
 function cuRun(){document.querySelectorAll(".cu").forEach(e=>{const to=Math.round((+e.dataset.to||0)*10)/10,t0=performance.now(),d=700+to*8;const f=t=>{const p=Math.min(1,(t-t0)/d);e.textContent=p<1?Math.round(to*(1-Math.pow(1-p,3))):sf(to);if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)})}
 function end(){
@@ -4749,12 +4749,12 @@ function imDone(good,k,mine,fbt){
   IM.n++;if(good){IM.ok++;IM.xp+=10}fxOk(good);
   S.sk=S.sk||{};S.sk[k]=.9*sk(k)+.1*(good?1:0);save();
   IM.h.push({w:"npc",t:st.n},{w:"me",t:mine||"…",ok:good});IM.g=good;IM.fbt=fbt;imDraw();
-  if(good){const ix=IM.i;setTimeout(()=>{if(IM.i===ix&&IM.done&&document.querySelector(".fbm")){IM.i++;imShow()}},1300)}
+  if(good||k==="eo"){const ix=IM.i;setTimeout(()=>{if(IM.i===ix&&IM.done&&document.querySelector(".fbm")){IM.i++;imShow()}},good?1300:4500)}
 }
 function imR(i){const st=IM.s.st[IM.i];if(IM.done)return;const o=IM.opts[i],g=o===st.g;imDone(g,imKey(st),o,g?"":tr("Réponse attendue : {0}",st.g))}
 function imW(){
   const st=IM.s.st[IM.i],e=document.getElementById("ti");if(IM.done||!e||!e.value.trim())return;const v=e.value.trim();
-  let g;if(st.k==="W"){const q=nzI(v);g=[st.m,...st.va].some(x=>nzI(x)===q)||(st.kw.length>0&&st.kw.every(k=>q.includes(nzI(k))))}else g=imO([v],st)>=.8;
+  let g;if(st.k==="W"){const q=nzI(v);g=[st.m,...st.va].some(x=>nzI(x)===q)||(st.kw.length>0&&st.kw.every(k=>q.includes(nzI(k))))}else g=imO([v],st).s>=.8;
   imDone(g,imKey(st),v,tr("Modèle : {0}",st.m));
 }
 function imO(alts,st,m){let g=null;[st.m,...(st.va||[])].forEach(c=>{if(!c)return;const x=eoGrade(alts,c,lv(),m);if(!g||x.s>g.s)g=x});return g||{s:0,full:false,u:""}}
