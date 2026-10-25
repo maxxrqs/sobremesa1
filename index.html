@@ -598,7 +598,26 @@ html[data-theme="dark"] body .pn.cur em,html[data-theme="dark"] body .pn.done em
 .wkwd:active{transform:translateY(2px);border-bottom-width:2px}
 .wkwd b{font-size:15px;color:var(--az)}.wkwd small{font-size:12px;color:var(--mut);font-weight:600}
 </style>
-<style id="sm-app">body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}input,textarea,select,[contenteditable],[contenteditable] *{-webkit-user-select:text;user-select:text;-webkit-touch-callout:default}img,svg{-webkit-user-drag:none}</style></head>
+<style id="sm-app">body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}input,textarea,select,[contenteditable],[contenteditable] *{-webkit-user-select:text;user-select:text;-webkit-touch-callout:default}img,svg{-webkit-user-drag:none}</style><style id="sm-live">
+html body .lm{align-items:flex-end;gap:10px;min-height:96px}
+html body .lm .mas{transform-origin:50% 100%;animation:mlIdle 3.4s ease-in-out infinite}
+html body .lm.mlok .mas{animation:mlHop .62s cubic-bezier(.3,1.6,.5,1)}
+html body .lm.mlko .mas{animation:mlNo .55s ease-in-out}
+html body .lm.mlwow .mas{animation:mlWow .9s cubic-bezier(.3,1.5,.5,1)}
+.mlb{position:absolute;left:calc(50% + 52px);top:6px;max-width:42%;background:var(--card);color:var(--ink);border:2.5px solid var(--ink);border-radius:16px 16px 16px 4px;box-shadow:3px 3px 0 var(--ink);padding:6px 11px;font-weight:800;font-size:15px;line-height:1.2;white-space:nowrap;animation:mlBub .32s cubic-bezier(.3,1.6,.5,1) both}
+.mlb.out{animation:mlBubOut .25s ease-in both}
+.cmb{position:absolute;right:calc(50% + 58px);bottom:14px;display:flex;align-items:center;gap:2px;background:var(--sol);color:var(--solk);border:2.5px solid var(--ink);border-radius:999px;box-shadow:3px 3px 0 var(--ink);padding:3px 10px 3px 7px;font-weight:900;font-size:17px;animation:mlBub .35s cubic-bezier(.3,1.6,.5,1) both}
+.cmb.big{animation:mlCmb .7s cubic-bezier(.3,1.6,.5,1) both}
+@keyframes mlIdle{0%,100%{transform:translateY(0) scale(1,1)}50%{transform:translateY(-2px) scale(1.015,.985)}}
+@keyframes mlHop{0%{transform:translateY(0) scale(1)}25%{transform:translateY(0) scale(1.08,.9)}55%{transform:translateY(-18px) scale(.95,1.06)}80%{transform:translateY(0) scale(1.05,.95)}100%{transform:none}}
+@keyframes mlNo{0%,100%{transform:none}20%{transform:rotate(-7deg)}45%{transform:rotate(6deg)}70%{transform:rotate(-3deg)}}
+@keyframes mlWow{0%{transform:none}20%{transform:scale(1.1,.88)}45%{transform:translateY(-26px) rotate(-8deg)}65%{transform:translateY(-26px) rotate(8deg)}85%{transform:translateY(0) scale(1.06,.94)}100%{transform:none}}
+@keyframes mlBub{from{opacity:0;transform:scale(.4) translateY(8px)}to{opacity:1;transform:none}}
+@keyframes mlBubOut{to{opacity:0;transform:scale(.7)}}
+@keyframes mlCmb{0%{opacity:0;transform:scale(.3) rotate(-20deg)}60%{opacity:1;transform:scale(1.35) rotate(6deg)}100%{transform:none}}
+@media (prefers-reduced-motion:reduce){html body .lm .mas,html body .lm.mlok .mas,html body .lm.mlko .mas,html body .lm.mlwow .mas,.mlb,.cmb{animation:none!important}}
+@media (max-width:360px){.mlb{font-size:13px;left:calc(50% + 44px)}.cmb{right:calc(50% + 48px)}}
+</style></head>
 <body>
 <style id="splash-css">
 #splash{position:fixed;inset:0;z-index:99999;background:#CFE9DC;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;transition:opacity .3s ease;font-family:Nunito,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
@@ -3862,7 +3881,7 @@ function draw(){
   }
   const pct=t?T.i*100/Math.max(1,T.list.length):R.n*10,lab=t?`<p class="skl">${tr("Test de niveau · palier {0}",NL[T.l].split(" ")[0])}</p>`:(R.note&&R.n===0?`<p class="skl">🎤 ${tr("Reconnaissance vocale indisponible sur cet appareil : les exercices oraux sont remplacés par des exercices écrits.")}</p>`:"");
   const nl=(q.say&&(q.ty==="listen"||q.ty==="listenP"||q.ty==="listenT"||q.ty==="exL"||q.ty==="dict"))?`<p style="margin:10px 0 0"><button class="btn ghost" id="nol" onclick="${t?"tskip()":"noListen()"}">🔇 ${tr("Je n'arrive pas à écouter")}${t?" "+tr("(question ignorée)"):""}</button></p><div id="nolt"></div>`:"";
-  $.innerHTML=head()+lab+`<div class="bar" style="margin:0 0 6px"><i style="width:${pct}%"></i></div><div class="lm">${mas("content",96)}</div><div class="q">${b}${nl}<div id="fb"></div></div>`;
+  $.innerHTML=head()+lab+`<div class="bar" style="margin:0 0 6px"><i style="width:${pct}%"></i></div><div class="lm">${mas("content",96)}${FXS>=3?cmbHtml(0):""}</div><div class="q">${b}${nl}<div id="fb"></div></div>`;
   if(q.ty==="build")bkInit();
 }
 function noListen(){const e=document.getElementById("nolt");if(!e||!R.q)return;e.innerHTML=`<p class="sub" style="margin:8px 0 0">${tr("Texte du clip :")} <b>${String(R.q.say).replace(/</g,"&lt;")}</b></p>`;try{aud("q",R.q.sa||[R.q.say])}catch(x){}}
@@ -5133,6 +5152,34 @@ function bkImp(){const i=document.createElement("input");i.type="file";i.accept=
     if(!confirm(tr("Remplacer ta progression actuelle par cette copie ?")))return;
     try{Object.keys(d.data).filter(BKK).forEach(k=>localStorage.setItem(k,String(d.data[k])))}catch(e){}
     alert(tr("Copie restaurée."));location.reload()})};i.click()}
+</script>
+<script id="sm-live-js">
+/* Compagnon vivant pendant les exercices : il réagit à chaque réponse dans la langue étudiée, et fête les séries de bonnes réponses */
+const MLW={es:[["¡Muy bien!","¡Eso es!","¡Genial!","¡Perfecto!","¡Olé!"],["¡Ánimo!","No pasa nada","¡Casi!","¡Tú puedes!"],"¡{0} seguidas!"],
+ va:[["Molt bé!","Això és!","Genial!","Perfecte!"],["Ànim!","No passa res","Quasi!","Tu pots!"],"{0} seguides!"],
+ ca:[["Molt bé!","Això és!","Genial!","Perfecte!"],["Ànims!","No passa res","Gairebé!","Tu pots!"],"{0} seguides!"],
+ gl:[["Moi ben!","Iso é!","Xenial!","Perfecto!"],["Ánimo!","Non pasa nada","Case!","Ti podes!"],"{0} seguidas!"],
+ eu:[["Oso ondo!","Hori da!","Bikain!","Primeran!"],["Animo!","Ez dago arazorik","Ia-ia!","Zuk ahal duzu!"],"{0} jarraian!"]};
+let MLP="";
+function mlPick(a){let t=a[Math.floor(Math.random()*a.length)];if(t===MLP&&a.length>1)t=a[(a.indexOf(t)+1)%a.length];MLP=t;return t}
+function cmbHtml(big){return `<span class="cmb${big?" big":""}" aria-label="${FXS}">🔥${FXS}</span>`}
+function mLive(good){try{
+  const box=document.querySelector("#app .lm"),m=box&&box.querySelector(".mas");if(!m)return;
+  const W=MLW[lg()]||MLW.es,mile=good&&FXS>=5&&FXS%5===0,st=good?(mile?"rire":"bravo"):"triste";
+  m.dataset.st=st;m.innerHTML=FX.svg(S.mas||"gecko",st,m.dataset.ax);
+  box.classList.remove("mlok","mlko","mlwow");void box.offsetWidth;box.classList.add(good?(mile?"mlwow":"mlok"):"mlko");
+  box.querySelectorAll(".mlb,.cmb").forEach(e=>e.remove());
+  const b=document.createElement("span");b.className="mlb";b.textContent=good&&FXS>=3&&(FXS===3||mile)?W[2].replace("{0}",FXS):mlPick(W[good?0:1]);box.appendChild(b);
+  if(good&&FXS>=3)box.insertAdjacentHTML("beforeend",cmbHtml(FXS===3||mile));
+  if(mile){try{FX.confetti()}catch(e){}}
+  clearTimeout(box._t);box._t=setTimeout(()=>{b.classList.add("out");setTimeout(()=>b.remove(),260)},2200);
+}catch(e){}}
+(function(){const f=window.fxOk;if(typeof f!=="function")return;window.fxOk=function(g){f(g);mLive(!!g)}})();
+/* Une voix par compagnon : Lora parle avec une voix féminine, Geco et Torito avec une voix masculine quand la langue en a une */
+const MVX={gecko:{es:"es_laura",va:"va_lluc",ca:"ca_grau",gl:"gl_c",eu:"eu_antton"},toro:{es:"es_laura",va:"va_lluc",ca:"ca_grau",gl:"gl_a",eu:"eu_antton"},lora:{es:"es_dora",va:"va_gina",ca:"ca_elia",gl:"gl_b",eu:"eu_antton"}};
+(function(){const p=window.vxPick;if(typeof p!=="function")return;
+  window.vxPick=function(l){const c=ST.get("sobv_"+l),L=vxList(l);if(c==="0"||!L.length)return p(l);const v=(MVX[S.mas||"gecko"]||{})[l];return v&&L.some(x=>x.id===v)?v:p(l)};
+  const sm=window.setMas;if(typeof sm==="function")window.setMas=function(k){const o=S.mas;sm(k);if(o!==k){try{AX.dec.clear();axWarm();setTimeout(()=>vxPrev(lg()),350)}catch(e){}}}})();
 </script>
 </body>
 </html>
