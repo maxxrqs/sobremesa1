@@ -29,3 +29,11 @@ Sans cette étape, l'appli marche avec le dictionnaire local et les fonctions IA
 **Compléter les enregistrements** quand le contenu change : `tools/audio_enum.py` liste tous les textes que l'appli peut dire (`tests/audio_texts.json`), `tools/audio_merge.py` fusionne de nouveaux clips dans l'index d'une voix sans toucher aux paquets existants. Les clips ajoutés sont dans les paquets `*_g0.mp3`, `*_g1.mp3`…
 
 **Tests** : `python3 tests/rangesrv.py 8774 .` (serveur avec `Range`, comme GitHub Pages) puis `python3 tests/audio.py http://127.0.0.1:8774/` (intégrité, couverture, langue/variante/voix, latence réseau bridé, hors ligne, secours) et `python3 tests/audio_quality.py` (signal des clips ajoutés).
+
+## 4. Rappel quotidien (notifications, gratuit)
+Le fichier `worker-rappel.js` est un second relais Cloudflare, séparé de celui de l'IA.
+1. Cloudflare > Workers & Pages > Create > « Hello World », nomme-le `sobremesa-rappel`, colle `worker-rappel.js`, Deploy.
+2. Storage & Databases > KV > Create : `sobremesa-rappels`. Puis Worker > Settings > Bindings > Add > KV namespace : nom de variable `SUBS`, espace `sobremesa-rappels`.
+3. Worker > Settings > Trigger events > Add > Cron : `0 * * * *` (toutes les heures).
+4. Copie l'adresse du worker dans `config.js` : `window.SOB_PUSH="https://sobremesa-rappel.….workers.dev";`
+Les clés de notification se créent toutes seules au premier appel. Test : `node tests/rappel_worker.test.mjs`.

@@ -1,0 +1,28 @@
+// Test du worker de rappel : KV simulé, envoi push simulé, vérification de la signature VAPID
+import W from "../worker-rappel.js";
+const kv=new Map();const SUBS={get:async(k,o)=>{const v=kv.get(k);return v==null?null:(o&&o.type==="json"?JSON.parse(v):v)},put:async(k,v)=>{kv.set(k,v)},delete:async k=>{kv.delete(k)},list:async({prefix})=>({keys:[...kv.keys()].filter(k=>k.startsWith(prefix)).map(name=>({name})),list_complete:true})};
+const env={SUBS};let R=[],ok=0,fail=0;const ck=(n,c,i)=>{c?ok++:fail++;console.log((c?"OK   ":"FAIL ")+n+(c?"":" "+JSON.stringify(i)))};
+let pushes=[],status=201;globalThis.fetch=async(u,o)=>{pushes.push({u,o});return new Response(null,{status})};
+const O="https://maxxrqs.github.io",req=(p,b,m="POST",or=O)=>new Request("https://w.example"+p,{method:m,headers:{origin:or,"content-type":"application/json"},body:m==="POST"?JSON.stringify(b):undefined});
+const k=await (await W.fetch(req("/key",null,"GET"),env)).json();ck("clé publique VAPID générée (65 octets)",k.key&&Buffer.from(k.key,"base64url").length===65,k);
+const k2=await (await W.fetch(req("/key",null,"GET"),env)).json();ck("clé stable entre deux appels",k2.key===k.key);
+ck("autre origine refusée",(await W.fetch(req("/sub",{sub:{endpoint:"https://fcm.googleapis.com/x"}},"POST","https://evil.example"),env)).status===403);
+const tz="Europe/Madrid",h=+new Intl.DateTimeFormat("en-GB",{timeZone:tz,hour:"2-digit",hourCycle:"h23"}).format(new Date());
+const sub={endpoint:"https://fcm.googleapis.com/fcm/send/abc",keys:{p256dh:"x",auth:"y"}};
+ck("abonnement enregistré",(await W.fetch(req("/sub",{sub,h,tz}),env)).status===200&&[...kv.keys()].some(x=>x.startsWith("s:")));
+await W.scheduled({},env,{waitUntil:p=>p});await new Promise(r=>setTimeout(r,50));
+ck("à l'heure choisie, sans pratique aujourd'hui : un rappel envoyé",pushes.length===1,pushes.length);
+const a=pushes[0]&&pushes[0].o.headers.authorization||"",m=a.match(/^vapid t=([^,]+), k=(.+)$/);
+if(m){const [hh,pp,ss]=m[1].split(".");const key=await crypto.subtle.importKey("raw",Buffer.from(m[2],"base64url"),{name:"ECDSA",namedCurve:"P-256"},false,["verify"]);
+ const v=await crypto.subtle.verify({name:"ECDSA",hash:"SHA-256"},key,Buffer.from(ss,"base64url"),new TextEncoder().encode(hh+"."+pp));const pl=JSON.parse(Buffer.from(pp,"base64url"));
+ ck("signature VAPID valide, audience = service push",v&&pl.aud==="https://fcm.googleapis.com",pl)}else ck("en-tête VAPID présent",false,a);
+await W.scheduled({},env,{waitUntil:p=>p});await new Promise(r=>setTimeout(r,50));ck("pas de second rappel le même jour",pushes.length===1,pushes.length);
+const today=new Intl.DateTimeFormat("en-CA",{timeZone:tz}).format(new Date());
+const s2={endpoint:"https://web.push.apple.com/zz"};await W.fetch(req("/sub",{sub:s2,h,tz}),env);await W.fetch(req("/seen",{sub:s2,d:today}),env);
+pushes=[];await W.scheduled({},env,{waitUntil:p=>p});await new Promise(r=>setTimeout(r,50));ck("déjà pratiqué aujourd'hui : pas de rappel",pushes.length===0,pushes.length);
+const s3={endpoint:"https://fcm.googleapis.com/fcm/send/gone"};await W.fetch(req("/sub",{sub:s3,h,tz}),env);status=410;pushes=[];
+await W.scheduled({},env,{waitUntil:p=>p});await new Promise(r=>setTimeout(r,50));ck("abonnement expiré (410) supprimé",![...kv.values()].some(v=>v.includes("/gone")));
+const s4={endpoint:"https://fcm.googleapis.com/fcm/send/other"};await W.fetch(req("/sub",{sub:s4,h:(h+5)%24,tz}),env);status=201;pushes=[];
+await W.scheduled({},env,{waitUntil:p=>p});await new Promise(r=>setTimeout(r,50));ck("autre heure choisie : pas de rappel maintenant",!pushes.some(p=>p.u.includes("other")));
+await W.fetch(req("/unsub",{sub:s4}),env);ck("désabonnement",![...kv.values()].some(v=>v.includes("/other")));
+console.log(`\n${ok} OK, ${fail} échec(s)`);process.exit(fail?1:0);

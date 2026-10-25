@@ -1,4 +1,4 @@
-const V="sobremesa-1792924953",SHELL=["./","index.html","config.js","shim.js","manifest.webmanifest","icon-192.png","icon-512.png"],STA="sobstatic-v1";
+const V="sobremesa-1792926919",SHELL=["./","index.html","config.js","shim.js","manifest.webmanifest","icon-192.png","icon-512.png"],STA="sobstatic-v1";
 self.addEventListener("install",e=>{e.waitUntil(caches.open(V).then(c=>c.addAll(SHELL.map(u=>new Request(u,{cache:"reload"})))).then(()=>self.skipWaiting()))});
 /* supprime toutes les anciennes versions de l'appli (avant : elles s'empilaient à chaque mise à jour) ; les caches durables (voix, clips) sont gardés */
 self.addEventListener("activate",e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x.startsWith("sobremesa-")&&x!==V).map(x=>caches.delete(x)))).then(()=>self.clients.claim()))});
@@ -19,3 +19,6 @@ self.addEventListener("fetch",e=>{
   if(u.pathname.indexOf("/a/tv/")>=0||durable(u)){e.respondWith(caches.open(STA).then(c=>c.match(r).then(m=>m||fetch(r).then(x=>{if(x.ok)putDurable(r,x.clone());return x}))));return}
   e.respondWith(caches.match(r).then(m=>m||fetch(r).then(x=>{if(x.ok){const c=x.clone();caches.open(V).then(ch=>ch.put(r,c))}return x})));
 });
+/* rappel quotidien : notification du compagnon (message préparé par l'appli dans le cache « sobprefs ») */
+self.addEventListener("push",e=>{e.waitUntil(caches.open("sobprefs").then(c=>c.match("rp.json")).then(r=>r?r.json():null).catch(()=>null).then(p=>{const L=p&&p.msgs&&p.msgs.length?p.msgs:["Ta série du jour t'attend ! 🔥"];return self.registration.showNotification(p&&p.title||"Sobremesa",{body:L[Math.floor(Math.random()*L.length)],icon:"icon-192.png",badge:"icon-192.png",tag:"sob-rappel",renotify:true})}))});
+self.addEventListener("notificationclick",e=>{e.notification.close();e.waitUntil(self.clients.matchAll({type:"window",includeUncontrolled:true}).then(cs=>{const c=cs.find(x=>x.url.indexOf(self.registration.scope)===0);return c?c.focus():self.clients.openWindow("./")}))});
