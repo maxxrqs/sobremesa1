@@ -37,3 +37,10 @@ Le fichier `worker-rappel.js` est un second relais Cloudflare, séparé de celui
 3. Worker > Settings > Trigger events > Add > Cron : `0 * * * *` (toutes les heures).
 4. Copie l'adresse du worker dans `config.js` : `window.SOB_PUSH="https://sobremesa-rappel.….workers.dev";`
 Les clés de notification se créent toutes seules au premier appel. Test : `node tests/rappel_worker.test.mjs`.
+
+## 5. Reconnaissance vocale (exercices oraux)
+Moteur : la reconnaissance du navigateur/système (`SpeechRecognition`), réglée sur la langue étudiée (`es-ES`, `ca-ES` pour català et valencià, `gl-ES`, `eu-ES`). Aucune dépendance ajoutée. La notation est dans le bloc `/*ASR-BEGIN*/…/*ASR-END*/` de `castellano.html` :
+- tolérés : accents écrits, ponctuation, chiffres dictés (« 9 » = nueve, « 21 » = vint-i-un…), mots collés/coupés, seseo, yeísmo, b/v, h muette, formes valenciennes/centrales ;
+- non validés : autre mot réel (pero/perro, playa/plaza, hablo/habla), ñ/ç (año/ano, plaça/placa), négation ajoutée ou oubliée, mot important manquant ;
+- « répète » sans note : français entendu, castillan renvoyé pour une autre langue, phrase coupée, résultat partiel incomplet, hésitation du micro entre deux mots, confiance très basse (Chrome seulement).
+Tests : `node tests/asr.test.js` (notation) et `python3 tests/mic.py URL` (micro simulé). Les essais sur vrais appareils restent manuels.

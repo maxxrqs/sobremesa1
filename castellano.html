@@ -3955,32 +3955,92 @@ const EOT=["speak","rep","speakF","speakC","speakQ"],EOFB={speak:[],rep:["dict"]
 const MODL={listen:"co",listenP:"co",listenT:"co",exL:"co",dict:"co",speak:"eo",rep:"eo",speakF:"eo",speakC:"eo",speakQ:"eo",read:"ce",readP:"ce",es2fr:"ce",tf:"ce",odd:"ce",cloze:"ce",exM:"ce",exc:"ce",excV:"ce",excT:"ee",conjT:"ee",build:"ee",type:"ee",fr2P:"ee",fr2es:"ee",conj:"ee",exE:"ee",replyQ:"ee"};
 const EOTH=[0,.6,.66,.72,.78,.8];
 function modF(m){const a=((S.md||{})[lg()]||[]).slice(-60),n=a.length,c=a.filter(x=>x===m).length,sh=(c+1.5)/(n+6);let tg=.25;try{if(typeof adpT==="function")tg=adpT()[m]||.25}catch(e){}return Math.max(.35,Math.min(3,Math.pow(tg/sh,1.2)))}
-function phon(w){let x=w.replace(/ch/g,"1");if(lg()==="es")x=x.replace(/qu/g,"k").replace(/gu(?=[ei])/g,"2").replace(/c(?=[ei])/g,"s").replace(/z/g,"s").replace(/c/g,"k").replace(/ll/g,"y").replace(/g(?=[ei])/g,"x").replace(/j/g,"x").replace(/v/g,"b").replace(/h/g,"").replace(/w/g,"u");else x=x.replace(/v/g,"b").replace(/h/g,"");return x.replace(/(.)\1+/g,"$1").replace(/1/g,"ch").replace(/2/g,"g")}
+/*ASR-BEGIN : texte reconnu → mots comparables (chiffres, ñ/ç, apostrophes, mots collés/séparés, variantes valenciennes), langue maternelle, incertitude*/
+/* accents écrits ignorés (le choix « esta/está » vient du modèle de langue du micro, pas de l'accent tonique entendu) ; ñ et ç gardés (año ≠ ano, plaça ≠ placa) */
+const nzE=x=>String(x).toLowerCase().replace(/l·l/g,"ll").replace(/(\d)[.,](\d{3})(?!\d)/g,"$1$2").replace(/(\d)[:.h](\d\d)(?!\d)/g,"$1h$2").normalize("NFD").replace(/ñ/g,"ñ").replace(/ç/g,"ç").replace(/[̀-ͯ]/g,"").replace(/[^\p{L}\p{N}\s]/gu," ").replace(/\s+/g," ").trim();
+/* nombres dictés en chiffres (« 9 », « 21 », « 9:30 ») → mots de la langue étudiée ; #1/#2 = un/una, dos/dues… (genre invérifiable sur un chiffre) */
+const NUMW={es:{u:"cero #1 #2 tres cuatro cinco seis siete ocho nueve diez once doce trece catorce quince dieciseis diecisiete dieciocho diecinueve veinte veintiuno veintidos veintitres veinticuatro veinticinco veintiseis veintisiete veintiocho veintinueve".split(" "),d:{3:"treinta",4:"cuarenta",5:"cincuenta",6:"sesenta",7:"setenta",8:"ochenta",9:"noventa"},j:"y",c:"cien",n1:["un","uno","una"],n2:["dos"]},
+ ca:{u:"zero #1 #2 tres quatre cinc sis set vuit nou deu onze dotze tretze catorze quinze setze disset divuit dinou vint".split(" "),d:{3:"trenta",4:"quaranta",5:"cinquanta",6:"seixanta",7:"setanta",8:"vuitanta",9:"noranta"},j:"",c:"cent",n1:["u","un","una"],n2:["dos","dues"]},
+ gl:{u:"cero #1 #2 tres catro cinco seis sete oito nove dez once doce trece catorce quince dezaseis dezasete dezaoito dezanove vinte".split(" "),d:{3:"trinta",4:"corenta",5:"cincuenta",6:"sesenta",7:"setenta",8:"oitenta",9:"noventa"},j:"e",c:"cen",n1:["un","unha"],n2:["dous","duas"]},
+ eu:{u:"zero #1 #2 hiru lau bost sei zazpi zortzi bederatzi hamar hamaika hamabi hamahiru hamalau hamabost hamasei hamazazpi hemezortzi hemeretzi".split(" "),c:"ehun",n1:["bat"],n2:["bi"]}};
+const numL=l=>NUMW[l==="va"?"ca":l]||NUMW.es;
+function numTok(n,l){const W=numL(l);if(n===100)return[W.c];if(n>100)return[String(n)];
+  if(W===NUMW.eu){if(n<20)return[W.u[n]];const b=Math.floor(n/20),r=n%20,B=["","hogei","berrogei","hirurogei","laurogei"][b];return r?[B+"ta",...numTok(r,l)]:[B]}
+  if(n<W.u.length)return[W.u[n]];const t=Math.floor(n/10),r=n%10;
+  if(W===NUMW.ca&&t===2)return["vint","i",W.u[r]];return r?(W.j?[W.d[t],W.j,W.u[r]]:[W.d[t],W.u[r]]):[W.d[t]]}
+/* valencien : la reconnaissance (ca-ES) écrit souvent la forme centrale ; les deux sont correctes */
+const VAEQ={vuit:"huit",disset:"desset",divuit:"dihuit",dinou:"denou",aquest:"este",aquesta:"esta",aquests:"estos",aquestes:"estes",meva:"meua",teva:"teua",seva:"seua",meves:"meues",teves:"teues",seves:"seues",nosaltres:"nosatres",vosaltres:"vosatres"};
+function eoTok(x,l){const o=[];nzE(x).split(" ").forEach(w=>{if(!w)return;let m;if(/^\d+$/.test(w))o.push(...numTok(+w,l));else if(m=w.match(/^(\d+)h(\d\d)$/)){o.push(...numTok(+m[1],l));if(+m[2])o.push(...numTok(+m[2],l))}else o.push(w)});return l==="va"?o.map(w=>VAEQ[w]||w):o}
+const eqT=(h,t,l)=>{if(h===t)return true;const W=numL(l);return h==="#1"&&W.n1.includes(t)||t==="#1"&&W.n1.includes(h)||h==="#2"&&W.n2.includes(t)||t==="#2"&&W.n2.includes(h)};
+/* négations : un seul mot qui inverse le sens, jamais traité comme un petit mot sans importance (en galicien « no » = « dans le ») */
+const CRIT=["sin","sense","sen","gabe"];
+const NEG={es:["no","ni","nunca","jamas","tampoco"],ca:["no","ni","mai","tampoc"],gl:["non","nin","nunca","tampouco"],eu:["ez","ezin","inoiz","ezta"]},negL=l=>NEG[l==="va"?"ca":l]||[];
+/* réponse dans une autre langue : mots français (ou castillans pour les autres langues) absents de la langue étudiée */
+const L1W={fr:new Set("je j il ils elle elles nous vous est c ce cette suis sommes etes ai avons avez ont oui merci bonjour bonsoir voudrais veux peux avec pour dans mais quoi comment pourquoi aussi beaucoup peu au aux une leur notre votre fait faire aller vais ne pas sais sait rien parle parler comprends".split(" ")),es:new Set("el los las y muy pero estoy esta soy quiero tengo gracias muchas mucho muchos hola buenos buenas dias noches como donde por favor con una uno yo usted".split(" "))};
+const FILL=new Set("eh ehm em mm mmm pues bueno este esto vale euh ben doncs bo ba".split(" "));
+function eoLang(H,T,l){const K=knownTok(),Ts=new Set(T),c=s=>H.filter(w=>s.has(w)&&!K.has(w)&&!Ts.has(w)).length;
+  for(const k of l==="es"?["fr"]:["fr","es"]){const n=c(L1W[k]);if(H.length&&(n>=2&&n/H.length>=.34||H.length<=2&&n===H.length))return k}return ""}
+/* mots collés ou coupés par la reconnaissance (« adónde » / « a dónde », « l'aigua » / « laigua ») */
+function eoJoin(H,T){const Ts=new Set(T),o=[];
+  for(let i=0;i<H.length;i++){const a=H[i],b=H[i+1];
+    if(b!=null&&!Ts.has(a)&&!Ts.has(b)){const ab=phon(a+b),t=T.find(t=>!o.includes(t)&&t.length>=4&&(t===a+b||lev(phon(t),ab)<=1));if(t){o.push(t===a+b?t:a+b);i++;continue}}
+    if(!Ts.has(a)){let j=0;for(;j+1<T.length;j++)if(T[j]+T[j+1]===a)break;if(j+1<T.length){o.push(T[j],T[j+1]);continue}}
+    o.push(a)}return o}
+function phon(w){const l=lg();let x=w.replace(/ch/g,"1");
+  if(l==="es")x=x.replace(/qu/g,"k").replace(/gu(?=[ei])/g,"2").replace(/c(?=[ei])/g,"s").replace(/z/g,"s").replace(/c/g,"k").replace(/ll/g,"y").replace(/g(?=[ei])/g,"x").replace(/j/g,"x").replace(/v/g,"b").replace(/h/g,"").replace(/w/g,"u");
+  else if(l==="ca"||l==="va")x=x.replace(/qu(?=[ei])/g,"k").replace(/ç/g,"s").replace(/c(?=[ei])/g,"s").replace(/v/g,"b").replace(/h/g,"");
+  else x=x.replace(/v/g,"b").replace(/h/g,"");
+  /* lettres doublées fusionnées, sauf rr / ll / ss qui changent le mot (pero/perro, pala/palla, casa/cassa) */
+  return x.replace(/([^rls])\1+/g,"$1").replace(/1/g,"ch").replace(/2/g,"g")}
 function lev(a,b){const m=a.length,n=b.length;if(!m)return n;if(!n)return m;let p=Array.from({length:n+1},(_,i)=>i);for(let i=1;i<=m;i++){const c=[i];for(let j=1;j<=n;j++)c[j]=Math.min(p[j]+1,c[j-1]+1,p[j-1]+(a[i-1]===b[j-1]?0:1));p=c}return p[n]}
 /* même radical, terminaison différente (hablo/habla, casa/casas) : plutôt une erreur de forme qu'une erreur de prononciation */
 function sameStem(a,b){if(a===b||Math.min(a.length,b.length)<4)return false;let i=0;while(i<a.length&&i<b.length&&a[i]===b[i])i++;return i>=3&&i>=Math.min(a.length,b.length)-2&&a.length-i<=2&&b.length-i<=2}
-let KNW=null;function knownTok(){if(!KNW||KNW.s!==ALL){const st=new Set();[...ALL,...PH].forEach(x=>nzI(x[0]).split(" ").forEach(t=>t&&st.add(t)));KNW={s:ALL,set:st}}return KNW.set}
-/* notation : accents et variantes régionales (seseo, ceceo, b/v, ll/y, h muette) tolérés ; mot réel différent = forme grammaticale ; mot inconnu proche = prononciation */
+let KNW=null;function knownTok(){if(!KNW||KNW.s!==ALL){const st=new Set();[...ALL,...PH].forEach(x=>eoTok(x[0],lg()).forEach(t=>t&&st.add(t)));KNW={s:ALL,set:st}}return KNW.set}
+/* notation : accents écrits et variantes régionales (seseo, ceceo, b/v, ll/y, h muette) tolérés ; mot réel différent = forme grammaticale ; mot inconnu proche = prononciation.
+   o.part : seul un résultat intermédiaire est arrivé ; o.conf : confiance du micro (0 = non fournie, cas de Safari).
+   u (incertain) : la réponse n'est ni validée ni pénalisée, on demande de répéter. */
+function eoMatch(H,T,l){
+  const NG=negL(l),used=H.map(()=>0),r=[];
+  T.forEach((t,ti)=>{const pt=phon(t),w=t.length<=2&&!NG.includes(t)?.35:1;let k=-1,kind="";
+    for(let i=0;i<H.length&&k<0;i++)if(!used[i]&&eqT(H[i],t,l)){k=i;kind="ok"}
+    for(let i=0;i<H.length&&k<0;i++)if(!used[i]&&phon(H[i])===pt){k=i;kind="ok"}
+    if(k<0&&!NG.includes(t)){let bd=9;for(let i=0;i<H.length;i++)if(!used[i]){const d=lev(phon(H[i]),pt);if(d<bd){bd=d;k=i}}
+      const lim=pt.length>=8?2:pt.length>=4?1:0;if(k>=0&&bd<=lim)kind=sameStem(H[k],t)||(knownTok().has(H[k])&&H[k]!==t)?"gram":"near";else k=-1}
+    if(k>=0)used[k]=1;r.push({t,w,k,ti,kind:kind||"miss",h:k>=0?H[k]:""})});
+  r.forEach(x=>{if(x.kind==="miss"&&x.t.length>=4)for(let i=0;i<H.length;i++)if(!used[i]&&H[i].length>=4&&H[i].slice(0,3)===x.t.slice(0,3)&&knownTok().has(H[i])){used[i]=1;x.kind="gram";x.h=H[i];break}});
+  return{r,s:r.reduce((a,x)=>a+x.w*(x.kind==="ok"?1:x.kind==="near"?.85:x.kind==="gram"?.55:0),0)/r.reduce((a,x)=>a+x.w,0)}}
 function eoGrade(alts,target,L,o){
-  o=o||{};const T=nzI(target).split(" ").filter(Boolean);if(!T.length)return{s:0,full:false,pct:0,msg:"",heard:""};
-  const need=o.need?nzI(o.need).split(" ").filter(Boolean):[];let best=null;
-  for(const al of alts){
-    const H=nzI(al).split(" ").filter(Boolean),used=H.map(()=>0),r=[];
-    T.forEach(t=>{const pt=phon(t),w=t.length<=2?.35:1;let k=-1,kind="";
-      for(let i=0;i<H.length&&k<0;i++)if(!used[i]&&H[i]===t){k=i;kind="ok"}
-      for(let i=0;i<H.length&&k<0;i++)if(!used[i]&&phon(H[i])===pt){k=i;kind="ok"}
-      if(k<0){let bd=9;for(let i=0;i<H.length;i++)if(!used[i]){const d=lev(phon(H[i]),pt);if(d<bd){bd=d;k=i}}
-        const lim=pt.length>=8?2:pt.length>=4?1:0;if(k>=0&&bd<=lim)kind=sameStem(H[k],t)||(knownTok().has(H[k])&&H[k]!==t)?"gram":"near";else k=-1}
-      if(k>=0)used[k]=1;r.push({t,w,k,kind:kind||"miss",h:k>=0?H[k]:""})});
-    r.forEach(x=>{if(x.kind==="miss"&&x.t.length>=4)for(let i=0;i<H.length;i++)if(!used[i]&&H[i].length>=4&&H[i].slice(0,3)===x.t.slice(0,3)&&knownTok().has(H[i])){used[i]=1;x.kind="gram";x.h=H[i];break}});
-    const sc=r.reduce((a,x)=>a+x.w*(x.kind==="ok"?1:x.kind==="near"?.85:x.kind==="gram"?.55:0),0)/r.reduce((a,x)=>a+x.w,0);
-    if(!best||sc>best.s)best={s:sc,r,heard:al}}
-  let s=best.s;const nd=best.r.filter(x=>need.includes(x.t));if(nd.some(x=>x.kind==="miss"||x.kind==="gram"))s=Math.min(s,.55);
-  const full=s>=EOTH[Math.max(1,Math.min(5,L||1))],pr=best.r.filter(x=>x.kind==="near").map(x=>"« "+x.t+" »"),gr=best.r.filter(x=>x.kind==="gram").map(x=>"« "+x.h+" » → « "+x.t+" »"),ms=best.r.filter(x=>x.kind==="miss"&&x.t.length>2).map(x=>"« "+x.t+" »");
-  const n=[];if(pr.length)n.push(tr("Prononciation à travailler : {0}.",pr.join(", ")));if(gr.length)n.push(tr("Mot différent entendu : {0} (vérifie la forme ou la terminaison).",gr.join(", ")));if(ms.length)n.push(tr("Non reconnu : {0}.",ms.join(", ")));
+  o=o||{};const l=lg(),T=eoTok(target,l);alts=(alts||[]).filter(a=>a&&String(a).trim());
+  if(!T.length||!alts.length)return{s:0,full:false,pct:0,msg:"",heard:"",score:0,u:""};
+  const NG=negL(l),Ts=new Set(T),need=o.need?eoTok(o.need,l):[],th=EOTH[Math.max(1,Math.min(5,L||1))];let best=null;const sc=[];
+  /* une réponse est complète si : score suffisant, aucun mot important manquant, aucun mot remplacé par un autre mot réel (pero/perro, playa/plaza, habla/hablo) */
+  const okA=m=>m.s>=th&&!m.r.some(x=>x.w===1&&(x.kind==="gram"||x.kind==="miss"&&(x.t.length>=4||NG.includes(x.t)||CRIT.includes(x.t))));
+  alts.forEach((al,ai)=>{const H=eoJoin(eoTok(al,l),T),m=eoMatch(H,T,l);sc.push(okA(m));if(!best||m.s>best.s)best={s:m.s,r:m.r,heard:al,H,ai}});
+  const R2=best.r;let s=best.s;
+  if(R2.some(x=>need.includes(x.t)&&(x.kind==="miss"||x.kind==="gram")))s=Math.min(s,.55);
+  const negMiss=R2.filter(x=>NG.includes(x.t)&&x.kind!=="ok").map(x=>x.t),negAdd=best.H.filter(h=>NG.includes(h)&&!Ts.has(h));
+  if(negMiss.length||negAdd.length)s=Math.min(s,.55);
+  /* mot important manquant : 4 lettres ou plus, négation, ou « sin/sense/sen/gabe » ; un mot de 3 lettres oublié (por, los…) ne compte que dans le score */
+  const imp=x=>x.t.length>=4||NG.includes(x.t)||CRIT.includes(x.t),cm=R2.filter(x=>x.w===1&&x.kind==="miss"&&imp(x)),nc=R2.filter(x=>x.w===1).length;
+  let full=s>=th&&!cm.length&&!R2.some(x=>x.w===1&&x.kind==="gram"),u="",um="";const q=x=>"« "+x+" »";
+  /* incertitudes : on redemande plutôt que de valider ou de pénaliser */
+  const lang=!full?eoLang(eoTok(alts[0],l),T,l):"";
+  const last=Math.max(-1,...R2.filter(x=>x.kind!=="miss").map(x=>x.ti)),ui=new Set(R2.map(x=>x.k)),extra=best.H.filter((h,i)=>!ui.has(i)&&h.length>2&&!FILL.has(h)).length,tail=last>=0&&cm.length&&!extra&&R2.filter(x=>x.kind==="miss").every(x=>x.ti>last);
+  if(lang==="fr"){u="lang";um=tr("J'ai entendu du français (« {0} »). Redis ta réponse en {1}.",alts[0],tr(LFR[l]))}
+  else if(lang==="es"){u="lang";um=tr("La reconnaissance a répondu en castillan (« {0} ») : ton appareil ne reconnaît peut-être pas le {1}. Réessaie, ou réponds à l'écrit.",alts[0],tr(LFR[l]))}
+  else if(!full&&(o.part||tail)&&!negAdd.length){u="cut";um=tr("Je n'ai entendu que le début (« {0} »). Redis toute la phrase d'un seul trait.",best.heard)}
+  else if(!full&&cm.length===1&&nc>=5&&s>=th&&!negMiss.length){u="miss";um=tr("Je n'ai pas bien entendu {0}. Redis la phrase pour confirmer.",q(cm[0].t))}
+  else if(full&&best.ai>0&&!sc[0]){u="alt";um=tr("La reconnaissance hésite entre « {0} » et « {1} ». Redis plus distinctement pour confirmer.",alts[0],best.heard)}
+  else if(o.conf>0&&(o.conf<.2||!full&&o.conf<.4)){u="conf";um=tr("Reconnaissance peu sûre (« {0} »). Redis plus près du micro, sans bruit autour.",best.heard)}
+  const pr=R2.filter(x=>x.kind==="near").map(x=>q(x.t)),gr=R2.filter(x=>x.kind==="gram").map(x=>q(x.h)+" → "+q(x.t)),ms=R2.filter(x=>x.kind==="miss"&&x.t.length>2).map(x=>q(x.t));
+  const n=[];if(negAdd.length)n.push(tr("Tu as ajouté {0} : le sens change.",negAdd.map(q).join(", ")));if(negMiss.length)n.push(tr("Sans {0}, le sens change.",negMiss.map(q).join(", ")));
+  if(pr.length)n.push(tr("Prononciation à travailler : {0}.",pr.join(", ")));if(gr.length)n.push(tr("Mot différent entendu : {0} (vérifie la forme ou la terminaison).",gr.join(", ")));if(ms.length)n.push(tr("Non reconnu : {0}.",ms.join(", ")));
   if(s<1&&best.heard)n.push(tr("J'ai entendu : « {0} ».",best.heard));if(n.length&&!full)n.push(tr("Astuce : réécoute le modèle, puis répète en détachant les mots."));
-  return{s,full,pct:Math.round(s*100),msg:n.join(" "),heard:best.heard,score:full?1:s>=.45?Math.max(.3,Math.min(.75,s*.8)):0}
+  return{s,full,pct:Math.round(s*100),msg:n.join(" "),heard:best.heard,score:full?1:s>=.45?Math.max(.3,Math.min(.75,s*.8)):0,u,um,cm:cm.length}
 }
+/* message « répète » : ni bonne ni mauvaise réponse */
+function eoUns(g,fb,rt){return `<div class="fb pt">🎧 ${esc(g.um)}</div><button class="btn" style="margin-top:8px" onclick="${rt}">🎤 ${tr("Réessayer")}</button> ${fb?`<button class="btn ghost" style="margin-top:8px" onclick="${fb}">⌨️ ${tr("Écrire à la place")}</button>`:""}`}
+/*ASR-END*/
 /* formats oraux : mêmes données que le reste de l'appli (mots de l'étape, phrases plafonnées par niveau, scènes de dialogue) */
 function eoItem(ty,l){
   const r=!l&&RLs(),ws=r&&r.ws&&r.ws.length>=2?r.ws.filter(w=>(w[2]||1)<=lv()):null,cap=CAPW[ty==="rep"?"c":"p"][lvC(l)];
@@ -4019,9 +4079,11 @@ function mkEO(ty,l){
   return q
 }
 function repShow(){if(R.q&&R.q.hide){R.q.hide=0;draw()}}
-function oralCheck(alts){
+function oralCheck(alts,m){
   const q=R.q,tg=q.ty==="speakQ"?q.models:[q.es];let best=null;
-  for(const t of tg){const g=eoGrade(alts,t,lv(),{need:q.ty==="speakC"?q.g:null});if(!best||g.s>best.s)best=g}
+  for(const t of tg){const g=eoGrade(alts,t,lv(),Object.assign({need:q.ty==="speakC"?q.g:null},m||{}));if(!best||g.s>best.s)best=g}
+  /* réponse incertaine : on redemande (une fois ; toujours si la langue entendue n'est pas la bonne) au lieu de valider ou pénaliser */
+  if(best.u&&(best.u==="lang"||R.uq!==q)){R.uq=q;const f=document.getElementById("fb");if(f)f.innerHTML=eoUns(best,"recType()","rec()");return}
   const mm=best.pct+" % "+tr("reconnu")+(best.msg?" · "+best.msg:"");
   fin(best.score,best.score>0?tg[0]:tg[0]+" · "+mm,q.ty==="speakF"?q.key:null,mm);
   if(q.ty==="speakF"||q.ty==="speakQ"||q.ty==="speakC")try{speak(q.es)}catch(e){}
@@ -4151,16 +4213,23 @@ async function micPre(){
 }
 /* iOS : session « lecture + enregistrement » pendant la dictée, puis retour à « lecture » ; le contexte audio est recréé au geste suivant (sinon voix muettes ou dans l'écouteur) */
 function micSess(on){if(!IOSW)return;try{if(navigator.audioSession)navigator.audioSession.type=on?"play-and-record":"playback"}catch(e){}if(!on)axStale()}
+let SRC=null;
+/* toutes les alternatives du micro, segments mis bout à bout (Safari découpe parfois la phrase en plusieurs résultats), + confiance minimale si fournie */
+function srAlts(e){const rs=[...e.results],n=Math.max(1,...rs.map(x=>x.length||0)),a=[];
+  for(let j=0;j<n;j++)a.push(rs.map(x=>{const y=x[Math.min(j,x.length-1)];return y&&y.transcript||""}).join(" ").replace(/\s+/g," ").trim());
+  const c=rs.map(x=>x[0]&&x[0].confidence).filter(v=>typeof v==="number"&&v>0);return{a:[...new Set(a)].filter(Boolean),c:c.length?Math.min(...c):0}}
 function srAttach(r,onAlts,fail){
-  /* branche les événements de reconnaissance : résultat final, résultat intermédiaire gardé si la session se termine sans final, et étapes atteintes (micro démarré, son capté, voix détectée) pour un message précis */
-  const st={a:0,s:0,sp:0,i:null,done:0,er:""};r.interimResults=true;
+  /* branche les événements de reconnaissance : résultat final, résultat intermédiaire gardé si la session se termine sans final (marqué « partiel »), et étapes atteintes (micro démarré, son capté, voix détectée) pour un message précis */
+  const st={a:0,s:0,sp:0,i:null,done:0,er:""};r.interimResults=true;r.continuous=false;SRC=r;
   r.onaudiostart=()=>{st.a=1};r.onsoundstart=()=>{st.s=1};r.onspeechstart=()=>{st.sp=1};
-  const end=()=>{clearTimeout(st.wd);clearTimeout(st.wd2);micSess(0)};
-  r.onresult=e=>{const rs=e.results[e.results.length-1],alts=[...rs].map(x=>x.transcript);if(rs.isFinal){if(st.done)return;st.done=1;end();onAlts(alts)}else st.i=alts};
+  const end=()=>{clearTimeout(st.wd);clearTimeout(st.wd2);clearTimeout(st.qt);if(SRC===r)SRC=null;micSess(0)};
+  r.onresult=e=>{const x=srAlts(e),rs=e.results[e.results.length-1];if(!x.a.length)return;if(rs&&rs.isFinal){if(st.done)return;st.done=1;end();onAlts(x.a,{conf:x.c})}else{st.i=x;
+    /* iOS : la dictée ne s'arrête pas toujours seule ; 1,5 s sans nouveau mot après la parole = fin de phrase */
+    if(IOSW){clearTimeout(st.qt);st.qt=setTimeout(()=>{if(!st.done&&!st.er)try{r.stop()}catch(e){}},1500)}}};
   r.onerror=e=>{end();if(st.done)return;st.er=(e&&e.error)||"";fail(st.er,st)};
-  r.onend=()=>{end();if(st.done||st.er)return;if(st.i&&st.i[0]&&st.i[0].trim()){st.done=1;onAlts(st.i);return}fail("",st)};
+  r.onend=()=>{end();if(st.done||st.er)return;if(st.i&&st.i.a.length){st.done=1;onAlts(st.i.a,{part:1,conf:st.i.c});return}fail("",st)};
   /* iOS : la dictée peut rester bloquée sans jamais finir ; arrêt forcé, puis résultat partiel ou message */
-  if(IOSW){micSess(1);st.wd=setTimeout(()=>{if(st.done||st.er)return;try{r.stop()}catch(e){}st.wd2=setTimeout(()=>{if(st.done||st.er)return;end();if(st.i&&st.i[0]&&st.i[0].trim()){st.done=1;onAlts(st.i);return}st.er="no-speech";fail("",st)},2500)},15000)}
+  if(IOSW){micSess(1);st.wd=setTimeout(()=>{if(st.done||st.er)return;try{r.stop()}catch(e){}st.wd2=setTimeout(()=>{if(st.done||st.er)return;end();if(st.i&&st.i.a.length){st.done=1;onAlts(st.i.a,{part:1,conf:st.i.c});return}st.er="no-speech";fail("",st)},2500)},15000)}
   return st
 }
 function micErr(code,fb,rt,st){
@@ -4171,6 +4240,7 @@ function micErr(code,fb,rt,st){
   else if(bl){m=tr("Autorisation du micro non accordée. Appuie sur « Réessayer » puis « Autoriser » quand le navigateur le demande, ou écris ta réponse à la place.")}
   else if(code==="NotFoundError"||code==="audio-capture")m=tr("Aucun micro détecté (ou micro utilisé par une autre appli).");
   else if(code==="service-not-allowed")m=/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1)?tr("La reconnaissance vocale n'est pas disponible ici. Sur iPhone, active Siri et la dictée (Réglages > Général > Clavier > Activer la dictée) et ouvre Sobremesa dans Safari ; elle ne fonctionne pas dans l'appli ajoutée à l'écran d'accueil. Sinon, écris ta réponse."):tr("La reconnaissance vocale est désactivée sur ce navigateur ou cet appareil (service vocal du système). Écris ta réponse à la place.");
+  else if(code==="aborted")m=tr("Écoute interrompue. Réessaie quand tu es prêt.");
   else if(code==="network")m=tr("La reconnaissance vocale a besoin d'une connexion internet. Vérifie ton réseau puis réessaie.");
   else if(code==="NoMediaDevices"||code==="language-not-supported")m=tr("Reconnaissance vocale indisponible sur ce navigateur. Écris ta réponse à la place.");
   else if(!code||code==="no-speech"){m=st&&!st.a?tr("Le micro n'a pas démarré (une autre appli l'utilise peut-être). Ferme-la puis réessaie."):st&&!st.s?tr("Aucun son capté. Vérifie que le micro n'est pas coupé et parle plus près du téléphone, puis réessaie."):st&&st.s&&!st.sp?tr("Je n'ai entendu qu'un bruit, pas de voix. Parle plus fort, plus près, puis réessaie."):st?tr("Je n'ai pas compris. Parle plus lentement et distinctement, puis réessaie."):tr("Rien reconnu (micro bloqué ou trop bas). Réessaie ou passe.")}
@@ -4180,14 +4250,15 @@ function micErr(code,fb,rt,st){
 /*MIC-END*/
 function recType(){const q=R.q;if(!q||R.done)return;R.q=q.ty==="speakQ"?{ty:"replyQ",npc:q.npc,hint:q.hint,models:q.models,es:q.es,fr:q.fr,say:q.say,sol:q.sol,key:null}:q.ty==="rep"?{ty:"dict",fr:q.fr,es:q.es,say:q.es,key:null,sol:q.sol}:{ty:"type",fr:q.fr,es:q.es,say:q.es,key:null,sol:q.sol};draw()}
 async function rec(){
+  if(SRC){try{SRC.stop()}catch(e){}return}
   const fb=document.getElementById("fb");
   const r=new SR();r.lang=LANGS[lg()].s;r.maxAlternatives=3;
   fb.innerHTML=`<p class="sub">Je t'écoute…</p>`;if(IOSW)stopSp();
   const pre=IOSW?"":await micPre();if(pre){fb.innerHTML=micErr(pre,"recType()","rec()");return}
-  srAttach(r,alts=>{if(R.done)return;R.mf=0;oralCheck(alts)},
+  srAttach(r,(alts,m)=>{if(R.done)return;R.mf=0;oralCheck(alts,m)},
     (code,st)=>{if(R.done)return;const vx=st&&st.sp&&(!code||code==="no-speech");R.mf=vx?(R.mf||0)+1:0;
       fb.innerHTML=micErr(code,"recType()","rec()",st)+(R.mf>=2?`<p class="sub" style="margin-top:8px">${tr("La reconnaissance vocale a du mal avec ce mot. Ce n'est pas ta prononciation : réponds à l'écrit, ça compte pareil.")}</p>`:"")});
-  try{r.start()}catch(e){micSess(0);fb.innerHTML=micErr((e&&e.name)||"error","recType()","rec()")}
+  try{r.start()}catch(e){SRC=null;micSess(0);fb.innerHTML=micErr((e&&e.name)||"error","recType()","rec()")}
 }
 /* PROG-v2 : l'XP récompense ce qui fait progresser — révision d'un mot dû bonifiée, mot déjà maîtrisé et pas encore à revoir, ou étape déjà réussie rejouée, moins rémunérés */
 function xpGain(s,sc0,due0,q){let f=1;if(q&&q.rvw)f*=1.5;else if(sc0>=4&&!due0)f*=.5;if(R&&R.pid&&((S.pth||{})[pthK(R.pid)]||0)>=8)f*=.5;return Math.max(1,Math.round(10*s*f))}
@@ -4686,15 +4757,18 @@ function imW(){
   let g;if(st.k==="W"){const q=nzI(v);g=[st.m,...st.va].some(x=>nzI(x)===q)||(st.kw.length>0&&st.kw.every(k=>q.includes(nzI(k))))}else g=imO([v],st)>=.8;
   imDone(g,imKey(st),v,tr("Modèle : {0}",st.m));
 }
-function imO(alts,st){let b=0;[st.m,...st.va].forEach(c=>{const t=nzI(c).split(" ").filter(Boolean);if(!t.length)return;alts.forEach(a=>{const h=nzI(a).split(" ");b=Math.max(b,t.filter(w=>h.includes(w)).length/t.length)})});return b}
+function imO(alts,st,m){let g=null;[st.m,...(st.va||[])].forEach(c=>{if(!c)return;const x=eoGrade(alts,c,lv(),m);if(!g||x.s>g.s)g=x});return g||{s:0,full:false,u:""}}
 function imSkip(){const st=IM.s.st[IM.i];if(IM.done)return;imDone(false,imKey(st),"…",tr("Modèle : {0}",st.m||st.g))}
 async function imRec(){
+  if(SRC){try{SRC.stop()}catch(e){}return}
   const fb=document.getElementById("ifb"),st=IM.s.st[IM.i];const r=new SR();r.lang=LANGS[lg()].s;r.maxAlternatives=3;
   fb.innerHTML=`<p class="sub">Je t'écoute…</p>`;
   if(IOSW)stopSp();const pre=IOSW?"":await micPre();if(pre){fb.innerHTML=micErr(pre,"IM.typed=true;imDraw()","imRec()");return}
-  srAttach(r,a=>{if(IM.done)return;const b=imO(a,st);imDone(b>=.7,"eo",a[0],tr("Modèle : {0}",st.m)+" · "+tr("Reconnu : {0} %",Math.round(b*100)))},
+  srAttach(r,(a,m)=>{if(IM.done)return;const g=imO(a,st,m);
+      if(g.u&&(g.u==="lang"||IM.uq!==st)){IM.uq=st;fb.innerHTML=eoUns(g,"IM.typed=true;imDraw()","imRec()");return}
+      imDone(g.full||g.s>=.7&&!g.cm,"eo",a[0],tr("Modèle : {0}",st.m)+" · "+tr("Reconnu : {0} %",Math.round(g.s*100)))},
     (code,ss)=>{if(IM.done)return;fb.innerHTML=micErr(code,"IM.typed=true;imDraw()","imRec()",ss)});
-  try{r.start()}catch(e){micSess(0);fb.innerHTML=micErr((e&&e.name)||"error","IM.typed=true;imDraw()","imRec()")}
+  try{r.start()}catch(e){SRC=null;micSess(0);fb.innerHTML=micErr((e&&e.name)||"error","IM.typed=true;imDraw()","imRec()")}
 }
 function imEnd(){
   stopSp();const s=IM.s,p=Math.round(100*IM.ok/Math.max(1,IM.n)),bonus=IM.ok===IM.n?10:0;
