@@ -14,7 +14,8 @@ head='''<link rel="manifest" href="manifest.webmanifest">
 '''
 assert "<head>" in s
 s=s.replace("<head>","<head>\n"+head,1)
-reg='''<script>if("serviceWorker"in navigator&&location.protocol!=="file:"){addEventListener("load",()=>navigator.serviceWorker.register("sw.js").then(r=>{r.addEventListener("updatefound",()=>{const w=r.installing;w&&w.addEventListener("statechange",()=>{if(w.state==="installed"&&navigator.serviceWorker.controller&&document.getElementById("splash"))location.reload()})})}).catch(()=>{}))}</script>
+reg='''<script>if("serviceWorker"in navigator)navigator.serviceWorker.addEventListener("message",e=>{if(e.data!=="sob-new")return;let busy=0;try{busy=!!INL}catch(x){}if(!busy)location.reload()});</script>
+<script>if("serviceWorker"in navigator&&location.protocol!=="file:"){addEventListener("load",()=>navigator.serviceWorker.register("sw.js").then(r=>{r.addEventListener("updatefound",()=>{const w=r.installing;w&&w.addEventListener("statechange",()=>{if(w.state==="installed"&&navigator.serviceWorker.controller&&document.getElementById("splash"))location.reload()})})}).catch(()=>{}))}</script>
 '''
 s=s.replace("</body>",reg+"</body>",1)
 open(os.path.join(here,"index.html"),"w",encoding="utf-8").write(s)
