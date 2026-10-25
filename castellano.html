@@ -201,7 +201,8 @@ details.more>.grid,details.more>.mb{margin-top:12px}
 .wpv{display:block;width:100%;height:64px;border-radius:10px;border:2px solid var(--line);background-color:var(--bg)}
 .q details{margin:10px 0}.q summary{cursor:pointer;font-weight:700;padding:6px 0}
 #toasts{position:fixed;top:calc(env(safe-area-inset-top,0px) + 12px);left:0;right:0;display:flex;flex-direction:column;align-items:center;gap:8px;z-index:9999;pointer-events:none;padding:0 14px}.toast{max-width:min(460px,100%);background:var(--card,#fff);color:var(--ink,#222);border:2px solid var(--ok,#58cc02);border-radius:16px;padding:12px 16px;font-weight:700;font-size:15px;box-shadow:0 8px 24px rgba(0,0,0,.22);opacity:0;transform:translate3d(0,-22px,0) scale(.96);will-change:transform,opacity;transition:opacity .38s cubic-bezier(.22,1,.36,1),transform .5s cubic-bezier(.22,1,.36,1),max-height .45s cubic-bezier(.4,0,.2,1),margin .45s cubic-bezier(.4,0,.2,1),padding .45s cubic-bezier(.4,0,.2,1),border-width .45s cubic-bezier(.4,0,.2,1);overflow:hidden;box-sizing:border-box}
-.toast.in{opacity:1;transform:none}
+.toast.in{opacity:1;transform:none;max-height:none!important}
+.toast{overflow:visible;white-space:normal;line-height:1.3;text-wrap:pretty}
 .toast.out{opacity:0;transform:translate3d(0,-14px,0) scale(.97);max-height:0!important;margin-top:-8px;padding-top:0;padding-bottom:0;border-width:0;transition:opacity .32s ease-out,transform .45s cubic-bezier(.4,0,.2,1),max-height .45s cubic-bezier(.4,0,.2,1) .05s,margin .45s cubic-bezier(.4,0,.2,1) .05s,padding .45s cubic-bezier(.4,0,.2,1) .05s,border-width .45s cubic-bezier(.4,0,.2,1) .05s;box-shadow:none}
 @media (prefers-reduced-motion:reduce){.toast,.toast.out{transition:opacity .2s linear;transform:none}}.cvc{background:var(--g1);border:2px solid var(--line);border-radius:20px;padding:14px;margin:0 0 16px}.cvh{display:flex;align-items:center;gap:12px;margin-bottom:10px}.cvg{display:flex;flex-wrap:wrap;gap:8px}.cvs{display:flex;align-items:center;gap:12px;margin:6px 0 10px}.cvav{flex:none;animation:cvb 3s ease-in-out infinite}.cvav.think{animation:cvt .7s ease-in-out infinite}@keyframes cvb{50%{transform:translateY(-3px)}}@keyframes cvt{50%{transform:scale(1.06) rotate(-3deg)}}.cvchat{height:calc(100vh - 400px);height:calc(100dvh - 400px);min-height:200px;max-height:60vh;overflow-y:auto;overscroll-behavior:contain;padding:4px 2px}.cvn .spk{vertical-align:middle}.cvact{display:flex;align-items:center;gap:8px;margin-top:8px}.cvt{margin-top:6px;font-size:13px;color:var(--mut);border-top:1px dashed var(--line);padding-top:6px}.cvfix{align-self:flex-end;max-width:88%;font-size:13px;background:var(--kob);color:var(--ko);border-radius:12px;padding:6px 10px;margin:0 0 6px}.cvh2{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.cvrow{display:flex;gap:8px;align-items:center}.cvrow .in{flex:1;min-width:0}.cvmic.on{background:var(--ko);color:#fff}.dots{display:inline-flex;gap:4px;padding:4px 2px}.dots i{width:7px;height:7px;border-radius:50%;background:var(--mut);animation:cvd 1s infinite}.dots i:nth-child(2){animation-delay:.15s}.dots i:nth-child(3){animation-delay:.3s}@keyframes cvd{0%,60%,100%{opacity:.3;transform:none}30%{opacity:1;transform:translateY(-4px)}}body{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}.bnav{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;gap:4px;padding:6px 8px calc(6px + env(safe-area-inset-bottom,0px));background:var(--card);border-top:2px solid var(--line);box-shadow:0 -6px 18px rgba(0,0,0,.08)}.bnav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:1px;border:0;background:none;color:var(--mut);padding:6px 2px;border-radius:14px;font:inherit;cursor:pointer;min-width:0}.bnav button span{font-size:22px;line-height:1}.bnav button b{font-size:12px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}.bnav button.on{background:var(--g1);color:var(--az)}.ptitle{margin:6px 0 2px}.hero2{display:flex;align-items:center;gap:12px;width:100%;margin:6px 0 14px;padding:12px 14px;border:2px solid var(--line);border-radius:20px;background:var(--card);color:var(--ink);font:inherit;text-align:left;cursor:pointer}.hero2 .hm{flex:none}.hero2 .hi{flex:1;min-width:0;display:block}.hero2 .lt{display:flex;justify-content:space-between;gap:8px;align-items:baseline}.hero2 .lt em{font-style:normal;color:var(--mut);font-size:14px;white-space:nowrap}.hero2 .lt em.dim{opacity:.55}.hero2 .bar{margin:6px 0 4px}.hero2 small{color:var(--mut)}.grid.sk .theme b{font-size:15.5px;word-break:normal;overflow-wrap:normal}
 /* ===== Habla · azulejo (v81) ===== */
@@ -644,34 +645,6 @@ html body .lm.mlwow .mas{animation:mlWow .9s cubic-bezier(.3,1.5,.5,1)}
 @keyframes enIn{from{opacity:0;transform:translateY(10px) scale(.85)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.q.end.win .wm .mas,.enb,.enst div,.enw span{animation:none!important}}
 @media (max-width:360px){.enb{font-size:13px}}
-</style><style id="sm-fit">
-/* Exercices : tout tient sur un écran — compactage progressif (data-fit 1 à 5) seulement si ça déborde */
-html[data-fit] #app{padding-top:10px;padding-bottom:8px}
-html[data-fit] #app>.bar{margin-top:8px!important}
-html[data-fit] #app>.q{padding:16px 14px}
-html[data-fit] #app>.q h2{margin-bottom:10px}
-html[data-fit] #app .opt{padding:11px 14px;margin-bottom:6px;min-height:0}
-html[data-fit] #app .lm{min-height:66px}
-html[data-fit] #app .lm>.mas{width:66px!important}
-html[data-fit] #app .fbm{padding:10px 12px;gap:10px}
-html[data-fit] #app .fbm>.mas{width:52px!important}
-html[data-fit] #app #fb .btn{margin-top:8px;padding-top:11px;padding-bottom:11px}
-html[data-fit] #app #fb .tip{margin-top:4px}
-html[data-fit] #app #nol{padding:7px 12px;font-size:13px}
-html[data-fit] #app>.q>p:has(#nol){margin-top:6px!important}
-html[data-fit="2"] #app .lm,html[data-fit="3"] #app .lm,html[data-fit="4"] #app .lm,html[data-fit="5"] #app .lm{min-height:50px}
-html[data-fit="2"] #app .lm>.mas,html[data-fit="3"] #app .lm>.mas,html[data-fit="4"] #app .lm>.mas,html[data-fit="5"] #app .lm>.mas{width:50px!important}
-html[data-fit="2"] #app .cmb,html[data-fit="3"] #app .cmb,html[data-fit="4"] #app .cmb,html[data-fit="5"] #app .cmb{width:40px;height:50px;right:calc(50% + 32px)}
-html[data-fit="2"] #app .cmb b,html[data-fit="3"] #app .cmb b,html[data-fit="4"] #app .cmb b,html[data-fit="5"] #app .cmb b{font-size:16px;bottom:6px}
-html[data-fit="2"] #app .mlb,html[data-fit="3"] #app .mlb,html[data-fit="4"] #app .mlb,html[data-fit="5"] #app .mlb{left:calc(50% + 34px);top:0;font-size:13px;padding:4px 9px}
-html[data-fit="3"] #app>.q h2,html[data-fit="4"] #app>.q h2,html[data-fit="5"] #app>.q h2{font-size:20px;line-height:1.25}
-html[data-fit="3"] #app .opt,html[data-fit="4"] #app .opt,html[data-fit="5"] #app .opt{padding:9px 12px;font-size:15px;margin-bottom:5px}
-html[data-fit="3"] #app .txt,html[data-fit="4"] #app .txt,html[data-fit="5"] #app .txt{font-size:15.5px;line-height:1.38}
-html[data-fit="3"] #app .fbm,html[data-fit="4"] #app .fbm,html[data-fit="5"] #app .fbm{font-size:14.5px}
-html[data-fit="4"] #app .txt.lng,html[data-fit="5"] #app .txt.lng{max-height:32vh;max-height:32dvh;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;-webkit-mask-image:linear-gradient(#000 calc(100% - 22px),transparent);mask-image:linear-gradient(#000 calc(100% - 22px),transparent);padding-bottom:16px}
-html[data-fit="5"] #app>.q{overflow-y:auto;overscroll-behavior:contain;scroll-behavior:smooth}
-html[data-fit] body{overflow-x:hidden}
-html[data-ex] body{padding-bottom:env(safe-area-inset-bottom,0px)!important}
 </style><style id="sm-adp">
 .adgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:4px 0 10px}
 .adt{background:var(--card);border:2.5px solid var(--ink);border-radius:18px;box-shadow:3px 3px 0 var(--ink);padding:10px 12px 11px;display:flex;flex-direction:column;gap:6px;min-width:0}
@@ -5717,25 +5690,6 @@ const ENW={es:["¡Increíble!","¡Muy bien hecho!","¡Vamos mejorando!","¡La pr
       st.insertAdjacentElement("afterend",w)}
   }catch(e){}};
 })();
-</script>
-<script id="sm-fit-js">
-/* Ajuste chaque écran d'exercice à la hauteur du téléphone : on compacte par paliers jusqu'à ce qu'il n'y ait plus rien à faire défiler */
-(function(){const a=document.getElementById("app"),root=document.documentElement;if(!a)return;let raf=0,lastQ=null;
- const over=()=>root.scrollHeight>innerHeight+1;
- function fit(){raf=0;const ex=a.querySelector(":scope>.lm")&&a.querySelector(":scope>.q:not(.end)");
-  if(!ex){if(root.dataset.fit)delete root.dataset.fit;if(root.dataset.ex)delete root.dataset.ex;lastQ=null;return}
-  root.dataset.ex="1";
-  let q=null;try{q=R.q}catch(e){}
-  let f=q===lastQ?+(root.dataset.fit||0):0;lastQ=q;
-  if(f)root.dataset.fit=f;else delete root.dataset.fit;
-  const qe=a.querySelector(":scope>.q");qe.style.maxHeight="";
-  while(over()&&f<5){f++;root.dataset.fit=f;if(f===4)qe.querySelectorAll(".txt").forEach(t=>t.classList.toggle("lng",t.offsetHeight>140))}
-  if(f===5){const top=qe.getBoundingClientRect().top+scrollY,pb=parseFloat(getComputedStyle(a).paddingBottom)||0;qe.style.maxHeight=Math.max(220,innerHeight-top-pb-4)+"px";
-   if(document.querySelector("#fb>*"))qe.scrollTop=qe.scrollHeight}
-  if(scrollY)scrollTo(0,0)}
- const go=()=>{if(!raf)raf=requestAnimationFrame(fit)};
- new MutationObserver(go).observe(a,{childList:true,subtree:true});addEventListener("resize",()=>{lastQ=null;go()});
- try{document.fonts&&document.fonts.ready.then(go)}catch(e){}})();
 </script>
 <script id="sm-mem-js">
 /* Compagnon qui se souvient (série, absence, niveau) + défi du jour */
