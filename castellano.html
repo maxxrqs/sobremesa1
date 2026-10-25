@@ -4,7 +4,8 @@
 <meta name="google" content="notranslate">
 <script>(function(){var r=document.documentElement,f=function(){if(r.getAttribute("data-theme")!=="light")r.setAttribute("data-theme","light");r.style.colorScheme="light"};f();try{new MutationObserver(f).observe(r,{attributes:true,attributeFilter:["data-theme","style","class"]})}catch(e){}})()</script>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"><style>html{touch-action:pan-x pan-y;-webkit-text-size-adjust:100%}</style><script>(function(){var p=function(e){e.preventDefault()};["gesturestart","gesturechange","gestureend"].forEach(function(t){document.addEventListener(t,p,{passive:false})});document.addEventListener("touchmove",function(e){if(e.touches&&e.touches.length>1)e.preventDefault()},{passive:false})})()</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"><style>html{touch-action:pan-x pan-y;-webkit-text-size-adjust:100%}.hstrip{margin:0 0 16px}.hstrip .hsr{display:flex;gap:8px;align-items:stretch}.hsc{display:flex;align-items:center;gap:6px;padding:7px 12px;border-radius:999px;border:2.5px solid var(--ink);background:var(--card);box-shadow:2px 2px 0 var(--ink);font:inherit;font-weight:800;font-size:14px;color:var(--ink);cursor:pointer;white-space:nowrap}.hsc:active{transform:translate(2px,2px);box-shadow:none}.hsc i{font-style:normal;font-size:16px;line-height:1}.hsl{flex:1;min-width:0}.hsl b{font:800 15px "Baloo 2",system-ui,sans-serif}.hsl .bar{flex:1;height:10px;margin:0}.hsd.ok{background:var(--ok);color:#fff}.hsv{background:var(--or);color:#FFF8EA}.hsdt{display:none;margin:8px 4px 0;font-size:14px;color:var(--ink)}.hsdt b{color:var(--mut);font-size:12px;text-transform:uppercase;margin-right:4px}.hstrip.op .hsdt{display:block}
+</style><script>(function(){var p=function(e){e.preventDefault()};["gesturestart","gesturechange","gestureend"].forEach(function(t){document.addEventListener(t,p,{passive:false})});document.addEventListener("touchmove",function(e){if(e.touches&&e.touches.length>1)e.preventDefault()},{passive:false})})()</script>
 <title>Sobremesa — les langues d'Espagne</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Figtree:wght@400;500;600;700;800&family=Nunito:wght@400;600;700&family=Baloo+2:wght@500;600;700;800&family=DynaPuff:wght@700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Figtree:wght@400;500;600;700;800&family=Nunito:wght@400;600;700&family=Baloo+2:wght@500;600;700;800&family=DynaPuff:wght@700&display=swap" rel="stylesheet"></noscript>
 <style>
@@ -3782,7 +3783,7 @@ function pathHtml(){
   pl.units.forEach(u=>{u._b=ix;ix+=u.steps.length;u._d=it.slice(u._b,u._b+u.steps.length).every(x=>x.done)});
   /* chapitres : on regroupe les unités du niveau par 5 à 7 pour ne pas afficher une liste interminable */
   const CH=chaps(pl.units);
-  if(CH.length<2)return lvBanner()+head+hero()+(srDue().length?`<button class="theme rev" onclick="start('Révision')"><b>${tr("Réviser")}</b><span>${tr("À revoir aujourd'hui : {0}",srDue().length)}</span></button>`:"")+lvHdr(pl)+`<h3>${tr("Ton parcours")} · ${dn}/${it.length}</h3>${pl.units.map(u=>uh(u,u.n)).join("")}`;
+  if(CH.length<2)return lvBanner()+head+hstrip()+`<h3>${tr("Ton parcours")} · ${dn}/${it.length}</h3>${pl.units.map(u=>uh(u,u.n)).join("")}`+lvHdr(pl);
   let cc=CH.findIndex(c=>c.some(u=>u.n===cu));if(cc<0)cc=CH.length-1;
   const prv=c=>c.filter(u=>!u.cons).slice(0,3).map(u=>u.title).join(" · ")+(c.length>3?" …":"");
   const ck=lg()+":"+lv()+":"+cc;S.chs=S.chs||{};
@@ -3792,7 +3793,7 @@ function pathHtml(){
   const past=CH.slice(0,cc).map((c,i)=>`<details class="chap"><summary><span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><b>${tr("Chapitre {0}",i+1)} · ${chName(i,CH.length)}</b><small>${prv(c)}</small></summary>${c.map((u,k)=>uh(u,k+1)).join("")}</details>`).join("");
   const now=`<div class="chh"><b>${tr("Chapitre {0}",cc+1)} · ${chName(cc,CH.length)}</b><span>${tr("{0}/{1} unités",cd,cur3.length)}</span><i class="bar"><i style="width:${Math.round(cd/cur3.length*100)}%"></i></i></div>`+cur3.map((u,k)=>uh(u,k+1)).join("");
   const next=CH.slice(cc+1).map((c,i)=>`<div class="chlock" aria-disabled="true"><span aria-hidden="true">🔒</span><b>${tr("Chapitre {0}",cc+i+2)} · ${chName(cc+i+1,CH.length)}</b><small>${prv(c)}</small></div>`).join("");
-  return lvBanner()+okc+head.replace(/<span class="stbadge">[^<]*<\/span>/,`<span class="stbadge">${tr("Chapitre {0}",cc+1)} · ${tr("Unité {0}/{1}",Math.max(1,cur3.findIndex(u=>u.n===cu)+1),cur3.length)}</span>`)+hero()+(srDue().length?`<button class="theme rev" onclick="start('Révision')"><b>${tr("Réviser")}</b><span>${tr("À revoir aujourd'hui : {0}",srDue().length)}</span></button>`:"")+lvHdr(pl)+past+now+next;
+  return lvBanner()+okc+head.replace(/<span class="stbadge">[^<]*<\/span>/,`<span class="stbadge">${tr("Chapitre {0}",cc+1)} · ${tr("Unité {0}/{1}",Math.max(1,cur3.findIndex(u=>u.n===cu)+1),cur3.length)}</span>`)+hstrip()+past+now+next+lvHdr(pl);
 }
 /* nom d'une unité : le thème pour la première, puis ses vrais sous-thèmes (vocabulaire d'abord, grammaire en dernier) au lieu de « thème · 2 » */
 function uName(t,c,part,base){if(!part)return base;const pr=x=>x.t==="Exceptions"||x.t==="Conjugaison"||x.tn?2:x.t==="Expressions"?1:0,L=[],seen=new Set();
@@ -3806,6 +3807,9 @@ function chName(i,n){const N=["Premiers pas","Prendre ses marques","Gagner en ai
 function chaps(us){const m=us.filter(u=>!u.cons),c=us.filter(u=>u.cons);if(m.length<=8)return [us];
   const n=Math.ceil(m.length/7),sz=Math.ceil(m.length/n),o=[];for(let i=0;i<m.length;i+=sz)o.push(m.slice(i,i+sz));o[o.length-1].push(...c);return o}
 function chSeen(k){S.chs=S.chs||{};S.chs[k]=1;save();const e=document.querySelector(".chok");if(e)e.remove()}
+/* bandeau compact : niveau, défi du jour et révisions sur une seule ligne, pour laisser voir le chemin */
+function hstrip(){const i=xpInfo(),n=srDue().length;let dc="",dt="";try{const c=dcGet(),D=dcDef();dc=`<button class="hsc hsd${c.ok?" ok":""}" onclick="this.closest('.hstrip').classList.toggle('op')" aria-label="${tr("Défi du jour")}"><i>${c.ok?"✓":D.i}</i>${c.ok?"":D.g>1?c.p+"/"+D.g:"+20"}</button>`;dt=`<p class="hsdt"><b>${tr("Défi du jour")}</b> ${tr(D.n)}${c.ok?" · ✓ "+tr("Réussi"):""}</p>`}catch(e){}
+  return `<div class="hstrip"><div class="hsr"><button class="hsc hsl" onclick="prog()"><b>${tr("Niv. {0}",i.L)}</b><span class="bar"><i style="width:${i.pc}%"></i></span></button>${dc}${n?`<button class="hsc hsv" onclick="start('Révision')" aria-label="${tr("À revoir aujourd'hui : {0}",n)}"><i>🔁</i>${n}</button>`:""}</div>${dt}</div>`}
 function hero(){const i=xpInfo();return `<button class="stlvl" onclick="prog()"><b>${tr("Niv. {0}",i.L)}</b><span class="bar"><i style="width:${i.pc}%"></i></span><span>${i.L>=50?i.x:(i.x-i.lo)+"/"+(i.hi-i.lo)}</span></button>`}
 function heroOld(){const i=xpInfo(),d=S.last?Math.floor((Date.now()-new Date(S.last).getTime())/864e5):0;return `<button class="hero2" onclick="prog()"><span class="hm">${mas(d>=3?"dodo":"content",52)}</span><span class="hi"><span class="lt"><b>${tr("Niv. {0}",i.L)} · ${titleOf(i.L)}</b><em${S.last===dayK()?"":' class="dim"'}>🔥 ${curStreak()} · 🪙 ${S.co||0}</em></span><div class="bar"><i style="width:${i.pc}%"></i></div><small>${i.L>=50?i.x+" XP":(i.x-i.lo)+" / "+(i.hi-i.lo)+" XP"} · 🎯 ${dxp()>=goal()?tr("Objectif atteint ✅"):tr("{0} / {1} XP aujourd'hui",dxp(),goal())}</small></span></button>`}
 function welcome(){welcomeOb()}
@@ -5735,7 +5739,7 @@ function dcHtml(){try{const c=dcGet(),D=dcDef(),p=Math.round(100*c.p/D.g);return
  const h0=window.home;if(typeof h0!=="function")return;
  window.home=function(){const r=h0.apply(this,arguments);try{
   const hero=document.querySelector("#app .sthero");if(!hero)return r;
-  hero.insertAdjacentHTML("afterend",dcHtml());
+  
   const mb=hero.querySelector(".stmas");if(!mb)return r;
   S.mm=S.mm||{};const M=S.mm,today=dayK(),cs=curStreak(),L=lv(),gap=S.last?Math.floor((Date.now()-new Date(S.last).getTime())/864e5):0;
   if(M.lv===undefined)M.lv=L;
