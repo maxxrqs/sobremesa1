@@ -595,17 +595,32 @@ html body .lm.mlko .mas{animation:mlNo .55s ease-in-out}
 html body .lm.mlwow .mas{animation:mlWow .9s cubic-bezier(.3,1.5,.5,1)}
 .mlb{position:absolute;left:calc(50% + 52px);top:6px;max-width:42%;background:var(--card);color:var(--ink);border:2.5px solid var(--ink);border-radius:16px 16px 16px 4px;box-shadow:3px 3px 0 var(--ink);padding:6px 11px;font-weight:800;font-size:15px;line-height:1.2;white-space:nowrap;animation:mlBub .32s cubic-bezier(.3,1.6,.5,1) both}
 .mlb.out{animation:mlBubOut .25s ease-in both}
-.cmb{position:absolute;right:calc(50% + 50px);bottom:2px;width:52px;height:64px;display:block;transform-origin:50% 100%;animation:fmIn .4s cubic-bezier(.3,1.6,.5,1) both}
-.cmb.big{animation:fmBig .75s cubic-bezier(.3,1.6,.5,1) both}
-.cmb svg{width:100%;height:100%;overflow:visible;filter:drop-shadow(2px 3px 0 rgba(27,42,74,.9))}
-.cmb .fo{transform-origin:50% 100%;animation:fmFlick 1.1s ease-in-out infinite}
-.cmb .fi{transform-origin:50% 100%;animation:fmFlick2 .8s ease-in-out infinite}
+.cmb{position:absolute;right:calc(50% + 50px);bottom:2px;width:52px;height:64px;display:block;transform-origin:50% 100%;--fo:#E63B2E;--fi:#FF9A3D;--fg:rgba(230,59,46,.55)}
+.cmb.t2{--fo:#F57C1F;--fi:#FFD23F;--fg:rgba(245,124,31,.6)}
+.cmb.t3{--fo:#2F7BEA;--fi:#A6E6FF;--fg:rgba(47,123,234,.65)}
+.cmb.t4{--fo:#8A3FE0;--fi:#F4AEFF;--fg:rgba(160,70,240,.7)}
+.cmb svg{width:100%;height:100%;overflow:visible;transform-origin:50% 100%;filter:drop-shadow(2px 3px 0 rgba(27,42,74,.9)) drop-shadow(0 0 7px var(--fg))}
+.cmb .fo,.cmb .fi{transform-box:fill-box;transform-origin:50% 100%;transition:fill .55s cubic-bezier(.4,0,.2,1)}
+.cmb .fo{fill:var(--fo);animation:fmFlick 1.15s ease-in-out infinite}
+.cmb .fi{fill:var(--fi);animation:fmFlick2 .78s ease-in-out infinite}
 .cmb b{position:absolute;left:0;right:0;bottom:9px;text-align:center;font:900 20px/1 "Baloo 2",Nunito,sans-serif;color:#fff;-webkit-text-stroke:3.5px #1B2A4A;paint-order:stroke fill;letter-spacing:-.5px}
 .cmb.n2 b{font-size:17px}
+.cmb.ign{animation:fmIgnite .62s cubic-bezier(.2,.9,.25,1) both}
+.cmb.ign .fi{animation:fmIgniteIn .62s cubic-bezier(.2,.9,.25,1) .1s both,fmFlick2 .78s ease-in-out .72s infinite}
+.cmb.ign b{animation:fmNum .4s cubic-bezier(.3,1.6,.5,1) .3s both}
+.cmb.bump b{animation:fmNum .38s cubic-bezier(.3,1.6,.5,1) both}
+.cmb.bump svg{animation:fmPuff .38s cubic-bezier(.2,.9,.25,1)}
+.cmb.flare svg{animation:fmFlare .7s cubic-bezier(.2,.9,.25,1)}
+.cmb.flare b{animation:fmNum .45s cubic-bezier(.3,1.6,.5,1) .1s both}
+.cmb.out{animation:fmOut .34s cubic-bezier(.5,0,.75,0) forwards}
+@keyframes fmIgnite{0%{opacity:0;transform:scale(.15,0)}22%{opacity:1;transform:scale(.45,.7)}45%{transform:scale(.82,1.22)}65%{transform:scale(1.1,.93)}82%{transform:scale(.97,1.04)}100%{opacity:1;transform:none}}
+@keyframes fmIgniteIn{0%{transform:scale(0,0)}55%{transform:scale(1.15,1.2)}100%{transform:none}}
+@keyframes fmNum{0%{opacity:0;transform:translateY(6px) scale(.4)}100%{opacity:1;transform:none}}
+@keyframes fmPuff{0%{transform:none}40%{transform:scale(1.12,1.16)}100%{transform:none}}
+@keyframes fmFlare{0%{transform:none}30%{transform:scale(1.35,1.45) rotate(-4deg)}60%{transform:scale(.95,1.02) rotate(3deg)}100%{transform:none}}
+@keyframes fmOut{0%{opacity:1;transform:none}100%{opacity:0;transform:scale(.3,0)}}
 @keyframes fmFlick{0%,100%{transform:scale(1,1) skewX(0)}25%{transform:scale(.97,1.05) skewX(-3deg)}50%{transform:scale(1.03,.96) skewX(2deg)}75%{transform:scale(.98,1.03) skewX(-1deg)}}
 @keyframes fmFlick2{0%,100%{transform:scale(1,1)}30%{transform:scale(.9,1.12) skewX(4deg)}60%{transform:scale(1.06,.92) skewX(-3deg)}}
-@keyframes fmIn{0%{opacity:0;transform:scale(.2)}70%{opacity:1;transform:scale(1.15)}100%{transform:none}}
-@keyframes fmBig{0%{opacity:0;transform:scale(.2) rotate(-12deg)}55%{opacity:1;transform:scale(1.45) rotate(6deg)}100%{transform:none}}
 @keyframes mlIdle{0%,100%{transform:translateY(0) scale(1,1)}50%{transform:translateY(-2px) scale(1.015,.985)}}
 @keyframes mlHop{0%{transform:translateY(0) scale(1)}25%{transform:translateY(0) scale(1.08,.9)}55%{transform:translateY(-18px) scale(.95,1.06)}80%{transform:translateY(0) scale(1.05,.95)}100%{transform:none}}
 @keyframes mlNo{0%,100%{transform:none}20%{transform:rotate(-7deg)}45%{transform:rotate(6deg)}70%{transform:rotate(-3deg)}}
@@ -613,7 +628,7 @@ html body .lm.mlwow .mas{animation:mlWow .9s cubic-bezier(.3,1.5,.5,1)}
 @keyframes mlBub{from{opacity:0;transform:scale(.4) translateY(8px)}to{opacity:1;transform:none}}
 @keyframes mlBubOut{to{opacity:0;transform:scale(.7)}}
 @keyframes mlCmb{0%{opacity:0;transform:scale(.3) rotate(-20deg)}60%{opacity:1;transform:scale(1.35) rotate(6deg)}100%{transform:none}}
-@media (prefers-reduced-motion:reduce){html body .lm .mas,html body .lm.mlok .mas,html body .lm.mlko .mas,html body .lm.mlwow .mas,.mlb,.cmb,.cmb .fo,.cmb .fi{animation:none!important}}
+@media (prefers-reduced-motion:reduce){html body .lm .mas,html body .lm.mlok .mas,html body .lm.mlko .mas,html body .lm.mlwow .mas,.mlb,.cmb,.cmb .fo,.cmb .fi,.cmb b,.cmb svg{animation:none!important}}
 @media (max-width:360px){.mlb{font-size:13px;left:calc(50% + 44px)}.cmb{right:calc(50% + 44px);width:44px;height:54px}.cmb b{font-size:17px;bottom:7px}}
 </style><style id="sm-end">
 .q.end.win .wm{position:relative;display:flex;flex-direction:column;align-items:center}
@@ -630,6 +645,34 @@ html body .lm.mlwow .mas{animation:mlWow .9s cubic-bezier(.3,1.5,.5,1)}
 @keyframes enIn{from{opacity:0;transform:translateY(10px) scale(.85)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.q.end.win .wm .mas,.enb,.enst div,.enw span{animation:none!important}}
 @media (max-width:360px){.enb{font-size:13px}}
+</style><style id="sm-fit">
+/* Exercices : tout tient sur un écran — compactage progressif (data-fit 1 à 5) seulement si ça déborde */
+html[data-fit] #app{padding-top:10px;padding-bottom:8px}
+html[data-fit] #app>.bar{margin-top:8px!important}
+html[data-fit] #app>.q{padding:16px 14px}
+html[data-fit] #app>.q h2{margin-bottom:10px}
+html[data-fit] #app .opt{padding:11px 14px;margin-bottom:6px;min-height:0}
+html[data-fit] #app .lm{min-height:66px}
+html[data-fit] #app .lm>.mas{width:66px!important}
+html[data-fit] #app .fbm{padding:10px 12px;gap:10px}
+html[data-fit] #app .fbm>.mas{width:52px!important}
+html[data-fit] #app #fb .btn{margin-top:8px;padding-top:11px;padding-bottom:11px}
+html[data-fit] #app #fb .tip{margin-top:4px}
+html[data-fit] #app #nol{padding:7px 12px;font-size:13px}
+html[data-fit] #app>.q>p:has(#nol){margin-top:6px!important}
+html[data-fit="2"] #app .lm,html[data-fit="3"] #app .lm,html[data-fit="4"] #app .lm,html[data-fit="5"] #app .lm{min-height:50px}
+html[data-fit="2"] #app .lm>.mas,html[data-fit="3"] #app .lm>.mas,html[data-fit="4"] #app .lm>.mas,html[data-fit="5"] #app .lm>.mas{width:50px!important}
+html[data-fit="2"] #app .cmb,html[data-fit="3"] #app .cmb,html[data-fit="4"] #app .cmb,html[data-fit="5"] #app .cmb{width:40px;height:50px;right:calc(50% + 32px)}
+html[data-fit="2"] #app .cmb b,html[data-fit="3"] #app .cmb b,html[data-fit="4"] #app .cmb b,html[data-fit="5"] #app .cmb b{font-size:16px;bottom:6px}
+html[data-fit="2"] #app .mlb,html[data-fit="3"] #app .mlb,html[data-fit="4"] #app .mlb,html[data-fit="5"] #app .mlb{left:calc(50% + 34px);top:0;font-size:13px;padding:4px 9px}
+html[data-fit="3"] #app>.q h2,html[data-fit="4"] #app>.q h2,html[data-fit="5"] #app>.q h2{font-size:20px;line-height:1.25}
+html[data-fit="3"] #app .opt,html[data-fit="4"] #app .opt,html[data-fit="5"] #app .opt{padding:9px 12px;font-size:15px;margin-bottom:5px}
+html[data-fit="3"] #app .txt,html[data-fit="4"] #app .txt,html[data-fit="5"] #app .txt{font-size:15.5px;line-height:1.38}
+html[data-fit="3"] #app .fbm,html[data-fit="4"] #app .fbm,html[data-fit="5"] #app .fbm{font-size:14.5px}
+html[data-fit="4"] #app .txt.lng,html[data-fit="5"] #app .txt.lng{max-height:32vh;max-height:32dvh;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;-webkit-mask-image:linear-gradient(#000 calc(100% - 22px),transparent);mask-image:linear-gradient(#000 calc(100% - 22px),transparent);padding-bottom:16px}
+html[data-fit="5"] #app>.q{overflow-y:auto;overscroll-behavior:contain;scroll-behavior:smooth}
+html[data-fit] body{overflow-x:hidden}
+html[data-ex] body{padding-bottom:env(safe-area-inset-bottom,0px)!important}
 </style></head>
 <body>
 <style id="splash-css">
@@ -5599,15 +5642,18 @@ const MLW={es:[["¡Muy bien!","¡Eso es!","¡Genial!","¡Perfecto!","¡Olé!"],[
  eu:[["Oso ondo!","Hori da!","Bikain!","Primeran!"],["Animo!","Ez dago arazorik","Ia-ia!","Zuk ahal duzu!"],"{0} jarraian!"]};
 let MLP="";
 function mlPick(a){let t=a[Math.floor(Math.random()*a.length)];if(t===MLP&&a.length>1)t=a[(a.indexOf(t)+1)%a.length];MLP=t;return t}
-function cmbHtml(big){return `<span class="cmb${big?" big":""}${FXS>9?" n2":""}" role="img" aria-label="${FXS}"><svg viewBox="0 0 52 64" aria-hidden="true"><path class="fo" d="M26 2C29 13 41 19 45 32C50 47 41 62 26 62C11 62 2 50 6 36C8 28 13 24 15 18C17 25 20 28 23 29C21 20 22 10 26 2Z" fill="#F2762E" stroke="#1B2A4A" stroke-width="2.5" stroke-linejoin="round"/><path class="fi" d="M26 24C28 31 36 35 37 44C38 53 33 59 26 59C19 59 14 54 15 46C16 40 20 37 21 32C23 36 25 37 26 37C25 33 25 28 26 24Z" fill="#FFC93C"/></svg><b>${FXS}</b></span>`}
+function flTier(n){return n>=12?4:n>=8?3:n>=5?2:1}
+function cmbHtml(ign){return `<span class="cmb t${flTier(FXS)}${ign?" ign":""}${FXS>9?" n2":""}" role="img" aria-label="${FXS}"><svg viewBox="0 0 52 64" aria-hidden="true"><path class="fo" d="M26 2C29 13 41 19 45 32C50 47 41 62 26 62C11 62 2 50 6 36C8 28 13 24 15 18C17 25 20 28 23 29C21 20 22 10 26 2Z" stroke="#1B2A4A" stroke-width="2.5" stroke-linejoin="round"/><path class="fi" d="M26 24C28 31 36 35 37 44C38 53 33 59 26 59C19 59 14 54 15 46C16 40 20 37 21 32C23 36 25 37 26 37C25 33 25 28 26 24Z"/></svg><b>${FXS}</b></span>`}
+function flUpd(fl,n,mile){const t=flTier(n),m=fl.className.match(/\bt(\d)/),old=m?+m[1]:1;fl.classList.remove("ign","bump","flare");void fl.offsetWidth;
+  fl.classList.replace("t"+old,"t"+t);fl.classList.toggle("n2",n>9);fl.setAttribute("aria-label",n);fl.querySelector("b").textContent=n;fl.classList.add(t!==old||mile?"flare":"bump")}
 function mLive(good){try{
   const box=document.querySelector("#app .lm"),m=box&&box.querySelector(".mas");if(!m)return;
   const W=MLW[lg()]||MLW.es,mile=good&&FXS>=5&&FXS%5===0,st=good?(mile?"rire":"bravo"):"triste";
   m.dataset.st=st;m.innerHTML=FX.svg(S.mas||"gecko",st,m.dataset.ax);
   box.classList.remove("mlok","mlko","mlwow");void box.offsetWidth;box.classList.add(good?(mile?"mlwow":"mlok"):"mlko");
-  box.querySelectorAll(".mlb,.cmb").forEach(e=>e.remove());
+  box.querySelectorAll(".mlb").forEach(e=>e.remove());const fl=box.querySelector(".cmb:not(.out)");
   const b=document.createElement("span");b.className="mlb";b.textContent=good&&FXS>=3&&(FXS===3||mile)?W[2].replace("{0}",FXS):mlPick(W[good?0:1]);box.appendChild(b);
-  if(good&&FXS>=3)box.insertAdjacentHTML("beforeend",cmbHtml(FXS===3||mile));
+  if(good&&FXS>=3){if(fl)flUpd(fl,FXS,mile);else box.insertAdjacentHTML("beforeend",cmbHtml(1))}else if(fl){fl.classList.add("out");setTimeout(()=>fl.remove(),360)}
   if(mile){try{FX.confetti()}catch(e){}try{if(!MS().mute&&navigator.vibrate)setTimeout(()=>navigator.vibrate([30,50,30,50,90]),80)}catch(e){}}
   clearTimeout(box._t);box._t=setTimeout(()=>{b.classList.add("out");setTimeout(()=>b.remove(),260)},2200);
 }catch(e){}}
@@ -5640,6 +5686,25 @@ const ENW={es:["¡Increíble!","¡Muy bien hecho!","¡Vamos mejorando!","¡La pr
       st.insertAdjacentElement("afterend",w)}
   }catch(e){}};
 })();
+</script>
+<script id="sm-fit-js">
+/* Ajuste chaque écran d'exercice à la hauteur du téléphone : on compacte par paliers jusqu'à ce qu'il n'y ait plus rien à faire défiler */
+(function(){const a=document.getElementById("app"),root=document.documentElement;if(!a)return;let raf=0,lastQ=null;
+ const over=()=>root.scrollHeight>innerHeight+1;
+ function fit(){raf=0;const ex=a.querySelector(":scope>.lm")&&a.querySelector(":scope>.q:not(.end)");
+  if(!ex){if(root.dataset.fit)delete root.dataset.fit;if(root.dataset.ex)delete root.dataset.ex;lastQ=null;return}
+  root.dataset.ex="1";
+  let q=null;try{q=R.q}catch(e){}
+  let f=q===lastQ?+(root.dataset.fit||0):0;lastQ=q;
+  if(f)root.dataset.fit=f;else delete root.dataset.fit;
+  const qe=a.querySelector(":scope>.q");qe.style.maxHeight="";
+  while(over()&&f<5){f++;root.dataset.fit=f;if(f===4)qe.querySelectorAll(".txt").forEach(t=>t.classList.toggle("lng",t.offsetHeight>140))}
+  if(f===5){const top=qe.getBoundingClientRect().top+scrollY,pb=parseFloat(getComputedStyle(a).paddingBottom)||0;qe.style.maxHeight=Math.max(220,innerHeight-top-pb-4)+"px";
+   if(document.querySelector("#fb>*"))qe.scrollTop=qe.scrollHeight}
+  if(scrollY)scrollTo(0,0)}
+ const go=()=>{if(!raf)raf=requestAnimationFrame(fit)};
+ new MutationObserver(go).observe(a,{childList:true,subtree:true});addEventListener("resize",()=>{lastQ=null;go()});
+ try{document.fonts&&document.fonts.ready.then(go)}catch(e){}})();
 </script>
 </body>
 </html>
