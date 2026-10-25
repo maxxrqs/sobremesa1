@@ -5667,7 +5667,7 @@ const MLW={es:[["¡Muy bien!","¡Eso es!","¡Genial!","¡Perfecto!","¡Olé!"],[
  eu:[["Oso ondo!","Hori da!","Bikain!","Primeran!"],["Animo!","Ez dago arazorik","Ia-ia!","Zuk ahal duzu!"],"{0} jarraian!"]};
 let MLP="";
 function mlPick(a){let t=a[Math.floor(Math.random()*a.length)];if(t===MLP&&a.length>1)t=a[(a.indexOf(t)+1)%a.length];MLP=t;return t}
-function flTier(n){return n>=10?3:n>=5?2:1}
+function flTier(n){return n>=9?3:n>=5?2:1}
 function cmbHtml(ign){return `<span class="cmb t${flTier(FXS)}${ign?" ign":""}${FXS>9?" n2":""}" role="img" aria-label="${FXS}"><svg viewBox="0 0 52 64" aria-hidden="true"><path class="fo" d="M26 2C29 13 41 19 45 32C50 47 41 62 26 62C11 62 2 50 6 36C8 28 13 24 15 18C17 25 20 28 23 29C21 20 22 10 26 2Z" stroke="#1B2A4A" stroke-width="2.5" stroke-linejoin="round"/><path class="fi" d="M26 24C28 31 36 35 37 44C38 53 33 59 26 59C19 59 14 54 15 46C16 40 20 37 21 32C23 36 25 37 26 37C25 33 25 28 26 24Z"/></svg><b>${FXS}</b></span>`}
 function flUpd(fl,n,mile){const t=flTier(n),m=fl.className.match(/\bt(\d)/),old=m?+m[1]:1;fl.classList.remove("ign","bump","flare");void fl.offsetWidth;
   fl.classList.replace("t"+old,"t"+t);fl.classList.toggle("n2",n>9);fl.setAttribute("aria-label",n);fl.querySelector("b").textContent=n;fl.classList.add(t!==old||mile?"flare":"bump")}
