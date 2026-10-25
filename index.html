@@ -617,6 +617,21 @@ html body .lm.mlwow .mas{animation:mlWow .9s cubic-bezier(.3,1.5,.5,1)}
 @keyframes mlCmb{0%{opacity:0;transform:scale(.3) rotate(-20deg)}60%{opacity:1;transform:scale(1.35) rotate(6deg)}100%{transform:none}}
 @media (prefers-reduced-motion:reduce){html body .lm .mas,html body .lm.mlok .mas,html body .lm.mlko .mas,html body .lm.mlwow .mas,.mlb,.cmb{animation:none!important}}
 @media (max-width:360px){.mlb{font-size:13px;left:calc(50% + 44px)}.cmb{right:calc(50% + 48px)}}
+</style><style id="sm-end">
+.q.end.win .wm{position:relative;display:flex;flex-direction:column;align-items:center}
+.q.end.win .wm.dance .mas{transform-origin:50% 100%;animation:enDance 1.1s cubic-bezier(.3,1.4,.5,1) 3 1.1s,mlIdle 3.4s ease-in-out 4.5s infinite}
+.q.end.win .wm.calm .mas{transform-origin:50% 100%;animation:mlIdle 3.4s ease-in-out infinite}
+.enb{position:relative;margin:0 0 4px;max-width:90%;white-space:normal!important;text-align:center;background:var(--card);color:var(--ink);border:2.5px solid var(--ink);border-radius:16px;box-shadow:3px 3px 0 var(--ink);padding:6px 12px;font-weight:800;font-size:15px;white-space:nowrap;animation:mlBub .35s cubic-bezier(.3,1.6,.5,1) .9s both}
+.enst{display:flex;gap:10px;justify-content:center;margin:14px 0 4px;flex-wrap:wrap}
+.enst div{min-width:92px;background:var(--card);border:2.5px solid var(--ink);border-radius:16px;box-shadow:3px 3px 0 var(--ink);padding:8px 12px;text-align:center;animation:enIn .4s cubic-bezier(.3,1.5,.5,1) both}
+.enst b{display:block;font-size:22px;line-height:1.1;color:var(--ink)}.enst small{font-weight:700;color:var(--mut);font-size:12px}
+.enw{margin:14px 0 6px;text-align:center}.enw>small{display:block;font-weight:800;color:var(--mut);font-size:12px;letter-spacing:.3px;text-transform:uppercase;margin-bottom:8px}
+.enw span{display:inline-flex;align-items:center;gap:5px;margin:3px;padding:5px 11px;border-radius:999px;border:2px solid var(--ink);font-weight:800;font-size:14px;animation:enIn .35s cubic-bezier(.3,1.5,.5,1) both}
+.enw .ok{background:var(--okb);color:var(--ok)}.enw .ko{background:var(--kob);color:var(--ko)}
+@keyframes enDance{0%,100%{transform:none}15%{transform:scale(1.08,.9)}35%{transform:translateY(-22px) rotate(-10deg)}55%{transform:translateY(0) scale(1.05,.95)}70%{transform:translateY(-12px) rotate(9deg)}85%{transform:translateY(0) scale(1.03,.97)}}
+@keyframes enIn{from{opacity:0;transform:translateY(10px) scale(.85)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.q.end.win .wm .mas,.enb,.enst div,.enw span{animation:none!important}}
+@media (max-width:360px){.enb{font-size:13px}}
 </style></head>
 <body>
 <style id="splash-css">
@@ -901,7 +916,7 @@ function hpJS(pw,salt){let x=salt+":"+pw;for(let i=0;i<3000;i++)x=sha256(x+salt)
 const withTimeout=(p,ms)=>Promise.race([p,new Promise(r=>setTimeout(()=>r(null),ms))]);
 var UI="fr";
 const UIL={fr:"Français",en:"English",it:"Italiano",de:"Deutsch",pt:"Português"};
-const TR={};const trLoad=l=>(l==="fr"||TR[l])?Promise.resolve():fetch("tr/"+l+".json?v=43").then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{TR[l]=j}).catch(()=>{});
+const TR={};const trLoad=l=>(l==="fr"||TR[l])?Promise.resolve():fetch("tr/"+l+".json?v=44").then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{TR[l]=j}).catch(()=>{});
 try{const s=ST.get("cast_ui"),n=(navigator.language||"fr").slice(0,2);UI=UIL[s]?s:(UIL[n]?n:"fr")}catch(e){}
 const gl=s=>{if(UI==="fr"||!TR[UI])return s;let t=TR[UI][s];if(t!=null)return t;const n=s.match(NUMRE);if(n){t=TR[UI][s.replace(NUMRE,"#")];if(t!=null){let i=0;return t.replace(/#/g,()=>i<n.length?n[i++]:"#")}const b=s.match(/^(.*\S)\s+(\d+)$/);if(b&&TR[UI][b[1]]!=null)return TR[UI][b[1]]+" "+b[2]}return s};
 const tr=(s,...a)=>gl(s).replace(/\{(\d)\}/g,(m,i)=>a[i]);
@@ -1532,7 +1547,7 @@ function axFetchJ(u,tries){const go=async()=>{const ac=new AbortController(),to=
 /* index d'une voix (v) ; sans voix choisie : ancien jeu castillan uniquement */
 function axIdx(l,v){const k=v||l;if(!v&&l!=="es")return Promise.resolve(null);
   const t=AX.ixt[k];if(AX.idx[k])return AX.idx[k];if(t&&Date.now()-t<4000)return Promise.resolve(null);
-  return AX.idx[k]=axFetchJ(v?"v/"+v+"/"+v+".json?v=10":"a/"+l+".json?v=14",2).then(x=>{if(!v&&l==="es"){AX.okes=1;try{vnote()}catch(e){}}return x}).catch(e=>{delete AX.idx[k];AX.ixt[k]=/^http4/.test(String(e))?Date.now()+3e10:Date.now();return null})}
+  return AX.idx[k]=axFetchJ(v?"v/"+v+"/"+v+".json?v=11":"a/"+l+".json?v=14",2).then(x=>{if(!v&&l==="es"){AX.okes=1;try{vnote()}catch(e){}}return x}).catch(e=>{delete AX.idx[k];AX.ixt[k]=/^http4/.test(String(e))?Date.now()+3e10:Date.now();return null})}
 const axUrl=(v,n)=>v?"v/"+v+"/"+n+"?v=2":"a/"+n+"?v=2";
 function axPack(l,v,i,n){const k=(v||l)+"/"+n;return AX.pk[k]||(AX.pk[k]=fetch(axUrl(v,n)).then(r=>{if(!r.ok)throw 0;return r.arrayBuffer()}).then(b=>(AX.pkd[k]=b)).catch(()=>{delete AX.pk[k];return null}))}
 const axMp3=b=>{if(!b||b.byteLength<4)return false;const u=new Uint8Array(b,0,3);return(u[0]===73&&u[1]===68&&u[2]===51)||(u[0]===255&&(u[1]&224)===224)};
@@ -5504,6 +5519,29 @@ const MVX={gecko:{es:"es_laura",va:"va_lluc",ca:"ca_grau",gl:"gl_c",eu:"eu_antto
 (function(){const p=window.vxPick;if(typeof p!=="function")return;
   window.vxPick=function(l){const c=ST.get("sobv_"+l),L=vxList(l);if(c==="0"||!L.length)return p(l);const v=(MVX[S.mas||"gecko"]||{})[l];return v&&L.some(x=>x.id===v)?v:p(l)};
   const sm=window.setMas;if(typeof sm==="function")window.setMas=function(k){const o=S.mas;sm(k);if(o!==k){try{AX.dec.clear();axWarm();setTimeout(()=>vxPrev(lg()),350)}catch(e){}}}})();
+</script>
+<script id="sm-end-js">
+/* Fin de séance plus gratifiante : le compagnon danse et commente, précision, meilleure série et mots travaillés pendant la séance */
+const ENW={es:["¡Increíble!","¡Muy bien hecho!","¡Vamos mejorando!","¡La próxima, mejor!"],va:["Increïble!","Molt ben fet!","Anem millorant!","La pròxima, millor!"],ca:["Increïble!","Molt ben fet!","Anem millorant!","La propera, millor!"],gl:["Incrible!","Moi ben feito!","Imos mellorando!","A próxima, mellor!"],eu:["Ikaragarria!","Oso ondo egina!","Hobetzen ari gara!","Hurrengoan, hobeto!"]};
+(function(){
+  const f0=window.fin;if(typeof f0==="function")window.fin=function(good,sol,key,msg){try{if(R&&R.mode!=="test"&&key){const s=good===true?1:good===false?0:+good||0;const W=R.wsn=R.wsn||{};W[key]=Math.min(W[key]===undefined?1:W[key],s)}}catch(e){}return f0.apply(this,arguments)};
+  const fx=window.fxOk;if(typeof fx==="function")window.fxOk=function(g){fx(g);try{if(R&&g)R.bs=Math.max(R.bs||0,FXS)}catch(e){}};
+  const e0=window.end;if(typeof e0!=="function")return;
+  window.end=function(){const r=R;e0.apply(this,arguments);try{
+    const q=document.querySelector(".q.end.win");if(!q)return;const wm=q.querySelector(".wm"),ok=+r.ok||0,W=ENW[lg()]||ENW.es;
+    if(wm){wm.classList.add(ok>=4?"dance":"calm");const b=document.createElement("span");b.className="enb";b.textContent=W[ok>=9?0:ok>=7?1:ok>=4?2:3];wm.prepend(b)}
+    const c2=q.querySelector(".chips2");if(!c2)return;
+    const st=document.createElement("div");st.className="enst";
+    st.innerHTML=`<div style="animation-delay:.9s"><b>${Math.round(ok*10)} %</b><small>${tr("Précision")}</small></div>`+(r.bs>=2?`<div style="animation-delay:1.05s"><b>🔥 ${r.bs}</b><small>${tr("Meilleure série")}</small></div>`:"");
+    c2.insertAdjacentElement("afterend",st);
+    const ks=Object.keys(r.wsn||{}).filter(k=>k&&k.length<=32&&!/^[a-z]+:/.test(k));
+    if(ks.length){const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+      const ord=ks.sort((a,b)=>(r.wsn[b]>=1)-(r.wsn[a]>=1)).slice(0,10);
+      const w=document.createElement("div");w.className="enw";
+      w.innerHTML=`<small>${tr("Mots de la séance")}</small>`+ord.map((k,i)=>`<span class="${r.wsn[k]>=1?"ok":"ko"}" style="animation-delay:${1.2+i*.07}s">${r.wsn[k]>=1?"✓":"↻"} ${esc(k)}</span>`).join("");
+      st.insertAdjacentElement("afterend",w)}
+  }catch(e){}};
+})();
 </script>
 </body>
 </html>
