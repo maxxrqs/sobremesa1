@@ -20,7 +20,7 @@
     "path": "./sobremesa.keystore",
     "alias": "sobremesa"
   },
-  "appVersionCode": 1,
+  "appVersionCode": 2,
   "shortcuts": [],
   "generatorApp": "bubblewrap-cli",
   "fallbackType": "customtabs",

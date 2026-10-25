@@ -57,8 +57,8 @@ android {
         applicationId "io.github.maxxrqs.sobremesa"
         minSdkVersion 24
         targetSdkVersion 36
-        versionCode 1
-        versionName ""
+        versionCode 2
+        versionName "1.1"
 
         // The name for the application
         resValue "string", "appName", twaManifest.name

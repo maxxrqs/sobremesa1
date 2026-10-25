@@ -14,9 +14,13 @@ jobs:
       - run: chmod +x gradlew && (./gradlew --no-daemon assembleRelease 2>&1 | tee /tmp/build.log; exit ${PIPESTATUS[0]})
         shell: bash
         continue-on-error: true
-      - run: |
+      - env:
+          KS_B64: ${{ secrets.KEYSTORE_B64 }}
+          KS_PASS: ${{ secrets.KEYSTORE_PASS }}
+        run: |
           mkdir -p /tmp/out && cp /tmp/build.log /tmp/out/ && BT=$(ls -d $ANDROID_HOME/build-tools/* | sort -V | tail -1) && cp $BT/lib/apksigner.jar $BT/zipalign /tmp/out/ && (cp app/build/outputs/apk/release/*.apk /tmp/out/sobremesa-unsigned.apk || true)
-          cd /tmp/out && git init -q -b android-out && git add . && git -c user.name=ci -c user.email=ci@local commit -qm "APK non signé ${GITHUB_SHA::7}"
+          export KS_PASS="$(printf %s "$KS_PASS" | tr -d '\r\n')"; if [ -f /tmp/out/sobremesa-unsigned.apk ] && [ -n "$KS_B64" ]; then (echo "$KS_B64" | base64 -d > /tmp/ks.keystore && $BT/zipalign -f -p 4 /tmp/out/sobremesa-unsigned.apk /tmp/al.apk && java -jar $BT/lib/apksigner.jar sign --ks /tmp/ks.keystore --ks-pass env:KS_PASS --out /tmp/out/sobremesa.apk /tmp/al.apk && rm -f /tmp/ks.keystore /tmp/out/sobremesa.apk.idsig) > /tmp/out/sign.log 2>&1 || echo ECHEC >> /tmp/out/sign.log; rm -f /tmp/ks.keystore; fi
+          cd /tmp/out && git init -q -b android-out && git add . && git -c user.name=ci -c user.email=ci@local commit -qm "APK ${GITHUB_SHA::7}"
           git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" android-out
   test:
     needs: build
