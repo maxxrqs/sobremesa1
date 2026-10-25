@@ -966,6 +966,31 @@ html body .conf{display:none!important}
 html body *,html body *::before,html body *::after{animation-iteration-count:1!important;scroll-behavior:auto!important}
 }
 </style>
+<style id="sm-bd">
+/* ===== Bulles de BD : le compagnon parle (accueil, leçon, fin de leçon), puis la bulle s'en va seule ===== */
+html body .mmb,html body .mlb,html body .enb{background:var(--card);color:var(--ink);border:2.5px solid var(--ink);border-radius:20px;box-shadow:3px 3px 0 var(--ink);font:800 15px/1.18 "Baloo 2",Figtree,system-ui,sans-serif;letter-spacing:.1px}
+html body .mmb::before,html body .mmb::after,html body .mlb::before,html body .mlb::after,html body .enb::before,html body .enb::after{content:"";position:absolute;width:0;height:0;border-style:solid;pointer-events:none}
+/* accueil : la bulle se place à côté de « C'est parti ! », sans jamais le toucher ; la pointe monte vers le compagnon */
+html body .sthero .strow{display:flex;flex-wrap:wrap;align-items:center;gap:16px 12px;width:100%;margin-top:10px}
+html body .sthero .strow .stgo{margin-top:0;flex:none}
+html body .sthero .mmb{position:relative;right:auto;top:auto;z-index:1;flex:1 1 132px;min-width:0;max-width:240px;margin:8px 0 0 auto;padding:8px 12px;text-align:left;transform-origin:78% -14px}
+html body .mmb::before{top:-15.5px;right:26px;border-width:0 3px 14.5px 13px;border-color:transparent transparent var(--ink) transparent}
+html body .mmb::after{top:-10.4px;right:28.6px;border-width:0 1.6px 11.6px 9.4px;border-color:transparent transparent var(--card) transparent}
+/* leçon : la pointe part vers le compagnon, à gauche */
+html body .mlb{padding:6px 12px;transform-origin:-14px 75%}
+html body .mlb::before{left:-15.5px;bottom:3px;border-width:9px 14.5px 3px 0;border-color:transparent var(--ink) transparent transparent}
+html body .mlb::after{left:-10.4px;bottom:5.4px;border-width:6.4px 11.6px 1.6px 0;border-color:transparent var(--card) transparent transparent}
+/* fin de leçon : la pointe descend vers le compagnon */
+html body .enb{display:inline-block;margin:0 auto 18px;padding:7px 14px;transform-origin:50% calc(100% + 14px)}
+html body .enb::before{bottom:-15.5px;left:calc(50% - 10px);border-width:14.5px 3px 0 13px;border-color:var(--ink) transparent transparent transparent}
+html body .enb::after{bottom:-10.4px;left:calc(50% - 7.4px);border-width:11.6px 1.6px 0 9.4px;border-color:var(--card) transparent transparent transparent}
+/* départ : la bulle se dégonfle vers le compagnon ; sa place reste réservée, rien ne saute dans la page */
+@keyframes bdOut{0%{opacity:1;transform:none}100%{opacity:0;transform:scale(.55);visibility:hidden}}
+html body .mmb.out,html body .enb.out{animation:bdOut .3s cubic-bezier(.4,0,1,1) forwards}
+html body .mlb.out{animation:bdOut .26s cubic-bezier(.4,0,1,1) forwards}
+@media (prefers-reduced-motion:reduce){html body .mmb.out,html body .enb.out,html body .mlb.out{animation:none!important;visibility:hidden}}
+</style>
+
 
 <main id="app"></main>
 <script>
@@ -5715,7 +5740,7 @@ const ENW={es:["¡Increíble!","¡Muy bien hecho!","¡Vamos mejorando!","¡La pr
   const e0=window.end;if(typeof e0!=="function")return;
   window.end=function(){const r=R;e0.apply(this,arguments);try{
     const q=document.querySelector(".q.end.win");if(!q)return;const wm=q.querySelector(".wm"),ok=+r.ok||0,W=ENW[lg()]||ENW.es;
-    if(wm){wm.classList.add(ok>=4?"dance":"calm");const b=document.createElement("span");b.className="enb";b.textContent=W[ok>=9?0:ok>=7?1:ok>=4?2:3];wm.prepend(b)}
+    if(wm){wm.classList.add(ok>=4?"dance":"calm");const b=document.createElement("span");b.className="enb";b.textContent=W[ok>=9?0:ok>=7?1:ok>=4?2:3];wm.prepend(b);setTimeout(()=>{if(b.isConnected)b.classList.add("out")},4500)}
     const c2=q.querySelector(".chips2");if(!c2)return;
     const st=document.createElement("div");st.className="enst";
     st.innerHTML=`<div style="animation-delay:.9s"><b>${Math.round(ok*10)} %</b><small>${tr("Précision")}</small></div>`+(r.bs>=2?`<div style="animation-delay:1.05s"><b>🔥 ${r.bs}</b><small>${tr("Meilleure série")}</small></div>`:"");
@@ -5765,7 +5790,7 @@ function dcHtml(){try{const c=dcGet(),D=dcDef(),p=Math.round(100*c.p/D.g);return
   else if(gap>=3){say=gap>=7?tr("Une semaine sans toi… je t'ai attendu 🥺"):tr("Tu m'as manqué… {0} jours sans toi !",gap);mood="s";M.away=1}
   else if(M.away&&S.last===today){say=tr("Te revoilà ! On reprend ensemble 💪");mood="d";M.away=0}
   if(mood){mb.classList.add(mood==="d"?"mmd":"mms");const ms=mb.querySelector(".mas");if(ms&&mood==="s"){ms.dataset.st="triste";ms.innerHTML=FX.svg(S.mas||"gecko","triste",ms.dataset.ax)}
-   const b=document.createElement("span");b.className="mmb";b.textContent=say;hero.appendChild(b);save()}
+   const b=document.createElement("span");b.className="mmb";b.setAttribute("role","status");b.textContent=say;const go=hero.querySelector(".stgo");if(go){const row=document.createElement("div");row.className="strow";go.replaceWith(row);row.append(go,b)}else hero.appendChild(b);setTimeout(()=>{if(b.isConnected)b.classList.add("out")},6500);save()}
  }catch(e){}return r};
 })();
 </script>
