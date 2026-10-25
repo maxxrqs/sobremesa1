@@ -799,6 +799,7 @@ html body .lmf{position:relative;z-index:1;background:var(--az);border-top:3px s
 html body .lmf>*{width:100%;max-width:440px;margin:0 auto}
 html body .lmcta{font:800 19px "Baloo 2",sans-serif;color:var(--sk);background:var(--sol);border:2.5px solid var(--sk);border-radius:18px;box-shadow:4px 4px 0 var(--sk);padding:15px;cursor:pointer;transition:transform .12s,box-shadow .12s}
 html body .lmcta:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--sk)}
+html body .lmfree{margin:-4px auto 0;font:600 12px Nunito,sans-serif;color:var(--azk);opacity:.7;text-align:center;letter-spacing:.2px}
 html body .lmlk{font:800 16px "Baloo 2",sans-serif;color:var(--azk);background:none;border:0;padding:8px;cursor:pointer}
 @keyframes lmUp{from{transform:translateY(100%)}to{transform:none}}
 @media (max-height:620px){html body .lmm{height:110px}html body .lmmas{width:150px;height:150px}}
@@ -889,7 +890,7 @@ function hpJS(pw,salt){let x=salt+":"+pw;for(let i=0;i<3000;i++)x=sha256(x+salt)
 const withTimeout=(p,ms)=>Promise.race([p,new Promise(r=>setTimeout(()=>r(null),ms))]);
 var UI="fr";
 const UIL={fr:"Français",en:"English",it:"Italiano",de:"Deutsch",pt:"Português"};
-const TR={};const trLoad=l=>(l==="fr"||TR[l])?Promise.resolve():fetch("tr/"+l+".json?v=37").then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{TR[l]=j}).catch(()=>{});
+const TR={};const trLoad=l=>(l==="fr"||TR[l])?Promise.resolve():fetch("tr/"+l+".json?v=43").then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{TR[l]=j}).catch(()=>{});
 try{const s=ST.get("cast_ui"),n=(navigator.language||"fr").slice(0,2);UI=UIL[s]?s:(UIL[n]?n:"fr")}catch(e){}
 const gl=s=>{if(UI==="fr"||!TR[UI])return s;let t=TR[UI][s];if(t!=null)return t;const n=s.match(NUMRE);if(n){t=TR[UI][s.replace(NUMRE,"#")];if(t!=null){let i=0;return t.replace(/#/g,()=>i<n.length?n[i++]:"#")}const b=s.match(/^(.*\S)\s+(\d+)$/);if(b&&TR[UI][b[1]]!=null)return TR[UI][b[1]]+" "+b[2]}return s};
 const tr=(s,...a)=>gl(s).replace(/\{(\d)\}/g,(m,i)=>a[i]);
@@ -1294,6 +1295,50 @@ const RP=`
 5|Le non-respect de ces conditions entraînera l'annulation immédiate de la réservation.|El incumplimiento de estas condiciones acarreará la anulación inmediata de la reserva.|L'incompliment d'estes condicions comportarà l'anul·lació immediata de la reserva.|L'incompliment d'aquestes condicions comportarà l'anul·lació immediata de la reserva.|O incumprimento destas condicións suporá a anulación inmediata da reserva.|Baldintza hauek ez betetzeak erreserba berehala bertan behera uztea ekarriko du.
 5|Je vous recommande vivement de lire attentivement le contrat avant de le signer.|Le recomiendo encarecidamente que lea con detenimiento el contrato antes de firmarlo.|Li recomane encaridament que llija amb deteniment el contracte abans de firmar-lo.|Li recomano encaridament que llegeixi amb atenció el contracte abans de signar-lo.|Recoméndolle encarecidamente que lea con atención o contrato antes de asinalo.|Biziki gomendatzen dizut kontratua arretaz irakurtzea sinatu aurretik.
 5|Si nous l'avions su plus tôt, nous aurions agi autrement.|De haberlo sabido antes, habríamos actuado de otra manera.|Si ho haguérem sabut abans, hauríem actuat d'una altra manera.|Si ho haguéssim sabut abans, hauríem actuat d'una altra manera.|De sabelo antes, actuariamos doutro xeito.|Lehenago jakin izan bagenu, beste modu batera jokatuko genuen.
+1|Bonjour, je suis français.|Hola, soy francés.|Hola, soc francés.|Hola, soc francès.|Ola, son francés.|Kaixo, frantsesa naiz.
+1|J'ai trente ans.|Tengo treinta años.|Tinc trenta anys.|Tinc trenta anys.|Teño trinta anos.|Hogeita hamar urte ditut.
+1|Mon frère s'appelle Paul.|Mi hermano se llama Paul.|El meu germà es diu Paul.|El meu germà es diu Paul.|O meu irmán chámase Paul.|Nire anaiak Paul du izena.
+1|Aujourd'hui, je suis très fatigué.|Hoy estoy muy cansado.|Hui estic molt cansat.|Avui estic molt cansat.|Hoxe estou moi canso.|Gaur oso nekatuta nago.
+1|Où sont les toilettes ?|¿Dónde están los servicios?|On estan els lavabos?|On són els lavabos?|Onde están os servizos?|Non daude komunak?
+1|Un café, s'il vous plaît.|Un café, por favor.|Un café, per favor.|Un cafè, si us plau.|Un café, por favor.|Kafe bat, mesedez.
+1|Combien ça coûte ?|¿Cuánto cuesta?|Quant costa?|Quant costa?|Canto custa?|Zenbat balio du?
+1|Je ne comprends pas.|No entiendo.|No ho entenc.|No ho entenc.|Non entendo.|Ez dut ulertzen.
+1|Tu peux répéter, s'il te plaît ?|¿Puedes repetir, por favor?|Pots repetir-ho, per favor?|Pots repetir-ho, si us plau?|Podes repetir, por favor?|Errepika dezakezu, mesedez?
+1|J'habite dans un petit appartement.|Vivo en un piso pequeño.|Visc en un pis xicotet.|Visc en un pis petit.|Vivo nun piso pequeno.|Pisu txiki batean bizi naiz.
+1|Le supermarché ouvre à neuf heures.|El supermercado abre a las nueve.|El supermercat obri a les nou.|El supermercat obre a les nou.|O supermercado abre ás nove.|Supermerkatua bederatzietan irekitzen da.
+1|Je prends le métro tous les jours.|Cojo el metro todos los días.|Agafe el metro cada dia.|Agafo el metro cada dia.|Collo o metro todos os días.|Egunero metroa hartzen dut.
+1|Ma sœur travaille dans un hôpital.|Mi hermana trabaja en un hospital.|La meua germana treballa en un hospital.|La meva germana treballa en un hospital.|A miña irmá traballa nun hospital.|Nire arrebak ospitale batean egiten du lan.
+1|Il fait beau aujourd'hui.|Hoy hace buen tiempo.|Hui fa bon temps.|Avui fa bon temps.|Hoxe vai bo tempo.|Gaur eguraldi ona dago.
+1|J'aime lire et écouter de la musique.|Me gusta leer y escuchar música.|M'agrada llegir i escoltar música.|M'agrada llegir i escoltar música.|Gústame ler e escoitar música.|Irakurtzea eta musika entzutea gustatzen zait.
+1|Je n'aime pas le café.|No me gusta el café.|No m'agrada el café.|No m'agrada el cafè.|Non me gusta o café.|Ez zait kafea gustatzen.
+1|La gare est près d'ici ?|¿La estación está cerca de aquí?|L'estació està prop d'ací?|L'estació és a prop d'aquí?|A estación está preto de aquí?|Tren geltokia hemendik gertu dago?
+1|Je veux une bouteille d'eau.|Quiero una botella de agua.|Vull una botella d'aigua.|Vull una ampolla d'aigua.|Quero unha botella de auga.|Ur botila bat nahi dut.
+1|Aujourd'hui, c'est lundi.|Hoy es lunes.|Hui és dilluns.|Avui és dilluns.|Hoxe é luns.|Gaur astelehena da.
+1|Il est huit heures et demie.|Son las ocho y media.|Són les huit i mitja.|Són les vuit i mitja.|Son as oito e media.|Zortziak eta erdiak dira.
+1|Nous déjeunons à deux heures.|Comemos a las dos.|Dinem a les dues.|Dinem a les dues.|Xantamos ás dúas.|Ordu bietan bazkaltzen dugu.
+1|Mes parents habitent à Madrid.|Mis padres viven en Madrid.|Els meus pares viuen a Madrid.|Els meus pares viuen a Madrid.|Os meus pais viven en Madrid.|Nire gurasoak Madrilen bizi dira.
+1|Le bus est en retard.|El autobús llega tarde.|L'autobús arriba tard.|L'autobús arriba tard.|O autobús chega tarde.|Autobusa berandu dator.
+1|Je cherche la rue Colón.|Busco la calle Colón.|Busque el carrer Colón.|Busco el carrer Colón.|Busco a rúa Colón.|Colón kalea bilatzen ari naiz.
+2|Hier, j'ai travaillé jusqu'à sept heures.|Ayer trabajé hasta las siete.|Ahir vaig treballar fins a les set.|Ahir vaig treballar fins a les set.|Onte traballei ata as sete.|Atzo zazpiak arte lan egin nuen.
+2|Ce matin, j'ai pris un café avec un collègue.|Esta mañana he tomado un café con un compañero.|Este matí he pres un café amb un company.|Aquest matí he pres un cafè amb un company.|Esta mañá tomei un café cun compañeiro.|Gaur goizean kafe bat hartu dut lankide batekin.
+2|L'été dernier, nous sommes allés à Séville.|El verano pasado fuimos a Sevilla.|L'estiu passat vam anar a Sevilla.|L'estiu passat vam anar a Sevilla.|O verán pasado fomos a Sevilla.|Iazko udan Sevillara joan ginen.
+2|Je vais acheter un billet de train.|Voy a comprar un billete de tren.|Compraré un bitllet de tren.|Compraré un bitllet de tren.|Vou mercar un billete de tren.|Tren txartel bat erosiko dut.
+2|Mon appartement est plus grand que le tien.|Mi piso es más grande que el tuyo.|El meu pis és més gran que el teu.|El meu pis és més gran que el teu.|O meu piso é máis grande que o teu.|Nire pisua zurea baino handiagoa da.
+2|Nous avons réservé une table pour quatre personnes.|Hemos reservado una mesa para cuatro personas.|Hem reservat una taula per a quatre persones.|Hem reservat una taula per a quatre persones.|Reservamos unha mesa para catro persoas.|Lau pertsonarentzako mahai bat erreserbatu dugu.
+2|Je n'ai pas encore fini le rapport.|Todavía no he terminado el informe.|Encara no he acabat l'informe.|Encara no he acabat l'informe.|Aínda non rematei o informe.|Oraindik ez dut txostena amaitu.
+2|Tu es déjà allé à Barcelone ?|¿Has estado alguna vez en Barcelona?|Has estat alguna vegada a Barcelona?|Has estat mai a Barcelona?|Estiveches algunha vez en Barcelona?|Inoiz izan zara Bartzelonan?
+2|Il faut apporter une pièce d'identité.|Hay que traer un documento de identidad.|Cal portar un document d'identitat.|Cal portar un document d'identitat.|Hai que traer un documento de identidade.|Nortasun agiri bat ekarri behar da.
+2|Avant, je vivais dans un village.|Antes vivía en un pueblo.|Abans vivia en un poble.|Abans vivia en un poble.|Antes vivía nunha aldea.|Lehen herri batean bizi nintzen.
+2|J'ai mal au dos depuis lundi.|Me duele la espalda desde el lunes.|Em fa mal l'esquena des de dilluns.|Em fa mal l'esquena des de dilluns.|Dóenme as costas desde o luns.|Astelehenetik bizkarrean min dut.
+2|On se voit samedi soir ?|¿Nos vemos el sábado por la noche?|Ens veiem dissabte a la nit?|Ens veiem dissabte a la nit?|Vémonos o sábado pola noite?|Larunbat gauean elkar ikusiko dugu?
+3|Je pense que ce sera une bonne expérience.|Creo que será una buena experiencia.|Crec que serà una bona experiència.|Crec que serà una bona experiència.|Creo que será unha boa experiencia.|Esperientzia ona izango dela uste dut.
+3|Je ne crois pas qu'il puisse venir demain.|No creo que pueda venir mañana.|No crec que puga vindre demà.|No crec que pugui venir demà.|Non creo que poida vir mañá.|Ez dut uste bihar etorri ahal izango denik.
+3|Pendant que je cuisinais, quelqu'un a sonné à la porte.|Mientras cocinaba, llamaron a la puerta.|Mentre cuinava, van tocar a la porta.|Mentre cuinava, van trucar a la porta.|Mentres cociñaba, chamaron á porta.|Sukaldatzen ari nintzela, norbaitek atea jo zuen.
+3|Si tu veux, je peux t'aider à déménager.|Si quieres, puedo ayudarte con la mudanza.|Si vols, et puc ajudar amb la mudança.|Si vols, et puc ajudar amb la mudança.|Se queres, podo axudarche coa mudanza.|Nahi baduzu, etxe aldaketan lagun zaitzaket.
+3|Ça fait trois ans que je travaille dans cette entreprise.|Hace tres años que trabajo en esta empresa.|Fa tres anys que treballe en esta empresa.|Fa tres anys que treballo en aquesta empresa.|Hai tres anos que traballo nesta empresa.|Hiru urte daramatzat enpresa honetan lanean.
+3|Il m'a conseillé de chercher un appartement plus calme.|Me aconsejó que buscara un piso más tranquilo.|Em va aconsellar que buscara un pis més tranquil.|Em va aconsellar que busqués un pis més tranquil.|Aconselloume que buscase un piso máis tranquilo.|Pisu lasaiago bat bilatzeko gomendatu zidan.
+3|Quand j'arriverai à la maison, je t'appellerai.|Cuando llegue a casa, te llamaré.|Quan arribe a casa, et telefonaré.|Quan arribi a casa, et trucaré.|Cando chegue á casa, chamareite.|Etxera iristen naizenean, deituko dizut.
+3|Il est possible que la réunion soit annulée.|Es posible que se cancele la reunión.|És possible que es cancel·le la reunió.|És possible que es cancel·li la reunió.|É posible que se cancele a reunión.|Baliteke bilera bertan behera geratzea.
 `;
 const RT=`
 1|Où va Ana le samedi ?|À la plage|Au travail|Chez son frère|Au marché|Me llamo Ana. Vivo en Valencia con mi hermano. Trabajo en una tienda y los sábados voy a la playa.|Em dic Ana. Visc a València amb el meu germà. Treballe en una botiga i els dissabtes vaig a la platja.|Em dic Ana. Visc a València amb el meu germà. Treballo en una botiga i els dissabtes vaig a la platja.|Chámome Ana. Vivo en Valencia co meu irmán. Traballo nunha tenda e os sábados vou á praia.|Ana deitzen naiz. Valentzian bizi naiz nire anaiarekin. Denda batean lan egiten dut eta larunbatetan hondartzara joaten naiz.
@@ -1322,6 +1367,13 @@ const RT=`
 5|Quel reproche le critique adresse-t-il au restaurant ?|Le poisson du jour était trop salé|Le riz manquait de cuisson|Le service était trop envahissant|La carte des vins négligeait les producteurs locaux|Situado en una antigua bodega del casco histórico, el restaurante apuesta por una cocina de mercado que reinterpreta recetas tradicionales sin caer en excentricidades. El arroz con verduras de temporada, punto fuerte de la carta, llegó a la mesa en su punto y con un sabor intenso. En cambio, el pescado del día, aunque de calidad indiscutible, pecaba de un exceso de sal que desmerecía el plato. La carta de vinos, centrada en pequeños productores de la zona, es sin duda uno de sus mayores aciertos. El servicio, atento sin resultar invasivo, supo aconsejarnos con criterio. Eso sí, conviene reservar con antelación, pues el comedor apenas cuenta con una docena de mesas.|Situat en un antic celler del centre històric, el restaurant aposta per una cuina de mercat que reinterpreta receptes tradicionals sense caure en extravagàncies. L'arròs amb verdures de temporada, punt fort de la carta, va arribar a taula en el seu punt i amb un sabor intens. En canvi, el peix del dia, encara que de qualitat indiscutible, pecava d'un excés de sal que desmereixia el plat. La carta de vins, centrada en xicotets productors de la zona, és sens dubte un dels seus majors encerts. El servici, atent sense resultar invasiu, va saber aconsellar-nos amb criteri. Això sí, convé reservar amb antelació, perquè el menjador a penes té una dotzena de taules.|Situat en un antic celler del centre històric, el restaurant aposta per una cuina de mercat que reinterpreta receptes tradicionals sense caure en extravagàncies. L'arròs amb verdures de temporada, punt fort de la carta, va arribar a taula en el seu punt i amb un gust intens. En canvi, el peix del dia, tot i ser d'una qualitat indiscutible, pecava d'un excés de sal que desmereixia el plat. La carta de vins, centrada en petits productors de la zona, és sens dubte un dels seus grans encerts. El servei, atent sense resultar invasiu, va saber aconsellar-nos amb criteri. Això sí, convé reservar amb antelació, perquè el menjador amb prou feines té una dotzena de taules.|Situado nunha antiga adega do casco histórico, o restaurante aposta por unha cociña de mercado que reinterpreta receitas tradicionais sen caer en excentricidades. O arroz con verduras de tempada, punto forte da carta, chegou á mesa no seu punto e cun sabor intenso. Pola contra, o peixe do día, aínda que de calidade indiscutible, pecaba dun exceso de sal que desmerecía o prato. A carta de viños, centrada en pequenos produtores da zona, é sen dúbida un dos seus maiores acertos. O servizo, atento sen resultar invasivo, soubo aconsellarnos con criterio. Iso si, convén reservar con antelación, pois o comedor apenas conta cunha ducia de mesas.|Alde zaharreko antzinako upategi batean dagoen jatetxe honek merkatuko sukaldaritzaren alde egiten du, eta errezeta tradizionalak berrinterpretatzen ditu bitxikerietan erori gabe. Sasoiko barazkiekin egindako arroza, kartako platerik onena, puntu-puntuan eta zapore biziarekin iritsi zen mahaira. Aldiz, eguneko arrainak, kalitate zalantzaezinekoa izan arren, gatz gehiegi zuen, eta horrek platerari distira kentzen zion. Ardo-karta, inguruko ekoizle txikietan oinarritua, jatetxearen alderdirik onenetako bat da, zalantzarik gabe. Zerbitzua adeitsua izan zen, baina ez gogaikarria, eta irizpide onez aholkatu gintuen. Hori bai, aldez aurretik erreserbatzea komeni da, jangelak dozena bat mahai baino ez baititu.
 5|Qui peut entrer en voiture dans le parc sans réservation ?|Les habitants recensés dans les communes du parc|Les visiteurs arrivés avant que le quota de trois cents véhicules soit atteint|Les visiteurs qui ont réservé la veille par téléphone|Les visiteurs qui acceptent de payer une amende de deux cents euros|Aviso a los visitantes: del 15 de junio al 15 de septiembre, el acceso en vehículo privado al parque natural quedará restringido. Solo podrán acceder los vehículos que dispongan de una reserva previa, que deberá tramitarse en línea con al menos 48 horas de antelación. El aforo se limitará a trescientos vehículos diarios y, una vez alcanzado, no se admitirán nuevas reservas. Quedan exentos de esta medida los residentes empadronados en los municipios del parque, así como las personas con movilidad reducida. Los demás visitantes podrán llegar en el autobús lanzadera, que saldrá cada media hora desde el aparcamiento disuasorio. El incumplimiento de estas condiciones podrá conllevar sanciones de hasta doscientos euros.|Avís als visitants: del 15 de juny al 15 de setembre, l'accés amb vehicle privat al parc natural quedarà restringit. Només hi podran accedir els vehicles que disposen d'una reserva prèvia, que s'haurà de tramitar en línia amb almenys 48 hores d'antelació. L'aforament es limitarà a tres-cents vehicles diaris i, una vegada assolit, no s'admetran més reserves. Queden exempts d'esta mesura els residents empadronats en els municipis del parc, així com les persones amb mobilitat reduïda. La resta de visitants podran arribar amb l'autobús llançadora, que eixirà cada mitja hora des de l'aparcament dissuasiu. L'incompliment d'estes condicions podrà comportar sancions de fins a dos-cents euros.|Avís als visitants: del 15 de juny al 15 de setembre, l'accés amb vehicle privat al parc natural quedarà restringit. Només hi podran accedir els vehicles que disposin d'una reserva prèvia, que s'haurà de tramitar en línia amb un mínim de 48 hores d'antelació. L'aforament es limitarà a tres-cents vehicles diaris i, un cop assolit, no s'admetran més reserves. Queden exempts d'aquesta mesura els residents empadronats als municipis del parc, així com les persones amb mobilitat reduïda. La resta de visitants podran arribar amb l'autobús llançadora, que sortirà cada mitja hora des de l'aparcament dissuasiu. L'incompliment d'aquestes condicions podrà comportar sancions de fins a dos-cents euros.|Aviso aos visitantes: do 15 de xuño ao 15 de setembro, o acceso en vehículo privado ao parque natural quedará restrinxido. Só poderán acceder os vehículos que dispoñan dunha reserva previa, que deberá tramitarse en liña con polo menos 48 horas de antelación. O aforo limitarase a trescentos vehículos diarios e, unha vez acadado, non se admitirán novas reservas. Quedan exentos desta medida os residentes empadroados nos concellos do parque, así como as persoas con mobilidade reducida. Os demais visitantes poderán chegar no autobús lanzadeira, que sairá cada media hora desde o aparcadoiro disuasorio. O incumprimento destas condicións poderá supor sancións de ata douscentos euros.|Bisitarientzako oharra: ekainaren 15etik irailaren 15era, parke naturalera ibilgailu partikularrean sartzea mugatuta egongo da. Aurretiko erreserba duten ibilgailuak soilik sartu ahal izango dira, eta erreserba hori sarean egin beharko da, gutxienez 48 ordu lehenago. Edukiera eguneko hirurehun ibilgailura mugatuko da, eta kopuru horretara iristen denean, ez da erreserba berririk onartuko. Neurri horretatik salbuetsita daude parkeko udalerrietan erroldatutako bizilagunak, bai eta mugikortasun urriko pertsonak ere. Gainerako bisitariek disuasio-aparkalekutik ordu erdian behin irteten den autobusa har dezakete. Baldintza hauek ez betetzeak berrehun euro arteko isunak ekar ditzake.
 5|Qu'est-ce qui a permis à l'exploitation de surmonter ses difficultés ?|La vente directe et les visites guidées|Un prêt de la banque où elle travaillait|L'achat de nouvelles parcelles de vigne|Une assurance contre la grêle|—¿Qué la llevó a dejar su puesto en un banco para dedicarse a la viticultura? —Mi abuelo tenía unas pocas hectáreas de viñedo y, cuando enfermó, nadie en la familia quería hacerse cargo de ellas. Al principio lo vi como algo provisional, pero acabé enganchándome. —¿No se ha arrepentido nunca? —En absoluto, aunque reconozco que los primeros años fueron durísimos: dos granizadas seguidas estuvieron a punto de arruinarnos. —¿Cómo salieron adelante? —Apostamos por la venta directa y por las visitas guiadas, que hoy suponen casi la mitad de nuestros ingresos. Eso sí, a quien quiera seguir mis pasos le diría que desconfíe de la imagen idílica del campo, porque la tierra no perdona la improvisación.|—Què la va portar a deixar el seu lloc en un banc per a dedicar-se a la viticultura? —El meu avi tenia unes poques hectàrees de vinya i, quan es va posar malalt, ningú de la família no volia fer-se'n càrrec. Al principi ho vaig vore com una cosa provisional, però vaig acabar enganxant-me. —No se n'ha penedit mai? —De cap manera, encara que reconec que els primers anys van ser duríssims: dos pedregades seguides van estar a punt d'arruïnar-nos. —Com se'n van eixir? —Vam apostar per la venda directa i per les visites guiades, que hui suposen quasi la mitat dels nostres ingressos. Això sí, a qui vulga seguir els meus passos li diria que desconfie de la imatge idíl·lica del camp, perquè la terra no perdona la improvisació.|—Què la va portar a deixar la seva feina en un banc per dedicar-se a la viticultura? —El meu avi tenia unes quantes hectàrees de vinya i, quan es va posar malalt, ningú de la família no se'n volia fer càrrec. Al principi ho vaig veure com una cosa provisional, però em vaig acabar enganxant. —No se n'ha penedit mai? —De cap manera, tot i que reconec que els primers anys van ser duríssims: dues pedregades seguides van estar a punt d'arruïnar-nos. —Com se'n van sortir? —Vam apostar per la venda directa i per les visites guiades, que avui representen gairebé la meitat dels nostres ingressos. Això sí, a qui vulgui seguir els meus passos li diria que desconfiï de la imatge idíl·lica del camp, perquè la terra no perdona la improvisació.|—Que a levou a deixar o seu posto nun banco para dedicarse á viticultura? —O meu avó tiña unhas poucas hectáreas de viña e, cando enfermou, ninguén na familia quería facerse cargo delas. Ao principio vino como algo provisional, pero acabei enganchándome. —Nunca se arrepentiu? —En absoluto, aínda que recoñezo que os primeiros anos foron durísimos: dúas sarabiadas seguidas estiveron a piques de arruinarnos. —Como saíron adiante? —Apostamos pola venda directa e polas visitas guiadas, que hoxe supoñen case a metade dos nosos ingresos. Iso si, a quen queira seguir os meus pasos diríalle que desconfíe da imaxe idílica do campo, porque a terra non perdoa a improvisación.|—Zerk eraman zintuen banku bateko lanpostua utzi eta mahastizaintzan aritzera? —Aitonak mahasti-hektarea gutxi batzuk zituen, eta gaixotu zenean, familian inork ez zuen haien ardura hartu nahi. Hasieran behin-behineko zerbait bezala ikusi nuen, baina azkenean harrapatu egin ninduen. —Ez zara inoiz damutu? —Inola ere ez, nahiz eta onartzen dudan lehen urteak oso gogorrak izan zirela: jarraian izandako bi kazkabar-ekaitzek ia hondatu gintuzten. —Nola atera zineten aurrera? —Salmenta zuzenaren eta bisita gidatuen alde egin genuen, eta gaur egun horiek dira gure diru-sarreren ia erdia. Hori bai, nire bideari jarraitu nahi dionari esango nioke ez fidatzeko landa-giroaren irudi idilikoaz, lurrak ez baitu inprobisaziorik barkatzen.
+1|À quelle heure Pablo commence-t-il à travailler ?|À neuf heures|À huit heures|À dix heures|À sept heures|Me llamo Pablo y vivo en Valencia. Me levanto a las siete y media. Desayuno un café con tostadas. Empiezo a trabajar a las nueve en una oficina del centro.|Em dic Pablo i visc a València. M'alce a les set i mitja. Esmorze un café amb torrades. Comence a treballar a les nou en una oficina del centre.|Em dic Pablo i visc a València. M'aixeco a les set i mitja. Esmorzo un cafè amb torrades. Començo a treballar a les nou en una oficina del centre.|Chámome Pablo e vivo en Valencia. Érgome ás sete e media. Almorzo un café con torradas. Comezo a traballar ás nove nunha oficina do centro.|Pablo naiz eta Valentzian bizi naiz. Zazpi eta erdietan jaikitzen naiz. Kafea eta txigortuak gosaltzen ditut. Bederatzietan hasten naiz lanean, erdiguneko bulego batean.
+1|Que cherche Marta ?|Une pharmacie|Une banque|Un restaurant|Un hôtel|Me llamo Marta. Busco una farmacia porque me duele la cabeza. Un señor me dice que hay una en la calle Mayor, al lado del banco.|Em dic Marta. Busque una farmàcia perquè em fa mal el cap. Un senyor em diu que n'hi ha una al carrer Major, al costat del banc.|Em dic Marta. Busco una farmàcia perquè em fa mal el cap. Un senyor em diu que n'hi ha una al carrer Major, al costat del banc.|Chámome Marta. Busco unha farmacia porque me doe a cabeza. Un señor dime que hai unha na rúa Maior, ao lado do banco.|Marta naiz. Farmazia bat bilatzen ari naiz, burua min dudalako. Gizon batek esaten dit Kale Nagusian badagoela bat, bankuaren ondoan.
+1|Combien de personnes y a-t-il dans la famille de Lucía ?|Quatre|Trois|Cinq|Deux|Me llamo Lucía. En mi familia somos cuatro: mi padre, mi madre, mi hermano y yo. Mi hermano tiene doce años y le gusta mucho el fútbol.|Em dic Lucía. A la meua família som quatre: mon pare, ma mare, el meu germà i jo. El meu germà té dotze anys i li agrada molt el futbol.|Em dic Lucía. A la meva família som quatre: el meu pare, la meva mare, el meu germà i jo. El meu germà té dotze anys i li agrada molt el futbol.|Chámome Lucía. Na miña familia somos catro: meu pai, miña nai, meu irmán e mais eu. Meu irmán ten doce anos e gústalle moito o fútbol.|Lucía naiz. Nire familian lau gara: aita, ama, anaia eta ni. Anaiak hamabi urte ditu eta futbola asko gustatzen zaio.
+1|Quel temps fait-il aujourd'hui ?|Il pleut|Il fait chaud|Il neige|Il y a du soleil|Hoy llueve mucho y hace frío. No voy a la playa. Me quedo en casa, leo un libro y bebo un té caliente.|Hui plou molt i fa fred. No vaig a la platja. Em quede a casa, llig un llibre i bec un te calent.|Avui plou molt i fa fred. No vaig a la platja. Em quedo a casa, llegeixo un llibre i bec un te calent.|Hoxe chove moito e vai frío. Non vou á praia. Quedo na casa, leo un libro e bebo un té quente.|Gaur asko egiten du euria eta hotz dago. Ez noa hondartzara. Etxean geratzen naiz, liburu bat irakurtzen dut eta te bero bat edaten dut.
+2|Pourquoi Carlos est-il arrivé en retard ?|Il a raté le bus|Il était malade|Il s'est levé tard|Il a plu toute la matinée|Ayer Carlos llegó tarde al trabajo. Salió de casa a la hora de siempre, pero perdió el autobús y tuvo que esperar veinte minutos al siguiente. Su jefa no se enfadó.|Ahir Carlos va arribar tard a la faena. Va eixir de casa a l'hora de sempre, però va perdre l'autobús i va haver d'esperar vint minuts el següent. La seua cap no es va enfadar.|Ahir en Carlos va arribar tard a la feina. Va sortir de casa a l'hora de sempre, però va perdre l'autobús i va haver d'esperar vint minuts el següent. La seva cap no es va enfadar.|Onte Carlos chegou tarde ao traballo. Saíu da casa á hora de sempre, pero perdeu o autobús e tivo que agardar vinte minutos polo seguinte. A súa xefa non se enfadou.|Atzo Carlos berandu iritsi zen lanera. Betiko orduan irten zen etxetik, baina autobusa galdu zuen eta hogei minutu itxaron behar izan zuen hurrengoaren zain. Bere nagusia ez zen haserretu.
+2|Que va faire Elena ce week-end ?|Rendre visite à ses grands-parents|Travailler|Aller à la plage|Déménager|Este fin de semana Elena va a ir al pueblo para visitar a sus abuelos. Va a viajar en tren el sábado por la mañana y va a volver el domingo por la tarde.|Este cap de setmana Elena anirà al poble per a visitar els seus avis. Viatjarà en tren dissabte de matí i tornarà diumenge de vesprada.|Aquest cap de setmana l'Elena anirà al poble a visitar els seus avis. Viatjarà en tren dissabte al matí i tornarà diumenge a la tarda.|Esta fin de semana Elena vai ir á aldea para visitar os seus avós. Vai viaxar en tren o sábado pola mañá e vai volver o domingo pola tarde.|Asteburu honetan Elena herrira joango da aitona-amonak bisitatzera. Larunbat goizean trenez bidaiatuko du eta igande arratsaldean itzuliko da.
+3|Pourquoi Irene veut-elle changer d'appartement ?|Il y a trop de bruit|Le loyer est trop cher|Il est trop petit|Il est loin du travail|Irene está contenta con su piso: es luminoso y el alquiler no es caro. Sin embargo, está pensando en mudarse, porque desde que abrieron un bar debajo no puede dormir por el ruido.|Irene està contenta amb el seu pis: és lluminós i el lloguer no és car. No obstant això, està pensant a canviar-se de casa, perquè des que van obrir un bar a baix no pot dormir pel soroll.|La Irene està contenta amb el seu pis: és lluminós i el lloguer no és car. Tot i això, està pensant a mudar-se, perquè des que van obrir un bar a sota no pot dormir pel soroll.|Irene está contenta co seu piso: é luminoso e o aluguer non é caro. Porén, está a pensar en mudarse, porque desde que abriron un bar debaixo non pode durmir polo ruído.|Irene pozik dago bere pisuarekin: argitsua da eta alokairua ez da garestia. Hala ere, etxez aldatzea pentsatzen ari da, azpian taberna bat ireki zutenetik ezin baitu lo egin zarataren ondorioz.
 `;
 var XDIRTY=1;function xens(){if(XDIRTY){XDIRTY=0;xbuild()}}
 let D={},PH=[],TX=[],ALL=[];
@@ -1420,9 +1472,9 @@ try{
 const pick=a=>a[Math.floor(Math.random()*a.length)];
 const shuf=a=>a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(x=>x[1]);
 const SRI=[0,1,3,7,16,35],dayN=()=>Math.floor(Date.now()/864e5);
-function srUp(key,good){S.sr=S.sr||{};const e=S.sr[key]||{b:0,d:0};if(good){e.b=Math.min(5,e.b+1);e.d=dayN()+SRI[e.b]}else{e.b=0;e.d=dayN()}S.sr[key]=e}
+function srUp(key,good){S.sr=S.sr||{};const nw=!S.sr[key],e=S.sr[key]||{b:0,d:0};if(good){if(nw||e.d<=dayN()){e.b=Math.min(5,e.b+1);e.d=dayN()+SRI[e.b]}}else{e.b=0;e.d=dayN()}S.sr[key]=e}
 function srW(key){const e=(S.sr||{})[key];if(!e)return 1;return e.d<=dayN()?(e.b===0?3:2.5):(e.b>=1?.35:1)}
-function srDue(){const n=dayN(),sr=S.sr||{};return ALL.filter(w=>sr[w[0]]&&sr[w[0]].d<=n&&(w[2]||1)<=lv())}
+function srDue(){const n=dayN(),sr=S.sr||{},sn=new Set();return ALL.concat(typeof LP!=="undefined"&&Array.isArray(LP)?LP:[]).filter(w=>{if(!w||!w[0]||sn.has(w[0])||!sr[w[0]]||sr[w[0]].d>n||(w[2]||1)>lv())return false;sn.add(w[0]);return true})}
 function wpick(p){const w=p.map(x=>srW(x[0])*((x[2]||1)===lv()?3/(1+(S.sc[x[0]]||0)):1/(1+(S.sc[x[0]]||0))));let r=Math.random()*w.reduce((a,b)=>a+b,0);for(let i=0;i<p.length;i++){r-=w[i];if(r<=0)return p[i]}return p[0]}
 let AU={tok:0,id:null};const TV={w:null,bad:0,n:0,cb:{},cache:new Map(),busy:0,note:null};
 function auSync(){try{document.querySelectorAll("[data-a]").forEach(b=>{const on=b.dataset.a===AU.id;b.classList.toggle("playing",on);if(b.dataset.p)b.textContent=on?b.dataset.p:b.dataset.i;else if(b.classList.contains("spk"))b.textContent=on?((TV.busy&&b.dataset.a==="tq")||AU.ld?"…":"■"):"🔊"})}catch(e){}}
@@ -1728,17 +1780,26 @@ function bgCss(id){
   return lay(w.l,"html")+`@media (prefers-color-scheme:dark){${lay(w.d,'html:not([data-theme="light"])')}}`+lay(w.d,'html[data-theme="dark"]');
 }
 const lvlOld=x=>{let n=1;while(n<30&&x>=50*(n+1)*n)n++;return n};
-const XPC=[0];(function(){let t=0;for(let n=1;n<50;n++){t+=Math.round(200*Math.pow(1.1,n-1)/10)*10;XPC.push(t)}})();
-const lvlOf=x=>{let n=1;while(n<50&&x>=XPC[n])n++;return n};
+const XPC0=[0];(function(){let t=0;for(let n=1;n<50;n++){t+=Math.round(200*Math.pow(1.1,n-1)/10)*10;XPC0.push(t)}})();
+const lvlOf0=x=>{let n=1;while(n<50&&x>=XPC0[n])n++;return n};
+/* PROG-v2 : courbe d'XP plus exigeante (+20 % par niveau, plafonnée), le niveau déjà atteint n'est jamais retiré */
+const XPC=[0];(function(){let t=0;for(let n=1;n<50;n++){t+=Math.round(Math.min(4000,400*Math.pow(1.2,n-1))/10)*10;XPC.push(t)}})();
+const lvlRaw=x=>{let n=1;while(n<50&&x>=XPC[n])n++;return n};
+function xlfMig(){if(!S)return {};if(S.xlf&&typeof S.xlf==="object")return S.xlf;const f={},put=(l,x)=>{x=+x||0;if(x>0)f[l]={l:lvlOf0(x),x}};
+  try{Object.keys(S.PL||{}).forEach(l=>{const p=S.PL[l];if(p&&l!==S.lang)put(l,p.xp)})}catch(e){}put(S.lang||"es",S.xp);S.xlf=f;return f}
+const xlfL=l=>{const f=xlfMig()[l];return f?f.l:1};
+const myLv=()=>Math.max(lvlRaw(S.xp||0),xlfL(S.lang||"es"));
+const maxLv=()=>Math.max(lvlRaw(xpMax()),...Object.values(xlfMig()).map(f=>f.l||1));
+const lvlOf=x=>x===xpMax()?maxLv():lvlRaw(x);
 const titleOf=n=>TIT[Math.max(...Object.keys(TIT).map(Number).filter(k=>k<=n))];
 const lrw=l=>{const p=[],r=RL[l]||{};if(TIT[l])p.push(tr("titre {0}",TIT[l]));if(r.av)p.push(tr("avatar {0}",r.av));return p.join(", ")};
 const srw=m=>{const r=RS[m];return tr("badge {0}",r.b)+", +"+r.xp+" XP"+(r.av?", "+tr("avatar {0}",r.av):"")};
 function curStreak(){const t=new Date().toDateString(),y=new Date(Date.now()-864e5).toDateString();return S.last===t||S.last===y?(S.streak||0):0}
-function xpInfo(){const x=S.xp||0,L=lvlOf(x),lo=XPC[L-1],hi=L>=50?lo:XPC[L];return{x,L,lo,hi,pc:L>=50?100:Math.round(100*(x-lo)/(hi-lo))}}
+function xpInfo(){const x=S.xp||0,L=myLv(),f=xlfMig()[S.lang||"es"];let lo=XPC[L-1];const hi=L>=50?lo:XPC[L];if(x<lo)lo=Math.min(x,f?f.x:x);return{x,L,lo,hi,pc:L>=50?100:Math.max(0,Math.min(100,Math.round(100*(x-lo)/Math.max(1,hi-lo))))}}
 const dayK=()=>new Date().toDateString(),dxp=()=>S.dx&&S.dx.d===dayK()?S.dx.x:0,goal=()=>+S.goal||100;
 const dk2=()=>{const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")};
 function coin(n){S.co=(S.co||0)+n}
-function addXp(n){mig();const b=lvlOf(S.xp||0);S.xp=(S.xp||0)+n;coin(Math.max(1,Math.round(n/10)));const k=dk2();S.xh=S.xh||{};S.xh[k]=(S.xh[k]||0)+n;Object.keys(S.xh).sort().slice(0,-42).forEach(z=>delete S.xh[z]);try{const q=qd();q.xp=(q.xp||0)+n;qChk()}catch(e){}const d0=dxp();S.dx={d:dayK(),x:d0+n};if(d0<goal()&&S.dx.x>=goal()){S.nt=S.nt||[];coin(10);S.nt.push(tr("Objectif du jour atteint !")+" +10 🪙")}const a=lvlOf(S.xp);S.nt=S.nt||[];for(let l=b+1;l<=a;l++){const r=lrw(l);coin(10+l);S.nt.push(tr("Niveau {0} atteint",l)+(r?" : "+r:"")+" · +"+(10+l)+" 🪙")}}
+function addXp(n){mig();xlfMig();const b=myLv();S.xp=(S.xp||0)+n;coin(Math.max(1,Math.round(n/10)));const k=dk2();S.xh=S.xh||{};S.xh[k]=(S.xh[k]||0)+n;Object.keys(S.xh).sort().slice(0,-42).forEach(z=>delete S.xh[z]);try{const q=qd();q.xp=(q.xp||0)+n;qChk()}catch(e){}const d0=dxp();S.dx={d:dayK(),x:d0+n};if(d0<goal()&&S.dx.x>=goal()){S.nt=S.nt||[];coin(10);S.nt.push(tr("Objectif du jour atteint !")+" +10 🪙")}const a=myLv();S.nt=S.nt||[];for(let l=b+1;l<=a;l++){const r=lrw(l);coin(10+l);S.nt.push(tr("Niveau {0} atteint",l)+(r?" : "+r:"")+" · +"+(10+l)+" 🪙")}}
 
 const QU=[{id:"les",f:"les",n:"Terminer 2 séries",g:2,c:5},{id:"ok",f:"ok",n:"25 bonnes réponses",g:25,c:8},{id:"perf",f:"perf",n:"Une série parfaite (10/10)",g:1,c:10},{id:"les4",f:"les",n:"Terminer 4 séries",g:4,c:12},{id:"ok50",f:"ok",n:"50 bonnes réponses",g:50,c:14},{id:"xp80",f:"xp",n:"Gagner 80 XP",g:80,c:10},{id:"imm",f:"imm",n:"Envoyer 4 messages à la mascotte",g:1,c:12},{id:"tra",f:"tra",n:"Traduire 3 textes",g:3,c:8},{id:"perf2",f:"perf",n:"Deux séries parfaites (10/10)",g:2,c:20}];
 function qd(){if(!S.qd||!S.qd.t0||Date.now()-S.qd.t0>=864e5||Date.now()<S.qd.t0)S.qd={t0:Date.now(),les:0,ok:0,perf:0,xp:0,imm:0,tra:0,cl:{}};return S.qd}
@@ -3127,13 +3188,13 @@ function mkExcV(ty){const p=excPool().filter(x=>x.w&&x.w.length&&(ty!=="excT"?tr
   const x=wk(p,z=>"q:"+z.k,z=>z.l),body=x.q.replace(/^[^:_]{0,40}:\s*(?=.*_{3})/,""),sol=`${x.a}. ${x.x}`;
   if(ty==="excT")return{ty,key:"q:"+x.k,g:x.a,acc:[x.a],h:body,sol};
   const ok=Math.random()<.5,wf=x.w.filter(w=>String(w)!==String(x.a)),c=ok?x.a:pick(wf.length?wf:x.w),o=[tr("Vrai"),tr("Faux")];
-  if(!c)return null;return /_{3}/.test(x.q)?{ty,key:"q:"+x.k,g:ok?o[0]:o[1],o,h:body.replace(/_{3,}/,c),sol}:{ty,key:"q:"+x.k,g:ok?o[0]:o[1],o,h:x.q,pa:c,sol}}
+  if(!c)return null;return /_{3}/.test(x.q)?{ty,key:"q:"+x.k,g:ok?o[0]:o[1],o,h:body.replace(/_{3,}/,c),sol}:(()=>{const o2=[tr("Oui"),tr("Non")];return{ty,key:"q:"+x.k,g:ok?o2[0]:o2[1],o:o2,h:x.q,pa:c,sol}})()}
 function mkConjT(){const q=mkConj();if(!q)return null;return Object.assign({},q,{ty:"conjT",o:null,acc:String(q.g).split("|").map(x=>x.trim()).filter(Boolean)})}
 function chkX(){const q=R.q,i=document.getElementById("ti");if(R.done||!i||!i.value.trim())return;
   const n=x=>String(x).toLowerCase().replace(/[.,;:!?¡¿«»"()]/g,"").replace(/\s+/g," ").trim(),d=x=>x.normalize("NFD").replace(/[\u0300-\u036f]/g,""),v=n(i.value),A=(q.acc||[q.g]).map(n);
   const s=A.includes(v)?1:A.some(a=>d(a)===d(v))?.5:0;i.disabled=true;fin(s,q.sol,q.key,s===.5?tr("Presque : attention aux accents."):"")}
 function XH(q,sp){
-  if(q.ty==="excV")return q.pa!=null?`${tr("Vrai ou faux ?")}<div class="txt">${esc(q.h)}</div><p class="sub" style="margin:8px 0 0">${tr("Réponse proposée :")} <b translate="no">${esc(q.pa)}</b></p>`:`${tr("Cette phrase est-elle correcte ?")}<div class="txt" translate="no">${esc(q.h)}</div>`;
+  if(q.ty==="excV")return q.pa!=null?`${esc(q.h)}<div class="txt" translate="no" style="margin:12px 0 0;font-size:1.15em;font-weight:800;text-align:center">${esc(q.pa)}</div><p class="sub" style="margin:10px 0 0">${tr("C'est la bonne réponse ?")}</p>`:`${tr("Cette phrase est-elle correcte ?")}<div class="txt" translate="no">${esc(q.h)}</div>`;
   if(q.ty==="conj")return tr("Conjugue {0}",`<span class="w">${esc(q.verb)}</span>`)+(q.fr?` <span class="sub">(${esc(q.fr)})</span>`:"")+`<br><small>${esc(q.tn)} · <b>${esc(q.pn)}</b></small>${sp}`;
   if(q.ty==="exc")return `<div class="txt">${esc(q.h)}</div>`;
   if(q.ty==="exM")return tr("Que veut dire {0} ?",`<span class="w">${esc(q.e)}</span>`)+sp;
@@ -3424,10 +3485,10 @@ function pathPlanMain(){
   const pd=pqData(),pc=pd.plans[L],th=Object.keys(D);
   const allW=ALL.filter(w=>(w[2]||1)<=L),prevW=[...ALL,...LP].filter(w=>(w[2]||1)===L-1);
   const recent=(a,n)=>a.slice(0,Math.ceil(n/2)).concat(a.slice(Math.ceil(n/2)).filter((_,i)=>i%3===0)).slice(0,n);
-  pc.flat.forEach(st=>{const kn=pqKn(pd,L,st.rk),dp=kn.kw.length>=8?kn.kw:allW;st.kn=kn;
+  pc.flat.forEach(st=>{const kn=pqKn(pd,L,st.rk),kwL=kn.kw.filter(w=>(w[2]||1)<=L),dp=kwL.length>=8?kwL:allW;st.kn=kn;
     if(st.ws&&st.ws.length&&!st.dp){st.dp=dp;st.gp=dp;st.go=dp}
     if(st.tn)st.vs=kn.vb.slice(0,40);
-    if(st.id[0]==="k"||st.bil){const k=st.sk,pp=recent(kn.ph,8);st.pp=pp;st.ws=kn.kw.slice(-24);st.dp=dp;
+    if(st.id[0]==="k"||st.bil){const k=st.sk,pp=recent(kn.ph,8);st.pp=pp;st.ws=(kwL.length>=8?kwL:allW).slice(-24);st.dp=dp;
       const D6={co:{ic:"🎧",lab:gl(SK.co),pt:L>=2?["listen","listenP","dict","listenT"]:["listen","listenP","dict"],t:"CO"},ph:{ic:"🗣️",lab:tr("Phrases"),pt:["build","readP","fr2P","cloze","listenP","type","rep"]},ee:{ic:"✍️",lab:gl(SK.ee),pt:["build","type","cloze","fr2P"],t:"EE"},ce:{ic:"📖",lab:gl(SK.ce),pt:["read","readP"],t:"CE"},cj:{ic:"🔄",lab:tr("Conjugaison"),pt:["conj"],t:"Conjugaison"},eo:{ic:"🎤",lab:gl(SK.eo),pt:SR?["speak","rep","speakF","speakC","speakQ"]:["build","type","fr2P","replyQ"],t:"EO"}}[k];
       let pt=pqFit(D6.pt,kn);
       if(!pt.filter(x=>!["listen","dict","rep","type","speakF"].includes(x)).length){/* rien d'assez avancé : on travaille la compétence sur les mots déjà vus */
@@ -3442,7 +3503,7 @@ function pathPlanMain(){
     if(st.id==="BR2"){st.qs=new Set(EQ.filter(x=>x.l<=L).map(x=>x.k));st.xs=kn.xk;st.vs=kn.vb.slice(0,60);st.pt=pqFit(st.pt,kn)}
     if(st.id==="BM"){st.pp=kn.ph;st.ws=null}
     if(st.pt&&st.pt.includes("conj")&&!st.vs)st.vs=kn.vb.slice(0,40);
-    if(st.ru&&st.t==="Conjugaison"){st.ws=kn.kw.slice(-12);st.pt=pqFit(st.pt,kn);if(!st.pt.length){st.pt=["es2fr","fr2es","listen","type"];st.t=null}}
+    if(st.ru&&st.t==="Conjugaison"){st.ws=(kwL.length>=8?kwL:allW).slice(-12);st.pt=pqFit(st.pt,kn);if(!st.pt.length){st.pt=["es2fr","fr2es","listen","type"];st.t=null}}
   });
   pthMig(pc);
   return PLC={k:ck,d:ALL,units:pc.units,map:pc.map,flat:pc.flat,L};
@@ -3572,7 +3633,11 @@ function pstart(id){
   LK2=1;FXS=0;xens();SCR="home";INL=1;
   R={mode:"lesson",t:st.t||"Chunk",n:0,ok:0,xp:0,cat:null,pid:id,pt:st.pt||null,ws:st.ws||null,dp:st.dp||null,gp:st.gp||null,go:st.go||null,xs:st.xs||null,qs:st.qs||null,vs:st.vs||null,pp:st.pp||null,kn:st.kn||null,tn:st.tn||null};
   if(st.t==="EO"&&!SR)R.note=1;
-  const di=discItems(st);if(di.length>=2||(di.length&&(st.ru||st.tn))){discShow(di,()=>{SCR="home";INL=1;next()},di.intro);return}
+  const di=discItems(st);
+  if(di.length>DISC_MAX&&!st.tn){const sh=new Set(di.slice(0,DISC_MAX).map(x=>x.k)),hid=new Set(di.slice(DISC_MAX).map(x=>x.k));
+    if(R.ws){const w=R.ws.filter(w=>!hid.has(w[0]));if(w.length)R.ws=w}
+    if(R.xs){const x=new Set([...R.xs].filter(e=>!hid.has("e:"+e)));if(x.size)R.xs=x}}
+  if(di.length>=2||(di.length&&(st.ru||st.tn))){discShow(di,()=>{SCR="home";INL=1;next()},di.intro);return}
   next();
 }
 function pathItems(){
@@ -3581,14 +3646,31 @@ function pathItems(){
   let open=true;out.forEach(x=>{x.lock=!x.done&&!open&&!all;if(!x.done)open=false});
   return out;
 }
+function lvSteps(){const pd=S.pth||{};return pathPlan().flat.filter(x=>!x.test).every(x=>(pd[pthK(x.id)]||0)>=6)}
+/* PROG-v2 : critères de maîtrise du niveau en cours, en plus des étapes validées
+   - vocabulaire retenu dans la durée : au moins 55 % des mots du niveau revus avec succès un autre jour (boîte ≥ 2) ;
+   - pas de retard de révision (moins de 25 mots en attente) ;
+   - chaque compétence pratiquée au-dessus du seuil (vocabulaire, compréhension orale et écrite, expression écrite, expression orale si le micro est disponible). */
+const LVG_SK=["voc","co","ce","ee"];
+function lvGate(){
+  const L=lv(),sr=S.sr||{},pl=pathPlanMain(),seen=new Set(),W=[];
+  pl.flat.forEach(x=>(x.ws||[]).forEach(w=>{if(w&&w[0]&&(w[2]||1)===L&&!seen.has(w[0])){seen.add(w[0]);W.push(w)}}));
+  const ret=W.filter(w=>(sr[w[0]]||{}).b>=2).length,need=Math.ceil(W.length*.55),due=srDue().length;
+  const th=L>=3?.65:.6,sks=LVG_SK.concat(typeof SR!=="undefined"&&SR&&S.sk&&S.sk.eo!=null?["eo"]:[]);
+  const weak=sks.filter(k=>sk(k)<th);
+  return{steps:lvSteps(),items:[
+    {ok:ret>=need,t:tr("Vocabulaire retenu : {0} / {1} mots revus avec succès un autre jour",ret,need),act:"start('Révision')"},
+    {ok:due<25,t:due<25?tr("Révisions à jour"):tr("{0} mots à revoir avant le test",due),act:"start('Révision')"},
+    {ok:!weak.length,t:weak.length?tr("Compétences à renforcer : {0}",weak.map(k=>gl(SK[k])).join(", ")):tr("Toutes les compétences au niveau"),act:"weak()"}]}}
 function lvReady(){
   if(lv()>=5||(S.lvSnz&&Date.now()<S.lvSnz))return false;
-  const pd=S.pth||{};return pathPlan().flat.filter(x=>!x.test).every(x=>(pd[pthK(x.id)]||0)>=6);
+  const g=lvGate();return g.steps&&g.items.every(x=>x.ok);
 }
 function lvTest(){test(lv(),1)}
 function lvLater(){S.lvSnz=Date.now()+3*864e5;save();home()}
 function lvBanner(){
-  if(!lvReady())return "";
+  if(!lvReady()){if(lv()>=5||(S.lvSnz&&Date.now()<S.lvSnz))return "";let g;try{g=lvGate()}catch(e){return ""}if(!g.steps)return "";
+    return `<div class="q end lvg" style="margin:0 0 14px;text-align:left"><b>🎓 ${tr("Parcours {0} terminé, bravo !",NL[lv()].split(" ")[0])}</b><p class="sub" style="margin:6px 0 10px">${tr("Avant le test du niveau suivant, consolide ce que tu as appris :")}</p><ul class="lvgl">${g.items.map(x=>`<li class="${x.ok?"ok":""}">${x.ok?"✅":"⏳"} ${x.t}${x.ok?"":` <button class="chip" onclick="${x.act}">${tr("Y aller")}</button>`}</li>`).join("")}</ul></div>`}
   const nx=NL[lv()+1].split(" ")[0];
   return `<div class="q end" style="margin:0 0 14px;text-align:left"><b>🎓 ${tr(CL.bt,NL[lv()].split(" ")[0])}</b><p class="sub" style="margin:6px 0 10px">${tr(CL.bb,nx)}</p><button class="btn" onclick="lvTest()">${gl(CL.bgo)}</button> <button class="btn ghost" onclick="lvLater()">${tr("Plus tard")}</button></div>`;
 }
@@ -3639,6 +3721,12 @@ function heroOld(){const i=xpInfo(),d=S.last?Math.floor((Date.now()-new Date(S.l
 function welcome(){welcomeOb()}
 let R,T;
 const uq=(a,i)=>{const s=new Set();return a.filter(x=>{const k=String(x[i]).trim().toLowerCase();if(s.has(k))return false;s.add(k);return true})};
+/* sens proches : deux mots qui partagent un sens français (ex. finir → terminar / acabar) ne sont jamais proposés l'un contre l'autre, et tous sont acceptés à l'écrit */
+const gM=f=>String(f==null?"":f).toLowerCase().replace(/’/g,"'").split(/\s*[,;\/]\s*(?![^(]*\))/).map(x=>x.replace(/^(le |la |les |l'|the |to )/,"").replace(/\s+/g," ").trim()).filter(Boolean);
+const gOv=(a,b)=>{const A=gM(a);return gM(b).some(x=>A.includes(x))};
+const tC=t=>String(t==null?"":t).toLowerCase().replace(/’/g,"'").replace(/^(el |la |los |las |lo |l'|un |una |unos |unas |els |les |o |a |os |as |unha |uns |unhes |un )/,"").trim();
+const sameW=(x,w)=>!!(x&&w)&&(x[0]===w[0]||(tC(x[0])&&tC(x[0])===tC(w[0]))||gOv(x[1],w[1]));
+const synAcc=w=>{const pool=ALL.concat(typeof LP!=="undefined"&&Array.isArray(LP)?LP:[]),a=[w[0]];pool.forEach(x=>{if(x&&x[0]&&x!==w&&gOv(x[1],w[1])&&!a.includes(x[0]))a.push(x[0])});return a};
 function mkQ0(ty,l){
   xens();
   if(ty==="conj")return mkConj()||mkQ("es2fr",0);
@@ -3648,7 +3736,7 @@ function mkQ0(ty,l){
   if(ty==="exM"||ty==="exE"||ty==="exL")return mkExp(ty)||mkQ("es2fr",0);
   if(ty==="type"||ty==="dict"){
     const rw=!l&&RLs(),rws=!!(rw&&rw.ws&&rw.ws.length>=(rw.kn?1:4));
-    if(rws||Math.random()<(ty==="dict"?(l?0:DICTW[lvC()]):(!l&&lv()<2?.6:.4))){const pw=(rws?rw.ws:uniqW()).filter(w=>rws||(w[2]||1)<=lv());if(pw.length>3){const w=wpick(pw);return{ty,fr:w[1],es:w[0],say:w[0],key:w[0],sol:`${w[0]} = ${w[1]}`}}}
+    if(rws||Math.random()<(ty==="dict"?(l?0:DICTW[lvC()]):(!l&&lv()<2?.6:.4))){const pw=(rws?rw.ws:uniqW()).filter(w=>rws||(w[2]||1)<=lv());if(pw.length>3){const w=wpick(pw),ac=ty==="type"?synAcc(w):[w[0]];return{ty,fr:w[1],es:w[0],acc:ac.length>1?ac:undefined,say:w[0],key:w[0],sol:ac.length>1?`${w[0]} = ${w[1]} (${tr("aussi")} : ${ac.slice(1).join(", ")})`:`${w[0]} = ${w[1]}`}}}
     const f=selP(l,"p");return{ty,fr:f[1],es:f[0],say:f[0],sol:`${f[0]} = ${f[1]}`};
   }
   if(ty==="cloze"){
@@ -3673,7 +3761,7 @@ function mkQ0(ty,l){
   if(ty==="tf"||ty==="odd"){
     const r=!l&&RLs(),ws=r&&r.ws&&r.ws.length>=(r.kn?1:3)?r.ws:null;
     if(ty==="odd"&&!(r&&r.gp&&r.gp.length>=4&&r.go&&r.go.length>=3))return mkQ0("es2fr",l);
-    const w=wpick(ws||(l?ALL:P(r?r.t:"Mélange"))),dist=(r&&r.dp&&r.dp.length>3?r.dp:ALLL(l)).filter(x=>x[0]!==w[0]&&x[1]!==w[1]);
+    const w=wpick(ws||(l?ALL:P(r?r.t:"Mélange"))),dist=(r&&r.dp&&r.dp.length>3?r.dp:ALLL(l)).filter(x=>x[0]!==w[0]&&x[1]!==w[1]&&!sameW(x,w));
     if(ty==="tf"){const ok=Math.random()<.5,sh=ok||!dist.length?w:pick(dist),o=[tr("Vrai"),tr("Faux")];return{ty,w,say:w[0],key:w[0],sol:`${w[0]} = ${w[1]}`,txt:w[0],m:sh[1],g:sh===w?o[0]:o[1],o}}
     const mem=shuf(r.gp.filter(x=>x[1]!==w[1])).slice(0,3),it=pick(r.go.filter(x=>!mem.some(m=>m[1]===x[1])));
     return{ty,key:null,say:null,g:it[0],o:shuf([...mem.map(x=>x[0]),it[0]]),sol:`${it[0]} = ${it[1]}`,txt:""}
@@ -3690,7 +3778,7 @@ function mkQ0(ty,l){
     const c=ear.flatMap(t=>D[t]).filter(x=>(x[2]||1)<=lv()&&!cur.has(x[0])&&(S.sr||{})[x[0]]);
     if(c.length>=4)rv=c;
   }
-  const rr=!l&&RLs(),pool=l?ALL:rv||(rr&&rr.ws&&rr.ws.length>=(rr.kn?1:4)?rr.ws:P(R.t)),w=l?pick(ALL.filter(x=>(x[2]||1)===l)):wpick(pool),o=shuf([w,...uq(shuf((rr&&rr.dp&&rr.dp.length>3&&!rv?rr.dp:pool.length>3?pool:ALLL(l)).filter(x=>x!==w&&x[1]!==w[1]&&x[0]!==w[0])),ty==='es2fr'?1:0).slice(0,3)]);
+  const rr=!l&&RLs(),pool=l?ALL:rv||(rr&&rr.ws&&rr.ws.length>=(rr.kn?1:4)?rr.ws:P(R.t)),w=l?pick(ALL.filter(x=>(x[2]||1)===l)):wpick(pool),o=shuf([w,...uq(shuf((rr&&rr.dp&&rr.dp.length>3&&!rv?rr.dp:pool.length>3?pool:ALLL(l)).filter(x=>x!==w&&x[1]!==w[1]&&x[0]!==w[0]&&!sameW(x,w))),ty==='es2fr'?1:0).slice(0,3)]);
   const f=ty==="es2fr";
   return{ty,w,say:w[0],key:w[0],sol:`${w[0]} = ${w[1]}`,g:f?w[1]:w[0],o:o.map(x=>f?x[1]:x[0]),rev:!!rv};
 }
@@ -3783,7 +3871,10 @@ function eoScene(ty){
 function mkEO(ty,l){
   if(ty==="speakQ"||ty==="replyQ"){const q=eoScene(ty);if(q)return q;ty=ty==="speakQ"?"speakF":"type"}
   if(ty==="type")return mkQ0("type",l);
-  const it=eoItem(ty,l);
+  /* mots très courts (« ir », « sí », « yo »…) : la reconnaissance vocale les capte mal quand ils sont dits seuls ; on en prend un autre, sinon on passe à l'écrit */
+  const tiny=x=>!!x&&!/\s/.test(String(x).trim())&&String(x).replace(/[^\p{L}]/gu,"").length<=3;
+  let it=eoItem(ty,l);for(let t=0;t<8&&tiny(it&&it.es);t++)it=eoItem(ty,l);
+  if(tiny(it&&it.es)&&(ty==="rep"||ty==="speakF"))return mkQ0(ty==="rep"?"dict":"type",l);
   if(ty==="speakC"){
     const ws=it.es.split(" "),core=w=>w.replace(/^[¿¡"«(]+|[?!.,;:"»)]+$/g,""),ix=ws.map((w,i)=>core(w).length>=4?i:-1).filter(i=>i>=0);
     if(ix.length&&ws.length>=3){let i=ix[Math.floor(Math.random()*ix.length)];if(it.wk){const j=ws.findIndex(w=>nzI(core(w))===nzI(it.wk));if(j>=0)i=j}
@@ -3823,7 +3914,10 @@ function discItems(st){
     st.ws.filter(w=>!seen[w[0]]&&!(S.sc[w[0]]>0)).slice(0,8).forEach(w=>{const k=nzI(w[0]),m=k?ex.filter(x=>(" "+nzI(x[0])+" ").includes(" "+k+" ")&&nzI(x[0])!==k):[];m.sort((a,b)=>(b[1]?1:0)-(a[1]?1:0)||a[0].length-b[0].length);out.push({k:w[0],es:w[0],fr:w[1],ex:m[0]?[m[0][0],m[0][1]]:null})})}
   return out
 }
+/* découverte : 4 nouveautés maximum par étape (les tableaux de conjugaison d'un temps restent entiers) ; le reste sera découvert dans une prochaine étape */
+const DISC_MAX=4;
 function discShow(items,go,intro){
+  const tn=!!(items[0]&&/^t:/.test(items[0].k));if(!tn&&items.length>DISC_MAX)items=items.slice(0,DISC_MAX);
   stopSp();SCR="home";INL=1;DISC={items,go};try{axPre(items.map(x=>x.es).filter(Boolean))}catch(e){}
   const dx=e=>e?`<p class="dx" translate="no">${esc(e[0])}${e[1]?`<span translate="yes">${esc(e[1])}</span>`:""}</p>`:"";
   $.innerHTML=head()+`<div class="q dsc"><p class="skl">✨ ${items[0]&&items[0].ti?tr("{0} à comprendre",items.length):tr("{0} à découvrir",items.length)}</p><h2>${tr("Découvre avant de t'entraîner")}</h2><p class="sub">${intro||tr("Écoute chaque élément, lis son sens et son exemple. Ensuite, on s'entraîne.")}</p><div class="dl">${items.map((x,i)=>`<div class="dc" style="--i:${i}">${x.es?`<button class="spk dsp" data-a="d${i}" onclick="aud('d${i}',[DISC.items[${i}].es])" aria-label="Écouter">🔊</button>`:""}<div class="dt">${x.ti?`<b class="dw">${esc(x.ti)}</b><span class="dm">${esc(x.fr)}</span>${dx(x.ex)}${dx(x.ex2)}`:`<b class="dw" translate="no">${esc(x.es)}</b><span class="dm">${esc(x.fr)}${x.lit?` <small>(${tr("mot à mot : {0}",esc(x.lit))})</small>`:""}</span>${dx(x.ex)}`}</div></div>`).join("")}</div><button class="btn dgo" onclick="discGo()">${tr("C'est parti")}</button></div>`;auSync();
@@ -3847,8 +3941,17 @@ function pickType(){
   let r=Math.random()*wsum(w);for(let i=0;i<a.length;i++){r-=w[i];if(r<=0)return a[i]}return a[0];
 }
 var INL=0;function start(t,cat,pid){LK2=1;FXS=0;xens();SCR="home";INL=1;R={mode:"lesson",t,n:0,ok:0,xp:0,cat:cat||null,pid:pid||null};next()}
-function next(){if(R.n>=10)return end();R.q=mkQ(pickType(),0);show()}
-function show(){stopSp();R.done=false;R.idk=0;draw();try{const e=document.querySelector('.q');if(e){e.classList.remove('qin');void e.offsetWidth;e.classList.add('qin')}}catch(x){}try{axPre(R.q.sa||(R.q.say?[R.q.say]:[]));if(R.q.es&&["speak","speakF","speakC","speakQ"].includes(R.q.ty))axPre([R.q.es])}catch(x){}if(["listen","listenP","listenT","exL","dict","rep","speakQ"].includes(R.q.ty))aud("q",R.q.sa||[R.q.say]);setTimeout(()=>{const e=document.getElementById("ti");if(e&&!R.done)e.focus()},60)}
+/* PROG-v2 : dans chaque étape du parcours, 2 questions sur 10 reprennent des mots d'avant arrivés à échéance (répétition espacée) */
+function rvQ(){
+  if(!R||R.mode!=="lesson"||!R.pid||R.back||(R.n!==3&&R.n!==7))return null;
+  const cur=new Set((R.ws||[]).map(w=>w[0])),sr=S.sr||{};
+  const due=srDue().filter(w=>!cur.has(w[0])).sort((a,b)=>((sr[a[0]]||{}).b||0)-((sr[b[0]]||{}).b||0)||((sr[a[0]]||{}).d||0)-((sr[b[0]]||{}).d||0)).slice(0,8);
+  if(!due.length||(!R.kn&&due.length<4))return null;
+  const ows=R.ws,odp=R.dp,ty=pick(due.length>=4?["fr2es","es2fr","listen","type"]:["fr2es","es2fr","type"]);let q=null;
+  try{R.ws=due;if(!R.dp||R.dp.length<4)R.dp=ALLL(0);R.lock=1;q=mkQ0(ty,0)}catch(e){q=null}finally{R.lock=0;R.ws=ows;R.dp=odp}
+  if(!q||!q.key||!due.some(w=>w[0]===q.key))return null;q.rvw=1;return q}
+function next(){if(R.n>=10)return end();let q=null;try{q=rvQ()}catch(e){q=null}R.q=q||mkQ(pickType(),0);show()}
+function show(){stopSp();R.done=false;R.idk=0;R.mf=0;draw();try{if(R.q&&R.q.rvw){const e=document.querySelector('.q');if(e&&!e.querySelector('.rvb'))e.insertAdjacentHTML('afterbegin','<span class="rvb">🔁 '+tr("Révision")+'</span>')}}catch(x){}try{const e=document.querySelector('.q');if(e){e.classList.remove('qin');void e.offsetWidth;e.classList.add('qin')}}catch(x){}try{axPre(R.q.sa||(R.q.say?[R.q.say]:[]));if(R.q.es&&["speak","speakF","speakC","speakQ"].includes(R.q.ty))axPre([R.q.es])}catch(x){}if(["listen","listenP","listenT","exL","dict","rep","speakQ"].includes(R.q.ty))aud("q",R.q.sa||[R.q.say]);setTimeout(()=>{const e=document.getElementById("ti");if(e&&!R.done)e.focus()},60)}
 var ADVB=0;
 function qOut(f){const e=document.querySelector('.q');if(!e||ADVB){f();return}ADVB=1;e.classList.remove('qin');e.classList.add('qout');setTimeout(()=>{ADVB=0;f()},170)}
 function adv(){if(ADVB)return;if(R.mode==="test"){qOut(()=>{T.i++;tnext()})}else{qOut(()=>{R.n++;next()})}}
@@ -3948,23 +4051,28 @@ async function rec(){
   const r=new SR();r.lang=LANGS[lg()].s;r.maxAlternatives=3;
   fb.innerHTML=`<p class="sub">Je t'écoute…</p>`;if(IOSW)stopSp();
   const pre=IOSW?"":await micPre();if(pre){fb.innerHTML=micErr(pre,"recType()","rec()");return}
-  srAttach(r,alts=>{if(R.done)return;oralCheck(alts)},
-    (code,st)=>{if(R.done)return;fb.innerHTML=micErr(code,"recType()","rec()",st)});
+  srAttach(r,alts=>{if(R.done)return;R.mf=0;oralCheck(alts)},
+    (code,st)=>{if(R.done)return;const vx=st&&st.sp&&(!code||code==="no-speech");R.mf=vx?(R.mf||0)+1:0;
+      fb.innerHTML=micErr(code,"recType()","rec()",st)+(R.mf>=2?`<p class="sub" style="margin-top:8px">${tr("La reconnaissance vocale a du mal avec ce mot. Ce n'est pas ta prononciation : réponds à l'écrit, ça compte pareil.")}</p>`:"")});
   try{r.start()}catch(e){micSess(0);fb.innerHTML=micErr((e&&e.name)||"error","recType()","rec()")}
 }
+/* PROG-v2 : l'XP récompense ce qui fait progresser — révision d'un mot dû bonifiée, mot déjà maîtrisé et pas encore à revoir, ou étape déjà réussie rejouée, moins rémunérés */
+function xpGain(s,sc0,due0,q){let f=1;if(q&&q.rvw)f*=1.5;else if(sc0>=4&&!due0)f*=.5;if(R&&R.pid&&((S.pth||{})[pthK(R.pid)]||0)>=8)f*=.5;return Math.max(1,Math.round(10*s*f))}
 function fin(good,sol,key,msg){
   const q=R.q,k=TYK[q.ty],s=good===true?1:good===false?0:Math.max(0,Math.min(1,+good||0)),full=s>=1,half=s>0&&s<1;R.done=true;
+  const sc0=key?((S.sc||{})[key]||0):0,sr0=key?(S.sr||{})[key]:null,due0=!sr0||sr0.d<=dayN();
   if(R.mode==="test"){const w=q.wt||1,mc=!!(q.o&&q.o.length>1),z=T.k[k]=T.k[k]||{c:0,n:0};T.m+=w;z.n++;if(s>0){T.p+=w*s;z.c+=s}else if(mc&&!R.idk)T.p-=w/(q.o.length-1);return adv()}
   S.sk=S.sk||{};S.sk[k]=.9*sk(k)+.1*s;{const md=MODL[q.ty];if(md){S.md=S.md||{};const a=S.md[lg()]=S.md[lg()]||[];a.push(md);if(a.length>80)a.shift()}}
   if(key){if(full){S.sc[key]=Math.min(5,(S.sc[key]||0)+1);srUp(key,true)}else if(!half){S.sc[key]=Math.max(0,(S.sc[key]||0)-1);srUp(key,false)}
     S.mi=S.mi||{};const m=S.mi[key]||{n:0,t:0};if(full)m.n=Math.max(0,m.n-1);else if(!half){m.n++;m.t++;m.d=dayN()}if(m.n||m.t)S.mi[key]=m}
-  if(s>0){R.ok=Math.round((R.ok+s)*10)/10;R.xp+=Math.round(10*s)}else if(key)(R.miss=R.miss||[]).push(key);
+  if(s>0){R.ok=Math.round((R.ok+s)*10)/10;R.xp+=xpGain(s,sc0,due0,q)}else if(key)(R.miss=R.miss||[]).push(key);
   if(half&&key)(R.miss=R.miss||[]).push(key);
   const tp=tpGet(q);
   save();
   fxOk(s>0);const hd=full?"¡Muy bien!":half?tr("Presque !"):"Pas tout à fait.",mm=msg?(half?msg+" · ":" · "+msg):"";
   document.getElementById("fb").innerHTML=`<div class="fb fbm ${full?"ok":half?"pt":"ko"}">${mas(full?"bravo":half?"content":"triste",76)}<div><span>${hd}</span> ${half?mm+sol:sol+(full?mm:"")}${tp?`<small class="tip">💡 <b>${gl("Bon à savoir")}</b> · ${gl(tp[2])}</small>`:""}</div></div>${full&&!tp?"":`<button class="btn" onclick="adv()">Continuer</button>`}`;
   const c=document.getElementById("chk");if(c)c.remove();
+  if(!full)try{erRec(sol,msg,tp)}catch(e){}
   if(full){const t0=Date.now(),dl=tp?7000:msg?2800:1600,w=()=>{if(R.q!==q||!R.done||!document.querySelector(".fbm"))return;const el=Date.now()-t0;if(el<dl||(AU.id&&el<10000)){setTimeout(w,150);return}adv()};setTimeout(w,dl)}
 }
 function cuRun(){document.querySelectorAll(".cu").forEach(e=>{const to=Math.round((+e.dataset.to||0)*10)/10,t0=performance.now(),d=700+to*8;const f=t=>{const p=Math.min(1,(t-t0)/d);e.textContent=p<1?Math.round(to*(1-Math.pow(1-p,3))):sf(to);if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)})}
@@ -3972,12 +4080,12 @@ function end(){
   INL=0;
   const bonus=R.ok===10?5:0;dayTick();addXp(R.xp+bonus);qTick(R.ok,10);
   let pm="",mrv="";if(R.pid){const pk=pthK(R.pid),pb=(S.pth||{})[pk]||0;S.pa=S.pa||{};S.pa[pk]=R.ok;S.fl=S.fl||{};S.fm=S.fm||{};
-    if(R.ok>=6){S.pth=S.pth||{};S.pth[pk]=Math.max(pb,R.ok);S.fl[pk]=0;pm=`<p><b>✅ ${tr("Étape validée !")}</b>${pb>R.ok?`<br><small>${tr("Meilleur score : {0}/10",sf(pb))}</small>`:""}</p>`}
+    if(R.ok>=6){S.pth=S.pth||{};S.pth[pk]=Math.max(pb,R.ok);S.fl[pk]=0;if(pb<6)try{UNLQ=unitUnlocked(R.pid)}catch(e){UNLQ=null}pm=`<p><b>✅ ${tr("Étape validée !")}</b>${pb>R.ok?`<br><small>${tr("Meilleur score : {0}/10",sf(pb))}</small>`:""}</p>`}
     else{S.fl[pk]=(S.fl[pk]||0)+1;S.fm[pk]=(R.miss||[]).slice(0,12);
       pm=pb>=6?`<p>${tr("Cette étape était déjà validée (meilleur score : {0}/10).",sf(pb))}</p>`:`<p style="color:var(--ko);font-weight:700">🔒 ${tr("Il faut 6 bonnes réponses sur 10 pour valider l'étape.")}</p>`;
       if(pb<6&&S.fl[pk]>=2)mrv=`<p class="sub">${tr("Tu bloques sur cette étape ? Fais une mini-révision de tes erreurs, puis retente.")}</p><button class="btn ghost" onclick="miniRev('${R.pid}')">${tr("Mini-révision")}</button><br>`}}
   if(R.pid){S.sh=S.sh||{};const hk=lg()+":"+lv();(S.sh[hk]=S.sh[hk]||[]).push(R.ok);if(S.sh[hk].length>12)S.sh[hk].shift()}const up=0;save();const rdy=lvReady(),nv=!!(R.pid&&R.ok<6&&((S.pth||{})[pthK(R.pid)]||0)<6);
-  $.innerHTML=head()+`<div class="q end win">${notes()}<div class="wm">${mas(R.ok>=7?"bravo":R.ok<=3?"triste":"content",150)}</div><div class="stars">${[1,2,3].map(n=>`<svg class="st${R.ok>=(n===1?4:n===2?7:9)?" on":""}" style="--d:${n*.22+.3}s" viewBox="0 0 24 24"><path d="M12 2.6l2.9 6 6.5.8-4.8 4.5 1.3 6.5L12 17.2 6.1 20.4l1.3-6.5L2.6 9.4l6.5-.8z"/></svg>`).join("")}</div><div class="big"><span class="cu" data-to="${R.ok}">0</span>/10</div><div class="chips2"><span class="pill xp">+<span class="cu" data-to="${R.xp+bonus}">0</span> XP</span><span class="pill fl">🔥 ${curStreak()}</span>${bonus?`<span class="pill">${tr("série parfaite !")}</span>`:""}</div>${up?`<p><b>${tr("Niveau supérieur débloqué : {0} 🎉",NL[lv()])}</b></p>`:""}${pm}${rdy?`<p><b>🎓 ${tr(CL.bt,NL[lv()].split(" ")[0])}</b></p><button class="btn" onclick="lvTest()">${gl(CL.bgo)}</button><br>`:""}${R.pid?(nv?`<button class="btn dis" aria-disabled="true" onclick="endErr()">${tr("Continuer le parcours")}</button><br>`:`<button class="btn" onclick="home()">${tr("Continuer le parcours")}</button><br>`):""}<button class="btn${R.pid&&!nv?" ghost":""}" onclick="${R.pid||R.back?`pstart('${R.pid||R.back}')`:`start('${R.t}'${R.cat?","+JSON.stringify(R.cat).replace(/"/g,"&quot;"):""})`}">${R.back?tr("Retenter l'étape"):nv?tr("Recommencer"):"Encore une série"}</button><br>${mrv}<button class="btn ghost" onclick="home()">Changer de thème</button></div>`;FX.play(up?"level":R.ok>=7?"streak":R.ok<=3?"bad":"good");if(up||R.ok>=8)FX.confetti();cuRun();
+  $.innerHTML=head()+`<div class="q end win">${notes()}<div class="wm">${mas(R.ok>=7?"bravo":R.ok<=3?"triste":"content",150)}</div><div class="stars">${[1,2,3].map(n=>`<svg class="st${R.ok>=(n===1?4:n===2?7:9)?" on":""}" style="--d:${n*.22+.3}s" viewBox="0 0 24 24"><path d="M12 2.6l2.9 6 6.5.8-4.8 4.5 1.3 6.5L12 17.2 6.1 20.4l1.3-6.5L2.6 9.4l6.5-.8z"/></svg>`).join("")}</div><div class="big"><span class="cu" data-to="${R.ok}">0</span>/10</div><div class="chips2"><span class="pill xp">+<span class="cu" data-to="${R.xp+bonus}">0</span> XP</span><span class="pill fl">🔥 ${curStreak()}</span>${bonus?`<span class="pill">${tr("série parfaite !")}</span>`:""}</div>${up?`<p><b>${tr("Niveau supérieur débloqué : {0} 🎉",NL[lv()])}</b></p>`:""}${pm}${rdy?`<p><b>🎓 ${tr(CL.bt,NL[lv()].split(" ")[0])}</b></p><button class="btn" onclick="lvTest()">${gl(CL.bgo)}</button><br>`:""}${R.ok<6&&R.rec&&R.rec.length?`<button class="btn erb" onclick="erShow()">🔍 ${tr("Voir mes erreurs")}</button><br>`:""}${R.pid?(nv?`<button class="btn dis" aria-disabled="true" onclick="endErr()">${tr("Continuer le parcours")}</button><br>`:`<button class="btn" onclick="home()">${tr("Continuer le parcours")}</button><br>`):""}<button class="btn${R.pid&&!nv?" ghost":""}" onclick="${R.pid||R.back?`pstart('${R.pid||R.back}')`:`start('${R.t}'${R.cat?","+JSON.stringify(R.cat).replace(/"/g,"&quot;"):""})`}">${R.back?tr("Retenter l'étape"):nv?tr("Recommencer"):"Encore une série"}</button><br>${mrv}<button class="btn ghost" onclick="home()">Changer de thème</button></div>`;FX.play(up?"level":R.ok>=7?"streak":R.ok<=3?"bad":"good");if(up||R.ok>=8)FX.confetti();cuRun();if(UNLQ){const u=UNLQ;UNLQ=null;setTimeout(()=>unitCelebrate(u),900)}
 }
 /* Test de niveau : banque rédigée sur le modèle des épreuves DELE / Instituto Cervantes (A1 → B1).
    c = phrase à compléter (grammaire/lexique), r = compréhension écrite, l = compréhension orale, y = production écrite, d = dictée.
@@ -4105,7 +4213,9 @@ function tnext(){
 }
 function tstage(){
   const sc=T.m>0?Math.max(0,T.p)/T.m:0;T.res[T.l]={sc,n:T.list.length-T.skip};
-  if(sc>=(T.cap?PASS_FIN:.6)){T.pass=T.l;if(T.l<5&&!T.cap){const l=T.l+1,ls=ptList(l);if(ls.length){T.l=l;T.list=ls;T.i=0;T.p=0;T.m=0;T.skip=0;return tnext()}}}
+  /* PROG-v2 : test de passage — aucune compétence évaluée (au moins 2 questions) sous 50 % */
+  const skOk=!T.cap||Object.keys(T.k||{}).every(k=>{const z=T.k[k];return !z||z.n<2||z.c/z.n>=.5});T.res[T.l].skOk=skOk;
+  if(sc>=(T.cap?PASS_FIN:.6)&&skOk){T.pass=T.l;if(T.l<5&&!T.cap){const l=T.l+1,ls=ptList(l);if(ls.length){T.l=l;T.list=ls;T.i=0;T.p=0;T.m=0;T.skip=0;return tnext()}}}
   tend();
 }
 function tskip(){if(R.done)return;R.done=true;T.skip++;T.skipAll++;adv()}
@@ -4113,9 +4223,9 @@ function tidk(){if(R.done)return;R.idk=1;fin(false,R.q.sol,null)}
 function tend(){
   if(T.from&&T.pass<T.from){
     const hadRat=(S.rat||{})[lg()]&&S.rat[lg()].lvl===lv(),rat=hadRat||mainDone();if(rat)mkRat();
-    S.lvSnz=Date.now()+3*864e5;save();FX.play("good");
-    const r=T.res[T.from],v=r?Math.round(r.sc*100):0;
-    $.innerHTML=head()+`<div class="q end">${mas("content",110)}<p><b>${tr("Pas encore tout à fait.")}</b></p><p>${rat?tr("Ton niveau reste {0}. J'ai préparé un parcours de rattrapage sur tes points faibles : à la fin, tu repasseras le test.",`<b>${NL[lv()]}</b>`):tr("Ton niveau reste {0}. Continue le parcours : l'appli te reproposera un test quand tu seras prêt(e).",`<b>${NL[lv()]}</b>`)}</p><p class="skl">${NL[T.from]} : <b>${v} %</b></p><button class="btn" onclick="home()">${tr("Continuer le parcours")}</button></div>`;return}
+    S.lvSnz=0;save();FX.play("good");
+    const r=T.res[T.from],v=r?Math.round(r.sc*100):0,wk=r&&r.skOk===false?Object.keys(T.k||{}).filter(k=>{const z=T.k[k];return z&&z.n>=2&&z.c/z.n<.5}).map(k=>gl(SK[k]||k)):[];
+    $.innerHTML=head()+`<div class="q end">${mas("content",110)}<p><b>${tr("Pas encore tout à fait.")}</b></p><p>${rat?tr("Ton niveau reste {0}. J'ai préparé un parcours de rattrapage sur tes points faibles : à la fin, tu repasseras le test.",`<b>${NL[lv()]}</b>`):tr("Ton niveau reste {0}. Continue le parcours : l'appli te reproposera un test quand tu seras prêt(e).",`<b>${NL[lv()]}</b>`)}</p><p class="skl">${NL[T.from]} : <b>${v} %</b></p>${wk.length?`<p class="skl">${tr("Pour valider, chaque compétence doit atteindre au moins 50 % : à renforcer, {0}.",wk.join(", "))}</p>`:""}<button class="btn" onclick="home()">${tr("Continuer le parcours")}</button></div>`;return}
   const ps=T.pass?T.res[T.pass].sc:0,solid=!T.pass||ps>=.75;
   S.lvl=T.cap?Math.min(5,T.pass+1):T.pass===0?1:T.pass>=5?5:(solid?T.pass+1:T.pass);S.sk=S.sk||{};
   ALL.forEach(w=>{if((w[2]||1)<S.lvl)S.sc[w[0]]=Math.max(S.sc[w[0]]||0,2)});
@@ -4778,7 +4888,7 @@ return{svg,play,confetti,A:ANIM,ANC};
 })();
 const mas=(st,px,k,ax)=>`<span class="mas" data-st="${st||"content"}"${k?"":" data-d=\"1\""}${ax===undefined?"":` data-ax="${ax}"`} style="width:${px||64}px" aria-hidden="true">${FX.svg(k||(S.mas||"gecko"),st||"content",ax)}</span>`;
 let FXS=0;
-function fxOk(good){try{if(!MS().mute&&navigator.vibrate)navigator.vibrate(good?12:[25,35,25])}catch(e){}FXS=good?FXS+1:0;if(good)FX.play(FXS>=5?"streak":"good",Math.min(FXS-1,6)*2);else FX.play("bad")}
+function fxOk(good){try{if(!MS().mute&&navigator.vibrate)navigator.vibrate(good?30:[45,60,45])}catch(e){}FXS=good?FXS+1:0;if(good)FX.play(FXS>=5?"streak":"good",Math.min(FXS-1,6)*2);else FX.play("bad")}
 function mascMsg(){const d=S.last?Math.floor((Date.now()-new Date(S.last).getTime())/864e5):0,h=new Date().getHours();return d>=3?tr("Ça fait un moment… on s'y remet ?"):(S.last===dayK()&&curStreak()>1?tr("{0} jours d'affilée, continue !",curStreak()):S.last!==dayK()&&curStreak()>0?tr("Ta série de {0} jours t'attend : fais un exercice pour la garder !",curStreak()):h<12?tr("¡Buenos días ! Prêt pour une petite série ?"):tr("¡Hola ! Prêt pour une petite série ?"))}
 function mascHome(){const d=S.last?Math.floor((Date.now()-new Date(S.last).getTime())/864e5):0;return `<div class="mh">${mas(d>=3?"dodo":"content",84)}<div class="bubble">${mascMsg()}</div></div>`}
 function setSty(k,v){S[k]=v;save();document.documentElement.dataset.mas=S.mas||"gecko";FX.play("tap");const o=document.getElementById("mn");if(o)o.remove();document.querySelectorAll(".mas").length&&(SCR==="home"&&!INL&&!LK2?(window.SBRR&&SBRR()||home()):0);menu()}
@@ -4879,7 +4989,7 @@ function menu(){
   const o=document.getElementById("mn");if(o){o.remove();return}
   const d=document.createElement("div");d.id="mn";d.className="mn";
   const mk=S.mas||"gecko",md=S.mood||"vivo",sn=S.snd||"cristal",row=(l,k,v,opts)=>`<div class="mnr"><span>${l}</span><span>${opts.map(([x,n])=>`<button class="chip${v===x?" on":""}" onclick="setSty('${k}','${x}')">${n}</button>`).join(" ")}</span></div>`;
-  d.innerHTML=`<b>${U||""}</b><div class="mnr"><span>Langue de l'interface</span>${uisel()}</div>${row("Mascotte","mas",mk,[["gecko","Geco"],["toro","Torito"],["lora","Lora"]])}${row("Sons","snd",sn,[["cristal","Cristal"],["arcade","Arcade"]])}<div class="mnr"><span>Son</span><button class="chip${S.mute?"":" on"}" onclick="setSty('mute',${!S.mute})">${S.mute?"Coupé":"Activé"}</button></div><p class="skl">${(typeof CR!=="undefined"&&CR)?tr("☁️ Progression sauvegardée en ligne et synchronisée entre tes appareils"):tr("📴 Pas de synchronisation : progression sauvegardée sur cet appareil seulement")}</p><button class="chip" onclick="document.getElementById('mn').remove();obTour(1)">${tr("Revoir le tour")}</button> <button class="chip" onclick="logout()">Se déconnecter</button>`;
+  d.innerHTML=`<b>${U||""}</b><div class="mnr"><span>Langue de l'interface</span>${uisel()}</div>${row("Mascotte","mas",mk,[["gecko","Geco"],["toro","Torito"],["lora","Lora"]])}${row("Sons","snd",sn,[["cristal","Cristal"],["arcade","Arcade"]])}<div class="mnr"><span>Son</span><button class="chip${S.mute?"":" on"}" onclick="setSty('mute',${!S.mute})">${S.mute?"Coupé":"Activé"}</button></div><p class="skl">${(typeof CR!=="undefined"&&CR)?tr("☁️ Progression sauvegardée en ligne et synchronisée entre tes appareils"):tr("📴 Pas de synchronisation : progression sauvegardée sur cet appareil seulement")}</p><button class="chip" onclick="document.getElementById('mn').remove();obTour(1)">${tr("Revoir le tour")}</button> <button class="chip" onclick="langInfo()">${tr("Comprendre les langues")}</button> <button class="chip" onclick="logout()">Se déconnecter</button>`;
   document.querySelector("header").appendChild(d);
 }
 /* ===== v153 accueil + onboarding ===== */
@@ -4892,7 +5002,7 @@ function landing(){
   <div class="lmc"><span class="lmlogo" translate="no">sobremesa</span><p class="lmsub">${tr("Les langues espagnoles, à ton rythme.").replace(", ",",<br>")}</p>
   <div class="lmhi" aria-hidden="true" translate="no">${G.map((g,i)=>`<span style="--i:${i}"><b>${g[0]}</b><small>${g[1]}</small></span>`).join("")}</div></div>
   <div class="lmm"><button class="lmmas" id="lmmas" aria-label="${tr("Choisir mon compagnon")}">${mas("bravo",190,LMAS)}</button><div class="lmdt">${ms.map((k,i)=>`<button aria-label="${FX.A[k].n}" class="${i===LXI?"on":""}" onclick="lmGo(${i})"></button>`).join("")}</div></div>
-  <div class="lmf"><button class="lmcta" onclick="auth('reg')">${tr("Commencer gratuitement")}</button><button class="lmlk" onclick="auth('login')">${tr("J'ai déjà un compte")}</button></div></div>`;
+  <div class="lmf"><button class="lmcta" onclick="auth('reg')">${tr("Commencer")}</button><button class="lmlk" onclick="auth('login')">${tr("J'ai déjà un compte")}</button><p class="lmfree">${tr("100 % gratuit · sans limite")}</p></div></div>`;
   try{window.scrollTo(0,0)}catch(e){}
   lmSwipe();
 }
@@ -4931,7 +5041,7 @@ const obSteps=n=>`<div class="obs" aria-label="${tr("Étape {0} sur {1}",n,4)}">
 function obNext(){S.ob?obTips():home()}
 function welcomeOb(){
   SCR="home";
-  $.innerHTML=head()+`<div class="q end obq">${S.ob?obSteps(2):""}${mas("bravo",110)}<h2>${tr("Bienvenue sur Sobremesa !")}</h2><p class="skl">${S.ob?tr("Ton compte est prêt. Trouvons maintenant ton point de départ."):tr("Les langues d'Espagne")}</p><p>${tr("Choisis ta langue en haut de l'écran.")} ${tr("Un test de niveau de 6 à 25 questions selon ton niveau, construit sur le modèle des épreuves officielles (DELE) : grammaire, lecture, écoute, écriture. Il s'arrête dès que ton niveau est clair. Réponds « Je ne sais pas » plutôt que de deviner : les mauvaises réponses font perdre des points.")}</p><button class="btn" onclick="test()">${tr("Passer le test")}</button><br><button class="btn ghost" onclick="S.lvl=1;save();obNext()">${tr("Je débute, commencer")}</button></div>`;
+  $.innerHTML=head()+`<div class="q end obq">${S.ob?obSteps(2):""}${mas("bravo",110)}<h2>${tr("Bienvenue sur Sobremesa !")}</h2><p class="skl">${S.ob?tr("Ton compte est prêt. Trouvons maintenant ton point de départ."):tr("Les langues d'Espagne")}</p><p>${tr("Choisis ta langue en haut de l'écran.")}</p><button class="lgl" onclick="langInfo()">${tr("Comprendre les langues")}</button><p>${tr("Un test de niveau de 6 à 25 questions selon ton niveau, construit sur le modèle des épreuves officielles (DELE) : grammaire, lecture, écoute, écriture. Il s'arrête dès que ton niveau est clair. Réponds « Je ne sais pas » plutôt que de deviner : les mauvaises réponses font perdre des points.")}</p><button class="btn" onclick="test()">${tr("Passer le test")}</button><br><button class="btn ghost" onclick="S.lvl=1;save();obNext()">${tr("Je débute, commencer")}</button></div>`;
 }
 const OBTIPS={1:[["⏱️","Fais une petite série chaque jour : dix minutes régulières valent mieux qu'une heure de temps en temps."],["👂","Écoute et répète à voix haute chaque nouveau mot : l'oreille se forme avant la main."],["💛","Ne cherche pas la perfection : les erreurs font partie du chemin, et l'appli te les fait revoir."]],
 2:[["🔁","Passe chaque jour par Outils › Réviser : la répétition espacée fait le gros du travail."],["🎭","Essaie les scènes guidées : quatre échanges simples, avec des réponses proposées."],["🧩","Pense en phrases plutôt qu'en mots isolés : les expressions te font gagner du temps."]],
@@ -4954,7 +5064,8 @@ const TOURS=[
  {s:".bnav button:nth-child(3)",t:"Outils",d:"Ta boîte à outils : réviser tes mots, listes, conjugaison, exceptions, expressions et traducteur.",f:()=>tools()},
  {s:".bnav button:nth-child(4)",t:"Profil",d:"Ton XP, ta série, tes quêtes du jour et la boutique pour habiller ton compagnon.",f:()=>prog()},
  {s:"header .stats .sel",t:"Ta langue",d:"Change de langue ici : castillan, valencià, català, galego ou euskara. Ta progression est séparée pour chaque langue.",f:()=>{S.mode="cl";home()}},
- {s:"header .stats .chip.ico",t:"Ton menu",d:"Langue de l'interface, compagnon et sons. Tu peux aussi y revoir ce tour quand tu veux.",f:()=>{S.mode="cl";home()}},
+ {s:"header .stats .sel",t:"Les cinq langues",d:"Castillan : l'espagnol de tout le pays. Valencià : la langue de Valence. Català : Catalogne et Baléares. Galego : la Galice, proche du portugais. Euskara : le Pays basque, une langue à part.",f:()=>{S.mode="cl";home()}},
+ {s:"header .stats .chip.ico",t:"Ton menu",d:"Langue de l'interface, compagnon et sons. Tu y trouves aussi « Comprendre les langues » et tu peux y revoir ce tour quand tu veux.",f:()=>{S.mode="cl";home()}},
  {t:"Tu es prêt(e) !",d:"Choisis ce que tu veux : suis ton chemin, discute, ou ouvre les outils. Bon apprentissage !",f:()=>{S.mode="cl";home()}}];
 function obTour(replay){
   OBR=replay?1:0;if(OBT)tourEnd(1);try{stopSp()}catch(e){}
@@ -5109,6 +5220,219 @@ const b=a.querySelector(".bar>i"),nw=b?b.style.width:null;
 if(b&&same&&pw&&nw&&pw!==nw&&!matchMedia("(prefers-reduced-motion:reduce)").matches){b.style.transition="none";b.style.width=pw;void b.offsetWidth;b.style.transition="";b.style.width=nw}
 pk=k;ph=hh;pn=hn;pw=nw}).observe(a,{childList:true})})();
 </script>
+<style id="sm-lgi">
+/* ===== Comprendre les langues : accès discret + fiche explicative ===== */
+html body .lgq{flex:none;width:34px;height:34px;padding:0;border-radius:50%;border:2.5px solid var(--sk);background:var(--card);color:var(--sk);box-shadow:2px 2px 0 var(--sk);font:800 18px/1 "Baloo 2",system-ui,sans-serif;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+html body .lgq:active{transform:translate(2px,2px);box-shadow:none}
+@media (max-width:339px){html body header .lgq{display:none}}
+html body .lgl{display:inline-flex;align-items:center;gap:6px;margin:-4px 0 0;padding:4px 2px;background:none;border:0;font:800 16px "Baloo 2",system-ui,sans-serif;color:var(--az);cursor:pointer;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px}
+html body .lgl i{font-style:normal;display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;border:2px solid currentColor;font-size:13px;text-decoration:none}
+#lgi{position:fixed;inset:0;z-index:9500;display:flex;align-items:flex-end;justify-content:center;background:rgba(27,42,74,.42);animation:lgiF .2s ease-out}
+#lgi .lgp{position:relative;width:100%;max-width:540px;max-height:88vh;max-height:88dvh;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;background:var(--bg);border:2.5px solid var(--sk);border-bottom:0;border-radius:26px 26px 0 0;padding:0 16px calc(22px + env(safe-area-inset-bottom,0px));animation:lgiU .32s cubic-bezier(.22,1,.36,1);color:var(--sk)}
+@media (min-width:620px){#lgi{align-items:center;padding:24px}#lgi .lgp{border-bottom:2.5px solid var(--sk);border-radius:26px;box-shadow:6px 6px 0 var(--sk);max-height:86vh}}
+#lgi .lgh{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 -16px;padding:14px 16px 10px;background:var(--bg)}
+#lgi .lgh::before{content:"";position:absolute;top:6px;left:50%;width:42px;height:5px;margin-left:-21px;border-radius:3px;background:var(--line)}
+@media (min-width:620px){#lgi .lgh::before{display:none}}
+#lgi .lgh h2{margin:8px 0 0;font:800 22px/1.15 "Baloo 2",system-ui,sans-serif}
+#lgi .lgx{flex:none;width:40px;height:40px;margin-top:6px;border-radius:50%;border:2.5px solid var(--sk);background:var(--card);color:var(--sk);box-shadow:2px 2px 0 var(--sk);font:800 20px/1 system-ui,sans-serif;cursor:pointer}
+#lgi .lgx:active{transform:translate(2px,2px);box-shadow:none}
+#lgi .lgin{margin:0 0 14px;font-size:15px;line-height:1.45;color:var(--mut)}
+#lgi .lgr{margin:0 0 18px;padding:14px 16px;border-radius:20px;border:2.5px solid var(--sk);background:var(--sol,#E3A52E);box-shadow:var(--hs);font-size:15px;line-height:1.45}
+#lgi .lgr b{display:block;font-size:17px;margin-bottom:2px}
+#lgi .lgc{position:relative;margin:0 0 14px;padding:14px 14px 12px;border-radius:20px;border:2.5px solid var(--sk);background:var(--card);box-shadow:var(--hs)}
+#lgi .lgc.cur{box-shadow:var(--hs),inset 0 0 0 3px var(--az)}
+#lgi .lgt{display:flex;align-items:center;flex-wrap:wrap;gap:4px 10px;margin:0 0 6px}
+#lgi .lgt b{font:800 20px/1.1 "Baloo 2",system-ui,sans-serif}
+#lgi .lgt span{font-size:14px;font-weight:700;color:var(--mut)}
+#lgi .lgg{margin-left:auto;padding:1px 10px;border-radius:99px;border:2px solid var(--sk);background:var(--bg);font:800 14px "Baloo 2",system-ui,sans-serif;transform:rotate(-3deg)}
+#lgi .lgk{display:inline-block;margin:0 0 8px;padding:1px 10px;border-radius:99px;border:2px solid var(--sk);background:var(--az);color:#fff;font-size:12.5px;font-weight:800}
+#lgi .lgc p{margin:4px 0;font-size:15px;line-height:1.45}
+#lgi .lgc p small{display:block;font-size:12px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;color:var(--mut)}
+#lgi .lgn{margin:8px 0 2px!important;padding:8px 10px;border-radius:12px;background:var(--bg);border:1.5px dashed var(--line);font-size:14px!important;color:var(--sk)}
+#lgi .lgs{display:block;width:100%;margin:10px 0 0;padding:9px 12px;border-radius:14px;border:2.5px solid var(--sk);background:var(--bg);color:var(--sk);box-shadow:2px 2px 0 var(--sk);font:800 15px "Baloo 2",system-ui,sans-serif;cursor:pointer}
+#lgi .lgs:active{transform:translate(2px,2px);box-shadow:none}
+#lgi .lgs[disabled]{background:none;box-shadow:none;border-style:dashed;cursor:default;color:var(--mut)}
+#lgi .lgf{margin:4px 2px 0;font-size:13px;color:var(--mut);line-height:1.4}
+html.lgi-open,html.lgi-open body{overflow:hidden}
+@keyframes lgiF{from{opacity:0}}
+@keyframes lgiU{from{transform:translateY(40px);opacity:.4}}
+@media (prefers-reduced-motion:reduce){#lgi,#lgi .lgp{animation:none}}
+</style>
+<script>
+/* ===== Comprendre les langues ===== */
+const LGI={
+es:{fr:"Castillan",g:"¡Hola!",k:"Le plus utile pour commencer",o:"Dans toute l'Espagne et dans la majeure partie de l'Amérique latine. C'est la langue qu'on appelle généralement « espagnol ».",u:"Voyager, travailler, s'installer en Espagne, et communiquer avec des centaines de millions d'hispanophones dans le monde."},
+va:{fr:"Valencien",g:"Bon dia",o:"Dans la Communauté valencienne (Valence, Alicante, Castellón), où il est langue officielle avec le castillan.",n:"C'est une variété du catalan, avec ses formes et sa prononciation propres. Valencien et catalan sont très proches : leurs locuteurs se comprennent sans difficulté.",u:"Vivre dans la région de Valence, suivre la vie locale, l'école, les médias et les fêtes comme les Falles."},
+ca:{fr:"Catalan",g:"Bona tarda",o:"En Catalogne, aux îles Baléares et en Andorre, ainsi que dans quelques zones voisines (frange d'Aragon, Pyrénées-Orientales en France).",u:"Vivre, étudier ou travailler à Barcelone et en Catalogne, aux Baléares ou en Andorre."},
+gl:{fr:"Galicien",g:"Ola!",o:"Principalement en Galice, dans le nord-ouest de l'Espagne.",n:"Proche du portugais : si tu connais l'un, l'autre te paraîtra familier.",u:"Vivre ou voyager en Galice, découvrir sa culture, ou parcourir le chemin de Saint-Jacques."},
+eu:{fr:"Basque",g:"Kaixo!",o:"Au Pays basque espagnol, dans une partie de la Navarre et au Pays basque français.",n:"Langue à part, sans lien avec les langues romanes : vocabulaire et grammaire très différents du français et du castillan.",u:"Vivre ou travailler au Pays basque (Bilbao, Saint-Sébastien, Vitoria) et découvrir l'une des plus anciennes langues d'Europe."}
+};
+let LGIF=null;
+function langInfo(){
+  if(document.getElementById("lgi"))return;
+  try{const o=document.getElementById("mn");if(o)o.remove()}catch(e){}
+  try{FX.play("tap")}catch(e){}
+  LGIF=document.activeElement;const cur=lg();
+  const d=document.createElement("div");d.id="lgi";
+  d.innerHTML=`<div class="lgp" role="dialog" aria-modal="true" aria-labelledby="lgit"><div class="lgh"><h2 id="lgit">${tr("Comprendre les langues")}</h2><button class="lgx" onclick="langInfoClose()" aria-label="${tr("Fermer")}">✕</button></div>
+<p class="lgin">${tr("Sobremesa propose cinq langues parlées en Espagne. Voici l'essentiel pour choisir.")}</p>
+<div class="lgr"><b>${tr("Tu veux apprendre l'espagnol ?")}</b>${tr("Choisis le castillan : c'est le meilleur choix pour parler l'espagnol courant et communiquer partout en Espagne et en Amérique latine. Les autres langues sont utiles pour découvrir ou pratiquer la langue d'une région.")}</div>
+${LK.map(k=>{const L=LGI[k];if(!L)return"";return `<section class="lgc${k===cur?" cur":""}"><div class="lgt"><b translate="no">${LANGS[k].n}</b><span>${tr(L.fr)}</span><i class="lgg" translate="no" aria-hidden="true">${L.g}</i></div>${L.k?`<span class="lgk">${tr(L.k)}</span>`:""}<p><small>${tr("Où ?")}</small>${tr(L.o)}</p>${L.n?`<p class="lgn">${tr(L.n)}</p>`:""}<p><small>${tr("Utile pour")}</small>${tr(L.u)}</p>${k===cur?`<button class="lgs" disabled>✓ ${tr("Ta langue actuelle")}</button>`:`<button class="lgs" onclick="langInfoPick('${k}')">${tr("Choisir cette langue")}</button>`}</section>`}).join("")}
+<p class="lgf">${tr("Tu peux changer de langue à tout moment avec le sélecteur en haut de l'écran : ta progression est gardée pour chaque langue.")}</p></div>`;
+  d.addEventListener("click",e=>{if(e.target===d)langInfoClose()});
+  document.body.appendChild(d);document.documentElement.classList.add("lgi-open");
+  try{d.querySelector(".lgx").focus({preventScroll:true})}catch(e){}
+}
+function langInfoClose(){
+  const d=document.getElementById("lgi");if(!d)return;d.remove();document.documentElement.classList.remove("lgi-open");
+  try{if(LGIF&&document.contains(LGIF))LGIF.focus({preventScroll:true})}catch(e){}LGIF=null;
+}
+function langInfoPick(k){langInfoClose();setLang(k);try{window.scrollTo(0,0)}catch(e){}}
+document.addEventListener("keydown",e=>{const d=document.getElementById("lgi");if(!d)return;
+  if(e.key==="Escape"){e.preventDefault();langInfoClose();return}
+  if(e.key==="Tab"){const f=[...d.querySelectorAll("button:not([disabled])")];if(!f.length)return;const a=f[0],z=f[f.length-1];
+    if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}});
+</script>
+<style>
+/* ===== Appli 100 % : pas de comportements de site web ===== */
+html,body,*{-webkit-user-select:none!important;user-select:none!important;-webkit-touch-callout:none!important;-webkit-tap-highlight-color:transparent!important}
+input,textarea,[contenteditable="true"]{-webkit-user-select:text!important;user-select:text!important;-webkit-touch-callout:default!important}
+html,body{overscroll-behavior:none}
+img,svg{-webkit-user-drag:none;user-drag:none}
+html,body,*{scrollbar-width:none}*::-webkit-scrollbar{display:none}
+@media (hover:none){html body .opt:hover{border-color:var(--line)}html body .opt.ok:hover{border-color:var(--ok)}html body .opt.ko:hover{border-color:var(--ko)}}
+/* ===== Revue des erreurs ===== */
+#erv{position:fixed;inset:0;z-index:90;background:rgba(10,16,30,.55);display:flex;align-items:flex-end;justify-content:center;animation:erFade .2s ease-out}
+#erv .erp{width:100%;max-width:560px;max-height:88vh;overflow-y:auto;background:var(--card);color:var(--ink);border:2.5px solid var(--sk,var(--ink));border-bottom:0;border-radius:26px 26px 0 0;padding:20px 18px calc(env(safe-area-inset-bottom,0px) + 22px);animation:erUp .35s cubic-bezier(.22,1,.36,1)}
+#erv .erh{display:flex;align-items:center;gap:10px;margin:0 0 6px}#erv .erh h2{flex:1;margin:0;font:800 22px "Baloo 2",system-ui,sans-serif}
+#erv .erx{flex:none;width:38px;height:38px;border-radius:50%;border:2.5px solid var(--sk,var(--ink));background:var(--card);color:var(--ink);font:800 16px system-ui;box-shadow:2px 2px 0 var(--sk,var(--ink));cursor:pointer}
+#erv .erx:active{transform:translate(2px,2px);box-shadow:none}
+#erv .eri{color:var(--mut);font-size:15px;margin:0 0 14px}
+#erv .erc{border:2.5px solid var(--sk,var(--line));border-radius:18px;box-shadow:3px 3px 0 var(--sk,var(--line));padding:14px;margin:0 0 14px;background:var(--bg)}
+#erv .erq{font-weight:800;margin:0 0 10px}#erv .erq small{display:block;color:var(--mut);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px}
+#erv .era,#erv .ers{border-radius:12px;padding:8px 12px;margin:6px 0;font-size:15px}
+#erv .era{background:var(--kob);color:var(--ko)}#erv .ers{background:var(--okb);color:var(--ok)}
+#erv .era b,#erv .ers b{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.5px;opacity:.85}
+#erv .ert{margin:8px 0 0;font-size:14px;color:var(--ink)}
+#erv .erok{display:block;width:100%;margin-top:4px}
+@keyframes erFade{from{opacity:0}}@keyframes erUp{from{transform:translateY(100%)}}
+@media (prefers-reduced-motion:reduce){#erv,#erv .erp{animation:none}}
+</style>
+<script>
+(function(){const ed=t=>t&&t.closest&&t.closest('input,textarea,[contenteditable="true"]');
+  document.addEventListener("contextmenu",e=>{if(!ed(e.target))e.preventDefault()});
+  document.addEventListener("selectstart",e=>{if(!ed(e.target))e.preventDefault()});
+  document.addEventListener("dragstart",e=>{if(!ed(e.target))e.preventDefault()});
+  document.addEventListener("dblclick",e=>{if(!ed(e.target))e.preventDefault()},{passive:false});
+})();
+function erTxt(el){return el?(el.innerText||el.textContent||"").replace(/\s+/g," ").trim():""}
+function erRec(sol,msg,tp){
+  if(!R||R.mode==="test")return;const card=document.querySelector(".q:not(.end)");if(!card)return;
+  const h=card.querySelector("h2"),tx=card.querySelector(".txt");
+  let q=erTxt(h);if(tx&&erTxt(tx)&&q.indexOf(erTxt(tx))<0)q+=" — "+erTxt(tx);
+  let a="";const ko=card.querySelector(".opt.ko");if(ko)a=erTxt(ko);
+  if(!a){const i=card.querySelector("input.in,textarea");if(i)a=(i.value||"").trim()}
+  if(!a){const l=card.querySelector(".line");if(l)a=erTxt(l)}
+  const d=document.createElement("div");d.innerHTML=String(sol||"");const so=erTxt(d);
+  (R.rec=R.rec||[]).push({q,a,s:so,m:msg?String(msg).replace(/<[^>]*>/g,""):"",t:tp?gl(tp[2]):""});
+}
+function erShow(){
+  if(document.getElementById("erv")||!R||!R.rec)return;try{FX.play("tap")}catch(e){}
+  const es=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const d=document.createElement("div");d.id="erv";
+  d.innerHTML=`<div class="erp" role="dialog" aria-modal="true" aria-labelledby="ervt"><div class="erh">${mas("content",44)}<h2 id="ervt">${tr("Tes erreurs")}</h2><button class="erx" onclick="erClose()" aria-label="${tr("Fermer")}">✕</button></div><p class="eri">${tr("Regarde la bonne réponse et l'explication, puis retente l'étape.")}</p>${R.rec.map((r,i)=>`<div class="erc"><p class="erq"><small>${tr("Question")} ${i+1}</small>${es(r.q||"…")}</p>${r.a?`<div class="era"><b>${tr("Ta réponse")}</b>${es(r.a)}</div>`:""}${r.s?`<div class="ers"><b>${tr("Correction")}</b>${es(r.s)}</div>`:""}${r.m?`<p class="ert">${es(r.m)}</p>`:""}${r.t?`<p class="ert">💡 ${es(r.t)}</p>`:""}</div>`).join("")}<button class="btn erok" onclick="erClose()">${tr("J'ai compris")}</button></div>`;
+  d.addEventListener("click",e=>{if(e.target===d)erClose()});document.body.appendChild(d);
+}
+function erClose(){const d=document.getElementById("erv");if(d)d.remove()}
+</script>
+<script>
+/* ===== Langue des champs de saisie (correcteur / clavier) =====
+   Exercices notés : lang = langue étudiée, pas de correction auto ni de suggestions (sinon le clavier « corrige » vers le français et souffle la réponse).
+   Discussion libre : lang = langue étudiée, vérif. orthographique gardée (soulignement dans la bonne langue là où le navigateur le gère), pas de correction auto.
+   Traducteur : lang = langue source choisie.  Recherches / identifiants : pas de correction auto. */
+const INTAG={es:"es-ES",va:"ca-ES-valencia",ca:"ca-ES",gl:"gl-ES",eu:"eu-ES",fr:"fr-FR",en:"en",it:"it-IT",de:"de-DE",pt:"pt-PT"};
+function inTag(k){return INTAG[k]||k}
+function inSet(el,a){for(const k in a){const v=a[k];if(v==null){if(el.hasAttribute(k))el.removeAttribute(k)}else if(el.getAttribute(k)!==v)el.setAttribute(k,v)}}
+function inFix(){
+  let L="es-ES";try{L=inTag(lg())}catch(e){}
+  const noGr={"data-gramm":"false","data-gramm_editor":"false","data-enable-grammarly":"false"};
+  document.querySelectorAll("input,textarea").forEach(el=>{
+    const id=el.id,t=(el.type||"text").toLowerCase();
+    if(t==="password"){inSet(el,{autocorrect:"off",autocapitalize:"none",spellcheck:"false"});return}
+    if(id==="ti"){inSet(el,Object.assign({lang:L,spellcheck:"false",autocorrect:"off",autocapitalize:"none",autocomplete:"off",inputmode:"text",enterkeyhint:"done"},noGr));return}
+    if(id==="cvin"){inSet(el,Object.assign({lang:L,spellcheck:"true",autocorrect:"off",autocapitalize:"sentences",autocomplete:"off",inputmode:"text",enterkeyhint:"send"},noGr));return}
+    if(id==="tin"){let src="auto";try{src=TS.src}catch(e){}const sl=src&&src!=="auto"?inTag(src):null,local=src&&src!=="auto"&&src in LANGS;
+      inSet(el,{lang:sl,spellcheck:"true",autocorrect:local||src==="auto"?"off":null,autocapitalize:"sentences",inputmode:"text"});return}
+    if(id==="xq"||id==="eq"||id==="lq"){inSet(el,{spellcheck:"false",autocorrect:"off",autocapitalize:"none",autocomplete:"off",inputmode:"search",enterkeyhint:"search"});return}
+    if(id==="u"||id==="gk"){inSet(el,{spellcheck:"false",autocorrect:"off",autocapitalize:"none"});return}
+  });
+}
+(function(){let p=0;const run=()=>{p=0;try{inFix()}catch(e){}};
+  const go=()=>{try{new MutationObserver(()=>{if(!p){p=1;(window.queueMicrotask||setTimeout)(run)}}).observe(document.body,{childList:true,subtree:true})}catch(e){}run()};
+  if(document.body)go();else document.addEventListener("DOMContentLoaded",go);
+  try{const o=tsel;tsel=function(){const r=o.apply(this,arguments);run();return r}}catch(e){}
+  try{const o2=setLang;setLang=function(){const r=o2.apply(this,arguments);run();return r}}catch(e){}
+})();
+</script>
+<style>
+html body .rvb{display:inline-block;margin:0 0 10px;padding:3px 10px;border-radius:999px;background:var(--g1);color:var(--ink);font:800 12px Nunito,system-ui,sans-serif;letter-spacing:.3px}
+html body .lvgl{list-style:none;margin:0;padding:0}html body .lvgl li{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:8px 0;border-top:1px solid var(--line);font-size:15px;font-weight:700}html body .lvgl li.ok{color:var(--mut)}html body .lvgl .chip{padding:5px 10px;font-size:13px;margin-left:auto}
+</style>
+<script>
+/* ===== Nouvelle unité débloquée : animation quand le bilan d'une unité est réussi ===== */
+var UNLQ=null;
+function unitUnlocked(pid){
+  const pl=pathPlan();if(!pl||!pl.units||pl.k==="rat")return null;const us=pl.units,pd=S.pth||{};
+  const ui=us.findIndex(u=>u.steps.some(x=>x.id===pid));if(ui<0||ui>=us.length-1)return null;
+  const u=us[ui];if(u.steps[u.steps.length-1].id!==pid)return null;
+  if(!u.steps.filter(x=>!x.test).every(x=>(pd[pthK(x.id)]||0)>=6))return null;
+  const nx=us[ui+1],first=nx.steps.find(x=>!x.test&&(pd[pthK(x.id)]||0)<6)||nx.steps[0];
+  return{n:ui+2,title:nx.title||"",obj:nx.obj||"",go:first&&!first.test?first.id:null,test:!!(first&&first.test)};
+}
+function unitCelebrate(u){
+  if(!u||document.getElementById("unl"))return;
+  const t=String(u.title).trim(),m=t.match(/^(\S+)\s+(.*)$/),ic=m&&!/[A-Za-zÀ-ÿ]/.test(m[1])?m[1]:"⭐",name=m&&ic!=="⭐"?m[2]:t;
+  const d=document.createElement("div");d.id="unl";d.setAttribute("role","dialog");d.setAttribute("aria-modal","true");d.setAttribute("aria-label",tr("Unité {0} débloquée !",u.n));
+  d.innerHTML=`<div class="unc"><div class="unstage"><i class="unrays"></i><div class="unlock" aria-hidden="true"><svg viewBox="0 0 64 72"><path class="unsh" d="M18 32V22a14 14 0 0 1 28 0v10" fill="none" stroke="var(--sk)" stroke-width="7" stroke-linecap="round"/><rect x="8" y="30" width="48" height="38" rx="10" fill="var(--sol)" stroke="var(--sk)" stroke-width="4"/><circle cx="32" cy="46" r="5" fill="var(--sk)"/><rect x="29.5" y="48" width="5" height="10" rx="2.5" fill="var(--sk)"/></svg></div><div class="unbadge" aria-hidden="true">${esc(ic)}</div><div class="unmas">${mas("bravo",86)}</div></div>
+  <p class="unk">${tr("Unité {0} débloquée !",u.n)}</p><h2 class="unt">${esc(name)}</h2>${u.obj?`<p class="uno">${esc(gl(u.obj))}</p>`:""}
+  <div class="unb">${u.go?`<button class="btn ungo" onclick="unitGo('${u.go}')">${tr("Commencer l'unité")}</button>`:`<button class="btn ungo" onclick="unitClose(1)">${tr("Voir mon parcours")}</button>`}<button class="btn ghost" onclick="unitClose()">${tr("Plus tard")}</button></div></div>`;
+  d.addEventListener("click",e=>{if(e.target===d)unitClose()});
+  document.body.appendChild(d);
+  const rm=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+  setTimeout(()=>{try{FX.play("level")}catch(e){}},rm?0:1150);
+  setTimeout(()=>{try{FX.confetti()}catch(e){}try{navigator.vibrate&&navigator.vibrate([30,40,60])}catch(e){}},rm?0:1250);
+  setTimeout(()=>{try{d.querySelector(".ungo").focus({preventScroll:true})}catch(e){}},rm?0:1700);
+}
+function unitClose(h){const d=document.getElementById("unl");if(!d)return;d.classList.add("out");setTimeout(()=>{d.remove();if(h)home()},220)}
+function unitGo(id){const d=document.getElementById("unl");if(d)d.remove();pstart(id)}
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.getElementById("unl"))unitClose()});
+</script>
+<style>
+#unl{position:fixed;inset:0;z-index:95;display:flex;align-items:center;justify-content:center;padding:20px;background:color-mix(in srgb,var(--sk) 55%,transparent);animation:unFade .25s ease-out both}
+#unl.out{animation:unFadeOut .22s ease-in forwards}
+#unl .unc{width:100%;max-width:400px;background:var(--card);color:var(--ink);border:3px solid var(--sk);border-radius:28px;box-shadow:6px 6px 0 var(--sk);padding:22px 20px calc(20px + env(safe-area-inset-bottom,0px));text-align:center;animation:unPop .5s cubic-bezier(.34,1.56,.64,1) both}
+#unl .unstage{position:relative;height:150px;display:flex;align-items:center;justify-content:center;margin:0 0 6px}
+#unl .unrays{position:absolute;width:210px;height:210px;border-radius:50%;background:repeating-conic-gradient(color-mix(in srgb,var(--sol) 55%,transparent) 0 10deg,transparent 10deg 30deg);-webkit-mask:radial-gradient(circle,#000 30%,transparent 68%);mask:radial-gradient(circle,#000 30%,transparent 68%);opacity:0;animation:unRays .6s ease-out 1.15s forwards,unSpin 14s linear 1.15s infinite}
+#unl .unlock{position:absolute;width:82px;animation:unShake .45s ease-in-out .35s 2,unGone .35s ease-in 1.05s forwards}
+#unl .unlock svg{width:100%;height:auto;overflow:visible}
+#unl .unsh{transform-origin:46px 32px;animation:unOpen .35s cubic-bezier(.34,1.56,.64,1) .85s forwards}
+#unl .unbadge{position:absolute;width:104px;height:104px;border-radius:30px;display:flex;align-items:center;justify-content:center;font-size:56px;line-height:1;background:var(--az);border:3px solid var(--sk);box-shadow:4px 4px 0 var(--sk);transform:scale(0) rotate(-25deg);animation:unBadge .6s cubic-bezier(.34,1.56,.64,1) 1.15s forwards}
+#unl .unmas{position:absolute;right:calc(50% - 150px);bottom:-6px;opacity:0;transform:translateY(16px);animation:unUp .45s cubic-bezier(.22,1,.36,1) 1.45s forwards}
+#unl .unk{margin:6px 0 2px;font:800 14px Nunito,system-ui,sans-serif;letter-spacing:.6px;text-transform:uppercase;color:var(--az);opacity:0;animation:unUp .4s ease-out 1.4s forwards}
+#unl .unt{margin:0 0 6px;font:800 26px/1.15 "Baloo 2",system-ui,sans-serif;opacity:0;animation:unUp .4s ease-out 1.5s forwards}
+#unl .uno{margin:0 0 14px;color:var(--mut);font-size:15px;opacity:0;animation:unUp .4s ease-out 1.6s forwards}
+#unl .unb{display:flex;flex-direction:column;gap:8px;opacity:0;animation:unUp .4s ease-out 1.7s forwards}
+#unl .unb .btn{margin:0;width:100%}
+@keyframes unFade{from{opacity:0}}@keyframes unFadeOut{to{opacity:0}}
+@keyframes unPop{from{opacity:0;transform:scale(.7) translateY(30px)}}
+@keyframes unShake{0%,100%{transform:rotate(0)}25%{transform:rotate(-9deg)}75%{transform:rotate(9deg)}}
+@keyframes unOpen{to{transform:translateY(-9px) rotate(28deg)}}
+@keyframes unGone{to{opacity:0;transform:scale(1.5)}}
+@keyframes unBadge{to{transform:scale(1) rotate(0)}}
+@keyframes unRays{to{opacity:1}}@keyframes unSpin{to{transform:rotate(360deg)}}
+@keyframes unUp{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){#unl,#unl *{animation-duration:.01s!important;animation-delay:0s!important;animation-iteration-count:1!important}}
+</style>
 <script id="sm-app-js">
 /* Comportement d'appli : pas de menu « appui long » hors des champs de saisie ; stockage protégé contre le nettoyage automatique */
 document.addEventListener("contextmenu",e=>{if(!(e.target.closest&&e.target.closest("input,textarea,[contenteditable]")))e.preventDefault()});
@@ -5146,7 +5470,7 @@ function mLive(good){try{
   box.querySelectorAll(".mlb,.cmb").forEach(e=>e.remove());
   const b=document.createElement("span");b.className="mlb";b.textContent=good&&FXS>=3&&(FXS===3||mile)?W[2].replace("{0}",FXS):mlPick(W[good?0:1]);box.appendChild(b);
   if(good&&FXS>=3)box.insertAdjacentHTML("beforeend",cmbHtml(FXS===3||mile));
-  if(mile){try{FX.confetti()}catch(e){}}
+  if(mile){try{FX.confetti()}catch(e){}try{if(!MS().mute&&navigator.vibrate)setTimeout(()=>navigator.vibrate([30,50,30,50,90]),80)}catch(e){}}
   clearTimeout(box._t);box._t=setTimeout(()=>{b.classList.add("out");setTimeout(()=>b.remove(),260)},2200);
 }catch(e){}}
 (function(){const f=window.fxOk;if(typeof f!=="function")return;window.fxOk=function(g){f(g);mLive(!!g)}})();
