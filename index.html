@@ -4401,21 +4401,27 @@ const VZ=(function(){const N=17;let raf=0,st=null,an=null,ac=null,fr=null,E=0,P=
   function stop(){cancelAnimationFrame(raf);raf=0;try{st&&st.getTracks().forEach(t=>t.stop())}catch(e){}st=null;an=null;fr=null;try{ac&&ac.close()}catch(e){}ac=null}
   /* animation calée sur le temps réel (fluide à 60 ou 120 Hz) : enveloppe lissée, ondulations sinusoïdales continues, montée rapide et retombée douce */
   function loop(now){const el=document.getElementById("vz");if(!el){stop();return}const b=el.children,dt=Math.min(.05,Math.max(.001,(now-(last||now))/1000))||.016,T=(now-t0)/1000;last=now;
-    if(an){if(!fr)fr=new Uint8Array(an.frequencyBinCount);an.getByteFrequencyData(fr)}
+    if(an){if(!fr)fr=new Uint8Array(an.frequencyBinCount);an.getByteFrequencyData(fr);watch(dt)}
     P*=Math.exp(-dt*2.2);const tg=Math.min(1,(sp?.38:snd?.12:.03)+P);E+=(tg-E)*(1-Math.exp(-dt*(tg>E?9:3.5)));
     for(let i=0;i<N;i++){const c=Math.abs(i-(N-1)/2)/((N-1)/2),sh=1-c*c*.55,q=ph[i];let t;
-      if(fr){const k=Math.min(fr.length-1,1+Math.round(Math.abs(i-(N-1)/2)*1.5));t=.07+Math.pow(fr[k]/255,1.2)*sh*(.85+.15*Math.sin(T*q[2]+q[0]))}
+      if(fr){const d=Math.abs(i-(N-1)/2),hz=ac?ac.sampleRate/an.fftSize:375,k0=Math.max(1,Math.round(120/hz)),k1=Math.max(k0+2,Math.round(3200/hz)),k=Math.min(fr.length-1,k0+Math.round(d/((N-1)/2)*(k1-k0)));const v=(fr[k]+(fr[k+1]||0))/510;t=.07+Math.pow(v,1.15)*1.1*sh}
       else{const w=.5+.28*Math.sin(T*q[2]*2.2+q[0])+.22*Math.sin(T*q[3]*1.6+q[1]+i*.45);t=.07+E*sh*w}
       const a=1-Math.exp(-dt*(t>cur[i]?18:7));cur[i]+=(Math.min(1,t)-cur[i])*a;b[i].style.transform="scaleY("+cur[i].toFixed(4)+")"}
     raf=requestAnimationFrame(loop)}
-  function start(r){stop();E=0;P=0;sp=0;snd=0;last=0;cur.fill(.08);t0=performance.now();
+  /* vrai niveau du micro : ordinateur et Android (ouvert seulement une fois la reconnaissance démarrée) ; si l'appareil ne supporte pas les deux à la fois, retour définitif au mode « rythme de la voix » */
+  let SIMF=0,live=0,zt=0;try{SIMF=localStorage.getItem("sob-vzsim")==="1"?1:0}catch(e){}
+  function giveUp(){SIMF=1;live=0;try{localStorage.setItem("sob-vzsim","1")}catch(e){}try{st&&st.getTracks().forEach(t=>t.stop())}catch(e){}st=null;an=null;fr=null;try{ac&&ac.close()}catch(e){}ac=null}
+  function openMic(){if(st||!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia)return;navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:true}}).then(s=>{if(!document.getElementById("vz")){s.getTracks().forEach(t=>t.stop());return}st=s;live=1;zt=0;ac=new (window.AudioContext||window.webkitAudioContext)();try{ac.resume()}catch(e){}const src=ac.createMediaStreamSource(s);an=ac.createAnalyser();an.fftSize=128;an.smoothingTimeConstant=.55;src.connect(an)}).catch(()=>{})}
+  function start(r){stop();E=0;P=0;sp=0;snd=0;last=0;live=0;zt=0;cur.fill(.08);t0=performance.now();
     const on=(e,f)=>{try{r.addEventListener(e,f)}catch(x){}};
     on("soundstart",()=>{snd=1;P=Math.max(P,.12)});on("soundend",()=>{snd=0});on("speechstart",()=>{sp=1;P=Math.max(P,.35)});on("speechend",()=>{sp=0});on("result",()=>{P=Math.min(.62,P+.4)});on("end",()=>{sp=0;snd=0});
-    const mob=IOSW||/Android|iPhone|iPad|Mobile/i.test(navigator.userAgent);
-    if(!mob&&navigator.mediaDevices&&navigator.mediaDevices.getUserMedia)navigator.mediaDevices.getUserMedia({audio:true}).then(s=>{if(!document.getElementById("vz")){s.getTracks().forEach(t=>t.stop());return}st=s;ac=new (window.AudioContext||window.webkitAudioContext)();const src=ac.createMediaStreamSource(s);an=ac.createAnalyser();an.fftSize=64;an.smoothingTimeConstant=.82;src.connect(an)}).catch(()=>{});
+    const ios=IOSW||/iPhone|iPad/i.test(navigator.userAgent),andr=/Android/i.test(navigator.userAgent),mob=ios||andr||/Mobile/i.test(navigator.userAgent);
+    if(!mob)openMic();else if(andr&&!SIMF)on("audiostart",()=>setTimeout(openMic,120));
     raf=requestAnimationFrame(loop)}
+  /* micro muet alors que la voix est détectée : l'appareil ne partage pas le micro */
+  function watch(dt){if(!fr||!sp)return;let m=0;for(let k=0;k<fr.length;k++)if(fr[k]>m)m=fr[k];if(m<3){zt+=dt;if(zt>1.6)giveUp()}else zt=0}
   try{document.head.insertAdjacentHTML("beforeend",`<style>.vz{display:flex;align-items:center;justify-content:center;gap:4px;height:58px;margin:10px 0 4px}.vz{contain:layout paint;transform:translateZ(0)}.vz i{display:block;width:7px;height:52px;border-radius:99px;background:var(--az);transform:scaleY(.08);transform-origin:50% 50%;will-change:transform;backface-visibility:hidden}.vz i:nth-child(odd){background:color-mix(in srgb,var(--az) 70%,var(--sol))}</style>`)}catch(e){}
-  return{html,start,stop}})();
+  return{html,start,stop,live:()=>!!live,giveUp}})();
 /* précision : le moteur de reconnaissance reçoit la phrase attendue et ses mots (biais contextuel, navigateurs récents) pour mieux les reconnaître ; jamais utilisé si le service le refuse */
 let NOPHR=0;try{NOPHR=localStorage.getItem("sob-nophr")==="1"?1:0}catch(e){}
 function srBias(r,q){if(NOPHR||!q||!window.SpeechRecognitionPhrase||!("phrases" in r))return;
@@ -4429,7 +4435,7 @@ async function rec(){
   fb.innerHTML=`<p class="sub">Je t'écoute…</p>`+VZ.html();if(IOSW)stopSp();
   const pre=IOSW?"":await micPre();if(pre){fb.innerHTML=micErr(pre,"recType()","rec()");return}
   VZ.start(r);srAttach(r,(alts,m)=>{if(R.done)return;R.mf=0;oralCheck(alts,m)},
-    (code,st)=>{if(R.done)return;if(code==="phrases-not-supported"&&!NOPHR){NOPHR=1;try{localStorage.setItem("sob-nophr","1")}catch(e){}setTimeout(rec,60);return}const vx=st&&st.sp&&(!code||code==="no-speech");R.mf=vx?(R.mf||0)+1:0;
+    (code,st)=>{if(R.done)return;if(VZ.live()&&/Android/i.test(navigator.userAgent)&&/^(audio-capture|no-speech|aborted|)$/.test(code||"")&&!(st&&st.done)){VZ.giveUp();setTimeout(rec,80);return}if(code==="phrases-not-supported"&&!NOPHR){NOPHR=1;try{localStorage.setItem("sob-nophr","1")}catch(e){}setTimeout(rec,60);return}const vx=st&&st.sp&&(!code||code==="no-speech");R.mf=vx?(R.mf||0)+1:0;
       fb.innerHTML=micErr(code,"recType()","rec()",st)+(R.mf>=2?`<p class="sub" style="margin-top:8px">${tr("La reconnaissance vocale a du mal avec ce mot. Ce n'est pas ta prononciation : réponds à l'écrit, ça compte pareil.")}</p>`:"")});
   try{r.start()}catch(e){SRC=null;micSess(0);fb.innerHTML=micErr((e&&e.name)||"error","recType()","rec()")}
 }
