@@ -46,8 +46,10 @@ try:
                k=="actuel" and st["lock"] is None and not st["rec"] and st["U"]=="ancien" and same and not err,{"k":k,"st":st,"o":{x:o.get(x) for x in("xp","lang","lvl","v")},"err":err})
             pg.evaluate("()=>save()");n=json.loads(pg.evaluate("()=>localStorage.getItem('cast:ancien')"))
             perdus=sorted(set(o)-set(n));chg=[x for x in o if x not in("t","pmv","pth") and n.get(x)!=o[x]]
-            brut=pg.evaluate("()=>Object.keys(localStorage).filter(k=>k.startsWith('cast:ancien:'))")
-            ck(f"{c} : réécrit par la version actuelle sans champ perdu ni modifié, aucune copie créée (profil actuel)",not perdus and not chg and brut==[] and not err,{"perdus":perdus,"modifiés":chg,"copies":brut,"err":err})
+            brut=pg.evaluate("()=>Object.keys(localStorage).filter(k=>k.startsWith('cast:ancien:brut:'))")
+            bk=pg.evaluate("()=>[localStorage.getItem('cast:ancien:bak'),localStorage.getItem('cast:ancien:bakJ')]")
+            ck(f"{c} : réécrit par la version actuelle sans champ perdu ni modifié ; aucune copie brute (profil actuel) ; :bak et :bakJ = profil de l'ancienne version, à l'identique",
+               not perdus and not chg and brut==[] and bk==[raw,raw] and not err,{"perdus":perdus,"modifiés":chg,"copies brutes":brut,"bak identiques":[x==raw for x in bk],"err":err})
             # 3. restauration : le même profil, gardé en copie, restauré après une corruption
             pg.evaluate("(r)=>{localStorage.setItem('cast:ancien','{corrompu');localStorage.setItem('cast:ancien:copie-test',r)}",raw)
             pg.reload();pg.wait_for_timeout(3000);rec=pg.evaluate("()=>!!document.getElementById('prec')")

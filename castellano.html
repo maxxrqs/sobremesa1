@@ -5361,7 +5361,31 @@ function pKeep(u,raw,tag){
   try{ST.set(k,raw)}catch(e){}
   try{return ST.get(k)===raw}catch(e){return false}}
 /* copies valides (actuel ou ancien) proposées à la restauration, la plus récente d'abord */
-function pCopies(u){return pKeys(u).map(k=>{const raw=ST.get(k),c=classProfil(raw);return c.c==="actuel"||c.c==="ancien"?{k,raw,o:c.o,t:+(c.o.t||(k.split(":").pop()))||0}:null}).filter(Boolean).sort((a,b)=>b.t-a.t)}
+function pCopies(u){const vu=new Set();return pKeys(u).map(k=>{const raw=ST.get(k),c=classProfil(raw);if(!(c.c==="actuel"||c.c==="ancien")||vu.has(raw))return null;vu.add(raw);return{k,raw,o:c.o,t:+(c.o.t||(k.split(":").pop()))||0}}).filter(Boolean).sort((a,b)=>b.t-a.t)}
+/* ---- Sauvegardes automatiques d'un profil valide (actuel ou ancien) ----
+   cast:<id>:bak  : copie à chaque ouverture réussie ;
+   cast:<id>:bakJ : copie du premier chargement du jour (jour local dans cast:<id>:bakJ:jour), pas réécrite le même jour.
+   Chaque écriture est relue ; si la relecture ne rend pas exactement la copie, l'ancienne valeur est remise (ou la clé retirée s'il n'y en avait pas) : une sauvegarde existante n'est jamais remplacée par une copie incomplète. */
+let PBAK=null;
+const pJour=()=>{const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")};
+function pPut(k,raw){
+  let prev=null;try{prev=ST.get(k)}catch(e){}
+  if(prev===raw)return "inchangé";
+  try{ST.set(k,raw)}catch(e){}
+  let back=null;try{back=ST.get(k)}catch(e){}
+  if(back===raw)return "ok";
+  if(prev===null){try{ST.del(k)}catch(e){}}else if(back!==prev){try{ST.set(k,prev)}catch(e){}}
+  return "échec"}
+function pBak(u,raw){
+  const o={bak:"",bakJ:""};PBAK=o;
+  try{
+    const c=classProfil(raw).c;if(c!=="actuel"&&c!=="ancien")return o;
+    const kb="cast:"+u+":bak",kj="cast:"+u+":bakJ",kd=kj+":jour",j=pJour(),vj=classProfil(ST.get(kj)).c;
+    o.bak=pPut(kb,raw);
+    if(ST.get(kd)===j&&(vj==="actuel"||vj==="ancien"))o.bakJ="déjà faite aujourd'hui";
+    else{o.bakJ=pPut(kj,raw);if(o.bakJ!=="échec"&&pPut(kd,j)==="échec")o.bakJ="échec (jour)"}
+  }catch(e){}
+  return o}
 function loginL(u){
   U=u;try{ST.set("cast_user",u)}catch(e){}
   const raw=ST.get("cast:"+u),k=classProfil(raw);
@@ -5370,6 +5394,7 @@ function loginL(u){
     clearTimeout(ct);S=FRESH();R=undefined;CR=null;build();applyTheme();pRec();
     return Promise.resolve()}
   PLOCK=null;
+  pBak(u,raw);
   const l=k.o||null;
   S=Object.assign(FRESH(),l||{});
   /* compagnon choisi sur l'accueil avant connexion : on le garde, avec son thème */
