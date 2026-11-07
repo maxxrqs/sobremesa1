@@ -3780,6 +3780,8 @@ function pstart(id){
   if(di.length>=2||(di.length&&(st.ru||st.tn))){discShow(di,()=>{SCR="home";INL=1;next()},di.intro);return}
   next();
 }
+/* « Continuer le parcours » : ouvre directement la prochaine étape à faire (sinon retour à l'accueil) */
+function pathCont(){let it=null;try{it=pathItems().find(x=>!x.done&&!x.lock)}catch(e){}if(!it){home();return}if(it.test){lvTest();return}pstart(it.id)}
 function pathItems(){
   const pl=pathPlan(),pd=S.pth||{},all=!!S.pthAll,out=[];
   pl.units.forEach(u=>u.steps.forEach(x=>{const it={id:x.id,ic:x.ic,lab:x.lab,sub:x.sub,u:u.n,go:x.test?"lvTest()":`pstart('${x.id}')`,test:!!x.test};it.best=x.test?0:pd[pthK(it.id)]||0;it.done=!x.test&&it.best>=6;const la=(S.pa||{})[pthK(it.id)];it.last=x.test||la==null?null:la;out.push(it)}));
@@ -4389,14 +4391,34 @@ function micErr(code,fb,rt,st){
   return `<div class="fb ko">${m}</div>${rt&&can?`<button class="btn" style="margin-top:8px" onclick="${rt}">🎤 ${tr("Réessayer")}</button> `:""}${fb?`<button class="btn ghost" style="margin-top:8px" onclick="${fb}">⌨️ ${tr("Écrire à la place")}</button>`:""}`;
 }
 /*MIC-END*/
+/* spectre audio pendant que l'élève parle : vrai niveau du micro sur ordinateur ; sur téléphone (le micro ne peut pas être ouvert deux fois pendant la reconnaissance vocale), les barres suivent le rythme de la voix détectée par la reconnaissance */
+const VZ=(function(){const N=17;let raf=0,st=null,an=null,ac=null,L=0,P=0,sp=0,cur=new Array(N).fill(.08);
+  const html=()=>`<div class="vz" id="vz" aria-hidden="true">${"<i></i>".repeat(N)}</div>`;
+  function stop(){cancelAnimationFrame(raf);raf=0;try{st&&st.getTracks().forEach(t=>t.stop())}catch(e){}st=null;an=null;try{ac&&ac.close()}catch(e){}ac=null}
+  function loop(){const el=document.getElementById("vz");if(!el){stop();return}const b=el.children;let fr=null;
+    if(an){fr=new Uint8Array(an.frequencyBinCount);an.getByteFrequencyData(fr)}
+    P*=.9;L+=((sp?.32:.04)+P-L)*.18;
+    for(let i=0;i<N;i++){const c=Math.abs(i-(N-1)/2)/((N-1)/2),sh=1-c*.6;let t;
+      if(fr){const k=Math.min(fr.length-1,2+Math.round(Math.abs(i-(N-1)/2)*1.6));t=.06+Math.pow(fr[k]/255,1.3)*sh}
+      else t=.06+L*sh*(.45+Math.random()*.75);
+      cur[i]+=(Math.min(1,t)-cur[i])*(t>cur[i]?.55:.2);b[i].style.transform=`scaleY(${cur[i].toFixed(3)})`}
+    raf=requestAnimationFrame(loop)}
+  function start(r){stop();L=0;P=0;sp=0;cur.fill(.08);
+    const on=(e,f)=>{try{r.addEventListener(e,f)}catch(x){}};
+    on("soundstart",()=>{P=Math.max(P,.15)});on("speechstart",()=>{sp=1;P=Math.max(P,.5)});on("speechend",()=>{sp=0});on("result",()=>{P=Math.min(1,P+.75)});on("end",()=>{sp=0});
+    const mob=IOSW||/Android|iPhone|iPad|Mobile/i.test(navigator.userAgent);
+    if(!mob&&navigator.mediaDevices&&navigator.mediaDevices.getUserMedia)navigator.mediaDevices.getUserMedia({audio:true}).then(s=>{if(!document.getElementById("vz")){s.getTracks().forEach(t=>t.stop());return}st=s;ac=new (window.AudioContext||window.webkitAudioContext)();const src=ac.createMediaStreamSource(s);an=ac.createAnalyser();an.fftSize=64;an.smoothingTimeConstant=.6;src.connect(an)}).catch(()=>{});
+    raf=requestAnimationFrame(loop)}
+  try{document.head.insertAdjacentHTML("beforeend",`<style>.vz{display:flex;align-items:center;justify-content:center;gap:4px;height:58px;margin:10px 0 4px}.vz i{display:block;width:7px;height:52px;border-radius:99px;background:var(--az);transform:scaleY(.08);transform-origin:50% 50%;will-change:transform}.vz i:nth-child(odd){background:color-mix(in srgb,var(--az) 70%,var(--sol))}</style>`)}catch(e){}
+  return{html,start,stop}})();
 function recType(){const q=R.q;if(!q||R.done)return;R.q=q.ty==="speakQ"?{ty:"replyQ",npc:q.npc,hint:q.hint,models:q.models,es:q.es,fr:q.fr,say:q.say,sol:q.sol,key:null}:q.ty==="rep"?{ty:"dict",fr:q.fr,es:q.es,say:q.es,key:null,sol:q.sol}:{ty:"type",fr:q.fr,es:q.es,say:q.es,key:null,sol:q.sol};draw()}
 async function rec(){
   if(SRC){try{SRC.stop()}catch(e){}return}
   const fb=document.getElementById("fb");
   const r=new SR();r.lang=LANGS[lg()].s;r.maxAlternatives=3;
-  fb.innerHTML=`<p class="sub">Je t'écoute…</p>`;if(IOSW)stopSp();
+  fb.innerHTML=`<p class="sub">Je t'écoute…</p>`+VZ.html();if(IOSW)stopSp();
   const pre=IOSW?"":await micPre();if(pre){fb.innerHTML=micErr(pre,"recType()","rec()");return}
-  srAttach(r,(alts,m)=>{if(R.done)return;R.mf=0;oralCheck(alts,m)},
+  VZ.start(r);srAttach(r,(alts,m)=>{if(R.done)return;R.mf=0;oralCheck(alts,m)},
     (code,st)=>{if(R.done)return;const vx=st&&st.sp&&(!code||code==="no-speech");R.mf=vx?(R.mf||0)+1:0;
       fb.innerHTML=micErr(code,"recType()","rec()",st)+(R.mf>=2?`<p class="sub" style="margin-top:8px">${tr("La reconnaissance vocale a du mal avec ce mot. Ce n'est pas ta prononciation : réponds à l'écrit, ça compte pareil.")}</p>`:"")});
   try{r.start()}catch(e){SRC=null;micSess(0);fb.innerHTML=micErr((e&&e.name)||"error","recType()","rec()")}
@@ -4430,7 +4452,7 @@ function end(){
       pm=pb>=6?`<p>${tr("Cette étape était déjà validée (meilleur score : {0}/10).",sf(pb))}</p>`:`<p style="color:var(--ko);font-weight:700">🔒 ${tr("Il faut 6 bonnes réponses sur 10 pour valider l'étape.")}</p>`;
       if(pb<6&&S.fl[pk]>=2)mrv=`<p class="sub">${tr("Tu bloques sur cette étape ? Fais une mini-révision de tes erreurs, puis retente.")}</p><button class="btn ghost" onclick="miniRev('${R.pid}')">${tr("Mini-révision")}</button><br>`}}
   if(R.pid){S.sh=S.sh||{};const hk=lg()+":"+lv();(S.sh[hk]=S.sh[hk]||[]).push(R.ok);if(S.sh[hk].length>12)S.sh[hk].shift()}const up=0;save();const rdy=lvReady(),nv=!!(R.pid&&R.ok<6&&((S.pth||{})[pthK(R.pid)]||0)<6);
-  $.innerHTML=head()+`<div class="q end win">${notes()}<div class="wm">${mas(R.ok>=7?"bravo":R.ok<=3?"triste":"content",150)}</div><div class="stars">${[1,2,3].map(n=>`<svg class="st${R.ok>=(n===1?4:n===2?7:9)?" on":""}" style="--d:${n*.22+.3}s" viewBox="0 0 24 24"><path d="M12 2.6l2.9 6 6.5.8-4.8 4.5 1.3 6.5L12 17.2 6.1 20.4l1.3-6.5L2.6 9.4l6.5-.8z"/></svg>`).join("")}</div><div class="big"><span class="cu" data-to="${R.ok}">0</span>/10</div><div class="chips2"><span class="pill xp">+<span class="cu" data-to="${R.xp+bonus}">0</span> XP</span><span class="pill fl">🔥 ${curStreak()}</span>${bonus?`<span class="pill">${tr("série parfaite !")}</span>`:""}</div>${up?`<p><b>${tr("Niveau supérieur débloqué : {0} 🎉",NL[lv()])}</b></p>`:""}${pm}${rdy?`<p><b>🎓 ${tr(CL.bt,NL[lv()].split(" ")[0])}</b></p><button class="btn" onclick="lvTest()">${gl(CL.bgo)}</button><br>`:""}${R.ok<6&&R.rec&&R.rec.length?`<button class="btn erb" onclick="erShow()">🔍 ${tr("Voir mes erreurs")}</button><br>`:""}${R.pid?(nv?`<button class="btn dis" aria-disabled="true" onclick="endErr()">${tr("Continuer le parcours")}</button><br>`:`<button class="btn" onclick="home()">${tr("Continuer le parcours")}</button><br>`):""}<button class="btn${R.pid&&!nv?" ghost":""}" onclick="${R.pid||R.back?`pstart('${R.pid||R.back}')`:`start('${R.t}'${R.cat?","+JSON.stringify(R.cat).replace(/"/g,"&quot;"):""})`}">${R.back?tr("Retenter l'étape"):nv?tr("Recommencer"):"Encore une série"}</button><br>${mrv}<button class="btn ghost" onclick="home()">Changer de thème</button></div>`;FX.play(up?"level":R.ok>=7?"streak":R.ok<=3?"bad":"good");if(up||R.ok>=8)FX.confetti();cuRun();if(UNLQ){const u=UNLQ;UNLQ=null;setTimeout(()=>unitCelebrate(u),900)}
+  $.innerHTML=head()+`<div class="q end win">${notes()}<div class="wm">${mas(R.ok>=7?"bravo":R.ok<=3?"triste":"content",150)}</div><div class="stars">${[1,2,3].map(n=>`<svg class="st${R.ok>=(n===1?4:n===2?7:9)?" on":""}" style="--d:${n*.22+.3}s" viewBox="0 0 24 24"><path d="M12 2.6l2.9 6 6.5.8-4.8 4.5 1.3 6.5L12 17.2 6.1 20.4l1.3-6.5L2.6 9.4l6.5-.8z"/></svg>`).join("")}</div><div class="big"><span class="cu" data-to="${R.ok}">0</span>/10</div><div class="chips2"><span class="pill xp">+<span class="cu" data-to="${R.xp+bonus}">0</span> XP</span><span class="pill fl">🔥 ${curStreak()}</span>${bonus?`<span class="pill">${tr("série parfaite !")}</span>`:""}</div>${up?`<p><b>${tr("Niveau supérieur débloqué : {0} 🎉",NL[lv()])}</b></p>`:""}${pm}${rdy?`<p><b>🎓 ${tr(CL.bt,NL[lv()].split(" ")[0])}</b></p><button class="btn" onclick="lvTest()">${gl(CL.bgo)}</button><br>`:""}${R.ok<6&&R.rec&&R.rec.length?`<button class="btn erb" onclick="erShow()">🔍 ${tr("Voir mes erreurs")}</button><br>`:""}${R.pid?(nv?`<button class="btn dis" aria-disabled="true" onclick="endErr()">${tr("Continuer le parcours")}</button><br>`:`<button class="btn" onclick="pathCont()">${tr("Continuer le parcours")}</button><br>`):""}<button class="btn${R.pid&&!nv?" ghost":""}" onclick="${R.pid||R.back?`pstart('${R.pid||R.back}')`:`start('${R.t}'${R.cat?","+JSON.stringify(R.cat).replace(/"/g,"&quot;"):""})`}">${R.back?tr("Retenter l'étape"):nv?tr("Recommencer"):"Encore une série"}</button><br>${mrv}<button class="btn ghost" onclick="home()">Changer de thème</button></div>`;try{stopSp()}catch(e){}setTimeout(()=>{try{FX.play(up?"level":R.ok>=6?"win":R.ok<=3?"bad":"good")}catch(e){}},180);if(up||R.ok>=8)FX.confetti();cuRun();if(UNLQ){const u=UNLQ;UNLQ=null;setTimeout(()=>unitCelebrate(u),900)}
 }
 /* Test de niveau : banque rédigée sur le modèle des épreuves DELE / Instituto Cervantes (A1 → B1).
    c = phrase à compléter (grammaire/lexique), r = compréhension écrite, l = compréhension orale, y = production écrite, d = dictée.
@@ -4570,7 +4592,7 @@ function tend(){
     const hadRat=(S.rat||{})[lg()]&&S.rat[lg()].lvl===lv(),rat=hadRat||mainDone();if(rat)mkRat();
     S.lvSnz=0;save();FX.play("good");
     const r=T.res[T.from],v=r?Math.round(r.sc*100):0,wk=r&&r.skOk===false?Object.keys(T.k||{}).filter(k=>{const z=T.k[k];return z&&z.n>=2&&z.c/z.n<.5}).map(k=>gl(SK[k]||k)):[];
-    $.innerHTML=head()+`<div class="q end">${mas("content",110)}<p><b>${tr("Pas encore tout à fait.")}</b></p><p>${rat?tr("Ton niveau reste {0}. J'ai préparé un parcours de rattrapage sur tes points faibles : à la fin, tu repasseras le test.",`<b>${NL[lv()]}</b>`):tr("Ton niveau reste {0}. Continue le parcours : l'appli te reproposera un test quand tu seras prêt(e).",`<b>${NL[lv()]}</b>`)}</p><p class="skl">${NL[T.from]} : <b>${v} %</b></p>${wk.length?`<p class="skl">${tr("Pour valider, chaque compétence doit atteindre au moins 50 % : à renforcer, {0}.",wk.join(", "))}</p>`:""}<button class="btn" onclick="home()">${tr("Continuer le parcours")}</button></div>`;return}
+    $.innerHTML=head()+`<div class="q end">${mas("content",110)}<p><b>${tr("Pas encore tout à fait.")}</b></p><p>${rat?tr("Ton niveau reste {0}. J'ai préparé un parcours de rattrapage sur tes points faibles : à la fin, tu repasseras le test.",`<b>${NL[lv()]}</b>`):tr("Ton niveau reste {0}. Continue le parcours : l'appli te reproposera un test quand tu seras prêt(e).",`<b>${NL[lv()]}</b>`)}</p><p class="skl">${NL[T.from]} : <b>${v} %</b></p>${wk.length?`<p class="skl">${tr("Pour valider, chaque compétence doit atteindre au moins 50 % : à renforcer, {0}.",wk.join(", "))}</p>`:""}<button class="btn" onclick="pathCont()">${tr("Continuer le parcours")}</button></div>`;return}
   const ps=T.pass?T.res[T.pass].sc:0,solid=!T.pass||ps>=.75;
   S.lvl=T.cap?Math.min(5,T.pass+1):T.pass===0?1:T.pass>=5?5:(solid?T.pass+1:T.pass);S.sk=S.sk||{};
   ALL.forEach(w=>{if((w[2]||1)<S.lvl)S.sc[w[0]]=Math.max(S.sc[w[0]]||0,2)});
@@ -5225,6 +5247,7 @@ function play(k,st){
   const ar=MS().snd==="arcade",ty=ar?"square":"triangle",g=(ar?.06:.16)*2.03;
   if(k==="good"){const b=st||0;[0,4,7].forEach((n,i)=>tone(N(n+12+b),i*.07,.22,ty,g))}
   else if(k==="bad"){tone(N(2),0,.22,ar?"sawtooth":"sine",(ar?.07:.2)*2.03);tone(N(-3),.14,.34,ar?"sawtooth":"sine",(ar?.07:.2)*2.03)}
+  else if(k==="win"){[0,4,7,12].forEach((n,i)=>tone(N(n+12),i*.09,.2,ty,g));[4,7,12].forEach(n=>tone(N(n+12),.4,.7,ty,g*.6));[24,28,31].forEach((n,i)=>tone(N(n+12),.48+i*.06,.14,"sine",g*.45))}
   else if(k==="streak"){[0,2,4,5,7,9,12].forEach((n,i)=>tone(N(n+12),i*.055,.16,ty,g))}
   else if(k==="rire"){[19,22,19,22,24].forEach((n,i)=>tone(N(n),i*.075,.07,ty,g*.75))}
   else if(k==="level"){[0,4,7,12,7,12,16].forEach((n,i)=>tone(N(n+12),i*.1,i>5?.5:.18,ty,g))}
