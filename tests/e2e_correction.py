@@ -26,25 +26,44 @@ with sync_playwright() as p:
     pg.fill("#ti","gato");pg.click("#chk");pg.wait_for_timeout(300)
     st=pg.evaluate("()=>({ok:R.ok,xp:R.xp,cls:document.querySelector('#fb .fb').className,mi:(S.mi||{}).perro})")
     ck("réponse fausse: 0 point, boîte ko",st['ok']==1.5 and 'ko' in st['cls'] and st['mi'] and st['mi']['n']==1,st)
-    # --- 4 : parcours complet de 10 questions
+    # --- 4a : règles d'XP (xpGain, inchangé dans l'appli) : mot neuf 10, presque 5, mot maîtrisé pas encore à réviser 5 (×0,5),
+    #          mot maîtrisé arrivé à révision 10, question de révision espacée 15 (×1,5), étape déjà validée à ≥ 8/10 ×0,5
+    xr=pg.evaluate("""()=>{const r0=R;R={pid:null};const o={neuf:xpGain(1,0,true,{}),presque:xpGain(.5,0,true,{}),maitrise:xpGain(1,4,false,{}),a_reviser:xpGain(1,4,true,{}),question_revision:xpGain(1,4,false,{rvw:1})};
+      const pid=pathPlan().units[0].steps[0].id,pk=pthK(pid),sv=(S.pth||{})[pk];S.pth=S.pth||{};S.pth[pk]=8;R={pid};o.etape_validee=xpGain(1,0,true,{});if(sv===undefined)delete S.pth[pk];else S.pth[pk]=sv;R=r0;return o}""")
+    ck("règles d'XP : neuf 10, presque 5, maîtrisé 5, à réviser 10, question de révision 15, étape déjà validée ×0,5",
+       xr=={'neuf':10,'presque':5,'maitrise':5,'a_reviser':10,'question_revision':15,'etape_validee':5},xr)
+    # mêmes règles appliquées par une vraie réponse (fin) : chaque cas avec un mot neuf préparé dans l'état voulu
+    def xp_reel(prep):
+        return pg.evaluate("""(prep)=>{const W=ALL.map(w=>w[0]).filter(w=>/^[a-zñ]{5,}$/.test(w)&&!(S.sc||{})[w]&&!(S.sr||{})[w]&&!(window.__used||(window.__used=new Set())).has(w));const w=W[0];window.__used.add(w);
+          start('Mélange');R.n=0;R.ok=0;R.xp=0;const q={ty:'type',fr:'x',es:w,say:w,key:w,sol:w,acc:[w]};
+          if(prep==='maitrise'){S.sc[w]=4;S.sr=S.sr||{};S.sr[w]={b:3,d:dayN()+10}}
+          if(prep==='a_reviser'){S.sc[w]=4;S.sr=S.sr||{};S.sr[w]={b:3,d:dayN()-1}}
+          if(prep==='question_revision'){S.sc[w]=4;S.sr=S.sr||{};S.sr[w]={b:3,d:dayN()+10};q.rvw=1}
+          R.q=q;R.done=false;draw();fin(true,w,w);return R.xp}""",prep)
+    xv={k:xp_reel(k) for k in ('neuf','maitrise','a_reviser','question_revision')}
+    ck("règles d'XP appliquées à une vraie réponse : neuf 10, maîtrisé 5, à réviser 10, question de révision 15",
+       xv=={'neuf':10,'maitrise':5,'a_reviser':10,'question_revision':15},xv)
+    # --- 4b : parcours complet de 10 questions, un mot neuf par question (aucun mot déjà maîtrisé → aucune réduction d'XP)
     def run(pattern,pid_idx):
         pg.evaluate("(i)=>{const pid=pathPlan().units[0].steps[i].id;window.__pid=pid;S.pth&&delete S.pth[pthK(pid)];start('Mélange',null,pid)}",pid_idx)
         for kind in pattern:
             pg.wait_for_timeout(450)
-            ans={'F':'reunion','H':'puertas','W':'zzzz'}[kind]
-            es,key={'F':('reunión','reunión'),'H':('puerta','puerta'),'W':('perro','perro')}[kind]
-            pg.evaluate("([es,key])=>{R.q={ty:'type',fr:'x',es,say:es,key,sol:es,acc:[es]};R.done=false;draw()}",[es,key])
+            es=pg.evaluate("""(kind)=>{const used=window.__used||(window.__used=new Set()),neuf=w=>/^[a-zñ]{4,}$/.test(w)&&!(S.sc||{})[w]&&!(S.sr||{})[w]&&!used.has(w);
+              const ok=kind==='H'?w=>/[aeo]$/.test(w)&&EV.grade(w+'s',{ty:'type',es:w,acc:[w]}).s===.5:()=>true;
+              const es=ALL.map(w=>w[0]).find(w=>neuf(w)&&ok(w));used.add(es);R.q={ty:'type',fr:'x',es,say:es,key:es,sol:es,acc:[es]};R.done=false;draw();return es}""",kind)
+            ans={'F':es,'H':es+'s','W':'zzzz'}[kind]
             pg.fill("#ti",ans);pg.click("#chk");pg.wait_for_timeout(120)
             pg.evaluate("()=>{adv()}")
         pg.wait_for_timeout(1800)
-        return pg.evaluate("()=>({ok:R.ok,xp:R.xp,pth:(S.pth||{})[pthK(window.__pid)]||0,txt:document.querySelector('.end')?document.querySelector('.end').innerText:'',big:(document.querySelector('.big')||{}).innerText})")
+        return pg.evaluate("""()=>{const e=document.querySelector('.end'),t=e?e.innerText:'',m=t.match(/\\+\\s*(\\d+)\\s*XP/);
+          return {ok:R.ok,xp:R.xp,aff:m?+m[1]:null,pth:(S.pth||{})[pthK(window.__pid)]||0,txt:t,big:(document.querySelector('.big')||{}).innerText}}""")
     r=run("FFFFHHHHWW",0)
     ck("parcours 4F+4H+2W = 6/10 -> étape validée",r['ok']==6 and r['pth']==6 and 'validée' in r['txt'] and r['big'].startswith('6/10'),r)
-    ck("XP du parcours = 4*10+4*5",r['xp']==60,r)
+    ck("XP du parcours = 4*10+4*5 = 60 (comptés et affichés)",r['xp']==60 and r['aff']==60,r)
     r=run("FFFHHHHHWW",1)
     ck("parcours 3F+5H+2W = 5,5/10 -> étape NON validée",r['ok']==5.5 and r['pth']==0 and r['big'].replace('\n','').startswith('5,5/10'),r)
     r=run("FFFFFFFFFF",2)
-    ck("parcours parfait: 10/10 + bonus série parfaite",r['ok']==10 and 'série parfaite' in r['txt'] and r['xp']==100,r)
+    ck("parcours parfait: 10/10, 100 XP comptés, « série parfaite » et +105 XP affichés (bonus +5)",r['ok']==10 and 'série parfaite' in r['txt'] and r['xp']==100 and r['aff']==105,r)
     # --- 5 : dictée et QCM
     pg.evaluate("()=>{start('Mélange');R.q={ty:'dict',fr:'',es:'adiós',say:'adiós',key:'adiós',sol:'adiós',acc:['adiós']};R.done=false;R.ok=0;R.xp=0;draw()}")
     pg.fill("#ti","chao");pg.click("#chk");pg.wait_for_timeout(200)

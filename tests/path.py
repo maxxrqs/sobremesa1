@@ -70,25 +70,54 @@ with sync_playwright() as p:
     ex=pg.evaluate("""()=>{S.lang='es';build();xens();const ok=s=>{const x=PH.find(z=>z[0]===s);return Math.floor(pqPH(x)/1000)};
       return{reveil:ok('Me levanté tarde porque no sonó el despertador.'),fui:ok('Ayer fui a la playa con mis amigos'),tense:pqData().TR.pret,a2:pqEnd(1)}}""")
     ck("exemple : « Me levanté tarde porque no sonó el despertador » n'arrive qu'après l'introduction du passé simple et du mot despertador (en A2, pas au début)",ex['reveil']>=2 and ex['tense']>ex['a2'],ex)
+    # Conditions de consolidation exigées par lvReady() en plus des étapes (lvGate, règles de l'appli inchangées) :
+    # vocabulaire du niveau revu avec succès un autre jour (≥ 55 %), moins de 25 révisions en retard, chaque compétence au seuil.
+    # CONS() les remplit toutes explicitement ; chaque contrôle négatif n'en casse qu'une, avec les étapes toutes validées.
+    CONS="""const CONS=()=>{const pl=pathPlanMain(),fut=dayN()+30;S.sr={};pl.flat.forEach(x=>(x.ws||[]).forEach(w=>{S.sr[w[0]]={b:3,d:fut}}));S.sk={voc:.9,co:.9,ce:.9,ee:.9,eo:.9}};
+      const GI=()=>lvGate().items.map(x=>x.ok);"""
     # ---- C. conservation des progrès (ancien parcours → nouveau)
-    mg=pg.evaluate("""()=>{const o={};for(const [lang,L] of [['es',1],['es',2],['gl',3]]){S.lang=lang;S.lvl=L;S.rat={};build();PLC=null;S.pth={};S.pmv={};
+    mg=pg.evaluate("""()=>{"""+CONS+"""const o={};for(const [lang,L] of [['es',1],['es',2],['gl',3]]){S.lang=lang;S.lvl=L;S.rat={};S.lvSnz=0;build();PLC=null;S.pth={};S.pmv={};S.sr={};S.sk={};
         const old=pathPlanV1(),done=old.flat.filter(x=>!x.test).slice(0,20);done.forEach(x=>{S.pth[pthK(x.id)]=8});const W=new Set(done.flatMap(x=>x.ws||[]).map(w=>w[0]));
         const pl=pathPlanMain(),nd=pl.flat.filter(x=>x.nw&&x.ws&&(S.pth[pthK(x.id)]||0)>=6);
         o[lang+L]={n:nd.length,wrong:nd.filter(x=>!x.ws.every(w=>W.has(w[0]))).length};
-        S.pth={};S.pmv={};old.flat.filter(x=>!x.test).forEach(x=>{S.pth[pthK(x.id)]=7});PLC=null;pathPlanMain();o[lang+L].all=pl.flat.filter(x=>!x.test).every(x=>(S.pth[pthK(x.id)]||0)>=6);o[lang+L].ready=lvReady()}
+        S.pth={};S.pmv={};S.sr={};S.sk={};old.flat.filter(x=>!x.test).forEach(x=>{S.pth[pthK(x.id)]=7});PLC=null;pathPlanMain();o[lang+L].all=pl.flat.filter(x=>!x.test).every(x=>(S.pth[pthK(x.id)]||0)>=6);
+        o[lang+L].ready_sans_consolidation=lvReady();CONS();o[lang+L].ready=lvReady()}
       return o}""")
-    ck("progression de l'ancien parcours reportée : mots déjà validés → étapes validées, ancien niveau terminé → nouveau niveau terminé",all(v['n']>0 and v['wrong']==0 and v['all'] and v['ready'] for v in mg.values()),mg)
+    ck("progression de l'ancien parcours reportée : mots déjà validés → étapes validées, ancien niveau terminé → nouveau niveau terminé",all(v['n']>0 and v['wrong']==0 and v['all'] for v in mg.values()),mg)
+    ck("ancien niveau terminé, après report : test du niveau suivant proposé une fois la consolidation faite, pas avant",all(v['ready'] is True and v['ready_sans_consolidation'] is False for v in mg.values()),mg)
     # ---- D. déblocage du niveau
-    g=pg.evaluate("""()=>{const o={};S.lang='es';S.lvl=1;S.rat={};S.lvSnz=0;S.pmv={'es:1':2};build();PLC=null;
-      const pl=pathPlanMain(),main=pl.flat.filter(x=>!x.test);
+    g=pg.evaluate("""()=>{"""+CONS+"""const o={};S.lang='es';S.lvl=1;S.rat={};S.lvSnz=0;S.pmv={'es:1':2};build();PLC=null;
+      const pl=pathPlanMain(),main=pl.flat.filter(x=>!x.test),done=()=>{S.pth={};main.forEach(x=>{S.pth[pthK(x.id)]=6})};CONS();
+      /* étapes */
       S.pth={};main.slice(0,40).forEach(x=>{S.pth[pthK(x.id)]=10});o.early=lvReady();
-      S.pth={};main.forEach(x=>{S.pth[pthK(x.id)]=6});o.all=lvReady();
+      done();o.all=lvReady();o.all_items=GI();
       S.lvSnz=Date.now()+1e6;o.snooze=lvReady();S.lvSnz=0;
       S.pth={};main.forEach(x=>{S.pth[pthK(x.id)]=5});o.fail=lvReady();
-      S.pth={};main.forEach(x=>{S.pth[pthK(x.id)]=6});S.pth[pthK(main[main.length-1].id)]=0;o.oneMissing=lvReady();
-      S.lvl=5;S.pth={};S.pmv={'es:5':2};build();PLC=null;pathPlanMain().flat.forEach(x=>{S.pth[pthK(x.id)]=9});o.max=lvReady();
+      done();S.pth[pthK(main[main.length-1].id)]=0;o.oneMissing=lvReady();
+      /* consolidation : une seule condition cassée à chaque fois, étapes toutes validées */
+      const W=[],seen=new Set();pl.flat.forEach(x=>(x.ws||[]).forEach(w=>{if(w&&w[0]&&(w[2]||1)===1&&!seen.has(w[0])){seen.add(w[0]);W.push(w[0])}}));
+      const need=Math.ceil(W.length*.55),dueW=W.filter(w=>ALL.concat(typeof LP!=='undefined'&&Array.isArray(LP)?LP:[]).some(z=>z[0]===w&&(z[2]||1)<=1));o.nW=W.length;o.need=need;
+      done();CONS();W.forEach((w,i)=>{S.sr[w].b=i<need-1?3:1});o.vocab=lvReady();o.vocab_items=GI();
+      CONS();W.forEach((w,i)=>{S.sr[w].b=i<need?3:1});o.vocab_juste=lvReady();
+      CONS();dueW.slice(0,25).forEach(w=>{S.sr[w].d=dayN()-1});o.retard=lvReady();o.retard_items=GI();o.nDue=srDue().length;
+      CONS();dueW.slice(0,24).forEach(w=>{S.sr[w].d=dayN()-1});o.retard_24=lvReady();
+      o.comp={};for(const k of ['voc','co','ce','ee']){CONS();S.sk[k]=.59;o.comp[k]=[lvReady(),GI()]}
+      CONS();S.sk.co=.6;o.comp_seuil=lvReady();
+      CONS();o.retour=lvReady();
+      /* niveau maximal : jamais, même tout validé et consolidé */
+      S.lvl=5;S.pth={};S.pmv={'es:5':2};build();PLC=null;pathPlanMain().flat.forEach(x=>{S.pth[pthK(x.id)]=9});CONS();o.max=lvReady();
       return o}""")
-    ck("niveau proposé uniquement quand TOUTES les étapes sont validées ; pas après un bon début, ni avec 5/10, ni s'il en manque une ; jamais au niveau max",g['early'] is False and g['all'] is True and g['fail'] is False and g['oneMissing'] is False and g['snooze'] is False and g['max'] is False,g)
+    print("   consolidation es A1 :",{k:g[k] for k in ('nW','need','nDue','all_items')})
+    ck("étapes : test proposé quand TOUTES les étapes sont validées (consolidation faite) ; pas après un bon début, ni avec 5/10, ni s'il en manque une, ni pendant un report",
+       g['all'] is True and g['all_items']==[True,True,True] and g['early'] is False and g['fail'] is False and g['oneMissing'] is False and g['snooze'] is False,g)
+    ck("niveau maximal (C1) : test jamais proposé, même tout validé et consolidé",g['max'] is False,g)
+    ck("consolidation — vocabulaire retenu : refusé à 1 mot sous 55 % (seule condition fausse), accepté au seuil exact",
+       g['vocab'] is False and g['vocab_items']==[False,True,True] and g['vocab_juste'] is True,{k:g[k] for k in ('vocab','vocab_items','vocab_juste','nW','need')})
+    ck("consolidation — révisions en retard : refusé à 25 (seule condition fausse), accepté à 24",
+       g['retard'] is False and g['retard_items']==[True,False,True] and g['retard_24'] is True,{k:g[k] for k in ('retard','retard_items','retard_24','nDue')})
+    ck("consolidation — compétence insuffisante : refusé si une seule compétence (voc, co, ce ou ee) est sous 60 % en A1, accepté au seuil",
+       all(v[0] is False and v[1]==[True,True,False] for v in g['comp'].values()) and g['comp_seuil'] is True,{k:g[k] for k in ('comp','comp_seuil')})
+    ck("consolidation rétablie : test de nouveau proposé",g['retour'] is True,g)
     # ---- E. évaluation finale : 70 % dans la logique de validation ; test de placement inchangé (60 %)
     e=pg.evaluate("""()=>{const o={};
       const mk=(from,cap,p)=>{S.lang='es';S.lvl=from;S.rat={};S.lvSnz=0;build();PLC=null;R={mode:'test'};T={l:from,list:[],i:0,p,m:10,skip:0,skipAll:0,res:{},pass:0,k:{},from,cap};tstage();return S.lvl};
