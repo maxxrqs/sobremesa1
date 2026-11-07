@@ -4083,7 +4083,7 @@ function oralCheck(alts,m){
   const q=R.q,tg=q.ty==="speakQ"?q.models:[q.es];let best=null;
   for(const t of tg){const g=eoGrade(alts,t,lv(),Object.assign({need:q.ty==="speakC"?q.g:null},m||{}));if(!best||g.s>best.s)best=g}
   /* réponse incertaine : on redemande (une fois ; toujours si la langue entendue n'est pas la bonne) au lieu de valider ou pénaliser */
-  if(best.u&&(best.u==="lang"||R.uq!==q)){R.uq=q;const f=document.getElementById("fb");if(f)f.innerHTML=eoUns(best,"recType()","rec()");return}
+  if(best.u==="lang"&&R.uq!==q){R.uq=q;const f=document.getElementById("fb");if(f)f.innerHTML=eoUns(best,"recType()","rec()");return}
   const mm=best.pct+" % "+tr("reconnu")+(best.msg?" · "+best.msg:"");
   fin(best.score,best.score>0?tg[0]:tg[0]+" · "+mm,q.ty==="speakF"?q.key:null,mm);
   if(q.ty==="speakF"||q.ty==="speakQ"||q.ty==="speakC")try{speak(q.es)}catch(e){}
