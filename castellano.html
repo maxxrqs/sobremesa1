@@ -1511,10 +1511,12 @@ let S={xp:0,streak:0,last:"",sc:{},lvl:0,lang:"es",PL:{},bd:{},nt:[],days:0,best
 let U=null;
 build();
 let CR=null,ct=null,cp=false;
-const lsw=()=>{try{ST.set(U?"cast:"+U:"cast",JSON.stringify(S))}catch(e){}};
+/* profil présent mais illisible (ou créé par une version plus récente) : aucune écriture tant que l'utilisateur n'a pas décidé (voir classProfil) */
+let PLOCK=null;
+const lsw=()=>{if(PLOCK&&PLOCK.u===U)return;try{ST.set(U?"cast:"+U:"cast",JSON.stringify(S))}catch(e){}};
 const save=()=>{S.t=Date.now();lsw();push()};
 function cs(t){const e=document.getElementById("cl");if(e){e.textContent=t==="ok"?"☁️":t==="busy"?"⏳":"";e.title=t==="ok"?"Progression sauvegardée en ligne":"Sauvegarde en cours"}}
-function push(){if(!CR)return;clearTimeout(ct);cs("busy");ct=setTimeout(async()=>{if(cp)return push();cp=true;try{await CR.set(JSON.parse(JSON.stringify(S)));cs("ok")}catch(e){cs("")}cp=false},1500)}
+function push(){if(!CR||(PLOCK&&PLOCK.u===U))return;clearTimeout(ct);cs("busy");ct=setTimeout(async()=>{if(cp)return push();cp=true;try{await CR.set(JSON.parse(JSON.stringify(S)));cs("ok")}catch(e){cs("")}cp=false},1500)}
 const $=document.getElementById("app");
 /* ---- icônes (remplacent les emojis de l'interface) ---- */
 const ICP={
@@ -5332,9 +5334,43 @@ async function sub(mode){
   }catch(e){err("Erreur de connexion, réessaie.")}
 }
 async function login(u){loginL(u);return syncDb(u)}
+/* ---- Chargement sûr du profil « cast:<id> » ----
+   absent → nouveau profil ; actuel (v:2) → chargé ; ancien (sans v) → copie brute conservée puis migration ;
+   corrompu ou futur (v>2) → données brutes conservées, écriture bloquée, écran de récupération. */
+const PV=2;
+function classProfil(raw){
+  if(raw===null||raw===undefined)return{c:"absent"};
+  let o;try{o=JSON.parse(raw)}catch(e){return{c:"corrompu",r:"json"}}
+  if(!o||typeof o!=="object"||Array.isArray(o))return{c:"corrompu",r:"type"};
+  const has=k=>Object.prototype.hasOwnProperty.call(o,k),obj=x=>x===undefined||(!!x&&typeof x==="object"&&!Array.isArray(x));
+  if(has("v")){if(Number.isInteger(o.v)&&o.v>PV)return{c:"futur",o};if(o.v!==PV)return{c:"corrompu",r:"v"}}
+  else if(!has("lang")||!(has("sc")||has("xp")))return{c:"corrompu",r:"vide"};
+  if(o.xp!==undefined&&!(typeof o.xp==="number"&&isFinite(o.xp)&&o.xp>=0))return{c:"corrompu",r:"xp"};
+  if(o.lvl!==undefined&&!(Number.isInteger(o.lvl)&&o.lvl>=0&&o.lvl<=5))return{c:"corrompu",r:"lvl"};
+  if(o.lang!==undefined&&!(typeof o.lang==="string"&&Object.prototype.hasOwnProperty.call(LANGS,o.lang)))return{c:"corrompu",r:"lang"};
+  for(const k of["sc","sr","pth","PL","sk"])if(!obj(o[k]))return{c:"corrompu",r:k};
+  if(o.nt!==undefined&&!Array.isArray(o.nt))return{c:"corrompu",r:"nt"};
+  return{c:has("v")?"actuel":"ancien",o};
+}
+/* clés de copie d'un profil : cast:<id>:… (incluses dans l'export de bkExp) */
+function pKeys(u){const p="cast:"+u+":",a=[];try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.startsWith(p))a.push(k)}}catch(e){}return a}
+/* conserve les données brutes telles quelles (une seule copie par contenu) ; true seulement si la copie est relue à l'identique */
+function pKeep(u,raw,tag){
+  try{for(const k of pKeys(u))if(ST.get(k)===raw)return true}catch(e){}
+  const k="cast:"+u+":brut:"+tag+":"+Date.now();
+  try{ST.set(k,raw)}catch(e){}
+  try{return ST.get(k)===raw}catch(e){return false}}
+/* copies valides (actuel ou ancien) proposées à la restauration, la plus récente d'abord */
+function pCopies(u){return pKeys(u).map(k=>{const raw=ST.get(k),c=classProfil(raw);return c.c==="actuel"||c.c==="ancien"?{k,raw,o:c.o,t:+(c.o.t||(k.split(":").pop()))||0}:null}).filter(Boolean).sort((a,b)=>b.t-a.t)}
 function loginL(u){
   U=u;try{ST.set("cast_user",u)}catch(e){}
-  let l=null;try{l=JSON.parse(ST.get("cast:"+u)||"null")}catch(e){}
+  const raw=ST.get("cast:"+u),k=classProfil(raw);
+  if(k.c==="corrompu"||k.c==="futur"||(k.c==="ancien"&&!pKeep(u,raw,"ancien"))){
+    PLOCK={u,c:k.c,r:k.r||"",kept:k.c==="ancien"?false:pKeep(u,raw,k.c),dl:0};
+    clearTimeout(ct);S=FRESH();R=undefined;CR=null;build();applyTheme();pRec();
+    return Promise.resolve()}
+  PLOCK=null;
+  const l=k.o||null;
   S=Object.assign(FRESH(),l||{});
   /* compagnon choisi sur l'accueil avant connexion : on le garde, avec son thème */
   if(LMPICK&&LMAS&&FX.A[LMAS]){S.mas=LMAS;S.masSeen=1;S.t=Date.now();lsw()}LMPICK=0;
@@ -5342,7 +5378,7 @@ function loginL(u){
   entry();
   return syncDb(u)}
 async function syncDb(u){
-  if(!DB||U!==u)return;
+  if(!DB||U!==u||(PLOCK&&PLOCK.u===u))return;
   try{
     const ref=DB.doc("progress/"+u),sn=await ref.get(),r=sn.exists?sn.data():null;
     if(U!==u)return;
@@ -5353,7 +5389,49 @@ async function syncDb(u){
 }
 function logout(){
   try{ST.del("cast_user")}catch(e){}
-  clearTimeout(ct);U=null;CR=null;S=FRESH();applyTheme();R=undefined;landing();
+  clearTimeout(ct);U=null;CR=null;PLOCK=null;S=FRESH();applyTheme();R=undefined;landing();
+}
+/* ---- Écran de récupération : rien n'est écrasé sans décision explicite ---- */
+function pRec(){
+  const L=PLOCK;if(!L)return entry();
+  SCR="rec";const fut=L.c==="futur",anc=L.c==="ancien",cp=fut?[]:pCopies(L.u);
+  const dt=t=>{try{return new Date(t).toLocaleDateString(UI,{day:"numeric",month:"long",year:"numeric"})}catch(e){return ""}};
+  const ttl=fut?tr("Ta progression vient d'une version plus récente"):anc?tr("Ta progression doit être mise à jour"):tr("Ta progression n'a pas pu être lue");
+  const msg=fut?tr("Elle a été enregistrée par une version plus récente de Sobremesa. Recharge l'appli pour obtenir la dernière version."):
+    anc?tr("La copie de sécurité de ton ancienne progression n'a pas pu être enregistrée sur cet appareil. Télécharge d'abord tes données, puis continue."):
+    tr("Les données enregistrées sur cet appareil sont illisibles.");
+  const canRz=!fut&&!anc&&(L.kept||L.dl);
+  $.innerHTML=`<header><div class="hl"><h1>Sobremesa</h1></div></header><div class="q end obq" id="prec"><h2>${ttl}</h2><p>${msg}</p>
+  <p class="skl">${tr("Tes données d'origine sont conservées : rien ne sera remplacé sans ton accord.")}</p>
+  ${cp.map((c,i)=>`<button class="btn" onclick="pRest(${i})">${tr("Restaurer la copie du {0}",dt(c.t))} · ${Math.round(+c.o.xp||0)} XP · ${(LANGS[c.o.lang]||LANGS.es).n}</button><br>`).join("")}
+  ${fut?`<button class="btn" onclick="location.reload()">${tr("Recharger l'appli")}</button><br>`:""}
+  ${anc?`<button class="btn" onclick="pGo()">${tr("Continuer avec ma progression")}</button><br>`:""}
+  <button class="btn ghost" onclick="pDl()">${tr("Télécharger mes données")}</button><br>
+  ${!fut&&!anc?`<button class="btn ghost" onclick="pRz(0)"${canRz?"":" disabled"}>${tr("Repartir de zéro…")}</button>${canRz?"":`<p class="sub">${tr("Télécharge d'abord tes données pour pouvoir repartir de zéro.")}</p>`}<br>`:""}
+  <button class="btn ghost" onclick="logout()">${tr("Se déconnecter")}</button>
+  <p class="sub">${tr("Détail technique : {0}",L.c+(L.r?" ("+L.r+")":""))}</p></div>`;
+}
+function pDl(){if(!PLOCK)return;try{bkExp()}catch(e){}PLOCK.dl=1;pRec()}
+function pRest(i){
+  const L=PLOCK;if(!L||L.c==="futur")return;const c=pCopies(L.u)[i];if(!c)return pRec();
+  if(!L.kept&&!L.dl)return alert(tr("Télécharge d'abord tes données : la copie de sécurité n'a pas pu être enregistrée."));
+  if(!confirm(tr("Remplacer les données illisibles par la copie du {0} ? Les données illisibles restent conservées.",new Date(c.t).toLocaleDateString(UI))))return;
+  try{ST.set("cast:"+L.u,c.raw)}catch(e){}
+  if(ST.get("cast:"+L.u)!==c.raw)return alert(tr("La restauration a échoué : aucune donnée n'a été modifiée."));
+  PLOCK=null;loginL(L.u);
+}
+function pGo(){const L=PLOCK;if(!L||L.c!=="ancien")return;
+  if(!L.dl&&!confirm(tr("Continuer sans copie de sécurité ? Ton ancienne progression sera mise à jour.")))return;
+  const raw=ST.get("cast:"+L.u),k=classProfil(raw);if(k.c!=="ancien")return pRec();
+  PLOCK=null;U=L.u;S=Object.assign(FRESH(),k.o);build();applyTheme();R=undefined;CR=null;entry();syncDb(L.u)}
+function pRz(ok){
+  const L=PLOCK;if(!L||L.c!=="corrompu"||!(L.kept||L.dl))return;
+  if(!ok){const b=document.getElementById("prec");if(!b)return;
+    b.innerHTML=`<h2>${tr("Repartir de zéro ?")}</h2><p>${tr("Ta progression repartira de zéro sur cet appareil. Les données illisibles restent conservées dans les copies de l'appli.")}</p>
+    <button class="btn" onclick="pRz(1)">${tr("Oui, repartir de zéro")}</button><br><button class="btn ghost" onclick="pRec()">${tr("Annuler")}</button>`;return}
+  const init=FRESH();init.ob=1;
+  try{ST.set("cast:"+L.u,JSON.stringify(init))}catch(e){}
+  PLOCK=null;loginL(L.u);
 }
 function setLang(l){
   if(l===lg())return;
