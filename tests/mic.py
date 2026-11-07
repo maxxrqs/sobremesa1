@@ -9,7 +9,7 @@ def ck(n,c,i=""):
 INIT="""
 window.__tr={started:0,stopped:0};window.__srErr=null;window.__srRes=null;window.__gum='ok';
 navigator.mediaDevices.getUserMedia=async()=>{if(window.__gum!=='ok'){const e=new Error('x');e.name=window.__gum;throw e}
- return {getTracks:()=>[{stop(){window.__tr.stopped++}}]}};
+ window.__tr.gum=(window.__tr.gum||0)+1;return {getTracks:()=>[{stop(){window.__tr.stopped++}}]}};
 window.__sr=1;
 window.__ev={a:1,s:1,sp:1};window.__srInt=null;window.__gumN=0;
 const _g=navigator.mediaDevices.getUserMedia;navigator.mediaDevices.getUserMedia=async(...a)=>{window.__gumN++;return _g(...a)};
@@ -33,7 +33,7 @@ with sync_playwright() as p:
     # 1 accordé + reconnaissance correcte
     pg.evaluate("window.__srRes='dónde está la playa'");pg.click("button[onclick='rec()']");pg.wait_for_timeout(500)
     ck("accordé : reconnaissance → bonne réponse",pg.evaluate("R.ok")>0 and "reconnu" in fbt(pg),fbt(pg))
-    ck("pistes libérées après getUserMedia",pg.evaluate("__tr.stopped")==pg.evaluate("1"),pg.evaluate("__tr"))
+    pg.wait_for_timeout(400);ck("pistes libérées après getUserMedia (micro et spectre audio)",pg.evaluate("__tr.stopped")==pg.evaluate("__tr.gum")>=1,pg.evaluate("__tr"))
     # 2 mauvaise phrase
     ask(pg);pg.evaluate("window.__srRes='hola'");pg.click("button[onclick='rec()']");pg.wait_for_timeout(500)
     ck("accordé : mauvaise phrase → refusée",pg.evaluate("R.ok")==0 and pg.evaluate("R.done"),fbt(pg))
@@ -76,11 +76,9 @@ with sync_playwright() as p:
     pg.evaluate("window.__srRes='dónde está la playa'");pg.click("button:has-text('Réessayer')");pg.wait_for_timeout(500)
     ck("puis bonne réponse → validée",pg.evaluate("R.ok")==1,fbt(pg))
     ask(pg);pg.evaluate("window.__srRes='dónde está'");pg.click("button[onclick='rec()']");pg.wait_for_timeout(500)
-    ck("début seulement : demande de répéter",not pg.evaluate("R.done") and "début" in fbt(pg),fbt(pg))
-    pg.click("button[onclick='rec()']");pg.wait_for_timeout(500)
-    ck("début seulement 2e fois : noté, non validé",pg.evaluate("R.done") and pg.evaluate("R.ok")<1,fbt(pg))
+    ck("début seulement : réponse fausse, on passe à la suite (pas de nouvelle demande)",pg.evaluate("R.done") and pg.evaluate("R.ok")<1 and "dónde está" in fbt(pg),fbt(pg))
     ask(pg);pg.evaluate("window.__srRes=null;window.__srInt='dónde está'");pg.click("button[onclick='rec()']");pg.wait_for_timeout(500)
-    ck("résultat partiel incomplet : demande de répéter",not pg.evaluate("R.done") and "Réessayer" in fbt(pg),fbt(pg))
+    ck("résultat partiel incomplet : noté, non validé, on passe à la suite",pg.evaluate("R.done") and pg.evaluate("R.ok")<1,fbt(pg))
     pg.evaluate("window.__srInt=null")
     askq("Empiezo a las nueve.");pg.evaluate("window.__srRes='empiezo a las 9'");pg.click("button[onclick='rec()']");pg.wait_for_timeout(500)
     ck("chiffre dicté (9 = nueve) → validé",pg.evaluate("R.ok")==1,fbt(pg))
@@ -98,7 +96,7 @@ with sync_playwright() as p:
     pg.evaluate("adv=window.__adv0;0")
     # permission déjà accordée : pas de getUserMedia (évite de bloquer le micro avant la reconnaissance)
     ask(pg);pg.evaluate("window.__srInt=null;window.__srRes='dónde está la playa';navigator.permissions.query=async()=>({state:'granted'});window.__gumN=0");pg.click("button[onclick='rec()']");pg.wait_for_timeout(500)
-    ck("permission accordée : getUserMedia non appelé, reconnaissance lancée",pg.evaluate("__gumN")==0 and pg.evaluate("R.ok")>0,pg.evaluate("__gumN"))
+    ck("permission accordée : pas de demande micro avant la reconnaissance (seul le spectre audio ouvre le micro, sur ordinateur)",pg.evaluate("__gumN")<=1 and pg.evaluate("R.ok")>0,pg.evaluate("__gumN"))
     pg.evaluate("window.__srRes=null")
     # 8 NotFoundError (aucun micro)
     ask(pg);pg.evaluate("navigator.permissions.query=async()=>({state:'prompt'});window.__srErr=null;window.__gum='NotFoundError'");pg.click("button[onclick='rec()']");pg.wait_for_timeout(400)
