@@ -5397,6 +5397,8 @@ function pBak(u,raw){
   const o={bak:"",bakJ:""};PBAK=o;
   try{
     const c=classProfil(raw).c;if(c!=="actuel"&&c!=="ancien")return o;
+    /* B4-C : copies illisibles → aucune sauvegarde automatique (elle pourrait remplacer une copie qu'on n'a pas pu lire) ; échec signalé */
+    if(!pScan(u)){o.bak=o.bakJ="échec (lecture)";return o}
     const kb="cast:"+u+":bak",kj="cast:"+u+":bakJ",kd=kj+":jour",j=pJour(),vj=classProfil(ST.get(kj)).c;
     o.bak=pPut(kb,raw);
     if(ST.get(kd)===j&&(vj==="actuel"||vj==="ancien"))o.bakJ="déjà faite aujourd'hui";
@@ -5427,9 +5429,20 @@ function pGarde(u,raw){
     if(ks.some(x=>!rot(x)&&!/:jour$/.test(x)&&val(x)===v))continue;
     if(pPut("cast:"+u+":brut:avant-"+k.split(":").pop()+":"+Date.now(),v)!=="ok")ok=false}
   return ok}
+/* B4-C : lecture stricte du profil à la connexion. ST.get masque une erreur de lecture (elle renvoie alors la copie en mémoire, souvent null),
+   ce qui ferait passer un profil existant pour absent. pLire : chaîne = données, null = clé réellement absente, undefined = lecture impossible. */
+function pLire(k){if(!ST.ok)return ST.get(k);try{return localStorage.getItem(k)}catch(e){return undefined}}
+/* true si toutes les copies cast:<id>:… sont lisibles (nécessaire avant de conclure qu'un profil absent n'a pas de sauvegarde) */
+function pScan(u){if(!ST.ok)return true;try{const p="cast:"+u+":";for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.startsWith(p))localStorage.getItem(k)}return true}catch(e){return false}}
 function loginL(u){
   U=u;try{ST.set("cast_user",u)}catch(e){}
-  const raw=ST.get("cast:"+u),k=classProfil(raw);
+  const raw=pLire("cast:"+u);
+  /* lecture impossible : ni profil neuf, ni migration, ni restauration, ni sauvegarde automatique ; rien n'est écrit, l'utilisateur peut réessayer */
+  if(raw===undefined||(raw===null&&!pScan(u))){
+    PLOCK={u,c:"lecture",r:raw===undefined?"profil":"copies",kept:false,dl:0};
+    clearTimeout(ct);S=FRESH();R=undefined;CR=null;build();applyTheme();pRec();
+    return Promise.resolve()}
+  const k=classProfil(raw);
   if(k.c==="corrompu"||k.c==="futur"||(k.c==="ancien"&&!pKeep(u,raw,"ancien"))){
     PLOCK={u,c:k.c,r:k.r||"",kept:k.c==="ancien"?false:pKeep(u,raw,k.c),dl:0};
     clearTimeout(ct);S=FRESH();R=undefined;CR=null;build();applyTheme();pRec();
@@ -5465,7 +5478,11 @@ function logout(){
 /* ---- Écran de récupération : rien n'est écrasé sans décision explicite ---- */
 function pRec(){
   const L=PLOCK;if(!L)return entry();
-  SCR="rec";const fut=L.c==="futur",anc=L.c==="ancien",abs=L.c==="absent",cp=fut?[]:pCopies(L.u);
+  SCR="rec";const fut=L.c==="futur",anc=L.c==="ancien",abs=L.c==="absent",lec=L.c==="lecture",cp=fut||lec?[]:pCopies(L.u);
+  if(lec){$.innerHTML=`<header><div class="hl"><h1>Sobremesa</h1></div></header><div class="q end obq" id="prec"><h2>${tr("Ta progression n'a pas pu être lue pour l'instant")}</h2>
+  <p>${tr("Le stockage de cet appareil ne répond pas. Tes données et tes sauvegardes ne sont pas modifiées : réessaie dans un instant ou relance l'appli.")}</p>
+  <button class="btn" onclick="pRetry()">${tr("Réessayer")}</button><br><button class="btn ghost" onclick="logout()">${tr("Se déconnecter")}</button>
+  <p class="sub">${tr("Détail technique : {0}",L.c+(L.r?" ("+L.r+")":""))}</p></div>`;return}
   const dt=t=>{try{return new Date(t).toLocaleDateString(UI,{day:"numeric",month:"long",year:"numeric"})}catch(e){return ""}};
   const ttl=abs?tr("Ta progression est introuvable"):fut?tr("Ta progression vient d'une version plus récente"):anc?tr("Ta progression doit être mise à jour"):tr("Ta progression n'a pas pu être lue");
   const msg=abs?tr("Ta progression n'est plus sur cet appareil, mais des sauvegardes existent. Choisis celle à restaurer, ou repars de zéro."):fut?tr("Elle a été enregistrée par une version plus récente de Sobremesa. Recharge l'appli pour obtenir la dernière version."):
@@ -5482,6 +5499,7 @@ function pRec(){
   <button class="btn ghost" onclick="logout()">${tr("Se déconnecter")}</button>
   <p class="sub">${tr("Détail technique : {0}",L.c+(L.r?" ("+L.r+")":""))}</p></div>`;
 }
+function pRetry(){const L=PLOCK;if(!L||L.c!=="lecture")return;PLOCK=null;loginL(L.u)}
 function pDl(){if(!PLOCK)return;try{bkExp()}catch(e){}PLOCK.dl=1;pRec()}
 function pRest(i){
   const L=PLOCK;if(!L||L.c==="futur")return;const c=pCopies(L.u)[i];if(!c)return pRec();
