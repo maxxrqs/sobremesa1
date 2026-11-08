@@ -5310,7 +5310,7 @@ async function sub(mode){
     const l=await ref.acquire({holder:"reg"+Math.random(),ttlMs:15000});
     if(!l.acquired)return "Création en cours pour cet identifiant, réessaie dans un instant.";
     const sn=await ref.get();
-    if(sn.exists&&sn.data().h)return "Cet identifiant existe déjà.";
+    if(sn.exists)return "Cet identifiant existe déjà.";
     const salt=rnd(),a=HALG();
     await ref.set({salt,a,h:await hp(p,salt,a),t:Date.now()});
     return "";
@@ -5318,12 +5318,13 @@ async function sub(mode){
   const chk=async ref=>{const sn=await ref.get(),d=sn.exists?sn.data():null;if(!d||!d.h)return null;return (await hp(p,d.salt,d.a))===d.h};
   try{
     if(mode==="reg"){
+      if(regPris(u))return err("Cet identifiant existe déjà.");
       let e="",done=false;
       if(DB){try{e=await mk(DB.doc("accounts/"+u));done=true}catch(x){DB=null;CR=null}}
       if(!done){if((await lref.get()).exists)e="Cet identifiant existe déjà.";else e=await mk(lref)}
       if(e)return err(e);
       let init=FRESH();try{const o=JSON.parse(ST.get("cast")||"null");if(o&&o.v===2)init=Object.assign(init,o)}catch(x){}
-      if(!init.lvl)init.ob=1;if(LMAS){init.mas=LMAS;if(LMPICK)init.masSeen=1}try{ST.set("cast:"+u,JSON.stringify(init))}catch(x){}
+      if(!init.lvl)init.ob=1;if(LMAS){init.mas=LMAS;if(LMPICK)init.masSeen=1}try{if(ST.get("cast:"+u)===null)ST.set("cast:"+u,JSON.stringify(init))}catch(x){}
       return login(u);
     }
     let ok=null;
@@ -5334,6 +5335,13 @@ async function sub(mode){
   }catch(e){err("Erreur de connexion, réessaie.")}
 }
 async function login(u){loginL(u);return syncDb(u)}
+/* B3 : un identifiant déjà utilisé sur cet appareil n'est jamais réattribué à une inscription :
+   compte acct:<id> présent (même illisible ou sans mot de passe), profil cast:<id> présent (même illisible, même sans compte)
+   ou copies du profil cast:<id>:… (B1 :brut, B2 :bak/:bakJ) → refus, rien n'est écrit. En cas de doute (lecture impossible) : refus. */
+function regPris(u){
+  const lit=k=>ST.ok?localStorage.getItem(k):ST.get(k);/* lecture directe : une erreur de lecture n'est pas prise pour une absence (ST.get la masque) */
+  try{if(lit("acct:"+u)!==null||lit("cast:"+u)!==null||pKeys(u).length)return true}catch(e){return true}
+  return false}
 /* ---- Chargement sûr du profil « cast:<id> » ----
    absent → nouveau profil ; actuel (v:2) → chargé ; ancien (sans v) → copie brute conservée puis migration ;
    corrompu ou futur (v>2) → données brutes conservées, écriture bloquée, écran de récupération. */
