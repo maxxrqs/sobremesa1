@@ -87,7 +87,7 @@ with sync_playwright() as p:
     se=Session({"cast:x1":ACTUEL});o=se.ouvrir(J1,init=TRONQUE)
     ck("copie incomplète sans sauvegarde antérieure : la copie tronquée est retirée (aucune :bak / :bakJ)",
        o["PBAK"]=={"bak":"échec","bakJ":"échec"} and o["bak"] is None and o["bakJ"] is None and o["lock"] is None,o)
-    vals=se.pg.evaluate("()=>pCopies('x1').length")
+    vals=se.pg.evaluate("async()=>(await pCopies('x1')).length")
     ck("… et elle n'est jamais proposée à la restauration",vals==0,vals)
     se.close()
     # ---- 9. échec de l'enregistrement du jour : :bakJ correcte, nouvelle tentative à l'ouverture suivante

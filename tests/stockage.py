@@ -78,7 +78,7 @@ with sync_playwright() as p:
     # ======== 5. stockage indisponible (navigation privée stricte : localStorage inutilisable)
     BLOQUE="(()=>{Storage.prototype.setItem=function(){throw new DOMException('refusé','SecurityError')}})()"
     ctx,pg,err=page({},init=BLOQUE)
-    e=pg.evaluate("()=>{const o={ok:ST.ok};U='moi1';S.xp=5;save();o.pp=pPut('cast:moi1:bak','{}');return o}");e2=pg.evaluate(ETAT)
+    e=pg.evaluate("async()=>{const o={ok:ST.ok};U='moi1';S.xp=5;save();o.pp=await pPut('cast:moi1:bak','{}');return o}");e2=pg.evaluate(ETAT)
     ck("stockage indisponible : « gardée tant que l'appli reste ouverte », jamais « enregistrée » ; une sauvegarde en mémoire compte comme un échec",
        e["ok"] is False and e2["ste"]["p"]=="mémoire" and e2["ban"]==1 and "indisponible" in e2["txt"] and e["pp"]=="échec" and not err,{"e":e,"e2":e2,"err":err})
     ctx.close()

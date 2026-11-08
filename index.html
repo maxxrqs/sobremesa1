@@ -1021,7 +1021,7 @@ function hpJS(pw,salt){let x=salt+":"+pw;for(let i=0;i<3000;i++)x=sha256(x+salt)
 const withTimeout=(p,ms)=>Promise.race([p,new Promise(r=>setTimeout(()=>r(null),ms))]);
 var UI="fr";
 const UIL={fr:"Français",en:"English",it:"Italiano",de:"Deutsch",pt:"Português"};
-const TR={};const trLoad=l=>(l==="fr"||TR[l])?Promise.resolve():fetch("tr/"+l+".json?v=49").then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{TR[l]=j}).catch(()=>{});
+const TR={};const trLoad=l=>(l==="fr"||TR[l])?Promise.resolve():fetch("tr/"+l+".json?v=50").then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{TR[l]=j}).catch(()=>{});
 try{const s=ST.get("cast_ui"),n=(navigator.language||"fr").slice(0,2);UI=UIL[s]?s:(UIL[n]?n:"fr")}catch(e){}
 const gl=s=>{if(UI==="fr"||!TR[UI])return s;let t=TR[UI][s];if(t!=null)return t;const n=s.match(NUMRE);if(n){t=TR[UI][s.replace(NUMRE,"#")];if(t!=null){let i=0;return t.replace(/#/g,()=>i<n.length?n[i++]:"#")}const b=s.match(/^(.*\S)\s+(\d+)$/);if(b&&TR[UI][b[1]]!=null)return TR[UI][b[1]]+" "+b[2]}return s};
 const tr=(s,...a)=>gl(s).replace(/\{(\d)\}/g,(m,i)=>a[i]);
@@ -1527,13 +1527,169 @@ let CR=null,ct=null,cp=false;
 /* profil présent mais illisible (ou créé par une version plus récente) : aucune écriture tant que l'utilisateur n'a pas décidé (voir classProfil) */
 let PLOCK=null;
 /* état de l'enregistrement sur l'appareil (B4, voir stSig) */
-const STE={profil:"ok",bak:"ok",vu:"",bakVu:0};
-/* B4 : chaque écriture du profil est relue (pPut) ; échec ou stockage indisponible → signalé (stSig), jamais présenté comme enregistré.
-   En cas d'échec, la valeur précédente reste sur l'appareil et la progression est gardée en mémoire (S) jusqu'à la prochaine écriture réussie. */
-const lsw=()=>{if(PLOCK&&PLOCK.u===U)return;const k=U?"cast:"+U:"cast",v=JSON.stringify(S);
-  if(!ST.ok){try{ST.set(k,v)}catch(e){}return stSig("profil","mémoire")}
-  stSig("profil",pPut(k,v)==="échec"?"échec":"ok")};
-const save=()=>{S.t=Date.now();lsw();push()};
+const STE={profil:"ok",bak:"ok",vu:"",bakVu:0,conf:0};
+/* A1 : plusieurs onglets ou fenêtres. PBASE = version exacte du profil que cet onglet sait présente sur l'appareil
+   {k:clé, raw:texte, w:identifiant d'écriture, h:identifiants précédents, mine:écrite par cet onglet} ; PCONF = écritures suspendues (conflit non mis à l'abri) */
+let PBASE=null,PCONF=null;
+/* ---- L1 : couche de stockage asynchrone des données de progression (profils cast:<id> / cast, comptes acct:<id>, copies cast:<id>:…) ----
+   Tous les accès passent par SB. Moteur actuel : localStorage — l'opération est faite immédiatement et son résultat rendu par une promesse,
+   pour qu'un moteur asynchrone (IndexedDB, lot L2) puisse le remplacer sans toucher aux appelants. Sémantique identique à l'existant :
+   lire = lecture stricte (chaîne ; null = absente ; undefined = lecture impossible) ; lireSouple = ST.get (erreur masquée) ;
+   ecrire = écriture relue (« ok » / « inchangé » / « échec », ancienne valeur remise) ; ecrireBrut = ST.set (copie en mémoire si stockage indisponible).
+   Les préférences (cast_ui, cast_user, sobv_…, sob_…) restent en accès direct. */
+/* moteur actuel (synchrone) : localStorage — même code qu'avant L1 */
+const SBS={
+  lire(k){if(!ST.ok)return ST.get(k);try{return localStorage.getItem(k)}catch(e){return undefined}},
+  lireSouple(k){try{return ST.get(k)}catch(e){return null}},
+  ecrireBrut(k,v){try{ST.set(k,v)}catch(e){}},
+  suppr(k){try{ST.del(k)}catch(e){}},
+  cles(p){const a=[];try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.startsWith(p))a.push(k)}}catch(e){}return a},
+  /* true si toutes les clés commençant par p sont lisibles */
+  lisibles(p){if(!ST.ok)return true;try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.startsWith(p))localStorage.getItem(k)}return true}catch(e){return false}},
+  ecrire(k,raw){
+    if(!ST.ok)return "échec";
+    let prev=null;try{prev=ST.get(k)}catch(e){}
+    if(prev===raw)return "inchangé";
+    try{ST.set(k,raw)}catch(e){}
+    let back=null;try{back=ST.get(k)}catch(e){}
+    if(back===raw)return "ok";
+    if(prev===null){try{ST.del(k)}catch(e){}}else if(back!==prev){try{ST.set(k,prev)}catch(e){}}
+    return "échec"},
+  /* clé → valeur pour les clés acceptées par f (export) */
+  entrees(f){const o={};try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&f(k))o[k]=localStorage.getItem(k)}}catch(e){}return o}};
+/* écriture conditionnelle (prévue pour l'activation) : n'écrit que si la valeur actuelle est « attendu ».
+   localStorage : lecture, comparaison puis écriture, sans atomicité entre onglets (limite de localStorage). */
+SBS.ecrireSi=function(k,raw,attendu){const D=SBS.lire(k);if(D===undefined)return "échec";if(D!==attendu)return "conflit";return SBS.ecrire(k,raw)};
+/* ---- L2 : moteur IndexedDB (développé, NON actif par défaut) ----
+   Base « sobremesa » v1 : stores profils (cast, cast:<id>), copies (cast:<id>:…), meta (acct:<id>, marques futures).
+   Entrée = {raw, ver, t} : raw est le texte exact (mêmes formats qu'avec localStorage), ver augmente à chaque écriture.
+   Chaque écriture est une transaction readwrite (durabilité stricte) : tout ou rien ; en cas d'échec (quota, fermeture, erreur), la valeur précédente reste.
+   Base indisponible : lire → undefined (lecture impossible), ecrire/ecrireSi → « échec », ecrireBrut → copie en mémoire (comme ST.set).
+   La connexion est rouverte au prochain appel après une erreur ou une fermeture. Les clés hors progression (préférences) restent dans localStorage. */
+const SBI=(()=>{
+  const NOM="sobremesa",STS=["profils","copies","meta"],MEM={};let dbp=null,KO=false;
+  const rout=k=>k==="cast"||k.startsWith("cast:")||k.startsWith("acct:");
+  const store=k=>/^cast(:[^:]+)?$/.test(k)?"profils":/^cast:[^:]+:/.test(k)?"copies":"meta";
+  function ouvrir(){
+    if(dbp)return dbp;
+    const p=new Promise((ok,ko)=>{let r;try{if(!window.indexedDB)throw new Error("indexedDB absent");r=indexedDB.open(NOM,1)}catch(e){return ko(e)}
+      r.onupgradeneeded=()=>{const d=r.result;for(const s of STS)if(!d.objectStoreNames.contains(s))d.createObjectStore(s)};
+      r.onsuccess=()=>{const d=r.result;d.onversionchange=()=>{try{d.close()}catch(e){}if(dbp===p)dbp=null};d.onclose=()=>{if(dbp===p)dbp=null};ok(d)};
+      r.onerror=()=>ko(r.error||new Error("ouverture impossible"));r.onblocked=()=>ko(new Error("ouverture bloquée"))});
+    dbp=p;p.then(()=>{KO=false},()=>{KO=true;if(dbp===p)dbp=null});return p}
+  /* transaction : résolue à la validation (oncomplete) avec la valeur fournie par fn ; rejetée si elle est annulée */
+  function tx(st,mode,fn,re){return ouvrir().then(d=>new Promise((ok,ko)=>{let t;
+    try{t=d.transaction(st,mode,mode==="readwrite"?{durability:"strict"}:undefined)}catch(e){dbp=null;return ko({ferme:1,e})}
+    let out;t.oncomplete=()=>ok(out);t.onabort=()=>ko(t.error||new Error("transaction annulée"));
+    try{fn(t,v=>{out=v})}catch(e){try{t.abort()}catch(x){}ko(e)}})).catch(e=>{
+      /* connexion fermée entre deux opérations : une seule nouvelle tentative, sur une connexion rouverte (aucune transaction n'avait commencé) */
+      if(e&&e.ferme&&!re)return tx(st,mode,fn,1);throw e&&e.ferme?e.e:e})}
+  const plage=p=>IDBKeyRange.bound(p,p+"￿");
+  const I={
+    ouvrir,
+    async lire(k){if(!rout(k))return SBS.lire(k);
+      try{const v=await tx(store(k),"readonly",(t,set)=>{const q=t.objectStore(store(k)).get(k);q.onsuccess=()=>set(q.result)});return v===undefined?null:v.raw}catch(e){return undefined}},
+    async lireSouple(k){if(!rout(k))return SBS.lireSouple(k);const v=await I.lire(k);return v===undefined?(Object.prototype.hasOwnProperty.call(MEM,k)?MEM[k]:null):v},
+    async ecrireBrut(k,v){if(!rout(k))return SBS.ecrireBrut(k,v);const raw=String(v);MEM[k]=raw;
+      try{await tx(store(k),"readwrite",t=>{const s=t.objectStore(store(k)),q=s.get(k);q.onsuccess=()=>{const p=q.result;s.put({raw,ver:(p&&p.ver||0)+1,t:Date.now()},k)}})}catch(e){}},
+    async suppr(k){if(!rout(k))return SBS.suppr(k);delete MEM[k];try{await tx(store(k),"readwrite",t=>{t.objectStore(store(k)).delete(k)})}catch(e){}},
+    async cles(p){const a=[];try{await tx(STS,"readonly",t=>{for(const s of STS){const q=t.objectStore(s).getAllKeys(plage(p));q.onsuccess=()=>{for(const k of q.result)a.push(k)}}})}catch(e){}return a},
+    async lisibles(p){try{await tx(STS,"readonly",t=>{for(const s of STS)t.objectStore(s).getAll(plage(p))});return true}catch(e){return false}},
+    /* écriture relue : la validation de la transaction tient lieu de relecture ; annulée → « échec », valeur précédente intacte */
+    async ecrire(k,raw){if(!rout(k))return SBS.ecrire(k,raw);
+      try{return await tx(store(k),"readwrite",(t,set)=>{const s=t.objectStore(store(k)),q=s.get(k);q.onsuccess=()=>{const p=q.result;if(p&&p.raw===raw)return set("inchangé");s.put({raw,ver:(p&&p.ver||0)+1,t:Date.now()},k);set("ok")}})}catch(e){return "échec"}},
+    /* écriture conditionnelle atomique : lecture, comparaison et écriture dans la même transaction */
+    async ecrireSi(k,raw,attendu){if(!rout(k))return SBS.ecrireSi(k,raw,attendu);
+      try{return await tx(store(k),"readwrite",(t,set)=>{const s=t.objectStore(store(k)),q=s.get(k);q.onsuccess=()=>{const p=q.result,cur=p?p.raw:null;
+        if(cur!==attendu)return set("conflit");if(cur===raw)return set("inchangé");s.put({raw,ver:(p&&p.ver||0)+1,t:Date.now()},k);set("ok")}})}catch(e){return "échec"}},
+    async version(k){try{const v=await tx(store(k),"readonly",(t,set)=>{const q=t.objectStore(store(k)).get(k);q.onsuccess=()=>set(q.result)});return v?v.ver:0}catch(e){return undefined}},
+    /* préférences depuis localStorage + données de progression depuis la base.
+       L3 : données de progression encore présentes dans localStorage et pas encore prises en compte par la base (ni identiques, ni migrées telles quelles :
+       trace mig:<clé>) exportées sous « localStorage:<clé> » et résumées dans sob_transition */
+    async entrees(f){const o=SBS.entrees(k=>f(k)&&!rout(k)),base={},mig={};
+      try{await tx(STS,"readonly",t=>{for(const s of STS){const c=t.objectStore(s).openCursor();c.onsuccess=()=>{const x=c.result;if(!x)return;
+        if(s==="meta"&&typeof x.key==="string"&&x.key.startsWith("mig:"))mig[x.key.slice(4)]=x.value.src;
+        else if(f(x.key)){o[x.key]=x.value.raw;base[x.key]=x.value.raw}x.continue()}}})}catch(e){}
+      const rest=SBS.entrees(k=>f(k)&&rout(k)),ks=Object.keys(rest);let n=0;
+      for(const k of ks)if(base[k]!==rest[k]&&mig[k]!==rest[k]){o["localStorage:"+k]=rest[k];n++}
+      if(ks.length)o.sob_transition=JSON.stringify({localStorage:ks.length,differentes:n});
+      return o},
+    /* état réel du moteur : IndexedDB présent et dernière ouverture réussie (ou pas encore tentée) */
+    get dispo(){return typeof indexedDB!=="undefined"&&!!indexedDB&&!KO},
+    /* ---- L3 : migration localStorage → IndexedDB (jamais appelée automatiquement) ----
+       Une seule transaction pour toutes les clés de progression : interrompue, elle n'a rien écrit et se relance ; lancée par plusieurs onglets, les
+       suivants voient le travail fait. Trace mig:<clé> = valeur source migrée. Aucune donnée n'est supprimée ni écrasée :
+       absente de la base → copiée à l'octet près ; identique → rien ; différente → la base est gardée, la source part en copie « conflit » ;
+       source modifiée depuis la migration (ancienne version encore ouverte) → copie « tardif ». */
+    async migrer(){
+      const src={};for(const k of SBS.cles(""))if(rout(k)){const v=SBS.lire(k);if(typeof v==="string")src[k]=v}
+      const ks=Object.keys(src),ts=Date.now(),res={cles:ks.length,migre:0,deja:0,egal:0,tardif:0,conflit:0};let i=0,fait=0;
+      const copie=(k,tag)=>{if(k.startsWith("acct:"))return k+":"+tag+":"+ts+":"+(i++);
+        const m=/^cast(?::([^:]+))?(?::(.+))?$/.exec(k),id=m&&m[1]||"@invite",suf=m&&m[2]?"-"+m[2].replace(/:/g,"-"):"";
+        return "cast:"+id+":brut:"+tag+suf+":"+ts+":"+(i++)};
+      await tx(STS,"readwrite",t=>{const os=n=>t.objectStore(n),fin=()=>{if(++fait===ks.length)os("meta").put({t:ts,res:Object.assign({},res)},"migration")};
+        if(!ks.length)os("meta").put({t:ts,res:Object.assign({},res)},"migration");
+        for(const k of ks){const v=src[k],st=store(k),mk="mig:"+k;let m,cur,n=0;
+          const garde=tag=>{if(/:jour$/.test(k))return;const ck=copie(k,tag);os(store(ck)).put({raw:v,ver:1,t:ts},ck)};
+          const go=()=>{
+            if(m){if(m.src===v)res.deja++;else{garde("tardif");os("meta").put({src:v,t:ts},mk);res.tardif++}}
+            else if(!cur){os(st).put({raw:v,ver:1,t:ts},k);os("meta").put({src:v,t:ts},mk);res.migre++}
+            else if(cur.raw===v){os("meta").put({src:v,t:ts},mk);res.egal++}
+            else{garde("conflit");os("meta").put({src:v,t:ts},mk);res.conflit++}
+            fin()};
+          const a=os("meta").get(mk),b=os(st).get(k);a.onsuccess=()=>{m=a.result;if(++n===2)go()};b.onsuccess=()=>{cur=b.result;if(++n===2)go()}}});
+      try{localStorage.setItem("sob_migration",String(ts))}catch(e){}
+      return res},
+    rout,store};
+  return I})();
+/* moteur actif : localStorage par défaut. IndexedDB uniquement par sélection explicite de test (SB.moteur("idb") ou window.SOB_MOTEUR="idb" défini avant le chargement) */
+let SBM=SBS;
+try{if(window.SOB_MOTEUR==="idb")SBM=SBI}catch(e){}
+/* interface publique, asynchrone (inchangée) ; sync = le moteur actif répond dans la tâche courante ; s = accès synchrone au moteur localStorage */
+const SB={get sync(){return SBM===SBS},s:SBS,get dispo(){return SBM===SBS?ST.ok:SBI.dispo},
+  /* L3 : migration explicite (tests, ou drapeau expérimental window.SOB_MIGRER=1 avec SOB_MOTEUR="idb") */
+  async migrer(){return SBI.migrer()},
+  moteur(n){if(n==="idb")SBM=SBI;else if(n==="localStorage")SBM=SBS;return SBM===SBI?"indexedDB":"localStorage"},
+  async lire(k){return SBM.lire(k)},async lireSouple(k){return SBM.lireSouple(k)},async ecrireBrut(k,v){return SBM.ecrireBrut(k,v)},
+  async suppr(k){return SBM.suppr(k)},async cles(p){return SBM.cles(p)},async lisibles(p){return SBM.lisibles(p)},
+  async ecrire(k,raw){return SBM.ecrire(k,raw)},async ecrireSi(k,raw,attendu){return SBM.ecrireSi(k,raw,attendu)},async entrees(f){return SBM.entrees(f)}};
+let SBMIG=null;try{if(window.SOB_MIGRER===1&&SBM===SBI)SBMIG=SBI.migrer().catch(()=>null)}catch(e){}
+/* exécution d'une logique écrite une seule fois (générateur : chaque opération de stockage est demandée par yield [op,...args]) :
+   runSync = tout dans la tâche courante (moteur synchrone uniquement) ; runAsync = opérations attendues une par une */
+function runSync(g){let r=g.next();while(!r.done){const[o,...a]=r.value;r=g.next(SBS[o](...a))}return r.value}
+async function runAsync(g){let r=g.next();while(!r.done){const[o,...a]=r.value;r=g.next(await SB[o](...a))}return r.value}
+/* L1 : file d'attente unique. Les écritures du profil et les changements d'état qui en dépendent (connexion, déconnexion, reprise A1)
+   s'exécutent un par un dans l'ordre d'appel : une écriture en attente ne peut ni partir sous un autre utilisateur, ni passer par-dessus une reprise.
+   SBN = nombre de tâches en attente ou en cours (0 = file vide). */
+let SBQ=Promise.resolve(),SBN=0,SV=0;   /* SV : nombre de demandes d'enregistrement (L3) */
+function sbq(f){SBN++;const p=SBQ.then(()=>f());const fin=()=>{SBN--};SBQ=p.then(fin,fin);return p}
+/* B4 : chaque écriture du profil est relue (SB.ecrire) ; échec ou stockage indisponible → signalé (stSig), jamais présenté comme enregistré.
+   En cas d'échec, la valeur précédente reste sur l'appareil et la progression est gardée en mémoire (S) jusqu'à la prochaine écriture réussie.
+   L1 : file vide et moteur synchrone → écriture immédiate dans la tâche courante (comme avant L1 : rien n'est perdu si l'onglet est tué juste après) ;
+   sinon, l'écriture prend sa place dans la file (ordre conservé). */
+const lsw=()=>{SV++;
+  if(!(SB.sync&&SBN===0))return sbq(lswRun);
+  let r;SBN++;
+  try{r=runSync(lswGen())}catch(e){const p=Promise.reject(e);p.catch(()=>{});return p}finally{SBN--}
+  /* conflit A1 : la version locale est mise à l'abri tout de suite ; la reprise (et le bandeau) suit dans la file */
+  if(r&&r.conflit){try{runSync(pAbriGen(U,JSON.stringify(S)))}catch(e){}return sbq(()=>pSyncRun(1))}
+  return Promise.resolve()};
+async function lswRun(){const r=await runAsync(lswGen());if(r&&r.conflit)return pSyncRun(1)}
+function* lswGen(){if(PLOCK&&PLOCK.u===U)return;if(PCONF&&PCONF.u===U)return;const k=U?"cast:"+U:"cast";
+  if(!SB.dispo){yield["ecrireBrut",k,JSON.stringify(S)];return stSig("profil","mémoire")}
+  /* A1 + L3 : écriture conditionnelle — n'écrit que si le disque contient encore la version connue (PBASE.raw) ; sinon pSyncRun décide.
+     Atomique avec IndexedDB ; avec localStorage, même enchaînement qu'avant (lecture impossible → échec, autre version → conflit, sinon écriture relue). */
+  if(U&&PBASE&&PBASE.k===k){const w0=S._w,w={i:pWid(),h:(PBASE.w?[PBASE.w]:[]).concat(PBASE.h||[]).slice(0,30)};S._w=w;const v=JSON.stringify(S);
+    const r=yield["ecrireSi",k,v,PBASE.raw];
+    if(r==="conflit"){S._w=w0;return{conflit:1}}
+    if(r==="échec"){S._w=w0;return stSig("profil","échec")}
+    if(U&&k==="cast:"+U)PBASE={k,raw:v,w:w.i,h:w.h,mine:true};
+    return stSig("profil","ok")}
+  const v=JSON.stringify(S),ok=(yield["ecrire",k,v])!=="échec";
+  if(ok&&U&&k==="cast:"+U)PBASE={k,raw:v,w:S._w&&S._w.i||null,h:S._w&&S._w.h||[],mine:true};
+  stSig("profil",ok?"ok":"échec")}
+/* L1 : renvoie la promesse de l'écriture (les appelants existants l'ignorent) */
+const save=()=>{S.t=Date.now();const p=lsw();push();return p};
 function cs(t){const e=document.getElementById("cl");if(e){e.textContent=t==="ok"?"☁️":t==="busy"?"⏳":"";e.title=t==="ok"?"Progression sauvegardée en ligne":"Sauvegarde en cours"}}
 function push(){if(!CR||(PLOCK&&PLOCK.u===U))return;clearTimeout(ct);cs("busy");ct=setTimeout(async()=>{if(cp)return push();cp=true;try{await CR.set(JSON.parse(JSON.stringify(S)));cs("ok")}catch(e){cs("")}cp=false},1500)}
 const $=document.getElementById("app");
@@ -5315,7 +5471,7 @@ async function hp(pw,salt,alg){if(alg!=="s"&&window.crypto&&crypto.subtle){try{c
 const HALG=()=>(window.crypto&&crypto.subtle)?"p":"s";
 function auth(mode){
   const r=mode==="reg";
-  AUM=mode;$.innerHTML=`<header><div class="hl"><button class="bk" onclick="landing()" aria-label="Retour">${BKI}</button><h1>Sobremesa</h1></div><div class="stats">${uisel()}</div></header><form class="q" onsubmit="event.preventDefault();sub('${mode}')"><p class="skl" style="margin:0 0 4px">${tr("Les langues d'Espagne")}</p><h2>${r?"Créer un compte":"Se connecter"}</h2><p class="sub">${DB?"Ta progression est sauvegardée en ligne.":"Ton compte et ta progression sont enregistrés dans ce navigateur, sur cet appareil."}</p>${ST.ok?"":`<p class="fb ko">${tr("Le stockage de ce navigateur est bloqué (navigation privée ?) : ton compte et ta progression seront perdus à la fermeture de la page.")}</p>`}<input class="in" id="u" placeholder="Identifiant" autocomplete="username" autocapitalize="none" required><input class="in" id="p" type="password" placeholder="Mot de passe" autocomplete="${r?"new-password":"current-password"}" required><div id="m" class="fb ko" style="display:none"></div><button class="btn" id="go" type="submit">${r?"Créer mon compte":"Se connecter"}</button><p class="sub" style="margin-top:14px">${r?"Déjà un compte ?":"Pas encore de compte ?"} <button type="button" class="chip" onclick="auth('${r?"login":"reg"}')">${r?"Se connecter":"Créer un compte"}</button></p></form>`;
+  AUM=mode;$.innerHTML=`<header><div class="hl"><button class="bk" onclick="landing()" aria-label="Retour">${BKI}</button><h1>Sobremesa</h1></div><div class="stats">${uisel()}</div></header><form class="q" onsubmit="event.preventDefault();sub('${mode}')"><p class="skl" style="margin:0 0 4px">${tr("Les langues d'Espagne")}</p><h2>${r?"Créer un compte":"Se connecter"}</h2><p class="sub">${DB?"Ta progression est sauvegardée en ligne.":"Ton compte et ta progression sont enregistrés dans ce navigateur, sur cet appareil."}</p>${SB.dispo?"":`<p class="fb ko">${tr("Le stockage de ce navigateur est bloqué (navigation privée ?) : ton compte et ta progression seront perdus à la fermeture de la page.")}</p>`}<input class="in" id="u" placeholder="Identifiant" autocomplete="username" autocapitalize="none" required><input class="in" id="p" type="password" placeholder="Mot de passe" autocomplete="${r?"new-password":"current-password"}" required><div id="m" class="fb ko" style="display:none"></div><button class="btn" id="go" type="submit">${r?"Créer mon compte":"Se connecter"}</button><p class="sub" style="margin-top:14px">${r?"Déjà un compte ?":"Pas encore de compte ?"} <button type="button" class="chip" onclick="auth('${r?"login":"reg"}')">${r?"Se connecter":"Créer un compte"}</button></p></form>`;
 }
 async function sub(mode){
   const u=document.getElementById("u").value.trim().toLowerCase(),p=document.getElementById("p").value,m=document.getElementById("m"),go=document.getElementById("go");
@@ -5323,7 +5479,7 @@ async function sub(mode){
   go.disabled=true;
   if(!/^[a-z0-9_-]{3,24}$/.test(u))return err("Identifiant : 3 à 24 caractères (lettres, chiffres, - ou _).");
   if(p.length<6)return err("Mot de passe : 6 caractères minimum.");
-  const lref={get:async()=>{let d=null;try{d=JSON.parse(ST.get("acct:"+u)||"null")}catch(e){}return{exists:!!d,data:()=>d}},set:async d=>{ST.set("acct:"+u,JSON.stringify(d))},acquire:async()=>({acquired:true})};
+  const lref={get:async()=>{let d=null;try{d=JSON.parse((await SB.lireSouple("acct:"+u))||"null")}catch(e){}return{exists:!!d,data:()=>d}},set:async d=>{await SB.ecrireBrut("acct:"+u,JSON.stringify(d))},acquire:async()=>({acquired:true})};
   const rnd=()=>{try{return hx(crypto.getRandomValues(new Uint8Array(16)))}catch(e){return (Math.random().toString(16)+Date.now().toString(16)+Math.random().toString(16)).replace(/\./g,"").slice(0,32)}};
   const mk=async ref=>{
     const l=await ref.acquire({holder:"reg"+Math.random(),ttlMs:15000});
@@ -5337,13 +5493,13 @@ async function sub(mode){
   const chk=async ref=>{const sn=await ref.get(),d=sn.exists?sn.data():null;if(!d||!d.h)return null;return (await hp(p,d.salt,d.a))===d.h};
   try{
     if(mode==="reg"){
-      if(regPris(u))return err("Cet identifiant existe déjà.");
+      if(await regPris(u))return err("Cet identifiant existe déjà.");
       let e="",done=false;
       if(DB){try{e=await mk(DB.doc("accounts/"+u));done=true}catch(x){DB=null;CR=null}}
       if(!done){if((await lref.get()).exists)e="Cet identifiant existe déjà.";else e=await mk(lref)}
       if(e)return err(e);
-      let init=FRESH();try{const o=JSON.parse(ST.get("cast")||"null");if(o&&o.v===2)init=Object.assign(init,o)}catch(x){}
-      if(!init.lvl)init.ob=1;if(LMAS){init.mas=LMAS;if(LMPICK)init.masSeen=1}try{if(ST.get("cast:"+u)===null)ST.set("cast:"+u,JSON.stringify(init))}catch(x){}
+      let init=FRESH();try{const o=JSON.parse((await SB.lireSouple("cast"))||"null");if(o&&o.v===2)init=Object.assign(init,o)}catch(x){}
+      if(!init.lvl)init.ob=1;if(LMAS){init.mas=LMAS;if(LMPICK)init.masSeen=1}try{if((await SB.lireSouple("cast:"+u))===null)await SB.ecrireBrut("cast:"+u,JSON.stringify(init))}catch(x){}
       return login(u);
     }
     let ok=null;
@@ -5353,13 +5509,17 @@ async function sub(mode){
     login(u);
   }catch(e){err("Erreur de connexion, réessaie.")}
 }
-async function login(u){loginL(u);return syncDb(u)}
+async function login(u){await loginL(u);return syncDb(u)}
 /* B3 : un identifiant déjà utilisé sur cet appareil n'est jamais réattribué à une inscription :
    compte acct:<id> présent (même illisible ou sans mot de passe), profil cast:<id> présent (même illisible, même sans compte)
    ou copies du profil cast:<id>:… (B1 :brut, B2 :bak/:bakJ) → refus, rien n'est écrit. En cas de doute (lecture impossible) : refus. */
-function regPris(u){
-  const lit=k=>ST.ok?localStorage.getItem(k):ST.get(k);/* lecture directe : une erreur de lecture n'est pas prise pour une absence (ST.get la masque) */
-  try{if(lit("acct:"+u)!==null||lit("cast:"+u)!==null||pKeys(u).length)return true}catch(e){return true}
+async function regPris(u){
+  /* lecture stricte : une erreur de lecture (undefined) n'est pas prise pour une absence */
+  const a=await SB.lire("acct:"+u),c=await SB.lire("cast:"+u);
+  if(a!==null||c!==null)return true;
+  if((await pKeys(u)).length>0)return true;
+  /* L3 : pendant la transition vers IndexedDB, l'ancien stockage (localStorage) compte aussi */
+  if(!SB.sync){const a2=SBS.lire("acct:"+u),c2=SBS.lire("cast:"+u);if(a2!==null||c2!==null||SBS.cles("cast:"+u+":").length)return true}
   return false}
 /* ---- Chargement sûr du profil « cast:<id> » ----
    absent → nouveau profil ; actuel (v:2) → chargé ; ancien (sans v) → copie brute conservée puis migration ;
@@ -5380,40 +5540,32 @@ function classProfil(raw){
   return{c:has("v")?"actuel":"ancien",o};
 }
 /* clés de copie d'un profil : cast:<id>:… (incluses dans l'export de bkExp) */
-function pKeys(u){const p="cast:"+u+":",a=[];try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.startsWith(p))a.push(k)}}catch(e){}return a}
+function pKeys(u){return SB.cles("cast:"+u+":")}
 /* conserve les données brutes telles quelles (une seule copie par contenu) ; true seulement si la copie est relue à l'identique */
-function pKeep(u,raw,tag){
-  try{for(const k of pKeys(u))if(ST.get(k)===raw)return true}catch(e){}
+async function pKeep(u,raw,tag){
+  for(const k of await pKeys(u))if((await SB.lireSouple(k))===raw)return true;
   const k="cast:"+u+":brut:"+tag+":"+Date.now();
-  try{ST.set(k,raw)}catch(e){}
-  try{return ST.get(k)===raw}catch(e){return false}}
+  await SB.ecrireBrut(k,raw);
+  return (await SB.lireSouple(k))===raw}
 /* copies valides (actuel ou ancien) proposées à la restauration, la plus récente d'abord */
-function pCopies(u){const vu=new Set();return pKeys(u).map(k=>{const raw=ST.get(k),c=classProfil(raw);if(!(c.c==="actuel"||c.c==="ancien")||vu.has(raw))return null;vu.add(raw);return{k,raw,o:c.o,t:+(c.o.t||(k.split(":").pop()))||0}}).filter(Boolean).sort((a,b)=>b.t-a.t)}
+async function pCopies(u){const vu=new Set(),out=[];for(const k of await pKeys(u)){const raw=await SB.lireSouple(k),c=classProfil(raw);if(!(c.c==="actuel"||c.c==="ancien")||vu.has(raw))continue;vu.add(raw);out.push({k,raw,o:c.o,t:+(c.o.t||(k.split(":").pop()))||0})}return out.sort((a,b)=>b.t-a.t)}
 /* ---- Sauvegardes automatiques d'un profil valide (actuel ou ancien) ----
    cast:<id>:bak  : copie à chaque ouverture réussie ;
    cast:<id>:bakJ : copie du premier chargement du jour (jour local dans cast:<id>:bakJ:jour), pas réécrite le même jour.
    Chaque écriture est relue ; si la relecture ne rend pas exactement la copie, l'ancienne valeur est remise (ou la clé retirée s'il n'y en avait pas) : une sauvegarde existante n'est jamais remplacée par une copie incomplète. */
 let PBAK=null;
 const pJour=()=>{const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")};
-function pPut(k,raw){
-  if(!ST.ok)return "échec";
-  let prev=null;try{prev=ST.get(k)}catch(e){}
-  if(prev===raw)return "inchangé";
-  try{ST.set(k,raw)}catch(e){}
-  let back=null;try{back=ST.get(k)}catch(e){}
-  if(back===raw)return "ok";
-  if(prev===null){try{ST.del(k)}catch(e){}}else if(back!==prev){try{ST.set(k,prev)}catch(e){}}
-  return "échec"}
-function pBak(u,raw){
+function pPut(k,raw){return SB.ecrire(k,raw)}
+async function pBak(u,raw){
   const o={bak:"",bakJ:""};PBAK=o;
   try{
     const c=classProfil(raw).c;if(c!=="actuel"&&c!=="ancien")return o;
     /* B4-C : copies illisibles → aucune sauvegarde automatique (elle pourrait remplacer une copie qu'on n'a pas pu lire) ; échec signalé */
-    if(!pScan(u)){o.bak=o.bakJ="échec (lecture)";return o}
-    const kb="cast:"+u+":bak",kj="cast:"+u+":bakJ",kd=kj+":jour",j=pJour(),vj=classProfil(ST.get(kj)).c;
-    o.bak=pPut(kb,raw);
-    if(ST.get(kd)===j&&(vj==="actuel"||vj==="ancien"))o.bakJ="déjà faite aujourd'hui";
-    else{o.bakJ=pPut(kj,raw);if(o.bakJ!=="échec"&&pPut(kd,j)==="échec")o.bakJ="échec (jour)"}
+    if(!(await pScan(u))){o.bak=o.bakJ="échec (lecture)";return o}
+    const kb="cast:"+u+":bak",kj="cast:"+u+":bakJ",kd=kj+":jour",j=pJour(),vj=classProfil(await SB.lireSouple(kj)).c;
+    o.bak=await pPut(kb,raw);
+    if((await SB.lireSouple(kd))===j&&(vj==="actuel"||vj==="ancien"))o.bakJ="déjà faite aujourd'hui";
+    else{o.bakJ=await pPut(kj,raw);if(o.bakJ!=="échec"&&(await pPut(kd,j))==="échec")o.bakJ="échec (jour)"}
   }catch(e){}
   return o}
 /* ---- B4 : signalement des problèmes d'enregistrement ----
@@ -5425,53 +5577,100 @@ function stSig(t,e){
   else{if(STE.bak===e)return;STE.bak=e}
   stBan()}
 function stBan(){
-  let b=document.getElementById("stb");const p=STE.profil!=="ok"&&STE.vu!==STE.profil,k=!p&&STE.profil==="ok"&&STE.bak!=="ok"&&!STE.bakVu;
-  if(!p&&!k){if(b)b.remove();return}
+  let b=document.getElementById("stb");const p=STE.profil!=="ok"&&STE.vu!==STE.profil,cf=!p&&STE.conf,k=!p&&!cf&&STE.profil==="ok"&&STE.bak!=="ok"&&!STE.bakVu;
+  if(!p&&!cf&&!k){if(b)b.remove();return}
+  if(p&&STE.profil==="conflit"||cf){if(!b){b=document.createElement("div");b.id="stb";b.setAttribute("role","alert");document.body.appendChild(b)}
+    b.className="stb"+(p?"":" info");b.dataset.k=p?"conflit":"conf";
+    b.innerHTML=p?`<p>${tr("Sobremesa a aussi été utilisée dans une autre fenêtre et ce que tu as fait ici n'a pas pu être mis à l'abri (stockage plein ?). Pour ne rien écraser, cette fenêtre n'enregistre plus : continue dans l'autre fenêtre ou recharge l'appli.")}</p><button class="chip" onclick="location.reload()">${tr("Recharger l'appli")}</button>`
+      :`<p>${tr("Sobremesa a aussi été utilisée dans une autre fenêtre : celle-ci affiche maintenant la progression la plus récente. Ce que tu avais fait ici entre-temps est conservé dans une copie de sécurité.")}</p><button class="chip" onclick="stX()">OK</button>`;return}
   if(!b){b=document.createElement("div");b.id="stb";b.setAttribute("role","alert");document.body.appendChild(b)}
   b.className="stb"+(p?"":" info");b.dataset.k=p?STE.profil:"bak";
   b.innerHTML=p?`<p>${STE.profil==="mémoire"?tr("Le stockage de cet appareil est indisponible : ta progression n'est gardée que tant que l'appli reste ouverte."):tr("Ta progression n'a pas pu être enregistrée sur cet appareil (stockage plein ?). Elle est gardée tant que l'appli reste ouverte.")} ${tr("Télécharge tes données pour ne rien perdre.")}</p><button class="chip" onclick="bkExp()">${tr("Télécharger mes données")}</button> <button class="chip" onclick="stX()">${tr("Plus tard")}</button>`
     :`<p>${tr("La sauvegarde automatique n'a pas pu être faite sur cet appareil. Ta progression, elle, est bien enregistrée.")}</p><button class="chip" onclick="stX()">OK</button>`}
-function stX(){if(STE.profil!=="ok")STE.vu=STE.profil;else STE.bakVu=1;stBan()}
+function stX(){if(STE.profil!=="ok")STE.vu=STE.profil;else if(STE.conf)STE.conf=0;else STE.bakVu=1;stBan()}
+/* ---- A1 : coordination entre fenêtres (aucune fusion de champs) ---- */
+const pWid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,8);
+/* copie durable d'une version qui risque d'être perdue (jamais seulement dans :bak/:bakJ, qui tournent) ; true si elle est conservée */
+function* pAbriGen(u,raw){
+  const ks=yield["cles","cast:"+u+":"],rot=k=>/:bakJ?$/.test(k)||/:jour$/.test(k);
+  for(const x of ks)if(!rot(x)&&(yield["lire",x])===raw)return true;
+  return (yield["ecrire","cast:"+u+":brut:conflit:"+Date.now(),raw])==="ok"}
+function pAbri(u,raw){return runAsync(pAbriGen(u,raw))}
+/* compare la version du disque à celle que cet onglet connaît et décide : reprise silencieuse, reprise avec copie de la version locale, ou blocage.
+   force = appelé depuis lsw (une modification locale attend d'être écrite) */
+function pSync(force){return sbq(()=>pSyncRun(force))}
+async function pSyncRun(force){
+  if(!U||!SB.dispo||(PLOCK&&PLOCK.u===U)||(PCONF&&PCONF.u===U)||!PBASE||PBASE.k!=="cast:"+U)return;
+  const u=U,sv0=SV;
+  const D=await SB.lire(PBASE.k);if(D===undefined||D===PBASE.raw)return;
+  const c=classProfil(D);
+  const w=c.o&&c.o._w,der=!!(w&&PBASE.w&&(w.i===PBASE.w||(Array.isArray(w.h)&&w.h.includes(PBASE.w))));
+  /* version locale en danger : modification en attente, ou notre dernière écriture remplacée par une version qui ne la contient pas.
+     L3 : avec un moteur asynchrone, l'appli peut modifier S pendant les attentes ; SV le révèle → nouvelle photo de S, mise à l'abri à son tour.
+     Le remplacement de S ne se fait qu'une fois plus rien en attente, sans aucune attente entre la vérification et le remplacement. */
+  let sv=SV,lost=(!!force||STE.profil!=="ok"||SV!==sv0)?JSON.stringify(S):(PBASE.mine&&!der?PBASE.raw:null);
+  for(let n=0;;n++){
+    if(lost!==null&&!(await pAbri(u,lost))){PCONF={u};clearTimeout(ct);STE.vu="";stSig("profil","conflit");return}
+    if(U!==u||(PLOCK&&PLOCK.u===u)||(PCONF&&PCONF.u===u))return;
+    if(SV===sv)break;
+    if(n>=50){PCONF={u};clearTimeout(ct);STE.vu="";stSig("profil","conflit");return}
+    sv=SV;lost=JSON.stringify(S)}
+  if(c.c!=="actuel"&&c.c!=="ancien"){PBASE=null;R=undefined;return loginRun(u)}   /* absent, illisible ou futur : écrans B1/B4/B4-C */
+  const enLecon=typeof R!=="undefined"&&R&&R.q&&!R.done;
+  S=Object.assign(FRESH(),c.o);PBASE={k:"cast:"+u,raw:D,w:w&&w.i||null,h:w&&Array.isArray(w.h)?w.h:[],mine:false};
+  if(lost!==null){STE.conf=1;STE.vu=""}
+  STE.profil="ok";build();applyTheme();stBan();
+  if(!enLecon){try{if(!(window.SBRR&&window.SBRR()))entry()}catch(e){}}}
+addEventListener("storage",e=>{if(U&&(e.key===null||e.key==="cast:"+U))pSync(0)});
+/* L3 : en mode expérimental de migration, une écriture d'une ancienne version dans localStorage relance la détection (copie « tardif », jamais d'écrasement) */
+addEventListener("storage",e=>{try{if(window.SOB_MIGRER===1&&SBM===SBI&&e.key&&SBI.rout(e.key))sbq(()=>SBI.migrer())}catch(x){}});
+document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")pSync(0)});
+addEventListener("pageshow",()=>pSync(0));addEventListener("focus",()=>pSync(0));
 /* avant une restauration ou une remise à zéro : les sauvegardes tournantes (:bak, :bakJ) valides et différentes de la valeur qui va être écrite
    sont d'abord copiées durablement (cast:<id>:brut:avant-…), car l'ouverture suivante les remplace ; true seulement si toutes sont conservées */
-function pGarde(u,raw){
-  const ks=pKeys(u),val=k=>{try{return localStorage.getItem(k)}catch(e){return null}},rot=k=>/:bakJ?$/.test(k);let ok=true;
-  for(const k of ks){if(!rot(k))continue;const v=val(k),c=classProfil(v).c;if(v===null||v===raw||(c!=="actuel"&&c!=="ancien"))continue;
-    if(ks.some(x=>!rot(x)&&!/:jour$/.test(x)&&val(x)===v))continue;
-    if(pPut("cast:"+u+":brut:avant-"+k.split(":").pop()+":"+Date.now(),v)!=="ok")ok=false}
+async function pGarde(u,raw){
+  const ks=await pKeys(u),val=async k=>{const v=await SB.lire(k);return v===undefined?null:v},rot=k=>/:bakJ?$/.test(k);let ok=true;
+  for(const k of ks){if(!rot(k))continue;const v=await val(k),c=classProfil(v).c;if(v===null||v===raw||(c!=="actuel"&&c!=="ancien"))continue;
+    let dup=false;for(const x of ks)if(!rot(x)&&!/:jour$/.test(x)&&(await val(x))===v){dup=true;break}
+    if(dup)continue;
+    if((await pPut("cast:"+u+":brut:avant-"+k.split(":").pop()+":"+Date.now(),v))!=="ok")ok=false}
   return ok}
 /* B4-C : lecture stricte du profil à la connexion. ST.get masque une erreur de lecture (elle renvoie alors la copie en mémoire, souvent null),
    ce qui ferait passer un profil existant pour absent. pLire : chaîne = données, null = clé réellement absente, undefined = lecture impossible. */
-function pLire(k){if(!ST.ok)return ST.get(k);try{return localStorage.getItem(k)}catch(e){return undefined}}
+function pLire(k){return SB.lire(k)}
 /* true si toutes les copies cast:<id>:… sont lisibles (nécessaire avant de conclure qu'un profil absent n'a pas de sauvegarde) */
-function pScan(u){if(!ST.ok)return true;try{const p="cast:"+u+":";for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.startsWith(p))localStorage.getItem(k)}return true}catch(e){return false}}
-function loginL(u){
+function pScan(u){return SB.lisibles("cast:"+u+":")}
+/* L1 : la connexion passe par la file (après les écritures en attente de l'utilisateur précédent) */
+function loginL(u){return sbq(()=>loginRun(u))}
+async function loginRun(u){
+  if(SBMIG)await SBMIG;
   U=u;try{ST.set("cast_user",u)}catch(e){}
-  const raw=pLire("cast:"+u);
+  const raw=await pLire("cast:"+u);
   /* lecture impossible : ni profil neuf, ni migration, ni restauration, ni sauvegarde automatique ; rien n'est écrit, l'utilisateur peut réessayer */
-  if(raw===undefined||(raw===null&&!pScan(u))){
+  if(raw===undefined||(raw===null&&!(await pScan(u)))){
     PLOCK={u,c:"lecture",r:raw===undefined?"profil":"copies",kept:false,dl:0};
-    clearTimeout(ct);S=FRESH();R=undefined;CR=null;build();applyTheme();pRec();
-    return Promise.resolve()}
+    clearTimeout(ct);S=FRESH();R=undefined;CR=null;build();applyTheme();await pRec();
+    return}
   const k=classProfil(raw);
-  if(k.c==="corrompu"||k.c==="futur"||(k.c==="ancien"&&!pKeep(u,raw,"ancien"))){
-    PLOCK={u,c:k.c,r:k.r||"",kept:k.c==="ancien"?false:pKeep(u,raw,k.c),dl:0};
-    clearTimeout(ct);S=FRESH();R=undefined;CR=null;build();applyTheme();pRec();
-    return Promise.resolve()}
+  if(k.c==="corrompu"||k.c==="futur"||(k.c==="ancien"&&!(await pKeep(u,raw,"ancien")))){
+    PLOCK={u,c:k.c,r:k.r||"",kept:k.c==="ancien"?false:await pKeep(u,raw,k.c),dl:0};
+    clearTimeout(ct);S=FRESH();R=undefined;CR=null;build();applyTheme();await pRec();
+    return}
   /* B4 : profil principal disparu mais sauvegardes valides présentes → pas de profil neuf silencieux, rien n'est écrit avant le choix */
-  if(k.c==="absent"&&pCopies(u).length){
+  if(k.c==="absent"&&(await pCopies(u)).length){
     PLOCK={u,c:"absent",r:"",kept:true,dl:0};
-    clearTimeout(ct);S=FRESH();R=undefined;CR=null;build();applyTheme();pRec();
-    return Promise.resolve()}
-  PLOCK=null;
-  const bk=pBak(u,raw);stSig("bak",bk.bak==="échec"||/^échec/.test(bk.bakJ)?"échec":"ok");
+    clearTimeout(ct);S=FRESH();R=undefined;CR=null;build();applyTheme();await pRec();
+    return}
+  PLOCK=null;PCONF=null;
+  {const w=k.o&&k.o._w;PBASE={k:"cast:"+u,raw,w:w&&w.i||null,h:w&&Array.isArray(w.h)?w.h:[],mine:false}}
+  const bk=await pBak(u,raw);stSig("bak",bk.bak==="échec"||/^échec/.test(bk.bakJ)?"échec":"ok");
   const l=k.o||null;
   S=Object.assign(FRESH(),l||{});
   /* compagnon choisi sur l'accueil avant connexion : on le garde, avec son thème */
   if(LMPICK&&LMAS&&FX.A[LMAS]){S.mas=LMAS;S.masSeen=1;S.t=Date.now();lsw()}LMPICK=0;
   build();applyTheme();R=undefined;CR=null;
   entry();
-  return syncDb(u)}
+  syncDb(u)}
 async function syncDb(u){
   if(!DB||U!==u||(PLOCK&&PLOCK.u===u))return;
   try{
@@ -5482,18 +5681,19 @@ async function syncDb(u){
     else if(S.t)push();else cs("ok");
   }catch(e){}
 }
-function logout(){
+function logout(){return sbq(()=>{
   try{ST.del("cast_user")}catch(e){}
-  clearTimeout(ct);U=null;CR=null;PLOCK=null;S=FRESH();applyTheme();R=undefined;landing();
-}
+  clearTimeout(ct);U=null;CR=null;PLOCK=null;PBASE=null;PCONF=null;S=FRESH();applyTheme();R=undefined;landing();
+})}
 /* ---- Écran de récupération : rien n'est écrasé sans décision explicite ---- */
-function pRec(){
+async function pRec(){
   const L=PLOCK;if(!L)return entry();
-  SCR="rec";const fut=L.c==="futur",anc=L.c==="ancien",abs=L.c==="absent",lec=L.c==="lecture",cp=fut||lec?[]:pCopies(L.u);
+  SCR="rec";const fut=L.c==="futur",anc=L.c==="ancien",abs=L.c==="absent",lec=L.c==="lecture";
   if(lec){$.innerHTML=`<header><div class="hl"><h1>Sobremesa</h1></div></header><div class="q end obq" id="prec"><h2>${tr("Ta progression n'a pas pu être lue pour l'instant")}</h2>
   <p>${tr("Le stockage de cet appareil ne répond pas. Tes données et tes sauvegardes ne sont pas modifiées : réessaie dans un instant ou relance l'appli.")}</p>
   <button class="btn" onclick="pRetry()">${tr("Réessayer")}</button><br><button class="btn ghost" onclick="logout()">${tr("Se déconnecter")}</button>
   <p class="sub">${tr("Détail technique : {0}",L.c+(L.r?" ("+L.r+")":""))}</p></div>`;return}
+  const cp=fut?[]:await pCopies(L.u);if(PLOCK!==L)return;
   const dt=t=>{try{return new Date(t).toLocaleDateString(UI,{day:"numeric",month:"long",year:"numeric"})}catch(e){return ""}};
   const ttl=abs?tr("Ta progression est introuvable"):fut?tr("Ta progression vient d'une version plus récente"):anc?tr("Ta progression doit être mise à jour"):tr("Ta progression n'a pas pu être lue");
   const msg=abs?tr("Ta progression n'est plus sur cet appareil, mais des sauvegardes existent. Choisis celle à restaurer, ou repars de zéro."):fut?tr("Elle a été enregistrée par une version plus récente de Sobremesa. Recharge l'appli pour obtenir la dernière version."):
@@ -5511,28 +5711,28 @@ function pRec(){
   <p class="sub">${tr("Détail technique : {0}",L.c+(L.r?" ("+L.r+")":""))}</p></div>`;
 }
 function pRetry(){const L=PLOCK;if(!L||L.c!=="lecture")return;PLOCK=null;loginL(L.u)}
-function pDl(){if(!PLOCK)return;try{bkExp()}catch(e){}PLOCK.dl=1;pRec()}
-function pRest(i){
-  const L=PLOCK;if(!L||L.c==="futur")return;const c=pCopies(L.u)[i];if(!c)return pRec();
+async function pDl(){if(!PLOCK)return;try{await bkExp()}catch(e){}if(PLOCK){PLOCK.dl=1;pRec()}}
+async function pRest(i){
+  const L=PLOCK;if(!L||L.c==="futur")return;const c=(await pCopies(L.u))[i];if(!c)return pRec();
   if(!L.kept&&!L.dl)return alert(tr("Télécharge d'abord tes données : la copie de sécurité n'a pas pu être enregistrée."));
   const dd=new Date(c.t).toLocaleDateString(UI);
   if(!confirm(L.c==="absent"?tr("Restaurer la copie du {0} ? Tes autres sauvegardes restent conservées.",dd):tr("Remplacer les données illisibles par la copie du {0} ? Les données illisibles restent conservées.",dd)))return;
-  if(!pGarde(L.u,c.raw)&&!L.dl)return alert(tr("Télécharge d'abord tes données : tes autres sauvegardes n'ont pas pu être mises à l'abri."));
-  if(pPut("cast:"+L.u,c.raw)==="échec")return alert(tr("La restauration a échoué : aucune donnée n'a été modifiée."));
+  if(!(await pGarde(L.u,c.raw))&&!L.dl)return alert(tr("Télécharge d'abord tes données : tes autres sauvegardes n'ont pas pu être mises à l'abri."));
+  if((await pPut("cast:"+L.u,c.raw))==="échec")return alert(tr("La restauration a échoué : aucune donnée n'a été modifiée."));
   PLOCK=null;loginL(L.u);
 }
-function pGo(){const L=PLOCK;if(!L||L.c!=="ancien")return;
+async function pGo(){const L=PLOCK;if(!L||L.c!=="ancien")return;
   if(!L.dl&&!confirm(tr("Continuer sans copie de sécurité ? Ton ancienne progression sera mise à jour.")))return;
-  const raw=ST.get("cast:"+L.u),k=classProfil(raw);if(k.c!=="ancien")return pRec();
-  PLOCK=null;U=L.u;S=Object.assign(FRESH(),k.o);build();applyTheme();R=undefined;CR=null;entry();syncDb(L.u)}
-function pRz(ok){
+  const raw=await SB.lireSouple("cast:"+L.u),k=classProfil(raw);if(k.c!=="ancien")return pRec();
+  PLOCK=null;U=L.u;S=Object.assign(FRESH(),k.o);PBASE={k:"cast:"+L.u,raw,w:null,h:[],mine:false};build();applyTheme();R=undefined;CR=null;entry();syncDb(L.u)}
+async function pRz(ok){
   const L=PLOCK;if(!L||(L.c!=="corrompu"&&L.c!=="absent")||!(L.kept||L.dl))return;
   if(!ok){const b=document.getElementById("prec");if(!b)return;
     b.innerHTML=`<h2>${tr("Repartir de zéro ?")}</h2><p>${L.c==="absent"?tr("Ta progression repartira de zéro sur cet appareil. Tes sauvegardes restent conservées dans les copies de l'appli."):tr("Ta progression repartira de zéro sur cet appareil. Les données illisibles restent conservées dans les copies de l'appli.")}</p>
     <button class="btn" onclick="pRz(1)">${tr("Oui, repartir de zéro")}</button><br><button class="btn ghost" onclick="pRec()">${tr("Annuler")}</button>`;return}
   const init=FRESH();init.ob=1;const v=JSON.stringify(init);
-  if(!pGarde(L.u,v)&&!L.dl)return alert(tr("Télécharge d'abord tes données : tes sauvegardes n'ont pas pu être mises à l'abri."));
-  if(pPut("cast:"+L.u,v)==="échec")return alert(tr("La remise à zéro a échoué : aucune donnée n'a été modifiée."));
+  if(!(await pGarde(L.u,v))&&!L.dl)return alert(tr("Télécharge d'abord tes données : tes sauvegardes n'ont pas pu être mises à l'abri."));
+  if((await pPut("cast:"+L.u,v))==="échec")return alert(tr("La remise à zéro a échoué : aucune donnée n'a été modifiée."));
   PLOCK=null;loginL(L.u);
 }
 function setLang(l){
@@ -5760,7 +5960,7 @@ applyUI();
   const dbp=withTimeout(Promise.resolve().then(()=>claude.use("db")),1200).then(d=>{DB=d}).catch(()=>{DB=null});
   if(UI!=="fr"){await trLoad(UI);applyUI()}
   const sp=document.getElementById("splash"),hs=()=>{if(!sp||sp.dataset.h)return;sp.dataset.h=1;requestAnimationFrame(()=>requestAnimationFrame(()=>{sp.classList.add("out");setTimeout(()=>{sp.remove();try{document.getElementById("boot-bg").remove()}catch(e){}},340);try{const m=document.querySelector('meta[name=theme-color]');if(m){let uk=null;const u=()=>{try{const l=document.querySelector(".ldp"),rt=document.documentElement,k=(l?"l"+l.className:"")+"|"+(rt.dataset.mas||"")+"|"+(rt.dataset.theme||"")+"|"+(rt.dataset.bg||"");if(k===uk)return;uk=k;const c=l?getComputedStyle(l).backgroundColor:"";m.content=(c&&c!=="rgba(0, 0, 0, 0)"?c:"")||getComputedStyle(document.documentElement).getPropertyValue("--bg").trim()||"#CFE9DC"}catch(e){}};u();new MutationObserver(u).observe(document.documentElement,{attributes:true,attributeFilter:["data-mas"]});try{new MutationObserver(u).observe(document.getElementById("app"),{childList:true})}catch(e){}}}catch(e){}}))};setTimeout(hs,9000);
-  if(su){loginL(su);dbp.then(()=>syncDb(su))}else{landing();dbp.then(()=>{if(!U&&DB){const f=document.querySelector("form input");if(f&&!f.value)auth(AUM||"login")}})}
+  if(su){const lp=loginL(su);dbp.then(()=>lp).then(()=>syncDb(su))}else{landing();dbp.then(()=>{if(!U&&DB){const f=document.querySelector("form input");if(f&&!f.value)auth(AUM||"login")}})}
   hs();try{axWarm()}catch(e){}
 })();
 </script>
@@ -6114,9 +6314,11 @@ document.addEventListener("contextmenu",e=>{if(!(e.target.closest&&e.target.clos
 try{const n=navigator.storage;if(n&&n.persist&&!/Firefox/.test(navigator.userAgent))n.persisted().then(p=>p||n.persist()).catch(()=>{})}catch(e){}
 /* Copie de la progression : fichier .json (partage natif sur téléphone, téléchargement sinon) */
 const BKK=k=>/^(cast|acct:|sobv_|sob_lofi)/.test(k);
-function bkExp(){try{if(typeof save==="function")save()}catch(e){}
+async function bkExp(){try{if(typeof save==="function")save()}catch(e){}
+  /* L1 : l'export attend la fin des écritures en attente */
+  try{await SBQ}catch(e){}
   const d={app:"sobremesa",v:1,date:new Date().toISOString(),data:{}};
-  try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(BKK(k))d.data[k]=localStorage.getItem(k)}}catch(e){}
+  try{Object.assign(d.data,await SB.entrees(BKK))}catch(e){}
   const name="sobremesa-"+d.date.slice(0,10)+".json",txt=JSON.stringify(d);
   try{const f=new File([txt],name,{type:"application/json"});if(navigator.canShare&&navigator.canShare({files:[f]})){navigator.share({files:[f],title:"Sobremesa"}).catch(()=>{});return}}catch(e){}
   const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([txt],{type:"application/json"}));a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1500)}
