@@ -58,8 +58,10 @@ with sync_playwright() as p:
         return pg.evaluate("""()=>{const e=document.querySelector('.end'),t=e?e.innerText:'',m=t.match(/\\+\\s*(\\d+)\\s*XP/);
           return {ok:R.ok,xp:R.xp,aff:m?+m[1]:null,pth:(S.pth||{})[pthK(window.__pid)]||0,txt:t,big:(document.querySelector('.big')||{}).innerText}}""")
     r=run("FFFFHHHHWW",0)
-    ck("parcours 4F+4H+2W = 6/10 -> étape validée",r['ok']==6 and r['pth']==6 and 'validée' in r['txt'] and r['big'].startswith('6/10'),r)
+    ck("parcours 4F+4H+2W = 6/10 -> étape NON validée (seuil 7/10, n°23)",r['ok']==6 and r['pth']==0 and 'validée' not in r['txt'] and '7 bonnes réponses' in r['txt'] and r['big'].startswith('6/10'),r)
     ck("XP du parcours = 4*10+4*5 = 60 (comptés et affichés)",r['xp']==60 and r['aff']==60,r)
+    r=run("FFFFFHHHHW",0)
+    ck("parcours 5F+4H+1W = 7/10 -> étape validée",r['ok']==7 and r['pth']==7 and 'validée' in r['txt'] and r['big'].startswith('7/10'),r)
     r=run("FFFHHHHHWW",1)
     ck("parcours 3F+5H+2W = 5,5/10 -> étape NON validée",r['ok']==5.5 and r['pth']==0 and r['big'].replace('\n','').startswith('5,5/10'),r)
     r=run("FFFFFFFFFF",2)

@@ -8,14 +8,48 @@
 
 Nouveau : le dossier `v/` contient les voix neuronales humaines (euskara : Antton ; galego : 3 voix ; valencià : Lluc, Gina ; català : Grau, Elia), ~320 Mo en plus. Dépose-le aussi à la racine. L'appli propose le choix de la voix dans Outils ; pour tout mot sans nouvelle voix, elle utilise l'ancienne.
 
-## 2. Brancher l'IA plus tard (gratuit)
-1. Clé Gemini gratuite : https://aistudio.google.com/apikey
-2. Compte gratuit sur https://dash.cloudflare.com > Workers & Pages > Create > « Hello World » > colle `worker.js` > Deploy.
-3. Worker > Settings > Variables : ajoute `GEMINI_KEY` (type Secret) et `ALLOWED_ORIGIN` = `https://TONNOM.github.io`.
-4. Copie l'adresse du Worker dans `config.js` : `window.SOB_AI="https://….workers.dev";` puis recommit.
+## 2. Relais IA (conversation et traducteur)
 
-Sans cette étape, l'appli marche avec le dictionnaire local et les fonctions IA affichent « indisponible ».
+Le relais est un Worker Cloudflare (`worker.js`) entre l'appli et Gemini. **Il est public par nature** : son adresse est dans `config.js`, servi à tout visiteur. Sa protection repose sur des plafonds durables, pas sur le secret de l'adresse. Voir aussi la réserve n°4 dans `RESERVES.md`.
 
+**Fonctionnement**
+- L'appli (`shim.js`) obtient d'abord un jeton **Cloudflare Turnstile** (vérification anti-robot, invisible sauf si Cloudflare demande un clic), puis l'échange contre une **session signée** (1 h) sur `POST /session`.
+- Chaque appel IA (`POST /ai`) porte cette session. Le Worker vérifie la signature et l'expiration, puis n'accepte que les deux invites exactes de l'appli : conversation (`conv`) et traduction (`trad`). Toute autre invite est refusée.
+- Le Worker choisit le modèle, la longueur maximale de réponse et les délais. Ses erreurs sont génériques (`unauthorized`, `rate_limited`, `unavailable`…).
+- Les compteurs sont tenus par un **Durable Object** (`Budget`, stockage SQLite) : par session (total et par minute), par IP, global par jour (requêtes et volume de texte), nombre de sessions. Ils repartent à zéro à minuit UTC. Sans ce Durable Object, ou s'il est en erreur, le relais refuse tout (503).
+- Quotas par défaut, réglables par variables du Worker :
+  - `REQ_DAY` 2000 requêtes IA par jour au total, `CHARS_DAY` 4 000 000 caractères ;
+  - `REQ_IP_DAY` 300 par IP (IPv4 complète, ou préfixe /64 en IPv6), `REQ_SESSION` 60 par session, `REQ_SESSION_MIN` 12 par minute ;
+  - `SESS_IP_DAY` 20 sessions par IP, `SESS_DAY` 1000 sessions par jour, `SESSION_TTL` 3600 s.
+
+**Mise en place (une fois)**
+
+Le plus simple : préparer les deux clés des étapes 1 et 2, puis lancer `node deploiement/relais/deployer.mjs` (ou le même kit téléchargé). Il fait les étapes 3 à 5 tout seul, demande les clés en saisie masquée, génère `SESSION_SECRET` et `IP_SECRET`, déploie et vérifie (`--verifier` pour contrôler sans rien changer). Test du kit : `MINIFLARE_DIR=<dossier> node tests/deploiement_relais.mjs`. Détail manuel, si besoin :
+1. Clé Gemini : https://aistudio.google.com/apikey. Dans Google Cloud, la restreindre à l'API « Generative Language ». Garder le projet sans facturation, ou abaisser les quotas et poser une alerte de budget.
+2. Turnstile : Cloudflare > Turnstile > Add widget, nom d'hôte `maxxrqs.github.io`, mode « Managed » ou « Invisible ». Noter la **clé publique** (sitekey) et la **clé secrète**.
+3. Depuis la racine du dépôt :
+   - `cp wrangler.example.toml wrangler.toml`. Retirer le bloc `[[ratelimits]]` si le compte le refuse ;
+   - `npx wrangler@4 login` ;
+   - `npx wrangler@4 secret put GEMINI_KEY` ;
+   - `npx wrangler@4 secret put TURNSTILE_SECRET` ;
+   - `npx wrangler@4 secret put SESSION_SECRET` (valeur : `openssl rand -base64 48`) ;
+   - `npx wrangler@4 secret put IP_SECRET` (autre valeur générée de la même façon : sert aux empreintes HMAC des IP, l'IP brute n'est jamais stockée).
+   Les secrets se saisissent au clavier et ne vont jamais dans un fichier du dépôt.
+4. Tests locaux (Gemini et Turnstile simulés), avec `npm install miniflare@3` dans un dossier de travail :
+   - `MINIFLARE_DIR=<ce dossier> node tests/relais_worker.mjs`
+   - `MINIFLARE_DIR=<ce dossier> node tests/relais_app.mjs`
+5. Vérification sans envoi : `npx wrangler@4 deploy --dry-run --outdir /tmp/sobremesa-ia`. Puis déploiement : `npx wrangler@4 deploy` (le Worker garde son adresse `sobremesa-ia.….workers.dev`).
+6. Dans `config.js` : `window.SOB_AI` (adresse du Worker) et `window.SOB_TS` (clé publique Turnstile). Puis `python3 build_pwa.py` et publication habituelle. Déployer la page juste après le Worker : une ancienne page reçoit des 401.
+7. Contrôle : ouvrir `diag.html` sur le site. Il doit afficher « 401 → OK » sans session, puis une session et une traduction.
+
+Sans relais (`SOB_AI` vide), l'appli marche avec le dictionnaire local et les fonctions IA affichent « indisponible ».
+
+**Limites de sécurité**
+- Turnstile freine les robots mais n'authentifie personne. Les plafonds sont la vraie protection.
+- **Le plafond global est partagé par tous.** Quelques dizaines de sessions suffisent à l'épuiser en quelques minutes. L'IA est alors **indisponible pour tous les utilisateurs** jusqu'à minuit UTC, mais le coût reste borné. `REQ_SESSION` = 60 réduit la consommation d'une session isolée ; ce n'est pas une protection contre une attaque déterminée.
+- Le jour des compteurs est fixé par l'horloge du Durable Object et ne recule jamais.
+- Les offres gratuites Cloudflare ont leurs propres plafonds quotidiens : 100 000 requêtes Worker, et pour les Durable Objects 100 000 requêtes et 100 000 lignes écrites. Au-delà, le relais refuse (jamais d'accès sans plafond) jusqu'à minuit UTC.
+- Toute modification des invites, mascottes ou scénarios de `castellano.html` doit être reportée dans `worker.js` (listes `MASCOTS`, `SCENES`, gabarits) et dans `diag.html`, et le Worker redéployé **avant** la page. `tests/relais_app.mjs` détecte l'écart.
 
 ## 3. Système audio (voix)
 

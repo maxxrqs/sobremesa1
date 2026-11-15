@@ -50,14 +50,39 @@ try:
             bk=pg.evaluate("()=>[localStorage.getItem('cast:ancien:bak'),localStorage.getItem('cast:ancien:bakJ')]")
             ck(f"{c} : réécrit par la version actuelle sans champ perdu ni modifié ; aucune copie brute (profil actuel) ; :bak et :bakJ = profil de l'ancienne version, à l'identique",
                not perdus and not chg and brut==[] and bk==[raw,raw] and not err,{"perdus":perdus,"modifiés":chg,"copies brutes":brut,"bak identiques":[x==raw for x in bk],"err":err})
-            # 3. restauration : le même profil, gardé en copie, restauré après une corruption
+            # 3. restauration après une corruption. Les copies sont identifiées par leur contenu et leur origine (clé), jamais par leur position :
+            #    l'écran liste pCopies(u) dans l'ordre des boutons (bouton i → pRest(i) → pCopies(u)[i]).
+            nraw=pg.evaluate("()=>localStorage.getItem('cast:ancien')")
+            jr=pg.evaluate("()=>Object.keys(localStorage).filter(k=>k.startsWith('cast:ancien:jrnl:')).map(k=>[k,localStorage.getItem(k)])")
+            ck(f"{c} : journal L4 = dernière progression enregistrée avant la corruption (un seul journal, identique à l'octet près au profil réécrit)",
+               len(jr)==1 and jr[0][1]==nraw and json.loads(nraw).get("xp")==o.get("xp"),{"journaux":[k for k,_ in jr],"identique":[v==nraw for _,v in jr]})
             pg.evaluate("(r)=>{localStorage.setItem('cast:ancien','{corrompu');localStorage.setItem('cast:ancien:copie-test',r)}",raw)
             pg.reload();pg.wait_for_timeout(3000);rec=pg.evaluate("()=>!!document.getElementById('prec')")
-            pg.on("dialog",lambda d:d.accept());pg.get_by_text("Restaurer la copie du").first.click();pg.wait_for_timeout(1500)
+            COP="async()=>(await pCopies('ancien')).map(c=>({k:c.k,raw:c.raw}))"
+            def bouton(cps,ok):
+                i=next((i for i,x in enumerate(cps) if ok(x)),None)
+                return i,(pg.locator("#prec button").filter(has_text="Restaurer la copie du").nth(i) if i is not None else None)
+            cps=pg.evaluate(COP);nb=pg.locator("#prec button").filter(has_text="Restaurer la copie du").count()
+            ij,bj=bouton(cps,lambda x:":jrnl:" in x["k"] and x["raw"]==nraw)
+            io,_=bouton(cps,lambda x:":jrnl:" not in x["k"] and x["raw"]==raw)
+            ck(f"{c} : profil corrompu → écran de récupération proposant le journal (dernière progression) ET la copie de l'ancienne version, chacune identifiée par son contenu",
+               rec and nb==len(cps) and ij is not None and io is not None,{"rec":rec,"boutons":nb,"copies":[x["k"] for x in cps]})
+            pg.on("dialog",lambda d:d.accept())
+            if bj:bj.click();pg.wait_for_timeout(1500)
             st2=pg.evaluate(LIRE);cur=pg.evaluate("()=>localStorage.getItem('cast:ancien')")
             kept=pg.evaluate("()=>Object.keys(localStorage).filter(k=>k.startsWith('cast:ancien:brut:corrompu:')).map(k=>localStorage.getItem(k))")
-            ck(f"{c} : profil corrompu → écran de récupération ; la copie de ce profil est restaurée à l'identique, l'original illisible est conservé",
-               rec and st2["lock"] is None and st2["xp"]==o.get("xp") and st2["PL"]==st["PL"] and cur==raw and kept==["{corrompu"] and not err,{"rec":rec,"st2":st2,"kept":kept,"err":err})
+            reste=pg.evaluate("(r)=>Object.keys(localStorage).filter(k=>k!=='cast:ancien'&&localStorage.getItem(k)===r)",raw)
+            ck(f"{c} : restauration du journal : données exactes (profil = journal à l'octet près), XP et langues identiques, original illisible conservé, ancienne copie toujours présente",
+               bj is not None and st2["lock"] is None and cur==nraw and st2["xp"]==o.get("xp") and st2["PL"]==st["PL"] and kept==["{corrompu"] and len(reste)>=1 and not err,{"st2":st2,"exact":cur==nraw,"kept":kept,"ancienne":reste,"err":err})
+            # l'ancienne sauvegarde reste restaurable : nouvelle corruption, restauration de la copie de l'ancienne version (identifiée par son contenu)
+            pg.evaluate("()=>localStorage.setItem('cast:ancien','{corrompu')");pg.reload();pg.wait_for_timeout(3000);rec=pg.evaluate("()=>!!document.getElementById('prec')")
+            cps=pg.evaluate(COP);io,bo=bouton(cps,lambda x:":jrnl:" not in x["k"] and x["raw"]==raw)
+            recent=[x["k"] for x in cps if x["raw"]==nraw]
+            if bo:bo.click();pg.wait_for_timeout(1500)
+            st3=pg.evaluate(LIRE);cur=pg.evaluate("()=>localStorage.getItem('cast:ancien')")
+            kept=pg.evaluate("()=>Object.keys(localStorage).filter(k=>k.startsWith('cast:ancien:brut:corrompu:')).map(k=>localStorage.getItem(k))")
+            ck(f"{c} : profil corrompu → écran de récupération ; la copie de ce profil (ancienne version) est restaurée à l'identique, l'original illisible est conservé ; la version plus récente reste proposée",
+               rec and bo is not None and st3["lock"] is None and st3["xp"]==o.get("xp") and st3["PL"]==st["PL"] and cur==raw and kept==["{corrompu"] and len(recent)>=1 and not err,{"rec":rec,"st3":st3,"exact":cur==raw,"kept":kept,"récente":recent,"copies":[x["k"] for x in cps],"err":err})
             ctx.close()
         b.close()
 finally:

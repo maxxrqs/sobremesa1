@@ -1,0 +1,17 @@
+SOBREMESA — DÉPLOIEMENT DU RELAIS IA SÉCURISÉ (N4 v3)
+
+Prérequis : Node.js version LTS (https://nodejs.org), et les deux clés préparées :
+  - une NOUVELLE clé Gemini (Google AI Studio) ;
+  - la clé SECRÈTE d'un widget Turnstile (Cloudflare).
+
+Commande unique, depuis ce dossier :
+    node deployer.mjs
+
+Le script se connecte à Cloudflare (le navigateur s'ouvre), demande les deux clés en saisie masquée
+(rien ne s'affiche, rien n'est écrit sur le disque), génère les deux autres secrets, déploie et vérifie.
+Il ne fait rien sans que tu tapes OUI. Il n'utilise que des fonctions gratuites de Cloudflare.
+
+Vérifier plus tard, sans rien changer :
+    node deployer.mjs --verifier
+
+Ne jamais coller une clé dans une conversation, un courriel ou un fichier.

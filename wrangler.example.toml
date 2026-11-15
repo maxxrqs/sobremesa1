@@ -1,0 +1,32 @@
+# Exemple de configuration pour déployer worker.js avec Wrangler (réserve n°4, voir RESERVES.md).
+# Copier en wrangler.toml, puis : npx wrangler deploy
+# Les secrets ne vont JAMAIS dans ce fichier : npx wrangler@4 secret put GEMINI_KEY (idem TURNSTILE_SECRET, SESSION_SECRET, IP_SECRET).
+# SESSION_SECRET et IP_SECRET : deux valeurs différentes de 32 caractères ou plus (openssl rand -base64 48).
+name = "sobremesa-ia"
+main = "worker.js"
+compatibility_date = "2025-06-01"
+
+[vars]
+ALLOWED_ORIGIN = "https://maxxrqs.github.io"
+ALLOWED_HOSTNAME = "maxxrqs.github.io"
+# Plafonds (valeurs par défaut du code si absents) :
+# SESSION_TTL = "3600"   SESS_IP_DAY = "20"   SESS_DAY = "1000"
+# REQ_SESSION = "60"     REQ_SESSION_MIN = "12"   REQ_IP_DAY = "300"   REQ_DAY = "2000"   CHARS_DAY = "4000000"
+# (plafonds par IP : IPv4 complète ou préfixe IPv6 /64 ; REQ_DAY ne doit pas dépasser ~25 000, quota d'écritures du DO)
+
+# Compteurs durables et plafond global : OBLIGATOIRE (sans lui, le relais répond 503 à tout).
+# Offre gratuite : Durable Objects disponibles avec le stockage SQLite uniquement.
+[[durable_objects.bindings]]
+name = "BUDGET"
+class_name = "Budget"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["Budget"]
+
+# Limiteur natif (facultatif) : freine les rafales par IP. Compteur par point de présence, approximatif,
+# jamais global : il ne remplace pas BUDGET. Supprimer ce bloc s'il n'est pas disponible sur le compte.
+[[ratelimits]]
+name = "RL_IP"
+namespace_id = "1001"
+simple = { limit = 20, period = 60 }

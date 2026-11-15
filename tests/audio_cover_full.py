@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Garde-fou audio complet : tous les textes que l'appli peut lire à voix haute (mots de tous les niveaux, phrases,
-phrases des textes, scènes, dialogues) doivent avoir un enregistrement dans au moins une voix de leur langue.
+phrases des textes, scènes, dialogues, phrases d'exemple du vocabulaire en contexte A1–C1) doivent avoir un enregistrement dans au moins une voix de leur langue.
 Usage : python3 tests/rangesrv.py 8774 .  puis  python3 tests/audio_cover_full.py [url] [--write dossier]
 Code de sortie 1 s'il manque des clips. --write écrit <dossier>/full_<langue>.json (textes manquants)."""
 import sys, json, os
@@ -12,6 +12,7 @@ JS = r"""async(lang)=>{const SRC={};const add=(s,t)=>{if(typeof t!=="string")ret
   ALL.forEach(w=>add("mot",w[0]));PH.forEach(p=>add("phrase",p[0]));
   TX.forEach(t=>(t[0].match(/[^.!?]+[.!?]+\s*/g)||[t[0]]).forEach(s=>add("texte",s)))}
  try{(SCN[lang]||[]).forEach(k=>k.split("|").forEach(t=>add("scène",t)))}catch(e){}
+ try{const k=LK.indexOf(lang);RX.trim().split("\n").forEach(z=>{const s=z.split("|")[1+k];if(s)add("exemple",ctxTxt(s))})}catch(e){}
  try{xdP(lang).forEach(z=>{add("dialogue",z.n);add("dialogue",z.m);z.va.forEach(v=>add("dialogue",v))})}catch(e){}
  const m=await vxMan();AX.manv=m||{};const ids=(AX.manv[lang]||[]).map(v=>v.id);const ix=[];
  for(const v of ids){const x=await axIdx(lang,v);if(x)ix.push(x)}

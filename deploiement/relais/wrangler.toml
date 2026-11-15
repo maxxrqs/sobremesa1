@@ -1,0 +1,23 @@
+# Configuration du relais IA de Sobremesa (réserve n°4, voir RESERVES.md). Utilisée par deployer.mjs : rien à modifier.
+# AUCUN secret ici : les 4 secrets (GEMINI_KEY, TURNSTILE_SECRET, SESSION_SECRET, IP_SECRET) sont envoyés à Cloudflare
+# par deployer.mjs, saisis de façon masquée ou générés automatiquement.
+# Uniquement des fonctions de l'offre GRATUITE de Cloudflare : Worker + Durable Object SQLite.
+# Le limiteur natif (ratelimits) est volontairement absent : facultatif, et sa disponibilité gratuite n'est pas garantie.
+name = "sobremesa-ia"
+main = "worker.js"
+compatibility_date = "2025-06-01"
+workers_dev = true
+
+[vars]
+ALLOWED_ORIGIN = "https://maxxrqs.github.io"
+ALLOWED_HOSTNAME = "maxxrqs.github.io"
+# Plafonds : valeurs par défaut du code (REQ_SESSION 60, REQ_SESSION_MIN 12, REQ_IP_DAY 300, REQ_DAY 2000,
+# CHARS_DAY 4000000, SESS_IP_DAY 20, SESS_DAY 1000, SESSION_TTL 3600). REQ_DAY ne doit pas dépasser ~25 000.
+
+[[durable_objects.bindings]]
+name = "BUDGET"
+class_name = "Budget"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["Budget"]

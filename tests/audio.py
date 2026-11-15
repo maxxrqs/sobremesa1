@@ -35,7 +35,9 @@ for l in TX:
         ck(f"couverture {v} : {len(T)-len(m)}/{len(T)} textes de l'appli enregistrés (≥ 99 %)",len(m)<=0.01*len(T),m[:5])
 # ---------- C. navigateur
 SPY="""window.__st=[];window.__req=[];window.__utt=[];window.__live=0;window.__maxlive=0;
-const P=AudioBufferSourceNode.prototype.start;AudioBufferSourceNode.prototype.start=function(){if(this.buffer&&this.buffer.length<=1)return P.apply(this,arguments);window.__st.push(performance.now());const s=this;window.__live++;window.__maxlive=Math.max(window.__maxlive,window.__live);s.addEventListener('ended',()=>{window.__live--});return P.apply(this,arguments)};
+const P=AudioBufferSourceNode.prototype.start;AudioBufferSourceNode.prototype.start=function(){if(this.buffer&&this.buffer.length<=1)return P.apply(this,arguments);window.__st.push(performance.now());const s=this;window.__live++;window.__maxlive=Math.max(window.__maxlive,window.__live);let d=0;s.__dec=()=>{if(!d){d=1;window.__live--}};s.addEventListener('ended',s.__dec);return P.apply(this,arguments)};
+/* n°18 : une source arrêtée par stop() se tait immédiatement ; l'événement « ended » n'arrive que quelques ms plus tard et faisait compter 2 sons alors que le premier était déjà coupé */
+const SP=AudioBufferSourceNode.prototype.stop;AudioBufferSourceNode.prototype.stop=function(w){if(this.__dec&&!(w>this.context.currentTime))this.__dec();return SP.apply(this,arguments)};
 const PP=HTMLMediaElement.prototype.play;HTMLMediaElement.prototype.play=function(){window.__st.push(performance.now());return PP.apply(this,arguments)};
 const F=window.fetch;window.fetch=function(u,o){const s=String(u&&u.url||u);window.__req.push([s,(o&&o.headers&&o.headers.Range)||'']);return F.apply(this,arguments)};
 """
@@ -72,11 +74,12 @@ with sync_playwright() as p:
         d=play(pg,[sample(l,1)[0]]);reqs=[u for u,_ in pg.evaluate("window.__req") if re.search(r"\.(mp3|json)",u)]
         bad=[u for u in reqs if not re.search(exp[l],re.sub(r"^https?://[^/]+/","",u))]
         ck(f"{l} : démarre et ne demande que ses propres fichiers audio",d is not None and d>=0 and not bad and reqs,[d,bad[:3],reqs[:3]]);c.close()
-    # --- choix de la voix : la voix choisie est celle qui est lue
+    # --- voix du compagnon : en galicien, la voix lue suit le compagnon (Geco → Voz B, Torito → Voz C, Lora → Voz A)
     c,pg,er=newpg(b);pg.evaluate("S.lang='gl';build()");t=sample("gl",1)[0]
-    for v in ["gl_a","gl_b","gl_c"]:
-        pg.evaluate("v=>{ST.set('sobv_gl',v);AX.dec.clear()}",v);pg.evaluate("window.__req=[]");play(pg,[t]);rq=[u for u,_ in pg.evaluate("window.__req") if "mp3" in u]
-        ck(f"gl : voix choisie {v} → clip lu dans v/{v}/",rq and all(f"v/{v}/" in u for u in rq),rq);pg.evaluate("stopSp()")
+    for mas,v,nom in [("gecko","gl_c","Voz B"),("toro","gl_a","Voz C"),("lora","gl_b","Voz A")]:
+        pg.evaluate("m=>{S.mas=m;AX.dec.clear()}",mas);pk=pg.evaluate("vxPick('gl')")
+        pg.evaluate("window.__req=[]");d=play(pg,[t]);rq=[u for u,_ in pg.evaluate("window.__req") if "mp3" in u]
+        ck(f"gl : compagnon {mas} → {nom} ({v}) réellement lue",pk==v and d is not None and d>=0 and rq and all(f"v/{v}/" in u for u in rq),[pk,d,rq]);pg.evaluate("stopSp()")
     c.close()
     # --- latence, réseau bridé, premier accès sans cache
     PROF={"4G":(9*125000,60),"3G rapide":(1.6*125000,150)}
