@@ -1,0 +1,3 @@
+# Caches Python générés par les tests (jamais publiés)
+__pycache__/
+*.pyc
