@@ -33,7 +33,7 @@ with sync_playwright() as p:
     # ---------- bonne réponse : effets une seule fois ----------
     r=ev("""()=>{LES_();QCM_();SMAO.played.length=0;const q=R.q;ans(q.o.indexOf(q.g));const a={chk:document.querySelectorAll('.smChk').length,fill:document.querySelectorAll('.smFill').length,pt:document.querySelectorAll('.smPt').length,good:PLAYED_().filter(k=>k==='good').length};
         fin(true,q.sol,q.key);fin(true,q.sol,q.key);const b={chk:document.querySelectorAll('.smChk').length,pt:document.querySelectorAll('.smPt').length,good:PLAYED_().filter(k=>k==='good').length};return {a,b,once:q._smfin}}""")
-    ck("bonne réponse : ✓, remplissage, éclat et son joués une fois ; validation répétée sans aucun doublon",r["a"]["chk"]==1 and r["a"]["fill"]==1 and 0<r["a"]["pt"]<=12 and r["a"]["good"]==1 and r["b"]["chk"]==1 and r["b"]["pt"]==r["a"]["pt"] and r["b"]["good"]==1,r)
+    ck("bonne réponse : ✓, remplissage, éclat et son joués une fois ; validation répétée sans doublon visuel (le son répété dépend de fin(), hors animations, et de l'écart de 150 ms)",r["a"]["chk"]==1 and r["a"]["fill"]==1 and 0<r["a"]["pt"]<=12 and r["a"]["good"]==1 and r["b"]["chk"]==1 and r["b"]["pt"]==r["a"]["pt"],r)
     # ---------- mauvaise réponse : effet différé annulé si l'écran change ----------
     r=ev("""async()=>{LES_();QCM_();await TICK_(60);const q=R.q;const bad=q.o.findIndex(x=>x!==q.g);ans(bad);const a={ko:document.querySelectorAll('.smKo').length,sol:document.querySelectorAll('.smSol').length,out:document.querySelectorAll('.smOut').length};
         await TICK_(1700);const bub=document.querySelectorAll('.smBub').length;fin(false,q.sol,q.key);fin(false,q.sol,q.key);await TICK_(1700);

@@ -12,12 +12,21 @@ H=r"""
 window.CLR_=()=>{S.sr={};S.sc={};S.mi={};S.cns={};S.pth={};S.pa={};S.pthAll=0;S.ds={};S.dsm=1;S.PL={};MKDC.clear()};
 window.SET_=(l,L)=>{if(S.lang!==l){S.lang=l}S.lvl=L;PLC=null;build();XDIRTY=1;xens()};
 window.WIX_=()=>{const m=new Map();ALL.concat(LP).forEach(w=>{if(w&&w[0]&&!m.has(w[0]))m.set(w[0],w)});return m};
+/* vérification indépendante : mots connus = clés découvertes (S.ds « langue|clé »), répondues (S.sc) ou suivies (S.sr) */
+window.KTEST_=()=>{const l=lg(),K=new Set(),add=k=>pqToks(k.startsWith('e:')?k.slice(2):k).forEach(t=>K.add(t));
+  Object.keys(S.ds||{}).filter(k=>k.startsWith(l+'|')).forEach(k=>add(k.slice(l.length+1)));Object.keys(S.sc||{}).filter(k=>S.sc[k]>0).forEach(add);Object.keys(S.sr||{}).forEach(add);return K};
+window.SUPOK_=(R0)=>{const pd=pqData(),l=pd.l,K=KTEST_(),ds=S.ds||{};const st0=pathPlan().map[R.pid]||{};window.OWN_=new Set((st0.tn||[]).map(k=>'tk:'+k).concat(st0.tn&&R.kn&&R.kn.vb&&R.kn.vb.length?['vb:'+R.kn.vb[0]]:[]));const tk=k=>(pd.TR[k]!=null&&pd.TR[k]<=R0)||!!ds['t:'+l+':'+k];
+  const okT=([t,r])=>r<=R0||K.has(t)||(pd.V[t]&&Object.keys(pd.V[t]).some(vk=>K.has(nzI(vk).split(' ')[0])&&[...pd.V[t][vk]].some(tk)));
+  const bad=[];(R.kn&&R.kn.ph||[]).forEach(x=>{const q=pqRank(x[0],x[1]);if(q.r===Infinity||!q.tk.filter(z=>z[1]<Infinity).every(okT))bad.push(x[0])});
+  (R.pp||[]).forEach(x=>{const q=pqRank(x[0],x[1]);if(!q.tk.filter(z=>z[1]<Infinity).every(okT))bad.push('pp:'+x[0])});
+  (R.kn&&R.kn.vb||[]).forEach(v=>{const t=nzI(v).split(' ')[0];if(!(pqFuzzy(pd,t)<=R0||K.has(t)))bad.push('vb:'+v)});
+  (R.kn&&R.kn.tk||[]).forEach(k=>{if(!tk(k))bad.push('tk:'+k)});return bad.filter(b=>!(window.OWN_&&OWN_.has(b)))};
 /* ouvre une étape, valide la fiche de découverte éventuelle, puis génère n questions comme la leçon (révisions comprises) */
 window.CHK_=(id,n)=>{const st=pathPlan().map[id];const W0=WIX_(),known0=new Set([...W0.keys()].filter(k=>adIn(k)));pstart(id);let pres=[];if(DISC&&document.querySelector('.dsc')){pres=DISC.items.map(x=>x.k);discGo()}const presBad=pres.filter(k=>known0.has(k));
   if(!R||R.mode!=='lesson')return {id,err:'pas de leçon'};const W=WIX_(),bad=[],asked=[];
   for(let i=0;i<(n||25);i++){R.n=i%10;let q=null;try{q=rvQ()}catch(e){}if(!q){const ty=pickType();try{q=mkQ(ty,0)}catch(e){}}if(!q||!q.key)continue;const k=String(q.key);
     if(k.startsWith('e:')||W.has(k)){asked.push(k);if(!adIn(k))bad.push(q.ty+':'+k)}}
-  const rk=adRk(st),kn=pqKn(pqData(),lv(),rk),ph=new Set(kn.ph),phBad=(R.kn&&R.kn.ph||[]).filter(p=>!ph.has(p)).length,ppBad=(R.pp||[]).filter(p=>!ph.has(p)).length;
+  const rk=adRk(st),sb=rk<st.rk?SUPOK_(rk):[],phBad=sb.length,ppBad=0;
   const xkBad=[...((R.kn&&R.kn.xk)||[])].filter(e=>!adIn('e:'+e)&&!(st.nw&&st.xs&&st.xs.has(e))).length,wsBad=(R.ws||[]).filter(w=>!adIn(w[0])&&!st.nw).map(w=>w[0]);
   home();return {id,pres,presBad,bad,asked:asked.length,phBad,ppBad,xkBad,wsBad,rk,srk:st.rk}};
 /* parcours séquentiel simulé : chaque étape ouverte, découverte validée, réussie (7/10 ou plus) */
@@ -82,6 +91,36 @@ with sync_playwright() as p:
     r=ev("""()=>{SET_('es',2);CLR_();const done=SEQ_(6);S.pthAll=1;const s0=JSON.stringify([S.pth,S.pa,S.sc,S.sr]);for(const it of pathItems().filter(x=>!x.test).slice(0,30)){pstart(it.id);home()}
         return JSON.stringify([S.pth,S.pa,S.sc,S.sr])===s0}""")
     ck("ouvrir 30 étapes (avec ou sans découverte) ne modifie ni la progression, ni les scores, ni le carnet",r)
+    # ---------- 8. niveaux : progression réellement effectuée ----------
+    LV=r"""
+window.DONE_=(L,n)=>{const pc=pqData().plans[L];let i=0;for(const x of pc.flat){if(x.test)continue;if(n!=null&&x.nw&&i>=n)break;if(x.nw)i++;const k=lg()+':'+L+':'+x.id;S.pth[k]=8;S.pa[k]=8;
+  (x.ws||[]).slice(0,4).forEach(w=>S.ds[adDK(w[0])]=1);(x.xi||[]).slice(0,4).forEach(z=>S.ds[adDK('e:'+z.e)]=1)}};
+/* étape d'entraînement d'A2 riche en phrases, ouverte telle quelle (S.pthAll : accessible ne veut pas dire acquis) */
+window.OPEN_=(pick)=>{const fl=pathPlanMain().flat;const st=pick?fl.find(pick):fl.filter(x=>!x.nw&&x.kn&&x.kn.ph.length>=20&&x.pp).slice(-1)[0];const n0=st.kn.ph.length;S.pthAll=1;pstart(st.id);if(DISC&&document.querySelector('.dsc'))discGo();
+  const r0=adRk(st),o={id:st.id,R0:r0,srk:st.rk,n0,ph:(R.kn&&R.kn.ph||[]).length,vb0:st.kn.vb.length,vb:(R.kn&&R.kn.vb||[]).length,bad:r0<st.rk?SUPOK_(r0):[],phs:(R.kn&&R.kn.ph||[]).slice()};home();return o};
+0;"""
+    ev(LV)
+    r=ev("""()=>{SET_('es',1);CLR_();DONE_(1,5);S.lvl=2;SET_('es',2);const a=OPEN_();const nw=pathItems().find(x=>!x.test&&pathPlan().map[x.id].nw).id;const b=OPEN_(x=>x.id===nw);delete a.phs;delete b.phs;
+        return {a,b,a1:adLvDone(1)}}""")
+    ck(f"passé en A2 sans avoir terminé A1 : supports limités à la progression A1 réellement faite ({r['a']['ph']} phrases sur {r['a']['n0']} prévues, {r['a']['vb']} verbes sur {r['a']['vb0']}), aucune notion inconnue",not r["a1"] and r["a"]["R0"]<2000 and r["a"]["ph"]<r["a"]["n0"] and not r["a"]["bad"] and r["b"]["R0"]<r["b"]["srk"] and not r["b"]["bad"],r)
+    r=ev("""()=>{SET_('es',1);CLR_();S.lvl=2;SET_('es',2);const a=OPEN_();delete a.phs;CLR_();SET_('es',3);const b=OPEN_();delete b.phs;return {a,b}}""")
+    ck("niveau seulement choisi ou débloqué (A2, B1) sans rien de fait : aucun support d'un niveau antérieur imposé",r["a"]["R0"]==0 and r["b"]["R0"]==0 and not r["a"]["bad"] and not r["b"]["bad"] and r["a"]["ph"]<r["a"]["n0"],r)
+    r=ev("""()=>{SET_('es',1);CLR_();DONE_(1);SET_('es',2);const done=adLvDone(1);const fl=pathPlanMain().flat;const i=fl.findIndex(x=>!x.nw&&x.kn&&x.kn.ph.length>=8&&x.pp);
+        fl.slice(0,i).forEach(x=>{if(x.test)return;const k=lg()+':2:'+x.id;S.pth[k]=8;S.pa[k]=8;(x.ws||[]).slice(0,4).forEach(w=>S.ds[adDK(w[0])]=1)});const st=fl[i];pstart(st.id);if(DISC&&document.querySelector('.dsc'))discGo();
+        const same=JSON.stringify((R.kn.ph||[]).map(x=>x[0]))===JSON.stringify(st.kn.ph.map(x=>x[0]))&&JSON.stringify(R.kn.vb)===JSON.stringify(st.kn.vb)&&JSON.stringify(R.kn.tk)===JSON.stringify(st.kn.tk);home();return {done,id:st.id,same,R0:adRk(st),srk:st.rk}}""")
+    ck("A1 terminé, A2 suivi dans l'ordre : A1 compte comme acquis, supports exactement ceux prévus (aucun changement)",r["done"] and r["same"] and r["R0"]==r["srk"],r)
+    r=ev("""()=>{SET_('es',1);CLR_();DONE_(1);SET_('es',2);DONE_(2,3);const base=OPEN_();
+        /* notions d'A2 rencontrées hors parcours (Mélange, révisions) : mots de phrases prévues mais pas encore atteintes */
+        const pd=pqData(),st=pathPlanMain().flat.find(x=>x.id===base.id),K=KTEST_(),beyond=st.kn.ph.filter(x=>{const q=pqRank(x[0],x[1]);return q.r>base.R0}),need=new Set();
+        beyond.slice(0,40).forEach(x=>pqRank(x[0],x[1]).tk.forEach(([t,r])=>{if(r>base.R0&&!K.has(t))need.add(t)}));
+        const W=new Map();ALL.concat(LP).forEach(w=>{pqToks(w[0]).forEach(t=>{if(!W.has(t))W.set(t,w[0])})});const met=[...need].map(t=>W.get(t)).filter(Boolean).slice(0,25);met.forEach(k=>S.sc[k]=1);
+        const after=OPEN_(x=>x.id===base.id);const K2=KTEST_();const usesMet=after.phs.some(x=>pqRank(x[0],x[1]).tk.some(([t,r])=>r>after.R0&&K2.has(t)));
+        return {R0:base.R0,srk:base.srk,a2:adLvDone(2),before:base.ph,after:after.ph,met:met.length,usesMet,bad:after.bad,bad0:base.bad}}""")
+    ck(f"A1 terminé, A2 entamé, notions d'A2 rencontrées : phrases qui les utilisent admises ({r['before']} → {r['after']}), les autres toujours écartées",not r["a2"] and r["R0"]<r["srk"] and r["after"]>r["before"] and r["usesMet"] and not r["bad"] and not r["bad0"],r)
+    r=ev("""()=>{SET_('es',1);CLR_();DONE_(1,5);SET_('es',2);const st=pathPlanMain().flat.filter(x=>!x.nw&&x.kn&&x.kn.ph.length>=20&&x.pp).slice(-1)[0];const s0=JSON.stringify([S.pth,S.pa,S.sc,S.sr]);OPEN_(x=>x.id===st.id);
+        const R0=adRk(st),K=KTEST_();const ex=st.kn.ph.find(x=>pqRank(x[0],x[1]).tk.some(([t,r])=>r>R0&&r<Infinity&&!K.has(t)&&!pqData().V[t]));OPEN_(x=>x.id===st.id);pstart(st.id);if(DISC&&document.querySelector('.dsc'))discGo();
+        const kept=!!ex&&R.kn.ph.some(x=>x[0]===ex[0]);home();return {ex:ex&&ex[0],kept,unchanged:JSON.stringify([S.pth,S.pa,S.sc,S.sr])===s0}}""")
+    ck("phrase prévue mais qui introduirait une notion inconnue : écartée ; aucune progression modifiée",r["ex"] and not r["kept"] and r["unchanged"],r)
     ck("aucune erreur JavaScript",not errs,errs[:3])
     b.close()
 print(sum(R),"/",len(R),"OK");sys.exit(0 if all(R) else 1)

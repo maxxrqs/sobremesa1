@@ -1930,8 +1930,11 @@ function mkStats(){const r={w:[0,0,0,0,0,0],e:[0,0,0,0,0,0],q:[0,0,0,0,0,0],v:[0
         rencontrée en réponse (S.sc) ou suivie par le carnet (S.sr) — jamais d'après sa seule place dans le parcours ;
       - une étape d'entraînement n'interroge que ces mots et expressions ; s'il en manque, les manquants sont d'abord
         présentés (fiche de découverte, 4 au plus), puis entraînés ;
-      - les phrases, textes et verbes d'appui sont limités au point du parcours réellement atteint : dernière étape de
-        nouveautés faite sans interruption depuis le début du niveau (les niveaux précédents comptent comme acquis). */
+      - phrases, textes, scènes, verbes et temps d'appui : un mot y est utilisable s'il appartient à la progression réellement
+        effectuée (niveaux précédents entièrement parcourus, puis étapes de nouveautés faites sans interruption), ou s'il a été
+        rencontré par l'apprenant (mot ou expression introduits ; forme d'un verbe rencontré à un temps découvert) ;
+        un niveau seulement débloqué, choisi ou atteint par le test de placement ne compte pas ; une phrase qui contiendrait
+        une notion inconnue est écartée. */
 const ADCFG={recent:14,fragN:8,fragMin:5,fragPart:.5,retard:7,slots:{1:[3],2:[3,7],3:[3,6,8],4:[2,4,6,8]},capNew:3,capMax:4,due3:10,due4:25};
 function adLoad(){const t=dayN(),sr=S.sr||{},ix=mkIdx(),fl=[];let rec=0;
   for(const k in sr){const e=sr[k];if(!e||e.s==null||e.p===undefined||t-e.s>ADCFG.recent)continue;const c=mkCand(k,ix);if(!c)continue;rec++;
@@ -1952,13 +1955,36 @@ const adDK=k=>lg()+"|"+k;
 function adDsMig(){if(S.dsm)return;S.ds=S.ds||{};const ix=mkIdx();for(const k of Object.keys(S.ds)){if(/^[tr]:/.test(k)||k.includes("|"))continue;if(k.startsWith("e:")?ix.X.has(k.slice(2)):ix.W.has(k))S.ds[adDK(k)]=1}S.dsm=1}
 const adIn=k=>{try{adDsMig()}catch(e){}return !!(S.ds||{})[adDK(k)]||((S.sc||{})[k]||0)>0||!!(S.sr||{})[k]};
 /* rang du parcours réellement atteint pour une étape : les étapes de nouveautés précédentes du niveau doivent avoir été faites */
-function adRk(st){if(!st||st.rk==null)return st&&st.rk;const pl=pathPlanMain(),pd=S.pth||{},pa=S.pa||{};if(!pl.flat.some(x=>x.id===st.id))return st.rk;
-  let r=lv()*1000-1;for(const x of pl.flat){if(x.id===st.id)return st.rk;if(!x.nw)continue;const k=pthK(x.id);if((pd[k]||0)>=6||pa[k]!=null)r=x.rk;else return r}return st.rk}
+/* niveau entièrement parcouru : toutes ses étapes validées (données de progression existantes, clés langue:niveau:étape) */
+function adLvDone(L){const pc=(pqData().plans||{})[L],P=S.pth||{};return !!pc&&pc.flat.filter(x=>!x.test).every(x=>(P[lg()+":"+L+":"+x.id]||0)>=6)}
+/* rang de la progression réellement effectuée : niveaux précédents entièrement parcourus, puis étapes de nouveautés faites
+   sans interruption (validées ou au moins jouées) ; s'arrête au premier niveau précédent inachevé */
+function adRk(st){if(!st||st.rk==null)return st&&st.rk;const pl=pathPlanMain(),P=S.pth||{},pa=S.pa||{},l=lg(),L0=lv();if(!pl.flat.some(x=>x.id===st.id))return st.rk;
+  let r=0;const pre=(L,flat,stop)=>{for(const x of flat){if(stop&&x.id===stop)return true;if(!x.nw)continue;const k=l+":"+L+":"+x.id;if((P[k]||0)>=6||pa[k]!=null)r=x.rk;else return false}return true};
+  for(let L=1;L<L0;L++){if(adLvDone(L)){r=(L+1)*1000-1;continue}pre(L,((pqData().plans||{})[L]||{flat:[]}).flat,null);return r}
+  return pre(L0,pl.flat,st.id)?st.rk:r}
+/* mots connus de l'apprenant dans la langue étudiée (mots et expressions introduits) */
+function adKnown(){const K=new Set(),sn=new Set();ALL.concat(LP).forEach(w=>{if(w&&w[0]&&!sn.has(w[0])){sn.add(w[0]);if(adIn(w[0]))pqToks(w[0]).forEach(t=>K.add(t))}});
+  XP.forEach(x=>{if(adIn("e:"+x.e))pqToks(x.e).forEach(t=>K.add(t))});return K}
+/* supports d'une étape limités à la progression effectuée (R0) et aux notions rencontrées ; jamais plus que ceux prévus pour l'étape */
+function adKn(kn,R0){const pd=pqData(),l=pd.l,K=adKnown(),ds=S.ds||{};
+  const tOK=k=>(pd.TR[k]!=null&&pd.TR[k]<=R0)||!!ds["t:"+l+":"+k];
+  const tok=([t,r])=>{if(r<=R0||K.has(t))return true;const v=pd.V[t];if(v)for(const vk of Object.keys(v)){if((K.has(nzI(vk).split(" ")[0])||adIn(vk))&&[...v[vk]].some(tOK))return true}return false};
+  const ok=(txt,fr,tol)=>{const q=pqRank(txt,fr);if(!tol&&q.r===Infinity)return false;return (q.tk||[]).filter(x=>x[1]<Infinity).every(tok)};
+  const Z=new Map(xdP(l).map(z=>[z.n+"|"+z.m,z])),WRm=new Map(pd.WR.map(([w,r])=>[w[0],r]));
+  return{ph:kn.ph.filter(x=>ok(x[0],x[1])),tx:kn.tx.filter(x=>ok(x[0],String(x[1]).split("|").slice(1).join(" "),1)),
+    sc:new Set([...kn.sc].filter(k=>{const z=Z.get(k);return z&&ok(z.n,gl(z.i))&&[z.m,...(z.va||[])].some(m=>ok(m,gl(z.i)))})),
+    vb:kn.vb.filter(v=>{const t=nzI(v).split(" ")[0];return pqFuzzy(pd,t)<=R0||K.has(t)||adIn(v)}),
+    xk:kn.xk,tk:kn.tk.filter(tOK),kw:kn.kw.filter(w=>(WRm.has(w[0])?WRm.get(w[0]):Infinity)<=R0||adIn(w[0]))}}
 function adPre(st){const out=[];if(!R)return out;const rt=!!(st.ru||st.tn);
-  if(R.kn){/* phrases, textes, scènes et verbes d'appui : au point réellement atteint (étape de temps ou de règle : seules les phrases sont limitées) */
-    const rk=adRk(st);let kn=R.kn;if(rk!=null&&rk<st.rk){const k2=pqKn(pqData(),lv(),rk);kn=rt?Object.assign({},R.kn,{ph:k2.ph,tx:k2.tx,sc:k2.sc}):k2;
+  if(R.kn){/* phrases, textes, scènes, verbes et temps d'appui : progression réellement effectuée et notions rencontrées */
+    const rk=adRk(st);let kn=R.kn;if(rk!=null&&rk<st.rk){const k2=adKn(R.kn,rk);kn=k2;
+      /* étape d'un nouveau temps : le temps enseigné et le verbe modèle de son tableau (présenté dans la fiche) restent disponibles */
+      if(st.tn&&st.tn.length){const l=lg(),k=st.tn[0],vs=R.kn.vb||[],cl=((CJ[l]||{}).cl||[]).map(c=>c.inf);
+        const vk=[...cl.filter(v=>VD[l][v]&&vs.includes(v)),...vs,...cl.filter(v=>VD[l][v]),...Object.keys(VD[l]||{})].find(v=>VD[l][v]&&vlist(l,VD[l][v]).some(t=>(t.imv?"imv":t.k)===k));
+        kn=Object.assign({},k2,{tk:[...new Set([...k2.tk,...st.tn])],vb:vk&&!k2.vb.includes(vk)?[vk,...k2.vb]:k2.vb})}
       if(R.pp){const ph=new Set(kn.ph);R.pp=R.pp.filter(p=>ph.has(p));if(R.pp.length<4)R.pp=kn.ph.slice(0,8)}
-      if(!rt&&Array.isArray(R.vs)){const v=R.vs.filter(v=>kn.vb.includes(v));R.vs=v.length>=2?v:kn.vb.slice(0,40)}}
+      if(Array.isArray(R.vs)){const v=R.vs.filter(v=>kn.vb.includes(v));R.vs=v.length>=2?v:kn.vb.slice(0,40)}}
     /* expressions connues de l'apprenant (et celles que l'étape présente elle-même) */
     const own=st.nw&&st.xs?st.xs:new Set();R.kn=Object.assign({},kn,{xk:new Set([...[...kn.xk].filter(e=>adIn("e:"+e)),...own])});
     /* étape d'expressions : ses propres expressions suffisent pour s'entraîner, même si l'apprenant en connaît peu d'autres */
@@ -5272,7 +5298,7 @@ const PPART={es:/(ado|ada|ados|adas|ido|ida|idos|idas|to|ta|tos|tas|cho|cha|so)$
 /* rang = moment du parcours (niveau × 1000 + étape) où tout le vocabulaire et les temps d'un texte ont été enseignés */
 function pqRank(txt,fr){
   const pd=pqData(),key=txt+"|"+(fr||"");if(pd.mem.has(key))return pd.mem.get(key);
-  const l=pd.l,T=String(txt),raw=T.match(/[\p{L}\p{N}·'’-]+/gu)||[],FR=new Set(pqToks(fr||"")),bad=[];let rk=0,rk2=0,nt=0;
+  const l=pd.l,T=String(txt),raw=T.match(/[\p{L}\p{N}·'’-]+/gu)||[],FR=new Set(pqToks(fr||"")),bad=[],tkl=[];let rk=0,rk2=0,nt=0;
   const tr0=k=>pd.TR[k]==null?Infinity:pd.TR[k];
   /* noms propres : majuscule en milieu de phrase, ou répétée, ou présente dans la traduction */
   const cap={};let pos=0;raw.forEach(w0=>{const i0=T.indexOf(w0,pos);pos=i0+w0.length;const ap=w0.search(/['’]\p{Lu}/u),w=ap>=0?w0.slice(ap+1):w0,i=i0+(ap>=0?ap+1:0);if(/^\p{Lu}/u.test(w)){const k=nzI(w);cap[k]=cap[k]||{n:0,mid:0};cap[k].n++;if(!/(^|[.!?:—]["»)]?)\s*[¿¡«"(—-]?\s*$/.test(T.slice(0,i)))cap[k].mid++}});
@@ -5292,8 +5318,8 @@ function pqRank(txt,fr){
     if(r>0&&t.length>=3&&!v){let c=false;for(const f of FR){if(f===t||(t.length>=4&&f.length>=4&&lev(t,f)<=(t.length>=6?2:1))){c=true;break}}
       if(!c&&t.length>=4)for(const f of pd.FRB[t.slice(0,3)]||[]){if(f===t||(t.length>=6&&lev(t,f)<=Math.min(2,Math.floor(t.length/4)))){c=true;break}}
       if(c){const h=pqTenseHint(l,w0);r=Math.min(r,h?tr0(h):0)}}
-    nt++;if(r===Infinity)bad.push(t);else if(r>rk2)rk2=r;if(r>rk)rk=r})});
-  const o={r:rk,bad,rk2,nt};pd.mem.set(key,o);return o}
+    nt++;tkl.push([t,r]);if(r===Infinity)bad.push(t);else if(r>rk2)rk2=r;if(r>rk)rk=r})});
+  const o={r:rk,bad,rk2,nt,tk:tkl};pd.mem.set(key,o);return o}
 const pqPH=x=>pqRank(x[0],x[1]).r,pqTX=x=>{const q=pqRank(x[0],x[1].split("|").slice(1).join(" "));return q.r<Infinity||x[2]<4||q.bad.length>q.nt*PQTOL?q.r:Math.max(q.rk2,pqEnd(x[2]-1)+1)};
 const PQTOL=.15;
 const pqSC=z=>Math.max(pqRank(z.n,gl(z.i)).r,Math.min(...[z.m,...z.va].map(m=>pqRank(m,gl(z.i)).r)));
