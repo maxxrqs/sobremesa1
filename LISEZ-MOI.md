@@ -86,3 +86,20 @@ Tests : `node tests/asr.test.js` (notation) et `python3 tests/mic.py URL` (micro
 - Notions d'appui : dans une phrase à comprendre ou à écrire, les mots et expressions déjà suivis par le carnet gagnent une preuve (paliers 1–2 seulement, une à la fois) ; jamais de nouvelle entrée ni de date de révision modifiée ; une preuve partielle n'est retirée que si la correction situe l'erreur sur ce mot.
 - Rattachement question → règle : `tools/qr_rattachements.tsv` (relu à la main ; « - » = aucune règle ne couvre la question). Après une modification des questions ou des règles (`XC`) : `python3 tools/qr_rattachements.py fiche <langue>` (questions à rattacher), compléter le TSV, puis `python3 tools/qr_rattachements.py generer` et `python3 build_pwa.py`. Contrôle : `python3 tools/qr_rattachements.py verifier`.
 - Tests : `python3 tests/explications.py URL`.
+
+## 7. Exercices intégrés (chantier 3, lot B)
+
+Trois formats, déclarés dans `MKA` (autonomie exigée) et tirés comme les autres exercices (`NX`, `pickType`, `mkQ`) :
+- **Complète** : phrase du corpus à 2 ou 3 trous (verbe conjugué, mot, préposition). Palier ≤ 1 : 2 trous et étiquettes (`itr`, autonomie 2) ; palier 2 : jusqu'à 3 trous ; palier ≥ 3 : trous à écrire (`itrE`, autonomie 3, infinitif indiqué pour un verbe).
+- **Transforme** : phrase à un seul verbe, à la 1re ou 2e personne du singulier, sans pronom, possessif, subordonnée ni salutation. Palier ≤ 1 : autre personne du singulier, avec choix (`itf`, 2) ; palier 2 : personne ou vouvoiement (tú → usted, vostè/vosté, vostede) à écrire (`itfE`, 3) ; palier ≥ 3 : de préférence un autre temps enseigné (indicatif courant ; jamais avec un marqueur de temps, « ser », une périphrase verbe + infinitif). Basque : changement de personne seulement.
+- **Réponds** : réplique d'un échange `XD`, réponse contrôlée par ses modèles. Palier ≤ 2 : étiquettes de la réponse modèle, 8 mots au plus (`irp`, 2) ; palier ≥ 3 : réponse libre notée par `eoGrade` (`irpE`, 4). La cible n'est comptée que si le modèle reconnu la contient.
+
+Règles communes :
+- Cible : notion du carnet fragile (palier ≤ 2) ou à revoir, jamais ancrée, par urgence (`mkUrg`) ; en révision (`mkRvQ`), la notion échue elle-même, une fois sur trois environ. Elle est jugée sur son propre trou (`q.ks`).
+- Appuis : autres notions du carnet au palier ≥ 2 ; une preuve par appui réussi (`mkApp`, palier 2 au plus, ni entrée créée ni date changée) ; un trou d'appui faux ne fait reculer aucun palier.
+- Rien d'exigé qui n'ait été enseigné : trous et réponses portent sur des notions du carnet, verbes à un temps enseigné (`R.kn.tk`, sinon `tLad`) ; phrases et échanges de la progression réellement effectuée (`R.kn`) ou, hors parcours, dont tous les mots suivis sont introduits (`adIn`).
+- Trous sur des mots entiers (en basque, l'auxiliaire est un mot entier ; un auxiliaire seul après un participe n'est jamais pris pour « izan » ou « ukan »).
+- Pas dans les étapes de découverte ni dans « S'entraîner » par compétence ; au plus 2 ou 3 par série de 10, sans en ajouter.
+- Voix : seules les phrases du corpus et les répliques `XD` sont lues (enregistrées) ; la phrase transformée ne l'est jamais.
+- Relecture linguistique : `python3 tools/integres_relecture.py URL` écrit `qa/integres_<langue>.md` (exemples par niveau), à faire valider par un locuteur natif avant publication.
+- Tests : `python3 tests/integres.py URL`.
