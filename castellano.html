@@ -1010,7 +1010,7 @@ function hpJS(pw,salt){let x=salt+":"+pw;for(let i=0;i<3000;i++)x=sha256(x+salt)
 const withTimeout=(p,ms)=>Promise.race([p,new Promise(r=>setTimeout(()=>r(null),ms))]);
 var UI="fr";
 const UIL={fr:"Français",en:"English",it:"Italiano",de:"Deutsch",pt:"Português"};
-const TR={};const trLoad=l=>(l==="fr"||TR[l])?Promise.resolve():fetch("tr/"+l+".json?v=57").then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{TR[l]=j}).catch(()=>{});
+const TR={};const trLoad=l=>(l==="fr"||TR[l])?Promise.resolve():fetch("tr/"+l+".json?v=58").then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{TR[l]=j}).catch(()=>{});
 try{const s=ST.get("cast_ui"),n=(navigator.language||"fr").slice(0,2);UI=UIL[s]?s:(UIL[n]?n:"fr")}catch(e){}
 const gl=s=>{if(UI==="fr"||!TR[UI])return s;let t=TR[UI][s];if(t!=null)return t;const n=s.match(NUMRE);if(n){t=TR[UI][s.replace(NUMRE,"#")];if(t!=null){let i=0;return t.replace(/#/g,()=>i<n.length?n[i++]:"#")}const b=s.match(/^(.*\S)\s+(\d+)$/);if(b&&TR[UI][b[1]]!=null)return TR[UI][b[1]]+" "+b[2]}return s};
 const tr=(s,...a)=>gl(s).replace(/\{(\d)\}/g,(m,i)=>a[i]);
@@ -1841,7 +1841,7 @@ function srDue(){const n=dayN(),sr=S.sr||{},sn=new Set();return ALL.concat(typeo
    2 identifier la bonne forme dans un contexte donné, parmi des propositions
    3 retrouver la forme à partir du sens, avec un appui (propositions, tuiles, indice, modèle ou audio)
    4 produire la forme seul, sans proposition ni indice — aucun choix multiple n'atteint ce niveau */
-const MKA={tf:1,tfL:1,pair:1,pic:1,es2fr:1,listen:1,exM:1,exL:1,excV:1,rep:1,speak:1,
+const MKA={tf:1,tfL:1,pair:1,pic:1,es2fr:1,listen:1,exM:1,exL:1,excV:1,rep:1,speak:1,odd:1,
   cloze:2,ctxC:2,listenP:2,readP:2,read:2,dlg:2,ord:2,err:2,sep:2,gen:2,listenT:2,exc:2,conj:2,
   fr2es:3,exE:3,fr2P:3,build:3,dict:3,ctxP:3,speakC:3,speakQ:3,
   type:4,excT:4,conjT:4,speakF:4};
@@ -1898,14 +1898,16 @@ function mkRec(key,q,s){
   else{e.b=0;e.d=t;e.m=mkCl(e.m-.15,.6,1.5)}
   e.m=Math.round(e.m*100)/100;e.s=t;delete e.g;S.sr[key]=e;return e}
 /* notions à revoir aujourd'hui, tous types confondus, dont le contenu existe au niveau actuel */
-function mkDue(){const n=dayN(),sr=S.sr||{},L=lv(),l=lg(),out=[];
-  const W=new Map();ALL.concat(typeof LP!=="undefined"&&Array.isArray(LP)?LP:[]).forEach(w=>{if(w&&w[0]&&!W.has(w[0]))W.set(w[0],w)});
-  const X=new Map((typeof XP!=="undefined"?XP:[]).map(x=>[x.e,x])),Q=new Map((typeof EQ!=="undefined"?EQ:[]).map(x=>[x.k,x])),V=VD[l]||{};
-  for(const k in sr){const e=sr[k];if(!e||e.d>n)continue;
-    if(k.startsWith("e:")){const x=X.get(k.slice(2));if(x&&x.l<=L)out.push({key:k,t:"e",x})}
-    else if(k.startsWith("q:")){const x=Q.get(k.slice(2));if(x&&x.l<=L)out.push({key:k,t:"q",x})}
-    else if(k.startsWith("v:")){const v=k.slice(2);if(V[v]&&vLvl(l,v)<=L)out.push({key:k,t:"v",v})}
-    else{const w=W.get(k);if(w&&(w[2]||1)<=L)out.push({key:k,t:"w",w})}}
+function mkIdx(){const W=new Map();ALL.concat(typeof LP!=="undefined"&&Array.isArray(LP)?LP:[]).forEach(w=>{if(w&&w[0]&&!W.has(w[0]))W.set(w[0],w)});
+  return{W,X:new Map((typeof XP!=="undefined"?XP:[]).map(x=>[x.e,x])),Q:new Map((typeof EQ!=="undefined"?EQ:[]).map(x=>[x.k,x])),V:VD[lg()]||{},L:lv(),l:lg()}}
+/* notion du carnet → candidat de révision, si son contenu existe au niveau actuel */
+function mkCand(k,ix){const L=ix.L;
+  if(k.startsWith("e:")){const x=ix.X.get(k.slice(2));return x&&x.l<=L?{key:k,t:"e",x}:null}
+  if(k.startsWith("q:")){const x=ix.Q.get(k.slice(2));return x&&x.l<=L?{key:k,t:"q",x}:null}
+  if(k.startsWith("v:")){const v=k.slice(2);return ix.V[v]&&vLvl(ix.l,v)<=L?{key:k,t:"v",v}:null}
+  const w=ix.W.get(k);return w&&(w[2]||1)<=L?{key:k,t:"w",w}:null}
+function mkDue(){const n=dayN(),sr=S.sr||{},ix=mkIdx(),out=[];
+  for(const k in sr){const e=sr[k];if(!e||e.d>n)continue;const c=mkCand(k,ix);if(c)out.push(c)}
   return out}
 /* priorité : urgence = retard rapporté au délai prévu (grandit chaque jour d'attente, donc aucune notion n'attend indéfiniment)
    + bonus de fragilité (une notion peu maîtrisée passe devant à retard égal) */
@@ -1914,6 +1916,45 @@ function mkPri(a,b){return mkUrg(b.key)-mkUrg(a.key)||a.key.localeCompare(b.key)
 const mkDueN=()=>{try{return mkDue().length}catch(e){return 0}};
 /* bilan du carnet (tests, et affichage dans un chantier suivant) */
 function mkStats(){const r={w:[0,0,0,0,0,0],e:[0,0,0,0,0,0],q:[0,0,0,0,0,0],v:[0,0,0,0,0,0]};for(const k in (S.sr||{})){const e=mkGet(k);if(!e)continue;const t=k.startsWith("e:")?"e":k.startsWith("q:")?"q":k.startsWith("v:")?"v":"w";r[t][e.p||0]++}return r}
+/* ===== Intelligence pédagogique (chantier 2) =====
+   S'appuie uniquement sur le carnet (S.sr, par langue) : aucune donnée nouvelle par notion, aucun système parallèle.
+   1. Charge de l'apprenant (adLoad) : notions récentes (vues depuis ≤ 14 j) encore fragiles (palier ≤ 1, ou dernière réponse
+      ratée), notions échues et notions très en retard. Les paliers estimés depuis l'ancienne progression (sans date) ne comptent pas.
+   2. Révisions adaptatives (adSlots) : 0 révision si rien n'est échu ; 2 comme avant pour une charge normale ; 3 puis 4 quand le
+      retard s'accumule (jamais plus de 3 dans une étape de nouveautés, jamais plus de 4 sur 10 questions).
+   3. Nouveautés adaptatives : avant une étape de nouveautés, si trop de notions récentes restent fragiles, une consolidation ciblée
+      est proposée une seule fois pour cette étape (jamais bloquante : on peut continuer) ; si on la passe, l'étape fait plus de place
+      aux notions fragiles. Quand les acquis sont solides, rien ne change.
+   4. Prérequis (adPre) : une étape d'entraînement n'interroge que des mots et expressions réellement introduits
+      (découverts, déjà rencontrés, ou d'un niveau inférieur). */
+const ADCFG={recent:14,fragN:8,fragMin:5,fragPart:.5,retard:7,slots:{1:[3],2:[3,7],3:[3,6,8],4:[2,4,6,8]},capNew:3,capMax:4,due3:10,due4:25};
+function adLoad(){const t=dayN(),sr=S.sr||{},ix=mkIdx(),fl=[];let rec=0;
+  for(const k in sr){const e=sr[k];if(!e||e.s==null||e.p===undefined||t-e.s>ADCFG.recent)continue;const c=mkCand(k,ix);if(!c)continue;rec++;
+    if(e.p<=1||(e.b===0&&(e.k||0)>0))fl.push(c)}
+  const due=mkDue(),od=due.filter(c=>t-((sr[c.key]||{}).d||t)>=ADCFG.retard).length;
+  fl.sort((a,b)=>(sr[a.key].p-sr[b.key].p)||mkPri(a,b));
+  return{rec,frag:fl.length,fl,due:due.length,od}}
+/* trop de notions récentes fragiles : seuil en nombre (≥ 8), ou en part (≥ 5 et au moins la moitié des notions récentes) */
+const adNeed=ld=>ld.frag>=ADCFG.fragN||(ld.frag>=ADCFG.fragMin&&ld.frag/Math.max(1,ld.rec)>=ADCFG.fragPart);
+/* nombre de questions de révision d'une étape du parcours (fixé au début de l'étape) */
+function adSlots(ld,nw,boost){let k=ld.due<=0?0:ld.due+ld.od<ADCFG.due3?2:ld.due+ld.od<ADCFG.due4?3:4;
+  if(boost)k=Math.max(k,3);return Math.min(k,nw?ADCFG.capNew:ADCFG.capMax)}
+const adKey=()=>lg()+":"+lv();
+/* notion réellement introduite : découverte, déjà rencontrée (score ou carnet), ou d'un niveau inférieur (acquis ou test de placement) */
+const adIn=(k,lvl)=>(lvl||1)<lv()||!!(S.ds||{})[k]||((S.sc||{})[k]||0)>0||!!(S.sr||{})[k];
+function adPre(st){if(!R||st.nw||st.ru||st.tn)return;
+  if(st.t&&R.ws&&R.ws.length){const w=R.ws.filter(w=>adIn(w[0],w[2]));if(w.length>=4&&w.length<R.ws.length)R.ws=w}
+  if(R.xs&&R.xs.size){const x=new Set([...R.xs].filter(e=>{const z=XP.find(y=>y.e===e);return adIn("e:"+e,z&&z.l)}));if(x.size>=4&&x.size<R.xs.size)R.xs=x}}
+/* consolidation proposée avant une étape de nouveautés : au plus une fois par étape */
+function adCons(id,st){try{if(!st||!st.nw||((S.pth||{})[pthK(id)]||0)>=6)return false;S.cns=S.cns||{};const ck=adKey();if(S.cns[ck]&&S.cns[ck].k===pthK(id))return false;
+  const ld=adLoad();if(!adNeed(ld))return false;S.cns[ck]={k:pthK(id),d:dayN(),s:0};save();consOffer(id,ld);return true}catch(e){return false}}
+function consOffer(id,ld){stopSp();SCR="home";INL=1;
+  $.innerHTML=head()+`<div class="q dsc cns"><p class="skl">🧩 ${tr("Consolidation")}</p><h2>${tr("On consolide d'abord")}</h2><p class="sub">${tr("{0} notions récentes sont encore fragiles. Une courte révision avant d'en découvrir de nouvelles t'aidera à les retenir.",ld.frag)}</p><button class="btn" onclick="consStart('${id}')">${tr("Consolider (recommandé)")}</button><br><button class="btn ghost" onclick="consSkip('${id}')">${tr("Continuer quand même")}</button></div>`;try{auSync()}catch(e){}}
+function consSkip(id){const c=(S.cns||{})[adKey()];if(c)c.s=1;save();pstart(id)}
+function consStart(id){const st=pathPlan().map[id],ld=adLoad();
+  LK2=1;FXS=0;xens();SCR="home";INL=1;const fw=ld.fl.filter(c=>c.t==="w").map(c=>c.w),dp=(st&&st.dp)||ALL.filter(w=>(w[2]||1)<=lv());
+  const ws=fw.length>=4?fw.slice(0,8):fw.concat(ALL.filter(w=>(w[2]||1)<=lv()&&!fw.includes(w)&&adIn(w[0],w[2])).sort((a,b)=>(S.sc[a[0]]||0)-(S.sc[b[0]]||0))).slice(0,8);
+  R={mode:"lesson",t:"Consolidation",n:0,ok:0,xp:0,cat:null,pid:null,back:id,cons:ld.fl.map(c=>c.key),kn:(st&&st.kn)||null,pt:["es2fr","fr2es","listen","tf","type"],ws,dp,miss:[]};next()}
 function wpick(p){const w=p.map(x=>srW(x[0])*((x[2]||1)===lv()?3*(typeof adpDiff==="function"?adpDiff():1)/(1+(S.sc[x[0]]||0)):1/(1+(S.sc[x[0]]||0))));let r=Math.random()*w.reduce((a,b)=>a+b,0);for(let i=0;i<p.length;i++){r-=w[i];if(r<=0)return p[i]}return p[0]}
 let AU={tok:0,id:null};const TV={w:null,bad:0,n:0,cb:{},cache:new Map(),busy:0,note:null};
 function auSync(){try{document.querySelectorAll("[data-a]").forEach(b=>{const on=b.dataset.a===AU.id;b.classList.toggle("playing",on);if(b.dataset.p)b.textContent=on?b.dataset.p:b.dataset.i;else if(b.classList.contains("spk"))b.textContent=on?((TV.busy&&b.dataset.a==="tq")||AU.ld?"…":"■"):"🔊"})}catch(e){}}
@@ -5461,9 +5502,11 @@ function lkErr(el){
 function pstart(id){
   const st=pathPlan().map[id];if(!st)return;
   const it0=pathItems().find(x=>x.id===id);if(it0&&it0.lock)return;
+  if(adCons(id,st))return;
   LK2=1;FXS=0;xens();SCR="home";INL=1;
   R={mode:"lesson",t:st.t||"Chunk",n:0,ok:0,xp:0,cat:null,pid:id,pt:st.pt||null,ws:st.ws||null,dp:st.dp||null,gp:st.gp||null,go:st.go||null,xs:st.xs||null,qs:st.qs||null,vs:st.vs||null,pp:st.pp||null,kn:st.kn||null,tn:st.tn||null};
   if(st.t==="EO"&&!SR)R.note=1;
+  try{adPre(st)}catch(e){}
   const di=discItems(st);
   if(di.length>DISC_MAX&&!st.tn){const sh=new Set(di.slice(0,DISC_MAX).map(x=>x.k)),hid=new Set(di.slice(DISC_MAX).map(x=>x.k));
     if(R.ws){const w=R.ws.filter(w=>!hid.has(w[0]));if(w.length)R.ws=w}
@@ -6027,13 +6070,26 @@ function rvQ(){
      une seule fois par séance ; quand il n'y en a plus, la séance continue comme avant (révision libre des mots) */
   if(R&&R.mode==="lesson"&&R.t==="Révision"&&!R.pid){R.rvd=R.rvd||new Set();const due=mkDue().filter(x=>!R.rvd.has(x.key)).sort(mkPri);if(!due.length)return null;
     const dw=due.filter(x=>x.t==="w").map(x=>x.w);for(const c of due.slice(0,6)){let q=null;try{q=mkRvQ(c,dw)}catch(e){q=null}if(q){R.rvd.add(q.key);q.rvw=1;return q}}return null}
-  if(!R||R.mode!=="lesson"||!R.pid||R.back||(R.n!==3&&R.n!==7))return null;
-  /* mêmes emplacements qu'avant (4e et 8e question des étapes du parcours) ; la notion à revoir peut maintenant être
-     un mot, une expression, un point de grammaire ou une conjugaison, et l'exercice suit son palier de maîtrise */
+  /* consolidation (chantier 2) : notions récentes fragiles d'abord, puis notions échues, chacune une fois ; ensuite entraînement sur les mots fragiles */
+  if(R&&R.mode==="lesson"&&R.t==="Consolidation"&&R.cons){R.rvd=R.rvd||new Set();const ix=mkIdx(),sr=S.sr||{};
+    const fr=R.cons.filter(k=>!R.rvd.has(k)&&sr[k]).map(k=>mkCand(k,ix)).filter(Boolean),du=mkDue().filter(x=>!R.rvd.has(x.key)&&!R.cons.includes(x.key)).sort(mkPri);
+    const all=fr.concat(du);if(!all.length)return null;const dw=all.filter(x=>x.t==="w").map(x=>x.w);
+    for(const c of all.slice(0,6)){let q=null;try{q=mkRvQ(c,dw)}catch(e){q=null}if(q){R.rvd.add(q.key);q.rvw=1;return q}}return null}
+  if(!R||R.mode!=="lesson"||!R.pid||R.back)return null;
+  /* emplacements adaptés à la charge (chantier 2), fixés au début de l'étape : 0 si rien n'est échu, 2 comme avant pour une charge normale,
+     3 ou 4 quand le retard s'accumule ; la notion à revoir peut être un mot, une expression, un point de grammaire ou une conjugaison,
+     et l'exercice suit son palier de maîtrise */
+  if(!R.rvs){let ld={due:0,od:0,frag:0,fl:[]};try{ld=adLoad()}catch(e){}const st=(pathPlan().map||{})[R.pid]||{},cn=(S.cns||{})[adKey()],boost=!!(st.nw&&cn&&cn.k===pthK(R.pid)&&cn.s&&ld.frag);
+    R.rvb=boost?ld.fl.map(c=>c.key):null;R.rvs=ADCFG.slots[adSlots(ld,!!st.nw,boost)]||[]}
+  if(!R.rvs.includes(R.n))return null;
   const cur=new Set((R.ws||[]).map(w=>w[0]));if(R.xs)R.xs.forEach(e=>cur.add("e:"+e));if(R.qs)R.qs.forEach(k=>cur.add("q:"+k));(Array.isArray(R.vs)?R.vs:[]).forEach(v=>cur.add("v:"+v));
-  const due=mkDue().filter(x=>!cur.has(x.key)).sort(mkPri);if(!due.length)return null;
+  R.rvd=R.rvd||new Set();let due=mkDue().filter(x=>!cur.has(x.key));
+  /* consolidation passée : les notions fragiles passent avant les autres révisions */
+  if(R.rvb){const ix=mkIdx(),fb=R.rvb.filter(k=>!cur.has(k)).map(k=>mkCand(k,ix)).filter(Boolean),fk=new Set(fb.map(c=>c.key));due=fb.concat(due.filter(x=>!fk.has(x.key)).sort(mkPri))}else due.sort(mkPri);
+  /* une même notion n'est pas reprise deux fois dans l'étape s'il y en a d'autres */
+  const fresh=due.filter(x=>!R.rvd.has(x.key));if(fresh.length)due=fresh;if(!due.length)return null;
   const dw=due.filter(x=>x.t==="w").map(x=>x.w);
-  for(const c of due.slice(0,4)){let q=null;try{q=mkRvQ(c,dw)}catch(e){q=null}if(q){q.rvw=1;return q}}
+  for(const c of due.slice(0,4)){let q=null;try{q=mkRvQ(c,dw)}catch(e){q=null}if(q){R.rvd.add(q.key);q.rvw=1;return q}}
   return null}
 /* question de révision ciblée : exercice du niveau d'autonomie correspondant au palier (sans dépasser la production seule) */
 function mkRvQ(c,dw){
@@ -6240,7 +6296,7 @@ function end(){
       pm=pb>=6?`<p>${tr("Cette étape était déjà validée (meilleur score : {0}/10).",sf(pb))}</p>`:`<p style="color:var(--ko);font-weight:700">🔒 ${tr("Il faut 7 bonnes réponses sur 10 pour valider l'étape.")}</p>`;
       if(pb<6&&S.fl[pk]>=2)mrv=`<p class="sub">${tr("Tu bloques sur cette étape ? Fais une mini-révision de tes erreurs, puis retente.")}</p><button class="btn ghost" onclick="miniRev('${R.pid}')">${tr("Mini-révision")}</button><br>`}}
   if(R.pid){S.sh=S.sh||{};const hk=lg()+":"+lv();(S.sh[hk]=S.sh[hk]||[]).push(R.ok);if(S.sh[hk].length>12)S.sh[hk].shift()}const up=0;save();const rdy=lvReady(),nv=!!(R.pid&&R.ok<7&&((S.pth||{})[pthK(R.pid)]||0)<6);
-  $.innerHTML=head()+`<div class="q end win">${notes()}<div class="wm">${mas(R.ok>=7?"bravo":R.ok<=3?"triste":"content",150)}</div><div class="stars">${[1,2,3].map(n=>`<svg class="st${R.ok>=(n===1?4:n===2?7:9)?" on":""}" style="--d:${n*.22+.3}s" viewBox="0 0 24 24"><path d="M12 2.6l2.9 6 6.5.8-4.8 4.5 1.3 6.5L12 17.2 6.1 20.4l1.3-6.5L2.6 9.4l6.5-.8z"/></svg>`).join("")}</div><div class="big"><span class="cu" data-to="${R.ok}">0</span>/10</div><div class="chips2"><span class="pill xp">+<span class="cu" data-to="${R.xp+bonus}">0</span> XP</span><span class="pill fl">🔥 ${curStreak()}</span>${bonus?`<span class="pill">${tr("série parfaite !")}</span>`:""}</div>${up?`<p><b>${tr("Niveau supérieur débloqué : {0} 🎉",NL[lv()])}</b></p>`:""}${pm}${rdy?`<p><b>🎓 ${tr(CL.bt,NL[lv()].split(" ")[0])}</b></p><button class="btn" onclick="lvTest()">${gl(CL.bgo)}</button><br>`:""}${R.ok<7&&R.rec&&R.rec.length?`<button class="btn erb" onclick="erShow()">🔍 ${tr("Voir mes erreurs")}</button><br>`:""}${R.pid?(nv?`<button class="btn dis" aria-disabled="true" onclick="endErr()">${tr("Continuer le parcours")}</button><br>`:`<button class="btn" onclick="pathCont()">${tr("Continuer le parcours")}</button><br>`):""}<button class="btn${R.pid&&!nv?" ghost":""}" onclick="${R.pid||R.back?`pstart('${R.pid||R.back}')`:`start('${R.t}'${R.cat?","+JSON.stringify(R.cat).replace(/"/g,"&quot;"):""})`}">${R.back?tr("Retenter l'étape"):nv?tr("Recommencer"):"Encore une série"}</button><br>${mrv}<button class="btn ghost" onclick="home()">Changer de thème</button></div>`;try{stopSp()}catch(e){}setTimeout(()=>{try{FX.play(up?"level":R.ok>=7?"win":R.ok<=3?"bad":"good")}catch(e){}},180);if(up||R.ok>=8)FX.confetti();cuRun();if(UNLQ){const u=UNLQ;UNLQ=null;setTimeout(()=>unitCelebrate(u),900)}
+  $.innerHTML=head()+`<div class="q end win">${notes()}<div class="wm">${mas(R.ok>=7?"bravo":R.ok<=3?"triste":"content",150)}</div><div class="stars">${[1,2,3].map(n=>`<svg class="st${R.ok>=(n===1?4:n===2?7:9)?" on":""}" style="--d:${n*.22+.3}s" viewBox="0 0 24 24"><path d="M12 2.6l2.9 6 6.5.8-4.8 4.5 1.3 6.5L12 17.2 6.1 20.4l1.3-6.5L2.6 9.4l6.5-.8z"/></svg>`).join("")}</div><div class="big"><span class="cu" data-to="${R.ok}">0</span>/10</div><div class="chips2"><span class="pill xp">+<span class="cu" data-to="${R.xp+bonus}">0</span> XP</span><span class="pill fl">🔥 ${curStreak()}</span>${bonus?`<span class="pill">${tr("série parfaite !")}</span>`:""}</div>${up?`<p><b>${tr("Niveau supérieur débloqué : {0} 🎉",NL[lv()])}</b></p>`:""}${pm}${rdy?`<p><b>🎓 ${tr(CL.bt,NL[lv()].split(" ")[0])}</b></p><button class="btn" onclick="lvTest()">${gl(CL.bgo)}</button><br>`:""}${R.ok<7&&R.rec&&R.rec.length?`<button class="btn erb" onclick="erShow()">🔍 ${tr("Voir mes erreurs")}</button><br>`:""}${R.pid?(nv?`<button class="btn dis" aria-disabled="true" onclick="endErr()">${tr("Continuer le parcours")}</button><br>`:`<button class="btn" onclick="pathCont()">${tr("Continuer le parcours")}</button><br>`):""}<button class="btn${R.pid&&!nv?" ghost":""}" onclick="${R.pid||R.back?`pstart('${R.pid||R.back}')`:`start('${R.t}'${R.cat?","+JSON.stringify(R.cat).replace(/"/g,"&quot;"):""})`}">${R.back?(R.cons?tr("Passer à l'étape"):tr("Retenter l'étape")):nv?tr("Recommencer"):"Encore une série"}</button><br>${mrv}<button class="btn ghost" onclick="home()">Changer de thème</button></div>`;try{stopSp()}catch(e){}setTimeout(()=>{try{FX.play(up?"level":R.ok>=7?"win":R.ok<=3?"bad":"good")}catch(e){}},180);if(up||R.ok>=8)FX.confetti();cuRun();if(UNLQ){const u=UNLQ;UNLQ=null;setTimeout(()=>unitCelebrate(u),900)}
 }
 /* Test de niveau : banque rédigée sur le modèle des épreuves DELE / Instituto Cervantes (A1 → B1).
    c = phrase à compléter (grammaire/lexique), r = compréhension écrite, l = compréhension orale, y = production écrite, d = dictée.
