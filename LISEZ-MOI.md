@@ -78,3 +78,11 @@ Moteur : la reconnaissance du navigateur/système (`SpeechRecognition`), réglé
 - non validés : autre mot réel (pero/perro, playa/plaza, hablo/habla), ñ/ç (año/ano, plaça/placa), négation ajoutée ou oubliée, mot important manquant ;
 - « répète » sans note : français entendu, castillan renvoyé pour une autre langue, phrase coupée, résultat partiel incomplet, hésitation du micro entre deux mots, confiance très basse (Chrome seulement).
 Tests : `node tests/asr.test.js` (notation) et `python3 tests/mic.py URL` (micro simulé). Les essais sur vrais appareils restent manuels.
+
+## 6. Explications contextuelles (chantier 3, lot A)
+
+- Après une réponse, au plus **une** explication, repliée sous « Pourquoi ? » : erreur repérée par la correction (genre, nombre, terminaison du verbe) → règle qui illustre exactement cette forme ; erreur sur une notion encore fragile (palier ≤ 2) → sa règle, l'emploi du temps, le registre de l'expression ou une phrase d'exemple ; premier réemploi réussi d'une notion de grammaire, de conjugaison ou d'expression → une seule fois. Rien quand la notion est maîtrisée et la réponse juste.
+- Le jour de la dernière explication est noté dans l'entrée du carnet (champ `x`) : pas de répétition le même jour, pas de second rappel après une réussite.
+- Notions d'appui : dans une phrase à comprendre ou à écrire, les mots et expressions déjà suivis par le carnet gagnent une preuve (paliers 1–2 seulement, une à la fois) ; jamais de nouvelle entrée ni de date de révision modifiée ; une preuve partielle n'est retirée que si la correction situe l'erreur sur ce mot.
+- Rattachement question → règle : `tools/qr_rattachements.tsv` (relu à la main ; « - » = aucune règle ne couvre la question). Après une modification des questions ou des règles (`XC`) : `python3 tools/qr_rattachements.py fiche <langue>` (questions à rattacher), compléter le TSV, puis `python3 tools/qr_rattachements.py generer` et `python3 build_pwa.py`. Contrôle : `python3 tools/qr_rattachements.py verifier`.
+- Tests : `python3 tests/explications.py URL`.
