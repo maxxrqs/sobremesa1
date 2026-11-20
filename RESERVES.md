@@ -48,6 +48,13 @@ Ce fichier recense les points connus qui ne sont **pas résolus**. Une réserve 
 - Erreurs génériques. Les journaux ne contiennent ni clé, ni jeton, ni IP, ni texte.
 - `shim.js` : obtient la session (widget Turnstile invisible, sauf si Cloudflare demande une interaction), la renouvelle une fois sur 401, et signale les 429 à l'appli (messages existants « Trop de demandes… »).
 
+**Mise à jour du 20 novembre 2026 (branche `securite-relais`, non déployée)**
+
+- L'appli envoie désormais une nouvelle invite de conversation (correction et explication séparées, explication dans la langue de l'apprenant). Le Worker préparé la refusait (400) : l'appli retombait sur l'ancienne invite (repli `CVLEG`), avec un appel en double et une explication non garantie dans la langue de l'apprenant. `worker.js` accepte maintenant les deux versions, reconstruites à l'identique ; toute variante trafiquée reste refusée sans appel à Gemini.
+- Empreinte de `worker.js` mise à jour dans `deploiement/relais/relais.json`.
+- Tests ajoutés : invite actuelle et ancienne acceptées, invites trafiquées refusées, Turnstile ou Gemini injoignables (refus générique), relais injoignable côté appli (message d'erreur, saisie de nouveau disponible).
+- **Toujours OUVERTE** : le Worker en ligne n'a pas été redéployé depuis cette session (accès réseau refusé vers `workers.dev` et `github.io`). La réserve ne sera fermée qu'après déploiement et vérification en ligne (procédure ci-dessous, étape 6).
+
 **Limites résiduelles**, même après déploiement
 
 - Turnstile n'est pas une authentification. Une personne motivée peut résoudre des vérifications (à la main ou via des services payants) et obtenir des sessions. Le relais reste donc **public** : seuls les plafonds bornent l'abus.

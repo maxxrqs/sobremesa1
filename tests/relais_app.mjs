@@ -71,6 +71,8 @@ const reqs = pg => { const a = []; pg.on("request", r => { if (r.url().startsWit
       out.conv.push(cvPrompt());
     }
     for (const s of CVS) { CV = { s, msgs: [], guided: false }; S.lang = "es"; UI = "fr"; out.conv.push(cvPrompt()); }
+    /* ancienne invite (repli CVLEG de l'appli) : toujours acceptée */
+    for (const l of L) { S.lang = l; UI = "en"; try { build(); xens(); } catch (e) {} CV = { s: CVS[0], msgs: [{ w: "npc", t: "Hola" }, { w: "me", t: "Hola, yo quiero un cafe" }], guided: true }; out.conv.push(cvPrompt(1)); }
     CV = null;
     const keep = TSAMP; const srcs = ["auto", ...Object.keys(TLP)], texts = ["Bonjour, ça va ?", "Ligne 1\nLigne 2\n\nFin.", 'Il a dit : "${non}" `code` </text> <text> 100 %', "x".repeat(2999) + "y", "Hola"];
     let j = 0;
@@ -158,6 +160,20 @@ const reqs = pg => { const a = []; pg.on("request", r => { if (r.url().startsWit
   await pg.waitForFunction(() => /impossible/i.test((document.getElementById("tout") || {}).textContent || ""), null, { timeout: 15000 }).catch(() => {});
   const t = await pg.evaluate(() => document.getElementById("tout").textContent);
   ck("clé publique Turnstile absente de config.js : erreur explicite (http503), aucune requête au relais", /impossible/i.test(t) && /http503/.test(t) && rq.length === 0, t + " " + rq.join());
+  await ctx.close();
+}
+// ---------- 5 bis. relais injoignable (réseau coupé, coupure en cours de réponse) ----------
+{
+  const { ctx, pg } = await newPage({ routeAi: r => r.abort("internetdisconnected") });
+  await pg.evaluate(() => trad());
+  await pg.fill("#tin", "Je cherche la pharmacie la plus proche."); await pg.dispatchEvent("#tin", "input");
+  await pg.waitForFunction(() => /impossible|connexion|réseau|hors ligne/i.test((document.getElementById("tout") || {}).textContent || ""), null, { timeout: 25000 }).catch(() => {});
+  const t = await pg.evaluate(() => (document.getElementById("tout") || {}).textContent || "");
+  ck("relais injoignable en traduction : message d'erreur affiché, rien de bloqué", /impossible|connexion|réseau|hors ligne/i.test(t), t);
+  await pg.evaluate(() => cvStart("cafe"));
+  await pg.waitForFunction(() => CV && !CV.busy && CV.err, null, { timeout: 25000 }).catch(() => {});
+  const c = await pg.evaluate(() => ({ err: CV && CV.err, busy: CV && CV.busy, msgs: CV && CV.msgs.length }));
+  ck("relais injoignable en conversation : erreur signalée, saisie de nouveau disponible", !!c.err && !c.busy, JSON.stringify(c));
   await ctx.close();
 }
 // ---------- 6. page de diagnostic ----------
