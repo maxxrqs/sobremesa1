@@ -1936,8 +1936,13 @@ function mkStats(){const r={w:[0,0,0,0,0,0],e:[0,0,0,0,0,0],q:[0,0,0,0,0,0],v:[0
    3. Nouveautés adaptatives : avant une étape de nouveautés, si trop de notions récentes restent fragiles, une consolidation ciblée
       est proposée une seule fois pour cette étape (jamais bloquante : on peut continuer) ; si on la passe, l'étape fait plus de place
       aux notions fragiles. Quand les acquis sont solides, rien ne change.
-   4. Prérequis (adPre) : une étape d'entraînement n'interroge que des mots et expressions réellement introduits
-      (découverts, déjà rencontrés, ou d'un niveau inférieur). */
+   4. Prérequis fondés sur les apprentissages réels de l'apprenant, dans la langue étudiée (adIn, adRk, adPre) :
+      - une notion est « introduite » si elle a été découverte (fiche de découverte, marquée par langue dans S.ds),
+        rencontrée en réponse (S.sc) ou suivie par le carnet (S.sr) — jamais d'après sa seule place dans le parcours ;
+      - une étape d'entraînement n'interroge que ces mots et expressions ; s'il en manque, les manquants sont d'abord
+        présentés (fiche de découverte, 4 au plus), puis entraînés ;
+      - les phrases, textes et verbes d'appui sont limités au point du parcours réellement atteint : dernière étape de
+        nouveautés faite sans interruption depuis le début du niveau (les niveaux précédents comptent comme acquis). */
 const ADCFG={recent:14,fragN:8,fragMin:5,fragPart:.5,retard:7,slots:{1:[3],2:[3,7],3:[3,6,8],4:[2,4,6,8]},capNew:3,capMax:4,due3:10,due4:25};
 function adLoad(){const t=dayN(),sr=S.sr||{},ix=mkIdx(),fl=[];let rec=0;
   for(const k in sr){const e=sr[k];if(!e||e.s==null||e.p===undefined||t-e.s>ADCFG.recent)continue;const c=mkCand(k,ix);if(!c)continue;rec++;
@@ -1952,10 +1957,32 @@ function adSlots(ld,nw,boost){let k=ld.due<=0?0:ld.due+ld.od<ADCFG.due3?2:ld.due
   if(boost)k=Math.max(k,3);return Math.min(k,nw?ADCFG.capNew:ADCFG.capMax)}
 const adKey=()=>lg()+":"+lv();
 /* notion réellement introduite : découverte, déjà rencontrée (score ou carnet), ou d'un niveau inférieur (acquis ou test de placement) */
-const adIn=(k,lvl)=>(lvl||1)<lv()||!!(S.ds||{})[k]||((S.sc||{})[k]||0)>0||!!(S.sr||{})[k];
-function adPre(st){if(!R||st.nw||st.ru||st.tn)return;
-  if(st.t&&R.ws&&R.ws.length){const w=R.ws.filter(w=>adIn(w[0],w[2]));if(w.length>=4&&w.length<R.ws.length)R.ws=w}
-  if(R.xs&&R.xs.size){const x=new Set([...R.xs].filter(e=>{const z=XP.find(y=>y.e===e);return adIn("e:"+e,z&&z.l)}));if(x.size>=4&&x.size<R.xs.size)R.xs=x}}
+/* découvertes par langue : S.ds[langue|clé] (les clés de temps « t:l: » et de règles « r:l: » portaient déjà la langue) ;
+   les anciennes marques sans langue sont reportées une fois sur la langue en cours (rien n'est effacé) */
+const adDK=k=>lg()+"|"+k;
+function adDsMig(){if(S.dsm)return;S.ds=S.ds||{};const ix=mkIdx();for(const k of Object.keys(S.ds)){if(/^[tr]:/.test(k)||k.includes("|"))continue;if(k.startsWith("e:")?ix.X.has(k.slice(2)):ix.W.has(k))S.ds[adDK(k)]=1}S.dsm=1}
+const adIn=k=>{try{adDsMig()}catch(e){}return !!(S.ds||{})[adDK(k)]||((S.sc||{})[k]||0)>0||!!(S.sr||{})[k]};
+/* rang du parcours réellement atteint pour une étape : les étapes de nouveautés précédentes du niveau doivent avoir été faites */
+function adRk(st){if(!st||st.rk==null)return st&&st.rk;const pl=pathPlanMain(),pd=S.pth||{},pa=S.pa||{};if(!pl.flat.some(x=>x.id===st.id))return st.rk;
+  let r=lv()*1000-1;for(const x of pl.flat){if(x.id===st.id)return st.rk;if(!x.nw)continue;const k=pthK(x.id);if((pd[k]||0)>=6||pa[k]!=null)r=x.rk;else return r}return st.rk}
+function adPre(st){const out=[];if(!R)return out;const rt=!!(st.ru||st.tn);
+  if(R.kn){/* phrases, textes, scènes et verbes d'appui : au point réellement atteint (étape de temps ou de règle : seules les phrases sont limitées) */
+    const rk=adRk(st);let kn=R.kn;if(rk!=null&&rk<st.rk){const k2=pqKn(pqData(),lv(),rk);kn=rt?Object.assign({},R.kn,{ph:k2.ph,tx:k2.tx,sc:k2.sc}):k2;
+      if(R.pp){const ph=new Set(kn.ph);R.pp=R.pp.filter(p=>ph.has(p));if(R.pp.length<4)R.pp=kn.ph.slice(0,8)}
+      if(!rt&&Array.isArray(R.vs)){const v=R.vs.filter(v=>kn.vb.includes(v));R.vs=v.length>=2?v:kn.vb.slice(0,40)}}
+    /* expressions connues de l'apprenant (et celles que l'étape présente elle-même) */
+    const own=st.nw&&st.xs?st.xs:new Set();R.kn=Object.assign({},kn,{xk:new Set([...[...kn.xk].filter(e=>adIn("e:"+e)),...own])});
+    /* étape d'expressions : ses propres expressions suffisent pour s'entraîner, même si l'apprenant en connaît peu d'autres */
+    if(own.size)R.kn.xmin=1}
+  if(st.nw||rt)return out;
+  /* mots de l'étape jamais présentés à l'apprenant : présentés d'abord (4 au plus), les autres sont écartés (adFix) */
+  if(R.ws&&R.ws.length)R.ws.filter(w=>!adIn(w[0])).slice(0,DISC_MAX).forEach(w=>out.push({k:w[0],es:w[0],fr:w[1],ex:null}));
+  if(out.length)out.pre=1;return out}
+/* au début de l'entraînement (après la fiche de découverte éventuelle) : uniquement des notions introduites */
+function adFix(st){if(!R||!st||st.nw||st.tn)return;
+  if(R.ws&&R.ws.length){let w=R.ws.filter(w=>adIn(w[0]));if(!w.length){const sn=new Set();w=ALL.concat(LP).filter(z=>z&&(z[2]||1)<=lv()&&adIn(z[0])&&!sn.has(z[0])&&sn.add(z[0])).slice(-24)}R.ws=w.length?w:null}
+  if(R.xs&&R.xs.size)R.xs=new Set([...R.xs].filter(e=>adIn("e:"+e)));
+  if(R.kn&&R.kn.xk&&!st.ru)R.kn.xk=new Set([...R.kn.xk].filter(e=>adIn("e:"+e)))}
 /* consolidation proposée avant une étape de nouveautés : au plus une fois par étape */
 function adCons(id,st){try{if(!st||!st.nw||((S.pth||{})[pthK(id)]||0)>=6)return false;S.cns=S.cns||{};const ck=adKey();if(S.cns[ck]&&S.cns[ck].k===pthK(id))return false;
   const ld=adLoad();if(!adNeed(ld))return false;S.cns[ck]={k:pthK(id),d:dayN(),s:0};save();consOffer(id,ld);return true}catch(e){return false}}
@@ -1964,7 +1991,7 @@ function consOffer(id,ld){stopSp();SCR="home";INL=1;
 function consSkip(id){const c=(S.cns||{})[adKey()];if(c)c.s=1;save();pstart(id)}
 function consStart(id){const st=pathPlan().map[id],ld=adLoad();
   LK2=1;FXS=0;xens();SCR="home";INL=1;const fw=ld.fl.filter(c=>c.t==="w").map(c=>c.w),dp=(st&&st.dp)||ALL.filter(w=>(w[2]||1)<=lv());
-  const ws=fw.length>=4?fw.slice(0,8):fw.concat(ALL.filter(w=>(w[2]||1)<=lv()&&!fw.includes(w)&&adIn(w[0],w[2])).sort((a,b)=>(S.sc[a[0]]||0)-(S.sc[b[0]]||0))).slice(0,8);
+  const ws=fw.length>=4?fw.slice(0,8):fw.concat(ALL.filter(w=>(w[2]||1)<=lv()&&!fw.includes(w)&&adIn(w[0])).sort((a,b)=>(S.sc[a[0]]||0)-(S.sc[b[0]]||0))).slice(0,8);
   R={mode:"lesson",t:"Consolidation",n:0,ok:0,xp:0,cat:null,pid:null,back:id,cons:ld.fl.map(c=>c.key),kn:(st&&st.kn)||null,pt:["es2fr","fr2es","listen","tf","type"],ws,dp,miss:[]};next()}
 function wpick(p){const w=p.map(x=>srW(x[0])*((x[2]||1)===lv()?3*(typeof adpDiff==="function"?adpDiff():1)/(1+(S.sc[x[0]]||0)):1/(1+(S.sc[x[0]]||0))));let r=Math.random()*w.reduce((a,b)=>a+b,0);for(let i=0;i<p.length;i++){r-=w[i];if(r<=0)return p[i]}return p[0]}
 let AU={tok:0,id:null};const TV={w:null,bad:0,n:0,cb:{},cache:new Map(),busy:0,note:null};
@@ -5361,7 +5388,7 @@ function pqKn(pd,L,rk){
       vb:Object.keys(VD[l]||{}).map(v=>[v,pqFuzzy(pd,nzI(v).split(" ")[0])]),wr:pd.WR.slice().sort((a,b)=>a[1]-b[1])}}
   const ix=pd.ix,ok=a=>a.filter(x=>x[1]<=rk).map(x=>x[0]);
   return{ph:ok(ix.ph),tx:ok(ix.tx),sc:new Set(ok(ix.sc)),vb:ok(ix.vb),xk:new Set(pd.XR.filter(x=>x[1]<=rk).map(x=>x[0].e)),tk:Object.keys(pd.TR).filter(k=>pd.TR[k]<=rk),kw:ok(ix.wr)}}
-function pqFit(pt,kn){return pt.filter(x=>PQPH.includes(x)?kn.ph.length>=4:PQTX.includes(x)?kn.tx.length>=1:PQSC.includes(x)?kn.sc.size>=1:x==="conj"?kn.vb.length>=2&&kn.tk.length>=1:x==="exM"||x==="exE"||x==="exL"?kn.xk.size>=4:true)}
+function pqFit(pt,kn){return pt.filter(x=>PQPH.includes(x)?kn.ph.length>=4:PQTX.includes(x)?kn.tx.length>=1:PQSC.includes(x)?kn.sc.size>=1:x==="conj"?kn.vb.length>=2&&kn.tk.length>=1:x==="exM"||x==="exE"||x==="exL"?kn.xk.size>=(kn.xmin?1:4):true)}
 function pathPlanMain(){
   xens();const L=lv(),l=lg(),ck=l+L+"|"+LP.length+"|"+XP.length;
   if(PLC&&PLC.k===ck&&PLC.d===ALL)return PLC;
@@ -5517,13 +5544,13 @@ function pstart(id){
   LK2=1;FXS=0;xens();SCR="home";INL=1;
   R={mode:"lesson",t:st.t||"Chunk",n:0,ok:0,xp:0,cat:null,pid:id,pt:st.pt||null,ws:st.ws||null,dp:st.dp||null,gp:st.gp||null,go:st.go||null,xs:st.xs||null,qs:st.qs||null,vs:st.vs||null,pp:st.pp||null,kn:st.kn||null,tn:st.tn||null};
   if(st.t==="EO"&&!SR)R.note=1;
-  try{adPre(st)}catch(e){}
-  const di=discItems(st);
+  let pre=[];try{pre=adPre(st)||[]}catch(e){}
+  let di=discItems(st);if(pre.length){const pk=new Set(pre.map(x=>x.k)),d2=pre.concat(di.filter(x=>!pk.has(x.k)));d2.pre=1;d2.intro=di.intro;di=d2}
   if(di.length>DISC_MAX&&!st.tn){const sh=new Set(di.slice(0,DISC_MAX).map(x=>x.k)),hid=new Set(di.slice(DISC_MAX).map(x=>x.k));
     if(R.ws){const w=R.ws.filter(w=>!hid.has(w[0]));if(w.length)R.ws=w}
     if(R.xs){const x=new Set([...R.xs].filter(e=>!hid.has("e:"+e)));if(x.size)R.xs=x}}
-  if(di.length>=2||(di.length&&(st.ru||st.tn))){discShow(di,()=>{SCR="home";INL=1;next()},di.intro);return}
-  next();
+  if(di.length>=2||(di.length&&(st.ru||st.tn||di.pre))){discShow(di,()=>{SCR="home";INL=1;try{adFix(st)}catch(e){}next()},di.intro);return}
+  try{adFix(st)}catch(e){}next();
 }
 /* « Continuer le parcours » : ouvre directement la prochaine étape à faire (sinon retour à l'accueil) */
 function pathCont(){let it=null;try{it=pathItems().find(x=>!x.done&&!x.lock)}catch(e){}if(!it){home();return}if(it.test){lvTest();return}pstart(it.id)}
@@ -6038,9 +6065,9 @@ function discItems(st){
     r.F.forEach((f,i)=>{if(f)out.push({k:"t:"+l+":"+k+(i?":"+i:""),es:(t.imv||l==="eu"?"":r.P[i]+" ")+f,fr:(t.imv?r.P[i]+" · ":"")+gl(FP[i]||"")})});
     out.intro=`<b>${esc(gl(t.fr))}</b> — ${esc(gl(t.u||""))}<br>${tr("Modèle : {0}",`<b translate="no">${esc(vk)}</b>${row?" ("+esc(gl(row.fr))+")":""}`)}`;return out}
   if(st.ru&&st.ru.length){st.ru.filter(r=>!seen["r:"+lg()+":"+r.c+":"+r.t]).forEach(r=>out.push({k:"r:"+lg()+":"+r.c+":"+r.t,ti:r.t,fr:r.r,es:r.e[0]?r.e[0][0]:"",ex:r.e[0]?[r.e[0][0],r.e[0][1]]:null,ex2:r.e[1]?[r.e[1][0],r.e[1][1]]:null}));return out}
-  if(st.xs&&st.xs.size){XP.filter(x=>st.xs.has(x.e)&&!seen["e:"+x.e]&&!(S.sc["e:"+x.e]>0)).slice(0,6).forEach(x=>out.push({k:"e:"+x.e,es:x.e,fr:x.m,lit:x.lit}));return out}
+  if(st.xs&&st.xs.size){XP.filter(x=>st.xs.has(x.e)&&!adIn("e:"+x.e)).slice(0,6).forEach(x=>out.push({k:"e:"+x.e,es:x.e,fr:x.m,lit:x.lit}));return out}
   if(st.ws&&!st.rev&&!st.t){const ex=[...PHL(),...XP.filter(x=>x.x&&(x.l||1)<=lvC()).map(x=>[x.x,x.xf]),...TX.filter(x=>(x[2]||1)<=lvC()).flatMap(x=>(x[0].match(/[^.!?]+[.!?]+/g)||[]).map(z=>[z.trim(),""]))].filter(x=>x[0]&&nwd(x)<=12);
-    st.ws.filter(w=>!seen[w[0]]&&!(S.sc[w[0]]>0)).slice(0,8).forEach(w=>{const k=nzI(w[0]),m=k?ex.filter(x=>(" "+nzI(x[0])+" ").includes(" "+k+" ")&&nzI(x[0])!==k):[];m.sort((a,b)=>(b[1]?1:0)-(a[1]?1:0)||a[0].length-b[0].length);const cx=ctxOf(w);out.push({k:w[0],es:w[0],fr:w[1],ex:cx?[ctxTxt(cx.s),gl(cx.fr)]:m[0]?[m[0][0],m[0][1]]:null})})}
+    st.ws.filter(w=>!adIn(w[0])).slice(0,8).forEach(w=>{const k=nzI(w[0]),m=k?ex.filter(x=>(" "+nzI(x[0])+" ").includes(" "+k+" ")&&nzI(x[0])!==k):[];m.sort((a,b)=>(b[1]?1:0)-(a[1]?1:0)||a[0].length-b[0].length);const cx=ctxOf(w);out.push({k:w[0],es:w[0],fr:w[1],ex:cx?[ctxTxt(cx.s),gl(cx.fr)]:m[0]?[m[0][0],m[0][1]]:null})})}
   return out
 }
 /* découverte : 4 nouveautés maximum par étape (les tableaux de conjugaison d'un temps restent entiers) ; le reste sera découvert dans une prochaine étape */
@@ -6051,7 +6078,7 @@ function discShow(items,go,intro){
   const dx=e=>e?`<p class="dx" translate="no">${esc(e[0])}${e[1]?`<span translate="yes">${esc(e[1])}</span>`:""}</p>`:"";
   $.innerHTML=head()+`<div class="q dsc"><p class="skl">✨ ${items[0]&&items[0].ti?tr("{0} à comprendre",items.length):tr("{0} à découvrir",items.length)}</p><h2>${tr("Découvre avant de t'entraîner")}</h2><p class="sub">${intro||tr("Écoute chaque élément, lis son sens et son exemple. Ensuite, on s'entraîne.")}</p><div class="dl">${items.map((x,i)=>`<div class="dc" style="--i:${i}">${x.es?`<button class="spk dsp" data-a="d${i}" onclick="aud('d${i}',[DISC.items[${i}].es])" aria-label="Écouter">🔊</button>`:""}<div class="dt">${x.ti?`<b class="dw">${esc(x.ti)}</b><span class="dm">${esc(x.fr)}</span>${dx(x.ex)}${dx(x.ex2)}`:`<b class="dw" translate="no">${esc(x.es)}</b><span class="dm">${esc(x.fr)}${x.lit?` <small>(${tr("mot à mot : {0}",esc(x.lit))})</small>`:""}</span>${dx(x.ex)}`}</div></div>`).join("")}</div><button class="btn dgo" onclick="discGo()">${tr("C'est parti")}</button></div>`;auSync();
 }
-function discGo(){stopSp();const d=DISC;if(!d)return;S.ds=S.ds||{};d.items.forEach(x=>{S.ds[x.k]=1});save();DISC=null;d.go()}
+function discGo(){stopSp();const d=DISC;if(!d)return;S.ds=S.ds||{};d.items.forEach(x=>{S.ds[x.k]=1;if(!/^[tr]:/.test(x.k))S.ds[adDK(x.k)]=1});save();DISC=null;d.go()}
 /*EO-END*/
 function pickType(){
   const t=R.t,l=lv();let a=t==="CE"?["read"]:t==="CO"?(l<2?["listen","listen","listenP","dict"]:["listen","listenP","dict"]):t==="EE"?["build","type","cloze"]:t==="EO"?["speak","rep","speakF","speakC","speakQ"]:t==="Conjugaison"?["conj"]:t==="Exceptions"?["exc"]:t==="Expressions"?["exM","exE","exL"]:t==="Listes"||t==="Révision"?["es2fr","fr2es","listen","type","cloze","tf","dict","rep","speakF","pair","pic","gen","ctxC","ctxP"]:t==="Frases"?["build","listenP","type","dict","cloze","rep","speakC","err","dlg","sep"]:t==="Mélange"?["es2fr","fr2es","listen","build","type","dict","cloze","rep","speakF","pair","pic","gen","ctxC","ctxP","err","dlg","ord","tfL","sep",...(l>=2?["listenP","read","speakC"]:[]),...(l>=3?["read","build","speakQ"]:[]),"conj","exM",...(l>=2?["exc","exE"]:[])]:["es2fr","fr2es","listen","cloze","rep","speakF",...(l>=2?["type"]:[])];

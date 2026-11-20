@@ -43,6 +43,8 @@ with sync_playwright() as p:
     ck("sans reconnaissance vocale : remplacé par de l'écrit/écoute (EE+CO+CE = 100 %), sans erreur",e==0 and not er and abs(sum(m.values())-100)<.01,[m,e,er])
     pg.evaluate("S.lang='es';S.lvl=2;S.pth={};S.pthAll=1;build();PLC=null;const st=pathPlanMain().flat.find(x=>x.t==='EO');pstart(st.id);")
     pg.wait_for_timeout(300)
+    # chantier 2 : sur un profil neuf, les mots jamais présentés le sont d'abord (fiche de découverte) ; la mention suit
+    pg.evaluate("if(document.querySelector('.dsc')&&typeof discGo==='function')discGo()");pg.wait_for_timeout(300)
     ck("sans reconnaissance vocale : l'étape d'expression orale l'indique clairement",pg.evaluate("document.body.innerText.includes('Reconnaissance vocale indisponible')") or pg.evaluate("!!document.querySelector('.disc')"),pg.evaluate("document.body.innerText.slice(0,300)"));c.close()
     # ---------- C. notation de l'oral
     c=b.new_context(locale="fr-FR");pg=c.new_page();pg.add_init_script(FAKE);pg.goto(BASE+"index.html");pg.wait_for_timeout(2000)

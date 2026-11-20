@@ -80,12 +80,11 @@ with sync_playwright() as p:
     r=ev("""()=>{SET_('es',2);CLR_();ALL.filter(w=>(w[2]||1)<=2).slice(0,80).forEach((w,i)=>{S.sc[w[0]]=i%3;S.sr[w[0]]={b:i%2,d:dayN()+3}});const sr0=JSON.stringify(S.sr);
         const ld=adLoad();const id=NW_();pstart(id);const off=!!document.querySelector('.cns');home();return {f:ld.frag,rec:ld.rec,off,unchanged:JSON.stringify(S.sr)===sr0}}""")
     ck("ancien profil (paliers estimés sans date) : jamais compté comme fragile, aucune consolidation, données intactes",r["f"]==0 and r["rec"]==0 and not r["off"] and r["unchanged"],r)
-    # ---------- prérequis ----------
-    r=ev("""()=>{SET_('es',2);CLR_();const st=Object.values(pathPlan().map).find(s=>!s.nw&&s.t&&!s.ru&&!s.tn&&s.ws&&s.ws.length>=8);
-        const L2=st.ws.filter(w=>(w[2]||1)===2);if(L2.length<6)return {skip:st.id};const known=L2.slice(0,5);known.forEach(w=>S.ds[w[0]]=1);
-        S.pthAll=1;pstart(st.id);const ws=(R.ws||[]).map(w=>w[0]);const bad=ws.filter(k=>{const w=st.ws.find(x=>x[0]===k);return (w[2]||1)===2&&!S.ds[k]});home();
-        CLR_();S.pthAll=1;L2.slice(0,2).forEach(w=>S.ds[w[0]]=1);pstart(st.id);const fb=(R.ws||[]).length;home();return {id:st.id,n0:st.ws.length,n:ws.length,bad,fb}}""")
-    ck("prérequis : une étape d'entraînement n'interroge que des mots déjà introduits (découverts ou d'un niveau inférieur)",r.get("skip") or (not r["bad"] and r["n"]<r["n0"]),r)
+    # ---------- prérequis (détail : tests/prerequis.py) ----------
+    r=ev("""()=>{SET_('es',2);CLR_();S.dsm=1;const st=Object.values(pathPlan().map).find(s=>!s.nw&&s.t&&!s.ru&&!s.tn&&s.ws&&s.ws.length>=8);
+        st.ws.slice(0,5).forEach(w=>S.ds[adDK(w[0])]=1);S.pthAll=1;pstart(st.id);const pres=DISC&&document.querySelector('.dsc')?DISC.items.map(x=>x.k):[];if(pres.length)discGo();
+        const ws=(R.ws||[]).map(w=>w[0]);const bad=ws.filter(k=>!adIn(k));home();return {id:st.id,n0:st.ws.length,n:ws.length,pres,bad}}""")
+    ck("prérequis : une étape d'entraînement n'interroge que des mots présentés à l'apprenant (manquants présentés d'abord, 4 au plus)",not r["bad"] and r["n"]<r["n0"] and len(r["pres"])<=4,r)
     r=ev("""()=>{SET_('es',2);CLR_();const ids=Object.keys(pathPlan().map).filter(id=>pathPlan().map[id].nw).slice(0,3);const out=[];
         S.pthAll=1;for(const id of ids){const st=pathPlan().map[id];const n0=(st.ws||[]).length;pstart(id);out.push([id,!!document.querySelector('.dsc')||!!R.q]);home()}return out}""")
     ck("étapes de nouveautés : découverte avant l'entraînement, inchangée",all(x[1] for x in r),r)
