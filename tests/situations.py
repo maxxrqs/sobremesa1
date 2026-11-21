@@ -9,7 +9,7 @@ from playwright.sync_api import sync_playwright
 BASE=sys.argv[1] if len(sys.argv)>1 else "http://127.0.0.1:8774/"
 R=[];WARN=[]
 def ck(n,c,i=""):R.append(bool(c));print("OK  " if c else "FAIL",n,"" if c else str(i)[:900],flush=True)
-LANGS=["es","va","ca","gl","eu"];UIS=["fr","en","de","it","pt"]
+CE={1:"A1",2:"A2",3:"B1",4:"B2",5:"C1"};LANGS=["es","va","ca","gl","eu"];UIS=["fr","en","de","it","pt"]
 H=r"""
 window.SET_=(l,L)=>{S.lang=l;S.lvl=L;S.ob=0;build();XDIRTY=1;xens();XPWC=null;PLC=null};
 window.ENT_=(k,p)=>{const d=mkDif(k),c=[1,2,3,4].map(P=>P<=p?MKN[d][P]:0);S.sr[k]={b:1,d:dayN()+5,p,m:1,c,n:3,k:0,s:dayN()-2};if(d===3)S.sr[k].j=[0,0,0,0];return S.sr[k]};
@@ -49,7 +49,7 @@ with sync_playwright() as p:
               S.pth={};pl.flat.forEach(x=>{if(!x.test&&!x.opt)S.pth[pthK(x.id)]=8});const md=mainDone(),lv=lvSteps();
               S.pth={};const it=pathItems(),si=it.findIndex(x=>x.opt);let nl=true;if(si>=0){for(let i=0;i<it.length;i++){if(i<si)S.pth[pthK(it[i].id)]=8}const it2=pathItems();nl=!it2[si+1]||!it2[si+1].lock}
               return {n:idx.length,nS,units:us.length,idx,bad,md,lv,nl,nv}}""",[l,L])
-            ck(f"{l} A{L} : {d['n']}/{d['nS']} situations placées dans leur niveau (unités {d['idx']} sur {d['units']}, ≤ 3 par unité, {d['nv']} voisines), facultatives",not d["bad"] and d["md"] and d["lv"] and d["nl"] and d["n"]==d["nS"],d)
+            ck(f"{l} {CE[L]} : {d['n']}/{d['nS']} situations placées dans leur niveau (unités {d['idx']} sur {d['units']}, ≤ 3 par unité, {d['nv']} voisines), facultatives",not d["bad"] and d["md"] and d["lv"] and d["nl"] and d["n"]==d["nS"],d)
     # 3. ouverture selon la progression réellement effectuée + carte « Situations »
     for l in LANGS:
         d=pg.evaluate("""l=>{SET_(l,1);S.sr={};S.sc={};S.ds={};S.pth={};S.pa={};const ss=immP(l).filter(s=>s.l===1),K=adKnown();const r0=sitR0(),o0=ss.filter(s=>sitOK(s,r0,K)).length;

@@ -1,6 +1,6 @@
 # Lot D — situations B1. Même format que sit_suite_a1.txt (== id | niveau | titre | contexte | personnage ; # consignes ; -- langue ; réplique ‖ modèle ‖ variantes ;; … ‖ 3 fausses ;; … ‖ mots-clés ; … [‖ consigne propre à la langue] ; V: mot = traduction ;; …).
 
-== b1calentador | 3 | Le chauffe-eau en panne | Tu appelles le propriétaire de ton appartement : le chauffe-eau ne marche plus. | Propriétaire
+== b1calentador | 3 | Le chauffe-eau en panne | Tu appelles ton propriétaire : le chauffe-eau ne marche plus. | Propriétaire
 # Dis que le chauffe-eau ne marche pas depuis hier.
 # Explique qu'il n'y a pas d'eau chaude.
 # Demande s'il peut venir cette semaine.
@@ -144,7 +144,7 @@ Astebete. Eta edan ur asko. ‖ Ados. Lanera joan naiteke? ‖ Ongi. Lanera joan
 Bai, baina hobeto ez bazaude, itzuli astelehenean. ‖ Eskerrik asko. Gero arte. ‖ Eskerrik asko. Agur! ;; Mila esker, gero arte. ‖ Ez horregatik. Gero arte. ;; Eskerrik asko. Gabon, kaixo! ;; Barkatu. Gero arte. ‖ eskerrik
 V: eztula = la toux ;; hotzeria = un rhume ;; Zorionez = Heureusement ;; sendagaia = le médicament
 
-== b1padron | 3 | Au registre municipal | Tu viens d'emménager et tu vas à la mairie pour t'inscrire au registre municipal. | Employé de mairie
+== b1padron | 3 | Au registre municipal | Tu viens d'emménager : tu t'inscris au registre de la mairie. | Employé de mairie
 # Dis que tu viens t'inscrire au registre municipal.
 # Dis que oui, tu as rendez-vous à dix heures.
 # Donne-les et demande s'il a besoin d'autre chose.
@@ -152,7 +152,7 @@ V: eztula = la toux ;; hotzeria = un rhume ;; Zorionez = Heureusement ;; sendaga
 # Demande quand ce sera prêt.
 # Remercie-le pour son aide.
 -- es
-Buenos días. ¿En qué puedo ayudarle? ‖ Buenos días. Vengo a hacer el empadronamiento. ‖ Vengo a hacer el empadronamiento. ;; Buenos días, vengo para el empadronamiento. ‖ Buenos días. Vengo a hacer el empadronamiento mañana pasado. ;; Buenos días. Voy a hacer el empadronamiento ayer. ;; Buenos días. Vengo a hacer la comunidad de vecinos. ‖ empadronamiento
+Buenos días. ¿En qué puedo ayudarle? ‖ Vengo a hacer el empadronamiento. ‖ Buenos días. Vengo a hacer el empadronamiento. ;; Vengo para el empadronamiento. ‖ Voy a hacer el empadronamiento ayer. ;; Vengo a hacer la comunidad de vecinos. ;; Viene a hacer el empadronamiento. ‖ empadronamiento
 Muy bien. ¿Tiene cita? ‖ Sí, tengo cita a las diez. ‖ Sí, a las diez. ;; Sí, tengo una cita a las diez. ‖ Sí, soy cita a las diez. ;; Sí, tengo cita a los diez. ;; No, tengo cita a las diez. ‖ cita ; diez
 ¿Me deja su pasaporte y el contrato de alquiler? ‖ Aquí tiene. ¿Necesita algo más? ‖ Aquí tiene. ¿Algo más? ;; Sí, aquí tiene. ¿Necesita algo más? ‖ Aquí tiene. ¿Necesito algo más? ;; Aquí tienes. ¿Necesita nada más? ;; Aquí tiene. ¿Necesita algo menos? ‖ necesita
 Sí, falta una factura de la luz. ‖ Lo siento, no la he traído. ¿Puedo enviarla por correo? ‖ Lo siento, no la tengo aquí. ¿Puedo enviarla por correo? ;; Perdone, no la he traído. ¿Se la puedo enviar por correo? ‖ Lo siento, no lo he traído. ¿Puedo enviarla por correo? ;; Lo siento, no la he traída. ¿Puedo enviarla por correo? ;; Lo siento, no la he traído. ¿Puede enviarla por correo? ‖ correo
@@ -160,7 +160,7 @@ Sí, por correo. Tiene diez días. ‖ Perfecto. ¿Cuándo estará listo? ‖ Va
 En una semana, más o menos. ‖ Muy bien. Muchas gracias por su ayuda. ‖ Muchas gracias por su ayuda. ;; Gracias por su ayuda. ‖ Muy bien. Muchas gracias para su ayuda. ;; Muy bien. De nada por su ayuda. ;; Muy bien. Muchas gracias por mi ayuda. ‖ gracias ; ayuda
 V: el empadronamiento = l'inscription au registre municipal ;; la cita = le rendez-vous ;; la factura de la luz = la facture d'électricité ;; ¿Cuándo estará listo? = Quand est-ce que ce sera prêt ?
 -- va
-Bon dia. En què puc ajudar-lo? ‖ Bon dia. Vinc a fer l'empadronament. ‖ Vinc a fer l'empadronament. ;; Bon dia, vinc per l'empadronament. ‖ Bon dia. Vaig a fer l'empadronament ahir. ;; Bon dia. Vinc a fer la comunitat de veïns. ;; Bon dia. Ve a fer l'empadronament. ‖ empadronament
+Bon dia. En què puc ajudar-lo? ‖ Vinc a fer l'empadronament. ‖ Bon dia. Vinc a fer l'empadronament. ;; Vinc per l'empadronament. ‖ Vaig a fer l'empadronament ahir. ;; Vinc a fer la comunitat de veïns. ;; Ve a fer l'empadronament. ‖ empadronament
 Molt bé. Té cita? ‖ Sí, tinc cita a les deu. ‖ Sí, a les deu. ;; Sí, tinc una cita a les deu. ‖ Sí, soc cita a les deu. ;; Sí, tinc cita a la deu. ;; No, tinc cita a les deu. ‖ cita ; deu
 Em deixa el passaport i el contracte de lloguer? ‖ Ací té. Necessita alguna cosa més? ‖ Ací té. Alguna cosa més? ;; Sí, ací té. Necessita alguna cosa més? ‖ Ací té. Necessite alguna cosa més? ;; Ací tens. Necessita alguna cosa més? ;; Ací té. Necessita alguna cosa menys? ‖ necessita
 Sí, però també necessite una factura de la llum. ‖ Ho sent, no l'he portada. La puc enviar per correu? ‖ Ho sent, no la tinc ací. La puc enviar per correu? ;; Perdone, no l'he portada. Li la puc enviar per correu? ‖ Ho sent, no l'he portada. La pot enviar per correu? ;; Ho sent, no l'he portada. La puc enviar per platja? ;; Gràcies, no l'he portada. La puc enviar per correu? ‖ correu
@@ -168,7 +168,7 @@ Sí, per correu. Té deu dies. ‖ Perfecte. Quan estarà preparat? ‖ D'acord.
 D'ací a una setmana, més o menys. ‖ Molt bé. Moltes gràcies per la seua ajuda. ‖ Moltes gràcies per la seua ajuda. ;; Gràcies per la seua ajuda. ‖ Molt bé. Moltes gràcies per a la seua ajuda. ;; Molt bé. De res per la seua ajuda. ;; Molt bé. Moltes gràcies per la meua ajuda. ‖ gràcies ; ajuda
 V: l'empadronament = l'inscription au registre municipal ;; la cita = le rendez-vous ;; la factura de la llum = la facture d'électricité ;; Quan estarà preparat? = Quand est-ce que ce sera prêt ?
 -- ca
-Bon dia. En què el puc ajudar? ‖ Bon dia. Vinc a fer l'empadronament. ‖ Vinc a fer l'empadronament. ;; Bon dia, vinc per l'empadronament. ‖ Bon dia. Vaig a fer l'empadronament ahir. ;; Bon dia. Vinc a fer la comunitat de veïns. ;; Bon dia. Ve a fer l'empadronament. ‖ empadronament
+Bon dia. En què el puc ajudar? ‖ Vinc a fer l'empadronament. ‖ Bon dia. Vinc a fer l'empadronament. ;; Vinc per l'empadronament. ‖ Vaig a fer l'empadronament ahir. ;; Vinc a fer la comunitat de veïns. ;; Ve a fer l'empadronament. ‖ empadronament
 Molt bé. Té cita? ‖ Sí, tinc cita a les deu. ‖ Sí, a les deu. ;; Sí, tinc una cita a les deu. ‖ Sí, sóc cita a les deu. ;; Sí, tinc cita als deu. ;; No, tinc cita a les deu. ‖ cita ; deu
 Em deixa el passaport i el contracte de lloguer? ‖ Aquí té. Necessita res més? ‖ Aquí té. Res més? ;; Sí, aquí té. Necessita res més? ‖ Aquí té. Necessito res més? ;; Aquí tens. Necessita res més? ;; Aquí té. Necessita res menys? ‖ necessita
 Sí, però també necessito una factura de la llum. ‖ Ho sento, no l'he portada. La puc enviar per correu? ‖ Ho sento, no la tinc aquí. La puc enviar per correu? ;; Perdoni, no l'he portada. Li la puc enviar per correu? ‖ Ho sento, no l'he portada. La pot enviar per correu? ;; Ho sento, no l'he portada. La puc enviar per platja? ;; Gràcies, no l'he portada. La puc enviar per correu? ‖ correu
@@ -176,7 +176,7 @@ Sí, per correu. Té deu dies. ‖ Perfecte. Quan estarà preparat? ‖ D'acord.
 D'aquí a una setmana, més o menys. ‖ Molt bé. Moltes gràcies per la seva ajuda. ‖ Moltes gràcies per la seva ajuda. ;; Gràcies per la seva ajuda. ‖ Molt bé. Moltes gràcies per a la seva ajuda. ;; Molt bé. De res per la seva ajuda. ;; Molt bé. Moltes gràcies per la meva ajuda. ‖ gràcies ; ajuda
 V: l'empadronament = l'inscription au registre municipal ;; la cita = le rendez-vous ;; la factura de la llum = la facture d'électricité ;; Quan estarà preparat? = Quand est-ce que ce sera prêt ?
 -- gl
-Bos días. En que podo axudalo? ‖ Bos días. Veño facer o empadroamento. ‖ Veño facer o empadroamento. ;; Bos días, veño polo empadroamento. ‖ Bos días. Vou facer o empadroamento onte. ;; Bos días. Veño facer a comunidade de veciños. ;; Bos días. Vén facer o empadroamento. ‖ empadroamento
+Bos días. En que podo axudalo? ‖ Veño facer o empadroamento. ‖ Bos días. Veño facer o empadroamento. ;; Veño polo empadroamento. ‖ Vou facer o empadroamento onte. ;; Veño facer a comunidade de veciños. ;; Vén facer o empadroamento. ‖ empadroamento
 Moi ben. Ten cita? ‖ Si, teño cita ás dez. ‖ Si, ás dez. ;; Si, teño unha cita ás dez. ‖ Si, son cita ás dez. ;; Si, teño cita aos dez. ;; Non, teño cita ás dez. ‖ cita ; dez
 Déixeme o seu pasaporte e o contrato de aluguer? ‖ Aquí ten. Necesita algo máis? ‖ Aquí ten. Algo máis? ;; Si, aquí ten. Necesita algo máis? ‖ Aquí ten. Necesito algo máis? ;; Aquí tes. Necesita algo máis? ;; Aquí ten. Necesita algo menos? ‖ necesita
 Si, pero tamén necesito unha factura da luz. ‖ Síntoo, non a trouxen. Podo envíala por correo? ‖ Síntoo, non a teño aquí. Podo envíala por correo? ;; Desculpe, non a trouxen. Podo mandala por correo? ‖ Síntoo, non trouxen a. Podo envíala por correo? ;; Síntoo, non a trouxen. Pode envíala por correo? ;; Grazas, non a trouxen. Podo envíala por correo? ‖ correo
@@ -184,7 +184,7 @@ Si, por correo. Ten dez días. ‖ Perfecto. Cando estará listo? ‖ Vale. Cand
 Nunha semana, máis ou menos. ‖ Moi ben. Moitas grazas pola súa axuda. ‖ Moitas grazas pola súa axuda. ;; Grazas pola súa axuda. ‖ Moi ben. Moitas grazas para a súa axuda. ;; Moi ben. De nada pola súa axuda. ;; Moi ben. Moitas grazas pola miña axuda. ‖ grazas ; axuda
 V: o empadroamento = l'inscription au registre municipal ;; a cita = le rendez-vous ;; a factura da luz = la facture d'électricité ;; Cando estará listo? = Quand est-ce que ce sera prêt ?
 -- eu
-Egun on. Zertan lagun zaitzaket? ‖ Egun on. Erroldatzera nator. ‖ Erroldatzera nator. ;; Egun on, erroldatu nahi dut. ‖ Egun on. Erroldatzera joan nintzen bihar. ;; Egun on. Jabeen komunitatera nator. ;; Egun on. Erroldatzera dator. ‖ erroldatzera
+Egun on. Zertan lagun zaitzaket? ‖ Erroldatzera nator. ‖ Egun on. Erroldatzera nator. ;; Erroldatu nahi dut. ‖ Erroldatzera joan nintzen bihar. ;; Jabeen komunitatera nator. ;; Erroldatzera dator. ‖ erroldatzera
 Oso ondo. Hitzordua duzu? ‖ Bai, hamarretan dut hitzordua. ‖ Bai, hamarretan. ;; Bai, hitzordua hamarretan dut. ‖ Bai, hamarretan naiz hitzordua. ;; Ez, hamarretan dut hitzordua. ;; Bai, hamarretan duzu hitzordua. ‖ hitzordua
 Pasaportea eta alokairu kontratua utziko dizkidazu? ‖ Hemen dituzu. Beste zerbait behar duzu? ‖ Hemen dituzu. Beste zerbait? ;; Bai, hemen dituzu. Beste zerbait behar duzu? ‖ Hemen dituzu. Beste zerbait behar dut? ;; Hemen dituzu. Beste zerbait behar zara? ;; Hemen ditut. Beste zerbait behar duzu? ‖ behar
 Bai, baina argiaren faktura ere behar dut. ‖ Barkatu, ez dut ekarri. Posta elektronikoz bidal dezaket? ‖ Barkatu, ez daukat hemen. Posta elektronikoz bidal dezaket? ;; Sentitzen dut, ez dut ekarri. Posta elektronikoz bidal dezaket? ‖ Barkatu, ez dut ekarri. Posta elektronikoz bidal dezakezu? ;; Eskerrik asko, ez dut ekarri. Posta elektronikoz bidal dezaket? ;; Barkatu, ez naiz ekarri. Posta elektronikoz bidal dezaket? ‖ bidal
@@ -192,7 +192,7 @@ Bai, posta elektronikoz. Hamar egun dituzu. ‖ Ados. Noiz egongo da prest? ‖ 
 Astebete barru. ‖ Oso ondo. Eskerrik asko zure laguntzagatik. ‖ Eskerrik asko zure laguntzagatik. ;; Mila esker zure laguntzagatik. ‖ Oso ondo. Ez horregatik zure laguntzagatik. ;; Oso ondo. Eskerrik asko nire laguntzagatik. ;; Oso ondo. Eskerrik asko zure matxuragatik. ‖ eskerrik ; laguntzagatik
 V: erroldatu = s'inscrire au registre municipal ;; hitzordua = le rendez-vous ;; argiaren faktura = la facture d'électricité ;; Noiz egongo da prest? = Quand est-ce que ce sera prêt ?
 
-== b1vuelo | 3 | Vol annulé | À l'aéroport, ton vol a été annulé. Tu parles à l'agente de la compagnie. | Agente
+== b1vuelo | 3 | Vol annulé | À l'aéroport, ton vol est annulé. Tu vas au guichet. | Agente
 # Dis qu'ils ont annulé ton vol.
 # Donne-le et demande s'il y a un autre vol aujourd'hui.
 # Demande où tu vas dormir cette nuit.
@@ -232,7 +232,7 @@ A súa equipaxe viaxa con vostede mañá. ‖ Entendido. Pode escribilo, por fav
 Claro, aquí ten. Desculpe as molestias. ‖ Non pasa nada. Grazas pola súa axuda. ‖ Non pasa nada, grazas. ;; Non se preocupe. Grazas pola súa axuda. ‖ Non pasa ninguén. Grazas pola súa axuda. ;; Non pasa nada. Grazas para a súa axuda. ;; Si pasa nada. Grazas pola súa axuda. ‖ pasa ; nada
 V: cancelar un voo = annuler un vol ;; a equipaxe = les bagages ;; Desculpe as molestias = Excusez le dérangement ;; Non pasa nada = Ce n'est pas grave
 -- eu
-Arratsalde on. Zertan lagun zaitzaket? ‖ Arratsalde on. Nire hegaldia bertan behera utzi dute. ‖ Nire hegaldia bertan behera utzi dute. ;; Arratsalde on, nire hegaldia bertan behera geratu da. ‖ Arratsalde on. Nire hegaldia bertan behera utziko dute atzo. ;; Arratsalde on. Zure hegaldia bertan behera utzi dut. ;; Arratsalde on. Nire hegaldia bertan behera utzi naute. ‖ hegaldia
+Arratsalde on. Zertan lagun zaitzaket? ‖ Nire hegaldia bertan behera utzi dute. ‖ Arratsalde on. Nire hegaldia bertan behera utzi dute. ;; Nire hegaldia bertan behera geratu da. ‖ Nire hegaldia bertan behera utziko dute atzo. ;; Zure hegaldia bertan behera utzi dut. ;; Nire hegaldia bertan behera utzi naute. ‖ hegaldia
 Asko sentitzen dut. Pasaportea, mesedez? ‖ Hemen duzu. Beste hegaldi bat dago gaur? ‖ Bai, hemen duzu. Beste hegaldi bat dago gaur? ;; Beste hegaldirik badago gaur? ‖ Hemen duzu. Beste hegaldi bat dago atzo? ;; Hemen dut. Beste hegaldi bat dago gaur? ;; Hemen duzu. Beste hegaldi bat dago iaz? ‖ gaur
 Gaur ez, baina bihar zazpietan bat dago. ‖ Eta non egingo dut lo gaur gauean? ‖ Eta non lo egingo dut gaur? ;; Ados, eta non egingo dut lo gaur gauean? ‖ Eta non egin nuen lo gaur gauean? ;; Eta noiz egingo dut lo gaur gauean? ;; Eta non egingo duzu lo gaur gauean? ‖ lo
 Aireportutik gertu gela bat ordainduko dizugu. ‖ Ados. Eta nire ekipajea? ‖ Ongi. Eta nire ekipajea? ;; Ados, zer gertatzen da nire ekipajearekin? ‖ Ados. Eta zure ekipajea? ;; Ez. Eta nire ekipajea? ;; Ados. Eta nik ekipajea? ‖ ekipajea
@@ -240,7 +240,7 @@ Zure ekipajea zurekin bidaiatuko da bihar. ‖ Ulertuta. Idatz dezakezu, mesedez
 Noski, hemen duzu. Barkatu eragozpenengatik. ‖ Lasai. Eskerrik asko zure laguntzagatik. ‖ Lasai, eskerrik asko. ;; Ez dago arazorik. Eskerrik asko zure laguntzagatik. ‖ Urduri. Eskerrik asko zure laguntzagatik. ;; Lasai. Eskerrik asko nire laguntzagatik. ;; Lasai. Ez horregatik zure laguntzagatik. ‖ lasai
 V: bertan behera utzi = annuler ;; ekipajea = les bagages ;; Barkatu eragozpenengatik = Excusez le dérangement ;; Lasai = Ne t'inquiète pas, ce n'est pas grave
 
-== b1consejo | 3 | Apprendre à cuisiner | Un ami veut apprendre à cuisiner et te demande des conseils. | Ami
+== b1consejo | 3 | Apprendre à cuisiner | Un ami veut apprendre à cuisiner et te demande conseil. | Ami
 # Recommande-lui d'aller dans une école de cuisine.
 # Conseille-lui de regarder des recettes sur internet.
 # Dis que tu commencerais par quelque chose de facile.
@@ -248,7 +248,7 @@ V: bertan behera utzi = annuler ;; ekipajea = les bagages ;; Barkatu eragozpenen
 # Accepte et dis-lui de t'appeler quand ce sera prêt.
 # Dis « de rien » et souhaite-lui que ça se passe bien.
 -- es
-Hola, quiero aprender a cocinar. ¿Qué me recomiendas? ‖ Te recomiendo que vayas a una escuela de cocina. ‖ Te recomiendo ir a una escuela de cocina. ;; Te recomiendo que vayas a una escuela. ‖ Te recomiendo que vas a una escuela de cocina. ;; Te recomiendo que ir a una escuela de cocina. ;; Me recomiendas que vayas a una escuela de cocina. ‖ recomiendo
+Quiero aprender a cocinar. ¿Qué me recomiendas? ‖ Te recomiendo que vayas a una escuela. ‖ Te recomiendo que vayas a una escuela de cocina. ;; Te recomiendo ir a una escuela. ‖ Te recomiendo que vas a una escuela. ;; Te recomiendo que ir a una escuela. ;; Me recomiendas que vayas a una escuela. ‖ recomiendo
 Una escuela es demasiado cara. ‖ Pues te aconsejo que mires recetas en internet. ‖ Te aconsejo que mires recetas en internet. ;; Pues mira recetas en internet. ‖ Pues te aconsejo que miras recetas en internet. ;; Pues te aconsejo que mirar recetas en internet. ;; Pues me aconsejas que mires recetas en internet. ‖ aconsejo ; recetas
 Vale. ¿Y qué plato hago primero? ‖ Yo empezaría por algo fácil. ‖ Yo empezaría por algo sencillo. ;; Empezaría por algo fácil. ‖ Yo empezaría por algo difícil. ;; Yo empecé por algo fácil mañana. ;; Yo empezaría para algo fácil. ‖ empezaría ; fácil
 ¿Y si me sale mal? ‖ Tranquilo, es normal que salga mal al principio. ‖ Es normal que salga mal al principio. ;; Tranquilo, es normal. ‖ Tranquilo, es normal que sale mal al principio. ;; Tranquilo, es normal que saldrá mal al principio. ;; Nervioso, es normal que salga mal al principio. ‖ normal
@@ -256,7 +256,7 @@ Tienes razón. ¿Quieres venir a probarlo? ‖ ¡Claro! Llámame cuando esté li
 Perfecto. ¡Muchas gracias por tu ayuda! ‖ De nada. ¡Que te salga muy bien! ‖ ¡De nada! Que te salga bien. ;; De nada, ¡que te salga muy bien! ‖ De nada. ¡Que te sale muy bien! ;; De nada. ¡Que te salga muy mal! ;; Por favor. ¡Que te salga muy bien! ‖ salga
 V: Te recomiendo que… = Je te recommande de… ;; Te aconsejo que… = Je te conseille de… ;; Es normal que salga mal = C'est normal que ce soit raté ;; cuando esté listo = quand ce sera prêt
 -- va
-Hola, vull aprendre a cuinar. Què em recomanes? ‖ Et recomane que vages a una escola de cuina. ‖ Et recomane anar a una escola de cuina. ;; Et recomane que vages a una escola. ‖ Et recomane que vas a una escola de cuina. ;; Et recomane que anar a una escola de cuina. ;; Em recomanes que vages a una escola de cuina. ‖ recomane
+Vull aprendre a cuinar. Què em recomanes? ‖ Et recomane que vages a una escola. ‖ Et recomane que vages a una escola de cuina. ;; Et recomane anar a una escola. ‖ Et recomane que vas a una escola. ;; Et recomane que anar a una escola. ;; Em recomanes que vages a una escola. ‖ recomane
 Una escola és massa cara. ‖ T'aconselle que mires receptes en internet. ‖ T'aconselle que mires receptes en internet. ;; Mira receptes en internet. ‖ T'aconselle que mirar receptes en internet. ;; T'aconselle que miraràs receptes en internet. ;; M'aconselles que mires receptes en internet. ‖ aconselle ; receptes
 D'acord. I quin plat faig primer? ‖ Jo començaria per alguna cosa fàcil. ‖ Començaria per alguna cosa senzilla. ;; Jo començaria per una cosa fàcil. ‖ Jo començaria per alguna cosa difícil. ;; Jo vaig començar per alguna cosa fàcil demà. ;; Jo començaria per a alguna cosa fàcil. ‖ començaria ; fàcil
 I si em ix malament? ‖ Tranquil, és normal que isca malament al principi. ‖ És normal que isca malament al principi. ;; Tranquil, és normal. ‖ Tranquil, és normal que ix malament al principi. ;; Tranquil, és normal que eixirà malament al principi. ;; Nerviós, és normal que isca malament al principi. ‖ normal
@@ -264,7 +264,7 @@ Tens raó. Vols vindre a menjar? ‖ Clar! Crida'm quan estiga preparat. ‖ Cla
 Perfecte. Moltes gràcies per la teua ajuda! ‖ De res. Que t'isca molt bé! ‖ De res! Que t'isca bé. ;; De res, que t'isca molt bé! ‖ De res. Que t'ix molt bé! ;; De res. Que t'isca molt malament! ;; Per favor. Que t'isca molt bé! ‖ isca
 V: T'aconselle que… = Je te conseille de… ;; Et recomane que… = Je te recommande de… ;; És normal que isca malament = C'est normal que ce soit raté ;; quan estiga preparat = quand ce sera prêt
 -- ca
-Hola, vull aprendre a cuinar. Què em recomanes? ‖ Et recomano que vagis a una escola de cuina. ‖ Et recomano anar a una escola de cuina. ;; Et recomano que vagis a una escola. ‖ Et recomano que vas a una escola de cuina. ;; Et recomano que anar a una escola de cuina. ;; Em recomanes que vagis a una escola de cuina. ‖ recomano
+Vull aprendre a cuinar. Què em recomanes? ‖ Et recomano que vagis a una escola. ‖ Et recomano que vagis a una escola de cuina. ;; Et recomano anar a una escola. ‖ Et recomano que vas a una escola. ;; Et recomano que anar a una escola. ;; Em recomanes que vagis a una escola. ‖ recomano
 Una escola és massa cara. ‖ Doncs t'aconsello que miris receptes a internet. ‖ T'aconsello que miris receptes a internet. ;; Doncs mira receptes a internet. ‖ Doncs t'aconsello que mires receptes a internet. ;; Doncs t'aconsello que mirar receptes a internet. ;; Doncs m'aconselles que miris receptes a internet. ‖ aconsello ; receptes
 D'acord. I quin plat faig primer? ‖ Jo començaria per alguna cosa fàcil. ‖ Començaria per alguna cosa senzilla. ;; Jo començaria per una cosa fàcil. ‖ Jo començaria per alguna cosa difícil. ;; Jo vaig començar per alguna cosa fàcil demà. ;; Jo començaria per a alguna cosa fàcil. ‖ començaria ; fàcil
 I si em surt malament? ‖ Tranquil, és normal que surti malament al principi. ‖ És normal que surti malament al principi. ;; Tranquil, és normal. ‖ Tranquil, és normal que surt malament al principi. ;; Tranquil, és normal que sortirà malament al principi. ;; Nerviós, és normal que surti malament al principi. ‖ normal
@@ -272,7 +272,7 @@ Tens raó. Vols venir a menjar? ‖ És clar! Truca'm quan estigui preparat. ‖
 Perfecte. Moltes gràcies per la teva ajuda! ‖ De res. Que et surti molt bé! ‖ De res! Que et surti bé. ;; De res, que et surti molt bé! ‖ De res. Que et surt molt bé! ;; De res. Que et surti molt malament! ;; Si us plau. Que et surti molt bé! ‖ surti
 V: T'aconsello que… = Je te conseille de… ;; Et recomano que… = Je te recommande de… ;; És normal que surti malament = C'est normal que ce soit raté ;; quan estigui preparat = quand ce sera prêt
 -- gl
-Ola, quero aprender a cociñar. Que me recomendas? ‖ Recoméndoche que vaias a unha escola de cociña. ‖ Recoméndoche ir a unha escola de cociña. ;; Recoméndoche que vaias a unha escola. ‖ Che recomendo que vaias a unha escola de cociña. ;; Recoméndoche que vas a unha escola de cociña. ;; Recoméndoche que ir a unha escola de cociña. ‖ escola
+Quero aprender a cociñar. Que me recomendas? ‖ Recoméndoche que vaias a unha escola. ‖ Recoméndoche que vaias a unha escola de cociña. ;; Recoméndoche ir a unha escola. ‖ Che recomendo que vaias a unha escola. ;; Recoméndoche que vas a unha escola. ;; Recoméndoche que ir a unha escola. ‖ escola
 Unha escola é demasiado cara. ‖ Pois aconséllote que mires receitas en internet. ‖ Aconséllote que mires receitas en internet. ;; Pois mira receitas en internet. ‖ Pois te aconsello que mires receitas en internet. ;; Pois aconséllote que miras receitas en internet. ;; Pois aconséllote que mirar receitas en internet. ‖ receitas
 Vale. E que prato fago primeiro? ‖ Eu comezaría por algo doado. ‖ Comezaría por algo sinxelo. ;; Eu comezaría por algo fácil. ‖ Eu comezaría por algo difícil. ;; Eu comecei por algo doado mañá. ;; Eu comezaría para algo doado. ‖ comezaría
 E se me sae mal? ‖ Tranquilo, é normal que saia mal ao principio. ‖ É normal que saia mal ao principio. ;; Tranquilo, é normal. ‖ Tranquilo, é normal que sae mal ao principio. ;; Tranquilo, é normal que sairá mal ao principio. ;; Nervioso, é normal que saia mal ao principio. ‖ normal
@@ -280,7 +280,7 @@ Tes razón. Queres vir probalo? ‖ Claro! Chámame cando estea listo. ‖ Claro
 Perfecto. Moitas grazas pola túa axuda! ‖ De nada. Que che saia moi ben! ‖ De nada! Que che saia ben. ;; De nada, que che saia moi ben! ‖ De nada. Que che sae moi ben! ;; De nada. Que che saia moi mal! ;; Por favor. Que che saia moi ben! ‖ saia
 V: Recoméndoche que… = Je te recommande de… ;; Aconséllote que… = Je te conseille de… ;; É normal que saia mal = C'est normal que ce soit raté ;; cando estea listo = quand ce sera prêt
 -- eu
-Kaixo, sukaldatzen ikasi nahi dut. Zer gomendatzen duzu? ‖ Sukaldaritza eskola bat gomendatzen dizut. ‖ Eskola batera joatea gomendatzen dizut. ;; Sukaldaritza eskolara joan zaitez. ‖ Sukaldaritza eskola bat gomendatzen duzu. ;; Sukaldaritza eskola bat gomendatzen naiz. ;; Sukaldaritza eskola bat gomendatzen dizut atzo. ‖ gomendatzen
+Sukaldatzen ikasi nahi dut. Zer gomendatzen duzu? ‖ Eskola bat gomendatzen dizut. ‖ Sukaldaritza eskola bat gomendatzen dizut. ;; Eskola batera joatea gomendatzen dizut. ‖ Eskola bat gomendatzen duzu. ;; Eskola bat gomendatzen naiz. ;; Eskola bat gomendatzen dizut atzo. ‖ gomendatzen
 Eskola bat garestiegia da. ‖ Orduan, interneten errezetak begiratzea aholkatzen dizut. ‖ Interneten errezetak begiratzea aholkatzen dizut. ;; Orduan, begiratu errezetak interneten. ‖ Orduan, interneten errezetak begiratzea aholkatzen duzu. ;; Orduan, interneten errezetak begiratu aholkatzen dizut. ;; Orduan, interneten errezetak begiratzea aholkatzen naiz. ‖ errezetak
 Ados. Eta zein plater egingo dut lehenengo? ‖ Nik zerbait errazarekin hasiko nintzateke. ‖ Zerbait errazarekin hasiko nintzateke. ;; Nik zerbait errazarekin hasiko nuke. ‖ Nik zerbait zailarekin hasiko nintzateke. ;; Nik zerbait errazarekin hasi nintzen bihar. ;; Zuk zerbait errazarekin hasiko nintzateke. ‖ hasiko
 Eta gaizki egiten badut? ‖ Lasai, normala da hasieran gaizki egitea. ‖ Normala da hasieran gaizki egitea. ;; Lasai, normala da. ‖ Urduri, normala da hasieran gaizki egitea. ;; Lasai, normala da amaieran gaizki egitea. ;; Lasai, normala naiz hasieran gaizki egitea. ‖ normala
