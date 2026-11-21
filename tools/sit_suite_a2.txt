@@ -1,0 +1,526 @@
+# Lot C — situations A2 (suite). Même format que sit_suite_a1.txt.
+
+== a2restaurante | 2 | Que nous conseillez-vous ? | Au restaurant, tu demandes conseil à la serveuse et tu invites un ami. | Serveuse
+# Demande ce qu'elle te recommande.
+# Demande ce qu'il y a dedans.
+# Dis que vous voulez une portion à partager.
+# Dis que tu ne veux pas de dessert, merci.
+# Demande l'addition.
+# Dis que c'est toi qui invites.
+-- es
+Buenas noches. ¿Ya saben qué quieren? ‖ ¿Qué me recomienda? ‖ Perdone, ¿qué me recomienda? ;; ¿Qué nos recomienda? ‖ ¿Qué hora es? ;; ¿Me cobras? ;; ¿Qué me cuesta? ‖ recomienda
+La paella de la casa está muy buena. ‖ ¿Qué lleva? ‖ ¿Qué lleva la paella? ;; Perdone, ¿qué lleva? ‖ ¿Qué llevas? ;; ¿Qué hora lleva? ;; ¿Dónde lleva? ‖ lleva
+Lleva arroz, carne y verduras. ‖ Vale. Una ración para compartir, por favor. ‖ Una ración para compartir. ;; Vale, una ración para compartir. ‖ Vale. Una ración para comer ayer. ;; Vale. Una cuenta para compartir. ;; Vale. Una ración para compartes. ‖ ración ; compartir
+¿Van a querer postre? ‖ No, gracias. Sin postre. ‖ No, gracias. ;; No queremos postre, gracias. ‖ Sí, gracias. Sin postre. ;; No, gracias. Sin pan postre. ;; No, de nada. Sin postre. ‖ postre
+¿Algo más? ‖ No, gracias. ¿Me cobra? ‖ La cuenta, por favor. ;; ¿Me trae la cuenta, por favor? ‖ No, gracias. ¿Me cobras ayer? ;; No, gracias. ¿Le cobro? ;; Sí, gracias. ¿Me cobra? ‖ cobra
+Son treinta euros. ‖ Invito yo. ‖ Hoy invito yo. ;; Pago yo, invito yo. ‖ Invitas tú. ;; Invito yo ayer. ;; Invito el postre. ‖ invito
+V: ¿Qué me recomienda? = Que me conseillez-vous ? ;; una ración para compartir = une portion à partager ;; Invito yo = C'est moi qui invite
+-- va
+Bona nit. Ja saben què volen? ‖ Què em recomana? ‖ Perdó, què em recomana? ;; Què ens recomana? ‖ Què em recomanes demà ahir? ;; Què li recomane? ;; Què em costa? ‖ recomana
+La paella de la casa està molt bona. ‖ Què porta? ‖ Què porta la paella? ;; Perdó, què porta? ‖ Què portes? ;; Quina hora porta? ;; On porta? ‖ porta
+Porta arròs, carn i verdures. ‖ D'acord. Una paella per a compartir, per favor. ‖ Una paella per a compartir. ;; D'acord, una paella per a compartir. ‖ D'acord. Una paella per a menjar ahir. ;; D'acord. Un compte per a compartir. ;; D'acord. Una paella per a comparteixes. ‖ paella ; compartir ‖ Commande une paella à partager.
+Volen postres? ‖ No, gràcies. Sense postres. ‖ No, gràcies. ;; No volem postres, gràcies. ‖ Sí, gràcies. Sense postres. ;; No, gràcies. Sense pa postres. ;; No, de res. Sense postres. ‖ postres
+Alguna cosa més? ‖ No, gràcies. El compte, per favor. ‖ El compte, per favor. ;; Em porta el compte, per favor? ‖ No, gràcies. El compte, ahir. ;; No, gràcies. Li porte el compte? ;; Sí, gràcies. El compte, per favor. ‖ compte
+Són trenta euros. ‖ Pague jo. ‖ Hui pague jo. ;; Hui pague jo, eh? ‖ Pagues tu. ;; Pague jo ahir. ;; Pague les postres. ‖ pague ‖ Dis que c'est toi qui paies.
+V: Què em recomana? = Que me conseillez-vous ? ;; per a compartir = à partager ;; Pague jo = C'est moi qui paie
+-- ca
+Bona nit. Ja saben què volen? ‖ Què tenen per picar? ‖ Què hi ha per picar? ;; Perdoni, què tenen per picar? ‖ Què tens per picar ahir? ;; Què tenim per picar? ;; Què costa per picar? ‖ picar ‖ Demande ce qu'ils ont à grignoter.
+Tenim una paella molt bona. ‖ Què porta? ‖ Què porta la paella? ;; Perdoni, què porta? ‖ Què portes? ;; Quina hora porta? ;; On porta? ‖ porta
+Porta arròs, carn i verdures. ‖ D'acord. Una paella per compartir, si us plau. ‖ Una paella per compartir. ;; D'acord, una paella per compartir. ‖ D'acord. Una paella per menjar ahir. ;; D'acord. Un compte per compartir. ;; D'acord. Una paella per comparteixes. ‖ paella ; compartir ‖ Commande une paella à partager.
+Volen postres? ‖ No, gràcies. Sense postres. ‖ No, gràcies. ;; No volem postres, gràcies. ‖ Sí, gràcies. Sense postres. ;; No, gràcies. Sense pa postres. ;; No, de res. Sense postres. ‖ postres
+Alguna cosa més? ‖ No, gràcies. El compte, si us plau. ‖ El compte, si us plau. ;; Em porta el compte, si us plau? ‖ No, gràcies. El compte, ahir. ;; No, gràcies. Li porto el compte? ;; Sí, gràcies. El compte, si us plau. ‖ compte
+Són trenta euros. ‖ Pago jo. ‖ Avui pago jo. ;; Avui pago jo, eh? ‖ Pagues tu. ;; Pago jo ahir. ;; Pago les postres. ‖ pago ‖ Dis que c'est toi qui paies.
+V: per picar = pour grignoter ;; per compartir = à partager ;; Pago jo = C'est moi qui paie
+-- gl
+Boas noites. Xa saben que queren? ‖ Que hai hoxe? ‖ Perdoe, que hai hoxe? ;; Que hai para comer? ‖ Que hai onte? ;; Que hora hai hoxe? ;; Que me custa? ‖ hoxe ‖ Demande ce qu'il y a aujourd'hui.
+A paella da casa está moi boa. ‖ Que leva? ‖ Que leva a paella? ;; Perdoe, que leva? ‖ Que levas? ;; Que hora leva? ;; Onde leva? ‖ leva
+Leva arroz, polo e verduras. ‖ Vale. Unha paella para compartir, por favor. ‖ Unha paella para compartir. ;; Vale, unha paella para compartir. ‖ Vale. Unha paella para comer onte. ;; Vale. Unha conta para compartir. ;; Vale. Unha paella para compartes. ‖ paella ; compartir ‖ Commande une paella à partager.
+Van querer sobremesa? ‖ Non, grazas. Sen sobremesa. ‖ Non, grazas. ;; Non queremos sobremesa, grazas. ‖ Si, grazas. Sen sobremesa. ;; Non, grazas. Sen pan sobremesa. ;; Non, de nada. Sen sobremesa. ‖ sobremesa
+Algo máis? ‖ Non, grazas. A conta, por favor. ‖ A conta, por favor. ;; Tráeme a conta, por favor? ‖ Non, grazas. A conta, onte. ;; Non, grazas. A conta, mañá. ;; Si, grazas. A conta, por favor. ‖ conta
+Son trinta euros. ‖ Convido eu. ‖ Hoxe convido eu. ;; Pago eu, convido eu. ‖ Convidas ti. ;; Convido eu onte. ;; Convido a sobremesa. ‖ convido
+V: Que hai hoxe? = Qu'est-ce qu'il y a aujourd'hui ? ;; para compartir = à partager ;; Convido eu = C'est moi qui invite
+-- eu
+Gabon. Badakizue zer nahi duzuen? ‖ Zer gomendatzen duzu? ‖ Barkatu, zer gomendatzen duzu? ;; Zer gomendatzen diguzu? ‖ Zer gomendatzen dut? ;; Zer gomendatzen duzu atzo bihar? ;; Zer balio du? ‖ gomendatzen
+Paella oso ona da gaur. ‖ Zer du paellak? ‖ Zer du? ;; Barkatu, zer du paellak? ‖ Zer duzu paellak? ;; Zer ordu du paellak? ;; Non du paellak? ‖ paellak ‖ Demande ce qu'il y a dans la paella.
+Arroza eta arraina. ‖ Ados. Paella bat partekatzeko, mesedez. ‖ Paella bat partekatzeko. ;; Ados, paella bat partekatzeko, mesedez. ‖ Ados. Paella bat atzo partekatzeko. ;; Ados. Kafe bat partekatzeko. ;; Ados. Paella bat partekatzen duzu. ‖ partekatzeko ‖ Commande une paella à partager.
+Postrea nahi duzue? ‖ Ez, eskerrik asko. Postrerik ez. ‖ Ez, eskerrik asko. ;; Ez dugu postrerik nahi, eskerrik asko. ‖ Bai, eskerrik asko. Postrerik ez. ;; Ura, postrerik ez. ;; Ez, ez horregatik. Postrerik ez. ‖ postrerik
+Beste ezer? ‖ Ez, eskerrik asko. Kontua, mesedez. ‖ Kontua, mesedez. ;; Kontua ekarri, mesedez. ‖ Ez, eskerrik asko. Kontua, atzo. ;; Ez, eskerrik asko. Kontua ekarriko dizut? ;; Bai, eskerrik asko. Kontua, mesedez. ‖ kontua
+Hogeita hamar euro dira. ‖ Nik ordainduko dut. ‖ Gaur nik ordainduko dut. ;; Nik ordaintzen dut. ‖ Zuk ordainduko duzu. ;; Nik ordaindu dut atzo. ;; Nik postrea ordainduko dut. ‖ ordainduko ‖ Dis que c'est toi qui paies.
+V: Zer gomendatzen duzu? = Que me conseillez-vous ? ;; partekatu = partager ;; Kontua, mesedez = L'addition, s'il vous plaît
+
+== a2alquiler | 2 | Signer le contrat | Tu visites une chambre et tu poses des questions avant de signer. | Propriétaire
+# Demande si les charges sont comprises.
+# Demande combien est la caution.
+# Dis que la chambre te plaît.
+# Demande quand tu peux signer le contrat.
+# Dis que tu as déjà rempli le formulaire.
+# Remercie et dis à demain.
+-- es
+Esta es la habitación. El alquiler es de cuatrocientos euros. ‖ ¿Están incluidos los gastos? ‖ ¿Los gastos están incluidos? ;; Perdone, ¿están incluidos los gastos? ‖ ¿Están incluidos los postres? ;; ¿Estás incluido los gastos? ;; ¿Están incluidos los gastos ayer mañana? ‖ gastos ; incluidos
+Sí, el agua y la luz están incluidas. ‖ ¿Cuánto es la fianza? ‖ ¿Y la fianza? ;; ¿Cuánto es la fianza, por favor? ‖ ¿Cuándo es la fianza? ;; ¿Cuánto es la cena? ;; ¿Cuánto eres la fianza? ‖ fianza
+Un mes de alquiler. ‖ Me gusta mucho la habitación. ‖ La habitación me gusta mucho. ;; Me gusta la habitación. ‖ Te gusta mucho la habitación. ;; Me gusto mucho la habitación. ;; No me gusta nada la habitación. ‖ gusta ; habitación
+¡Qué bien! ‖ ¿Cuándo puedo firmar el contrato? ‖ ¿Cuándo firmamos el contrato? ;; ¿Cuándo puedo firmar? ‖ ¿Dónde puedo comer el contrato? ;; ¿Cuándo puedes firmar el contrato? ;; ¿Cuánto puedo firmar el contrato? ‖ firmar ; contrato
+Mañana, si quiere. ¿Tiene el formulario? ‖ Sí, ya he rellenado el formulario. ‖ Ya he rellenado el formulario. ;; Sí, ya lo he rellenado. ‖ Sí, voy a rellenar el formulario ayer. ;; Sí, ya has rellenado el formulario. ;; No, ya he rellenado el formulario. ‖ rellenado ; formulario
+Perfecto. Hasta mañana entonces. ‖ Muchas gracias. ¡Hasta mañana! ‖ Gracias. ¡Hasta mañana! ;; Muchas gracias, hasta mañana. ‖ De nada. ¡Hasta mañana! ;; Lo siento. ¡Buenas noches! ;; Muchas gracias. ¡Hasta ayer! ‖ gracias
+V: la fianza = la caution ;; ¿Están incluidos los gastos? = Les charges sont comprises ? ;; firmar el contrato = signer le contrat
+-- va
+Esta és l'habitació. És un pis compartit. ‖ Quant és el lloguer? ‖ I el lloguer, quant és? ;; Perdó, quant és el lloguer? ‖ Quan és el lloguer? ;; Quant és el sopar? ;; Quant eres el lloguer? ‖ lloguer ‖ Demande combien est le loyer.
+Quatre-cents euros al mes. ‖ Em pareix bé. ‖ D'acord, em pareix bé. ;; Molt bé, em pareix bé. ‖ Et pareix bé. ;; Em pareix bé ahir. ;; Em pareix car demà. ‖ pareix ‖ Dis que ça te paraît bien.
+Molt bé. ‖ M'agrada molt l'habitació. ‖ L'habitació m'agrada molt. ;; M'agrada l'habitació. ‖ T'agrada molt l'habitació. ;; M'agrade molt l'habitació. ;; No m'agrada gens l'habitació. ‖ agrada ; habitació
+Que bé! ‖ Quan puc signar el contracte? ‖ Quan signem el contracte? ;; Quan puc signar? ‖ On puc menjar el contracte? ;; Quan pots signar el contracte? ;; Quant puc signar el contracte? ‖ signar ; contracte
+Demà, si vol. Té el formulari? ‖ Sí, ja he omplit el formulari. ‖ Ja he omplit el formulari. ;; Sí, ja l'he omplit. ‖ Sí, vaig a omplir el formulari ahir. ;; Sí, ja has omplit el formulari. ;; No, ja he omplit el formulari. ‖ omplit ; formulari
+Perfecte. Fins demà. ‖ Moltes gràcies. Fins demà! ‖ Gràcies. Fins demà! ;; Moltes gràcies, fins demà. ‖ De res. Fins demà! ;; Ho sent. Bona nit! ;; Moltes gràcies. Fins ahir! ‖ gràcies
+V: Quant és el lloguer? = Combien est le loyer ? ;; Em pareix bé = Ça me paraît bien ;; signar el contracte = signer le contrat
+-- ca
+Aquesta és l'habitació. El lloguer és de quatre-cents euros. ‖ Les despeses estan incloses? ‖ Estan incloses les despeses? ;; Perdoni, les despeses estan incloses? ‖ Les postres estan incloses? ;; Estàs inclòs les despeses? ;; Les despeses estan incloses ahir demà? ‖ despeses ; incloses
+Sí, l'aigua i la llum estan incloses. ‖ Quant és la fiança? ‖ I la fiança? ;; Quant és la fiança, si us plau? ‖ Quan és la fiança? ;; Quant és el sopar? ;; Quant ets la fiança? ‖ fiança
+Un mes de lloguer. ‖ M'agrada molt l'habitació. ‖ L'habitació m'agrada molt. ;; M'agrada l'habitació. ‖ T'agrada molt l'habitació. ;; M'agrado molt l'habitació. ;; No m'agrada gens l'habitació. ‖ agrada ; habitació
+Que bé! ‖ Quan puc signar el contracte? ‖ Quan signem el contracte? ;; Quan puc signar? ‖ On puc menjar el contracte? ;; Quan pots signar el contracte? ;; Quant puc signar el contracte? ‖ signar ; contracte
+Demà, si vol. Té el formulari? ‖ Sí, ja he omplert el formulari. ‖ Ja he omplert el formulari. ;; Sí, ja l'he omplert. ‖ Sí, vaig a omplir el formulari ahir. ;; Sí, ja has omplert el formulari. ;; No, ja he omplert el formulari. ‖ omplert ; formulari
+Perfecte. Fins demà, doncs. ‖ Moltes gràcies. Fins demà! ‖ Gràcies. Fins demà! ;; Moltes gràcies, fins demà. ‖ De res. Fins demà! ;; Ho sento. Bona nit! ;; Moltes gràcies. Fins ahir! ‖ gràcies
+V: la fiança = la caution ;; les despeses = les charges ;; signar el contracte = signer le contrat
+-- gl
+Este é o cuarto. O aluguer é de catrocentos euros. ‖ Os gastos están incluídos? ‖ Están incluídos os gastos? ;; Perdoe, os gastos están incluídos? ‖ As sobremesas están incluídas? ;; Os gastos son incluídos mañá? ;; Os gastos están incluídos onte mañá? ‖ gastos ; incluídos
+Si, a auga e a luz están incluídas. ‖ Canto é a fianza? ‖ E a fianza? ;; Canto é a fianza, por favor? ‖ Cando é a fianza? ;; Canto é a cea? ;; Canto es a fianza? ‖ fianza
+Un mes de aluguer. ‖ Gústame moito o cuarto. ‖ O cuarto gústame moito. ;; Gústame o cuarto. ‖ Gústache moito o cuarto. ;; Gusto moito o cuarto. ;; Non me gusta nada o cuarto. ‖ gústame ; cuarto
+Que ben! ‖ Cando podo asinar o contrato? ‖ Cando asinamos o contrato? ;; Cando podo asinar? ‖ Onde podo comer o contrato? ;; Cando podes asinar o contrato? ;; Canto podo asinar o contrato? ‖ asinar ; contrato
+Mañá, se quere. Ten o formulario? ‖ Si, xa enchín o formulario. ‖ Xa enchín o formulario. ;; Si, xa o enchín. ‖ Si, vou encher o formulario onte. ;; Si, xa encheches o formulario. ;; Non, xa enchín o formulario. ‖ enchín ; formulario
+Perfecto. Ata mañá, entón. ‖ Moitas grazas. Ata mañá! ‖ Grazas. Ata mañá! ;; Moitas grazas, ata mañá. ‖ De nada. Ata mañá! ;; Síntoo. Boas noites! ;; Moitas grazas. Ata onte! ‖ grazas
+V: a fianza = la caution ;; os gastos = les charges ;; asinar o contrato = signer le contrat
+-- eu
+Hau da gela. ‖ Zenbat da alokairua? ‖ Barkatu, zenbat da alokairua? ;; Eta alokairua, zenbat da? ‖ Noiz da alokairua? ;; Zenbat da afaria? ;; Zenbat naiz alokairua? ‖ alokairua ‖ Demande combien est le loyer.
+Laurehun euro hilean. ‖ Ondo dago. Gela asko gustatzen zait. ‖ Gela asko gustatzen zait. ;; Ondo dago. Gela gustatzen zait. ‖ Ondo dago. Gela asko gustatzen zaizu. ;; Gaizki dago. Gela asko gustatzen zait. ;; Ondo dago. Gela asko gustatzen naiz. ‖ gustatzen ; gela ‖ Dis que ça te va et que la chambre te plaît beaucoup.
+Oso ondo! ‖ Kontratua noiz sinatuko dugu? ‖ Noiz sinatuko dugu kontratua? ;; Eta kontratua, noiz sinatuko dugu? ‖ Kontratua non jango dugu? ;; Kontratua noiz sinatuko duzue? ;; Kontratua zenbat sinatuko dugu? ‖ sinatuko ; kontratua ‖ Demande quand vous signerez le contrat.
+Bihar. Inprimakia bete duzu? ‖ Bai, inprimakia bete dut. ‖ Inprimakia bete dut. ;; Bai, bete dut. ‖ Bai, inprimakia atzo beteko dut. ;; Bai, inprimakia bete duzu. ;; Ez, inprimakia bete dut. ‖ bete ; inprimakia ‖ Dis que tu as déjà rempli le formulaire.
+Oso ondo. Bihar arte, beraz. ‖ Eskerrik asko. Bihar arte! ‖ Mila esker. Bihar arte! ;; Eskerrik asko, bihar arte. ‖ Ez horregatik. Bihar arte! ;; Barkatu. Gabon! ;; Eskerrik asko. Atzo arte! ‖ eskerrik ‖ Remercie et dis à demain.
+V: Zenbat da alokairua? = Combien est le loyer ? ;; kontratua sinatu = signer le contrat ;; inprimakia bete = remplir le formulaire
+
+== a2cita | 2 | Rendez-vous à la mairie | Tu veux t'inscrire à la mairie et tu demandes un rendez-vous. | Employée
+# Dis que tu veux demander un rendez-vous.
+# Dis que c'est pour t'inscrire comme habitant.
+# Demande quels papiers il faut.
+# Dis que tu as tout sauf le contrat.
+# Accepte le rendez-vous de mardi.
+# Remercie.
+-- es
+Buenos días. ¿En qué puedo ayudarle? ‖ Buenos días. Quiero pedir cita previa. ‖ Quiero pedir cita. ;; Buenos días, quería pedir cita previa. ‖ Buenos días. Quiero pedir cena previa. ;; Buenos días. Quieres pedir cita previa. ;; Buenas noches. Quiero vender cita previa. ‖ cita
+¿Para qué es la cita? ‖ Es para inscribirme en el padrón. ‖ Para inscribirme en el padrón. ;; Para el padrón. ‖ Es para comer. ;; Es para inscribirte en el padrón. ;; Es para el contrato de trabajo ayer. ‖ padrón ‖ Dis que c'est pour t'inscrire au registre des habitants (« el padrón »).
+Muy bien. ‖ ¿Qué papeles necesito? ‖ ¿Qué papeles tengo que traer? ;; ¿Qué necesito? ‖ ¿Qué papeles necesitas? ;; ¿Dónde papeles necesito? ;; ¿Qué postres necesito? ‖ papeles
+El NIE, el contrato de alquiler y el formulario. ‖ Tengo todo menos el contrato. ‖ Lo tengo todo menos el contrato. ;; Todo menos el contrato. ‖ Tengo todo con el contrato. ;; Tienes todo menos el contrato. ;; Tengo nada menos el contrato. ‖ menos ; contrato
+No pasa nada. Hay cita el martes a las diez. ‖ Vale, el martes a las diez me viene bien. ‖ Vale, el martes a las diez. ;; El martes me viene bien. ‖ Vale, el lunes a las diez me viene bien. ;; Vale, el martes a las diez te viene bien. ;; No, el martes a las diez me viene bien. ‖ martes
+Perfecto. Hasta el martes. ‖ Muchas gracias. ¡Hasta el martes! ‖ Gracias. ¡Hasta el martes! ;; Muchas gracias. ‖ De nada. ¡Hasta el martes! ;; Lo siento. ¡Hasta el martes! ;; Muchas gracias. ¡Hasta el domingo! ‖ gracias
+V: pedir cita previa = prendre rendez-vous ;; el padrón = le registre des habitants ;; los papeles = les papiers
+-- va
+Bon dia. En què puc ajudar-lo? ‖ Bon dia. Vull demanar cita prèvia. ‖ Vull demanar cita. ;; Bon dia, voldria demanar cita prèvia. ‖ Bon dia. Vull demanar sopar previ. ;; Bon dia. Vols demanar cita prèvia. ;; Bona nit. Vull vendre cita prèvia. ‖ cita
+Per a què és la cita? ‖ És per a inscriure'm a l'ajuntament. ‖ Per a inscriure'm. ;; És per a inscriure'm. ‖ És per a menjar. ;; És per a inscriure't a l'ajuntament. ;; És per al contracte de treball ahir. ‖ inscriure ‖ Dis que c'est pour t'inscrire à la mairie.
+Molt bé. ‖ Quins papers necessite? ‖ Quins papers he de portar? ;; Què necessite? ‖ Quins papers necessites? ;; On papers necessite? ;; Quines postres necessite? ‖ papers
+El passaport, el contracte de lloguer i el formulari. ‖ Ho tinc tot menys el contracte. ‖ Tot menys el contracte. ;; Tinc tot menys el contracte. ‖ Ho tinc tot amb el contracte. ;; Ho tens tot menys el contracte. ;; No tinc res menys el contracte. ‖ menys ; contracte
+No passa res. Hi ha cita dimarts a les deu. ‖ D'acord, dimarts a les deu em va bé. ‖ D'acord, dimarts a les deu. ;; Dimarts em va bé. ‖ D'acord, dilluns a les deu em va bé. ;; D'acord, dimarts a les deu et va bé. ;; No, dimarts a les deu em va bé. ‖ dimarts
+Perfecte. Fins dimarts. ‖ Moltes gràcies. Fins dimarts! ‖ Gràcies. Fins dimarts! ;; Moltes gràcies. ‖ De res. Fins dimarts! ;; Ho sent. Fins dimarts! ;; Moltes gràcies. Fins diumenge! ‖ gràcies
+V: demanar cita prèvia = prendre rendez-vous ;; inscriure's = s'inscrire ;; els papers = les papiers
+-- ca
+Bon dia. En què el puc ajudar? ‖ Bon dia. Vull demanar cita prèvia. ‖ Vull demanar cita. ;; Bon dia, voldria demanar cita prèvia. ‖ Bon dia. Vull demanar sopar previ. ;; Bon dia. Vols demanar cita prèvia. ;; Bona nit. Vull vendre cita prèvia. ‖ cita
+Per a què és la cita? ‖ És per inscriure'm a l'ajuntament. ‖ Per inscriure'm. ;; És per inscriure'm. ‖ És per menjar. ;; És per inscriure't a l'ajuntament. ;; És per al contracte de treball ahir. ‖ inscriure ‖ Dis que c'est pour t'inscrire à la mairie.
+Molt bé. ‖ Quins papers necessito? ‖ Quins papers he de portar? ;; Què necessito? ‖ Quins papers necessites? ;; On papers necessito? ;; Quines postres necessito? ‖ papers
+El passaport, el contracte de lloguer i el formulari. ‖ Ho tinc tot menys el contracte. ‖ Tot menys el contracte. ;; Tinc tot menys el contracte. ‖ Ho tinc tot amb el contracte. ;; Ho tens tot menys el contracte. ;; No tinc res menys el contracte. ‖ menys ; contracte
+No passa res. Hi ha cita dimarts a les deu. ‖ D'acord, dimarts a les deu em va bé. ‖ D'acord, dimarts a les deu. ;; Dimarts em va bé. ‖ D'acord, dilluns a les deu em va bé. ;; D'acord, dimarts a les deu et va bé. ;; No, dimarts a les deu em va bé. ‖ dimarts
+Perfecte. Fins dimarts. ‖ Moltes gràcies. Fins dimarts! ‖ Gràcies. Fins dimarts! ;; Moltes gràcies. ‖ De res. Fins dimarts! ;; Ho sento. Fins dimarts! ;; Moltes gràcies. Fins diumenge! ‖ gràcies
+V: demanar cita prèvia = prendre rendez-vous ;; inscriure's = s'inscrire ;; els papers = les papiers
+-- gl
+Bos días. En que podo axudalo? ‖ Bos días. Quero pedir cita previa. ‖ Quero pedir cita. ;; Bos días, quería pedir cita previa. ‖ Bos días. Quero pedir cea previa. ;; Bos días. Queres pedir cita previa. ;; Boas noites. Quero vender cita previa. ‖ cita
+Para que é a cita? ‖ É para inscribirme no concello. ‖ Para inscribirme no concello. ;; É para inscribirme. ‖ É para comer. ;; É para inscribirte no concello. ;; É para o contrato de traballo onte. ‖ inscribirme ‖ Dis que c'est pour t'inscrire à la mairie.
+Moi ben. ‖ Que papeis necesito? ‖ Que papeis teño que traer? ;; Que necesito? ‖ Que papeis necesitas? ;; Onde papeis necesito? ;; Que sobremesas necesito? ‖ papeis
+O NIE, o contrato de aluguer e o formulario. ‖ Téñoo todo menos o contrato. ‖ Todo menos o contrato. ;; Teño todo menos o contrato. ‖ Téñoo todo co contrato. ;; Tes todo menos o contrato. ;; Non teño nada menos o contrato. ‖ menos ; contrato
+Non pasa nada. Hai cita o martes ás dez. ‖ Vale, o martes ás dez vaime ben. ‖ Vale, o martes ás dez. ;; O martes vaime ben. ‖ Vale, o luns ás dez vaime ben. ;; Vale, o martes ás dez vaiche ben. ;; Non, o martes ás dez vaime ben. ‖ martes
+Perfecto. Ata o martes. ‖ Moitas grazas. Ata o martes! ‖ Grazas. Ata o martes! ;; Moitas grazas. ‖ De nada. Ata o martes! ;; Síntoo. Ata o martes! ;; Moitas grazas. Ata o domingo! ‖ grazas
+V: pedir cita previa = prendre rendez-vous ;; inscribirse = s'inscrire ;; os papeis = les papiers
+-- eu
+Egun on. Zertan lagun zaitzaket? ‖ Egun on. Hitzordua eskatu nahi dut. ‖ Hitzordua eskatu nahi dut. ;; Egun on, hitzordua nahi nuke. ‖ Egun on. Afaria eskatu nahi dut. ;; Egun on. Hitzordua eskatu nahi duzu. ;; Gabon. Hitzordua saldu nahi dut. ‖ hitzordua
+Zer behar duzu? ‖ Udaletxean izena eman nahi dut. ‖ Izena eman nahi dut. ;; Udaletxean izena eman nahi dut, mesedez. ‖ Udaletxean jan nahi dut. ;; Udaletxean izena eman nahi duzu. ;; Udaletxean izena eman nuen bihar. ‖ izena ‖ Dis que tu veux t'inscrire à la mairie.
+Oso ondo. ‖ Zer paper behar ditut? ‖ Zer paper ekarri behar ditut? ;; Zer behar dut? ‖ Zer paper behar dituzu? ;; Non paper behar ditut? ;; Zer postre behar ditut? ‖ paper
+Pasaportea, kontratua eta inprimakia. ‖ Dena daukat, kontratua izan ezik. ‖ Dena daukat kontratua izan ezik. ;; Kontratua izan ezik, dena. ‖ Dena daukat, kontratuarekin. ;; Dena daukat, kontratua atzo. ;; Ezer ez daukat, kontratua izan ezik. ‖ kontratua
+Ez da ezer. Asteartean hitzordua dago, hamarretan. ‖ Ados, asteartean hamarretan ondo datorkit. ‖ Ados, asteartean hamarretan. ;; Asteartean ondo datorkit. ‖ Ados, astelehenean hamarretan ondo datorkit. ;; Ados, asteartean hamarretan ondo datorkizu. ;; Ez, asteartean hamarretan ondo datorkit. ‖ asteartean
+Oso ondo. Asteartera arte. ‖ Eskerrik asko. Asteartera arte! ‖ Mila esker. Asteartera arte! ;; Eskerrik asko. ‖ Ez horregatik. Asteartera arte! ;; Barkatu. Asteartera arte! ;; Eskerrik asko. Igandera arte! ‖ eskerrik
+V: hitzordua eskatu = prendre rendez-vous ;; izena eman = s'inscrire ;; paperak = les papiers
+
+== a2quedar | 2 | Un café entre amis | Un ami t'appelle pour se voir cette semaine. | Ami
+# Dis que tu as beaucoup travaillé hier.
+# Accepte : oui, tu as envie d'un café.
+# Demande si samedi lui convient.
+# Propose de vous retrouver à huit heures.
+# Propose de passer chez lui.
+# Dis à samedi.
+-- es
+¡Hola! ¿Qué tal? Ayer no te vi. ‖ Ayer trabajé mucho. ‖ Es que ayer trabajé mucho. ;; Ayer trabajé todo el día. ‖ Ayer trabajo mucho. ;; Ayer trabajaste mucho. ;; Mañana trabajé mucho. ‖ trabajé
+¡Qué rollo! ¿Te apetece un café esta semana? ‖ Sí, me apetece mucho. ‖ Sí, me apetece. ;; ¡Claro que sí! Me apetece mucho. ‖ No, me apetece mucho. ;; Sí, te apetece mucho. ;; Sí, me apetece ayer. ‖ apetece
+¡Genial! ¿Qué día? ‖ ¿Te viene bien el sábado? ‖ ¿El sábado te viene bien? ;; ¿Qué tal el sábado? ‖ ¿Me viene bien el sábado? ;; ¿Te viene bien ayer? ;; ¿Te viene bien el café? ‖ sábado
+Sí, el sábado me viene bien. ¿A qué hora? ‖ Quedamos a las ocho. ‖ ¿Quedamos a las ocho? ;; A las ocho, ¿vale? ‖ Quedamos ayer a las ocho. ;; Quedáis a las ocho. ;; Quedamos a las ocho años. ‖ quedamos ; ocho
+Vale. ¿Dónde quedamos? ‖ Paso por tu casa. ‖ Yo paso por tu casa. ;; Paso por tu casa, ¿vale? ‖ Pasas por tu casa. ;; Paso por mi casa ayer. ;; Paso por tu café. ‖ paso ; casa
+¡Perfecto! Hasta el sábado. ‖ ¡Hasta el sábado! ‖ Vale, hasta el sábado. ;; ¡Nos vemos el sábado! ‖ ¡Hasta el lunes! ;; ¡Hasta ayer! ;; ¡Buenas noches, sábado! ‖ sábado
+V: ¿Te apetece un café? = Ça te dit, un café ? ;; ¿Te viene bien? = Ça te va ? ;; Quedamos a las ocho = On se retrouve à huit heures
+-- va
+Hola! Què tal? Ahir no et vaig veure. ‖ Ahir vaig treballar molt. ‖ És que ahir vaig treballar molt. ;; Ahir vaig treballar tot el dia. ‖ Ahir treballe molt. ;; Ahir vas treballar molt. ;; Demà vaig treballar molt. ‖ treballar
+Quina llàstima! Et ve de gust un cafè esta setmana? ‖ Sí, em ve molt de gust. ‖ Sí, em ve de gust. ;; Clar que sí! Em ve molt de gust. ‖ No, em ve molt de gust. ;; Sí, et ve molt de gust. ;; Sí, em ve de gust ahir. ‖ gust
+Molt bé! Quin dia? ‖ Et va bé dissabte? ‖ Dissabte et va bé? ;; Què tal dissabte? ‖ Em va bé dissabte? ;; Et va bé ahir? ;; Et va bé el cafè? ‖ dissabte
+Sí, dissabte em va bé. A quina hora? ‖ Quedem a les huit. ‖ Quedem a les huit? ;; A les huit, d'acord? ‖ Quedem ahir a les huit. ;; Quedeu a les huit. ;; Quedem a les huit anys. ‖ quedem ; huit
+D'acord. On quedem? ‖ Passe per casa teua. ‖ Jo passe per casa teua. ;; Passe per casa teua, d'acord? ‖ Passes per casa teua. ;; Passe per casa meua ahir. ;; Passe pel teu cafè. ‖ passe ; casa
+Perfecte! Fins dissabte. ‖ Fins dissabte! ‖ D'acord, fins dissabte. ;; Ens veiem dissabte! ‖ Fins dilluns! ;; Fins ahir! ;; Bona nit, dissabte! ‖ dissabte
+V: Et ve de gust un cafè? = Ça te dit, un café ? ;; Et va bé? = Ça te va ? ;; Quedem a les huit = On se retrouve à huit heures
+-- ca
+Hola! Què tal? Ahir no et vaig veure. ‖ Ahir vaig treballar molt. ‖ És que ahir vaig treballar molt. ;; Ahir vaig treballar tot el dia. ‖ Ahir treballo molt. ;; Ahir vas treballar molt. ;; Demà vaig treballar molt. ‖ treballar
+Quina llàstima! Et ve de gust un cafè aquesta setmana? ‖ Sí, em ve molt de gust. ‖ Sí, em ve de gust. ;; I tant! Em ve molt de gust. ‖ No, em ve molt de gust. ;; Sí, et ve molt de gust. ;; Sí, em ve de gust ahir. ‖ gust
+Molt bé! Quin dia? ‖ Et va bé dissabte? ‖ Dissabte et va bé? ;; Què tal dissabte? ‖ Em va bé dissabte? ;; Et va bé ahir? ;; Et va bé el cafè? ‖ dissabte
+Sí, dissabte em va bé. A quina hora? ‖ Quedem a les vuit. ‖ Quedem a les vuit? ;; A les vuit, d'acord? ‖ Quedem ahir a les vuit. ;; Quedeu a les vuit. ;; Quedem a les vuit anys. ‖ quedem ; vuit
+D'acord. On quedem? ‖ Passo per casa teva. ‖ Jo passo per casa teva. ;; Passo per casa teva, d'acord? ‖ Passes per casa teva. ;; Passo per casa meva ahir. ;; Passo pel teu cafè. ‖ passo ; casa
+Perfecte! Fins dissabte. ‖ Fins dissabte! ‖ D'acord, fins dissabte. ;; Ens veiem dissabte! ‖ Fins dilluns! ;; Fins ahir! ;; Bona nit, dissabte! ‖ dissabte
+V: Et ve de gust un cafè? = Ça te dit, un café ? ;; Et va bé? = Ça te va ? ;; Quedem a les vuit = On se retrouve à huit heures
+-- gl
+Ola! Que tal? Onte non te vin. ‖ Onte traballei moito. ‖ É que onte traballei moito. ;; Onte traballei todo o día. ‖ Onte traballo moito. ;; Onte traballaches moito. ;; Mañá traballei moito. ‖ traballei
+Que mágoa! Queres tomar un café esta semana? ‖ Si, claro que quero. ‖ Si, quero. ;; Claro que si! ‖ Non, claro que quero. ;; Si, claro que queres. ;; Si, quero onte. ‖ quero ‖ Accepte : oui, bien sûr que tu veux.
+Moi ben! Que día? ‖ Vaiche ben o sábado? ‖ O sábado vaiche ben? ;; Que tal o sábado? ‖ Vaime ben o sábado? ;; Vaiche ben onte? ;; Vaiche ben o café? ‖ sábado
+Si, o sábado vaime ben. A que hora? ‖ Quedamos ás oito. ‖ Quedamos ás oito? ;; Ás oito, vale? ‖ Quedamos onte ás oito. ;; Quedades ás oito. ;; Quedamos ás oito anos. ‖ quedamos ; oito
+Vale. Onde quedamos? ‖ Paso pola túa casa. ‖ Eu paso pola túa casa. ;; Paso pola túa casa, vale? ‖ Pasas pola túa casa. ;; Paso pola miña casa onte. ;; Paso polo teu café. ‖ paso ; casa
+Perfecto! Ata o sábado. ‖ Ata o sábado! ‖ Vale, ata o sábado. ;; Vémonos o sábado! ‖ Ata o luns! ;; Ata onte! ;; Boas noites, sábado! ‖ sábado
+V: Queres tomar un café? = Tu veux prendre un café ? ;; Vaiche ben? = Ça te va ? ;; Quedamos ás oito = On se retrouve à huit heures
+-- eu
+Kaixo! Zer moduz? Atzo ez zintudan ikusi. ‖ Atzo asko lan egin nuen. ‖ Atzo lan asko egin nuen. ;; Atzo egun osoan lan egin nuen. ‖ Atzo asko lan egiten dut. ;; Atzo asko lan egin zenuen. ;; Bihar asko lan egin nuen. ‖ atzo ; nuen
+Pena da! Kafe bat hartu nahi duzu asteburuan? ‖ Bai, noski. Nahi dut. ‖ Bai, noski. ;; Bai, nahi dut. ‖ Ez, noski. Nahi dut. ;; Bai, noski. Nahi duzu. ;; Bai, atzo nahi dut. ‖ bai ‖ Accepte : oui, bien sûr.
+Oso ondo! Zein egunetan? ‖ Larunbata ondo datorkizu? ‖ Larunbatean ondo datorkizu? ;; Zer moduz larunbata? ‖ Larunbata ondo datorkit? ;; Atzo ondo datorkizu? ;; Kafea ondo datorkizu? ‖ larunbata
+Bai, larunbata ondo datorkit. Zer ordutan? ‖ Zortzi eta erdietan geratuko gara. ‖ Zortzi eta erdietan. ;; Zortzi eta erdietan, ados? ‖ Atzo zortzi eta erdietan geratuko gara. ;; Zortzi eta erdietan geratuko zarete. ;; Zortzi eta erdi urtetan geratuko gara. ‖ erdietan ‖ Propose de vous retrouver à huit heures et demie.
+Ados. Non geratuko gara? ‖ Zure etxetik pasatuko naiz. ‖ Ni zure etxetik pasatuko naiz. ;; Zure etxetik pasatuko naiz, ados? ‖ Zure etxetik pasatuko zara. ;; Nire etxetik pasatu nintzen atzo. ;; Zure kafetik pasatuko naiz. ‖ etxetik
+Oso ondo! Larunbatera arte. ‖ Ondo, larunbatera arte! ‖ Larunbatera arte! ;; Ados, larunbatera arte. ‖ Astelehenera arte! ;; Atzora arte! ;; Gabon, larunbata! ‖ larunbatera
+V: ondo datorkizu? = ça te va ? ;; geratu = se retrouver ;; zortzi eta erdietan = à huit heures et demie
+
+== a2ropa | 2 | Dans une boutique de vêtements | Tu essaies une veste et tu veux en rapporter une autre. | Vendeur
+# Demande si tu peux l'essayer.
+# Dis qu'elle est trop grande.
+# Demande s'il y en a une plus petite.
+# Dis que celle-ci te va bien et que tu la prends.
+# Dis que tu veux aussi rendre ces chaussures.
+# Dis qu'il peut garder la monnaie.
+-- es
+Buenas tardes. ¿Le gusta esta chaqueta? ‖ Sí. ¿Puedo probármela? ‖ ¿Puedo probármela? ;; Sí, ¿me la puedo probar? ‖ Sí. ¿Puedo pagarla? ;; Sí. ¿Puedo comérmela? ;; No. ¿Puedo probármela? ‖ probármela
+Claro. ¿Qué tal? ‖ Me queda grande. ‖ Me queda un poco grande. ;; Es demasiado grande. ‖ Me queda pequeña. ;; Te queda grande. ;; Me quedo grande. ‖ grande
+Vaya. ‖ ¿Tiene una más pequeña? ‖ ¿Hay una más pequeña? ;; ¿Tiene una talla más pequeña? ‖ ¿Tiene una más grande? ;; ¿Tengo una más pequeña? ;; ¿Tiene una más pequeña ayer? ‖ pequeña
+Sí, aquí tiene. ‖ Esta me queda bien. Me la llevo. ‖ Me queda bien. Me la llevo. ;; Esta sí. Me la llevo. ‖ Esta me queda mal. Me la llevo. ;; Esta te queda bien. Te la llevas. ;; Esta me queda bien. No me la llevo. ‖ llevo
+Muy bien. ¿Algo más? ‖ Sí, quiero devolver estos zapatos. ‖ Quiero devolver estos zapatos. ;; Sí, quería devolver estos zapatos. ‖ Sí, quiero comprar estos zapatos. ;; Sí, quieres devolver estos zapatos. ;; No, quiero devolver estos zapatos. ‖ devolver ; zapatos
+De acuerdo. Son cuarenta euros. ‖ Aquí tiene. Quédese con el cambio. ‖ Quédese con el cambio. ;; Tome. Quédese con el cambio. ‖ Aquí tiene. ¿Me cobras? ;; Aquí tiene. Quédate con la chaqueta. ;; Aquí tiene. Me quedo con el cambio. ‖ cambio
+V: ¿Puedo probármela? = Je peux l'essayer ? ;; Me queda grande = Elle est trop grande pour moi ;; Quédese con el cambio = Gardez la monnaie
+-- va
+Bona vesprada. Li agrada esta jaqueta? ‖ Sí, m'agrada molt. Quant costa? ‖ M'agrada. Quant costa? ;; Sí. Quant costa? ‖ Sí, m'agrada molt. Quan costa? ;; No, m'agrada molt. Quant costa? ;; Sí, t'agrada molt. Quant costes? ‖ costa ‖ Dis qu'elle te plaît et demande combien elle coûte.
+Quaranta euros. Què tal li va? ‖ Em va gran. ‖ Em va un poc gran. ;; És massa gran. ‖ Em va xicoteta. ;; Et va gran. ;; Em vaig gran. ‖ gran ‖ Dis qu'elle est trop grande.
+Vaja. ‖ En té una més xicoteta? ‖ Hi ha una més xicoteta? ;; Té una més xicoteta? ‖ En té una més gran? ;; En tinc una més xicoteta? ;; En té una més xicoteta ahir? ‖ xicoteta
+Sí, ací té. ‖ Esta em va bé. Me l'emporte. ‖ Em va bé. Me l'emporte. ;; Esta sí. Me l'emporte. ‖ Esta em va malament. Me l'emporte. ;; Esta et va bé. Te l'emportes. ;; Esta em va bé. No me l'emporte. ‖ emporte
+Molt bé. Alguna cosa més? ‖ Sí, vull tornar estes sabates. ‖ Vull tornar estes sabates. ;; Sí, vull tornar este producte. ‖ Sí, vull comprar estes sabates. ;; Sí, vols tornar estes sabates. ;; No, vull tornar estes sabates. ‖ tornar ; sabates
+D'acord. Quaranta euros. ‖ Ací té. Quede's el canvi. ‖ Quede's el canvi. ;; Tinga. Quede's el canvi. ‖ Ací té. Em quede la jaqueta ahir. ;; Ací té. Queda't la jaqueta. ;; Ací té. Em quede el canvi. ‖ canvi
+V: Quant costa? = Combien ça coûte ? ;; Em va gran = Elle est trop grande pour moi ;; Quede's el canvi = Gardez la monnaie
+-- ca
+Bona tarda. Li agrada aquesta jaqueta? ‖ Sí, m'agrada molt. Quant costa? ‖ M'agrada. Quant costa? ;; Sí. Quant costa? ‖ Sí, m'agrada molt. Quan costa? ;; No, m'agrada molt. Quant costa? ;; Sí, t'agrada molt. Quant costes? ‖ costa ‖ Dis qu'elle te plaît et demande combien elle coûte.
+Quaranta euros. Què tal li va? ‖ Em va gran. ‖ Em va una mica gran. ;; És massa gran. ‖ Em va petita. ;; Et va gran. ;; Em vaig gran. ‖ gran ‖ Dis qu'elle est trop grande.
+Vaja. ‖ En té una de més petita? ‖ Hi ha una talla més petita? ;; Té una talla més petita? ‖ En té una de més gran? ;; En tinc una de més petita? ;; En té una de més petita ahir? ‖ petita
+Sí, aquí té. ‖ Aquesta em va bé. Me l'emporto. ‖ Em va bé. Me l'emporto. ;; Aquesta sí. Me l'emporto. ‖ Aquesta em va malament. Me l'emporto. ;; Aquesta et va bé. Te l'emportes. ;; Aquesta em va bé. No me l'emporto. ‖ emporto
+Molt bé. Alguna cosa més? ‖ Sí, vull tornar aquestes sabates. ‖ Vull tornar aquestes sabates. ;; Sí, voldria tornar aquestes sabates. ‖ Sí, vull comprar aquestes sabates. ;; Sí, vols tornar aquestes sabates. ;; No, vull tornar aquestes sabates. ‖ tornar ; sabates
+D'acord. Són quaranta euros. ‖ Aquí té. Quedi's el canvi. ‖ Quedi's el canvi. ;; Tingui. Quedi's el canvi. ‖ Aquí té. Em quedo la jaqueta ahir. ;; Aquí té. Queda't la jaqueta. ;; Aquí té. Em quedo el canvi. ‖ canvi
+V: Quant costa? = Combien ça coûte ? ;; Em va gran = Elle est trop grande pour moi ;; Quedi's el canvi = Gardez la monnaie
+-- gl
+Boas tardes. Gústalle esta chaqueta? ‖ Si. Podo probala? ‖ Podo probala? ;; Si, podo probar a chaqueta? ‖ Si. Podes probala? ;; Si. Podo comela? ;; Non. Podo probala? ‖ probala
+Claro. Que tal? ‖ Quédame grande. ‖ Quédame un pouco grande. ;; É demasiado grande. ‖ Quédame pequena. ;; Quédache grande. ;; Quedo grande. ‖ grande
+Que mágoa. ‖ Ten unha máis pequena? ‖ Hai unha máis pequena? ;; Ten unha talla máis pequena? ‖ Ten unha máis grande? ;; Teño unha máis pequena? ;; Ten unha máis pequena onte? ‖ pequena
+Si, aquí ten. ‖ Esta quédame ben. Quero esta. ‖ Quédame ben. Quero esta. ;; Esta si. Quero esta. ‖ Esta quédame mal. Quero esta. ;; Esta quédache ben. Queres esta. ;; Esta quédame ben. Non quero esta. ‖ quero
+Moi ben. Algo máis? ‖ Si, quero devolver estes zapatos. ‖ Quero devolver estes zapatos. ;; Si, quería devolver estes zapatos. ‖ Si, quero mercar estes zapatos. ;; Si, queres devolver estes zapatos. ;; Non, quero devolver estes zapatos. ‖ devolver ; zapatos
+De acordo. Son corenta euros. ‖ Aquí ten. Quédese co cambio. ‖ Quédese co cambio. ;; Tome. Quédese co cambio. ‖ Aquí ten. Déame o cambio onte. ;; Aquí ten. Queda coa chaqueta. ;; Aquí ten. Quédome co cambio. ‖ cambio
+V: Podo probala? = Je peux l'essayer ? ;; Quédame grande = Elle est trop grande pour moi ;; Quédese co cambio = Gardez la monnaie
+-- eu
+Arratsalde on. Jaka hau gustatzen zaizu? ‖ Bai, gustatzen zait. Zenbat da? ‖ Gustatzen zait. Zenbat da? ;; Bai. Zenbat da? ‖ Bai, gustatzen zait. Noiz da? ;; Ez, gustatzen zait. Zenbat da? ;; Bai, gustatzen zaizu. Zenbat zara? ‖ zenbat ‖ Dis qu'elle te plaît et demande combien elle coûte.
+Berrogei euro. Zer moduz? ‖ Handiegia da. ‖ Pixka bat handiegia da. ;; Handia da niretzat. ‖ Txikiegia da. ;; Handiegia zara. ;; Handiegia naiz. ‖ handiegia ‖ Dis qu'elle est trop grande.
+Pena da. ‖ Txikiagorik ba al dago? ‖ Txikiagorik ba al dago, mesedez? ;; Barkatu, txikiagorik ba al dago? ‖ Handiagorik ba al dago? ;; Txikiagorik ba al zaude? ;; Txikiagorik ba al dago atzo? ‖ txikiagorik
+Bai, hemen duzu. ‖ Hau ondo dago. Erosiko dut. ‖ Ondo dago. Erosiko dut. ;; Hau bai. Erosiko dut. ‖ Hau gaizki dago. Erosiko dut. ;; Hau ondo dago. Erosiko duzu. ;; Hau ondo dago. Ez dut erosiko. ‖ erosiko
+Oso ondo. Beste ezer? ‖ Bai, zapata hauek itzuli nahi ditut. ‖ Zapata hauek itzuli nahi ditut. ;; Bai, zapata hauek itzuli nahi nituzke. ‖ Bai, zapata hauek erosi nahi ditut. ;; Bai, zapata hauek itzuli nahi dituzu. ;; Ez, zapata hauek itzuli nahi ditut. ‖ itzuli ; zapata
+Ados. Berrogei euro dira guztira. ‖ Hemen duzu. Eskerrik asko. ‖ Hemen duzu. ;; Tori. Eskerrik asko. ‖ Hemen duzu. Ez horregatik. ;; Hemen naiz. Eskerrik asko. ;; Hemen duzu. Barkatu. ‖ hemen ‖ Paie et remercie.
+V: Zenbat da? = Combien c'est ? ;; handiegia = trop grand ;; Hau itzuli nahi nuke = Je voudrais rendre ceci
+
+== a2trabajo | 2 | Un nouveau collègue | Le premier jour au bureau, un collègue se présente. | Collègue
+# Présente-toi et dis que tu es nouveau.
+# Dis que tu travailles dans la vente.
+# Dis que tu es en Espagne depuis trois mois.
+# Dis que tu as travaillé huit ans dans des magasins.
+# Demande-lui à quelle heure commence la réunion.
+# Dis à tout à l'heure.
+-- es
+¡Hola! Soy Pablo, del equipo de ventas. ‖ Hola, Pablo. Soy Max, soy nuevo. ‖ Encantado. Soy Max, soy nuevo. ;; Hola, me llamo Max. Soy nuevo. ‖ Hola, Pablo. Eres Max, eres nuevo. ;; Adiós, Pablo. Soy Max, soy nuevo. ;; Hola, Pablo. Soy Max, soy viejo. ‖ nuevo
+¡Bienvenido! ¿A qué te dedicas? ‖ Me dedico a las ventas. ‖ Trabajo en ventas. ;; Me dedico a las ventas, como tú. ‖ Te dedicas a las ventas. ;; Me dedico a la cena. ;; Me dedico a las ventas ayer. ‖ ventas
+¡Como yo! ¿Llevas mucho tiempo en España? ‖ Llevo tres meses aquí. ‖ Llevo tres meses en España. ;; Tres meses. ‖ Llevas tres meses aquí. ;; Llevo tres años mañana. ;; Llevo tres meses allí ayer. ‖ tres ; meses
+¿Y antes? ‖ Trabajé ocho años en tiendas. ‖ Antes trabajé ocho años en tiendas. ;; Trabajé en tiendas ocho años. ‖ Trabajo ocho años en tiendas. ;; Trabajaste ocho años en tiendas. ;; Trabajé ocho años en restaurantes mañana. ‖ trabajé ; tiendas
+¡Qué bien! Tienes experiencia. ‖ ¿A qué hora empieza la reunión? ‖ ¿Cuándo empieza la reunión? ;; Perdona, ¿a qué hora es la reunión? ‖ ¿A qué hora empiezas la reunión? ;; ¿Dónde empieza la reunión ayer? ;; ¿A qué hora termina la cena? ‖ reunión
+A las diez. Nos vemos allí. ‖ ¡Hasta luego! ‖ Vale, hasta luego. ;; ¡Nos vemos! ‖ ¡Buenas noches! ;; ¡Hasta ayer! ;; ¡Lo siento mucho! ‖ luego
+V: ¿A qué te dedicas? = Qu'est-ce que tu fais dans la vie ? ;; Me dedico a las ventas = Je travaille dans la vente ;; Llevo tres meses aquí = Je suis ici depuis trois mois
+-- va
+Hola! Soc Pau, de l'equip de vendes. ‖ Hola, Pau. Soc Max, soc nou. ‖ Encantat. Soc Max, soc nou. ;; Hola, em dic Max. Soc nou. ‖ Hola, Pau. Eres Max, eres nou. ;; Adéu, Pau. Soc Max, soc nou. ;; Hola, Pau. Soc Max, soc vell. ‖ nou
+Benvingut! De què treballes? ‖ Treballe en vendes. ‖ Treballe en vendes, com tu. ;; Soc venedor. ‖ Treballes en vendes. ;; Treballe en sopars. ;; Treballe en vendes ahir. ‖ vendes
+Mira, com jo! Fa molt de temps que estàs ací? ‖ Fa tres mesos que soc ací. ‖ Fa tres mesos. ;; Fa poc que he arribat. ‖ Fa tres mesos que eres ací. ;; Fa tres anys demà. ;; Fa tres mesos que soc allí ahir. ‖ tres ; mesos
+I abans? ‖ Vaig treballar huit anys en botigues. ‖ Abans vaig treballar huit anys en botigues. ;; Vaig treballar en botigues huit anys. ‖ Treballe huit anys en botigues. ;; Vas treballar huit anys en botigues. ;; Vaig treballar huit anys en restaurants demà. ‖ treballar ; botigues
+Que bé! Tens experiència. ‖ A quina hora comença la reunió? ‖ Quan comença la reunió? ;; Perdona, a quina hora és la reunió? ‖ A quina hora comences la reunió? ;; On comença la reunió ahir? ;; A quina hora acaba el sopar? ‖ reunió
+A les deu. Ens veiem allí. ‖ Fins després! ‖ D'acord, fins després. ;; Ens veiem! ‖ Bona nit! ;; Fins ahir! ;; Ho sent molt! ‖ després
+V: De què treballes? = Qu'est-ce que tu fais comme travail ? ;; Treballe en vendes = Je travaille dans la vente ;; Fa tres mesos = Depuis trois mois
+-- ca
+Hola! Sóc en Pau, de l'equip de vendes. ‖ Hola, Pau. Sóc el Max, sóc nou. ‖ Encantat. Sóc el Max, sóc nou. ;; Hola, em dic Max. Sóc nou. ‖ Hola, Pau. Ets el Max, ets nou. ;; Adeu, Pau. Sóc el Max, sóc nou. ;; Hola, Pau. Sóc el Max, sóc vell. ‖ nou
+Benvingut! De què treballes? ‖ Treballo en vendes. ‖ Treballo en vendes, com tu. ;; Sóc venedor. ‖ Treballes en vendes. ;; Treballo en sopars. ;; Treballo en vendes ahir. ‖ vendes
+Home, com jo! Fa molt que ets aquí? ‖ Fa tres mesos que sóc aquí. ‖ Fa tres mesos. ;; Fa tres mesos que visc aquí. ‖ Fa tres mesos que ets aquí. ;; Fa tres anys demà. ;; Fa tres mesos que sóc allà ahir. ‖ tres ; mesos
+I abans? ‖ Vaig treballar vuit anys en botigues. ‖ Abans vaig treballar vuit anys en botigues. ;; Vaig treballar en botigues vuit anys. ‖ Treballo vuit anys en botigues. ;; Vas treballar vuit anys en botigues. ;; Vaig treballar vuit anys en restaurants demà. ‖ treballar ; botigues
+Que bé! Tens experiència. ‖ A quina hora comença la reunió? ‖ Quan comença la reunió? ;; Perdona, a quina hora és la reunió? ‖ A quina hora comences la reunió? ;; On comença la reunió ahir? ;; A quina hora acaba el sopar? ‖ reunió
+A les deu. Ens veiem allà. ‖ Fins després! ‖ D'acord, fins després. ;; Ens veiem! ‖ Bona nit! ;; Fins ahir! ;; Ho sento molt! ‖ després
+V: De què treballes? = Qu'est-ce que tu fais comme travail ? ;; Treballo en vendes = Je travaille dans la vente ;; Fa tres mesos = Depuis trois mois
+-- gl
+Ola! Son Pablo, do equipo de vendas. ‖ Ola, Pablo. Son Max, son novo. ‖ Encantado. Son Max, son novo. ;; Ola, chámome Max. Son novo. ‖ Ola, Pablo. Es Max, es novo. ;; Adeus, Pablo. Son Max, son novo. ;; Ola, Pablo. Son Max, son vello. ‖ novo
+Benvido! A que te dedicas? ‖ Traballo en vendas. ‖ Dedícome ás vendas. ;; Traballo en vendas, coma ti. ‖ Dedícaste ás vendas. ;; Dedícome á cea. ;; Dedícome ás vendas onte. ‖ vendas
+Home, coma min! Levas moito tempo aquí? ‖ Levo tres meses aquí. ‖ Levo tres meses en España. ;; Tres meses. ‖ Levas tres meses aquí. ;; Levo tres anos mañá. ;; Levo tres meses alí onte. ‖ tres ; meses
+E antes? ‖ Traballei oito anos en tendas. ‖ Antes traballei oito anos en tendas. ;; Traballei en tendas oito anos. ‖ Traballo oito anos en tendas. ;; Traballaches oito anos en tendas. ;; Traballei oito anos en restaurantes mañá. ‖ traballei ; tendas
+Que ben! Tes experiencia. ‖ A que hora comeza a reunión? ‖ Cando comeza a reunión? ;; Perdoa, a que hora é a reunión? ‖ A que hora comezas a reunión? ;; Onde comeza a reunión onte? ;; A que hora remata a cea? ‖ reunión
+Ás dez. Vémonos alí. ‖ Ata logo! ‖ Vale, ata logo. ;; Vémonos! ‖ Boas noites! ;; Ata onte! ;; Síntoo moito! ‖ logo
+V: A que te dedicas? = Qu'est-ce que tu fais dans la vie ? ;; Traballo en vendas = Je travaille dans la vente ;; Levo tres meses aquí = Je suis ici depuis trois mois
+-- eu
+Kaixo! Pablo naiz, taldekoa. ‖ Kaixo, Pablo. Max naiz, berria naiz. ‖ Pozten naiz. Max naiz, berria naiz. ;; Kaixo, Max naiz. Berria naiz. ‖ Kaixo, Pablo. Max zara, berria zara. ;; Agur, Pablo. Max naiz, berria naiz. ;; Kaixo, Pablo. Max naiz, zaharra naiz. ‖ berria
+Ongi etorri! Zertan egiten duzu lan? ‖ Saltzailea naiz. ‖ Saltzailea naiz, zu bezala. ;; Ni saltzailea naiz. ‖ Saltzailea zara. ;; Afaria naiz. ;; Saltzailea naiz atzo. ‖ saltzailea ‖ Dis que tu es vendeur.
+A, ni bezala! Non bizi zara? ‖ Valentzian bizi naiz. ‖ Valentzian. ;; Orain Valentzian bizi naiz. ‖ Valentzian bizi zara. ;; Valentzian jan naiz. ;; Valentzian bizi naiz atzo. ‖ valentzian ‖ Dis que tu habites à Valence.
+Eta lehen? ‖ Zortzi urtez dendetan lan egin nuen. ‖ Lehen zortzi urtez dendetan lan egin nuen. ;; Dendetan lan egin nuen zortzi urtez. ‖ Zortzi urtez dendetan lan egiten dut. ;; Zortzi urtez dendetan lan egin zenuen. ;; Zortzi urtez jatetxeetan lan egin nuen bihar. ‖ dendetan
+Oso ondo! Esperientzia duzu. ‖ Zer ordutan hasten da bilera? ‖ Noiz hasten da bilera? ;; Barkatu, zer ordutan da bilera? ‖ Zer ordutan hasten zara bilera? ;; Non hasten da bilera atzo? ;; Zer ordutan amaitzen da afaria? ‖ bilera
+Hamarretan, bulegoan. ‖ Gero arte! ‖ Ados, gero arte. ;; Ondo, gero arte! ‖ Gabon! ;; Atzo arte! ;; Barkatu asko! ‖ gero
+V: Zertan egiten duzu lan? = Tu travailles dans quoi ? ;; saltzailea = le vendeur ;; bilera = la réunion
+
+== a2farmacia | 2 | À la pharmacie | Tu ne te sens pas bien et tu vas à la pharmacie. | Pharmacienne
+# Dis que tu t'es tordu la cheville.
+# Dis que tu as aussi mal à la gorge.
+# Dis que tu es allergique au lait.
+# Demande s'il faut une ordonnance.
+# Demande combien de cachets tu dois prendre.
+# Remercie et dis au revoir.
+-- es
+Buenas tardes. ¿Qué le pasa? ‖ Me he torcido el tobillo. ‖ Me he torcido el tobillo esta mañana. ;; Me duele el tobillo. ‖ Te has torcido el tobillo. ;; Me he torcido el postre. ;; Me torcí el tobillo mañana. ‖ tobillo
+Necesita una crema. ¿Algo más? ‖ Sí, también me duele la garganta. ‖ También me duele la garganta. ;; Sí, me duele la garganta. ‖ Sí, también te duele la garganta. ;; Sí, también me gusta la garganta. ;; No, también me duele la garganta. ‖ garganta
+Le doy unas pastillas. ¿Es alérgico a algo? ‖ Sí, soy alérgico a la leche. ‖ Soy alérgico a la leche. ;; Sí, soy alérgica a la leche. ‖ Sí, eres alérgico a la leche. ;; Sí, soy alérgico a la playa. ;; No, soy alérgico a la leche. ‖ alérgico ; leche
+Estas no llevan leche. ‖ ¿Necesito receta? ‖ ¿Hace falta receta? ;; ¿Necesito una receta? ‖ ¿Necesitas receta? ;; ¿Necesito postre? ;; ¿Necesito receta ayer? ‖ receta
+No, no hace falta. ‖ ¿Cuántas pastillas tomo al día? ‖ ¿Cuántas pastillas al día? ;; ¿Cuántas tengo que tomar? ‖ ¿Cuántas pastillas tomas al día? ;; ¿Cuándo pastillas tomo al día? ;; ¿Cuántas pastillas tomo ayer? ‖ pastillas
+Tres al día, después de comer. ‖ Muchas gracias. ¡Adiós! ‖ Gracias. ¡Hasta luego! ;; Muchas gracias. ‖ De nada. ¡Adiós! ;; Lo siento. ¡Hola! ;; Muchas gracias. ¡Buenos días ayer! ‖ gracias
+V: Me he torcido el tobillo = Je me suis tordu la cheville ;; Soy alérgico a… = Je suis allergique à… ;; la receta = l'ordonnance
+-- va
+Bona vesprada. Què li passa? ‖ Estic refredat. ‖ Estic refredada. ;; Em trobe malament. Estic refredat. ‖ Estàs refredat. ;; Estic refredat de postres. ;; Estaré refredat ahir. ‖ refredat ‖ Dis que tu es enrhumé(e).
+Vaja. Alguna cosa més? ‖ Sí, també em fa mal la gola. ‖ També em fa mal la gola. ;; Sí, em fa mal la gola. ‖ Sí, també et fa mal la gola. ;; Sí, també m'agrada la gola. ;; No, també em fa mal la gola. ‖ gola
+Li done una pastilla. Té al·lèrgia a alguna cosa? ‖ Sí, tinc al·lèrgia a la llet. ‖ Tinc al·lèrgia a la llet. ;; Sí, a la llet. ‖ Sí, té al·lèrgia a la llet. ;; Sí, tinc al·lèrgia a la platja. ;; No, tinc al·lèrgia a la llet. ‖ llet ‖ Dis que tu es allergique au lait.
+Esta no porta llet. ‖ Quant costa? ‖ I quant costa? ;; Quant és? ‖ Quan costa? ;; Quant costes? ;; Quant costa ahir? ‖ costa ‖ Demande combien ça coûte.
+Sis euros. ‖ Quantes al dia? ‖ Quantes pastilles al dia? ;; I quantes al dia? ‖ Quantes al dia, ahir? ;; Quan al dia? ;; Quantes a la nit, demà? ‖ quantes ‖ Demande combien tu dois en prendre par jour.
+Tres al dia, després de menjar. ‖ Moltes gràcies. Adéu! ‖ Gràcies. Fins després! ;; Moltes gràcies. ‖ De res. Adéu! ;; Ho sent. Hola! ;; Moltes gràcies. Bon dia ahir! ‖ gràcies
+V: Estic refredat = Je suis enrhumé ;; Tinc al·lèrgia a… = Je suis allergique à… ;; la gola = la gorge
+-- ca
+Bona tarda. Què li passa? ‖ Estic constipat. ‖ Estic constipada. ;; Bona tarda. Estic constipat. ‖ Estàs constipat. ;; Estic constipat de postres. ;; Estaré constipat ahir. ‖ constipat ‖ Dis que tu es enrhumé(e).
+Vaja. Alguna cosa més? ‖ Sí, tinc mal de coll. ‖ Tinc mal de coll. ;; Sí, també tinc mal de coll. ‖ Sí, tens mal de coll. ;; Sí, tinc mal de postres. ;; No, tinc mal de coll. ‖ coll ‖ Dis que tu as mal à la gorge.
+Aquestes pastilles són molt bones. ‖ Quant costen? ‖ I quant costen? ;; Quant és? ‖ Quan costen? ;; Quant costes? ;; Quant costen ahir? ‖ costen ‖ Demande combien elles coûtent.
+Sis euros. ‖ Quantes al dia? ‖ Quantes pastilles al dia? ;; I quantes al dia? ‖ Quantes al dia, ahir? ;; Quan al dia? ;; Quantes a la nit, demà? ‖ quantes ‖ Demande combien tu dois en prendre par jour.
+Tres al dia, després de menjar. ‖ Moltes gràcies. Adeu! ‖ Gràcies. Fins després! ;; Moltes gràcies. ‖ De res. Adeu! ;; Ho sento. Hola! ;; Moltes gràcies. Bon dia ahir! ‖ gràcies ‖ Remercie et dis au revoir.
+V: Estic constipat = Je suis enrhumé ;; Tinc mal de coll = J'ai mal à la gorge ;; la pastilla = le cachet
+-- gl
+Boas tardes. Que lle pasa? ‖ Teño tose. ‖ Boas tardes. Teño tose. ;; Teño moita tose. ‖ Tes tose. ;; Teño tose de sobremesa. ;; Terei tose onte. ‖ tose ‖ Dis que tu tousses.
+Algo máis? ‖ Si, tamén teño dor de gorxa. ‖ Tamén teño dor de gorxa. ;; Si, teño dor de gorxa. ‖ Si, tamén tes dor de gorxa. ;; Si, tamén me gusta a gorxa. ;; Non, tamén teño dor de gorxa. ‖ gorxa ‖ Dis que tu as aussi mal à la gorge.
+Doulle unhas pastillas. Ten alerxia a algo? ‖ Si, teño alerxia ao leite. ‖ Teño alerxia ao leite. ;; Si, ao leite. ‖ Si, tes alerxia ao leite. ;; Si, teño alerxia á praia. ;; Non, teño alerxia ao leite. ‖ alerxia ; leite ‖ Dis que tu es allergique au lait.
+Estas non levan leite. ‖ Preciso unha receita? ‖ Preciso receita? ;; E preciso unha receita? ‖ Precisas unha receita? ;; Preciso unha sobremesa? ;; Preciso unha receita onte? ‖ receita
+Non, non a precisa. ‖ Cantas tomo ao día? ‖ Cantas pastillas ao día? ;; E cantas tomo ao día? ‖ Cantas tomas ao día? ;; Cando pastillas tomo ao día? ;; Cantas tomo onte? ‖ cantas
+Tres ao día, despois de comer. ‖ Moitas grazas. Adeus! ‖ Grazas. Ata logo! ;; Moitas grazas. ‖ De nada. Adeus! ;; Síntoo. Ola! ;; Moitas grazas. Bos días onte! ‖ grazas
+V: Teño tose = Je tousse ;; Teño alerxia a… = Je suis allergique à… ;; a receita = l'ordonnance
+-- eu
+Arratsalde on. Zer gertatzen zaizu? ‖ Hotzeria hartu dut. ‖ Arratsalde on. Hotzeria hartu dut. ;; Ez naiz ondo sentitzen. Hotzeria hartu dut. ‖ Hotzeria hartu duzu. ;; Postrea hartu dut. ;; Hotzeria hartuko dut atzo. ‖ hotzeria ‖ Dis que tu as attrapé un rhume.
+Beste ezer? ‖ Bai, eztarrian min dut. ‖ Eztarrian min dut. ;; Bai, eztarrian ere min dut. ‖ Bai, eztarrian min duzu. ;; Bai, eztarria gustatzen zait. ;; Ez, eztarrian min dut. ‖ eztarrian ‖ Dis que tu as mal à la gorge.
+Pastilla hauek oso onak dira. ‖ Zenbat da? ‖ Eta zenbat da? ;; Barkatu, zenbat da? ‖ Noiz da? ;; Zenbat zara? ;; Zenbat da atzo? ‖ zenbat ‖ Demande combien c'est.
+Sei euro. ‖ Egunean zenbat? ‖ Zenbat pastilla egunean? ;; Eta egunean zenbat? ‖ Atzo zenbat? ;; Egunean noiz? ;; Gauean zenbat, bihar? ‖ egunean ‖ Demande combien tu dois en prendre par jour.
+Hiru egunean, jan ondoren. ‖ Eskerrik asko. Agur! ‖ Eskerrik asko. Gero arte! ;; Mila esker. ‖ Ez horregatik. Agur! ;; Barkatu. Kaixo! ;; Eskerrik asko. Egun on atzo! ‖ eskerrik ‖ Remercie et dis au revoir.
+V: hotzeria hartu = attraper un rhume ;; Eztarrian min dut = J'ai mal à la gorge ;; pastilla = le cachet
+
+== a2cola | 2 | La file d'attente | Au supermarché, tu fais la queue à la caisse. | Cliente
+# Demande qui est le dernier de la file.
+# Dis que tu as seulement deux bouteilles.
+# Remercie-la : elle te laisse passer.
+# Demande si la TVA est comprise.
+# Dis que tu paies en espèces.
+# Souhaite-lui une bonne journée.
+-- es
+Hola, buenos días. ‖ Perdone, ¿quién es el último? ‖ ¿Quién es el último? ;; Buenos días, ¿quién es el último? ‖ Perdone, ¿quién es el primero ayer? ;; Perdone, ¿quién eres el último? ;; Perdone, ¿cuál es la última cena? ‖ último
+Soy yo. ¿Lleva mucho? ‖ No, solo llevo dos botellas. ‖ Solo llevo dos botellas. ;; No, solo dos botellas. ‖ Sí, solo llevo dos botellas. ;; No, solo llevas dos botellas. ;; No, solo llevo dos postres ayer. ‖ dos ; botellas
+Pase, pase. ‖ ¡Muchas gracias! Es usted muy generoso. ‖ ¡Muchas gracias! ;; Gracias, es usted muy generosa. ‖ De nada, es usted muy generoso. ;; Lo siento, es usted muy generoso. ;; ¡Muchas gracias! Soy muy generoso. ‖ gracias
+Hola. Son seis euros, por favor. ‖ ¿Está el IVA incluido? ‖ ¿El IVA está incluido? ;; ¿Está incluido el IVA? ‖ ¿Está el postre incluido? ;; ¿Estás el IVA incluido? ;; ¿Está el IVA incluido ayer? ‖ iva ; incluido
+Sí, está incluido. ¿Cómo va a pagar? ‖ Con tarjeta, por favor. ‖ Con tarjeta. ;; Pago con tarjeta. ‖ Con postre, por favor. ;; Con tarjeta, de nada. ;; Pagas con tarjeta. ‖ tarjeta ‖ Dis que tu paies par carte.
+Aquí tiene su cambio. ‖ Gracias. ¡Que tenga un buen día! ‖ Gracias. ¡Buen día! ;; Muchas gracias. ¡Que tenga un buen día! ‖ De nada. ¡Que tenga un buen día! ;; Gracias. ¡Que tenga un mal día! ;; Gracias. ¡Que tengo un buen día! ‖ día
+V: ¿Quién es el último? = Qui est le dernier ? ;; ¿Está el IVA incluido? = La TVA est comprise ? ;; con tarjeta = par carte
+-- va
+Hola, bon dia. ‖ Perdó, qui és el darrer? ‖ Qui és el darrer? ;; Bon dia, vosté fa cua? ‖ Perdó, qui és el primer ahir? ;; Perdó, qui eres el darrer? ;; Perdó, quin és el darrer sopar? ‖ darrer ‖ Demande qui est le dernier de la file.
+Soc jo. Porta moltes coses? ‖ No, només porte dues botelles. ‖ Només porte dues botelles. ;; No, només dues botelles. ‖ Sí, només porte dues botelles. ;; No, només portes dues botelles. ;; No, només porte dues postres ahir. ‖ dues ; botelles ‖ Dis que tu as seulement deux bouteilles.
+Passe, passe. ‖ Moltes gràcies! És vosté molt generós. ‖ Moltes gràcies! ;; Gràcies, és vosté molt generosa. ‖ De res, és vosté molt generós. ;; Ho sent, és vosté molt generós. ;; Moltes gràcies! Soc molt generós. ‖ gràcies
+Hola. Bon dia. ‖ Quant és en total? ‖ Quant és? ;; Bon dia. Quant és en total? ‖ Quan és en total? ;; Quant eres en total? ;; Quant és en total ahir? ‖ total ‖ Demande combien ça fait en tout.
+Sis euros. Amb targeta? ‖ No, en metàl·lic. ‖ En metàl·lic, per favor. ;; No, pague en metàl·lic. ‖ Sí, en metàl·lic. ;; No, pagues en metàl·lic. ;; No, en postres. ‖ metàl
+Ací té el canvi. ‖ Gràcies. Que tinga un bon dia! ‖ Gràcies. Bon dia! ;; Moltes gràcies. Que tinga un bon dia! ‖ De res. Que tinga un bon dia! ;; Gràcies. Que tinga un mal dia! ;; Gràcies. Que tinc un bon dia! ‖ dia
+V: Qui és el darrer? = Qui est le dernier ? ;; Quant és en total? = Combien ça fait en tout ? ;; en metàl·lic = en espèces
+-- ca
+Hola, bon dia. ‖ Perdoni, qui és l'últim? ‖ Qui és l'últim? ;; Bon dia, qui és l'últim? ‖ Perdoni, qui és el primer ahir? ;; Perdoni, qui ets l'últim? ;; Perdoni, quin és l'últim sopar? ‖ últim
+Sóc jo. Porta moltes coses? ‖ No, només tinc dues coses. ‖ Només porto dues coses. ;; No, només dues coses. ‖ Sí, només tinc dues coses. ;; No, només tens dues coses. ;; No, només tinc dues postres ahir. ‖ dues ; coses ‖ Dis que tu as seulement deux choses.
+Passi, passi. ‖ Moltes gràcies! És vostè molt generós. ‖ Moltes gràcies! ;; Gràcies, és vostè molt generosa. ‖ De res, és vostè molt generós. ;; Ho sento, és vostè molt generós. ;; Moltes gràcies! Sóc molt generós. ‖ gràcies
+Hola. Són sis euros, si us plau. ‖ L'IVA està inclòs? ‖ Està inclòs l'IVA? ;; L'IVA hi és inclòs? ‖ Les postres estan incloses? ;; Estàs inclòs l'IVA? ;; L'IVA està inclòs ahir? ‖ iva ; inclòs
+Sí, està inclòs. Amb targeta? ‖ No, pago en efectiu. ‖ En efectiu, si us plau. ;; No, en efectiu. ‖ Sí, pago en efectiu. ;; No, pagues en efectiu. ;; No, pago en postres. ‖ efectiu
+Aquí té el canvi. ‖ Gràcies. Que tingui un bon dia! ‖ Gràcies. Bon dia! ;; Moltes gràcies. Que tingui un bon dia! ‖ De res. Que tingui un bon dia! ;; Gràcies. Que tingui un mal dia! ;; Gràcies. Que tinc un bon dia! ‖ dia
+V: Qui és l'últim? = Qui est le dernier ? ;; L'IVA està inclòs? = La TVA est comprise ? ;; en efectiu = en espèces
+-- gl
+Ola, bos días. ‖ Perdoe, esta é a cola? ‖ Esta é a cola? ;; Bos días, esta é a cola? ‖ Perdoe, esta é a cea? ;; Perdoe, estas é a cola? ;; Perdoe, esta é a cola onte? ‖ cola ‖ Demande si c'est bien la file d'attente.
+Si. Leva moito? ‖ Non, só levo dúas botellas. ‖ Só levo dúas botellas. ;; Non, só dúas botellas. ‖ Si, só levo dúas botellas. ;; Non, só levas dúas botellas. ;; Non, só levo dúas sobremesas onte. ‖ dúas ; botellas ‖ Dis que tu as seulement deux bouteilles.
+Pase, pase. ‖ Moitas grazas! É vostede moi xeneroso. ‖ Moitas grazas! ;; Grazas, é vostede moi xenerosa. ‖ De nada, é vostede moi xeneroso. ;; Síntoo, é vostede moi xeneroso. ;; Moitas grazas! Son moi xeneroso. ‖ grazas
+Ola. Algo máis? ‖ Non, grazas. Cóbreme, por favor. ‖ Cóbreme, por favor. ;; Non, nada máis. Cóbreme, por favor. ‖ Si, grazas. Cóbreme, por favor. ;; Non, grazas. Cóbreme mañá. ;; Non, de nada. Cóbreme onte. ‖ cóbreme ‖ Dis que c'est tout et demande-lui d'encaisser.
+Son seis euros. Con tarxeta? ‖ Non, pago en efectivo. ‖ En efectivo, por favor. ;; Non, en efectivo. ‖ Si, pago en efectivo. ;; Non, pagas en efectivo. ;; Non, pago en sobremesa. ‖ efectivo
+Aquí ten o cambio. ‖ Grazas. Que pase un bo día! ‖ Grazas. Bo día! ;; Moitas grazas. Que pase un bo día! ‖ De nada. Que pase un bo día! ;; Grazas. Que pase un mal día! ;; Grazas. Que paso un bo día! ‖ día
+V: Esta é a cola? = C'est bien la file ? ;; Cóbreme, por favor = Encaissez-moi, s'il vous plaît ;; en efectivo = en espèces
+-- eu
+Kaixo, egun on. ‖ Barkatu, nor da azkena? ‖ Nor da azkena? ;; Egun on, nor da azkena? ‖ Barkatu, nor da lehena atzo? ;; Barkatu, nor zara azkena? ;; Barkatu, nor da azkena bihar? ‖ azkena
+Ni naiz. Gauza asko? ‖ Ez, bi botila bakarrik. ‖ Bi botila bakarrik. ;; Ez, bi botila bakarrik ditut. ‖ Bai, bi botila bakarrik. ;; Ez, bi postre bakarrik atzo. ;; Ez, bi botila bakarrik zara. ‖ botila ‖ Dis que tu as seulement deux bouteilles.
+Pasa, pasa. ‖ Eskerrik asko! Oso eskuzabala zara. ‖ Eskerrik asko! ;; Mila esker, oso eskuzabala zara. ‖ Ez horregatik, oso eskuzabala zara. ;; Barkatu, oso eskuzabala zara. ;; Eskerrik asko! Oso eskuzabala naiz. ‖ eskerrik
+Kaixo. Beste ezer? ‖ Ez, eskerrik asko. Zenbat da guztira? ‖ Zenbat da guztira? ;; Ez. Zenbat da guztira? ‖ Bai, eskerrik asko. Zenbat da guztira? ;; Ez, eskerrik asko. Zenbat zara guztira? ;; Ez, ez horregatik. Zenbat da guztira? ‖ guztira ‖ Dis que c'est tout et demande combien ça fait en tout.
+Sei euro dira. ‖ Txartelarekin ordaintzen dut. ‖ Txartelarekin, mesedez. ;; Txartelarekin ordaintzen dut, mesedez. ‖ Txartelarekin ordaintzen duzu. ;; Postrearekin ordaintzen dut. ;; Txartelarekin ordaindu nuen bihar. ‖ txartelarekin ‖ Dis que tu paies par carte.
+Hemen duzu tiketa. ‖ Eskerrik asko. Egun on izan! ‖ Eskerrik asko. Ondo izan! ;; Mila esker. Ondo izan! ‖ Ez horregatik. Egun on izan! ;; Eskerrik asko. Egun on izan nuen! ;; Barkatu. Ondo izan! ‖ eskerrik
+V: Nor da azkena? = Qui est le dernier ? ;; Zenbat da guztira? = Combien ça fait en tout ? ;; Txartelarekin ordaintzen dut = Je paie par carte
+
+== a2bici | 2 | En vélo au travail | Un voisin te croise devant l'immeuble le matin. | Voisin
+# Dis que tu vas au travail.
+# Dis que tu y vas à vélo.
+# Dis que ce n'est pas loin : c'est juste en face du marché.
+# Dis que demain tu prendras le métro, parce qu'il va pleuvoir.
+# Dis que ça ne te dérange pas : c'est sur ton chemin.
+# Dis au revoir.
+-- es
+¡Buenos días, vecino! ¿Adónde vas tan temprano? ‖ Voy al trabajo. ‖ Me voy al trabajo. ;; Voy a la oficina. ‖ Vas al trabajo. ;; Voy al postre. ;; Fui al trabajo mañana. ‖ trabajo
+¿En coche? ‖ No, voy en bici. ‖ Voy en bici. ;; No, en bici. ‖ Sí, voy en bici. ;; No, vas en bici. ;; No, voy en paraguas. ‖ bici
+¿Y está lejos? ‖ No, está justo enfrente del mercado. ‖ Está justo enfrente del mercado. ;; No, justo enfrente del mercado. ‖ Sí, está justo enfrente del mercado. ;; No, estoy justo enfrente del mercado. ;; No, está justo enfrente del postre. ‖ enfrente
+¿Y mañana? Dicen que va a hacer mal tiempo. ‖ Mañana iré en metro. ‖ Mañana voy a ir en metro. ;; Mañana cogeré el metro. ‖ Ayer iré en metro. ;; Mañana irás en metro. ;; Mañana iré en paraguas. ‖ mañana ; metro
+Yo también voy al centro mañana. ¿Me llevas al metro? ‖ Sí, claro. Me pilla de camino. ‖ Claro, me pilla de camino. ;; Sí, me pilla de camino. ‖ No, claro. Me pilla de camino. ;; Sí, claro. Te pilla de camino. ;; Sí, claro. Me pilla de postre. ‖ camino
+¡Gracias! Hasta mañana. ‖ ¡Hasta mañana! ‖ ¡Hasta mañana, vecino! ;; Venga, hasta mañana. ‖ ¡Hasta ayer! ;; ¡Buenas noches, mañana! ;; ¡Lo siento, mañana! ‖ mañana
+V: Voy en bici = Je vais à vélo ;; justo enfrente = juste en face ;; Me pilla de camino = C'est sur mon chemin
+-- va
+Bon dia, veí! On vas tan d'hora? ‖ Vaig a treballar. ‖ Me'n vaig a treballar. ;; Vaig a l'oficina. ‖ Vas a treballar. ;; Vaig a les postres. ;; Vaig anar a treballar demà. ‖ treballar
+Amb cotxe? ‖ No, vaig a peu. ‖ Vaig a peu. ;; No, a peu. ‖ Sí, vaig a peu. ;; No, vas a peu. ;; No, vaig a paraigua. ‖ peu ‖ Dis que tu y vas à pied.
+I està lluny? ‖ No, està a prop del mercat. ‖ Està a prop del mercat. ;; No, a prop del mercat. ‖ Sí, està a prop del mercat. ;; No, estic a prop del mercat. ;; No, està a prop de les postres. ‖ prop ‖ Dis que ce n'est pas loin : c'est près du marché.
+I demà? Diuen que farà mal temps. ‖ Demà agafaré el metro. ‖ Demà aniré amb metro. ;; Demà agafaré el metro, sí. ‖ Ahir agafaré el metro. ;; Demà agafaràs el metro. ;; Demà agafaré el paraigua de metro. ‖ demà ; metro
+Jo també vaig al centre demà. Anem junts? ‖ Sí, clar. Anem junts. ‖ Clar, anem junts. ;; Sí, d'acord. ‖ No, clar. Anem junts. ;; Sí, clar. Aneu junts. ;; Sí, clar. Anem junts ahir. ‖ junts ‖ Accepte d'y aller ensemble.
+Molt bé! Fins demà. ‖ Fins demà! ‖ Fins demà, veí! ;; Vinga, fins demà. ‖ Fins ahir! ;; Bona nit, demà! ;; Ho sent, demà! ‖ demà
+V: Vaig a peu = J'y vais à pied ;; Agafe el metro = Je prends le métro ;; a prop de = près de
+-- ca
+Bon dia, veí! On vas tan d'hora? ‖ Vaig a treballar. ‖ Me'n vaig a treballar. ;; Vaig a l'oficina. ‖ Vas a treballar. ;; Vaig a les postres. ;; Vaig anar a treballar demà. ‖ treballar
+Amb cotxe? ‖ No, vaig a peu. ‖ Vaig a peu. ;; No, a peu. ‖ Sí, vaig a peu. ;; No, vas a peu. ;; No, vaig a paraigua. ‖ peu ‖ Dis que tu y vas à pied.
+I és lluny? ‖ No, és a prop del mercat. ‖ És a prop del mercat. ;; No, a prop del mercat. ‖ Sí, és a prop del mercat. ;; No, sóc a prop del mercat. ;; No, és a prop de les postres. ‖ prop ‖ Dis que ce n'est pas loin : c'est près du marché.
+I demà? Diuen que farà mal temps. ‖ Demà agafaré el metro. ‖ Demà aniré amb metro. ;; Demà agafaré el metro, sí. ‖ Ahir agafaré el metro. ;; Demà agafaràs el metro. ;; Demà agafaré el paraigua de metro. ‖ demà ; metro
+Jo també vaig al centre demà. Anem junts? ‖ Sí, és clar. Anem junts. ‖ És clar, anem junts. ;; Sí, d'acord. ‖ No, és clar. Anem junts. ;; Sí, és clar. Aneu junts. ;; Sí, és clar. Anem junts ahir. ‖ junts ‖ Accepte d'y aller ensemble.
+Molt bé! Fins demà. ‖ Fins demà! ‖ Fins demà, veí! ;; D'acord, fins demà. ‖ Fins ahir! ;; Bona nit, demà! ;; Ho sento, demà! ‖ demà
+V: Vaig a peu = J'y vais à pied ;; a prop de = près de ;; agafar el metro = prendre le métro
+-- gl
+Bos días, veciño! Onde vas tan cedo? ‖ Vou ao traballo. ‖ Marcho ao traballo. ;; Vou á oficina. ‖ Vas ao traballo. ;; Vou á sobremesa. ;; Fun ao traballo mañá. ‖ traballo
+En coche? ‖ Non, vou a pé. ‖ Vou a pé. ;; Non, a pé. ‖ Si, vou a pé. ;; Non, vas a pé. ;; Non, vou a paraugas. ‖ pé ‖ Dis que tu y vas à pied.
+E está lonxe? ‖ Non, está preto do mercado. ‖ Está preto do mercado. ;; Non, preto do mercado. ‖ Si, está preto do mercado. ;; Non, estou preto do mercado. ;; Non, está preto da sobremesa. ‖ preto ‖ Dis que ce n'est pas loin : c'est près du marché.
+E mañá? Din que vai chover. ‖ Mañá irei en metro. ‖ Mañá vou ir en metro. ;; Mañá collerei o metro. ‖ Onte irei en metro. ;; Mañá irás en metro. ;; Mañá irei en paraugas. ‖ mañá ; metro
+Eu tamén vou ao centro mañá. Imos xuntos? ‖ Si, claro. Imos xuntos. ‖ Claro, imos xuntos. ;; Si, vale. ‖ Non, claro. Imos xuntos. ;; Si, claro. Ides xuntos. ;; Si, claro. Imos xuntos onte. ‖ xuntos ‖ Accepte d'y aller ensemble.
+Moi ben! Ata mañá. ‖ Ata mañá! ‖ Ata mañá, veciño! ;; Veña, ata mañá. ‖ Ata onte! ;; Boas noites, mañá! ;; Síntoo, mañá! ‖ mañá
+V: Vou a pé = J'y vais à pied ;; preto de = près de ;; Imos xuntos? = On y va ensemble ?
+-- eu
+Egun on, bizilaguna! Nora zoaz hain goiz? ‖ Lanera noa. ‖ Lanera noa orain. ;; Bulegora noa. ‖ Lanera zoaz. ;; Postrera noa. ;; Bihar lanera joan nintzen. ‖ lanera
+Autoz? ‖ Ez, bizikletaz noa. ‖ Bizikletaz noa. ;; Ez, bizikletaz. ‖ Bai, bizikletaz noa. ;; Ez, bizikletaz zoaz. ;; Ez, aterkiz noa. ‖ bizikletaz
+Eta urrun dago? ‖ Ez, merkatuaren aurrean dago. ‖ Merkatuaren aurrean dago. ;; Ez, merkatuaren aurrean. ‖ Bai, merkatuaren aurrean dago. ;; Ez, merkatuaren aurrean nago. ;; Ez, postrearen aurrean dago. ‖ aurrean ‖ Dis que ce n'est pas loin : c'est juste en face du marché.
+Eta bihar? Euria egingo du. ‖ Bihar metroz joango naiz. ‖ Bihar metroa hartuko dut. ;; Bihar metroz joango naiz, beraz. ‖ Atzo metroz joango naiz. ;; Bihar metroz joango zara. ;; Bihar aterkiz joango naiz. ‖ bihar ; metroz
+Ni ere erdigunera noa bihar. Elkarrekin goaz? ‖ Bai, noski. Goazen. ‖ Noski, goazen. ;; Bai, elkarrekin goaz. ‖ Ez, noski. Goazen. ;; Bai, noski. Goazen atzo. ;; Bai, noski. Goazen postrera. ‖ goazen ‖ Accepte d'y aller ensemble.
+Eskerrik asko! Bihar arte. ‖ Bihar arte! ‖ Bihar arte, bizilaguna! ;; Ados, bihar arte. ‖ Atzo arte! ;; Gabon, bihar! ;; Barkatu, bihar! ‖ bihar
+V: bizikletaz = à vélo ;; aurrean = en face ;; Goazen = Allons-y
+
+== a2finde | 2 | Le week-end | Lundi matin, une amie te demande ce que tu as fait ce week-end. | Amie
+# Dis que tu es resté(e) à la maison.
+# Dis que tu as nettoyé l'appartement et fait la vaisselle.
+# Dis que dimanche tu es allé(e) à la plage.
+# Dis que tu en as marre du travail.
+# Dis que tu préfères rester tranquille ce soir.
+# Dis à demain.
+-- es
+¡Hola! ¿Qué tal el fin de semana? ¿Qué hiciste? ‖ El sábado me quedé en casa. ‖ Me quedé en casa. ;; El sábado estuve en casa. ‖ El sábado me quedo en casa. ;; El sábado te quedaste en casa. ;; El domingo próximo me quedé en casa. ‖ quedé ; casa
+¿Y qué hiciste en casa? ‖ Limpié el piso y fregué los platos. ‖ Limpié el piso. ;; Limpié todo y fregué los platos. ‖ Limpio el piso y fregaré los platos. ;; Limpiaste el piso y fregaste los platos. ;; Limpié el postre y fregué los pisos. ‖ limpié
+¡Qué aburrido! ¿Y el domingo? ‖ El domingo fui a la playa. ‖ Fui a la playa. ;; El domingo fui a la playa con amigos. ‖ El domingo voy a la playa. ;; El domingo fuiste a la playa. ;; El domingo fui a la playa mañana. ‖ fui ; playa
+¡Qué bien! ¿Y hoy? ¿Qué tal el trabajo? ‖ Estoy harto del trabajo. ‖ Estoy harta del trabajo. ;; Uf, estoy harto del trabajo. ‖ Estás harto del trabajo. ;; Estoy harto del postre. ;; Estoy contento del trabajo. ‖ harto
+¡Qué rollo! ¿Vamos a tomar algo esta noche? ‖ No, gracias. Prefiero descansar. ‖ Prefiero descansar en casa. ;; Hoy no. Prefiero descansar. ‖ Sí, gracias. Prefiero descansar. ;; No, gracias. Prefieres descansar. ;; No, gracias. Prefiero trabajar más. ‖ descansar
+Vale. ¡Hasta mañana! ‖ ¡Hasta mañana! ‖ Vale, hasta mañana. ;; ¡Nos vemos mañana! ‖ ¡Hasta ayer! ;; ¡Buenos días, mañana! ;; ¡Lo siento, mañana! ‖ mañana
+V: Me quedé en casa = Je suis resté à la maison ;; fregar los platos = faire la vaisselle ;; Estoy harto de… = J'en ai marre de…
+-- va
+Hola! Què tal el cap de setmana? Què vas fer? ‖ Dissabte em vaig quedar a casa. ‖ Em vaig quedar a casa. ;; Dissabte vaig estar a casa. ‖ Dissabte em quede a casa. ;; Dissabte et vas quedar a casa. ;; Demà em vaig quedar a casa. ‖ quedar ; casa
+I què vas fer a casa? ‖ Vaig netejar el pis i vaig fregar els plats. ‖ Vaig netejar el pis. ;; Vaig netejar tot i vaig fregar els plats. ‖ Netege el pis i frego els plats. ;; Vas netejar el pis i vas fregar els plats. ;; Vaig netejar les postres i vaig fregar els pisos. ‖ netejar
+Quin avorriment! I diumenge? ‖ Diumenge vaig anar a la platja. ‖ Vaig anar a la platja. ;; Diumenge vaig anar a la platja amb uns amics. ‖ Diumenge vaig a la platja. ;; Diumenge vas anar a la platja. ;; Diumenge vaig anar a la platja demà. ‖ anar ; platja
+Que bé! I hui? Què tal el treball? ‖ Estic molt cansat del treball. ‖ Estic molt cansada del treball. ;; Uf, estic molt cansat del treball. ‖ Estàs molt cansat del treball. ;; Estic molt cansat de les postres. ;; Estic molt content del treball. ‖ cansat ‖ Dis que tu es très fatigué(e) par le travail.
+Quina llàstima! Anem a prendre alguna cosa esta nit? ‖ No, gràcies. Preferisc descansar. ‖ Preferisc descansar a casa. ;; Hui no. Preferisc descansar. ‖ Sí, gràcies. Preferisc descansar. ;; No, gràcies. Prefereixes descansar. ;; No, gràcies. Preferisc treballar més. ‖ descansar
+D'acord. Fins demà! ‖ Fins demà! ‖ D'acord, fins demà. ;; Ens veiem demà! ‖ Fins ahir! ;; Bon dia, demà! ;; Ho sent, demà! ‖ demà
+V: Em vaig quedar a casa = Je suis resté à la maison ;; fregar els plats = faire la vaisselle ;; No m'agrada gens = Ça ne me plaît pas du tout
+-- ca
+Hola! Què tal el cap de setmana? Què vas fer? ‖ Dissabte em vaig quedar a casa. ‖ Em vaig quedar a casa. ;; Dissabte vaig estar a casa. ‖ Dissabte em quedo a casa. ;; Dissabte et vas quedar a casa. ;; El proper diumenge em vaig quedar a casa. ‖ quedar ; casa
+I què vas fer a casa? ‖ Vaig netejar el pis i vaig rentar els plats. ‖ Vaig netejar el pis. ;; Vaig netejar-ho tot i vaig rentar els plats. ‖ Netejo el pis i rento els plats. ;; Vas netejar el pis i vas rentar els plats. ;; Vaig netejar les postres i vaig rentar els pisos. ‖ netejar
+Quin avorriment! I diumenge? ‖ Diumenge vaig anar a la platja. ‖ Vaig anar a la platja. ;; Diumenge vaig anar a la platja amb uns amics. ‖ Diumenge vaig a la platja. ;; Diumenge vas anar a la platja. ;; Diumenge vaig anar a la platja demà. ‖ anar ; platja
+Que bé! I avui? Què tal la feina? ‖ Estic fart de la feina. ‖ Estic farta de la feina. ;; Uf, estic fart de la feina. ‖ Estàs fart de la feina. ;; Estic fart de les postres. ;; Estic content de la feina. ‖ fart
+Quina llàstima! Sortim aquesta nit? ‖ No, gràcies. Prefereixo descansar. ‖ Prefereixo descansar a casa. ;; Avui no. Prefereixo descansar. ‖ Sí, gràcies. Prefereixo descansar. ;; No, gràcies. Prefereixes descansar. ;; No, gràcies. Prefereixo treballar més. ‖ descansar
+D'acord. Fins demà! ‖ Fins demà! ‖ D'acord, fins demà. ;; Ens veiem demà! ‖ Fins ahir! ;; Bon dia, demà! ;; Ho sento, demà! ‖ demà
+V: Em vaig quedar a casa = Je suis resté à la maison ;; rentar els plats = faire la vaisselle ;; Estic fart de… = J'en ai marre de…
+-- gl
+Ola! Que tal a fin de semana? Que fixeches? ‖ O sábado quedei na casa. ‖ Quedei na casa. ;; O sábado estiven na casa. ‖ O sábado quedo na casa. ;; O sábado quedaches na casa. ;; O próximo domingo quedei na casa. ‖ quedei ; casa
+E que fixeches na casa? ‖ Limpei o piso e lavei a louza. ‖ Limpei o piso. ;; Limpei todo e lavei a louza. ‖ Limpo o piso e lavo a louza. ;; Limpaches o piso e lavaches a louza. ;; Limpei a sobremesa e lavei os pisos. ‖ limpei
+Que aburrido! E o domingo? ‖ O domingo fun á praia. ‖ Fun á praia. ;; O domingo fun á praia cuns amigos. ‖ O domingo vou á praia. ;; O domingo fuches á praia. ;; O domingo fun á praia mañá. ‖ fun ; praia
+Que ben! E hoxe? Que tal o traballo? ‖ Estou farto do traballo. ‖ Estou farta do traballo. ;; Uf, estou farto do traballo. ‖ Estás farto do traballo. ;; Estou farto da sobremesa. ;; Estou contento do traballo. ‖ farto
+Que mágoa! Imos tomar algo esta noite? ‖ Non, grazas. Prefiro descansar. ‖ Prefiro descansar na casa. ;; Hoxe non. Prefiro descansar. ‖ Si, grazas. Prefiro descansar. ;; Non, grazas. Prefires descansar. ;; Non, grazas. Prefiro traballar máis. ‖ descansar
+Vale. Ata mañá! ‖ Ata mañá! ‖ Vale, ata mañá. ;; Vémonos mañá! ‖ Ata onte! ;; Bos días, mañá! ;; Síntoo, mañá! ‖ mañá
+V: Quedei na casa = Je suis resté à la maison ;; lavar a louza = faire la vaisselle ;; Estou farto de… = J'en ai marre de…
+-- eu
+Kaixo! Zer moduz asteburua? Zer egin zenuen? ‖ Larunbatean etxean geratu nintzen. ‖ Etxean geratu nintzen. ;; Larunbatean etxean egon nintzen. ‖ Larunbatean etxean geratzen naiz. ;; Larunbatean etxean geratu zinen. ;; Datorren igandean etxean geratu nintzen. ‖ etxean ; geratu
+Eta zer egin zenuen etxean? ‖ Pisua garbitu nuen. ‖ Dena garbitu nuen. ;; Pisua garbitu nuen, dena. ‖ Pisua garbitzen dut. ;; Pisua garbitu zenuen. ;; Postrea garbitu nuen. ‖ garbitu ‖ Dis que tu as nettoyé l'appartement.
+Zer aspergarria! Eta igandean? ‖ Igandean hondartzara joan nintzen. ‖ Hondartzara joan nintzen. ;; Igandean lagunekin hondartzara joan nintzen. ‖ Igandean hondartzara noa. ;; Igandean hondartzara joan zinen. ;; Igandean hondartzara joan nintzen bihar. ‖ hondartzara
+Oso ondo! Eta gaur? Zer moduz lana? ‖ Lanaz nekatuta nago. ‖ Lanean nekatuta nago. ;; Uf, lanaz nekatuta nago. ‖ Lanaz nekatuta zaude. ;; Postreaz nekatuta nago. ;; Lanarekin pozik nago. ‖ nekatuta ‖ Dis que tu es fatigué(e) du travail.
+Pena da! Zerbait hartzera goaz gaur gauean? ‖ Gaur ez. Nahiago dut atseden hartu. ‖ Ez, eskerrik asko. Nahiago dut atseden hartu. ;; Nahiago dut etxean atseden hartu. ‖ Bai. Nahiago dut atseden hartu. ;; Gaur ez. Nahiago duzu atseden hartu. ;; Gaur ez. Nahiago dut lan egin. ‖ atseden
+Ados. Bihar arte! ‖ Bihar arte! ‖ Ados, bihar arte. ;; Bihar arte, beraz! ‖ Atzo arte! ;; Egun on, bihar! ;; Barkatu, bihar! ‖ bihar
+V: etxean geratu nintzen = je suis resté à la maison ;; garbitu = nettoyer ;; atseden hartu = se reposer
+
+== a2excursion | 2 | Réserver une excursion | Dans une agence, tu réserves une excursion pour le week-end. | Agent
+# Dis que tu veux réserver l'excursion à l'Albufera.
+# Dis que c'est pour deux personnes.
+# Demande à quelle heure part le bus.
+# Demande s'il faut apporter quelque chose.
+# Demande si le déjeuner est compris.
+# Dis que c'est parfait et remercie.
+-- es
+Buenos días. ¿Qué desea? ‖ Quiero reservar la excursión a la Albufera. ‖ Quería reservar la excursión a la Albufera. ;; Una reserva para la excursión a la Albufera, por favor. ‖ Quiero cambiar la excursión a la Albufera. ;; Quieres reservar la excursión a la Albufera. ;; Quiero reservar la maleta a la Albufera. ‖ reservar ; excursión
+Muy bien. ¿Para cuántas personas? ‖ Para dos personas, por favor. ‖ Para dos. ;; Somos dos personas. ‖ Para diez años, por favor. ;; Para dos postres, por favor. ;; Para dos personas, de nada. ‖ dos ; personas
+El sábado hay plazas. ‖ ¿A qué hora sale el autobús? ‖ ¿Cuándo sale el autobús? ;; ¿A qué hora sale? ‖ ¿A qué hora salió el autobús ayer? ;; ¿Dónde hora sale el autobús? ;; ¿A qué hora sales el autobús? ‖ hora ; autobús
+A las nueve, desde la plaza del Ayuntamiento. ‖ ¿Hay que llevar algo? ‖ ¿Tenemos que llevar algo? ;; ¿Hace falta llevar algo? ‖ ¿Hay que comer algo? ;; ¿Hay que llevar nada? ;; ¿Hay que llevar algo ayer? ‖ llevar
+Una chaqueta y agua. ‖ ¿Está incluido el almuerzo? ‖ ¿El almuerzo está incluido? ;; ¿Está incluido el almuerzo, por favor? ‖ ¿Está incluida la maleta? ;; ¿Estás incluido el almuerzo? ;; ¿Está incluido el almuerzo ayer? ‖ almuerzo ; incluido
+Sí, una paella en El Palmar. ‖ ¡Perfecto! Muchas gracias. ‖ Perfecto, gracias. ;; ¡Genial! Muchas gracias. ‖ ¡Perfecto! De nada. ;; ¡Perfecto! Lo siento mucho. ;; ¡Qué pena! Muchas gracias. ‖ gracias
+V: reservar una excursión = réserver une excursion ;; ¿Hay que llevar algo? = Il faut apporter quelque chose ? ;; ¿Está incluido el almuerzo? = Le déjeuner est compris ?
+-- va
+Bon dia. Què desitja? ‖ Vull reservar l'excursió a l'Albufera. ‖ Voldria reservar l'excursió a l'Albufera. ;; Una reserva per a l'excursió a l'Albufera, per favor. ‖ Vull canviar l'excursió a l'Albufera. ;; Vols reservar l'excursió a l'Albufera. ;; Vull reservar la maleta a l'Albufera. ‖ reservar ; excursió
+Molt bé. Per a quantes persones? ‖ Per a dues persones, per favor. ‖ Per a dues. ;; Som dues persones. ‖ Per a deu anys, per favor. ;; Per a dues postres, per favor. ;; Per a dues persones, de res. ‖ dues ; persones
+Dissabte hi ha places. ‖ A quina hora ix l'autobús? ‖ Quan ix l'autobús? ;; A quina hora ix? ‖ A quina hora va eixir l'autobús ahir? ;; On hora ix l'autobús? ;; A quina hora ixes l'autobús? ‖ hora ; autobús
+A les nou, des de la plaça de l'Ajuntament. ‖ Cal portar alguna cosa? ‖ Hem de portar alguna cosa? ;; Cal portar res? ‖ Cal menjar alguna cosa? ;; Cal portar ningú? ;; Cal portar alguna cosa ahir? ‖ portar
+Una jaqueta i aigua. ‖ Hi ha dinar? ‖ I el dinar? ;; Hi ha dinar, també? ‖ Hi ha maleta? ;; Hi ha dinar ahir? ;; Hi ha sopar demà? ‖ dinar ‖ Demande s'il y a le déjeuner.
+Sí, una paella al Palmar. ‖ Perfecte! Moltes gràcies. ‖ Perfecte, gràcies. ;; Genial! Moltes gràcies. ‖ Perfecte! De res. ;; Perfecte! Ho sent molt. ;; Quina llàstima! Moltes gràcies. ‖ gràcies
+V: reservar una excursió = réserver une excursion ;; Cal portar alguna cosa? = Il faut apporter quelque chose ? ;; el dinar = le déjeuner
+-- ca
+Bon dia. Què desitja? ‖ Vull reservar l'excursió a l'Albufera. ‖ Voldria reservar l'excursió a l'Albufera. ;; Una reserva per a l'excursió a l'Albufera, si us plau. ‖ Vull canviar l'excursió a l'Albufera. ;; Vols reservar l'excursió a l'Albufera. ;; Vull reservar la maleta a l'Albufera. ‖ reservar ; excursió
+Molt bé. Per a quantes persones? ‖ Per a dues persones, si us plau. ‖ Per a dues. ;; Som dues persones. ‖ Per a deu anys, si us plau. ;; Per a dues postres, si us plau. ;; Per a dues persones, de res. ‖ dues ; persones
+Dissabte hi ha places. ‖ A quina hora surt l'autobús? ‖ Quan surt l'autobús? ;; A quina hora surt? ‖ A quina hora va sortir l'autobús ahir? ;; On hora surt l'autobús? ;; A quina hora surts l'autobús? ‖ hora ; autobús
+A les nou, des de la plaça de l'Ajuntament. ‖ Cal portar alguna cosa? ‖ Hem de portar alguna cosa? ;; Cal portar res? ‖ Cal menjar alguna cosa? ;; Cal portar ningú? ;; Cal portar alguna cosa ahir? ‖ portar
+Una jaqueta i aigua. ‖ El dinar està inclòs? ‖ Està inclòs el dinar? ;; El menjar està inclòs? ‖ La maleta està inclosa? ;; Estàs inclòs el dinar? ;; El dinar està inclòs ahir? ‖ dinar ; inclòs
+Sí, una paella al Palmar. ‖ Perfecte! Moltes gràcies. ‖ Perfecte, gràcies. ;; Genial! Moltes gràcies. ‖ Perfecte! De res. ;; Perfecte! Ho sento molt. ;; Quina llàstima! Moltes gràcies. ‖ gràcies
+V: reservar una excursió = réserver une excursion ;; Cal portar alguna cosa? = Il faut apporter quelque chose ? ;; El dinar està inclòs? = Le déjeuner est compris ?
+-- gl
+Bos días. Que desexa? ‖ Quero reservar a excursión á Albufera. ‖ Quería reservar a excursión á Albufera. ;; Unha reserva para a excursión á Albufera, por favor. ‖ Quero cambiar a excursión á Albufera. ;; Queres reservar a excursión á Albufera. ;; Quero reservar a maleta á Albufera. ‖ reservar ; excursión
+Moi ben. Para cantos? ‖ Para dous, por favor. ‖ Para dous. ;; Somos dous. ‖ Para dez anos, por favor. ;; Para dúas sobremesas, por favor. ;; Para dous, de nada. ‖ dous
+O sábado hai prazas. ‖ A que hora sae o autobús? ‖ Cando sae o autobús? ;; A que hora sae? ‖ A que hora saíu o autobús onte? ;; Onde hora sae o autobús? ;; A que hora saes o autobús? ‖ hora ; autobús
+Ás nove, desde a praza do Concello. ‖ Hai que levar algo? ‖ Temos que levar algo? ;; Fai falta levar algo? ‖ Hai que comer algo? ;; Hai que levar nada? ;; Hai que levar algo onte? ‖ levar
+Unha chaqueta e auga. ‖ Hai xantar? ‖ E o xantar? ;; Hai xantar tamén? ‖ Hai maleta? ;; Hai xantar onte? ;; Hai cea mañá? ‖ xantar ‖ Demande s'il y a le déjeuner.
+Si, unha paella no Palmar. ‖ Perfecto! Moitas grazas. ‖ Perfecto, grazas. ;; Xenial! Moitas grazas. ‖ Perfecto! De nada. ;; Perfecto! Síntoo moito. ;; Que mágoa! Moitas grazas. ‖ grazas
+V: reservar unha excursión = réserver une excursion ;; Hai que levar algo? = Il faut apporter quelque chose ? ;; o xantar = le déjeuner
+-- eu
+Egun on. Zer nahi duzu? ‖ Txango bat erreserbatu nahi dut, mesedez. ‖ Txango bat erreserbatu nahi dut. ;; Txango bat erreserbatu nahi nuke. ‖ Txango bat jan nahi dut, mesedez. ;; Txango bat erreserbatu nahi duzu. ;; Maleta bat erreserbatu nahi dut atzo. ‖ txango ; erreserbatu ‖ Dis que tu veux réserver une excursion.
+Oso ondo. Zenbat zarete? ‖ Bi gara. ‖ Bi gara, mesedez. ;; Bi. ‖ Bi zarete. ;; Bi postre gara. ;; Bi gara atzo. ‖ bi ‖ Dis que vous êtes deux.
+Larunbatean bai. ‖ Zer ordutan irteten da autobusa? ‖ Noiz irteten da autobusa? ;; Zer ordutan irteten da? ‖ Zer ordutan irten zen autobusa atzo? ;; Non ordutan irteten da autobusa? ;; Zer ordutan irteten zara autobusa? ‖ ordutan ; autobusa
+Bederatzietan, Udaletxeko plazatik. ‖ Zerbait eraman behar dugu? ‖ Zerbait eraman behar da? ;; Zer eraman behar dugu? ‖ Zerbait jan behar dugu? ;; Ezer ez eraman behar dugu? ;; Zerbait eraman behar dugu atzo? ‖ eraman
+Jaka bat eta ura. ‖ Bazkaltzeko zer dago? ‖ Eta bazkaltzeko zer dago? ;; Barkatu, bazkaltzeko zer dago? ‖ Bazkaltzeko zer zaude? ;; Atzo bazkaltzeko zer dago? ;; Bazkaltzeko non dago bihar? ‖ bazkaltzeko ‖ Demande ce qu'il y a pour le déjeuner.
+Paella bat, El Palmarren. ‖ Oso ondo! Eskerrik asko. ‖ Oso ondo, eskerrik asko. ;; Ondo, mila esker. ‖ Oso ondo! Ez horregatik. ;; Oso ondo! Barkatu asko. ;; Pena da! Eskerrik asko. ‖ eskerrik
+V: txangoa = l'excursion ;; erreserbatu = réserver ;; bazkaldu = déjeuner

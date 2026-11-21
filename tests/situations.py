@@ -41,14 +41,14 @@ with sync_playwright() as p:
             d=pg.evaluate("""([l,L])=>{SET_(l,L);const pl=pathPlanMain(),bad=[],us=pl.units,idx=[];
               pl.flat.filter(x=>x.sit).forEach(x=>{const u=us.findIndex(u=>u.steps.includes(x)),s=immP(l).find(z=>z.id===x.sit);idx.push(u);if(u<1)bad.push(x.id+' unité '+u);
                 const st=us[u].steps,ur=Math.max(...st.filter(y=>!y.opt).map(y=>y.rk||0));if(sitRk(s)>ur)bad.push(x.id+' placée avant ses notions');
-                const k=st.indexOf(x);if(k===st.length-1)bad.push(x.id+' en fin d unité');if(!x.opt)bad.push(x.id+' obligatoire');if(st.filter(y=>y.sit).length>1)bad.push('2 situations unité '+u)});
-              idx.sort((a,b)=>a-b).forEach((u,i)=>{if(i&&u-idx[i-1]<2)bad.push('unités voisines '+idx[i-1]+'/'+u)});
+                const k=st.indexOf(x);if(k===st.length-1)bad.push(x.id+' en fin d unité');if(!x.opt)bad.push(x.id+' obligatoire');if(st.filter(y=>y.sit).length>3)bad.push('plus de 3 situations unité '+u)});
+              idx.sort((a,b)=>a-b);const nv=idx.filter((u,i)=>i&&u-idx[i-1]<2).length;
               const nS=immP(l).filter(s=>s.l===L).length;
               /* facultative : tout le reste validé → niveau terminé, étape suivante non verrouillée */
               S.pth={};pl.flat.forEach(x=>{if(!x.test&&!x.opt)S.pth[pthK(x.id)]=8});const md=mainDone(),lv=lvSteps();
               S.pth={};const it=pathItems(),si=it.findIndex(x=>x.opt);let nl=true;if(si>=0){for(let i=0;i<it.length;i++){if(i<si)S.pth[pthK(it[i].id)]=8}const it2=pathItems();nl=!it2[si+1]||!it2[si+1].lock}
-              return {n:idx.length,nS,units:us.length,idx,bad,md,lv,nl}}""",[l,L])
-            ck(f"{l} A{L} : {d['n']}/{d['nS']} situations placées (unités {d['idx']} sur {d['units']}), espacées, facultatives",not d["bad"] and d["md"] and d["lv"] and d["nl"] and d["n"]>=min(d["nS"],1),d)
+              return {n:idx.length,nS,units:us.length,idx,bad,md,lv,nl,nv}}""",[l,L])
+            ck(f"{l} A{L} : {d['n']}/{d['nS']} situations placées dans leur niveau (unités {d['idx']} sur {d['units']}, ≤ 3 par unité, {d['nv']} voisines), facultatives",not d["bad"] and d["md"] and d["lv"] and d["nl"] and d["n"]==d["nS"],d)
     # 3. ouverture selon la progression réellement effectuée + carte « Situations »
     for l in LANGS:
         d=pg.evaluate("""l=>{SET_(l,1);S.sr={};S.sc={};S.ds={};S.pth={};S.pa={};const ss=immP(l).filter(s=>s.l===1),K=adKnown();const r0=sitR0(),o0=ss.filter(s=>sitOK(s,r0,K)).length;
@@ -93,16 +93,17 @@ with sync_playwright() as p:
       const pa=S.pa[pthK(x.id)],it2=pathItems().find(y=>!y.done&&!y.lock&&!(y.opt&&y.last!=null));return {first,sit:x.id,ok,pa,next:it2&&it2.id,end:document.body.innerHTML.includes('pathCont()')}}""")
     ck("parcours : la situation est proposée à son tour, lancée depuis l'étape, notée, puis non reproposée après une tentative",d["first"]==d["sit"] and d["ok"] and d["pa"]==0 and d["next"]!=d["sit"] and d["end"],d)
     # 7. écrans 360 × 640 dans les 5 interfaces : rien à faire défiler, pas de français hors interface française
-    FR=re.compile(r"\b(Choisis|Écoute|Continuer|Vérifier|Passer|Quitter|Demande|Salue|Remercie|Dis que|Tu fais|Tu arrives|Vendeuse|Guichetier|Rejouer|À retenir|Notions travaillées|Mises en situation)\b")
+    FR=re.compile(r"\b(Choisis|Écoute|Continuer|Vérifier|Passer|Quitter|Demande|Salue|Remercie|Dis que|Tu fais|Tu arrives|Accepte|Propose|Réponds|Commande|Paie|Présente-toi|Souhaite|Vendeuse|Guichetier|Rejouer|À retenir|Notions travaillées|Mises en situation)\b")
     for ui in UIS:
         bad=[]
         for l in LANGS:
-            r=pg.evaluate("""async ([ui,l])=>{UI=ui;await trLoad(ui);SET_(l,2);S.sr={};const out=[];
+            pg2=c.new_page();pg2.on("pageerror",lambda e:ERR.append(str(e)));pg2.goto(BASE+"castellano.html");pg2.wait_for_timeout(2500);pg2.evaluate(H)
+            r=pg2.evaluate("""async ([ui,l])=>{UI=ui;await trLoad(ui);SET_(l,2);S.sr={};const out=[];
               for(const s of immP(l)){PREP_(s);for(const p of [0,2,4]){s.st.forEach(st=>st.ks.forEach(k=>ENT_(k,p)));imStart(s.id);
                 for(let i=0;i<s.st.length;i++){await new Promise(r=>setTimeout(r,5));const h=document.documentElement.scrollHeight,w=document.documentElement.scrollWidth;out.push([s.id,p,i,h,w,document.body.innerText]);
                   const st=IM.cur;if(st.k==='R')imR(IM.opts.indexOf(st.g));else{IM.typed=true;imDraw();document.getElementById('ti').value=st.m;imW()}
                   out.push([s.id,p,i+'f',document.documentElement.scrollHeight,document.documentElement.scrollWidth,document.body.innerText]);IM.i++;imShow()}}}
-              S.mode='im';home();out.push(['carte',0,0,0,document.documentElement.scrollWidth,document.body.innerText]);UI='fr';return out}""",[ui,l])
+              S.mode='im';home();out.push(['carte',0,0,0,document.documentElement.scrollWidth,document.body.innerText]);UI='fr';return out}""",[ui,l]);pg2.close()
             for sid,pp,i,h,w,txt in r:
                 if h>640 and sid!="carte":bad.append(f"{l}/{sid}/p{pp}/{i} hauteur {h}")
                 if w>360:bad.append(f"{l}/{sid}/{i} largeur {w}")

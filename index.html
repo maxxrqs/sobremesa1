@@ -1021,7 +1021,7 @@ function hpJS(pw,salt){let x=salt+":"+pw;for(let i=0;i<3000;i++)x=sha256(x+salt)
 const withTimeout=(p,ms)=>Promise.race([p,new Promise(r=>setTimeout(()=>r(null),ms))]);
 var UI="fr";
 const UIL={fr:"Français",en:"English",it:"Italiano",de:"Deutsch",pt:"Português"};
-const TR={};const trLoad=l=>(l==="fr"||TR[l])?Promise.resolve():fetch("tr/"+l+".json?v=61").then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{TR[l]=j}).catch(()=>{});
+const TR={};const trLoad=l=>(l==="fr"||TR[l])?Promise.resolve():fetch("tr/"+l+".json?v=62").then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{TR[l]=j}).catch(()=>{});
 try{const s=ST.get("cast_ui"),n=(navigator.language||"fr").slice(0,2);UI=UIL[s]?s:(UIL[n]?n:"fr")}catch(e){}
 const gl=s=>{if(UI==="fr"||!TR[UI])return s;let t=TR[UI][s];if(t!=null)return t;const n=s.match(NUMRE);if(n){t=TR[UI][s.replace(NUMRE,"#")];if(t!=null){let i=0;return t.replace(/#/g,()=>i<n.length?n[i++]:"#")}const b=s.match(/^(.*\S)\s+(\d+)$/);if(b&&TR[UI][b[1]]!=null)return TR[UI][b[1]]+" "+b[2]}return s};
 const tr=(s,...a)=>gl(s).replace(/\{(\d)\}/g,(m,i)=>a[i]);
@@ -2065,7 +2065,7 @@ function axFetchJ(u,tries){const go=async()=>{const ac=new AbortController(),to=
 /* index d'une voix (v) ; sans voix choisie : ancien jeu castillan uniquement */
 function axIdx(l,v){const k=v||l;if(!v&&l!=="es")return Promise.resolve(null);
   const t=AX.ixt[k];if(AX.idx[k])return AX.idx[k];if(t&&Date.now()-t<4000)return Promise.resolve(null);
-  return AX.idx[k]=axFetchJ(v?"v/"+v+"/"+v+".json?v=23":"a/"+l+".json?v=14",2).then(x=>{if(!v&&l==="es"){AX.okes=1;try{vnote()}catch(e){}}return x}).catch(e=>{delete AX.idx[k];AX.ixt[k]=/^http4/.test(String(e))?Date.now()+3e10:Date.now();return null})}
+  return AX.idx[k]=axFetchJ(v?"v/"+v+"/"+v+".json?v=24":"a/"+l+".json?v=14",2).then(x=>{if(!v&&l==="es"){AX.okes=1;try{vnote()}catch(e){}}return x}).catch(e=>{delete AX.idx[k];AX.ixt[k]=/^http4/.test(String(e))?Date.now()+3e10:Date.now();return null})}
 const axUrl=(v,n)=>v?"v/"+v+"/"+n+"?v=2":"a/"+n+"?v=2";
 function axPack(l,v,i,n){const k=(v||l)+"/"+n;return AX.pk[k]||(AX.pk[k]=fetch(axUrl(v,n)).then(r=>{if(!r.ok)throw 0;return r.arrayBuffer()}).then(b=>(AX.pkd[k]=b)).catch(()=>{delete AX.pk[k];return null}))}
 const axMp3=b=>{if(!b||b.byteLength<4)return false;const u=new Uint8Array(b,0,3);return(u[0]===73&&u[1]===68&&u[2]===51)||(u[0]===255&&(u[1]&224)===224)};
@@ -6754,7 +6754,227 @@ T|a2tren|Muy bien. Aquí tiene su billete. ¡Buen viaje!|Remercie et dis au revo
 V|a2tren|perder el tren|rater le train
 V|a2tren|el próximo tren|le prochain train
 V|a2tren|el billete|le billet
-V|a2tren|¡Buen viaje!|Bon voyage !`,va:`S|a1mercado|1|Au marché|Tu fais tes courses au marché : des oranges et du fromage.|Vendeuse
+V|a2tren|¡Buen viaje!|Bon voyage !
+S|a1hora|1|L'heure dans la rue|Dans la rue, tu demandes l'heure à une passante.|Passante
+T|a1hora|Buenas tardes.|Salue et demande l'heure.|Buenas tardes. ¿Qué hora es, por favor?|Hola, ¿qué hora es?;;¿Qué hora es, por favor?|Buenas noches. ¿Cuánto es?;;Buenas tardes. ¿Qué tal es?;;Adiós. ¿Qué hora es?|hora
+T|a1hora|Son las cinco.|Tu n'as pas compris : demande-lui de répéter.|¿Puede repetir, por favor?|Perdone, ¿puede repetir?;;¿Puede repetir?|¿Puede comer, por favor?;;¿Puedo repetir, por favor?;;De nada, ¿puede repetir?|repetir
+T|a1hora|Son las cinco de la tarde.|Demande-lui de parler plus lentement.|Más despacio, por favor.|Habla más despacio, por favor.;;Hable más despacio, por favor.|Más rápido, por favor.;;Más caro, por favor.;;Más despacio, de nada.|despacio
+T|a1hora|Las cinco.|Dis que tu as compris et remercie-la.|Vale, gracias.|Vale, muchas gracias.;;Ah, vale. Gracias.|Vale, de nada.;;Vale, lo siento.;;No, gracias.|gracias
+T|a1hora|De nada. ¿Habla español?|Réponds que tu ne parles pas bien.|No, no hablo bien.|No hablo bien español.;;No, no hablo muy bien.|Sí, hablo muy bien.;;No, no como bien.;;No, no hablas bien.|hablo
+T|a1hora|Vale. ¡Hasta luego!|Dis au revoir.|Gracias. ¡Adiós!|¡Hasta luego!;;Gracias. ¡Hasta luego!|Buenas tardes. ¡Hola!;;Lo siento. ¡Hola!;;Por favor. ¡Hola!|gracias
+V|a1hora|¿Qué hora es?|Quelle heure est-il ?
+V|a1hora|¿Puede repetir?|Vous pouvez répéter ?
+V|a1hora|despacio|lentement
+S|a1panaderia|1|À la boulangerie|Tu achètes du pain et tu paies.|Boulanger
+T|a1panaderia|Buenos días. ¿Qué desea?|Salue et demande du pain.|Buenos días. Quiero pan, por favor.|Hola, pan, por favor.;;Quiero pan, por favor.|Buenas noches. Quiero leche, de nada.;;Buenos días. Soy pan, por favor.;;Adiós. Quiero pan, por favor.|pan
+T|a1panaderia|Aquí tiene.|Demande combien ça coûte.|¿Cuánto cuesta?|¿Cuánto es?;;Gracias. ¿Cuánto cuesta?|¿Cuándo cuesta?;;¿Qué hora es?;;¿Cuánto tiempo?|cuánto
+T|a1panaderia|Cuesta dos euros. ¿Algo más?|Dis que tu veux aussi de l'eau.|Sí, quiero agua también.|Sí, agua, por favor.;;Sí, quiero agua, por favor.|No, quiero agua también.;;Sí, soy agua también.;;Sí, quiero pan caliente.|agua
+T|a1panaderia|Son tres euros.|Demande si tu peux payer par carte.|¿Puedo pagar con tarjeta?|¿Se puede pagar con tarjeta?;;¿Puedo pagar con tarjeta, por favor?|¿Puedo comer con tarjeta?;;¿Puede pagar con tarjeta?;;¿Puedo pagar sin tarjeta?|pagar;tarjeta
+T|a1panaderia|Sí, puede pagar con tarjeta.|Demande le ticket.|¿Me da el ticket, por favor?|¿Me da el ticket?;;El ticket, por favor.|¿Me da el pan, por favor?;;¿Le doy el ticket, por favor?;;¿Me da el ticket, de nada?|ticket
+T|a1panaderia|Aquí tiene. ¡Hasta mañana!|Remercie et dis au revoir.|Gracias. ¡Hasta mañana!|¡Hasta mañana!;;Gracias, hasta mañana.|De nada. ¡Hasta mañana!;;Lo siento. ¡Buenos días!;;Por favor. ¡Hola!|gracias
+V|a1panaderia|el pan|le pain
+V|a1panaderia|¿Me da el ticket?|Vous me donnez le ticket ?
+V|a1panaderia|el agua|l'eau
+S|a1mesa|1|Au restaurant|Tu déjeunes au restaurant avec un ami.|Serveur
+T|a1mesa|Buenas tardes.|Demande une table pour deux.|Buenas tardes. Una mesa para dos, por favor.|Una mesa para dos, por favor.;;Hola, una mesa para dos.|Buenas tardes. Una mesa para diez años.;;Buenas tardes. Una cuenta para dos.;;Adiós. Una mesa para dos.|mesa;dos
+T|a1mesa|Muy bien. Por aquí.|Demande la carte.|¿Me trae la carta, por favor?|La carta, por favor.;;¿Me trae la carta?|¿Me trae la cuenta, por favor?;;¿Le traigo la carta?;;¿Me trae la carta, de nada?|carta
+T|a1mesa|Aquí tiene. ¿Qué desea?|Commande du poisson.|Quiero pescado, por favor.|Pescado, por favor.;;Para mí, pescado, por favor.|Soy pescado, por favor.;;Quiero pagar, por favor.;;Quiero pescado, de nada.|pescado
+T|a1mesa|Muy bien. ¿Y para beber?|Demande de l'eau.|Agua, por favor.|Agua fría, por favor.;;Quiero agua, por favor.|Pan, por favor.;;Agua, lo siento.;;Agua caliente, de nada.|agua
+T|a1mesa|¿Algo más?|Demande l'addition.|No, gracias. La cuenta, por favor.|La cuenta, por favor.;;No, gracias. ¿Me trae la cuenta?|Sí, gracias. La carta, por favor.;;No, gracias. La mesa, por favor.;;No, de nada. La cuenta, por favor.|cuenta
+T|a1mesa|Son veinte euros.|Remercie.|Aquí tiene. Muchas gracias.|Aquí tiene. Gracias.;;Muchas gracias.|Aquí tiene. De nada.;;Aquí tiene. Lo siento.;;Aquí tiene. Por favor.|gracias
+V|a1mesa|Una mesa para dos|Une table pour deux
+V|a1mesa|la carta|la carte
+V|a1mesa|La cuenta, por favor|L'addition, s'il vous plaît
+S|a1piso|1|Une chambre à louer|Tu appelles pour une chambre dans un appartement partagé.|Propriétaire
+T|a1piso|Hola, buenas tardes.|Dis que tu cherches un appartement à louer.|Buenas tardes. Busco piso en alquiler.|Hola, busco piso en alquiler.;;Busco un piso en alquiler.|Buenas tardes. Busco pan en alquiler.;;Buenas tardes. Vendo piso en alquiler.;;Adiós. Busco piso en alquiler.|piso
+T|a1piso|Tengo un piso compartido.|Demande combien coûte le loyer.|¿Cuánto es el alquiler?|¿Cuánto cuesta el alquiler?;;¿Cuánto es?|¿Cuándo es el alquiler?;;¿Dónde es el alquiler?;;¿Qué hora es el alquiler?|alquiler
+T|a1piso|Son seiscientos euros.|Dis que c'est trop cher.|Es demasiado caro.|Es muy caro.;;Uf, es demasiado caro.|Es demasiado barato.;;Es demasiado frío.;;Soy demasiado caro.|caro
+T|a1piso|Es un piso muy bonito.|Demande où est l'appartement.|¿Dónde está el piso?|¿Dónde está?;;¿Y dónde está el piso?|¿Cuándo está el piso?;;¿Dónde es la playa?;;¿Cómo está usted?|dónde
+T|a1piso|Está cerca de la playa.|Demande si l'appartement est grand.|¿Es grande?|¿El piso es grande?;;¿Es un piso grande?|¿Es caliente?;;¿Eres grande?;;¿Es la playa?|grande
+T|a1piso|Sí, es grande. ¿Le interesa?|Dis que tu vas y réfléchir.|Me lo voy a pensar.|Me lo pienso.;;Gracias, me lo voy a pensar.|Me lo voy a comer.;;Te lo voy a pensar.;;Me lo voy a pagar.|pensar
+V|a1piso|Busco piso en alquiler|Je cherche un appartement à louer
+V|a1piso|el alquiler|le loyer
+V|a1piso|Me lo voy a pensar|Je vais y réfléchir
+S|a1tienda|1|Dans un magasin|Tu cherches un cadeau dans un petit magasin.|Vendeuse
+T|a1tienda|Buenos días. ¿En qué puedo ayudarle?|Salue et dis que tu veux regarder.|Buenos días. Solo quiero mirar, gracias.|Solo mirar, gracias.;;Hola, solo quiero mirar.|Buenos días. Solo quiero comer, gracias.;;Buenas noches. Solo quiero mirar.;;Buenos días. Solo quieres mirar.|mirar
+T|a1tienda|Muy bien. Un momento, por favor.|Demande si ce produit est en promotion.|¿Está de oferta?|¿Esto está de oferta?;;Perdone, ¿está de oferta?|¿Está de comer?;;¿Es de oferta mañana?;;¿Estoy de oferta?|oferta
+T|a1tienda|Sí, está de oferta.|Demande combien il coûte.|¿Cuánto cuesta?|¿Cuánto es?;;¿Y cuánto cuesta?|¿Cuándo cuesta?;;¿Dónde cuesta?;;¿Qué hora es?|cuánto
+T|a1tienda|Cuesta diez euros.|Dis que c'est bon marché et que tu le prends.|Es barato. Me lo llevo.|Me lo llevo.;;Es muy barato. Me lo llevo.|Es caro. Me lo llevo.;;Es barato. Te lo llevo.;;Es barato. No me lo llevo.|llevo
+T|a1tienda|Muy bien.|Demande si tu peux payer par carte.|¿Puedo pagar con tarjeta?|¿Se puede pagar con tarjeta?;;¿Con tarjeta, por favor?|¿Puedo comer con tarjeta?;;¿Puede pagar con tarjeta?;;¿Puedo pagar con mesa?|tarjeta
+T|a1tienda|Sí, puede pagar con tarjeta. Gracias.|Remercie et souhaite une bonne journée.|Gracias. ¡Hasta luego!|Gracias. ¡Adiós!;;Muchas gracias. Hasta luego.|De nada. ¡Hasta luego!;;Lo siento. ¡Hola!;;Por favor. ¡Buenos días!|gracias
+V|a1tienda|Está de oferta|C'est en promotion
+V|a1tienda|Me lo llevo|Je le prends
+V|a1tienda|barato|bon marché
+S|a1medico|1|Chez le médecin|Tu ne te sens pas bien et tu vas chez le médecin.|Médecin
+T|a1medico|Buenos días. ¿Qué le pasa?|Salue et dis que tu ne te sens pas bien.|Buenos días. Me encuentro mal.|Hola, me encuentro mal.;;Me encuentro mal.|Buenos días. Me encuentro bien.;;Buenas noches. Me encuentro mal.;;Buenos días. Te encuentro mal.|mal
+T|a1medico|¿Qué le duele?|Dis que tu as mal à la tête.|Me duele la cabeza.|La cabeza.;;Me duele mucho la cabeza.|Me duele la mesa.;;Te duele la cabeza.;;Me gusta la cabeza.|cabeza
+T|a1medico|¿Tiene fiebre?|Dis que tu as de la fièvre.|Sí, tengo fiebre.|Sí, tengo un poco de fiebre.;;Tengo fiebre.|Sí, tengo hambre.;;Sí, tiene fiebre.;;No, tengo fiebre.|fiebre
+T|a1medico|¿Duerme bien?|Dis que tu dors mal.|No, duermo mal.|No, no duermo bien.;;Duermo mal.|Sí, duermo mal.;;No, como mal.;;No, duerme mal.|duermo
+T|a1medico|Está resfriado. Tiene que beber agua.|Dis que tu bois de l'eau.|Sí, bebo agua.|Bebo agua.;;Vale, bebo agua.|Sí, como agua.;;Sí, bebe agua.;;No, no bebo agua.|bebo;agua
+T|a1medico|Muy bien. ¡Hasta luego!|Remercie et dis au revoir.|Gracias. ¡Adiós!|Muchas gracias. Hasta luego.;;Gracias. ¡Hasta luego!|De nada. ¡Adiós!;;Lo siento. ¡Hola!;;Gracias. ¡Buenos días!|gracias
+V|a1medico|Me duele la cabeza|J'ai mal à la tête
+V|a1medico|Tengo fiebre|J'ai de la fièvre
+V|a1medico|Estoy resfriado|Je suis enrhumé
+S|a1cafe|1|Au café|Tu prends un café avec une collègue.|Serveur
+T|a1cafe|Buenos días. ¿Qué desean?|Commande un « cortado » (café noisette).|Un cortado, por favor.|Para mí, un cortado.;;Un cortado.|Un cortado, de nada.;;Una mesa, por favor.;;Un cortado, lo siento.|cortado
+T|a1cafe|¿Y para ella?|Dis que ta collègue veut une petite bière (« una caña »).|Una caña, por favor.|Para ella, una caña.;;Una caña.|Una cuenta, por favor.;;Una caña, de nada.;;Un pan, por favor.|caña
+T|a1cafe|¿Algo más?|Dis que vous voulez aussi de l'eau.|Sí, agua también, por favor.|Agua, por favor.;;Sí, dos aguas, por favor.|No, agua también.;;Sí, pan también.;;Sí, agua, lo siento.|agua
+T|a1cafe|¿Algo más?|Dis que c'est tout.|No, nada más, gracias.|Nada más, gracias.;;No, gracias.|Sí, nada más, gracias.;;No, todo más, gracias.;;No, nada más, de nada.|nada
+T|a1cafe|Aquí tienen.|Demande combien ça fait.|¿Cuánto es?|¿Cuánto cuesta?;;¿Cuánto es todo?|¿Cuándo es?;;¿Dónde es?;;¿Qué hora es?|cuánto
+T|a1cafe|Son cuatro euros. ¡Buen fin de semana!|Dis bon week-end.|Gracias. ¡Buen fin de semana!|¡Buen fin de semana!;;Igualmente. ¡Buen fin de semana!|De nada. ¡Buenas noches!;;Lo siento. ¡Buen día!;;Gracias. ¡Mal fin de semana!|semana
+V|a1cafe|un cortado|un café noisette
+V|a1cafe|una caña|une petite bière
+V|a1cafe|¡Buen fin de semana!|Bon week-end !
+S|a1camino|1|Demander son chemin|Tu cherches l'arrêt de métro dans le centre-ville.|Passant
+T|a1camino|Hola, ¿qué tal?|Excuse-toi et demande où est l'arrêt de métro.|Perdone, ¿dónde está la parada de metro?|¿Dónde está la parada de metro?;;Perdone, ¿dónde está el metro?|Perdone, ¿cuándo está la parada de metro?;;Lo siento, ¿dónde es la playa?;;Perdone, ¿dónde estoy la parada de metro?|parada;metro
+T|a1camino|Está cerca.|Demande si c'est loin.|¿Está lejos?|¿Es lejos?;;Perdone, ¿está lejos?|¿Está caro?;;¿Estás lejos?;;¿Está cerca de nada?|lejos
+T|a1camino|No, no está lejos. Todo recto y a la izquierda.|Demande de répéter.|¿Puede repetir, por favor?|¿Puede repetir?;;Perdone, ¿puede repetir?|¿Puede comer, por favor?;;¿Puedo repetir, por favor?;;¿Puede pagar, por favor?|repetir
+T|a1camino|Todo recto y gire a la izquierda.|Répète l'indication : tout droit puis à gauche.|Vale. Todo recto y a la izquierda.|Todo recto y a la izquierda.;;Vale, todo recto y a la izquierda.|Vale. Todo recto y a la playa.;;Vale. Todo caro y a la izquierda.;;Vale. Todo recto y a la izquierda, de nada.|recto;izquierda
+T|a1camino|Eso es.|Demande combien de temps il faut.|¿Cuánto tarda?|¿Y cuánto tarda?;;¿Cuánto tarda a pie?|¿Cuánto cuesta?;;¿Cuándo tarda?;;¿Qué hora es?|tarda
+T|a1camino|No mucho.|Remercie.|Muchas gracias.|Gracias.;;Vale, muchas gracias.|De nada.;;Lo siento mucho.;;Por favor.|gracias
+V|a1camino|la parada de metro|l'arrêt de métro
+V|a1camino|todo recto|tout droit
+V|a1camino|a la izquierda|à gauche
+S|a1compra|1|Faire les courses|Au marché, tu achètes des fruits et des légumes.|Vendeur
+T|a1compra|Buenos días. ¿Qué le pongo?|Dis que tu fais les courses et demande du riz.|Hago la compra. Quiero arroz, por favor.|Arroz, por favor.;;Quiero arroz, por favor.|Hago la compra. Soy arroz, por favor.;;Hago la compra. Quiero arroz, de nada.;;Haces la compra. Quiero arroz.|arroz
+T|a1compra|Aquí tiene.|Demande s'il y a du fromage.|¿Hay queso?|¿Tiene queso?;;Perdone, ¿hay queso?|¿Hay quiero?;;¿Hay queso mañana ayer?;;¿Eres queso?|queso
+T|a1compra|Sí, este queso es muy bueno.|Dis que tu le prends.|Vale, me lo llevo.|Me lo llevo.;;Muy bien, me lo llevo.|Vale, te lo llevo.;;Vale, me lo como mañana ayer.;;No, me lo llevo.|llevo
+T|a1compra|Son quince euros.|Demande s'il a de la monnaie.|¿Tiene cambio?|Perdone, ¿tiene cambio?;;¿Tiene cambio, por favor?|¿Tiene cambio de nada?;;¿Tengo cambio?;;¿Tiene queso de cambio?|cambio
+T|a1compra|Sí. ¿Algo más?|Dis que c'est tout.|No, nada más, gracias.|Nada más, gracias.;;No, gracias. Es todo.|Sí, nada más.;;No, todo más, gracias.;;No, nada más, de nada.|nada
+T|a1compra|Aquí tiene su cambio.|Souhaite-lui une bonne journée.|Gracias. ¡Hasta luego!|Gracias. ¡Adiós!;;Muchas gracias. Hasta luego.|De nada. ¡Hasta luego!;;Lo siento. ¡Hola!;;Por favor. ¡Buenos días!|gracias
+V|a1compra|Hacer la compra|Faire les courses
+V|a1compra|¿Tiene cambio?|Vous avez de la monnaie ?
+V|a1compra|el arroz|le riz
+S|a1perdido|1|Perdu en ville|Tu es perdu dans le quartier et tu demandes de l'aide.|Passante
+T|a1perdido|Hola, ¿qué le pasa?|Dis que tu es perdu.|Perdone, estoy perdido.|Estoy perdido.;;Perdone, estoy perdida.|Perdone, estoy listo.;;Perdone, está perdido.;;De nada, estoy perdido.|perdido
+T|a1perdido|¿Adónde va?|Dis que tu cherches la plage.|Busco la playa.|Voy a la playa.;;Busco la playa, por favor.|Busco la cuenta.;;Buscas la playa.;;Vendo la playa.|playa
+T|a1perdido|La playa está lejos de aquí.|Demande si tu prends le métro.|¿Cojo el metro?|¿Tengo que coger el metro?;;¿Cojo el metro o el autobús?|¿Como el metro?;;¿Coges el metro?;;¿Cojo la playa?|metro
+T|a1perdido|Sí, el metro es rápido.|Demande combien de temps il faut.|¿Cuánto tarda?|¿Cuánto tarda el metro?;;¿Y cuánto tarda?|¿Cuánto cuesta el pan?;;¿Cuándo tarda?;;¿Qué hora es?|tarda
+T|a1perdido|En metro, poco. Caminando, una hora.|Dis que tu vas à pied.|Voy caminando. Me gusta caminar.|Voy caminando.;;Voy andando. Me gusta caminar.|Voy caminando. Me gusta comer.;;Vas caminando. Te gusta caminar.;;Voy caminando. No me gusta caminar.|caminando
+T|a1perdido|¡Muy bien! Todo recto.|Remercie.|Muchas gracias.|Gracias.;;Vale, muchas gracias.|De nada.;;Lo siento mucho.;;Por favor.|gracias
+V|a1perdido|Estoy perdido|Je suis perdu
+V|a1perdido|Cojo el metro|Je prends le métro
+V|a1perdido|caminar|marcher
+S|a1presentar|1|Faire connaissance|À une fête, une personne vient te parler.|Invitée
+T|a1presentar|¡Hola! ¿Cómo te llamas?|Réponds à la salutation et dis comment tu t'appelles.|Hola. Me llamo Max.|Me llamo Max.;;Hola, soy Max.|Hola. Te llamas Max.;;Adiós. Me llamo Max.;;Hola. Me llamo de Max.|llamo
+T|a1presentar|Yo soy Ana. ¿Cómo estás?|Réponds que tu vas bien.|Bien, gracias.|Muy bien, gracias.;;Bien.|Bien, de nada.;;Lo siento, gracias.;;Bien, por favor.|bien
+T|a1presentar|¿De dónde eres?|Dis d'où tu viens.|Soy de Toulouse.|Soy de Francia.;;Soy de Toulouse, en Francia.|Eres de Toulouse.;;Estoy de Toulouse.;;Soy a Toulouse.|soy
+T|a1presentar|¡Qué bien! ¿Hablas español?|Dis que tu apprends la langue.|Estoy aprendiendo español.|Aprendo español.;;Sí, estoy aprendiendo español.|Estoy comiendo español.;;Estás aprendiendo español.;;No, estoy aprendiendo español mañana.|aprendiendo
+T|a1presentar|¡Hablas muy bien!|Remercie et dis que tu parles un peu.|Gracias. Hablo un poco de español.|Hablo un poco de español.;;Gracias, hablo un poco.|Gracias. Hablo mucho de español.;;De nada. Hablo un poco.;;Gracias. Hablas un poco de español.|poco
+T|a1presentar|Encantada, Max.|Dis que tu es enchanté(e).|Encantado.|Encantada.;;Encantado, Ana.|Lo siento.;;De nada.;;Por favor.|encantado
+V|a1presentar|¿Cómo te llamas?|Comment tu t'appelles ?
+V|a1presentar|Encantado|Enchanté
+V|a1presentar|Soy de…|Je viens de…
+S|a2restaurante|2|Que nous conseillez-vous ?|Au restaurant, tu demandes conseil à la serveuse et tu invites un ami.|Serveuse
+T|a2restaurante|Buenas noches. ¿Ya saben qué quieren?|Demande ce qu'elle te recommande.|¿Qué me recomienda?|Perdone, ¿qué me recomienda?;;¿Qué nos recomienda?|¿Qué hora es?;;¿Me cobras?;;¿Qué me cuesta?|recomienda
+T|a2restaurante|La paella de la casa está muy buena.|Demande ce qu'il y a dedans.|¿Qué lleva?|¿Qué lleva la paella?;;Perdone, ¿qué lleva?|¿Qué llevas?;;¿Qué hora lleva?;;¿Dónde lleva?|lleva
+T|a2restaurante|Lleva arroz, carne y verduras.|Dis que vous voulez une portion à partager.|Vale. Una ración para compartir, por favor.|Una ración para compartir.;;Vale, una ración para compartir.|Vale. Una ración para comer ayer.;;Vale. Una cuenta para compartir.;;Vale. Una ración para compartes.|ración;compartir
+T|a2restaurante|¿Van a querer postre?|Dis que tu ne veux pas de dessert, merci.|No, gracias. Sin postre.|No, gracias.;;No queremos postre, gracias.|Sí, gracias. Sin postre.;;No, gracias. Sin pan postre.;;No, de nada. Sin postre.|postre
+T|a2restaurante|¿Algo más?|Demande l'addition.|No, gracias. ¿Me cobra?|La cuenta, por favor.;;¿Me trae la cuenta, por favor?|No, gracias. ¿Me cobras ayer?;;No, gracias. ¿Le cobro?;;Sí, gracias. ¿Me cobra?|cobra
+T|a2restaurante|Son treinta euros.|Dis que c'est toi qui invites.|Invito yo.|Hoy invito yo.;;Pago yo, invito yo.|Invitas tú.;;Invito yo ayer.;;Invito el postre.|invito
+V|a2restaurante|¿Qué me recomienda?|Que me conseillez-vous ?
+V|a2restaurante|una ración para compartir|une portion à partager
+V|a2restaurante|Invito yo|C'est moi qui invite
+S|a2alquiler|2|Signer le contrat|Tu visites une chambre et tu poses des questions avant de signer.|Propriétaire
+T|a2alquiler|Esta es la habitación. El alquiler es de cuatrocientos euros.|Demande si les charges sont comprises.|¿Están incluidos los gastos?|¿Los gastos están incluidos?;;Perdone, ¿están incluidos los gastos?|¿Están incluidos los postres?;;¿Estás incluido los gastos?;;¿Están incluidos los gastos ayer mañana?|gastos;incluidos
+T|a2alquiler|Sí, el agua y la luz están incluidas.|Demande combien est la caution.|¿Cuánto es la fianza?|¿Y la fianza?;;¿Cuánto es la fianza, por favor?|¿Cuándo es la fianza?;;¿Cuánto es la cena?;;¿Cuánto eres la fianza?|fianza
+T|a2alquiler|Un mes de alquiler.|Dis que la chambre te plaît.|Me gusta mucho la habitación.|La habitación me gusta mucho.;;Me gusta la habitación.|Te gusta mucho la habitación.;;Me gusto mucho la habitación.;;No me gusta nada la habitación.|gusta;habitación
+T|a2alquiler|¡Qué bien!|Demande quand tu peux signer le contrat.|¿Cuándo puedo firmar el contrato?|¿Cuándo firmamos el contrato?;;¿Cuándo puedo firmar?|¿Dónde puedo comer el contrato?;;¿Cuándo puedes firmar el contrato?;;¿Cuánto puedo firmar el contrato?|firmar;contrato
+T|a2alquiler|Mañana, si quiere. ¿Tiene el formulario?|Dis que tu as déjà rempli le formulaire.|Sí, ya he rellenado el formulario.|Ya he rellenado el formulario.;;Sí, ya lo he rellenado.|Sí, voy a rellenar el formulario ayer.;;Sí, ya has rellenado el formulario.;;No, ya he rellenado el formulario.|rellenado;formulario
+T|a2alquiler|Perfecto. Hasta mañana entonces.|Remercie et dis à demain.|Muchas gracias. ¡Hasta mañana!|Gracias. ¡Hasta mañana!;;Muchas gracias, hasta mañana.|De nada. ¡Hasta mañana!;;Lo siento. ¡Buenas noches!;;Muchas gracias. ¡Hasta ayer!|gracias
+V|a2alquiler|la fianza|la caution
+V|a2alquiler|¿Están incluidos los gastos?|Les charges sont comprises ?
+V|a2alquiler|firmar el contrato|signer le contrat
+S|a2cita|2|Rendez-vous à la mairie|Tu veux t'inscrire à la mairie et tu demandes un rendez-vous.|Employée
+T|a2cita|Buenos días. ¿En qué puedo ayudarle?|Dis que tu veux demander un rendez-vous.|Buenos días. Quiero pedir cita previa.|Quiero pedir cita.;;Buenos días, quería pedir cita previa.|Buenos días. Quiero pedir cena previa.;;Buenos días. Quieres pedir cita previa.;;Buenas noches. Quiero vender cita previa.|cita
+T|a2cita|¿Para qué es la cita?|Dis que c'est pour t'inscrire au registre des habitants (« el padrón »).|Es para inscribirme en el padrón.|Para inscribirme en el padrón.;;Para el padrón.|Es para comer.;;Es para inscribirte en el padrón.;;Es para el contrato de trabajo ayer.|padrón
+T|a2cita|Muy bien.|Demande quels papiers il faut.|¿Qué papeles necesito?|¿Qué papeles tengo que traer?;;¿Qué necesito?|¿Qué papeles necesitas?;;¿Dónde papeles necesito?;;¿Qué postres necesito?|papeles
+T|a2cita|El NIE, el contrato de alquiler y el formulario.|Dis que tu as tout sauf le contrat.|Tengo todo menos el contrato.|Lo tengo todo menos el contrato.;;Todo menos el contrato.|Tengo todo con el contrato.;;Tienes todo menos el contrato.;;Tengo nada menos el contrato.|menos;contrato
+T|a2cita|No pasa nada. Hay cita el martes a las diez.|Accepte le rendez-vous de mardi.|Vale, el martes a las diez me viene bien.|Vale, el martes a las diez.;;El martes me viene bien.|Vale, el lunes a las diez me viene bien.;;Vale, el martes a las diez te viene bien.;;No, el martes a las diez me viene bien.|martes
+T|a2cita|Perfecto. Hasta el martes.|Remercie.|Muchas gracias. ¡Hasta el martes!|Gracias. ¡Hasta el martes!;;Muchas gracias.|De nada. ¡Hasta el martes!;;Lo siento. ¡Hasta el martes!;;Muchas gracias. ¡Hasta el domingo!|gracias
+V|a2cita|pedir cita previa|prendre rendez-vous
+V|a2cita|el padrón|le registre des habitants
+V|a2cita|los papeles|les papiers
+S|a2quedar|2|Un café entre amis|Un ami t'appelle pour se voir cette semaine.|Ami
+T|a2quedar|¡Hola! ¿Qué tal? Ayer no te vi.|Dis que tu as beaucoup travaillé hier.|Ayer trabajé mucho.|Es que ayer trabajé mucho.;;Ayer trabajé todo el día.|Ayer trabajo mucho.;;Ayer trabajaste mucho.;;Mañana trabajé mucho.|trabajé
+T|a2quedar|¡Qué rollo! ¿Te apetece un café esta semana?|Accepte : oui, tu as envie d'un café.|Sí, me apetece mucho.|Sí, me apetece.;;¡Claro que sí! Me apetece mucho.|No, me apetece mucho.;;Sí, te apetece mucho.;;Sí, me apetece ayer.|apetece
+T|a2quedar|¡Genial! ¿Qué día?|Demande si samedi lui convient.|¿Te viene bien el sábado?|¿El sábado te viene bien?;;¿Qué tal el sábado?|¿Me viene bien el sábado?;;¿Te viene bien ayer?;;¿Te viene bien el café?|sábado
+T|a2quedar|Sí, el sábado me viene bien. ¿A qué hora?|Propose de vous retrouver à huit heures.|Quedamos a las ocho.|¿Quedamos a las ocho?;;A las ocho, ¿vale?|Quedamos ayer a las ocho.;;Quedáis a las ocho.;;Quedamos a las ocho años.|quedamos;ocho
+T|a2quedar|Vale. ¿Dónde quedamos?|Propose de passer chez lui.|Paso por tu casa.|Yo paso por tu casa.;;Paso por tu casa, ¿vale?|Pasas por tu casa.;;Paso por mi casa ayer.;;Paso por tu café.|paso;casa
+T|a2quedar|¡Perfecto! Hasta el sábado.|Dis à samedi.|¡Hasta el sábado!|Vale, hasta el sábado.;;¡Nos vemos el sábado!|¡Hasta el lunes!;;¡Hasta ayer!;;¡Buenas noches, sábado!|sábado
+V|a2quedar|¿Te apetece un café?|Ça te dit, un café ?
+V|a2quedar|¿Te viene bien?|Ça te va ?
+V|a2quedar|Quedamos a las ocho|On se retrouve à huit heures
+S|a2ropa|2|Dans une boutique de vêtements|Tu essaies une veste et tu veux en rapporter une autre.|Vendeur
+T|a2ropa|Buenas tardes. ¿Le gusta esta chaqueta?|Demande si tu peux l'essayer.|Sí. ¿Puedo probármela?|¿Puedo probármela?;;Sí, ¿me la puedo probar?|Sí. ¿Puedo pagarla?;;Sí. ¿Puedo comérmela?;;No. ¿Puedo probármela?|probármela
+T|a2ropa|Claro. ¿Qué tal?|Dis qu'elle est trop grande.|Me queda grande.|Me queda un poco grande.;;Es demasiado grande.|Me queda pequeña.;;Te queda grande.;;Me quedo grande.|grande
+T|a2ropa|Vaya.|Demande s'il y en a une plus petite.|¿Tiene una más pequeña?|¿Hay una más pequeña?;;¿Tiene una talla más pequeña?|¿Tiene una más grande?;;¿Tengo una más pequeña?;;¿Tiene una más pequeña ayer?|pequeña
+T|a2ropa|Sí, aquí tiene.|Dis que celle-ci te va bien et que tu la prends.|Esta me queda bien. Me la llevo.|Me queda bien. Me la llevo.;;Esta sí. Me la llevo.|Esta me queda mal. Me la llevo.;;Esta te queda bien. Te la llevas.;;Esta me queda bien. No me la llevo.|llevo
+T|a2ropa|Muy bien. ¿Algo más?|Dis que tu veux aussi rendre ces chaussures.|Sí, quiero devolver estos zapatos.|Quiero devolver estos zapatos.;;Sí, quería devolver estos zapatos.|Sí, quiero comprar estos zapatos.;;Sí, quieres devolver estos zapatos.;;No, quiero devolver estos zapatos.|devolver;zapatos
+T|a2ropa|De acuerdo. Son cuarenta euros.|Dis qu'il peut garder la monnaie.|Aquí tiene. Quédese con el cambio.|Quédese con el cambio.;;Tome. Quédese con el cambio.|Aquí tiene. ¿Me cobras?;;Aquí tiene. Quédate con la chaqueta.;;Aquí tiene. Me quedo con el cambio.|cambio
+V|a2ropa|¿Puedo probármela?|Je peux l'essayer ?
+V|a2ropa|Me queda grande|Elle est trop grande pour moi
+V|a2ropa|Quédese con el cambio|Gardez la monnaie
+S|a2trabajo|2|Un nouveau collègue|Le premier jour au bureau, un collègue se présente.|Collègue
+T|a2trabajo|¡Hola! Soy Pablo, del equipo de ventas.|Présente-toi et dis que tu es nouveau.|Hola, Pablo. Soy Max, soy nuevo.|Encantado. Soy Max, soy nuevo.;;Hola, me llamo Max. Soy nuevo.|Hola, Pablo. Eres Max, eres nuevo.;;Adiós, Pablo. Soy Max, soy nuevo.;;Hola, Pablo. Soy Max, soy viejo.|nuevo
+T|a2trabajo|¡Bienvenido! ¿A qué te dedicas?|Dis que tu travailles dans la vente.|Me dedico a las ventas.|Trabajo en ventas.;;Me dedico a las ventas, como tú.|Te dedicas a las ventas.;;Me dedico a la cena.;;Me dedico a las ventas ayer.|ventas
+T|a2trabajo|¡Como yo! ¿Llevas mucho tiempo en España?|Dis que tu es en Espagne depuis trois mois.|Llevo tres meses aquí.|Llevo tres meses en España.;;Tres meses.|Llevas tres meses aquí.;;Llevo tres años mañana.;;Llevo tres meses allí ayer.|tres;meses
+T|a2trabajo|¿Y antes?|Dis que tu as travaillé huit ans dans des magasins.|Trabajé ocho años en tiendas.|Antes trabajé ocho años en tiendas.;;Trabajé en tiendas ocho años.|Trabajo ocho años en tiendas.;;Trabajaste ocho años en tiendas.;;Trabajé ocho años en restaurantes mañana.|trabajé;tiendas
+T|a2trabajo|¡Qué bien! Tienes experiencia.|Demande-lui à quelle heure commence la réunion.|¿A qué hora empieza la reunión?|¿Cuándo empieza la reunión?;;Perdona, ¿a qué hora es la reunión?|¿A qué hora empiezas la reunión?;;¿Dónde empieza la reunión ayer?;;¿A qué hora termina la cena?|reunión
+T|a2trabajo|A las diez. Nos vemos allí.|Dis à tout à l'heure.|¡Hasta luego!|Vale, hasta luego.;;¡Nos vemos!|¡Buenas noches!;;¡Hasta ayer!;;¡Lo siento mucho!|luego
+V|a2trabajo|¿A qué te dedicas?|Qu'est-ce que tu fais dans la vie ?
+V|a2trabajo|Me dedico a las ventas|Je travaille dans la vente
+V|a2trabajo|Llevo tres meses aquí|Je suis ici depuis trois mois
+S|a2farmacia|2|À la pharmacie|Tu ne te sens pas bien et tu vas à la pharmacie.|Pharmacienne
+T|a2farmacia|Buenas tardes. ¿Qué le pasa?|Dis que tu t'es tordu la cheville.|Me he torcido el tobillo.|Me he torcido el tobillo esta mañana.;;Me duele el tobillo.|Te has torcido el tobillo.;;Me he torcido el postre.;;Me torcí el tobillo mañana.|tobillo
+T|a2farmacia|Necesita una crema. ¿Algo más?|Dis que tu as aussi mal à la gorge.|Sí, también me duele la garganta.|También me duele la garganta.;;Sí, me duele la garganta.|Sí, también te duele la garganta.;;Sí, también me gusta la garganta.;;No, también me duele la garganta.|garganta
+T|a2farmacia|Le doy unas pastillas. ¿Es alérgico a algo?|Dis que tu es allergique au lait.|Sí, soy alérgico a la leche.|Soy alérgico a la leche.;;Sí, soy alérgica a la leche.|Sí, eres alérgico a la leche.;;Sí, soy alérgico a la playa.;;No, soy alérgico a la leche.|alérgico;leche
+T|a2farmacia|Estas no llevan leche.|Demande s'il faut une ordonnance.|¿Necesito receta?|¿Hace falta receta?;;¿Necesito una receta?|¿Necesitas receta?;;¿Necesito postre?;;¿Necesito receta ayer?|receta
+T|a2farmacia|No, no hace falta.|Demande combien de cachets tu dois prendre.|¿Cuántas pastillas tomo al día?|¿Cuántas pastillas al día?;;¿Cuántas tengo que tomar?|¿Cuántas pastillas tomas al día?;;¿Cuándo pastillas tomo al día?;;¿Cuántas pastillas tomo ayer?|pastillas
+T|a2farmacia|Tres al día, después de comer.|Remercie et dis au revoir.|Muchas gracias. ¡Adiós!|Gracias. ¡Hasta luego!;;Muchas gracias.|De nada. ¡Adiós!;;Lo siento. ¡Hola!;;Muchas gracias. ¡Buenos días ayer!|gracias
+V|a2farmacia|Me he torcido el tobillo|Je me suis tordu la cheville
+V|a2farmacia|Soy alérgico a…|Je suis allergique à…
+V|a2farmacia|la receta|l'ordonnance
+S|a2cola|2|La file d'attente|Au supermarché, tu fais la queue à la caisse.|Cliente
+T|a2cola|Hola, buenos días.|Demande qui est le dernier de la file.|Perdone, ¿quién es el último?|¿Quién es el último?;;Buenos días, ¿quién es el último?|Perdone, ¿quién es el primero ayer?;;Perdone, ¿quién eres el último?;;Perdone, ¿cuál es la última cena?|último
+T|a2cola|Soy yo. ¿Lleva mucho?|Dis que tu as seulement deux bouteilles.|No, solo llevo dos botellas.|Solo llevo dos botellas.;;No, solo dos botellas.|Sí, solo llevo dos botellas.;;No, solo llevas dos botellas.;;No, solo llevo dos postres ayer.|dos;botellas
+T|a2cola|Pase, pase.|Remercie-la : elle te laisse passer.|¡Muchas gracias! Es usted muy generoso.|¡Muchas gracias!;;Gracias, es usted muy generosa.|De nada, es usted muy generoso.;;Lo siento, es usted muy generoso.;;¡Muchas gracias! Soy muy generoso.|gracias
+T|a2cola|Hola. Son seis euros, por favor.|Demande si la TVA est comprise.|¿Está el IVA incluido?|¿El IVA está incluido?;;¿Está incluido el IVA?|¿Está el postre incluido?;;¿Estás el IVA incluido?;;¿Está el IVA incluido ayer?|iva;incluido
+T|a2cola|Sí, está incluido. ¿Cómo va a pagar?|Dis que tu paies par carte.|Con tarjeta, por favor.|Con tarjeta.;;Pago con tarjeta.|Con postre, por favor.;;Con tarjeta, de nada.;;Pagas con tarjeta.|tarjeta
+T|a2cola|Aquí tiene su cambio.|Souhaite-lui une bonne journée.|Gracias. ¡Que tenga un buen día!|Gracias. ¡Buen día!;;Muchas gracias. ¡Que tenga un buen día!|De nada. ¡Que tenga un buen día!;;Gracias. ¡Que tenga un mal día!;;Gracias. ¡Que tengo un buen día!|día
+V|a2cola|¿Quién es el último?|Qui est le dernier ?
+V|a2cola|¿Está el IVA incluido?|La TVA est comprise ?
+V|a2cola|con tarjeta|par carte
+S|a2bici|2|En vélo au travail|Un voisin te croise devant l'immeuble le matin.|Voisin
+T|a2bici|¡Buenos días, vecino! ¿Adónde vas tan temprano?|Dis que tu vas au travail.|Voy al trabajo.|Me voy al trabajo.;;Voy a la oficina.|Vas al trabajo.;;Voy al postre.;;Fui al trabajo mañana.|trabajo
+T|a2bici|¿En coche?|Dis que tu y vas à vélo.|No, voy en bici.|Voy en bici.;;No, en bici.|Sí, voy en bici.;;No, vas en bici.;;No, voy en paraguas.|bici
+T|a2bici|¿Y está lejos?|Dis que ce n'est pas loin : c'est juste en face du marché.|No, está justo enfrente del mercado.|Está justo enfrente del mercado.;;No, justo enfrente del mercado.|Sí, está justo enfrente del mercado.;;No, estoy justo enfrente del mercado.;;No, está justo enfrente del postre.|enfrente
+T|a2bici|¿Y mañana? Dicen que va a hacer mal tiempo.|Dis que demain tu prendras le métro, parce qu'il va pleuvoir.|Mañana iré en metro.|Mañana voy a ir en metro.;;Mañana cogeré el metro.|Ayer iré en metro.;;Mañana irás en metro.;;Mañana iré en paraguas.|mañana;metro
+T|a2bici|Yo también voy al centro mañana. ¿Me llevas al metro?|Dis que ça ne te dérange pas : c'est sur ton chemin.|Sí, claro. Me pilla de camino.|Claro, me pilla de camino.;;Sí, me pilla de camino.|No, claro. Me pilla de camino.;;Sí, claro. Te pilla de camino.;;Sí, claro. Me pilla de postre.|camino
+T|a2bici|¡Gracias! Hasta mañana.|Dis au revoir.|¡Hasta mañana!|¡Hasta mañana, vecino!;;Venga, hasta mañana.|¡Hasta ayer!;;¡Buenas noches, mañana!;;¡Lo siento, mañana!|mañana
+V|a2bici|Voy en bici|Je vais à vélo
+V|a2bici|justo enfrente|juste en face
+V|a2bici|Me pilla de camino|C'est sur mon chemin
+S|a2finde|2|Le week-end|Lundi matin, une amie te demande ce que tu as fait ce week-end.|Amie
+T|a2finde|¡Hola! ¿Qué tal el fin de semana? ¿Qué hiciste?|Dis que tu es resté(e) à la maison.|El sábado me quedé en casa.|Me quedé en casa.;;El sábado estuve en casa.|El sábado me quedo en casa.;;El sábado te quedaste en casa.;;El domingo próximo me quedé en casa.|quedé;casa
+T|a2finde|¿Y qué hiciste en casa?|Dis que tu as nettoyé l'appartement et fait la vaisselle.|Limpié el piso y fregué los platos.|Limpié el piso.;;Limpié todo y fregué los platos.|Limpio el piso y fregaré los platos.;;Limpiaste el piso y fregaste los platos.;;Limpié el postre y fregué los pisos.|limpié
+T|a2finde|¡Qué aburrido! ¿Y el domingo?|Dis que dimanche tu es allé(e) à la plage.|El domingo fui a la playa.|Fui a la playa.;;El domingo fui a la playa con amigos.|El domingo voy a la playa.;;El domingo fuiste a la playa.;;El domingo fui a la playa mañana.|fui;playa
+T|a2finde|¡Qué bien! ¿Y hoy? ¿Qué tal el trabajo?|Dis que tu en as marre du travail.|Estoy harto del trabajo.|Estoy harta del trabajo.;;Uf, estoy harto del trabajo.|Estás harto del trabajo.;;Estoy harto del postre.;;Estoy contento del trabajo.|harto
+T|a2finde|¡Qué rollo! ¿Vamos a tomar algo esta noche?|Dis que tu préfères rester tranquille ce soir.|No, gracias. Prefiero descansar.|Prefiero descansar en casa.;;Hoy no. Prefiero descansar.|Sí, gracias. Prefiero descansar.;;No, gracias. Prefieres descansar.;;No, gracias. Prefiero trabajar más.|descansar
+T|a2finde|Vale. ¡Hasta mañana!|Dis à demain.|¡Hasta mañana!|Vale, hasta mañana.;;¡Nos vemos mañana!|¡Hasta ayer!;;¡Buenos días, mañana!;;¡Lo siento, mañana!|mañana
+V|a2finde|Me quedé en casa|Je suis resté à la maison
+V|a2finde|fregar los platos|faire la vaisselle
+V|a2finde|Estoy harto de…|J'en ai marre de…
+S|a2excursion|2|Réserver une excursion|Dans une agence, tu réserves une excursion pour le week-end.|Agent
+T|a2excursion|Buenos días. ¿Qué desea?|Dis que tu veux réserver l'excursion à l'Albufera.|Quiero reservar la excursión a la Albufera.|Quería reservar la excursión a la Albufera.;;Una reserva para la excursión a la Albufera, por favor.|Quiero cambiar la excursión a la Albufera.;;Quieres reservar la excursión a la Albufera.;;Quiero reservar la maleta a la Albufera.|reservar;excursión
+T|a2excursion|Muy bien. ¿Para cuántas personas?|Dis que c'est pour deux personnes.|Para dos personas, por favor.|Para dos.;;Somos dos personas.|Para diez años, por favor.;;Para dos postres, por favor.;;Para dos personas, de nada.|dos;personas
+T|a2excursion|El sábado hay plazas.|Demande à quelle heure part le bus.|¿A qué hora sale el autobús?|¿Cuándo sale el autobús?;;¿A qué hora sale?|¿A qué hora salió el autobús ayer?;;¿Dónde hora sale el autobús?;;¿A qué hora sales el autobús?|hora;autobús
+T|a2excursion|A las nueve, desde la plaza del Ayuntamiento.|Demande s'il faut apporter quelque chose.|¿Hay que llevar algo?|¿Tenemos que llevar algo?;;¿Hace falta llevar algo?|¿Hay que comer algo?;;¿Hay que llevar nada?;;¿Hay que llevar algo ayer?|llevar
+T|a2excursion|Una chaqueta y agua.|Demande si le déjeuner est compris.|¿Está incluido el almuerzo?|¿El almuerzo está incluido?;;¿Está incluido el almuerzo, por favor?|¿Está incluida la maleta?;;¿Estás incluido el almuerzo?;;¿Está incluido el almuerzo ayer?|almuerzo;incluido
+T|a2excursion|Sí, una paella en El Palmar.|Dis que c'est parfait et remercie.|¡Perfecto! Muchas gracias.|Perfecto, gracias.;;¡Genial! Muchas gracias.|¡Perfecto! De nada.;;¡Perfecto! Lo siento mucho.;;¡Qué pena! Muchas gracias.|gracias
+V|a2excursion|reservar una excursión|réserver une excursion
+V|a2excursion|¿Hay que llevar algo?|Il faut apporter quelque chose ?
+V|a2excursion|¿Está incluido el almuerzo?|Le déjeuner est compris ?`,va:`S|a1mercado|1|Au marché|Tu fais tes courses au marché : des oranges et du fromage.|Vendeuse
 T|a1mercado|Bon dia, què vol?|Salue et demande six oranges.|Bon dia, sis taronges, per favor.|Hola, sis taronges, per favor.;;Bon dia, vull sis taronges.|Bona nit, sis taronges, de res.;;Bon dia, em dic sis taronges.;;Adéu, sis taronges, gràcies.|sis;taronges
 T|a1mercado|Ací té. Alguna cosa més?|Demande aussi du fromage.|Sí, també vull formatge.|Sí, formatge també, per favor.;;Sí, vull formatge, per favor.|Sí, també soc formatge.;;No, també vull formatge.;;Sí, el formatge està en la platja.|formatge
 T|a1mercado|El formatge és molt bo hui.|Demande le prix du fromage.|Quant costa?|Quant costa el formatge?;;Quant és?|Quant de temps?;;On costa?;;Quan costa el formatge?|quant
@@ -6775,7 +6995,227 @@ T|a2tren|Molt bé. Ací té el seu bitllet. Bon viatge!|Remercie et dis au revoi
 V|a2tren|perdre el tren|rater le train
 V|a2tren|el pròxim tren|le prochain train
 V|a2tren|el bitllet|le billet
-V|a2tren|Bon viatge!|Bon voyage !`,ca:`S|a1mercado|1|Au marché|Tu fais tes courses au marché : des oranges et du fromage.|Vendeuse
+V|a2tren|Bon viatge!|Bon voyage !
+S|a1hora|1|L'heure dans la rue|Dans la rue, tu demandes l'heure à une passante.|Passante
+T|a1hora|Bona vesprada.|Salue et demande l'heure.|Bona vesprada. Quina hora és, per favor?|Hola, quina hora és?;;Quina hora és, per favor?|Bona nit. Quant és?;;Bona vesprada. Què tal és?;;Adéu. Quina hora és?|hora
+T|a1hora|Són les cinc.|Tu n'as pas compris : demande-lui de répéter.|Pot repetir, per favor?|Perdó, pot repetir?;;Pot repetir?|Pot menjar, per favor?;;Puc repetir, per favor?;;De res, pot repetir?|repetir
+T|a1hora|Són les cinc de la vesprada.|Demande-lui de parler plus lentement.|Més a poc a poc, per favor.|A poc a poc, per favor.;;Parle més a poc a poc, per favor.|Més ràpid, per favor.;;Més car, per favor.;;Més a poc a poc, de res.|poc
+T|a1hora|Les cinc.|Dis que tu as compris et remercie-la.|D'acord, gràcies.|D'acord, moltes gràcies.;;Ah, d'acord. Gràcies.|D'acord, de res.;;D'acord, ho sent.;;No, gràcies.|gràcies
+T|a1hora|De res. Parla valencià?|Réponds que tu ne parles pas bien.|No, no parle bé.|No parle bé valencià.;;No, no parle molt bé.|Sí, parle molt bé.;;No, no menge bé.;;No, no parles bé.|parle
+T|a1hora|Parla molt bé. Fins després!|Dis au revoir.|Gràcies. Adéu!|Fins després!;;Gràcies. Fins després!|Bona vesprada. Hola!;;Ho sent. Hola!;;Per favor. Hola!|gràcies
+V|a1hora|Quina hora és?|Quelle heure est-il ?
+V|a1hora|Pot repetir?|Vous pouvez répéter ?
+V|a1hora|a poc a poc|lentement
+S|a1panaderia|1|À la boulangerie|Tu achètes du pain et tu paies.|Boulanger
+T|a1panaderia|Bon dia. Què vol?|Salue et demande du pain.|Bon dia. Vull pa, per favor.|Hola, pa, per favor.;;Vull pa, per favor.|Bona nit. Vull llet, de res.;;Bon dia. Soc pa, per favor.;;Adéu. Vull pa, per favor.|pa
+T|a1panaderia|Ací té.|Demande combien ça coûte.|Quant costa?|Quant és?;;Gràcies. Quant costa?|Quan costa?;;Quina hora és?;;Quant de temps?|quant
+T|a1panaderia|Costa dos euros. Alguna cosa més?|Dis que tu veux aussi de l'eau.|Sí, també vull aigua.|Sí, aigua, per favor.;;Sí, vull aigua, per favor.|No, també vull aigua.;;Sí, també soc aigua.;;Sí, vull pa calent.|aigua
+T|a1panaderia|Són tres euros.|Demande si tu peux payer par carte.|Puc pagar amb targeta?|Es pot pagar amb targeta?;;Puc pagar amb targeta, per favor?|Puc menjar amb targeta?;;Pot pagar amb targeta?;;Puc pagar sense targeta?|pagar;targeta
+T|a1panaderia|Sí, clar.|Demande le ticket.|Em dona el tiquet, per favor?|Em dona el tiquet?;;El tiquet, per favor.|Em dona el pa, per favor?;;Li done el tiquet, per favor?;;Em dona el tiquet, de res?|tiquet
+T|a1panaderia|Ací té. Fins demà!|Remercie et dis au revoir.|Gràcies. Fins demà!|Fins demà!;;Gràcies, fins demà.|De res. Fins demà!;;Ho sent. Bon dia!;;Per favor. Hola!|gràcies
+V|a1panaderia|el pa|le pain
+V|a1panaderia|el tiquet|le ticket
+V|a1panaderia|l'aigua|l'eau
+S|a1mesa|1|Au restaurant|Tu déjeunes au restaurant avec un ami.|Serveur
+T|a1mesa|Bona vesprada.|Demande une table pour deux.|Bona vesprada. Una taula per a dos, per favor.|Una taula per a dos, per favor.;;Hola, una taula per a dos.|Bona vesprada. Una taula per a deu, per favor.;;Bona vesprada. Un compte per a dos.;;Adéu. Una taula per a dos.|taula;dos
+T|a1mesa|Molt bé. Per ací.|Demande la carte.|Em porta la carta, per favor?|La carta, per favor.;;Em porta la carta?|Em porta el compte, per favor?;;Li porte la carta?;;Em porta la carta, de res?|carta
+T|a1mesa|Ací té. Què vol?|Commande du poisson.|Vull peix, per favor.|Peix, per favor.;;Per a mi, peix, per favor.|Soc peix, per favor.;;Vull pagar, per favor.;;Vull peix, de res.|peix
+T|a1mesa|Molt bé. I per a beure?|Demande de l'eau.|Aigua, per favor.|Aigua freda, per favor.;;Vull aigua, per favor.|Pa, per favor.;;Aigua, ho sent.;;Aigua calenta, de res.|aigua
+T|a1mesa|Alguna cosa més?|Demande l'addition.|No, gràcies. El compte, per favor.|El compte, per favor.;;No, gràcies. Em porta el compte?|Sí, gràcies. Més aigua, per favor.;;No, gràcies. La taula, per favor.;;No, de res. El compte, per favor.|compte
+T|a1mesa|Són vint euros.|Remercie.|Ací té. Moltes gràcies.|Ací té. Gràcies.;;Moltes gràcies.|Ací té. De res.;;Ací té. Ho sent.;;Ací té. Per favor.|gràcies
+V|a1mesa|una taula per a dos|une table pour deux
+V|a1mesa|la carta|la carte
+V|a1mesa|el compte|l'addition
+S|a1piso|1|Une chambre à louer|Tu appelles pour une chambre dans un appartement partagé.|Propriétaire
+T|a1piso|Hola, bona vesprada.|Dis que tu cherches un appartement.|Bona vesprada. Busque un pis.|Hola, busque un pis.;;Busque un pis, per favor.|Bona vesprada. Busque un pa.;;Bona vesprada. Venc un pis.;;Adéu. Busque un pis.|pis
+T|a1piso|Tinc un pis per a dos.|Demande combien coûte l'appartement.|Quant costa el pis?|Quant costa?;;Quant és?|Quan costa el pis?;;On costa el pis?;;Quina hora és el pis?|quant
+T|a1piso|Costa sis-cents euros.|Dis que c'est très cher.|És molt car.|Uf, és molt car.;;És car.|És molt barat.;;És molt fred.;;Soc molt car.|car
+T|a1piso|És un pis molt bonic.|Demande où est l'appartement.|On està el pis?|On està?;;I on està el pis?|Quan està el pis?;;On és la platja?;;Com està vosté?|on
+T|a1piso|Està prop de la platja.|Demande si l'appartement est grand.|És gran?|El pis és gran?;;És un pis gran?|És calent?;;Eres gran?;;És la platja?|gran
+T|a1piso|Sí, és gran.|Dis que tu vas y réfléchir.|Ho he de pensar.|Gràcies, ho he de pensar.;;Ho he de pensar, gràcies.|Ho he de menjar.;;Ho has de pensar.;;Ho he de pagar.|pensar
+V|a1piso|el pis|l'appartement
+V|a1piso|car|cher
+V|a1piso|Ho he de pensar|Je dois y réfléchir
+S|a1tienda|1|Dans un magasin|Tu cherches un cadeau dans un petit magasin.|Vendeuse
+T|a1tienda|Bon dia. En què el puc ajudar?|Salue et dis que tu veux regarder.|Bon dia. Només vull mirar, gràcies.|Només mirar, gràcies.;;Hola, només vull mirar.|Bon dia. Només vull menjar, gràcies.;;Bona nit. Només vull mirar.;;Bon dia. Només vols mirar.|mirar
+T|a1tienda|Molt bé. Un moment, per favor.|Demande si ce produit est en promotion.|Està d'oferta?|Açò està d'oferta?;;Perdó, està d'oferta?|Està de menjar?;;És d'oferta demà?;;Estic d'oferta?|oferta
+T|a1tienda|Sí, està d'oferta.|Demande combien il coûte.|Quant costa?|Quant és?;;I quant costa?|Quan costa?;;On costa?;;Quina hora és?|quant
+T|a1tienda|Costa deu euros.|Dis que c'est bon marché et que tu le prends.|És barat. M'ho emporte.|M'ho emporte.;;És molt barat. M'ho emporte.|És car. M'ho emporte.;;És barat. T'ho emporte.;;És barat. No m'ho emporte.|emporte
+T|a1tienda|Molt bé.|Demande si tu peux payer par carte.|Puc pagar amb targeta?|Es pot pagar amb targeta?;;Amb targeta, per favor?|Puc menjar amb targeta?;;Pot pagar amb targeta?;;Puc pagar amb taula?|targeta
+T|a1tienda|Sí, pot pagar amb targeta. Gràcies.|Remercie et dis au revoir.|Gràcies. Fins després!|Gràcies. Adéu!;;Moltes gràcies. Fins després.|De res. Fins després!;;Ho sent. Hola!;;Per favor. Bon dia!|gràcies
+V|a1tienda|Està d'oferta|C'est en promotion
+V|a1tienda|M'ho emporte|Je le prends
+V|a1tienda|barat|bon marché
+S|a1medico|1|Chez le médecin|Tu ne te sens pas bien et tu vas chez le médecin.|Médecin
+T|a1medico|Bon dia. Què li passa?|Salue et dis que tu es malade.|Bon dia. Estic malalt.|Hola, estic malalt.;;Estic malalta.|Bon dia. Estic content.;;Bona nit. Estic malalt.;;Bon dia. Estàs malalt.|malalt
+T|a1medico|Què li fa mal?|Dis que tu as mal à la tête.|Em fa mal el cap.|El cap.;;Em fa molt de mal el cap.|Em fa mal la taula.;;Et fa mal el cap.;;M'agrada el cap.|cap
+T|a1medico|Té febre?|Dis que tu as de la fièvre.|Sí, tinc febre.|Sí, tinc un poc de febre.;;Tinc febre.|Sí, tinc fam.;;Sí, té febre.;;No, tinc febre.|febre
+T|a1medico|Dorm bé?|Dis que tu dors mal.|No, no dorm bé.|No dorm bé.;;No, no gaire.|Sí, no dorm bé.;;No, no menge bé.;;No, no dorms bé.|dorm
+T|a1medico|Ha de beure aigua.|Dis que tu bois de l'eau.|Sí, bec aigua.|Bec aigua.;;D'acord, bec aigua.|Sí, menge aigua.;;Sí, beu aigua.;;No, no bec aigua.|bec;aigua
+T|a1medico|Molt bé. Fins després!|Remercie et dis au revoir.|Gràcies. Adéu!|Gràcies. Fins després!;;Moltes gràcies. Adéu.|De res. Adéu!;;Ho sent. Hola!;;Gràcies. Bon dia!|gràcies
+V|a1medico|Em fa mal el cap|J'ai mal à la tête
+V|a1medico|Tinc febre|J'ai de la fièvre
+V|a1medico|malalt|malade
+S|a1cafe|1|Au café|Tu prends un café avec une collègue.|Serveur
+T|a1cafe|Bon dia. Què volen prendre?|Commande un café crème.|Un cafè amb llet, per favor.|Per a mi, un cafè amb llet.;;Un cafè amb llet.|Un cafè amb pa, per favor.;;Una taula amb llet, per favor.;;Un cafè amb llet, de res.|cafè;llet
+T|a1cafe|I per a ella?|Dis que ta collègue veut un café noir.|Un cafè sol, per favor.|Per a ella, un cafè sol.;;Un cafè sol.|Un cafè sola, per favor.;;Un pa sol, per favor.;;Un compte sol, per favor.|sol
+T|a1cafe|Alguna cosa més?|Dis que vous voulez aussi de l'eau.|Sí, també aigua, per favor.|Aigua, per favor.;;Sí, dos aigües, per favor.|No, també aigua.;;Sí, també pa.;;Sí, aigua, ho sent.|aigua
+T|a1cafe|Alguna cosa més?|Dis que c'est tout.|No, res més, gràcies.|Res més, gràcies.;;No, gràcies.|Sí, res més, gràcies.;;No, tot més, gràcies.;;No, res més, de res.|res
+T|a1cafe|Ací tenen.|Demande combien ça fait.|Quant és?|Quant costa?;;Quant és tot?|Quan és?;;On és?;;Quina hora és?|quant
+T|a1cafe|Són quatre euros. Bon cap de setmana!|Dis bon week-end.|Gràcies. Bon cap de setmana!|Bon cap de setmana!;;Igualment. Bon cap de setmana!|De res. Bona nit!;;Ho sent. Bon dia!;;Gràcies. Mal cap de setmana!|setmana
+V|a1cafe|un cafè amb llet|un café crème
+V|a1cafe|un cafè sol|un café noir
+V|a1cafe|Bon cap de setmana!|Bon week-end !
+S|a1camino|1|Demander son chemin|Tu cherches l'arrêt de métro dans le centre-ville.|Passant
+T|a1camino|Hola, què tal?|Excuse-toi et demande où est l'arrêt de métro.|Perdó, on està l'estació de metro?|On està l'estació de metro?;;Perdó, on està el metro?|Perdó, quan està l'estació de metro?;;Ho sent, on és la platja?;;Perdó, on estic l'estació de metro?|estació;metro
+T|a1camino|Està prop.|Demande si c'est loin.|Està lluny?|És lluny?;;Perdó, està lluny?|Està car?;;Estàs lluny?;;Està prop de res?|lluny
+T|a1camino|No, no està lluny. Tot recte i després a la dreta.|Demande de répéter.|Pot repetir, per favor?|Pot repetir?;;Perdó, pot repetir?|Pot menjar, per favor?;;Puc repetir, per favor?;;Pot pagar, per favor?|repetir
+T|a1camino|Tot recte i després a la dreta.|Répète l'indication : tout droit puis à droite.|D'acord. Tot recte i a la dreta.|Tot recte i a la dreta.;;D'acord, tot recte i després a la dreta.|D'acord. Tot recte i a la platja.;;D'acord. Tot car i a la dreta.;;D'acord. Tot recte i a la dreta, de res.|recte;dreta
+T|a1camino|Sí.|Demande combien de temps il faut.|Quant de temps?|I quant de temps?;;Quant de temps, per favor?|Quant costa?;;Quina hora és?;;Quan de res?|temps
+T|a1camino|No molt.|Remercie.|Moltes gràcies.|Gràcies.;;D'acord, moltes gràcies.|De res.;;Ho sent molt.;;Per favor.|gràcies
+V|a1camino|l'estació de metro|la station de métro
+V|a1camino|tot recte|tout droit
+V|a1camino|a la dreta|à droite
+S|a1compra|1|Faire les courses|Au marché, tu achètes des fruits et des légumes.|Vendeur
+T|a1compra|Bon dia. Què li pose?|Dis que tu fais les courses et demande du riz.|Faig la compra. Vull arròs, per favor.|Arròs, per favor.;;Vull arròs, per favor.|Faig la compra. Soc arròs, per favor.;;Faig la compra. Vull arròs, de res.;;Fas la compra. Vull arròs.|arròs
+T|a1compra|Ací té.|Demande s'il y a du fromage.|Hi ha formatge?|Té formatge?;;Perdó, hi ha formatge?|Hi ha vull?;;Hi ha formatge demà ahir?;;Eres formatge?|formatge
+T|a1compra|Sí, el formatge és molt bo.|Dis que tu le prends.|Molt bé, me l'emporte.|Me l'emporte.;;D'acord, me l'emporte.|D'acord, te l'emporte.;;D'acord, me'l menge demà ahir.;;No, me l'emporte.|emporte
+T|a1compra|Són quinze euros.|Donne l'argent : dis « voilà ».|Ací té.|Ací té, quinze euros.;;Ací té, gràcies.|Ací estic.;;Allí té ahir.;;Ací té, de res.|té
+T|a1compra|Gràcies. Alguna cosa més?|Dis que c'est tout.|No, res més, gràcies.|Res més, gràcies.;;No, gràcies. És tot.|Sí, res més.;;No, tot més, gràcies.;;No, res més, de res.|res
+T|a1compra|Molt bé. Fins després!|Remercie et dis au revoir.|Gràcies. Fins després!|Gràcies. Adéu!;;Moltes gràcies. Fins després.|De res. Fins després!;;Ho sent. Hola!;;Per favor. Bon dia!|gràcies
+V|a1compra|fer la compra|faire les courses
+V|a1compra|l'arròs|le riz
+V|a1compra|el formatge|le fromage
+S|a1perdido|1|Perdu en ville|Tu es perdu dans le quartier et tu demandes de l'aide.|Passante
+T|a1perdido|Hola, què li passa?|Dis que tu es perdu.|Perdó, estic perdut.|Estic perdut.;;Perdó, estic perduda.|Perdó, estic preparat.;;Perdó, està perdut.;;De res, estic perdut.|perdut
+T|a1perdido|On va?|Dis que tu cherches la plage.|Busque la platja.|Vaig a la platja.;;Busque la platja, per favor.|Busque el compte.;;Busques la platja.;;Venc la platja.|platja
+T|a1perdido|La platja està lluny d'ací.|Demande si tu prends le métro.|Agafe el metro?|He d'agafar el metro?;;Agafe el metro o l'autobús?|Menge el metro?;;Agafes el metro?;;Agafe la platja?|metro
+T|a1perdido|Sí, o l'autobús.|Demande combien de temps il faut.|Quant de temps?|I quant de temps?;;Quant de temps, per favor?|Quant costa el pa?;;Quina hora és?;;Quan de res?|temps
+T|a1perdido|Amb metro, poc. Caminant, una hora.|Dis que tu vas à pied.|Vaig caminant. M'agrada caminar.|Vaig caminant.;;Vaig a peu. M'agrada caminar.|Vaig caminant. M'agrada menjar.;;Vas caminant. T'agrada caminar.;;Vaig caminant. No m'agrada caminar.|caminant
+T|a1perdido|Molt bé! Tot recte.|Remercie.|Moltes gràcies.|Gràcies.;;D'acord, moltes gràcies.|De res.;;Ho sent molt.;;Per favor.|gràcies
+V|a1perdido|Estic perdut|Je suis perdu
+V|a1perdido|Agafe el metro|Je prends le métro
+V|a1perdido|caminar|marcher
+S|a1presentar|1|Faire connaissance|À une fête, une personne vient te parler.|Invitée
+T|a1presentar|Hola! Com et diuen?|Réponds à la salutation et dis comment tu t'appelles.|Hola. Em dic Max.|Em dic Max.;;Hola, soc Max.|Hola. Et dius Max.;;Adéu. Em dic Max.;;Hola. Em dic de Max.|dic
+T|a1presentar|Jo soc l'Anna. Com estàs?|Réponds que tu vas bien.|Bé, gràcies.|Molt bé, gràcies.;;Bé.|Bé, de res.;;Ho sent, gràcies.;;Bé, per favor.|bé
+T|a1presentar|D'on eres?|Dis d'où tu viens.|Soc de Tolosa.|Soc de França.;;Vinc de França.|Eres de Tolosa.;;Estic de Tolosa.;;Soc a Tolosa.|soc
+T|a1presentar|Que bé! Parles valencià?|Dis que tu apprends la langue.|Estic aprenent valencià.|Aprenc valencià.;;Sí, estic aprenent valencià.|Estic menjant valencià.;;Estàs aprenent valencià.;;No, estic aprenent valencià demà.|aprenent
+T|a1presentar|Parles molt bé!|Remercie et dis que tu parles un peu.|Gràcies. Parle un poc de valencià.|Parle un poc de valencià.;;Gràcies, parle un poc.|Gràcies. Parle molt de valencià.;;De res. Parle un poc.;;Gràcies. Parles un poc de valencià.|poc
+T|a1presentar|Encantada, Max.|Dis que tu es enchanté(e).|Encantat.|Encantada.;;Encantat, Anna.|Ho sent.;;De res.;;Per favor.|encantat
+V|a1presentar|Com et diuen?|Comment tu t'appelles ?
+V|a1presentar|Encantat|Enchanté
+V|a1presentar|Soc de…|Je viens de…
+S|a2restaurante|2|Que nous conseillez-vous ?|Au restaurant, tu demandes conseil à la serveuse et tu invites un ami.|Serveuse
+T|a2restaurante|Bona nit. Ja saben què volen?|Demande ce qu'elle te recommande.|Què em recomana?|Perdó, què em recomana?;;Què ens recomana?|Què em recomanes demà ahir?;;Què li recomane?;;Què em costa?|recomana
+T|a2restaurante|La paella de la casa està molt bona.|Demande ce qu'il y a dedans.|Què porta?|Què porta la paella?;;Perdó, què porta?|Què portes?;;Quina hora porta?;;On porta?|porta
+T|a2restaurante|Porta arròs, carn i verdures.|Commande une paella à partager.|D'acord. Una paella per a compartir, per favor.|Una paella per a compartir.;;D'acord, una paella per a compartir.|D'acord. Una paella per a menjar ahir.;;D'acord. Un compte per a compartir.;;D'acord. Una paella per a comparteixes.|paella;compartir
+T|a2restaurante|Volen postres?|Dis que tu ne veux pas de dessert, merci.|No, gràcies. Sense postres.|No, gràcies.;;No volem postres, gràcies.|Sí, gràcies. Sense postres.;;No, gràcies. Sense pa postres.;;No, de res. Sense postres.|postres
+T|a2restaurante|Alguna cosa més?|Demande l'addition.|No, gràcies. El compte, per favor.|El compte, per favor.;;Em porta el compte, per favor?|No, gràcies. El compte, ahir.;;No, gràcies. Li porte el compte?;;Sí, gràcies. El compte, per favor.|compte
+T|a2restaurante|Són trenta euros.|Dis que c'est toi qui paies.|Pague jo.|Hui pague jo.;;Hui pague jo, eh?|Pagues tu.;;Pague jo ahir.;;Pague les postres.|pague
+V|a2restaurante|Què em recomana?|Que me conseillez-vous ?
+V|a2restaurante|per a compartir|à partager
+V|a2restaurante|Pague jo|C'est moi qui paie
+S|a2alquiler|2|Signer le contrat|Tu visites une chambre et tu poses des questions avant de signer.|Propriétaire
+T|a2alquiler|Esta és l'habitació. És un pis compartit.|Demande combien est le loyer.|Quant és el lloguer?|I el lloguer, quant és?;;Perdó, quant és el lloguer?|Quan és el lloguer?;;Quant és el sopar?;;Quant eres el lloguer?|lloguer
+T|a2alquiler|Quatre-cents euros al mes.|Dis que ça te paraît bien.|Em pareix bé.|D'acord, em pareix bé.;;Molt bé, em pareix bé.|Et pareix bé.;;Em pareix bé ahir.;;Em pareix car demà.|pareix
+T|a2alquiler|Molt bé.|Dis que la chambre te plaît.|M'agrada molt l'habitació.|L'habitació m'agrada molt.;;M'agrada l'habitació.|T'agrada molt l'habitació.;;M'agrade molt l'habitació.;;No m'agrada gens l'habitació.|agrada;habitació
+T|a2alquiler|Que bé!|Demande quand tu peux signer le contrat.|Quan puc signar el contracte?|Quan signem el contracte?;;Quan puc signar?|On puc menjar el contracte?;;Quan pots signar el contracte?;;Quant puc signar el contracte?|signar;contracte
+T|a2alquiler|Demà, si vol. Té el formulari?|Dis que tu as déjà rempli le formulaire.|Sí, ja he omplit el formulari.|Ja he omplit el formulari.;;Sí, ja l'he omplit.|Sí, vaig a omplir el formulari ahir.;;Sí, ja has omplit el formulari.;;No, ja he omplit el formulari.|omplit;formulari
+T|a2alquiler|Perfecte. Fins demà.|Remercie et dis à demain.|Moltes gràcies. Fins demà!|Gràcies. Fins demà!;;Moltes gràcies, fins demà.|De res. Fins demà!;;Ho sent. Bona nit!;;Moltes gràcies. Fins ahir!|gràcies
+V|a2alquiler|Quant és el lloguer?|Combien est le loyer ?
+V|a2alquiler|Em pareix bé|Ça me paraît bien
+V|a2alquiler|signar el contracte|signer le contrat
+S|a2cita|2|Rendez-vous à la mairie|Tu veux t'inscrire à la mairie et tu demandes un rendez-vous.|Employée
+T|a2cita|Bon dia. En què puc ajudar-lo?|Dis que tu veux demander un rendez-vous.|Bon dia. Vull demanar cita prèvia.|Vull demanar cita.;;Bon dia, voldria demanar cita prèvia.|Bon dia. Vull demanar sopar previ.;;Bon dia. Vols demanar cita prèvia.;;Bona nit. Vull vendre cita prèvia.|cita
+T|a2cita|Per a què és la cita?|Dis que c'est pour t'inscrire à la mairie.|És per a inscriure'm a l'ajuntament.|Per a inscriure'm.;;És per a inscriure'm.|És per a menjar.;;És per a inscriure't a l'ajuntament.;;És per al contracte de treball ahir.|inscriure
+T|a2cita|Molt bé.|Demande quels papiers il faut.|Quins papers necessite?|Quins papers he de portar?;;Què necessite?|Quins papers necessites?;;On papers necessite?;;Quines postres necessite?|papers
+T|a2cita|El passaport, el contracte de lloguer i el formulari.|Dis que tu as tout sauf le contrat.|Ho tinc tot menys el contracte.|Tot menys el contracte.;;Tinc tot menys el contracte.|Ho tinc tot amb el contracte.;;Ho tens tot menys el contracte.;;No tinc res menys el contracte.|menys;contracte
+T|a2cita|No passa res. Hi ha cita dimarts a les deu.|Accepte le rendez-vous de mardi.|D'acord, dimarts a les deu em va bé.|D'acord, dimarts a les deu.;;Dimarts em va bé.|D'acord, dilluns a les deu em va bé.;;D'acord, dimarts a les deu et va bé.;;No, dimarts a les deu em va bé.|dimarts
+T|a2cita|Perfecte. Fins dimarts.|Remercie.|Moltes gràcies. Fins dimarts!|Gràcies. Fins dimarts!;;Moltes gràcies.|De res. Fins dimarts!;;Ho sent. Fins dimarts!;;Moltes gràcies. Fins diumenge!|gràcies
+V|a2cita|demanar cita prèvia|prendre rendez-vous
+V|a2cita|inscriure's|s'inscrire
+V|a2cita|els papers|les papiers
+S|a2quedar|2|Un café entre amis|Un ami t'appelle pour se voir cette semaine.|Ami
+T|a2quedar|Hola! Què tal? Ahir no et vaig veure.|Dis que tu as beaucoup travaillé hier.|Ahir vaig treballar molt.|És que ahir vaig treballar molt.;;Ahir vaig treballar tot el dia.|Ahir treballe molt.;;Ahir vas treballar molt.;;Demà vaig treballar molt.|treballar
+T|a2quedar|Quina llàstima! Et ve de gust un cafè esta setmana?|Accepte : oui, tu as envie d'un café.|Sí, em ve molt de gust.|Sí, em ve de gust.;;Clar que sí! Em ve molt de gust.|No, em ve molt de gust.;;Sí, et ve molt de gust.;;Sí, em ve de gust ahir.|gust
+T|a2quedar|Molt bé! Quin dia?|Demande si samedi lui convient.|Et va bé dissabte?|Dissabte et va bé?;;Què tal dissabte?|Em va bé dissabte?;;Et va bé ahir?;;Et va bé el cafè?|dissabte
+T|a2quedar|Sí, dissabte em va bé. A quina hora?|Propose de vous retrouver à huit heures.|Quedem a les huit.|Quedem a les huit?;;A les huit, d'acord?|Quedem ahir a les huit.;;Quedeu a les huit.;;Quedem a les huit anys.|quedem;huit
+T|a2quedar|D'acord. On quedem?|Propose de passer chez lui.|Passe per casa teua.|Jo passe per casa teua.;;Passe per casa teua, d'acord?|Passes per casa teua.;;Passe per casa meua ahir.;;Passe pel teu cafè.|passe;casa
+T|a2quedar|Perfecte! Fins dissabte.|Dis à samedi.|Fins dissabte!|D'acord, fins dissabte.;;Ens veiem dissabte!|Fins dilluns!;;Fins ahir!;;Bona nit, dissabte!|dissabte
+V|a2quedar|Et ve de gust un cafè?|Ça te dit, un café ?
+V|a2quedar|Et va bé?|Ça te va ?
+V|a2quedar|Quedem a les huit|On se retrouve à huit heures
+S|a2ropa|2|Dans une boutique de vêtements|Tu essaies une veste et tu veux en rapporter une autre.|Vendeur
+T|a2ropa|Bona vesprada. Li agrada esta jaqueta?|Dis qu'elle te plaît et demande combien elle coûte.|Sí, m'agrada molt. Quant costa?|M'agrada. Quant costa?;;Sí. Quant costa?|Sí, m'agrada molt. Quan costa?;;No, m'agrada molt. Quant costa?;;Sí, t'agrada molt. Quant costes?|costa
+T|a2ropa|Quaranta euros. Què tal li va?|Dis qu'elle est trop grande.|Em va gran.|Em va un poc gran.;;És massa gran.|Em va xicoteta.;;Et va gran.;;Em vaig gran.|gran
+T|a2ropa|Vaja.|Demande s'il y en a une plus petite.|En té una més xicoteta?|Hi ha una més xicoteta?;;Té una més xicoteta?|En té una més gran?;;En tinc una més xicoteta?;;En té una més xicoteta ahir?|xicoteta
+T|a2ropa|Sí, ací té.|Dis que celle-ci te va bien et que tu la prends.|Esta em va bé. Me l'emporte.|Em va bé. Me l'emporte.;;Esta sí. Me l'emporte.|Esta em va malament. Me l'emporte.;;Esta et va bé. Te l'emportes.;;Esta em va bé. No me l'emporte.|emporte
+T|a2ropa|Molt bé. Alguna cosa més?|Dis que tu veux aussi rendre ces chaussures.|Sí, vull tornar estes sabates.|Vull tornar estes sabates.;;Sí, vull tornar este producte.|Sí, vull comprar estes sabates.;;Sí, vols tornar estes sabates.;;No, vull tornar estes sabates.|tornar;sabates
+T|a2ropa|D'acord. Quaranta euros.|Dis qu'il peut garder la monnaie.|Ací té. Quede's el canvi.|Quede's el canvi.;;Tinga. Quede's el canvi.|Ací té. Em quede la jaqueta ahir.;;Ací té. Queda't la jaqueta.;;Ací té. Em quede el canvi.|canvi
+V|a2ropa|Quant costa?|Combien ça coûte ?
+V|a2ropa|Em va gran|Elle est trop grande pour moi
+V|a2ropa|Quede's el canvi|Gardez la monnaie
+S|a2trabajo|2|Un nouveau collègue|Le premier jour au bureau, un collègue se présente.|Collègue
+T|a2trabajo|Hola! Soc Pau, de l'equip de vendes.|Présente-toi et dis que tu es nouveau.|Hola, Pau. Soc Max, soc nou.|Encantat. Soc Max, soc nou.;;Hola, em dic Max. Soc nou.|Hola, Pau. Eres Max, eres nou.;;Adéu, Pau. Soc Max, soc nou.;;Hola, Pau. Soc Max, soc vell.|nou
+T|a2trabajo|Benvingut! De què treballes?|Dis que tu travailles dans la vente.|Treballe en vendes.|Treballe en vendes, com tu.;;Soc venedor.|Treballes en vendes.;;Treballe en sopars.;;Treballe en vendes ahir.|vendes
+T|a2trabajo|Mira, com jo! Fa molt de temps que estàs ací?|Dis que tu es en Espagne depuis trois mois.|Fa tres mesos que soc ací.|Fa tres mesos.;;Fa poc que he arribat.|Fa tres mesos que eres ací.;;Fa tres anys demà.;;Fa tres mesos que soc allí ahir.|tres;mesos
+T|a2trabajo|I abans?|Dis que tu as travaillé huit ans dans des magasins.|Vaig treballar huit anys en botigues.|Abans vaig treballar huit anys en botigues.;;Vaig treballar en botigues huit anys.|Treballe huit anys en botigues.;;Vas treballar huit anys en botigues.;;Vaig treballar huit anys en restaurants demà.|treballar;botigues
+T|a2trabajo|Que bé! Tens experiència.|Demande-lui à quelle heure commence la réunion.|A quina hora comença la reunió?|Quan comença la reunió?;;Perdona, a quina hora és la reunió?|A quina hora comences la reunió?;;On comença la reunió ahir?;;A quina hora acaba el sopar?|reunió
+T|a2trabajo|A les deu. Ens veiem allí.|Dis à tout à l'heure.|Fins després!|D'acord, fins després.;;Ens veiem!|Bona nit!;;Fins ahir!;;Ho sent molt!|després
+V|a2trabajo|De què treballes?|Qu'est-ce que tu fais comme travail ?
+V|a2trabajo|Treballe en vendes|Je travaille dans la vente
+V|a2trabajo|Fa tres mesos|Depuis trois mois
+S|a2farmacia|2|À la pharmacie|Tu ne te sens pas bien et tu vas à la pharmacie.|Pharmacienne
+T|a2farmacia|Bona vesprada. Què li passa?|Dis que tu es enrhumé(e).|Estic refredat.|Estic refredada.;;Em trobe malament. Estic refredat.|Estàs refredat.;;Estic refredat de postres.;;Estaré refredat ahir.|refredat
+T|a2farmacia|Vaja. Alguna cosa més?|Dis que tu as aussi mal à la gorge.|Sí, també em fa mal la gola.|També em fa mal la gola.;;Sí, em fa mal la gola.|Sí, també et fa mal la gola.;;Sí, també m'agrada la gola.;;No, també em fa mal la gola.|gola
+T|a2farmacia|Li done una pastilla. Té al·lèrgia a alguna cosa?|Dis que tu es allergique au lait.|Sí, tinc al·lèrgia a la llet.|Tinc al·lèrgia a la llet.;;Sí, a la llet.|Sí, té al·lèrgia a la llet.;;Sí, tinc al·lèrgia a la platja.;;No, tinc al·lèrgia a la llet.|llet
+T|a2farmacia|Esta no porta llet.|Demande combien ça coûte.|Quant costa?|I quant costa?;;Quant és?|Quan costa?;;Quant costes?;;Quant costa ahir?|costa
+T|a2farmacia|Sis euros.|Demande combien tu dois en prendre par jour.|Quantes al dia?|Quantes pastilles al dia?;;I quantes al dia?|Quantes al dia, ahir?;;Quan al dia?;;Quantes a la nit, demà?|quantes
+T|a2farmacia|Tres al dia, després de menjar.|Remercie et dis au revoir.|Moltes gràcies. Adéu!|Gràcies. Fins després!;;Moltes gràcies.|De res. Adéu!;;Ho sent. Hola!;;Moltes gràcies. Bon dia ahir!|gràcies
+V|a2farmacia|Estic refredat|Je suis enrhumé
+V|a2farmacia|Tinc al·lèrgia a…|Je suis allergique à…
+V|a2farmacia|la gola|la gorge
+S|a2cola|2|La file d'attente|Au supermarché, tu fais la queue à la caisse.|Cliente
+T|a2cola|Hola, bon dia.|Demande qui est le dernier de la file.|Perdó, qui és el darrer?|Qui és el darrer?;;Bon dia, vosté fa cua?|Perdó, qui és el primer ahir?;;Perdó, qui eres el darrer?;;Perdó, quin és el darrer sopar?|darrer
+T|a2cola|Soc jo. Porta moltes coses?|Dis que tu as seulement deux bouteilles.|No, només porte dues botelles.|Només porte dues botelles.;;No, només dues botelles.|Sí, només porte dues botelles.;;No, només portes dues botelles.;;No, només porte dues postres ahir.|dues;botelles
+T|a2cola|Passe, passe.|Remercie-la : elle te laisse passer.|Moltes gràcies! És vosté molt generós.|Moltes gràcies!;;Gràcies, és vosté molt generosa.|De res, és vosté molt generós.;;Ho sent, és vosté molt generós.;;Moltes gràcies! Soc molt generós.|gràcies
+T|a2cola|Hola. Bon dia.|Demande combien ça fait en tout.|Quant és en total?|Quant és?;;Bon dia. Quant és en total?|Quan és en total?;;Quant eres en total?;;Quant és en total ahir?|total
+T|a2cola|Sis euros. Amb targeta?|Dis que tu paies en espèces.|No, en metàl·lic.|En metàl·lic, per favor.;;No, pague en metàl·lic.|Sí, en metàl·lic.;;No, pagues en metàl·lic.;;No, en postres.|metàl
+T|a2cola|Ací té el canvi.|Souhaite-lui une bonne journée.|Gràcies. Que tinga un bon dia!|Gràcies. Bon dia!;;Moltes gràcies. Que tinga un bon dia!|De res. Que tinga un bon dia!;;Gràcies. Que tinga un mal dia!;;Gràcies. Que tinc un bon dia!|dia
+V|a2cola|Qui és el darrer?|Qui est le dernier ?
+V|a2cola|Quant és en total?|Combien ça fait en tout ?
+V|a2cola|en metàl·lic|en espèces
+S|a2bici|2|En vélo au travail|Un voisin te croise devant l'immeuble le matin.|Voisin
+T|a2bici|Bon dia, veí! On vas tan d'hora?|Dis que tu vas au travail.|Vaig a treballar.|Me'n vaig a treballar.;;Vaig a l'oficina.|Vas a treballar.;;Vaig a les postres.;;Vaig anar a treballar demà.|treballar
+T|a2bici|Amb cotxe?|Dis que tu y vas à pied.|No, vaig a peu.|Vaig a peu.;;No, a peu.|Sí, vaig a peu.;;No, vas a peu.;;No, vaig a paraigua.|peu
+T|a2bici|I està lluny?|Dis que ce n'est pas loin : c'est près du marché.|No, està a prop del mercat.|Està a prop del mercat.;;No, a prop del mercat.|Sí, està a prop del mercat.;;No, estic a prop del mercat.;;No, està a prop de les postres.|prop
+T|a2bici|I demà? Diuen que farà mal temps.|Dis que demain tu prendras le métro, parce qu'il va pleuvoir.|Demà agafaré el metro.|Demà aniré amb metro.;;Demà agafaré el metro, sí.|Ahir agafaré el metro.;;Demà agafaràs el metro.;;Demà agafaré el paraigua de metro.|demà;metro
+T|a2bici|Jo també vaig al centre demà. Anem junts?|Accepte d'y aller ensemble.|Sí, clar. Anem junts.|Clar, anem junts.;;Sí, d'acord.|No, clar. Anem junts.;;Sí, clar. Aneu junts.;;Sí, clar. Anem junts ahir.|junts
+T|a2bici|Molt bé! Fins demà.|Dis au revoir.|Fins demà!|Fins demà, veí!;;Vinga, fins demà.|Fins ahir!;;Bona nit, demà!;;Ho sent, demà!|demà
+V|a2bici|Vaig a peu|J'y vais à pied
+V|a2bici|Agafe el metro|Je prends le métro
+V|a2bici|a prop de|près de
+S|a2finde|2|Le week-end|Lundi matin, une amie te demande ce que tu as fait ce week-end.|Amie
+T|a2finde|Hola! Què tal el cap de setmana? Què vas fer?|Dis que tu es resté(e) à la maison.|Dissabte em vaig quedar a casa.|Em vaig quedar a casa.;;Dissabte vaig estar a casa.|Dissabte em quede a casa.;;Dissabte et vas quedar a casa.;;Demà em vaig quedar a casa.|quedar;casa
+T|a2finde|I què vas fer a casa?|Dis que tu as nettoyé l'appartement et fait la vaisselle.|Vaig netejar el pis i vaig fregar els plats.|Vaig netejar el pis.;;Vaig netejar tot i vaig fregar els plats.|Netege el pis i frego els plats.;;Vas netejar el pis i vas fregar els plats.;;Vaig netejar les postres i vaig fregar els pisos.|netejar
+T|a2finde|Quin avorriment! I diumenge?|Dis que dimanche tu es allé(e) à la plage.|Diumenge vaig anar a la platja.|Vaig anar a la platja.;;Diumenge vaig anar a la platja amb uns amics.|Diumenge vaig a la platja.;;Diumenge vas anar a la platja.;;Diumenge vaig anar a la platja demà.|anar;platja
+T|a2finde|Que bé! I hui? Què tal el treball?|Dis que tu es très fatigué(e) par le travail.|Estic molt cansat del treball.|Estic molt cansada del treball.;;Uf, estic molt cansat del treball.|Estàs molt cansat del treball.;;Estic molt cansat de les postres.;;Estic molt content del treball.|cansat
+T|a2finde|Quina llàstima! Anem a prendre alguna cosa esta nit?|Dis que tu préfères rester tranquille ce soir.|No, gràcies. Preferisc descansar.|Preferisc descansar a casa.;;Hui no. Preferisc descansar.|Sí, gràcies. Preferisc descansar.;;No, gràcies. Prefereixes descansar.;;No, gràcies. Preferisc treballar més.|descansar
+T|a2finde|D'acord. Fins demà!|Dis à demain.|Fins demà!|D'acord, fins demà.;;Ens veiem demà!|Fins ahir!;;Bon dia, demà!;;Ho sent, demà!|demà
+V|a2finde|Em vaig quedar a casa|Je suis resté à la maison
+V|a2finde|fregar els plats|faire la vaisselle
+V|a2finde|No m'agrada gens|Ça ne me plaît pas du tout
+S|a2excursion|2|Réserver une excursion|Dans une agence, tu réserves une excursion pour le week-end.|Agent
+T|a2excursion|Bon dia. Què desitja?|Dis que tu veux réserver l'excursion à l'Albufera.|Vull reservar l'excursió a l'Albufera.|Voldria reservar l'excursió a l'Albufera.;;Una reserva per a l'excursió a l'Albufera, per favor.|Vull canviar l'excursió a l'Albufera.;;Vols reservar l'excursió a l'Albufera.;;Vull reservar la maleta a l'Albufera.|reservar;excursió
+T|a2excursion|Molt bé. Per a quantes persones?|Dis que c'est pour deux personnes.|Per a dues persones, per favor.|Per a dues.;;Som dues persones.|Per a deu anys, per favor.;;Per a dues postres, per favor.;;Per a dues persones, de res.|dues;persones
+T|a2excursion|Dissabte hi ha places.|Demande à quelle heure part le bus.|A quina hora ix l'autobús?|Quan ix l'autobús?;;A quina hora ix?|A quina hora va eixir l'autobús ahir?;;On hora ix l'autobús?;;A quina hora ixes l'autobús?|hora;autobús
+T|a2excursion|A les nou, des de la plaça de l'Ajuntament.|Demande s'il faut apporter quelque chose.|Cal portar alguna cosa?|Hem de portar alguna cosa?;;Cal portar res?|Cal menjar alguna cosa?;;Cal portar ningú?;;Cal portar alguna cosa ahir?|portar
+T|a2excursion|Una jaqueta i aigua.|Demande s'il y a le déjeuner.|Hi ha dinar?|I el dinar?;;Hi ha dinar, també?|Hi ha maleta?;;Hi ha dinar ahir?;;Hi ha sopar demà?|dinar
+T|a2excursion|Sí, una paella al Palmar.|Dis que c'est parfait et remercie.|Perfecte! Moltes gràcies.|Perfecte, gràcies.;;Genial! Moltes gràcies.|Perfecte! De res.;;Perfecte! Ho sent molt.;;Quina llàstima! Moltes gràcies.|gràcies
+V|a2excursion|reservar una excursió|réserver une excursion
+V|a2excursion|Cal portar alguna cosa?|Il faut apporter quelque chose ?
+V|a2excursion|el dinar|le déjeuner`,ca:`S|a1mercado|1|Au marché|Tu fais tes courses au marché : des oranges et du fromage.|Vendeuse
 T|a1mercado|Bon dia, què vol?|Salue et demande six oranges.|Bon dia, sis taronges, si us plau.|Hola, sis taronges, si us plau.;;Bon dia, vull sis taronges.|Bona nit, sis taronges, de res.;;Bon dia, em dic sis taronges.;;Adeu, sis taronges, gràcies.|sis;taronges
 T|a1mercado|Aquí té. Alguna cosa més?|Demande aussi du fromage.|Sí, també vull formatge.|Sí, formatge també, si us plau.;;Sí, vull formatge, si us plau.|Sí, també sóc formatge.;;No, també vull formatge.;;Sí, el formatge és a la platja.|formatge
 T|a1mercado|El formatge és molt bo avui.|Demande le prix du fromage.|Quant costa?|Quant costa el formatge?;;Quant és?|Quant de temps?;;On costa?;;Quan costa el formatge?|quant
@@ -6796,7 +7236,226 @@ T|a2tren|Molt bé. Aquí té el seu bitllet. Bon viatge!|Remercie et dis au revo
 V|a2tren|perdre el tren|rater le train
 V|a2tren|el pròxim tren|le prochain train
 V|a2tren|el bitllet|le billet
-V|a2tren|Bon viatge!|Bon voyage !`,gl:`S|a1mercado|1|Au marché|Tu fais tes courses au marché : des oranges et du fromage.|Vendeuse
+V|a2tren|Bon viatge!|Bon voyage !
+S|a1hora|1|L'heure dans la rue|Dans la rue, tu demandes l'heure à une passante.|Passante
+T|a1hora|Bona tarda.|Salue et demande l'heure.|Bona tarda. Quina hora és, si us plau?|Hola, quina hora és?;;Quina hora és, si us plau?|Bona nit. Quant és?;;Bona tarda. Què tal és?;;Adeu. Quina hora és?|hora
+T|a1hora|Cinc en punt.|Tu n'as pas compris : demande-lui de répéter.|Pot repetir, si us plau?|Perdó, pot repetir?;;Pot repetir?|Pot menjar, si us plau?;;Puc repetir, si us plau?;;De res, pot repetir?|repetir
+T|a1hora|Cinc en punt de la tarda.|Demande-lui de parler plus lentement.|Més a poc a poc, si us plau.|A poc a poc, si us plau.;;Parli més a poc a poc, si us plau.|Més ràpid, si us plau.;;Més car, si us plau.;;Més a poc a poc, de res.|poc
+T|a1hora|Cinc. En punt.|Dis que tu as compris et remercie-la.|D'acord, gràcies.|D'acord, moltes gràcies.;;Ah, d'acord. Gràcies.|D'acord, de res.;;D'acord, ho sento.;;No, gràcies.|gràcies
+T|a1hora|De res. Parla català?|Réponds que tu ne parles pas bien.|No, no parlo bé.|No parlo bé català.;;No, no parlo gaire bé.|Sí, parlo molt bé.;;No, no menjo bé.;;No, no parles bé.|parlo
+T|a1hora|Parla molt bé. Fins després!|Dis au revoir.|Gràcies. Adeu!|Fins després!;;Gràcies. Fins després!|Bona tarda. Hola!;;Ho sento. Hola!;;Si us plau. Hola!|gràcies
+V|a1hora|Quina hora és?|Quelle heure est-il ?
+V|a1hora|Pot repetir?|Vous pouvez répéter ?
+V|a1hora|a poc a poc|lentement
+S|a1panaderia|1|À la boulangerie|Tu achètes du pain et tu paies.|Boulanger
+T|a1panaderia|Bon dia. Què vol?|Salue et demande du pain.|Bon dia. Vull pa, si us plau.|Hola, pa, si us plau.;;Vull pa, si us plau.|Bona nit. Vull llet, de res.;;Bon dia. Sóc pa, si us plau.;;Adeu. Vull pa, si us plau.|pa
+T|a1panaderia|Aquí té.|Demande combien ça coûte.|Quant costa?|Quant és?;;Gràcies. Quant costa?|Quan costa?;;Quina hora és?;;Quant de temps?|quant
+T|a1panaderia|Costa dos euros. Alguna cosa més?|Dis que tu veux aussi de l'eau.|Sí, també vull aigua.|Sí, aigua, si us plau.;;Sí, vull aigua, si us plau.|No, també vull aigua.;;Sí, també sóc aigua.;;Sí, vull pa calent.|aigua
+T|a1panaderia|Són tres euros.|Demande si tu peux payer par carte.|Puc pagar amb targeta?|Es pot pagar amb targeta?;;Puc pagar amb targeta, si us plau?|Puc menjar amb targeta?;;Pot pagar amb targeta?;;Puc pagar sense targeta?|pagar;targeta
+T|a1panaderia|Sí, és clar.|Demande le ticket.|Em dona el tiquet, si us plau?|Em dona el tiquet?;;El tiquet, si us plau.|Em dona el pa, si us plau?;;Li dono el tiquet, si us plau?;;Em dona el tiquet, de res?|tiquet
+T|a1panaderia|Aquí té. Fins demà!|Remercie et dis au revoir.|Gràcies. Fins demà!|Fins demà!;;Gràcies, fins demà.|De res. Fins demà!;;Ho sento. Bon dia!;;Si us plau. Hola!|gràcies
+V|a1panaderia|el pa|le pain
+V|a1panaderia|el tiquet|le ticket
+V|a1panaderia|l'aigua|l'eau
+S|a1mesa|1|Au restaurant|Tu déjeunes au restaurant avec un ami.|Serveur
+T|a1mesa|Bona tarda.|Demande une table pour deux.|Bona tarda. Una taula per a dos, si us plau.|Una taula per a dos, si us plau.;;Hola, una taula per a dos.|Bona tarda. Una taula per a deu anys.;;Bona tarda. Un compte per a dos.;;Adeu. Una taula per a dos.|taula;dos
+T|a1mesa|Molt bé. Per aquí.|Demande la carte.|Em porta la carta, si us plau?|La carta, si us plau.;;Em porta la carta?|Em porta el compte, si us plau?;;Li porto la carta?;;Em porta la carta, de res?|carta
+T|a1mesa|Aquí té. Què vol?|Commande du poisson.|Vull peix, si us plau.|Peix, si us plau.;;Per a mi, peix, si us plau.|Sóc peix, si us plau.;;Vull pagar, si us plau.;;Vull peix, de res.|peix
+T|a1mesa|Molt bé. I per beure?|Demande de l'eau.|Aigua, si us plau.|Aigua freda, si us plau.;;Vull aigua, si us plau.|Pa, si us plau.;;Aigua, ho sento.;;Aigua calenta, de res.|aigua
+T|a1mesa|Alguna cosa més?|Demande l'addition.|No, gràcies. El compte, si us plau.|El compte, si us plau.;;No, gràcies. Em porta el compte?|Sí, gràcies. La carta, si us plau.;;No, gràcies. La taula, si us plau.;;No, de res. El compte, si us plau.|compte
+T|a1mesa|Són vint euros.|Remercie.|Aquí té. Moltes gràcies.|Aquí té. Gràcies.;;Moltes gràcies.|Aquí té. De res.;;Aquí té. Ho sento.;;Aquí té. Si us plau.|gràcies
+V|a1mesa|una taula per a dos|une table pour deux
+V|a1mesa|la carta|la carte
+V|a1mesa|el compte|l'addition
+S|a1piso|1|Une chambre à louer|Tu appelles pour une chambre dans un appartement partagé.|Propriétaire
+T|a1piso|Hola, bona tarda.|Dis que tu cherches un appartement à louer.|Bona tarda. Busco un pis de lloguer.|Hola, busco un pis de lloguer.;;Busco pis de lloguer.|Bona tarda. Busco pa de lloguer.;;Bona tarda. Venc un pis de lloguer.;;Adeu. Busco un pis de lloguer.|pis
+T|a1piso|Tinc un pis compartit.|Demande combien coûte le loyer.|Quant és el lloguer?|Quant costa el lloguer?;;Quant és?|Quan és el lloguer?;;On és el lloguer?;;Quina hora és el lloguer?|lloguer
+T|a1piso|Són sis-cents euros.|Dis que c'est très cher.|És molt car.|Uf, és molt car.;;És car.|És molt barat.;;És molt fred.;;Sóc molt car.|car
+T|a1piso|És un pis molt bonic.|Demande où est l'appartement.|On és el pis?|On és?;;I on és el pis?|Quan és el pis?;;On és la platja?;;Com està vostè?|on
+T|a1piso|És a prop de la platja.|Demande si l'appartement est grand.|És gran?|El pis és gran?;;És un pis gran?|És calent?;;Ets gran?;;És la platja?|gran
+T|a1piso|Sí, és gran.|Dis que tu vas y réfléchir.|Ho he de pensar.|Gràcies, ho he de pensar.;;Ho he de pensar, gràcies.|Ho he de menjar.;;Ho has de pensar.;;Ho he de pagar.|pensar
+V|a1piso|un pis de lloguer|un appartement à louer
+V|a1piso|el lloguer|le loyer
+V|a1piso|Ho he de pensar|Je dois y réfléchir
+S|a1tienda|1|Dans un magasin|Tu cherches un cadeau dans un petit magasin.|Vendeuse
+T|a1tienda|Bon dia. En què el puc ajudar?|Salue et dis que tu veux regarder.|Bon dia. Només vull mirar, gràcies.|Només mirar, gràcies.;;Hola, només vull mirar.|Bon dia. Només vull menjar, gràcies.;;Bona nit. Només vull mirar.;;Bon dia. Només vols mirar.|mirar
+T|a1tienda|Molt bé. Un moment, si us plau.|Demande si ce produit est en promotion.|Està d'oferta?|Això està d'oferta?;;Perdó, està d'oferta?|Està de menjar?;;És d'oferta demà?;;Estic d'oferta?|oferta
+T|a1tienda|Sí, està d'oferta.|Demande combien il coûte.|Quant costa?|Quant és?;;I quant costa?|Quan costa?;;On costa?;;Quina hora és?|quant
+T|a1tienda|Costa deu euros.|Dis que c'est bon marché et que tu le prends.|És barat. M'ho emporto.|M'ho emporto.;;És molt barat. M'ho emporto.|És car. M'ho emporto.;;És barat. T'ho emporto.;;És barat. No m'ho emporto.|emporto
+T|a1tienda|Molt bé.|Demande si tu peux payer par carte.|Puc pagar amb targeta?|Es pot pagar amb targeta?;;Amb targeta, si us plau?|Puc menjar amb targeta?;;Pot pagar amb targeta?;;Puc pagar amb taula?|targeta
+T|a1tienda|Sí, pot pagar amb targeta. Gràcies.|Remercie et dis au revoir.|Gràcies. Fins després!|Gràcies. Adeu!;;Moltes gràcies. Fins després.|De res. Fins després!;;Ho sento. Hola!;;Si us plau. Bon dia!|gràcies
+V|a1tienda|Està d'oferta|C'est en promotion
+V|a1tienda|M'ho emporto|Je le prends
+V|a1tienda|barat|bon marché
+S|a1medico|1|Chez le médecin|Tu ne te sens pas bien et tu vas chez le médecin.|Médecin
+T|a1medico|Bon dia. Què li passa?|Salue et dis que tu es malade.|Bon dia. Estic malalt.|Hola, estic malalt.;;Estic malalta.|Bon dia. Estic content.;;Bona nit. Estic malalt.;;Bon dia. Estàs malalt.|malalt
+T|a1medico|Què li fa mal?|Dis que tu as mal à la tête.|Em fa mal el cap.|El cap.;;Em fa molt de mal el cap.|Em fa mal la taula.;;Et fa mal el cap.;;M'agrada el cap.|cap
+T|a1medico|Té febre?|Dis que tu as de la fièvre.|Sí, tinc febre.|Sí, tinc una mica de febre.;;Tinc febre.|Sí, tinc set.;;Sí, té febre.;;No, tinc febre.|febre
+T|a1medico|Dorm bé?|Dis que tu dors mal.|No, no dormo bé.|No dormo bé.;;No, no gaire.|Sí, no dormo bé.;;No, no menjo bé.;;No, no dorms bé.|dormo
+T|a1medico|Ha de beure aigua.|Dis que tu bois de l'eau.|Sí, bec aigua.|Bec aigua.;;D'acord, bec aigua.|Sí, menjo aigua.;;Sí, beu aigua.;;No, no bec aigua.|bec;aigua
+T|a1medico|Molt bé. Fins després!|Remercie et dis au revoir.|Gràcies. Adeu!|Gràcies. Fins després!;;Moltes gràcies. Adeu.|De res. Adeu!;;Ho sento. Hola!;;Gràcies. Bon dia!|gràcies
+V|a1medico|Em fa mal el cap|J'ai mal à la tête
+V|a1medico|Tinc febre|J'ai de la fièvre
+V|a1medico|malalt|malade
+S|a1cafe|1|Au café|Tu prends un café avec une collègue.|Serveur
+T|a1cafe|Bon dia. Què volen?|Commande un café crème.|Un cafè amb llet, si us plau.|Per a mi, un cafè amb llet.;;Un cafè amb llet.|Un cafè amb pa, si us plau.;;Una taula amb llet, si us plau.;;Un cafè amb llet, de res.|cafè;llet
+T|a1cafe|I per a ella?|Dis que ta collègue veut un café noir.|Un cafè sol, si us plau.|Per a ella, un cafè sol.;;Un cafè sol.|Un cafè gran, si us plau.;;Un pa sol, si us plau.;;Un compte sol, si us plau.|sol
+T|a1cafe|Alguna cosa més?|Dis que vous voulez aussi de l'eau.|Sí, aigua, si us plau.|Aigua, si us plau.;;Sí, també aigua, si us plau.|No, aigua.;;Sí, pa, ho sento.;;Sí, aigua, ho sento.|aigua
+T|a1cafe|Alguna cosa més?|Dis que c'est tout.|No, res més, gràcies.|Res més, gràcies.;;No, gràcies.|Sí, res més, gràcies.;;No, tot més, gràcies.;;No, res més, de res.|res
+T|a1cafe|Aquí tenen.|Demande combien ça fait.|Quant és?|Quant costa?;;Quant és tot?|Quan és?;;On és?;;Quina hora és?|quant
+T|a1cafe|Són quatre euros. Bon cap de setmana!|Dis bon week-end.|Gràcies. Bon cap de setmana!|Bon cap de setmana!;;Igualment. Bon cap de setmana!|De res. Bona nit!;;Ho sento. Bon dia!;;Gràcies. Mal cap de setmana!|setmana
+V|a1cafe|un cafè amb llet|un café crème
+V|a1cafe|un cafè sol|un café noir
+V|a1cafe|Bon cap de setmana!|Bon week-end !
+S|a1camino|1|Demander son chemin|Tu cherches l'arrêt de métro dans le centre-ville.|Passant
+T|a1camino|Hola, què tal?|Excuse-toi et demande où est l'arrêt de métro.|Perdoni, on és la parada de metro?|On és la parada de metro?;;Perdoni, on és el metro?|Perdoni, quan és la parada de metro?;;Ho sento, on és la platja?;;Perdoni, on sóc la parada de metro?|parada;metro
+T|a1camino|És a prop.|Demande si c'est loin.|És lluny?|És gaire lluny?;;Perdoni, és lluny?|És car?;;Ets lluny?;;És a prop de res?|lluny
+T|a1camino|No, no és lluny. Tot recte i a l'esquerra.|Demande de répéter.|Pot repetir, si us plau?|Pot repetir?;;Perdoni, pot repetir?|Pot menjar, si us plau?;;Puc repetir, si us plau?;;Pot pagar, si us plau?|repetir
+T|a1camino|Tot recte i després a l'esquerra.|Répète l'indication : tout droit puis à gauche.|D'acord. Tot recte i a l'esquerra.|Tot recte i a l'esquerra.;;D'acord, tot recte i a l'esquerra.|D'acord. Tot recte i a la platja.;;D'acord. Tot car i a l'esquerra.;;D'acord. Tot recte i a l'esquerra, de res.|recte;esquerra
+T|a1camino|Sí.|Demande combien de temps il faut.|Quant de temps?|I quant de temps?;;Quant de temps, si us plau?|Quant costa?;;Quina hora és?;;Quan de res?|temps
+T|a1camino|No molt.|Remercie.|Moltes gràcies.|Gràcies.;;D'acord, moltes gràcies.|De res.;;Ho sento molt.;;Si us plau.|gràcies
+V|a1camino|la parada de metro|l'arrêt de métro
+V|a1camino|tot recte|tout droit
+V|a1camino|a l'esquerra|à gauche
+S|a1compra|1|Faire les courses|Au marché, tu achètes des fruits et des légumes.|Vendeur
+T|a1compra|Bon dia. Què li poso?|Dis que tu fais les courses et demande du riz.|Faig la compra. Vull arròs, si us plau.|Arròs, si us plau.;;Vull arròs, si us plau.|Faig la compra. Sóc arròs, si us plau.;;Faig la compra. Vull arròs, de res.;;Fas la compra. Vull arròs.|arròs
+T|a1compra|Aquí té.|Demande s'il y a du fromage.|Hi ha formatge?|Té formatge?;;Perdoni, hi ha formatge?|Hi ha vull?;;Hi ha formatge demà ahir?;;Ets formatge?|formatge
+T|a1compra|Sí, el formatge és molt bo.|Dis que tu le prends.|D'acord, me l'emporto.|Me l'emporto.;;Molt bé, me l'emporto.|D'acord, te l'emporto.;;D'acord, me'l menjo demà ahir.;;No, me l'emporto.|emporto
+T|a1compra|Són quinze euros.|Demande s'il a de la monnaie.|Té canvi de cinquanta?|Té canvi?;;Perdoni, té canvi?|Té canvi de res?;;Tinc canvi de cinquanta?;;Té formatge de cinquanta?|canvi
+T|a1compra|Sí, és clar. Alguna cosa més?|Dis que c'est tout.|No, res més, gràcies.|Res més, gràcies.;;No, gràcies. És tot.|Sí, res més.;;No, tot més, gràcies.;;No, res més, de res.|res
+T|a1compra|Aquí té el canvi.|Remercie et dis au revoir.|Gràcies. Fins després!|Gràcies. Adeu!;;Moltes gràcies. Fins després.|De res. Fins després!;;Ho sento. Hola!;;Si us plau. Bon dia!|gràcies
+V|a1compra|fer la compra|faire les courses
+V|a1compra|Té canvi?|Vous avez de la monnaie ?
+V|a1compra|l'arròs|le riz
+S|a1perdido|1|Perdu en ville|Tu es perdu dans le quartier et tu demandes de l'aide.|Passante
+T|a1perdido|Hola, què li passa?|Dis que tu es perdu.|Perdoni, estic perdut.|Estic perdut.;;Perdoni, estic perduda.|Perdoni, estic preparat.;;Perdoni, està perdut.;;De res, estic perdut.|perdut
+T|a1perdido|On va?|Dis que tu cherches la plage.|Busco la platja.|Vaig a la platja.;;Busco la platja, si us plau.|Busco el compte.;;Busques la platja.;;Venc la platja.|platja
+T|a1perdido|La platja és lluny d'aquí.|Demande si tu prends le métro.|Agafo el metro?|He d'agafar el metro?;;Agafo el metro o l'autobús?|Menjo el metro?;;Agafes el metro?;;Agafo la platja?|metro
+T|a1perdido|Sí, o l'autobús.|Demande combien de temps il faut.|Quant de temps?|I quant de temps?;;Quant de temps, si us plau?|Quant costa el pa?;;Quina hora és?;;Quan de res?|temps
+T|a1perdido|Amb metro, poc. Caminant, una hora.|Dis que tu vas à pied.|Vaig caminant. M'agrada caminar.|Vaig caminant.;;Vaig a peu. M'agrada caminar.|Vaig caminant. M'agrada menjar.;;Vas caminant. T'agrada caminar.;;Vaig caminant. No m'agrada caminar.|caminant
+T|a1perdido|Molt bé! Tot recte.|Remercie.|Moltes gràcies.|Gràcies.;;D'acord, moltes gràcies.|De res.;;Ho sento molt.;;Si us plau.|gràcies
+V|a1perdido|Estic perdut|Je suis perdu
+V|a1perdido|Agafo el metro|Je prends le métro
+V|a1perdido|caminar|marcher
+S|a1presentar|1|Faire connaissance|À une fête, une personne vient te parler.|Invitée
+T|a1presentar|Hola! Com et dius?|Réponds à la salutation et dis comment tu t'appelles.|Hola. Em dic Max.|Em dic Max.;;Hola, sóc el Max.|Hola. Et dius Max.;;Adeu. Em dic Max.;;Hola. Em dic de Max.|dic
+T|a1presentar|Jo sóc l'Anna. Com estàs?|Réponds que tu vas bien.|Bé, gràcies.|Molt bé, gràcies.;;Bé.|Bé, de res.;;Ho sento, gràcies.;;Bé, si us plau.|bé
+T|a1presentar|D'on ets?|Dis d'où tu viens.|Sóc de Tolosa.|Sóc de França.;;Vinc de França.|Ets de Tolosa.;;Estic de Tolosa.;;Sóc a Tolosa.|sóc
+T|a1presentar|Que bé! Parles català?|Dis que tu apprends la langue.|Estic aprenent català.|Aprenc català.;;Sí, estic aprenent català.|Estic menjant català.;;Estàs aprenent català.;;No, estic aprenent català demà.|aprenent
+T|a1presentar|Parles molt bé!|Remercie et dis que tu parles un peu.|Gràcies. Parlo una mica de català.|Parlo una mica de català.;;Gràcies, parlo una mica.|Gràcies. Parlo molt de català.;;De res. Parlo una mica.;;Gràcies. Parles una mica de català.|mica
+T|a1presentar|Encantada, Max.|Dis que tu es enchanté(e).|Encantat.|Encantada.;;Encantat, Anna.|Ho sento.;;De res.;;Si us plau.|encantat
+V|a1presentar|Com et dius?|Comment tu t'appelles ?
+V|a1presentar|Encantat|Enchanté
+V|a1presentar|Sóc de…|Je viens de…
+S|a2restaurante|2|Que nous conseillez-vous ?|Au restaurant, tu demandes conseil à la serveuse et tu invites un ami.|Serveuse
+T|a2restaurante|Bona nit. Ja saben què volen?|Demande ce qu'ils ont à grignoter.|Què tenen per picar?|Què hi ha per picar?;;Perdoni, què tenen per picar?|Què tens per picar ahir?;;Què tenim per picar?;;Què costa per picar?|picar
+T|a2restaurante|Tenim una paella molt bona.|Demande ce qu'il y a dedans.|Què porta?|Què porta la paella?;;Perdoni, què porta?|Què portes?;;Quina hora porta?;;On porta?|porta
+T|a2restaurante|Porta arròs, carn i verdures.|Commande une paella à partager.|D'acord. Una paella per compartir, si us plau.|Una paella per compartir.;;D'acord, una paella per compartir.|D'acord. Una paella per menjar ahir.;;D'acord. Un compte per compartir.;;D'acord. Una paella per comparteixes.|paella;compartir
+T|a2restaurante|Volen postres?|Dis que tu ne veux pas de dessert, merci.|No, gràcies. Sense postres.|No, gràcies.;;No volem postres, gràcies.|Sí, gràcies. Sense postres.;;No, gràcies. Sense pa postres.;;No, de res. Sense postres.|postres
+T|a2restaurante|Alguna cosa més?|Demande l'addition.|No, gràcies. El compte, si us plau.|El compte, si us plau.;;Em porta el compte, si us plau?|No, gràcies. El compte, ahir.;;No, gràcies. Li porto el compte?;;Sí, gràcies. El compte, si us plau.|compte
+T|a2restaurante|Són trenta euros.|Dis que c'est toi qui paies.|Pago jo.|Avui pago jo.;;Avui pago jo, eh?|Pagues tu.;;Pago jo ahir.;;Pago les postres.|pago
+V|a2restaurante|per picar|pour grignoter
+V|a2restaurante|per compartir|à partager
+V|a2restaurante|Pago jo|C'est moi qui paie
+S|a2alquiler|2|Signer le contrat|Tu visites une chambre et tu poses des questions avant de signer.|Propriétaire
+T|a2alquiler|Aquesta és l'habitació. El lloguer és de quatre-cents euros.|Demande si les charges sont comprises.|Les despeses estan incloses?|Estan incloses les despeses?;;Perdoni, les despeses estan incloses?|Les postres estan incloses?;;Estàs inclòs les despeses?;;Les despeses estan incloses ahir demà?|despeses;incloses
+T|a2alquiler|Sí, l'aigua i la llum estan incloses.|Demande combien est la caution.|Quant és la fiança?|I la fiança?;;Quant és la fiança, si us plau?|Quan és la fiança?;;Quant és el sopar?;;Quant ets la fiança?|fiança
+T|a2alquiler|Un mes de lloguer.|Dis que la chambre te plaît.|M'agrada molt l'habitació.|L'habitació m'agrada molt.;;M'agrada l'habitació.|T'agrada molt l'habitació.;;M'agrado molt l'habitació.;;No m'agrada gens l'habitació.|agrada;habitació
+T|a2alquiler|Que bé!|Demande quand tu peux signer le contrat.|Quan puc signar el contracte?|Quan signem el contracte?;;Quan puc signar?|On puc menjar el contracte?;;Quan pots signar el contracte?;;Quant puc signar el contracte?|signar;contracte
+T|a2alquiler|Demà, si vol. Té el formulari?|Dis que tu as déjà rempli le formulaire.|Sí, ja he omplert el formulari.|Ja he omplert el formulari.;;Sí, ja l'he omplert.|Sí, vaig a omplir el formulari ahir.;;Sí, ja has omplert el formulari.;;No, ja he omplert el formulari.|omplert;formulari
+T|a2alquiler|Perfecte. Fins demà, doncs.|Remercie et dis à demain.|Moltes gràcies. Fins demà!|Gràcies. Fins demà!;;Moltes gràcies, fins demà.|De res. Fins demà!;;Ho sento. Bona nit!;;Moltes gràcies. Fins ahir!|gràcies
+V|a2alquiler|la fiança|la caution
+V|a2alquiler|les despeses|les charges
+V|a2alquiler|signar el contracte|signer le contrat
+S|a2cita|2|Rendez-vous à la mairie|Tu veux t'inscrire à la mairie et tu demandes un rendez-vous.|Employée
+T|a2cita|Bon dia. En què el puc ajudar?|Dis que tu veux demander un rendez-vous.|Bon dia. Vull demanar cita prèvia.|Vull demanar cita.;;Bon dia, voldria demanar cita prèvia.|Bon dia. Vull demanar sopar previ.;;Bon dia. Vols demanar cita prèvia.;;Bona nit. Vull vendre cita prèvia.|cita
+T|a2cita|Per a què és la cita?|Dis que c'est pour t'inscrire à la mairie.|És per inscriure'm a l'ajuntament.|Per inscriure'm.;;És per inscriure'm.|És per menjar.;;És per inscriure't a l'ajuntament.;;És per al contracte de treball ahir.|inscriure
+T|a2cita|Molt bé.|Demande quels papiers il faut.|Quins papers necessito?|Quins papers he de portar?;;Què necessito?|Quins papers necessites?;;On papers necessito?;;Quines postres necessito?|papers
+T|a2cita|El passaport, el contracte de lloguer i el formulari.|Dis que tu as tout sauf le contrat.|Ho tinc tot menys el contracte.|Tot menys el contracte.;;Tinc tot menys el contracte.|Ho tinc tot amb el contracte.;;Ho tens tot menys el contracte.;;No tinc res menys el contracte.|menys;contracte
+T|a2cita|No passa res. Hi ha cita dimarts a les deu.|Accepte le rendez-vous de mardi.|D'acord, dimarts a les deu em va bé.|D'acord, dimarts a les deu.;;Dimarts em va bé.|D'acord, dilluns a les deu em va bé.;;D'acord, dimarts a les deu et va bé.;;No, dimarts a les deu em va bé.|dimarts
+T|a2cita|Perfecte. Fins dimarts.|Remercie.|Moltes gràcies. Fins dimarts!|Gràcies. Fins dimarts!;;Moltes gràcies.|De res. Fins dimarts!;;Ho sento. Fins dimarts!;;Moltes gràcies. Fins diumenge!|gràcies
+V|a2cita|demanar cita prèvia|prendre rendez-vous
+V|a2cita|inscriure's|s'inscrire
+V|a2cita|els papers|les papiers
+S|a2quedar|2|Un café entre amis|Un ami t'appelle pour se voir cette semaine.|Ami
+T|a2quedar|Hola! Què tal? Ahir no et vaig veure.|Dis que tu as beaucoup travaillé hier.|Ahir vaig treballar molt.|És que ahir vaig treballar molt.;;Ahir vaig treballar tot el dia.|Ahir treballo molt.;;Ahir vas treballar molt.;;Demà vaig treballar molt.|treballar
+T|a2quedar|Quina llàstima! Et ve de gust un cafè aquesta setmana?|Accepte : oui, tu as envie d'un café.|Sí, em ve molt de gust.|Sí, em ve de gust.;;I tant! Em ve molt de gust.|No, em ve molt de gust.;;Sí, et ve molt de gust.;;Sí, em ve de gust ahir.|gust
+T|a2quedar|Molt bé! Quin dia?|Demande si samedi lui convient.|Et va bé dissabte?|Dissabte et va bé?;;Què tal dissabte?|Em va bé dissabte?;;Et va bé ahir?;;Et va bé el cafè?|dissabte
+T|a2quedar|Sí, dissabte em va bé. A quina hora?|Propose de vous retrouver à huit heures.|Quedem a les vuit.|Quedem a les vuit?;;A les vuit, d'acord?|Quedem ahir a les vuit.;;Quedeu a les vuit.;;Quedem a les vuit anys.|quedem;vuit
+T|a2quedar|D'acord. On quedem?|Propose de passer chez lui.|Passo per casa teva.|Jo passo per casa teva.;;Passo per casa teva, d'acord?|Passes per casa teva.;;Passo per casa meva ahir.;;Passo pel teu cafè.|passo;casa
+T|a2quedar|Perfecte! Fins dissabte.|Dis à samedi.|Fins dissabte!|D'acord, fins dissabte.;;Ens veiem dissabte!|Fins dilluns!;;Fins ahir!;;Bona nit, dissabte!|dissabte
+V|a2quedar|Et ve de gust un cafè?|Ça te dit, un café ?
+V|a2quedar|Et va bé?|Ça te va ?
+V|a2quedar|Quedem a les vuit|On se retrouve à huit heures
+S|a2ropa|2|Dans une boutique de vêtements|Tu essaies une veste et tu veux en rapporter une autre.|Vendeur
+T|a2ropa|Bona tarda. Li agrada aquesta jaqueta?|Dis qu'elle te plaît et demande combien elle coûte.|Sí, m'agrada molt. Quant costa?|M'agrada. Quant costa?;;Sí. Quant costa?|Sí, m'agrada molt. Quan costa?;;No, m'agrada molt. Quant costa?;;Sí, t'agrada molt. Quant costes?|costa
+T|a2ropa|Quaranta euros. Què tal li va?|Dis qu'elle est trop grande.|Em va gran.|Em va una mica gran.;;És massa gran.|Em va petita.;;Et va gran.;;Em vaig gran.|gran
+T|a2ropa|Vaja.|Demande s'il y en a une plus petite.|En té una de més petita?|Hi ha una talla més petita?;;Té una talla més petita?|En té una de més gran?;;En tinc una de més petita?;;En té una de més petita ahir?|petita
+T|a2ropa|Sí, aquí té.|Dis que celle-ci te va bien et que tu la prends.|Aquesta em va bé. Me l'emporto.|Em va bé. Me l'emporto.;;Aquesta sí. Me l'emporto.|Aquesta em va malament. Me l'emporto.;;Aquesta et va bé. Te l'emportes.;;Aquesta em va bé. No me l'emporto.|emporto
+T|a2ropa|Molt bé. Alguna cosa més?|Dis que tu veux aussi rendre ces chaussures.|Sí, vull tornar aquestes sabates.|Vull tornar aquestes sabates.;;Sí, voldria tornar aquestes sabates.|Sí, vull comprar aquestes sabates.;;Sí, vols tornar aquestes sabates.;;No, vull tornar aquestes sabates.|tornar;sabates
+T|a2ropa|D'acord. Són quaranta euros.|Dis qu'il peut garder la monnaie.|Aquí té. Quedi's el canvi.|Quedi's el canvi.;;Tingui. Quedi's el canvi.|Aquí té. Em quedo la jaqueta ahir.;;Aquí té. Queda't la jaqueta.;;Aquí té. Em quedo el canvi.|canvi
+V|a2ropa|Quant costa?|Combien ça coûte ?
+V|a2ropa|Em va gran|Elle est trop grande pour moi
+V|a2ropa|Quedi's el canvi|Gardez la monnaie
+S|a2trabajo|2|Un nouveau collègue|Le premier jour au bureau, un collègue se présente.|Collègue
+T|a2trabajo|Hola! Sóc en Pau, de l'equip de vendes.|Présente-toi et dis que tu es nouveau.|Hola, Pau. Sóc el Max, sóc nou.|Encantat. Sóc el Max, sóc nou.;;Hola, em dic Max. Sóc nou.|Hola, Pau. Ets el Max, ets nou.;;Adeu, Pau. Sóc el Max, sóc nou.;;Hola, Pau. Sóc el Max, sóc vell.|nou
+T|a2trabajo|Benvingut! De què treballes?|Dis que tu travailles dans la vente.|Treballo en vendes.|Treballo en vendes, com tu.;;Sóc venedor.|Treballes en vendes.;;Treballo en sopars.;;Treballo en vendes ahir.|vendes
+T|a2trabajo|Home, com jo! Fa molt que ets aquí?|Dis que tu es en Espagne depuis trois mois.|Fa tres mesos que sóc aquí.|Fa tres mesos.;;Fa tres mesos que visc aquí.|Fa tres mesos que ets aquí.;;Fa tres anys demà.;;Fa tres mesos que sóc allà ahir.|tres;mesos
+T|a2trabajo|I abans?|Dis que tu as travaillé huit ans dans des magasins.|Vaig treballar vuit anys en botigues.|Abans vaig treballar vuit anys en botigues.;;Vaig treballar en botigues vuit anys.|Treballo vuit anys en botigues.;;Vas treballar vuit anys en botigues.;;Vaig treballar vuit anys en restaurants demà.|treballar;botigues
+T|a2trabajo|Que bé! Tens experiència.|Demande-lui à quelle heure commence la réunion.|A quina hora comença la reunió?|Quan comença la reunió?;;Perdona, a quina hora és la reunió?|A quina hora comences la reunió?;;On comença la reunió ahir?;;A quina hora acaba el sopar?|reunió
+T|a2trabajo|A les deu. Ens veiem allà.|Dis à tout à l'heure.|Fins després!|D'acord, fins després.;;Ens veiem!|Bona nit!;;Fins ahir!;;Ho sento molt!|després
+V|a2trabajo|De què treballes?|Qu'est-ce que tu fais comme travail ?
+V|a2trabajo|Treballo en vendes|Je travaille dans la vente
+V|a2trabajo|Fa tres mesos|Depuis trois mois
+S|a2farmacia|2|À la pharmacie|Tu ne te sens pas bien et tu vas à la pharmacie.|Pharmacienne
+T|a2farmacia|Bona tarda. Què li passa?|Dis que tu es enrhumé(e).|Estic constipat.|Estic constipada.;;Bona tarda. Estic constipat.|Estàs constipat.;;Estic constipat de postres.;;Estaré constipat ahir.|constipat
+T|a2farmacia|Vaja. Alguna cosa més?|Dis que tu as mal à la gorge.|Sí, tinc mal de coll.|Tinc mal de coll.;;Sí, també tinc mal de coll.|Sí, tens mal de coll.;;Sí, tinc mal de postres.;;No, tinc mal de coll.|coll
+T|a2farmacia|Aquestes pastilles són molt bones.|Demande combien elles coûtent.|Quant costen?|I quant costen?;;Quant és?|Quan costen?;;Quant costes?;;Quant costen ahir?|costen
+T|a2farmacia|Sis euros.|Demande combien tu dois en prendre par jour.|Quantes al dia?|Quantes pastilles al dia?;;I quantes al dia?|Quantes al dia, ahir?;;Quan al dia?;;Quantes a la nit, demà?|quantes
+T|a2farmacia|Tres al dia, després de menjar.|Remercie et dis au revoir.|Moltes gràcies. Adeu!|Gràcies. Fins després!;;Moltes gràcies.|De res. Adeu!;;Ho sento. Hola!;;Moltes gràcies. Bon dia ahir!|gràcies
+V|a2farmacia|Estic constipat|Je suis enrhumé
+V|a2farmacia|Tinc mal de coll|J'ai mal à la gorge
+V|a2farmacia|la pastilla|le cachet
+S|a2cola|2|La file d'attente|Au supermarché, tu fais la queue à la caisse.|Cliente
+T|a2cola|Hola, bon dia.|Demande qui est le dernier de la file.|Perdoni, qui és l'últim?|Qui és l'últim?;;Bon dia, qui és l'últim?|Perdoni, qui és el primer ahir?;;Perdoni, qui ets l'últim?;;Perdoni, quin és l'últim sopar?|últim
+T|a2cola|Sóc jo. Porta moltes coses?|Dis que tu as seulement deux choses.|No, només tinc dues coses.|Només porto dues coses.;;No, només dues coses.|Sí, només tinc dues coses.;;No, només tens dues coses.;;No, només tinc dues postres ahir.|dues;coses
+T|a2cola|Passi, passi.|Remercie-la : elle te laisse passer.|Moltes gràcies! És vostè molt generós.|Moltes gràcies!;;Gràcies, és vostè molt generosa.|De res, és vostè molt generós.;;Ho sento, és vostè molt generós.;;Moltes gràcies! Sóc molt generós.|gràcies
+T|a2cola|Hola. Són sis euros, si us plau.|Demande si la TVA est comprise.|L'IVA està inclòs?|Està inclòs l'IVA?;;L'IVA hi és inclòs?|Les postres estan incloses?;;Estàs inclòs l'IVA?;;L'IVA està inclòs ahir?|iva;inclòs
+T|a2cola|Sí, està inclòs. Amb targeta?|Dis que tu paies en espèces.|No, pago en efectiu.|En efectiu, si us plau.;;No, en efectiu.|Sí, pago en efectiu.;;No, pagues en efectiu.;;No, pago en postres.|efectiu
+T|a2cola|Aquí té el canvi.|Souhaite-lui une bonne journée.|Gràcies. Que tingui un bon dia!|Gràcies. Bon dia!;;Moltes gràcies. Que tingui un bon dia!|De res. Que tingui un bon dia!;;Gràcies. Que tingui un mal dia!;;Gràcies. Que tinc un bon dia!|dia
+V|a2cola|Qui és l'últim?|Qui est le dernier ?
+V|a2cola|L'IVA està inclòs?|La TVA est comprise ?
+V|a2cola|en efectiu|en espèces
+S|a2bici|2|En vélo au travail|Un voisin te croise devant l'immeuble le matin.|Voisin
+T|a2bici|Bon dia, veí! On vas tan d'hora?|Dis que tu vas au travail.|Vaig a treballar.|Me'n vaig a treballar.;;Vaig a l'oficina.|Vas a treballar.;;Vaig a les postres.;;Vaig anar a treballar demà.|treballar
+T|a2bici|Amb cotxe?|Dis que tu y vas à pied.|No, vaig a peu.|Vaig a peu.;;No, a peu.|Sí, vaig a peu.;;No, vas a peu.;;No, vaig a paraigua.|peu
+T|a2bici|I és lluny?|Dis que ce n'est pas loin : c'est près du marché.|No, és a prop del mercat.|És a prop del mercat.;;No, a prop del mercat.|Sí, és a prop del mercat.;;No, sóc a prop del mercat.;;No, és a prop de les postres.|prop
+T|a2bici|I demà? Diuen que farà mal temps.|Dis que demain tu prendras le métro, parce qu'il va pleuvoir.|Demà agafaré el metro.|Demà aniré amb metro.;;Demà agafaré el metro, sí.|Ahir agafaré el metro.;;Demà agafaràs el metro.;;Demà agafaré el paraigua de metro.|demà;metro
+T|a2bici|Jo també vaig al centre demà. Anem junts?|Accepte d'y aller ensemble.|Sí, és clar. Anem junts.|És clar, anem junts.;;Sí, d'acord.|No, és clar. Anem junts.;;Sí, és clar. Aneu junts.;;Sí, és clar. Anem junts ahir.|junts
+T|a2bici|Molt bé! Fins demà.|Dis au revoir.|Fins demà!|Fins demà, veí!;;D'acord, fins demà.|Fins ahir!;;Bona nit, demà!;;Ho sento, demà!|demà
+V|a2bici|Vaig a peu|J'y vais à pied
+V|a2bici|a prop de|près de
+V|a2bici|agafar el metro|prendre le métro
+S|a2finde|2|Le week-end|Lundi matin, une amie te demande ce que tu as fait ce week-end.|Amie
+T|a2finde|Hola! Què tal el cap de setmana? Què vas fer?|Dis que tu es resté(e) à la maison.|Dissabte em vaig quedar a casa.|Em vaig quedar a casa.;;Dissabte vaig estar a casa.|Dissabte em quedo a casa.;;Dissabte et vas quedar a casa.;;El proper diumenge em vaig quedar a casa.|quedar;casa
+T|a2finde|I què vas fer a casa?|Dis que tu as nettoyé l'appartement et fait la vaisselle.|Vaig netejar el pis i vaig rentar els plats.|Vaig netejar el pis.;;Vaig netejar-ho tot i vaig rentar els plats.|Netejo el pis i rento els plats.;;Vas netejar el pis i vas rentar els plats.;;Vaig netejar les postres i vaig rentar els pisos.|netejar
+T|a2finde|Quin avorriment! I diumenge?|Dis que dimanche tu es allé(e) à la plage.|Diumenge vaig anar a la platja.|Vaig anar a la platja.;;Diumenge vaig anar a la platja amb uns amics.|Diumenge vaig a la platja.;;Diumenge vas anar a la platja.;;Diumenge vaig anar a la platja demà.|anar;platja
+T|a2finde|Que bé! I avui? Què tal la feina?|Dis que tu en as marre du travail.|Estic fart de la feina.|Estic farta de la feina.;;Uf, estic fart de la feina.|Estàs fart de la feina.;;Estic fart de les postres.;;Estic content de la feina.|fart
+T|a2finde|Quina llàstima! Sortim aquesta nit?|Dis que tu préfères rester tranquille ce soir.|No, gràcies. Prefereixo descansar.|Prefereixo descansar a casa.;;Avui no. Prefereixo descansar.|Sí, gràcies. Prefereixo descansar.;;No, gràcies. Prefereixes descansar.;;No, gràcies. Prefereixo treballar més.|descansar
+T|a2finde|D'acord. Fins demà!|Dis à demain.|Fins demà!|D'acord, fins demà.;;Ens veiem demà!|Fins ahir!;;Bon dia, demà!;;Ho sento, demà!|demà
+V|a2finde|Em vaig quedar a casa|Je suis resté à la maison
+V|a2finde|rentar els plats|faire la vaisselle
+V|a2finde|Estic fart de…|J'en ai marre de…
+S|a2excursion|2|Réserver une excursion|Dans une agence, tu réserves une excursion pour le week-end.|Agent
+T|a2excursion|Bon dia. Què desitja?|Dis que tu veux réserver l'excursion à l'Albufera.|Vull reservar l'excursió a l'Albufera.|Voldria reservar l'excursió a l'Albufera.;;Una reserva per a l'excursió a l'Albufera, si us plau.|Vull canviar l'excursió a l'Albufera.;;Vols reservar l'excursió a l'Albufera.;;Vull reservar la maleta a l'Albufera.|reservar;excursió
+T|a2excursion|Molt bé. Per a quantes persones?|Dis que c'est pour deux personnes.|Per a dues persones, si us plau.|Per a dues.;;Som dues persones.|Per a deu anys, si us plau.;;Per a dues postres, si us plau.;;Per a dues persones, de res.|dues;persones
+T|a2excursion|Dissabte hi ha places.|Demande à quelle heure part le bus.|A quina hora surt l'autobús?|Quan surt l'autobús?;;A quina hora surt?|A quina hora va sortir l'autobús ahir?;;On hora surt l'autobús?;;A quina hora surts l'autobús?|hora;autobús
+T|a2excursion|A les nou, des de la plaça de l'Ajuntament.|Demande s'il faut apporter quelque chose.|Cal portar alguna cosa?|Hem de portar alguna cosa?;;Cal portar res?|Cal menjar alguna cosa?;;Cal portar ningú?;;Cal portar alguna cosa ahir?|portar
+T|a2excursion|Una jaqueta i aigua.|Demande si le déjeuner est compris.|El dinar està inclòs?|Està inclòs el dinar?;;El menjar està inclòs?|La maleta està inclosa?;;Estàs inclòs el dinar?;;El dinar està inclòs ahir?|dinar;inclòs
+T|a2excursion|Sí, una paella al Palmar.|Dis que c'est parfait et remercie.|Perfecte! Moltes gràcies.|Perfecte, gràcies.;;Genial! Moltes gràcies.|Perfecte! De res.;;Perfecte! Ho sento molt.;;Quina llàstima! Moltes gràcies.|gràcies
+V|a2excursion|reservar una excursió|réserver une excursion
+V|a2excursion|Cal portar alguna cosa?|Il faut apporter quelque chose ?
+V|a2excursion|El dinar està inclòs?|Le déjeuner est compris ?`,gl:`S|a1mercado|1|Au marché|Tu fais tes courses au marché : des oranges et du fromage.|Vendeuse
 T|a1mercado|Bos días, que desexa?|Salue et demande six oranges.|Bos días, seis laranxas, por favor.|Ola, seis laranxas, por favor.;;Bos días, quero seis laranxas.|Boas noites, seis laranxas, de nada.;;Bos días, chámome seis laranxas.;;Adeus, seis laranxas, grazas.|seis;laranxas
 T|a1mercado|Aquí ten. Algo máis?|Demande aussi du fromage.|Si, tamén quero queixo.|Si, queixo tamén, por favor.;;Si, quero queixo, por favor.|Si, tamén son queixo.;;Non, tamén quero queixo.;;Si, o queixo está na praia.|queixo
 T|a1mercado|O queixo é moi bo hoxe.|Demande le prix du fromage.|Canto custa?|Canto custa o queixo?;;Canto é?|Canto tempo?;;Onde custa?;;Cando custa o queixo?|canto
@@ -6817,7 +7476,227 @@ T|a2tren|Moi ben. Aquí ten o seu billete. Boa viaxe!|Remercie et dis au revoir.
 V|a2tren|perder o tren|rater le train
 V|a2tren|o próximo tren|le prochain train
 V|a2tren|o billete|le billet
-V|a2tren|Boa viaxe!|Bon voyage !`,eu:`S|a1mercado|1|Au marché|Tu fais tes courses au marché : des oranges et du fromage.|Vendeuse
+V|a2tren|Boa viaxe!|Bon voyage !
+S|a1hora|1|L'heure dans la rue|Dans la rue, tu demandes l'heure à une passante.|Passante
+T|a1hora|Boas tardes.|Salue et demande l'heure.|Boas tardes. Que hora é, por favor?|Ola, que hora é?;;Que hora é, por favor?|Boas noites. Canto é?;;Boas tardes. Que tal é?;;Adeus. Que hora é?|hora
+T|a1hora|Son as cinco.|Tu n'as pas compris : demande-lui de répéter.|Pode repetir, por favor?|Perdoe, pode repetir?;;Pode repetir?|Pode comer, por favor?;;Podo repetir, por favor?;;De nada, pode repetir?|repetir
+T|a1hora|Son as cinco da tarde.|Demande-lui de parler plus lentement.|Máis amodo, por favor.|Amodo, por favor.;;Fale máis amodo, por favor.|Máis rápido, por favor.;;Máis caro, por favor.;;Máis amodo, de nada.|amodo
+T|a1hora|As cinco.|Dis que tu as compris et remercie-la.|Vale, grazas.|Vale, moitas grazas.;;Ah, vale. Grazas.|Vale, de nada.;;Vale, síntoo.;;Non, grazas.|grazas
+T|a1hora|De nada. Fala galego?|Réponds que tu ne parles pas bien.|Non, non falo ben.|Non falo ben galego.;;Non, non falo moi ben.|Si, falo moi ben.;;Non, non como ben.;;Non, non falas ben.|falo
+T|a1hora|Pois fala moi ben. Ata logo!|Dis au revoir.|Grazas. Adeus!|Ata logo!;;Grazas. Ata logo!|Boas tardes. Ola!;;Síntoo. Ola!;;Por favor. Ola!|grazas
+V|a1hora|Que hora é?|Quelle heure est-il ?
+V|a1hora|Pode repetir?|Vous pouvez répéter ?
+V|a1hora|amodo|lentement
+S|a1panaderia|1|À la boulangerie|Tu achètes du pain et tu paies.|Boulanger
+T|a1panaderia|Bos días. Que desexa?|Salue et demande du pain.|Bos días. Quero pan, por favor.|Ola, pan, por favor.;;Quero pan, por favor.|Boas noites. Quero leite, de nada.;;Bos días. Son pan, por favor.;;Adeus. Quero pan, por favor.|pan
+T|a1panaderia|Aquí ten.|Demande combien ça coûte.|Canto custa?|Canto é?;;Grazas. Canto custa?|Cando custa?;;Que hora é?;;Canto tempo?|canto
+T|a1panaderia|Custa dous euros. Algo máis?|Dis que tu veux aussi de l'eau.|Si, tamén quero auga.|Si, auga, por favor.;;Si, quero auga, por favor.|Non, tamén quero auga.;;Si, tamén son auga.;;Si, quero pan quente.|auga
+T|a1panaderia|Son tres euros.|Demande si tu peux payer par carte.|Podo pagar con tarxeta?|Pódese pagar con tarxeta?;;Podo pagar con tarxeta, por favor?|Podo comer con tarxeta?;;Pode pagar con tarxeta?;;Podo pagar sen tarxeta?|pagar;tarxeta
+T|a1panaderia|Si, claro.|Demande le ticket.|Dáme o tíquet, por favor?|Dáme o tíquet?;;O tíquet, por favor.|Dáme o pan, por favor?;;Dou o tíquet, por favor?;;Dáme o tíquet, de nada?|tíquet
+T|a1panaderia|Aquí ten. Ata mañá!|Remercie et dis au revoir.|Grazas. Ata mañá!|Ata mañá!;;Grazas, ata mañá.|De nada. Ata mañá!;;Síntoo. Bos días!;;Por favor. Ola!|grazas
+V|a1panaderia|o pan|le pain
+V|a1panaderia|o tíquet|le ticket
+V|a1panaderia|a auga|l'eau
+S|a1mesa|1|Au restaurant|Tu déjeunes au restaurant avec un ami.|Serveur
+T|a1mesa|Boas tardes.|Demande une table pour deux.|Boas tardes. Unha mesa para dous, por favor.|Unha mesa para dous, por favor.;;Ola, unha mesa para dous.|Boas tardes. Unha mesa para dez anos.;;Boas tardes. Unha conta para dous.;;Adeus. Unha mesa para dous.|mesa;dous
+T|a1mesa|Moi ben. Por aquí.|Demande la carte.|Tráeme a carta, por favor?|A carta, por favor.;;Tráeme a carta?|Tráeme a conta, por favor?;;Tráeme a mesa?;;Tráeme a carta, de nada?|carta
+T|a1mesa|Aquí ten. Que desexa?|Commande du poisson.|Quero peixe, por favor.|Peixe, por favor.;;Para min, peixe, por favor.|Son peixe, por favor.;;Quero pagar, por favor.;;Quero peixe, de nada.|peixe
+T|a1mesa|Moi ben. E para beber?|Demande de l'eau.|Auga, por favor.|Auga fría, por favor.;;Quero auga, por favor.|Pan, por favor.;;Auga, síntoo.;;Auga quente, de nada.|auga
+T|a1mesa|Algo máis?|Demande l'addition.|Non, grazas. A conta, por favor.|A conta, por favor.;;Non, grazas. Tráeme a conta?|Si, grazas. A carta, por favor.;;Non, grazas. A mesa, por favor.;;Non, de nada. A conta, por favor.|conta
+T|a1mesa|Son vinte euros.|Remercie.|Aquí ten. Moitas grazas.|Aquí ten. Grazas.;;Moitas grazas.|Aquí ten. De nada.;;Aquí ten. Síntoo.;;Aquí ten. Por favor.|grazas
+V|a1mesa|unha mesa para dous|une table pour deux
+V|a1mesa|a carta|la carte
+V|a1mesa|a conta|l'addition
+S|a1piso|1|Une chambre à louer|Tu appelles pour une chambre dans un appartement partagé.|Propriétaire
+T|a1piso|Ola, boas tardes.|Dis que tu cherches un appartement.|Boas tardes. Busco un piso.|Ola, busco un piso.;;Busco un piso, por favor.|Boas tardes. Busco un pan.;;Boas tardes. Vendo un piso.;;Adeus. Busco un piso.|piso
+T|a1piso|Teño un piso.|Demande combien coûte l'appartement.|Canto custa o piso?|Canto custa?;;Canto é?|Cando custa o piso?;;Onde custa o piso?;;Que hora é o piso?|canto
+T|a1piso|Custa seiscentos euros.|Dis que c'est très cher.|É moi caro.|Uf, é moi caro.;;É caro.|É moi barato.;;É moi frío.;;Son moi caro.|caro
+T|a1piso|É un piso moi bonito.|Demande où est l'appartement.|Onde está o piso?|Onde está?;;E onde está o piso?|Cando está o piso?;;Onde é a praia?;;Como está vostede?|onde
+T|a1piso|Está preto da praia.|Demande si l'appartement est grand.|É grande?|O piso é grande?;;É un piso grande?|É quente?;;Es grande?;;É a praia?|grande
+T|a1piso|Si, é grande.|Dis que tu dois y réfléchir.|Teño que pensalo.|Grazas, teño que pensalo.;;Teño que pensar.|Teño que comelo.;;Tes que pensalo.;;Teño que pagalo.|pensalo
+V|a1piso|o piso|l'appartement
+V|a1piso|caro|cher
+V|a1piso|Teño que pensalo|Je dois y réfléchir
+S|a1tienda|1|Dans un magasin|Tu cherches un cadeau dans un petit magasin.|Vendeuse
+T|a1tienda|Bos días. Que quere?|Salue et dis que tu veux regarder.|Bos días. Só quero mirar, grazas.|Só mirar, grazas.;;Ola, só quero mirar.|Bos días. Só quero comer, grazas.;;Boas noites. Só quero mirar.;;Bos días. Só queres mirar.|mirar
+T|a1tienda|Moi ben. Un momento, por favor.|Demande si ce produit est en promotion.|Está en oferta?|Isto está en oferta?;;Perdoe, está en oferta?|Está en comer?;;É en oferta mañá?;;Estou en oferta?|oferta
+T|a1tienda|Si, está en oferta.|Demande combien il coûte.|Canto custa?|Canto é?;;E canto custa?|Cando custa?;;Onde custa?;;Que hora é?|canto
+T|a1tienda|Custa dez euros.|Dis que c'est bon marché et que tu en veux un.|É barato. Vale, quero un.|Vale, quero un.;;É moi barato. Quero un.|É caro. Vale, quero un.;;É barato. Vale, queres un.;;É barato. Non quero un.|quero
+T|a1tienda|Moi ben.|Demande si tu peux payer par carte.|Podo pagar con tarxeta?|Pódese pagar con tarxeta?;;Con tarxeta, por favor?|Podo comer con tarxeta?;;Pode pagar con tarxeta?;;Podo pagar con mesa?|tarxeta
+T|a1tienda|Si, pode pagar con tarxeta. Grazas.|Remercie et dis au revoir.|Grazas. Ata logo!|Grazas. Adeus!;;Moitas grazas. Ata logo.|De nada. Ata logo!;;Síntoo. Ola!;;Por favor. Bos días!|grazas
+V|a1tienda|Está en oferta|C'est en promotion
+V|a1tienda|barato|bon marché
+V|a1tienda|Canto custa?|Combien ça coûte ?
+S|a1medico|1|Chez le médecin|Tu ne te sens pas bien et tu vas chez le médecin.|Médecin
+T|a1medico|Bos días. Que tal está?|Salue et dis que tu es malade.|Bos días. Estou enfermo.|Ola, estou enfermo.;;Estou enferma.|Bos días. Estou contento.;;Boas noites. Estou enfermo.;;Bos días. Estás enfermo.|enfermo
+T|a1medico|Que ten?|Dis que tu as mal à la tête.|Dóeme a cabeza.|A cabeza.;;Dóeme moito a cabeza.|Dóeme a mesa.;;Dóeme o pan.;;Gústame a cabeza.|cabeza
+T|a1medico|Ten febre?|Dis que tu as de la fièvre.|Si, teño febre.|Si, teño un pouco de febre.;;Teño febre.|Si, teño fame.;;Si, ten febre.;;Non, teño febre.|febre
+T|a1medico|Dorme ben?|Dis que tu dors mal.|Non, durmo mal.|Non, non durmo ben.;;Durmo mal.|Si, durmo mal.;;Non, como mal.;;Non, dorme mal.|durmo
+T|a1medico|Ten que beber auga.|Dis que tu bois de l'eau.|Si, bebo auga.|Bebo auga.;;Vale, bebo auga.|Si, como auga.;;Si, bebe auga.;;Non, non bebo auga.|bebo;auga
+T|a1medico|Moi ben. Ata logo!|Remercie et dis au revoir.|Grazas. Adeus!|Grazas. Ata logo!;;Moitas grazas. Adeus.|De nada. Adeus!;;Síntoo. Ola!;;Grazas. Bos días!|grazas
+V|a1medico|Dóeme a cabeza|J'ai mal à la tête
+V|a1medico|Teño febre|J'ai de la fièvre
+V|a1medico|enfermo|malade
+S|a1cafe|1|Au café|Tu prends un café avec une collègue.|Serveur
+T|a1cafe|Bos días. Que van tomar?|Commande un café crème.|Un café con leite, por favor.|Para min, un café con leite.;;Un café con leite.|Un café con pan, por favor.;;Unha mesa con leite, por favor.;;Un café con leite, de nada.|café;leite
+T|a1cafe|E para ela?|Dis que ta collègue veut un café noir.|Un café só, por favor.|Para ela, un café só.;;Un café só.|Un café grande, por favor.;;Un pan só, por favor.;;Unha conta, por favor.|só
+T|a1cafe|Algo máis?|Dis que vous voulez aussi de l'eau.|Si, tamén auga, por favor.|Auga, por favor.;;Si, dúas augas, por favor.|Non, tamén auga.;;Si, tamén pan.;;Si, auga, síntoo.|auga
+T|a1cafe|Algo máis?|Dis que c'est tout.|Non, nada máis, grazas.|Nada máis, grazas.;;Non, grazas.|Si, nada máis, grazas.;;Non, todo máis, grazas.;;Non, nada máis, de nada.|nada
+T|a1cafe|Aquí teñen.|Demande combien ça fait.|Canto é?|Canto custa?;;Canto é todo?|Cando é?;;Onde é?;;Que hora é?|canto
+T|a1cafe|Son catro euros. Ata logo!|Remercie et dis au revoir.|Grazas. Ata logo!|Grazas. Adeus!;;Moitas grazas. Ata logo.|De nada. Ata logo!;;Síntoo. Ola!;;Por favor. Boas noites!|grazas
+V|a1cafe|un café con leite|un café crème
+V|a1cafe|un café só|un café noir
+V|a1cafe|Algo máis?|Autre chose ?
+S|a1camino|1|Demander son chemin|Tu cherches l'arrêt de métro dans le centre-ville.|Passant
+T|a1camino|Ola, que tal?|Excuse-toi et demande où est l'arrêt de métro.|Perdoe, onde está a parada de metro?|Onde está a parada de metro?;;Perdoe, onde está o metro?|Perdoe, cando está a parada de metro?;;Síntoo, onde é a praia?;;Perdoe, onde estou a parada de metro?|parada;metro
+T|a1camino|Está preto.|Demande si c'est loin.|Está lonxe?|É lonxe?;;Perdoe, está lonxe?|Está caro?;;Estás lonxe?;;Está preto de nada?|lonxe
+T|a1camino|Non, non está lonxe. Todo dereito e á esquerda.|Demande de répéter.|Pode repetir, por favor?|Pode repetir?;;Perdoe, pode repetir?|Pode comer, por favor?;;Podo repetir, por favor?;;Pode pagar, por favor?|repetir
+T|a1camino|Todo dereito e despois á esquerda.|Répète l'indication : tout droit puis à gauche.|Vale. Todo dereito e á esquerda.|Todo dereito e á esquerda.;;Vale, todo dereito e despois á esquerda.|Vale. Todo dereito e á praia.;;Vale. Todo caro e á esquerda.;;Vale. Todo dereito e á esquerda, de nada.|dereito;esquerda
+T|a1camino|Iso.|Demande combien de temps il faut.|Canto tempo?|E canto tempo?;;Canto tempo, por favor?|Canto custa?;;Que hora é?;;Cando de nada?|tempo
+T|a1camino|Non moito.|Remercie.|Moitas grazas.|Grazas.;;Vale, moitas grazas.|De nada.;;Síntoo moito.;;Por favor.|grazas
+V|a1camino|a parada de metro|l'arrêt de métro
+V|a1camino|todo dereito|tout droit
+V|a1camino|á esquerda|à gauche
+S|a1compra|1|Faire les courses|Au marché, tu achètes des fruits et des légumes.|Vendeur
+T|a1compra|Bos días. Que quere?|Dis que tu fais les courses et demande du riz.|Fago a compra. Quero arroz, por favor.|Arroz, por favor.;;Quero arroz, por favor.|Fago a compra. Son arroz, por favor.;;Fago a compra. Quero arroz, de nada.;;Fas a compra. Quero arroz.|arroz
+T|a1compra|Aquí ten.|Demande s'il y a du fromage.|Hai queixo?|Ten queixo?;;Perdoe, hai queixo?|Hai quero?;;Hai queixo mañá onte?;;Es queixo?|queixo
+T|a1compra|Si, o queixo é moi bo.|Dis que tu en veux un.|Vale, quero un.|Quero un, por favor.;;Moi ben, quero un.|Vale, queres un.;;Vale, como un mañá onte.;;Non, quero un.|quero
+T|a1compra|Son quince euros.|Donne l'argent : dis « voilà ».|Aquí ten.|Aquí ten, quince euros.;;Aquí ten, grazas.|Aquí estou.;;Alí ten onte.;;Aquí ten, de nada.|ten
+T|a1compra|Grazas. Algo máis?|Dis que c'est tout.|Non, nada máis, grazas.|Nada máis, grazas.;;Non, grazas. É todo.|Si, nada máis.;;Non, todo máis, grazas.;;Non, nada máis, de nada.|nada
+T|a1compra|Moi ben. Ata logo!|Remercie et dis au revoir.|Grazas. Ata logo!|Grazas. Adeus!;;Moitas grazas. Ata logo.|De nada. Ata logo!;;Síntoo. Ola!;;Por favor. Bos días!|grazas
+V|a1compra|facer a compra|faire les courses
+V|a1compra|o arroz|le riz
+V|a1compra|o queixo|le fromage
+S|a1perdido|1|Perdu en ville|Tu es perdu dans le quartier et tu demandes de l'aide.|Passante
+T|a1perdido|Ola, está ben?|Dis que tu es perdu.|Perdoe, estou perdido.|Estou perdido.;;Perdoe, estou perdida.|Perdoe, estou listo.;;Perdoe, está perdido.;;De nada, estou perdido.|perdido
+T|a1perdido|Onde vai?|Dis que tu cherches la plage.|Busco a praia.|Vou á praia.;;Busco a praia, por favor.|Busco a conta.;;Buscas a praia.;;Vendo a praia.|praia
+T|a1perdido|A praia está lonxe de aquí.|Demande si tu prends le métro.|Collo o metro?|Teño que coller o metro?;;Collo o metro ou o autobús?|Como o metro?;;Colles o metro?;;Collo a praia?|metro
+T|a1perdido|Si, ou o autobús.|Demande combien de temps il faut.|Canto tempo?|E canto tempo?;;Canto tempo, por favor?|Canto custa o pan?;;Que hora é?;;Cando de nada?|tempo
+T|a1perdido|En metro, pouco. Camiñando, unha hora.|Dis que tu vas à pied.|Vou camiñando. Gústame camiñar.|Vou camiñando.;;Vou a pé. Gústame camiñar.|Vou camiñando. Gústame comer.;;Vas camiñando. Gústache camiñar.;;Vou camiñando. Non me gusta camiñar.|camiñando
+T|a1perdido|Moi ben! Todo dereito.|Remercie.|Moitas grazas.|Grazas.;;Vale, moitas grazas.|De nada.;;Síntoo moito.;;Por favor.|grazas
+V|a1perdido|Estou perdido|Je suis perdu
+V|a1perdido|Collo o metro|Je prends le métro
+V|a1perdido|camiñar|marcher
+S|a1presentar|1|Faire connaissance|À une fête, une personne vient te parler.|Invitée
+T|a1presentar|Ola! Como te chamas?|Réponds à la salutation et dis comment tu t'appelles.|Ola. Chámome Max.|Chámome Max.;;Ola, son Max.|Ola. Chámaste Max.;;Adeus. Chámome Max.;;Ola. Chámome de Max.|chámome
+T|a1presentar|Eu son Ana. Que tal estás?|Réponds que tu vas bien.|Ben, grazas.|Moi ben, grazas.;;Ben.|Ben, de nada.;;Síntoo, grazas.;;Ben, por favor.|ben
+T|a1presentar|De onde es?|Dis d'où tu viens.|Son de Toulouse.|Son de Francia.;;Son de Toulouse, en Francia.|Es de Toulouse.;;Estou de Toulouse.;;Son a Toulouse.|son
+T|a1presentar|Que ben! Falas galego?|Dis que tu apprends la langue.|Estou aprendendo galego.|Aprendo galego.;;Si, estou aprendendo galego.|Estou comendo galego.;;Estás aprendendo galego.;;Non, estou aprendendo galego mañá.|aprendendo
+T|a1presentar|Falas moi ben!|Remercie et dis que tu parles un peu.|Grazas. Falo un pouco de galego.|Falo un pouco de galego.;;Grazas, falo un pouco.|Grazas. Falo moito de galego.;;De nada. Falo un pouco.;;Grazas. Falas un pouco de galego.|pouco
+T|a1presentar|Encantada, Max.|Dis que tu es enchanté(e).|Encantado.|Encantada.;;Encantado, Ana.|Síntoo.;;De nada.;;Por favor.|encantado
+V|a1presentar|Como te chamas?|Comment tu t'appelles ?
+V|a1presentar|Encantado|Enchanté
+V|a1presentar|Son de…|Je viens de…
+S|a2restaurante|2|Que nous conseillez-vous ?|Au restaurant, tu demandes conseil à la serveuse et tu invites un ami.|Serveuse
+T|a2restaurante|Boas noites. Xa saben que queren?|Demande ce qu'il y a aujourd'hui.|Que hai hoxe?|Perdoe, que hai hoxe?;;Que hai para comer?|Que hai onte?;;Que hora hai hoxe?;;Que me custa?|hoxe
+T|a2restaurante|A paella da casa está moi boa.|Demande ce qu'il y a dedans.|Que leva?|Que leva a paella?;;Perdoe, que leva?|Que levas?;;Que hora leva?;;Onde leva?|leva
+T|a2restaurante|Leva arroz, polo e verduras.|Commande une paella à partager.|Vale. Unha paella para compartir, por favor.|Unha paella para compartir.;;Vale, unha paella para compartir.|Vale. Unha paella para comer onte.;;Vale. Unha conta para compartir.;;Vale. Unha paella para compartes.|paella;compartir
+T|a2restaurante|Van querer sobremesa?|Dis que tu ne veux pas de dessert, merci.|Non, grazas. Sen sobremesa.|Non, grazas.;;Non queremos sobremesa, grazas.|Si, grazas. Sen sobremesa.;;Non, grazas. Sen pan sobremesa.;;Non, de nada. Sen sobremesa.|sobremesa
+T|a2restaurante|Algo máis?|Demande l'addition.|Non, grazas. A conta, por favor.|A conta, por favor.;;Tráeme a conta, por favor?|Non, grazas. A conta, onte.;;Non, grazas. A conta, mañá.;;Si, grazas. A conta, por favor.|conta
+T|a2restaurante|Son trinta euros.|Dis que c'est toi qui invites.|Convido eu.|Hoxe convido eu.;;Pago eu, convido eu.|Convidas ti.;;Convido eu onte.;;Convido a sobremesa.|convido
+V|a2restaurante|Que hai hoxe?|Qu'est-ce qu'il y a aujourd'hui ?
+V|a2restaurante|para compartir|à partager
+V|a2restaurante|Convido eu|C'est moi qui invite
+S|a2alquiler|2|Signer le contrat|Tu visites une chambre et tu poses des questions avant de signer.|Propriétaire
+T|a2alquiler|Este é o cuarto. O aluguer é de catrocentos euros.|Demande si les charges sont comprises.|Os gastos están incluídos?|Están incluídos os gastos?;;Perdoe, os gastos están incluídos?|As sobremesas están incluídas?;;Os gastos son incluídos mañá?;;Os gastos están incluídos onte mañá?|gastos;incluídos
+T|a2alquiler|Si, a auga e a luz están incluídas.|Demande combien est la caution.|Canto é a fianza?|E a fianza?;;Canto é a fianza, por favor?|Cando é a fianza?;;Canto é a cea?;;Canto es a fianza?|fianza
+T|a2alquiler|Un mes de aluguer.|Dis que la chambre te plaît.|Gústame moito o cuarto.|O cuarto gústame moito.;;Gústame o cuarto.|Gústache moito o cuarto.;;Gusto moito o cuarto.;;Non me gusta nada o cuarto.|gústame;cuarto
+T|a2alquiler|Que ben!|Demande quand tu peux signer le contrat.|Cando podo asinar o contrato?|Cando asinamos o contrato?;;Cando podo asinar?|Onde podo comer o contrato?;;Cando podes asinar o contrato?;;Canto podo asinar o contrato?|asinar;contrato
+T|a2alquiler|Mañá, se quere. Ten o formulario?|Dis que tu as déjà rempli le formulaire.|Si, xa enchín o formulario.|Xa enchín o formulario.;;Si, xa o enchín.|Si, vou encher o formulario onte.;;Si, xa encheches o formulario.;;Non, xa enchín o formulario.|enchín;formulario
+T|a2alquiler|Perfecto. Ata mañá, entón.|Remercie et dis à demain.|Moitas grazas. Ata mañá!|Grazas. Ata mañá!;;Moitas grazas, ata mañá.|De nada. Ata mañá!;;Síntoo. Boas noites!;;Moitas grazas. Ata onte!|grazas
+V|a2alquiler|a fianza|la caution
+V|a2alquiler|os gastos|les charges
+V|a2alquiler|asinar o contrato|signer le contrat
+S|a2cita|2|Rendez-vous à la mairie|Tu veux t'inscrire à la mairie et tu demandes un rendez-vous.|Employée
+T|a2cita|Bos días. En que podo axudalo?|Dis que tu veux demander un rendez-vous.|Bos días. Quero pedir cita previa.|Quero pedir cita.;;Bos días, quería pedir cita previa.|Bos días. Quero pedir cea previa.;;Bos días. Queres pedir cita previa.;;Boas noites. Quero vender cita previa.|cita
+T|a2cita|Para que é a cita?|Dis que c'est pour t'inscrire à la mairie.|É para inscribirme no concello.|Para inscribirme no concello.;;É para inscribirme.|É para comer.;;É para inscribirte no concello.;;É para o contrato de traballo onte.|inscribirme
+T|a2cita|Moi ben.|Demande quels papiers il faut.|Que papeis necesito?|Que papeis teño que traer?;;Que necesito?|Que papeis necesitas?;;Onde papeis necesito?;;Que sobremesas necesito?|papeis
+T|a2cita|O NIE, o contrato de aluguer e o formulario.|Dis que tu as tout sauf le contrat.|Téñoo todo menos o contrato.|Todo menos o contrato.;;Teño todo menos o contrato.|Téñoo todo co contrato.;;Tes todo menos o contrato.;;Non teño nada menos o contrato.|menos;contrato
+T|a2cita|Non pasa nada. Hai cita o martes ás dez.|Accepte le rendez-vous de mardi.|Vale, o martes ás dez vaime ben.|Vale, o martes ás dez.;;O martes vaime ben.|Vale, o luns ás dez vaime ben.;;Vale, o martes ás dez vaiche ben.;;Non, o martes ás dez vaime ben.|martes
+T|a2cita|Perfecto. Ata o martes.|Remercie.|Moitas grazas. Ata o martes!|Grazas. Ata o martes!;;Moitas grazas.|De nada. Ata o martes!;;Síntoo. Ata o martes!;;Moitas grazas. Ata o domingo!|grazas
+V|a2cita|pedir cita previa|prendre rendez-vous
+V|a2cita|inscribirse|s'inscrire
+V|a2cita|os papeis|les papiers
+S|a2quedar|2|Un café entre amis|Un ami t'appelle pour se voir cette semaine.|Ami
+T|a2quedar|Ola! Que tal? Onte non te vin.|Dis que tu as beaucoup travaillé hier.|Onte traballei moito.|É que onte traballei moito.;;Onte traballei todo o día.|Onte traballo moito.;;Onte traballaches moito.;;Mañá traballei moito.|traballei
+T|a2quedar|Que mágoa! Queres tomar un café esta semana?|Accepte : oui, bien sûr que tu veux.|Si, claro que quero.|Si, quero.;;Claro que si!|Non, claro que quero.;;Si, claro que queres.;;Si, quero onte.|quero
+T|a2quedar|Moi ben! Que día?|Demande si samedi lui convient.|Vaiche ben o sábado?|O sábado vaiche ben?;;Que tal o sábado?|Vaime ben o sábado?;;Vaiche ben onte?;;Vaiche ben o café?|sábado
+T|a2quedar|Si, o sábado vaime ben. A que hora?|Propose de vous retrouver à huit heures.|Quedamos ás oito.|Quedamos ás oito?;;Ás oito, vale?|Quedamos onte ás oito.;;Quedades ás oito.;;Quedamos ás oito anos.|quedamos;oito
+T|a2quedar|Vale. Onde quedamos?|Propose de passer chez lui.|Paso pola túa casa.|Eu paso pola túa casa.;;Paso pola túa casa, vale?|Pasas pola túa casa.;;Paso pola miña casa onte.;;Paso polo teu café.|paso;casa
+T|a2quedar|Perfecto! Ata o sábado.|Dis à samedi.|Ata o sábado!|Vale, ata o sábado.;;Vémonos o sábado!|Ata o luns!;;Ata onte!;;Boas noites, sábado!|sábado
+V|a2quedar|Queres tomar un café?|Tu veux prendre un café ?
+V|a2quedar|Vaiche ben?|Ça te va ?
+V|a2quedar|Quedamos ás oito|On se retrouve à huit heures
+S|a2ropa|2|Dans une boutique de vêtements|Tu essaies une veste et tu veux en rapporter une autre.|Vendeur
+T|a2ropa|Boas tardes. Gústalle esta chaqueta?|Demande si tu peux l'essayer.|Si. Podo probala?|Podo probala?;;Si, podo probar a chaqueta?|Si. Podes probala?;;Si. Podo comela?;;Non. Podo probala?|probala
+T|a2ropa|Claro. Que tal?|Dis qu'elle est trop grande.|Quédame grande.|Quédame un pouco grande.;;É demasiado grande.|Quédame pequena.;;Quédache grande.;;Quedo grande.|grande
+T|a2ropa|Que mágoa.|Demande s'il y en a une plus petite.|Ten unha máis pequena?|Hai unha máis pequena?;;Ten unha talla máis pequena?|Ten unha máis grande?;;Teño unha máis pequena?;;Ten unha máis pequena onte?|pequena
+T|a2ropa|Si, aquí ten.|Dis que celle-ci te va bien et que tu la prends.|Esta quédame ben. Quero esta.|Quédame ben. Quero esta.;;Esta si. Quero esta.|Esta quédame mal. Quero esta.;;Esta quédache ben. Queres esta.;;Esta quédame ben. Non quero esta.|quero
+T|a2ropa|Moi ben. Algo máis?|Dis que tu veux aussi rendre ces chaussures.|Si, quero devolver estes zapatos.|Quero devolver estes zapatos.;;Si, quería devolver estes zapatos.|Si, quero mercar estes zapatos.;;Si, queres devolver estes zapatos.;;Non, quero devolver estes zapatos.|devolver;zapatos
+T|a2ropa|De acordo. Son corenta euros.|Dis qu'il peut garder la monnaie.|Aquí ten. Quédese co cambio.|Quédese co cambio.;;Tome. Quédese co cambio.|Aquí ten. Déame o cambio onte.;;Aquí ten. Queda coa chaqueta.;;Aquí ten. Quédome co cambio.|cambio
+V|a2ropa|Podo probala?|Je peux l'essayer ?
+V|a2ropa|Quédame grande|Elle est trop grande pour moi
+V|a2ropa|Quédese co cambio|Gardez la monnaie
+S|a2trabajo|2|Un nouveau collègue|Le premier jour au bureau, un collègue se présente.|Collègue
+T|a2trabajo|Ola! Son Pablo, do equipo de vendas.|Présente-toi et dis que tu es nouveau.|Ola, Pablo. Son Max, son novo.|Encantado. Son Max, son novo.;;Ola, chámome Max. Son novo.|Ola, Pablo. Es Max, es novo.;;Adeus, Pablo. Son Max, son novo.;;Ola, Pablo. Son Max, son vello.|novo
+T|a2trabajo|Benvido! A que te dedicas?|Dis que tu travailles dans la vente.|Traballo en vendas.|Dedícome ás vendas.;;Traballo en vendas, coma ti.|Dedícaste ás vendas.;;Dedícome á cea.;;Dedícome ás vendas onte.|vendas
+T|a2trabajo|Home, coma min! Levas moito tempo aquí?|Dis que tu es en Espagne depuis trois mois.|Levo tres meses aquí.|Levo tres meses en España.;;Tres meses.|Levas tres meses aquí.;;Levo tres anos mañá.;;Levo tres meses alí onte.|tres;meses
+T|a2trabajo|E antes?|Dis que tu as travaillé huit ans dans des magasins.|Traballei oito anos en tendas.|Antes traballei oito anos en tendas.;;Traballei en tendas oito anos.|Traballo oito anos en tendas.;;Traballaches oito anos en tendas.;;Traballei oito anos en restaurantes mañá.|traballei;tendas
+T|a2trabajo|Que ben! Tes experiencia.|Demande-lui à quelle heure commence la réunion.|A que hora comeza a reunión?|Cando comeza a reunión?;;Perdoa, a que hora é a reunión?|A que hora comezas a reunión?;;Onde comeza a reunión onte?;;A que hora remata a cea?|reunión
+T|a2trabajo|Ás dez. Vémonos alí.|Dis à tout à l'heure.|Ata logo!|Vale, ata logo.;;Vémonos!|Boas noites!;;Ata onte!;;Síntoo moito!|logo
+V|a2trabajo|A que te dedicas?|Qu'est-ce que tu fais dans la vie ?
+V|a2trabajo|Traballo en vendas|Je travaille dans la vente
+V|a2trabajo|Levo tres meses aquí|Je suis ici depuis trois mois
+S|a2farmacia|2|À la pharmacie|Tu ne te sens pas bien et tu vas à la pharmacie.|Pharmacienne
+T|a2farmacia|Boas tardes. Que lle pasa?|Dis que tu tousses.|Teño tose.|Boas tardes. Teño tose.;;Teño moita tose.|Tes tose.;;Teño tose de sobremesa.;;Terei tose onte.|tose
+T|a2farmacia|Algo máis?|Dis que tu as aussi mal à la gorge.|Si, tamén teño dor de gorxa.|Tamén teño dor de gorxa.;;Si, teño dor de gorxa.|Si, tamén tes dor de gorxa.;;Si, tamén me gusta a gorxa.;;Non, tamén teño dor de gorxa.|gorxa
+T|a2farmacia|Doulle unhas pastillas. Ten alerxia a algo?|Dis que tu es allergique au lait.|Si, teño alerxia ao leite.|Teño alerxia ao leite.;;Si, ao leite.|Si, tes alerxia ao leite.;;Si, teño alerxia á praia.;;Non, teño alerxia ao leite.|alerxia;leite
+T|a2farmacia|Estas non levan leite.|Demande s'il faut une ordonnance.|Preciso unha receita?|Preciso receita?;;E preciso unha receita?|Precisas unha receita?;;Preciso unha sobremesa?;;Preciso unha receita onte?|receita
+T|a2farmacia|Non, non a precisa.|Demande combien de cachets tu dois prendre.|Cantas tomo ao día?|Cantas pastillas ao día?;;E cantas tomo ao día?|Cantas tomas ao día?;;Cando pastillas tomo ao día?;;Cantas tomo onte?|cantas
+T|a2farmacia|Tres ao día, despois de comer.|Remercie et dis au revoir.|Moitas grazas. Adeus!|Grazas. Ata logo!;;Moitas grazas.|De nada. Adeus!;;Síntoo. Ola!;;Moitas grazas. Bos días onte!|grazas
+V|a2farmacia|Teño tose|Je tousse
+V|a2farmacia|Teño alerxia a…|Je suis allergique à…
+V|a2farmacia|a receita|l'ordonnance
+S|a2cola|2|La file d'attente|Au supermarché, tu fais la queue à la caisse.|Cliente
+T|a2cola|Ola, bos días.|Demande si c'est bien la file d'attente.|Perdoe, esta é a cola?|Esta é a cola?;;Bos días, esta é a cola?|Perdoe, esta é a cea?;;Perdoe, estas é a cola?;;Perdoe, esta é a cola onte?|cola
+T|a2cola|Si. Leva moito?|Dis que tu as seulement deux bouteilles.|Non, só levo dúas botellas.|Só levo dúas botellas.;;Non, só dúas botellas.|Si, só levo dúas botellas.;;Non, só levas dúas botellas.;;Non, só levo dúas sobremesas onte.|dúas;botellas
+T|a2cola|Pase, pase.|Remercie-la : elle te laisse passer.|Moitas grazas! É vostede moi xeneroso.|Moitas grazas!;;Grazas, é vostede moi xenerosa.|De nada, é vostede moi xeneroso.;;Síntoo, é vostede moi xeneroso.;;Moitas grazas! Son moi xeneroso.|grazas
+T|a2cola|Ola. Algo máis?|Dis que c'est tout et demande-lui d'encaisser.|Non, grazas. Cóbreme, por favor.|Cóbreme, por favor.;;Non, nada máis. Cóbreme, por favor.|Si, grazas. Cóbreme, por favor.;;Non, grazas. Cóbreme mañá.;;Non, de nada. Cóbreme onte.|cóbreme
+T|a2cola|Son seis euros. Con tarxeta?|Dis que tu paies en espèces.|Non, pago en efectivo.|En efectivo, por favor.;;Non, en efectivo.|Si, pago en efectivo.;;Non, pagas en efectivo.;;Non, pago en sobremesa.|efectivo
+T|a2cola|Aquí ten o cambio.|Souhaite-lui une bonne journée.|Grazas. Que pase un bo día!|Grazas. Bo día!;;Moitas grazas. Que pase un bo día!|De nada. Que pase un bo día!;;Grazas. Que pase un mal día!;;Grazas. Que paso un bo día!|día
+V|a2cola|Esta é a cola?|C'est bien la file ?
+V|a2cola|Cóbreme, por favor|Encaissez-moi, s'il vous plaît
+V|a2cola|en efectivo|en espèces
+S|a2bici|2|En vélo au travail|Un voisin te croise devant l'immeuble le matin.|Voisin
+T|a2bici|Bos días, veciño! Onde vas tan cedo?|Dis que tu vas au travail.|Vou ao traballo.|Marcho ao traballo.;;Vou á oficina.|Vas ao traballo.;;Vou á sobremesa.;;Fun ao traballo mañá.|traballo
+T|a2bici|En coche?|Dis que tu y vas à pied.|Non, vou a pé.|Vou a pé.;;Non, a pé.|Si, vou a pé.;;Non, vas a pé.;;Non, vou a paraugas.|pé
+T|a2bici|E está lonxe?|Dis que ce n'est pas loin : c'est près du marché.|Non, está preto do mercado.|Está preto do mercado.;;Non, preto do mercado.|Si, está preto do mercado.;;Non, estou preto do mercado.;;Non, está preto da sobremesa.|preto
+T|a2bici|E mañá? Din que vai chover.|Dis que demain tu prendras le métro, parce qu'il va pleuvoir.|Mañá irei en metro.|Mañá vou ir en metro.;;Mañá collerei o metro.|Onte irei en metro.;;Mañá irás en metro.;;Mañá irei en paraugas.|mañá;metro
+T|a2bici|Eu tamén vou ao centro mañá. Imos xuntos?|Accepte d'y aller ensemble.|Si, claro. Imos xuntos.|Claro, imos xuntos.;;Si, vale.|Non, claro. Imos xuntos.;;Si, claro. Ides xuntos.;;Si, claro. Imos xuntos onte.|xuntos
+T|a2bici|Moi ben! Ata mañá.|Dis au revoir.|Ata mañá!|Ata mañá, veciño!;;Veña, ata mañá.|Ata onte!;;Boas noites, mañá!;;Síntoo, mañá!|mañá
+V|a2bici|Vou a pé|J'y vais à pied
+V|a2bici|preto de|près de
+V|a2bici|Imos xuntos?|On y va ensemble ?
+S|a2finde|2|Le week-end|Lundi matin, une amie te demande ce que tu as fait ce week-end.|Amie
+T|a2finde|Ola! Que tal a fin de semana? Que fixeches?|Dis que tu es resté(e) à la maison.|O sábado quedei na casa.|Quedei na casa.;;O sábado estiven na casa.|O sábado quedo na casa.;;O sábado quedaches na casa.;;O próximo domingo quedei na casa.|quedei;casa
+T|a2finde|E que fixeches na casa?|Dis que tu as nettoyé l'appartement et fait la vaisselle.|Limpei o piso e lavei a louza.|Limpei o piso.;;Limpei todo e lavei a louza.|Limpo o piso e lavo a louza.;;Limpaches o piso e lavaches a louza.;;Limpei a sobremesa e lavei os pisos.|limpei
+T|a2finde|Que aburrido! E o domingo?|Dis que dimanche tu es allé(e) à la plage.|O domingo fun á praia.|Fun á praia.;;O domingo fun á praia cuns amigos.|O domingo vou á praia.;;O domingo fuches á praia.;;O domingo fun á praia mañá.|fun;praia
+T|a2finde|Que ben! E hoxe? Que tal o traballo?|Dis que tu en as marre du travail.|Estou farto do traballo.|Estou farta do traballo.;;Uf, estou farto do traballo.|Estás farto do traballo.;;Estou farto da sobremesa.;;Estou contento do traballo.|farto
+T|a2finde|Que mágoa! Imos tomar algo esta noite?|Dis que tu préfères rester tranquille ce soir.|Non, grazas. Prefiro descansar.|Prefiro descansar na casa.;;Hoxe non. Prefiro descansar.|Si, grazas. Prefiro descansar.;;Non, grazas. Prefires descansar.;;Non, grazas. Prefiro traballar máis.|descansar
+T|a2finde|Vale. Ata mañá!|Dis à demain.|Ata mañá!|Vale, ata mañá.;;Vémonos mañá!|Ata onte!;;Bos días, mañá!;;Síntoo, mañá!|mañá
+V|a2finde|Quedei na casa|Je suis resté à la maison
+V|a2finde|lavar a louza|faire la vaisselle
+V|a2finde|Estou farto de…|J'en ai marre de…
+S|a2excursion|2|Réserver une excursion|Dans une agence, tu réserves une excursion pour le week-end.|Agent
+T|a2excursion|Bos días. Que desexa?|Dis que tu veux réserver l'excursion à l'Albufera.|Quero reservar a excursión á Albufera.|Quería reservar a excursión á Albufera.;;Unha reserva para a excursión á Albufera, por favor.|Quero cambiar a excursión á Albufera.;;Queres reservar a excursión á Albufera.;;Quero reservar a maleta á Albufera.|reservar;excursión
+T|a2excursion|Moi ben. Para cantos?|Dis que c'est pour deux personnes.|Para dous, por favor.|Para dous.;;Somos dous.|Para dez anos, por favor.;;Para dúas sobremesas, por favor.;;Para dous, de nada.|dous
+T|a2excursion|O sábado hai prazas.|Demande à quelle heure part le bus.|A que hora sae o autobús?|Cando sae o autobús?;;A que hora sae?|A que hora saíu o autobús onte?;;Onde hora sae o autobús?;;A que hora saes o autobús?|hora;autobús
+T|a2excursion|Ás nove, desde a praza do Concello.|Demande s'il faut apporter quelque chose.|Hai que levar algo?|Temos que levar algo?;;Fai falta levar algo?|Hai que comer algo?;;Hai que levar nada?;;Hai que levar algo onte?|levar
+T|a2excursion|Unha chaqueta e auga.|Demande s'il y a le déjeuner.|Hai xantar?|E o xantar?;;Hai xantar tamén?|Hai maleta?;;Hai xantar onte?;;Hai cea mañá?|xantar
+T|a2excursion|Si, unha paella no Palmar.|Dis que c'est parfait et remercie.|Perfecto! Moitas grazas.|Perfecto, grazas.;;Xenial! Moitas grazas.|Perfecto! De nada.;;Perfecto! Síntoo moito.;;Que mágoa! Moitas grazas.|grazas
+V|a2excursion|reservar unha excursión|réserver une excursion
+V|a2excursion|Hai que levar algo?|Il faut apporter quelque chose ?
+V|a2excursion|o xantar|le déjeuner`,eu:`S|a1mercado|1|Au marché|Tu fais tes courses au marché : des oranges et du fromage.|Vendeuse
 T|a1mercado|Egun on, zer nahi duzu?|Salue et demande six oranges.|Egun on, sei laranja, mesedez.|Kaixo, sei laranja, mesedez.;;Egun on, sei laranja nahi dut.|Gabon, sei laranja, ez horregatik.;;Egun on, sei laranja deitzen naiz.;;Agur, sei laranja, eskerrik asko.|sei;laranja
 T|a1mercado|Hemen duzu. Beste zerbait?|Demande aussi du fromage.|Bai, gazta ere nahi dut.|Bai, gazta ere bai, mesedez.;;Bai, gazta nahi dut, mesedez.|Bai, ni ere gazta naiz.;;Ez, gazta ere nahi dut.;;Bai, gazta hondartzan dago.|gazta
 T|a1mercado|Gazta ona da.|Demande le prix du fromage.|Zenbat balio du?|Zenbat balio du gaztak?;;Zenbat da?|Zenbat ordu?;;Non balio du?;;Noiz balio du gaztak?|zenbat
@@ -6838,7 +7717,225 @@ T|a2tren|Oso ondo. Hemen duzu zure txartela. Bidaia ona!|Remercie et dis au revo
 V|a2tren|trena galdu|rater le train
 V|a2tren|hurrengo trena|le prochain train
 V|a2tren|txartela|le billet
-V|a2tren|Bidaia ona!|Bon voyage !`}/*XI-END*/;
+V|a2tren|Bidaia ona!|Bon voyage !
+S|a1hora|1|L'heure dans la rue|Dans la rue, tu demandes l'heure à une passante.|Passante
+T|a1hora|Arratsalde on.|Salue et demande l'heure.|Arratsalde on. Zer ordu da, mesedez?|Kaixo, zer ordu da?;;Zer ordu da, mesedez?|Gabon. Zenbat da?;;Arratsalde on. Zer moduz da?;;Agur. Zer ordu da?|ordu
+T|a1hora|Bost eta erdi.|Tu n'as pas compris : dis-le-lui.|Barkatu, ez dut ulertzen.|Ez dut ulertzen.;;Barkatu, ez dut ondo ulertzen.|Barkatu, ulertzen dut.;;Barkatu, ez dut jaten.;;Ez horregatik, ez dut ulertzen.|ulertzen
+T|a1hora|Bost eta erdi, arratsaldean.|Demande-lui de parler plus lentement.|Poliki hitz egin, mesedez.|Poliki, mesedez.;;Poliki-poliki, mesedez.|Azkar hitz egin, mesedez.;;Garesti hitz egin, mesedez.;;Poliki hitz egin, ez horregatik.|poliki
+T|a1hora|Bost. Eta erdi.|Dis que tu as compris et remercie-la.|Ados, eskerrik asko.|Eskerrik asko.;;Ondo, eskerrik asko.|Ados, ez horregatik.;;Ados, barkatu.;;Ez, eskerrik asko.|eskerrik
+T|a1hora|Ez horregatik. Euskaraz hitz egiten duzu?|Réponds que tu ne parles pas bien.|Ez, ez dut ondo hitz egiten.|Ez dut ondo hitz egiten.;;Ez, ez dut hitz egiten.|Bai, ondo hitz egiten dut.;;Ez, ez dut ondo jaten.;;Ez, ez duzu ondo hitz egiten.|ondo
+T|a1hora|Ondo hitz egiten duzu. Gero arte!|Dis au revoir.|Eskerrik asko. Agur!|Gero arte!;;Eskerrik asko. Gero arte!|Arratsalde on. Kaixo!;;Barkatu. Kaixo!;;Mesedez. Kaixo!|eskerrik
+V|a1hora|Zer ordu da?|Quelle heure est-il ?
+V|a1hora|Ez dut ulertzen|Je ne comprends pas
+V|a1hora|poliki|lentement
+S|a1panaderia|1|À la boulangerie|Tu achètes du pain et tu paies.|Boulanger
+T|a1panaderia|Egun on. Zer nahi duzu?|Salue et demande du pain.|Egun on. Ogia nahi dut, mesedez.|Kaixo, ogia, mesedez.;;Ogia nahi dut, mesedez.|Gabon. Esnea nahi dut, ez horregatik.;;Egun on. Ogia naiz, mesedez.;;Agur. Ogia nahi dut, mesedez.|ogia
+T|a1panaderia|Hemen duzu.|Demande combien ça coûte.|Zenbat da?|Zenbat balio du?;;Eskerrik asko. Zenbat da?|Noiz da?;;Zer ordu da?;;Non da?|zenbat
+T|a1panaderia|Bi euro dira. Beste ezer?|Dis que tu veux aussi de l'eau.|Bai, ura ere nahi dut.|Bai, ura, mesedez.;;Bai, ura nahi dut, mesedez.|Ez, ura ere nahi dut.;;Bai, ni ere ura naiz.;;Bai, esnea nahi dut.|ura
+T|a1panaderia|Hiru euro dira.|Donne l'argent : dis « voilà ».|Hemen duzu.|Hemen dituzu.;;Tori, hemen duzu.|Hemen naiz.;;Han duzu atzo.;;Hemen duzu, ez horregatik.|hemen
+T|a1panaderia|Eskerrik asko.|Demande le ticket.|Tiketa nahi dut, mesedez.|Tiketa, mesedez.;;Tiketa nahi dut.|Ogia nahi dut, mesedez.;;Tiketa naiz, mesedez.;;Tiketa nahi dut, ez horregatik.|tiketa
+T|a1panaderia|Hemen duzu. Bihar arte!|Remercie et dis au revoir.|Eskerrik asko. Bihar arte!|Bihar arte!;;Eskerrik asko, bihar arte.|Ez horregatik. Bihar arte!;;Barkatu. Egun on!;;Mesedez. Kaixo!|eskerrik
+V|a1panaderia|ogia|le pain
+V|a1panaderia|tiketa|le ticket
+V|a1panaderia|ura|l'eau
+S|a1mesa|1|Au restaurant|Tu déjeunes au restaurant avec un ami.|Serveur
+T|a1mesa|Arratsalde on. Zenbat zarete?|Dis que vous êtes deux.|Arratsalde on. Bi gara.|Bi gara.;;Kaixo, bi gara.|Arratsalde on. Kontua, mesedez.;;Arratsalde on. Ogia, mesedez.;;Agur. Bi gara.|bi
+T|a1mesa|Ondo. Eseri, mesedez.|Demande s'il y a du poisson.|Arraina dago?|Arraina dago, mesedez?;;Barkatu, arraina dago?|Ogia naiz?;;Arraina zaude?;;Kontua dago?|arraina
+T|a1mesa|Bai, arraina eta okela. Zer nahi duzu?|Commande du poisson.|Arraina nahi dut, mesedez.|Arraina, mesedez.;;Niretzat arraina, mesedez.|Arraina naiz, mesedez.;;Ordaindu nahi dut, mesedez.;;Arraina nahi dut, ez horregatik.|arraina
+T|a1mesa|Ardoa edo ura?|Demande de l'eau.|Ura, mesedez.|Ur hotza, mesedez.;;Ura nahi dut, mesedez.|Ogia, mesedez.;;Ura, barkatu.;;Ura, ez horregatik.|ura
+T|a1mesa|Beste ezer?|Demande l'addition.|Ez, eskerrik asko. Kontua, mesedez.|Kontua, mesedez.;;Ez, eskerrik asko. Kontua nahi dut.|Bai, eskerrik asko. Ogia, mesedez.;;Ez, eskerrik asko. Ura, mesedez.;;Ez, ez horregatik. Kontua, mesedez.|kontua
+T|a1mesa|Hogei euro dira.|Remercie.|Hemen duzu. Eskerrik asko.|Hemen duzu. Mila esker.;;Eskerrik asko.|Hemen duzu. Ez horregatik.;;Hemen duzu. Barkatu.;;Hemen duzu. Mesedez.|eskerrik
+V|a1mesa|Bi gara|Nous sommes deux
+V|a1mesa|arraina|le poisson
+V|a1mesa|Kontua, mesedez|L'addition, s'il vous plaît
+S|a1piso|1|Une chambre à louer|Tu appelles pour une chambre dans un appartement partagé.|Propriétaire
+T|a1piso|Kaixo, arratsalde on.|Dis que tu cherches un appartement.|Arratsalde on. Pisu bat bilatzen dut.|Kaixo, pisu bat bilatzen dut.;;Pisu bat bilatzen dut, mesedez.|Arratsalde on. Kontua bilatzen dut.;;Arratsalde on. Pisu bat saltzen dut.;;Agur. Pisu bat bilatzen dut.|pisu
+T|a1piso|Bai, pisu bat dago.|Demande combien ça coûte.|Zenbat da?|Zenbat balio du?;;Eta zenbat da?|Noiz da?;;Non da?;;Zer ordu da?|zenbat
+T|a1piso|Seiehun euro dira.|Dis que c'est cher.|Garestia da.|Uf, garestia da.;;Oso garestia da.|Hotza da.;;Zaila da.;;Garestia naiz.|garestia
+T|a1piso|Pisua polita da.|Demande où est l'appartement.|Non dago pisua?|Non dago?;;Eta non dago pisua?|Noiz dago pisua?;;Non dago hondartza?;;Zer moduz zaude?|non
+T|a1piso|Hondartzatik gertu dago.|Demande si l'appartement est propre.|Pisua garbia da?|Garbia da?;;Eta pisua garbia da?|Pisua beroa da?;;Garbia zara?;;Hondartza garbia naiz?|garbia
+T|a1piso|Bai, garbia da.|Dis que tu ne sais pas encore.|Ez dakit oraindik.|Ez dakit.;;Eskerrik asko. Ez dakit oraindik.|Ez dakit, mesedez.;;Ez dut jaten oraindik.;;Bai, badakit.|dakit
+V|a1piso|pisua|l'appartement
+V|a1piso|garestia|cher
+V|a1piso|Ez dakit|Je ne sais pas
+S|a1tienda|1|Dans un magasin|Tu cherches un cadeau dans un petit magasin.|Vendeuse
+T|a1tienda|Egun on. Zer nahi duzu?|Salue et dis que tu veux regarder.|Egun on. Begiratu besterik ez, eskerrik asko.|Begiratu nahi dut, eskerrik asko.;;Kaixo, begiratu besterik ez.|Egun on. Jan besterik ez, eskerrik asko.;;Gabon. Begiratu besterik ez.;;Egun on. Begiratu nahi duzu.|begiratu
+T|a1tienda|Ondo.|Demande si ce produit est en promotion.|Eskaintzan dago?|Hau eskaintzan dago?;;Barkatu, eskaintzan dago?|Eskaintzan naiz?;;Bihar eskaintzan da?;;Eskaintzan zaude?|eskaintzan
+T|a1tienda|Bai, eskaintzan dago.|Demande combien il coûte.|Zenbat balio du?|Zenbat da?;;Eta zenbat balio du?|Noiz balio du?;;Non balio du?;;Zer ordu da?|zenbat
+T|a1tienda|Hamar euro balio du.|Dis que ce n'est pas cher et que tu veux l'acheter.|Ez da garestia. Hau erosi nahi dut.|Hau erosi nahi dut.;;Ez da garestia. Erosi nahi dut.|Garestia da. Hau erosi nahi dut.;;Ez da garestia. Hau erosi nahi duzu.;;Ez da garestia. Ez dut erosi nahi.|erosi
+T|a1tienda|Ondo. Hamar euro.|Donne l'argent : dis « voilà ».|Hemen duzu.|Hemen dituzu.;;Tori, hemen duzu.|Hemen naiz.;;Han duzu atzo.;;Hemen duzu, ez horregatik.|hemen
+T|a1tienda|Eskerrik asko.|Remercie et dis au revoir.|Eskerrik asko. Agur!|Eskerrik asko, gero arte.;;Mila esker. Agur!|Ez horregatik. Agur!;;Barkatu. Kaixo!;;Mesedez. Egun on!|eskerrik
+V|a1tienda|eskaintzan|en promotion
+V|a1tienda|Zenbat balio du?|Combien ça coûte ?
+V|a1tienda|erosi|acheter
+S|a1medico|1|Chez le médecin|Tu ne te sens pas bien et tu vas chez le médecin.|Médecin
+T|a1medico|Egun on. Zer moduz?|Salue et dis que tu es malade.|Egun on. Gaixo nago.|Kaixo, gaixo nago.;;Ez nago ondo.|Egun on. Pozik nago.;;Gabon. Gaixo nago.;;Egun on. Gaixo zaude.|gaixo
+T|a1medico|Zer duzu?|Dis que tu as mal à la tête.|Buruko mina dut.|Buruko mina.;;Buruko min handia dut.|Mahaiko mina dut.;;Buruko mina duzu.;;Burua gustatzen zait.|buruko
+T|a1medico|Nekatuta zaude?|Dis que tu es fatigué(e).|Bai, nekatuta nago.|Nekatuta nago.;;Bai, oso nekatuta nago.|Bai, pozik nago.;;Bai, nekatuta zaude.;;Ez, nekatuta nago.|nekatuta
+T|a1medico|Ondo lo egiten duzu?|Dis que tu dors mal.|Ez, gaizki lo egiten dut.|Ez, ez dut ondo lo egiten.;;Gaizki lo egiten dut.|Bai, gaizki lo egiten dut.;;Ez, gaizki jaten dut.;;Ez, gaizki lo egiten duzu.|gaizki
+T|a1medico|Ura edan behar duzu.|Dis que tu bois de l'eau.|Bai, ura edaten dut.|Ura edaten dut.;;Ados, ura edaten dut.|Bai, ura jaten dut.;;Bai, ura edaten duzu.;;Ez, ez dut ura edaten.|edaten
+T|a1medico|Ondo. Ondo izan!|Remercie et dis au revoir.|Eskerrik asko. Agur!|Eskerrik asko. Gero arte.;;Mila esker. Agur!|Ez horregatik. Agur!;;Barkatu. Kaixo!;;Eskerrik asko. Egun on!|eskerrik
+V|a1medico|Buruko mina dut|J'ai mal à la tête
+V|a1medico|Nekatuta nago|Je suis fatigué
+V|a1medico|Gaixo nago|Je suis malade
+S|a1cafe|1|Au café|Tu prends un café avec une collègue.|Serveur
+T|a1cafe|Egun on. Zer nahi duzue?|Commande un café crème.|Kafe bat esnearekin, mesedez.|Niretzat, kafe bat esnearekin.;;Kafe bat esnearekin.|Kafe bat ogiarekin, mesedez.;;Ogia esnearekin, mesedez.;;Kafe bat esnearekin, ez horregatik.|kafe;esnearekin
+T|a1cafe|Beste bat?|Commande aussi un café noir pour ta collègue.|Bai, kafe beltz bat, mesedez.|Kafe beltz bat, mesedez.;;Bai, kafe beltz bat.|Bai, ardo beltz bat, mesedez.;;Bai, kafe beltza naiz.;;Ez, kafe beltz bat, mesedez.|beltz
+T|a1cafe|Beste ezer?|Dis que vous voulez aussi de l'eau.|Bai, ura ere bai, mesedez.|Ura, mesedez.;;Bai, bi ur, mesedez.|Ez, ura ere bai.;;Bai, ogia ere bai.;;Bai, ura, barkatu.|ura
+T|a1cafe|Beste ezer?|Dis que c'est tout.|Ez, besterik ez, eskerrik asko.|Besterik ez, eskerrik asko.;;Ez, eskerrik asko.|Bai, besterik ez, eskerrik asko.;;Ez, dena, eskerrik asko.;;Ez, besterik ez, ez horregatik.|besterik
+T|a1cafe|Hemen duzue.|Demande combien ça fait.|Zenbat da?|Zenbat balio du?;;Zenbat da dena?|Noiz da?;;Non da?;;Zer ordu da?|zenbat
+T|a1cafe|Lau euro dira. Agur!|Remercie et dis au revoir.|Eskerrik asko. Agur!|Eskerrik asko, gero arte.;;Mila esker. Agur!|Ez horregatik. Agur!;;Barkatu. Kaixo!;;Mesedez. Gabon!|eskerrik
+V|a1cafe|kafe bat esnearekin|un café crème
+V|a1cafe|kafe beltza|un café noir
+V|a1cafe|Beste ezer?|Autre chose ?
+S|a1camino|1|Demander son chemin|Tu cherches l'arrêt de métro dans le centre-ville.|Passant
+T|a1camino|Kaixo, zer moduz?|Excuse-toi et demande où est l'arrêt de métro.|Barkatu, non dago metroa?|Non dago metroa?;;Barkatu, non dago metro geltokia?|Barkatu, noiz dago metroa?;;Barkatu, non dago hondartza?;;Barkatu, non nago metroa?|non;metroa
+T|a1camino|Gertu dago.|Demande si c'est loin.|Urrun dago?|Barkatu, urrun dago?;;Eta urrun dago?|Garesti dago?;;Urrun zaude?;;Gertu dago ezer?|urrun
+T|a1camino|Ez, ez dago urrun. Zuzen eta ezkerrera.|Dis que tu n'as pas compris.|Barkatu, ez dut ulertzen.|Ez dut ulertzen.;;Barkatu, poliki, mesedez.|Barkatu, ulertzen dut.;;Barkatu, ez dut jaten.;;Ez horregatik, ez dut ulertzen.|ulertzen
+T|a1camino|Zuzen jarraitu eta gero ezkerrera.|Répète l'indication : tout droit puis à gauche.|Ados. Zuzen eta ezkerrera.|Zuzen eta ezkerrera.;;Ados, zuzen eta gero ezkerrera.|Ados. Zuzen eta hondartzara.;;Ados. Garesti eta ezkerrera.;;Ados. Zuzen eta ezkerrera, ez horregatik.|zuzen;ezkerrera
+T|a1camino|Hori da.|Demande si tu dois prendre le bus.|Autobusa hartu behar dut?|Autobusa hartu behar dut, mesedez?;;Barkatu, autobusa hartu behar dut?|Autobusa jan behar dut?;;Autobusa hartu behar duzu?;;Hondartza hartu behar dut?|autobusa
+T|a1camino|Ez, oinez. Gertu dago.|Remercie.|Eskerrik asko.|Mila esker.;;Ados, eskerrik asko.|Ez horregatik.;;Barkatu.;;Mesedez.|eskerrik
+V|a1camino|metroa|le métro
+V|a1camino|zuzen|tout droit
+V|a1camino|ezkerrera|à gauche
+S|a1compra|1|Faire les courses|Au marché, tu achètes des fruits et des légumes.|Vendeur
+T|a1compra|Egun on. Zer nahi duzu?|Demande du riz.|Arroza nahi dut, mesedez.|Arroza, mesedez.;;Egun on, arroza nahi dut.|Arroza naiz, mesedez.;;Arroza nahi dut, ez horregatik.;;Arroza nahi duzu, mesedez.|arroza
+T|a1compra|Hemen duzu.|Demande s'il y a du fromage.|Gazta ba al dago?|Gazta ba al dago, mesedez?;;Barkatu, gazta ba al dago?|Nahi ba al dago?;;Gazta ba al dago bihar atzo?;;Gazta zara?|gazta
+T|a1compra|Bai, gazta ona da.|Dis que tu veux l'acheter.|Ados, hau erosi nahi dut.|Hau erosi nahi dut.;;Ondo, hau erosi nahi dut.|Ados, hau erosi nahi duzu.;;Ados, bihar atzo jan nahi dut.;;Ez, hau erosi nahi dut.|erosi
+T|a1compra|Hamabost euro dira.|Donne l'argent : dis « voilà ».|Hemen duzu.|Hemen dituzu.;;Tori, hemen duzu.|Hemen naiz.;;Han duzu atzo.;;Hemen duzu, ez horregatik.|hemen
+T|a1compra|Eskerrik asko. Beste ezer?|Dis que c'est tout.|Ez, besterik ez, eskerrik asko.|Besterik ez, eskerrik asko.;;Ez, eskerrik asko. Dena da.|Bai, besterik ez.;;Ez, dena gehiago, eskerrik asko.;;Ez, besterik ez, ez horregatik.|besterik
+T|a1compra|Ondo izan!|Remercie et dis au revoir.|Eskerrik asko. Agur!|Eskerrik asko, gero arte.;;Mila esker. Ondo izan!|Ez horregatik. Agur!;;Barkatu. Kaixo!;;Mesedez. Egun on!|eskerrik
+V|a1compra|arroza|le riz
+V|a1compra|gazta|le fromage
+V|a1compra|Gazta ba al dago?|Il y a du fromage ?
+S|a1perdido|1|Perdu en ville|Tu es perdu dans le quartier et tu demandes de l'aide.|Passante
+T|a1perdido|Kaixo, zer moduz?|Dis que tu es perdu.|Barkatu, galdu naiz.|Galdu naiz.;;Barkatu, galduta nago.|Barkatu, prest nago.;;Barkatu, galdu zara.;;Ez horregatik, galdu naiz.|galdu
+T|a1perdido|Nora zoaz?|Dis que tu cherches la plage.|Hondartza bilatzen dut.|Hondartzara noa.;;Hondartza bilatzen dut, mesedez.|Kontua bilatzen dut.;;Hondartza bilatzen duzu.;;Hondartza saltzen dut.|hondartza
+T|a1perdido|Hondartza urrun dago.|Demande si tu prends le métro.|Metroa hartu behar dut?|Metroa hartzen dut?;;Metroa edo autobusa hartu behar dut?|Metroa jan behar dut?;;Metroa hartu behar duzu?;;Hondartza hartu behar dut?|metroa
+T|a1perdido|Bai, edo autobusa.|Demande combien d'heures il faut à pied.|Zenbat ordu, oinez?|Eta oinez, zenbat ordu?;;Zenbat ordu oinez, mesedez?|Zenbat balio du ogiak?;;Noiz ordu, oinez?;;Zer ordu da?|oinez
+T|a1perdido|Ordu bat.|Dis que tu vas à pied.|Oinez noa. Ibiltzea gustatzen zait.|Oinez noa.;;Nahiago dut oinez joan.|Oinez noa. Ez zait gustatzen ibiltzea.;;Oinez zoaz. Ibiltzea gustatzen zaizu.;;Oinez naiz. Ibiltzea gustatzen zait.|oinez
+T|a1perdido|Ondo! Zuzen.|Remercie.|Eskerrik asko.|Mila esker.;;Ados, eskerrik asko.|Ez horregatik.;;Barkatu.;;Mesedez.|eskerrik
+V|a1perdido|Galdu naiz|Je suis perdu
+V|a1perdido|metroa hartu|prendre le métro
+V|a1perdido|oinez|à pied
+S|a1presentar|1|Faire connaissance|À une fête, une personne vient te parler.|Invitée
+T|a1presentar|Kaixo! Nola duzu izena?|Réponds à la salutation et dis comment tu t'appelles.|Kaixo. Max naiz.|Max naiz.;;Kaixo, nire izena Max da.|Kaixo. Max zara.;;Agur. Max naiz.;;Kaixo. Max nago.|max
+T|a1presentar|Ni Ane naiz. Zer moduz?|Réponds que tu vas bien.|Ondo, eskerrik asko.|Ondo.;;Ondo, eta zu?|Ondo, ez horregatik.;;Barkatu, eskerrik asko.;;Ondo, mesedez.|ondo
+T|a1presentar|Nongoa zara?|Dis d'où tu viens.|Frantziakoa naiz.|Toulousekoa naiz.;;Frantziakoa naiz, Toulousekoa.|Frantziakoa zara.;;Frantziakoa gara.;;Agur, Frantziakoa naiz.|frantziakoa
+T|a1presentar|Ondo! Euskaraz hitz egiten duzu?|Dis que tu apprends la langue.|Euskara ikasten ari naiz.|Euskara ikasten dut.;;Bai, euskara ikasten ari naiz.|Euskara jaten ari naiz.;;Euskara ikasten ari zara.;;Ez, bihar euskara ikasten ari naiz.|ikasten
+T|a1presentar|Ondo hitz egiten duzu!|Remercie et dis que tu parles un peu.|Eskerrik asko. Euskaraz pixka bat badakit.|Euskaraz pixka bat badakit.;;Eskerrik asko, pixka bat badakit.|Eskerrik asko. Euskaraz asko badakit.;;Ez horregatik. Pixka bat badakit.;;Eskerrik asko. Euskaraz pixka bat badakizu.|pixka
+T|a1presentar|Ongi etorri, Max!|Remercie-la.|Eskerrik asko, Ane.|Eskerrik asko.;;Mila esker, Ane.|Ez horregatik, Ane.;;Barkatu, Ane.;;Agur, Ane.|eskerrik
+V|a1presentar|Nola duzu izena?|Comment tu t'appelles ?
+V|a1presentar|Nongoa zara?|D'où es-tu ?
+V|a1presentar|pixka bat|un peu
+S|a2restaurante|2|Que nous conseillez-vous ?|Au restaurant, tu demandes conseil à la serveuse et tu invites un ami.|Serveuse
+T|a2restaurante|Gabon. Badakizue zer nahi duzuen?|Demande ce qu'elle te recommande.|Zer gomendatzen duzu?|Barkatu, zer gomendatzen duzu?;;Zer gomendatzen diguzu?|Zer gomendatzen dut?;;Zer gomendatzen duzu atzo bihar?;;Zer balio du?|gomendatzen
+T|a2restaurante|Paella oso ona da gaur.|Demande ce qu'il y a dans la paella.|Zer du paellak?|Zer du?;;Barkatu, zer du paellak?|Zer duzu paellak?;;Zer ordu du paellak?;;Non du paellak?|paellak
+T|a2restaurante|Arroza eta arraina.|Commande une paella à partager.|Ados. Paella bat partekatzeko, mesedez.|Paella bat partekatzeko.;;Ados, paella bat partekatzeko, mesedez.|Ados. Paella bat atzo partekatzeko.;;Ados. Kafe bat partekatzeko.;;Ados. Paella bat partekatzen duzu.|partekatzeko
+T|a2restaurante|Postrea nahi duzue?|Dis que tu ne veux pas de dessert, merci.|Ez, eskerrik asko. Postrerik ez.|Ez, eskerrik asko.;;Ez dugu postrerik nahi, eskerrik asko.|Bai, eskerrik asko. Postrerik ez.;;Ura, postrerik ez.;;Ez, ez horregatik. Postrerik ez.|postrerik
+T|a2restaurante|Beste ezer?|Demande l'addition.|Ez, eskerrik asko. Kontua, mesedez.|Kontua, mesedez.;;Kontua ekarri, mesedez.|Ez, eskerrik asko. Kontua, atzo.;;Ez, eskerrik asko. Kontua ekarriko dizut?;;Bai, eskerrik asko. Kontua, mesedez.|kontua
+T|a2restaurante|Hogeita hamar euro dira.|Dis que c'est toi qui paies.|Nik ordainduko dut.|Gaur nik ordainduko dut.;;Nik ordaintzen dut.|Zuk ordainduko duzu.;;Nik ordaindu dut atzo.;;Nik postrea ordainduko dut.|ordainduko
+V|a2restaurante|Zer gomendatzen duzu?|Que me conseillez-vous ?
+V|a2restaurante|partekatu|partager
+V|a2restaurante|Kontua, mesedez|L'addition, s'il vous plaît
+S|a2alquiler|2|Signer le contrat|Tu visites une chambre et tu poses des questions avant de signer.|Propriétaire
+T|a2alquiler|Hau da gela.|Demande combien est le loyer.|Zenbat da alokairua?|Barkatu, zenbat da alokairua?;;Eta alokairua, zenbat da?|Noiz da alokairua?;;Zenbat da afaria?;;Zenbat naiz alokairua?|alokairua
+T|a2alquiler|Laurehun euro hilean.|Dis que ça te va et que la chambre te plaît beaucoup.|Ondo dago. Gela asko gustatzen zait.|Gela asko gustatzen zait.;;Ondo dago. Gela gustatzen zait.|Ondo dago. Gela asko gustatzen zaizu.;;Gaizki dago. Gela asko gustatzen zait.;;Ondo dago. Gela asko gustatzen naiz.|gustatzen;gela
+T|a2alquiler|Oso ondo!|Demande quand vous signerez le contrat.|Kontratua noiz sinatuko dugu?|Noiz sinatuko dugu kontratua?;;Eta kontratua, noiz sinatuko dugu?|Kontratua non jango dugu?;;Kontratua noiz sinatuko duzue?;;Kontratua zenbat sinatuko dugu?|sinatuko;kontratua
+T|a2alquiler|Bihar. Inprimakia bete duzu?|Dis que tu as déjà rempli le formulaire.|Bai, inprimakia bete dut.|Inprimakia bete dut.;;Bai, bete dut.|Bai, inprimakia atzo beteko dut.;;Bai, inprimakia bete duzu.;;Ez, inprimakia bete dut.|bete;inprimakia
+T|a2alquiler|Oso ondo. Bihar arte, beraz.|Remercie et dis à demain.|Eskerrik asko. Bihar arte!|Mila esker. Bihar arte!;;Eskerrik asko, bihar arte.|Ez horregatik. Bihar arte!;;Barkatu. Gabon!;;Eskerrik asko. Atzo arte!|eskerrik
+V|a2alquiler|Zenbat da alokairua?|Combien est le loyer ?
+V|a2alquiler|kontratua sinatu|signer le contrat
+V|a2alquiler|inprimakia bete|remplir le formulaire
+S|a2cita|2|Rendez-vous à la mairie|Tu veux t'inscrire à la mairie et tu demandes un rendez-vous.|Employée
+T|a2cita|Egun on. Zertan lagun zaitzaket?|Dis que tu veux demander un rendez-vous.|Egun on. Hitzordua eskatu nahi dut.|Hitzordua eskatu nahi dut.;;Egun on, hitzordua nahi nuke.|Egun on. Afaria eskatu nahi dut.;;Egun on. Hitzordua eskatu nahi duzu.;;Gabon. Hitzordua saldu nahi dut.|hitzordua
+T|a2cita|Zer behar duzu?|Dis que tu veux t'inscrire à la mairie.|Udaletxean izena eman nahi dut.|Izena eman nahi dut.;;Udaletxean izena eman nahi dut, mesedez.|Udaletxean jan nahi dut.;;Udaletxean izena eman nahi duzu.;;Udaletxean izena eman nuen bihar.|izena
+T|a2cita|Oso ondo.|Demande quels papiers il faut.|Zer paper behar ditut?|Zer paper ekarri behar ditut?;;Zer behar dut?|Zer paper behar dituzu?;;Non paper behar ditut?;;Zer postre behar ditut?|paper
+T|a2cita|Pasaportea, kontratua eta inprimakia.|Dis que tu as tout sauf le contrat.|Dena daukat, kontratua izan ezik.|Dena daukat kontratua izan ezik.;;Kontratua izan ezik, dena.|Dena daukat, kontratuarekin.;;Dena daukat, kontratua atzo.;;Ezer ez daukat, kontratua izan ezik.|kontratua
+T|a2cita|Ez da ezer. Asteartean hitzordua dago, hamarretan.|Accepte le rendez-vous de mardi.|Ados, asteartean hamarretan ondo datorkit.|Ados, asteartean hamarretan.;;Asteartean ondo datorkit.|Ados, astelehenean hamarretan ondo datorkit.;;Ados, asteartean hamarretan ondo datorkizu.;;Ez, asteartean hamarretan ondo datorkit.|asteartean
+T|a2cita|Oso ondo. Asteartera arte.|Remercie.|Eskerrik asko. Asteartera arte!|Mila esker. Asteartera arte!;;Eskerrik asko.|Ez horregatik. Asteartera arte!;;Barkatu. Asteartera arte!;;Eskerrik asko. Igandera arte!|eskerrik
+V|a2cita|hitzordua eskatu|prendre rendez-vous
+V|a2cita|izena eman|s'inscrire
+V|a2cita|paperak|les papiers
+S|a2quedar|2|Un café entre amis|Un ami t'appelle pour se voir cette semaine.|Ami
+T|a2quedar|Kaixo! Zer moduz? Atzo ez zintudan ikusi.|Dis que tu as beaucoup travaillé hier.|Atzo asko lan egin nuen.|Atzo lan asko egin nuen.;;Atzo egun osoan lan egin nuen.|Atzo asko lan egiten dut.;;Atzo asko lan egin zenuen.;;Bihar asko lan egin nuen.|atzo;nuen
+T|a2quedar|Pena da! Kafe bat hartu nahi duzu asteburuan?|Accepte : oui, bien sûr.|Bai, noski. Nahi dut.|Bai, noski.;;Bai, nahi dut.|Ez, noski. Nahi dut.;;Bai, noski. Nahi duzu.;;Bai, atzo nahi dut.|bai
+T|a2quedar|Oso ondo! Zein egunetan?|Demande si samedi lui convient.|Larunbata ondo datorkizu?|Larunbatean ondo datorkizu?;;Zer moduz larunbata?|Larunbata ondo datorkit?;;Atzo ondo datorkizu?;;Kafea ondo datorkizu?|larunbata
+T|a2quedar|Bai, larunbata ondo datorkit. Zer ordutan?|Propose de vous retrouver à huit heures et demie.|Zortzi eta erdietan geratuko gara.|Zortzi eta erdietan.;;Zortzi eta erdietan, ados?|Atzo zortzi eta erdietan geratuko gara.;;Zortzi eta erdietan geratuko zarete.;;Zortzi eta erdi urtetan geratuko gara.|erdietan
+T|a2quedar|Ados. Non geratuko gara?|Propose de passer chez lui.|Zure etxetik pasatuko naiz.|Ni zure etxetik pasatuko naiz.;;Zure etxetik pasatuko naiz, ados?|Zure etxetik pasatuko zara.;;Nire etxetik pasatu nintzen atzo.;;Zure kafetik pasatuko naiz.|etxetik
+T|a2quedar|Oso ondo! Larunbatera arte.|Dis à samedi.|Ondo, larunbatera arte!|Larunbatera arte!;;Ados, larunbatera arte.|Astelehenera arte!;;Atzora arte!;;Gabon, larunbata!|larunbatera
+V|a2quedar|ondo datorkizu?|ça te va ?
+V|a2quedar|geratu|se retrouver
+V|a2quedar|zortzi eta erdietan|à huit heures et demie
+S|a2ropa|2|Dans une boutique de vêtements|Tu essaies une veste et tu veux en rapporter une autre.|Vendeur
+T|a2ropa|Arratsalde on. Jaka hau gustatzen zaizu?|Dis qu'elle te plaît et demande combien elle coûte.|Bai, gustatzen zait. Zenbat da?|Gustatzen zait. Zenbat da?;;Bai. Zenbat da?|Bai, gustatzen zait. Noiz da?;;Ez, gustatzen zait. Zenbat da?;;Bai, gustatzen zaizu. Zenbat zara?|zenbat
+T|a2ropa|Berrogei euro. Zer moduz?|Dis qu'elle est trop grande.|Handiegia da.|Pixka bat handiegia da.;;Handia da niretzat.|Txikiegia da.;;Handiegia zara.;;Handiegia naiz.|handiegia
+T|a2ropa|Pena da.|Demande s'il y en a une plus petite.|Txikiagorik ba al dago?|Txikiagorik ba al dago, mesedez?;;Barkatu, txikiagorik ba al dago?|Handiagorik ba al dago?;;Txikiagorik ba al zaude?;;Txikiagorik ba al dago atzo?|txikiagorik
+T|a2ropa|Bai, hemen duzu.|Dis que celle-ci te va bien et que tu la prends.|Hau ondo dago. Erosiko dut.|Ondo dago. Erosiko dut.;;Hau bai. Erosiko dut.|Hau gaizki dago. Erosiko dut.;;Hau ondo dago. Erosiko duzu.;;Hau ondo dago. Ez dut erosiko.|erosiko
+T|a2ropa|Oso ondo. Beste ezer?|Dis que tu veux aussi rendre ces chaussures.|Bai, zapata hauek itzuli nahi ditut.|Zapata hauek itzuli nahi ditut.;;Bai, zapata hauek itzuli nahi nituzke.|Bai, zapata hauek erosi nahi ditut.;;Bai, zapata hauek itzuli nahi dituzu.;;Ez, zapata hauek itzuli nahi ditut.|itzuli;zapata
+T|a2ropa|Ados. Berrogei euro dira guztira.|Paie et remercie.|Hemen duzu. Eskerrik asko.|Hemen duzu.;;Tori. Eskerrik asko.|Hemen duzu. Ez horregatik.;;Hemen naiz. Eskerrik asko.;;Hemen duzu. Barkatu.|hemen
+V|a2ropa|Zenbat da?|Combien c'est ?
+V|a2ropa|handiegia|trop grand
+V|a2ropa|Hau itzuli nahi nuke|Je voudrais rendre ceci
+S|a2trabajo|2|Un nouveau collègue|Le premier jour au bureau, un collègue se présente.|Collègue
+T|a2trabajo|Kaixo! Pablo naiz, taldekoa.|Présente-toi et dis que tu es nouveau.|Kaixo, Pablo. Max naiz, berria naiz.|Pozten naiz. Max naiz, berria naiz.;;Kaixo, Max naiz. Berria naiz.|Kaixo, Pablo. Max zara, berria zara.;;Agur, Pablo. Max naiz, berria naiz.;;Kaixo, Pablo. Max naiz, zaharra naiz.|berria
+T|a2trabajo|Ongi etorri! Zertan egiten duzu lan?|Dis que tu es vendeur.|Saltzailea naiz.|Saltzailea naiz, zu bezala.;;Ni saltzailea naiz.|Saltzailea zara.;;Afaria naiz.;;Saltzailea naiz atzo.|saltzailea
+T|a2trabajo|A, ni bezala! Non bizi zara?|Dis que tu habites à Valence.|Valentzian bizi naiz.|Valentzian.;;Orain Valentzian bizi naiz.|Valentzian bizi zara.;;Valentzian jan naiz.;;Valentzian bizi naiz atzo.|valentzian
+T|a2trabajo|Eta lehen?|Dis que tu as travaillé huit ans dans des magasins.|Zortzi urtez dendetan lan egin nuen.|Lehen zortzi urtez dendetan lan egin nuen.;;Dendetan lan egin nuen zortzi urtez.|Zortzi urtez dendetan lan egiten dut.;;Zortzi urtez dendetan lan egin zenuen.;;Zortzi urtez jatetxeetan lan egin nuen bihar.|dendetan
+T|a2trabajo|Oso ondo! Esperientzia duzu.|Demande-lui à quelle heure commence la réunion.|Zer ordutan hasten da bilera?|Noiz hasten da bilera?;;Barkatu, zer ordutan da bilera?|Zer ordutan hasten zara bilera?;;Non hasten da bilera atzo?;;Zer ordutan amaitzen da afaria?|bilera
+T|a2trabajo|Hamarretan, bulegoan.|Dis à tout à l'heure.|Gero arte!|Ados, gero arte.;;Ondo, gero arte!|Gabon!;;Atzo arte!;;Barkatu asko!|gero
+V|a2trabajo|Zertan egiten duzu lan?|Tu travailles dans quoi ?
+V|a2trabajo|saltzailea|le vendeur
+V|a2trabajo|bilera|la réunion
+S|a2farmacia|2|À la pharmacie|Tu ne te sens pas bien et tu vas à la pharmacie.|Pharmacienne
+T|a2farmacia|Arratsalde on. Zer gertatzen zaizu?|Dis que tu as attrapé un rhume.|Hotzeria hartu dut.|Arratsalde on. Hotzeria hartu dut.;;Ez naiz ondo sentitzen. Hotzeria hartu dut.|Hotzeria hartu duzu.;;Postrea hartu dut.;;Hotzeria hartuko dut atzo.|hotzeria
+T|a2farmacia|Beste ezer?|Dis que tu as mal à la gorge.|Bai, eztarrian min dut.|Eztarrian min dut.;;Bai, eztarrian ere min dut.|Bai, eztarrian min duzu.;;Bai, eztarria gustatzen zait.;;Ez, eztarrian min dut.|eztarrian
+T|a2farmacia|Pastilla hauek oso onak dira.|Demande combien c'est.|Zenbat da?|Eta zenbat da?;;Barkatu, zenbat da?|Noiz da?;;Zenbat zara?;;Zenbat da atzo?|zenbat
+T|a2farmacia|Sei euro.|Demande combien tu dois en prendre par jour.|Egunean zenbat?|Zenbat pastilla egunean?;;Eta egunean zenbat?|Atzo zenbat?;;Egunean noiz?;;Gauean zenbat, bihar?|egunean
+T|a2farmacia|Hiru egunean, jan ondoren.|Remercie et dis au revoir.|Eskerrik asko. Agur!|Eskerrik asko. Gero arte!;;Mila esker.|Ez horregatik. Agur!;;Barkatu. Kaixo!;;Eskerrik asko. Egun on atzo!|eskerrik
+V|a2farmacia|hotzeria hartu|attraper un rhume
+V|a2farmacia|Eztarrian min dut|J'ai mal à la gorge
+V|a2farmacia|pastilla|le cachet
+S|a2cola|2|La file d'attente|Au supermarché, tu fais la queue à la caisse.|Cliente
+T|a2cola|Kaixo, egun on.|Demande qui est le dernier de la file.|Barkatu, nor da azkena?|Nor da azkena?;;Egun on, nor da azkena?|Barkatu, nor da lehena atzo?;;Barkatu, nor zara azkena?;;Barkatu, nor da azkena bihar?|azkena
+T|a2cola|Ni naiz. Gauza asko?|Dis que tu as seulement deux bouteilles.|Ez, bi botila bakarrik.|Bi botila bakarrik.;;Ez, bi botila bakarrik ditut.|Bai, bi botila bakarrik.;;Ez, bi postre bakarrik atzo.;;Ez, bi botila bakarrik zara.|botila
+T|a2cola|Pasa, pasa.|Remercie-la : elle te laisse passer.|Eskerrik asko! Oso eskuzabala zara.|Eskerrik asko!;;Mila esker, oso eskuzabala zara.|Ez horregatik, oso eskuzabala zara.;;Barkatu, oso eskuzabala zara.;;Eskerrik asko! Oso eskuzabala naiz.|eskerrik
+T|a2cola|Kaixo. Beste ezer?|Dis que c'est tout et demande combien ça fait en tout.|Ez, eskerrik asko. Zenbat da guztira?|Zenbat da guztira?;;Ez. Zenbat da guztira?|Bai, eskerrik asko. Zenbat da guztira?;;Ez, eskerrik asko. Zenbat zara guztira?;;Ez, ez horregatik. Zenbat da guztira?|guztira
+T|a2cola|Sei euro dira.|Dis que tu paies par carte.|Txartelarekin ordaintzen dut.|Txartelarekin, mesedez.;;Txartelarekin ordaintzen dut, mesedez.|Txartelarekin ordaintzen duzu.;;Postrearekin ordaintzen dut.;;Txartelarekin ordaindu nuen bihar.|txartelarekin
+T|a2cola|Hemen duzu tiketa.|Souhaite-lui une bonne journée.|Eskerrik asko. Egun on izan!|Eskerrik asko. Ondo izan!;;Mila esker. Ondo izan!|Ez horregatik. Egun on izan!;;Eskerrik asko. Egun on izan nuen!;;Barkatu. Ondo izan!|eskerrik
+V|a2cola|Nor da azkena?|Qui est le dernier ?
+V|a2cola|Zenbat da guztira?|Combien ça fait en tout ?
+V|a2cola|Txartelarekin ordaintzen dut|Je paie par carte
+S|a2bici|2|En vélo au travail|Un voisin te croise devant l'immeuble le matin.|Voisin
+T|a2bici|Egun on, bizilaguna! Nora zoaz hain goiz?|Dis que tu vas au travail.|Lanera noa.|Lanera noa orain.;;Bulegora noa.|Lanera zoaz.;;Postrera noa.;;Bihar lanera joan nintzen.|lanera
+T|a2bici|Autoz?|Dis que tu y vas à vélo.|Ez, bizikletaz noa.|Bizikletaz noa.;;Ez, bizikletaz.|Bai, bizikletaz noa.;;Ez, bizikletaz zoaz.;;Ez, aterkiz noa.|bizikletaz
+T|a2bici|Eta urrun dago?|Dis que ce n'est pas loin : c'est juste en face du marché.|Ez, merkatuaren aurrean dago.|Merkatuaren aurrean dago.;;Ez, merkatuaren aurrean.|Bai, merkatuaren aurrean dago.;;Ez, merkatuaren aurrean nago.;;Ez, postrearen aurrean dago.|aurrean
+T|a2bici|Eta bihar? Euria egingo du.|Dis que demain tu prendras le métro, parce qu'il va pleuvoir.|Bihar metroz joango naiz.|Bihar metroa hartuko dut.;;Bihar metroz joango naiz, beraz.|Atzo metroz joango naiz.;;Bihar metroz joango zara.;;Bihar aterkiz joango naiz.|bihar;metroz
+T|a2bici|Ni ere erdigunera noa bihar. Elkarrekin goaz?|Accepte d'y aller ensemble.|Bai, noski. Goazen.|Noski, goazen.;;Bai, elkarrekin goaz.|Ez, noski. Goazen.;;Bai, noski. Goazen atzo.;;Bai, noski. Goazen postrera.|goazen
+T|a2bici|Eskerrik asko! Bihar arte.|Dis au revoir.|Bihar arte!|Bihar arte, bizilaguna!;;Ados, bihar arte.|Atzo arte!;;Gabon, bihar!;;Barkatu, bihar!|bihar
+V|a2bici|bizikletaz|à vélo
+V|a2bici|aurrean|en face
+V|a2bici|Goazen|Allons-y
+S|a2finde|2|Le week-end|Lundi matin, une amie te demande ce que tu as fait ce week-end.|Amie
+T|a2finde|Kaixo! Zer moduz asteburua? Zer egin zenuen?|Dis que tu es resté(e) à la maison.|Larunbatean etxean geratu nintzen.|Etxean geratu nintzen.;;Larunbatean etxean egon nintzen.|Larunbatean etxean geratzen naiz.;;Larunbatean etxean geratu zinen.;;Datorren igandean etxean geratu nintzen.|etxean;geratu
+T|a2finde|Eta zer egin zenuen etxean?|Dis que tu as nettoyé l'appartement.|Pisua garbitu nuen.|Dena garbitu nuen.;;Pisua garbitu nuen, dena.|Pisua garbitzen dut.;;Pisua garbitu zenuen.;;Postrea garbitu nuen.|garbitu
+T|a2finde|Zer aspergarria! Eta igandean?|Dis que dimanche tu es allé(e) à la plage.|Igandean hondartzara joan nintzen.|Hondartzara joan nintzen.;;Igandean lagunekin hondartzara joan nintzen.|Igandean hondartzara noa.;;Igandean hondartzara joan zinen.;;Igandean hondartzara joan nintzen bihar.|hondartzara
+T|a2finde|Oso ondo! Eta gaur? Zer moduz lana?|Dis que tu es fatigué(e) du travail.|Lanaz nekatuta nago.|Lanean nekatuta nago.;;Uf, lanaz nekatuta nago.|Lanaz nekatuta zaude.;;Postreaz nekatuta nago.;;Lanarekin pozik nago.|nekatuta
+T|a2finde|Pena da! Zerbait hartzera goaz gaur gauean?|Dis que tu préfères rester tranquille ce soir.|Gaur ez. Nahiago dut atseden hartu.|Ez, eskerrik asko. Nahiago dut atseden hartu.;;Nahiago dut etxean atseden hartu.|Bai. Nahiago dut atseden hartu.;;Gaur ez. Nahiago duzu atseden hartu.;;Gaur ez. Nahiago dut lan egin.|atseden
+T|a2finde|Ados. Bihar arte!|Dis à demain.|Bihar arte!|Ados, bihar arte.;;Bihar arte, beraz!|Atzo arte!;;Egun on, bihar!;;Barkatu, bihar!|bihar
+V|a2finde|etxean geratu nintzen|je suis resté à la maison
+V|a2finde|garbitu|nettoyer
+V|a2finde|atseden hartu|se reposer
+S|a2excursion|2|Réserver une excursion|Dans une agence, tu réserves une excursion pour le week-end.|Agent
+T|a2excursion|Egun on. Zer nahi duzu?|Dis que tu veux réserver une excursion.|Txango bat erreserbatu nahi dut, mesedez.|Txango bat erreserbatu nahi dut.;;Txango bat erreserbatu nahi nuke.|Txango bat jan nahi dut, mesedez.;;Txango bat erreserbatu nahi duzu.;;Maleta bat erreserbatu nahi dut atzo.|txango;erreserbatu
+T|a2excursion|Oso ondo. Zenbat zarete?|Dis que vous êtes deux.|Bi gara.|Bi gara, mesedez.;;Bi.|Bi zarete.;;Bi postre gara.;;Bi gara atzo.|bi
+T|a2excursion|Larunbatean bai.|Demande à quelle heure part le bus.|Zer ordutan irteten da autobusa?|Noiz irteten da autobusa?;;Zer ordutan irteten da?|Zer ordutan irten zen autobusa atzo?;;Non ordutan irteten da autobusa?;;Zer ordutan irteten zara autobusa?|ordutan;autobusa
+T|a2excursion|Bederatzietan, Udaletxeko plazatik.|Demande s'il faut apporter quelque chose.|Zerbait eraman behar dugu?|Zerbait eraman behar da?;;Zer eraman behar dugu?|Zerbait jan behar dugu?;;Ezer ez eraman behar dugu?;;Zerbait eraman behar dugu atzo?|eraman
+T|a2excursion|Jaka bat eta ura.|Demande ce qu'il y a pour le déjeuner.|Bazkaltzeko zer dago?|Eta bazkaltzeko zer dago?;;Barkatu, bazkaltzeko zer dago?|Bazkaltzeko zer zaude?;;Atzo bazkaltzeko zer dago?;;Bazkaltzeko non dago bihar?|bazkaltzeko
+T|a2excursion|Paella bat, El Palmarren.|Dis que c'est parfait et remercie.|Oso ondo! Eskerrik asko.|Oso ondo, eskerrik asko.;;Ondo, mila esker.|Oso ondo! Ez horregatik.;;Oso ondo! Barkatu asko.;;Pena da! Eskerrik asko.|eskerrik
+V|a2excursion|txangoa|l'excursion
+V|a2excursion|erreserbatu|réserver
+V|a2excursion|bazkaldu|déjeuner`}/*XI-END*/;
 /*EV-BEGIN*/
 /* Évaluation centralisée des réponses écrites (exercices « écris » et dictée).
    Retourne s = 1 (correct / variante / faute mineure), .5 (presque : genre, nombre, conjugaison, accent qui change le mot) ou 0.
@@ -7345,12 +8442,23 @@ function sitRk(s){if(s.rk!=null)return s.rk;let r=0;try{sitTx(s).forEach(([t,fr]
 function sitR0(){try{const pl=pathPlanMain(),f=pl.flat.filter(x=>x.rk!=null&&!x.opt);if(!f.length)return 0;const r=adRk(f[f.length-1]);return r==null?0:r}catch(e){return 0}}
 function sitOK(s,R0,K){if(s.l>lv())return false;if(sitRk(s)<=R0)return true;if(sitRk(s)===Infinity)return false;
   return sitTx(s).every(([t,fr])=>{const q=pqRank(t,fr);if(q.r===Infinity)return false;return (q.tk||[]).filter(x=>x[1]<Infinity).every(([w,r])=>r<=R0||K.has(w))})}
-function sitPlace(pc,L,l){if(pc.sitk===l+L)return;pc.sitk=l+L;let ss=[];try{ss=immP(l).filter(s=>s.l===L).map(s=>[s,sitRk(s)]).filter(x=>x[1]<Infinity).sort((a,b)=>a[1]-b[1])}catch(e){return}
-  const us=pc.units,used=new Set();
-  ss.forEach(([s,r])=>{const id="s"+s.id;if(pc.map[id])return;
-    for(let u=1;u<us.length;u++){const st=us[u].steps;if(!st.length||st.some(x=>x.test))continue;const ur=Math.max(...st.map(x=>x.rk||0));if(ur<r||used.has(u)||used.has(u-1)||used.has(u+1))continue;
-      const x={id,ic:"🎭",lab:s.ti,sub:"Mise en situation (facultative)",sit:s.id,opt:1,rk:ur},bi=st.findIndex(y=>y.bil||y.id[0]==="m"),at=bi>=0?bi:st.length,nx=st[at];
-      st.splice(at,0,x);pc.map[id]=x;const fi=nx?pc.flat.indexOf(nx):-1;if(fi>=0)pc.flat.splice(fi,0,x);else pc.flat.push(x);used.add(u);break}})}
+/* place des situations dans le parcours, calculée une fois pour tous les niveaux d'une langue :
+   1) première unité (hors unité 1) dont le rang couvre toutes les notions, sans voisine ; 2) à défaut, unité voisine libre ;
+   3) à défaut (notions toutes introduites en fin de niveau), début du niveau suivant, en révision ; jamais deux par unité */
+const SITLAY={};
+function sitLayout(l){const ck=l+"|"+(XI[l]||"").length;if(SITLAY[l]&&SITLAY[l].ck===ck)return SITLAY[l].m;const m={};
+  let pend=[];const plans=(pqData().plans||{});
+  for(let L=1;L<=5;L++){const pc=plans[L];const ss=immP(l).filter(s=>s.l===L).map(s=>[s,sitRk(s)]).filter(x=>x[1]<Infinity).sort((a,b)=>a[1]-b[1]);
+    const q=pend.concat(ss);pend=[];if(!pc){pend=q;continue}
+    const us=pc.units,n=us.map(()=>0),ur=us.map(u=>u.steps.some(x=>x.test)?-1:Math.max(0,...u.steps.filter(x=>!x.opt).map(x=>x.rk||0)));
+    const pick=(r,k)=>{for(let u=1;u<us.length;u++){if(ur[u]<0||ur[u]<r)continue;if(k<2&&n[u])continue;if(k>1&&n[u]>k-1)continue;if(!k&&(n[u-1]||n[u+1]))continue;return u}return -1};
+    q.forEach(([s,r])=>{let u=-1;for(let k=0;k<4&&u<0;k++)u=pick(r,k);if(u<0){pend.push([s,r]);return}n[u]++;m[s.id]={L,u,rk:ur[u],rev:s.l<L}})}
+  SITLAY[l]={ck,m};return m}
+function sitPlace(pc,L,l){if(pc.sitk===l+L)return;pc.sitk=l+L;let lay={};try{lay=sitLayout(l)}catch(e){return}
+  const us=pc.units;
+  immP(l).forEach(s=>{const p=lay[s.id];if(!p||p.L!==L)return;const id="s"+s.id;if(pc.map[id])return;const st=us[p.u].steps;
+    const x={id,ic:"🎭",lab:s.ti,sub:p.rev?"Mise en situation (révision, facultative)":"Mise en situation (facultative)",sit:s.id,opt:1,rk:p.rk},bi=st.findIndex(y=>y.bil||y.id[0]==="m"),at=bi>=0?bi:st.length,nx=st[at];
+    st.splice(at,0,x);pc.map[id]=x;const fi=nx?pc.flat.indexOf(nx):-1;if(fi>=0)pc.flat.splice(fi,0,x);else pc.flat.push(x)})}
 function sitGo(id,st){IM=null;imStart(st.sit,id)}
 function sitCard(){const L=lg(),ss=immP(L).filter(s=>s.l<=lv());if(!ss.length)return "";const R0=sitR0();let K=new Set();try{K=adKnown()}catch(e){}
   const op=ss.filter(s=>sitOK(s,R0,K)),nb=ss.length-op.length,best=S.imm||{};
