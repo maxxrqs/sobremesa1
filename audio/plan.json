@@ -3,15 +3,11 @@
   "mode": "complet",
   "par_voix": 0,
   "voix": [
-    "gl_a",
-    "gl_b",
     "gl_c"
   ],
   "controle_identite": [
-    "gl_a",
-    "gl_b",
     "gl_c"
   ],
   "identifier_galicien": false,
-  "branche_resultats": "audio-out-c3-suite110-gl2"
+  "branche_resultats": "audio-out-c3-suite110-gl3"
 }
