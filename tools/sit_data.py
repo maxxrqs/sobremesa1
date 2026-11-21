@@ -100,3 +100,34 @@ SIT["eu"] = {
   ("Oso ondo. Hemen duzu zure txartela. Bidaia ona!", "Eskerrik asko. Gero arte!", ["Mila esker. Agur!", "Eskerrik asko, agur."], ["Ez horregatik. Bidaia ona!", "Barkatu. Kaixo!", "Mesedez. Egun on!"], "eskerrik"),
  ], [("trena galdu", "rater le train"), ("hurrengo trena", "le prochain train"), ("txartela", "le billet"), ("Bidaia ona!", "Bon voyage !")]),
 }
+
+
+# ---- Suite du lot C : situations écrites dans tools/sit_suite_*.txt (format décrit en tête de fichier) ----
+def _suite():
+    import glob, os
+    here = os.path.dirname(os.path.abspath(__file__))
+    for p in sorted(glob.glob(os.path.join(here, "sit_suite_*.txt"))):
+        sid = None; lang = None
+        for n, raw in enumerate(open(p, encoding="utf-8"), 1):
+            ln = raw.rstrip("\n")
+            if not ln.strip() or (ln.startswith("# ") and sid is None):
+                continue
+            if ln.startswith("=="):
+                f = [x.strip() for x in ln[2:].split("|")]
+                sid = f[0]; assert sid not in META, (p, n, sid)
+                META[sid] = (int(f[1]), f[2], f[3], f[4], []); lang = None
+            elif ln.startswith("# "):
+                META[sid][4].append(ln[2:].strip())
+            elif ln.startswith("-- "):
+                lang = ln[3:].strip(); SIT.setdefault(lang, {})[sid] = ([], [])
+            elif ln.startswith("V:"):
+                SIT[lang][sid][1].extend(tuple(x.strip() for x in it.split("=", 1)) for it in ln[2:].split(";;"))
+            else:
+                f = [x.strip() for x in ln.split("‖")]
+                assert len(f) in (5, 6), (p, n, len(f), ln[:60])
+                L = lambda s: [x.strip() for x in s.split(";;") if x.strip()]
+                t = (f[0], f[1], L(f[2]), L(f[3]), f[4].replace(" ", ""))
+                SIT[lang][sid][0].append(t + ((f[5],) if len(f) == 6 and f[5] else ()))
+
+
+_suite()
