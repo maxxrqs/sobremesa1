@@ -1,7 +1,7 @@
-# Relecture native — situations A1–A2 (galicien)
+# Relecture native — situations A1–C1 (galicien)
 
 Pour chaque échange : réplique du personnage, consigne donnée à l'apprenant, réponse modèle, variantes acceptées et réponses fausses proposées dans le format à choix.
-À vérifier : naturel et correction de chaque phrase, registre (vouvoiement du personnage), variantes réellement acceptables, réponses fausses réellement fausses mais plausibles.
+À vérifier : naturel et correction de chaque phrase, registre (vouvoiement ou tutoiement selon le personnage), variantes réellement acceptables, réponses fausses réellement fausses mais plausibles.
 
 ## Au marché (A1) — `a1mercado`
 
@@ -1033,4 +1033,778 @@ _Dans une agence, tu réserves une excursion pour le week-end._ · personnage : 
    - fausses : Perfecto! De nada. · Perfecto! Síntoo moito. · Que mágoa! Moitas grazas.
 
 À retenir : reservar unha excursión = réserver une excursion · Hai que levar algo? = Il faut apporter quelque chose ? · o xantar = le déjeuner
+
+
+## Le chauffe-eau en panne (B1) — `b1calentador`
+
+_Tu appelles le propriétaire de ton appartement : le chauffe-eau ne marche plus._ · personnage : Propriétaire
+
+1. **Si, dígame?**
+   - consigne : Dis que le chauffe-eau ne marche pas depuis hier.
+   - modèle : Bos días. O quentador non vai desde onte.
+   - variantes : O quentador non vai desde onte. · Ola, o quentador non vai desde onte.
+   - fausses : Bos días. O quentador non vai desde mañá. · Bos días. O quentador non ía mañá. · Bos días. O quentador non vai ata onte.
+
+2. **Vaia, síntoo. Que lle pasa?**
+   - consigne : Explique qu'il n'y a pas d'eau chaude.
+   - modèle : Non hai auga quente.
+   - variantes : Non teño auga quente. · Non sae auga quente.
+   - fausses : Si hai auga quente. · Non é auga quente. · Non hai auga quente na praia.
+
+3. **Será unha avaría. Vou chamar un técnico.**
+   - consigne : Demande s'il peut venir cette semaine.
+   - modèle : Pode vir esta semana?
+   - variantes : Podería vir esta semana? · Pode vir o técnico esta semana?
+   - fausses : Pode vir o ano pasado? · Podo vir esta semana? · Pode vir esta semana onte?
+
+4. **O técnico pode ir o xoves pola tarde.**
+   - consigne : Dis que jeudi tu travailles et demande si vendredi serait possible.
+   - modèle : O xoves traballo. Podería ser o venres?
+   - variantes : Traballo o xoves. Podería ser o venres? · O xoves traballo. Pode ser o venres?
+   - fausses : O xoves traballo. Podería ser o venres pasado? · O xoves traballei. Podería ser onte? · O xoves traballo. Podería ser o xoves?
+
+5. **Si, o venres ás dez. Vaille ben?**
+   - consigne : Accepte et remercie-le pour son aide.
+   - modèle : Perfecto. Moitas grazas pola súa axuda.
+   - variantes : Perfecto, grazas pola súa axuda. · Moi ben. Moitas grazas pola súa axuda.
+   - fausses : Perfecto. Moitas grazas pola súa avaría. · Perfecto. Moitas grazas pola miña axuda. · Perfecto. De nada pola súa axuda.
+
+6. **De nada. Se hai outro problema, chámeme.**
+   - consigne : Dis que tu le feras et souhaite-lui une bonne journée.
+   - modèle : De acordo. Que teña un bo día!
+   - variantes : Vale. Que teña un bo día! · De acordo, grazas. Que teña un bo día!
+   - fausses : De acordo. Que ten un bo día! · De acordo. Que teño un bo día! · De acordo. Que teña un mal día!
+
+À retenir : o quentador = le chauffe-eau · unha avaría = une panne · Podería ser…? = Ça pourrait être… ? · Que teña un bo día! = Bonne journée !
+
+
+## L'entretien d'embauche (B1) — `b1entrevista`
+
+_Tu passes un entretien pour un poste dans une entreprise._ · personnage : Recruteuse
+
+1. **Bos días. Por que quere este posto?**
+   - consigne : Dis que tu aimes travailler avec des clients.
+   - modèle : Porque me gusta traballar con clientes.
+   - variantes : Gústame traballar con clientes. · Porque me encanta traballar con clientes.
+   - fausses : Porque me gusta traballar sen clientes. · Porque me gustan traballar con clientes. · Porque lle gusta traballar con clientes.
+
+2. **Ten experiencia en vendas?**
+   - consigne : Dis que tu as travaillé cinq ans dans la vente.
+   - modèle : Si, traballei cinco anos en vendas.
+   - variantes : Si, cinco anos en vendas. · Si, traballei cinco anos nas vendas.
+   - fausses : Si, traballarei cinco anos en vendas. · Si, traballaches cinco anos en vendas. · Non, traballei cinco anos en vendas.
+
+3. **Moi ben. O posto é na oficina, cun día de teletraballo.**
+   - consigne : Dis que ça te convient et demande quels sont les horaires.
+   - modèle : Paréceme moi ben. Cal é o horario?
+   - variantes : Paréceme ben. Cal é o horario? · Moi ben. Que horario ten o posto?
+   - fausses : Parézome moi ben. Cal é o horario? · Paréceme moi ben. Quen é o horario? · Paréceme moi mal. Cal é o horario?
+
+4. **De nove a cinco, cun período de proba de dous meses.**
+   - consigne : Demande quand tu commencerais.
+   - modèle : Entendo. Cando comezaría?
+   - variantes : Cando comezaría a traballar? · Vale. Cando comezaría?
+   - fausses : Entendo. Cando comecei? · Entendo. Onde comezaría? · Entendo. Cando comezaría onte?
+
+5. **O mes que vén, se todo vai ben. Ten algunha pregunta?**
+   - consigne : Demande si c'est un contrat à durée indéterminée.
+   - modèle : Si. É un contrato indefinido?
+   - variantes : O contrato é indefinido? · Si, é un contrato indefinido?
+   - fausses : Si. Está un contrato indefinido? · Si. É un contrato de onte? · Non. É un contrato indefinido?
+
+6. **Si. Chamarémolo a semana que vén.**
+   - consigne : Remercie-la pour son temps et dis que tu attends son appel.
+   - modèle : Moitas grazas polo seu tempo. Agardo a súa chamada.
+   - variantes : Grazas polo seu tempo. Agardo a súa chamada. · Moitas grazas. Agardo a súa chamada.
+   - fausses : Moitas grazas para o seu tempo. Agardo a súa chamada. · De nada polo seu tempo. Agardo a súa chamada. · Moitas grazas polo seu tempo. Agardo a miña chamada.
+
+À retenir : o posto = le poste · o período de proba = la période d'essai · un contrato indefinido = un CDI · Cando comezaría? = Quand est-ce que je commencerais ?
+
+
+## Une toux qui ne passe pas (B1) — `b1medico`
+
+_Tu tousses depuis une semaine et tu vas chez la médecin._ · personnage : Médecin
+
+1. **Boas tardes. Que lle pasa?**
+   - consigne : Dis que tu tousses depuis une semaine.
+   - modèle : Teño tose desde hai unha semana.
+   - variantes : Teño tose desde hai sete días. · Desde hai unha semana teño tose.
+   - fausses : Teño tose desde a semana que vén. · Son tose desde hai unha semana. · Teño tose dentro dunha semana.
+
+2. **Ten febre?**
+   - consigne : Dis que non, mais que tu dors très mal.
+   - modèle : Non, pero durmo moi mal.
+   - variantes : Non, pero non durmo ben. · Non, pero durmo mal.
+   - fausses : Non, pero dormes moi mal. · Non, pero dorme moi mal. · Si, pero durmo moi ben.
+
+3. **Non é nada grave, é un arrefriado.**
+   - consigne : Dis que tu es soulagé(e) et demande si tu as besoin d'un médicament.
+   - modèle : Menos mal. Necesito algún medicamento?
+   - variantes : Menos mal. Necesito un medicamento? · Teño que tomar algún medicamento?
+   - fausses : Menos mal. Necesita algún medicamento? · Máis mal. Necesito algún medicamento? · Menos mal. Necesito algunha medicamento?
+
+4. **Si, tome isto tres veces ao día, despois de comer.**
+   - consigne : Demande pendant combien de jours.
+   - modèle : Durante cantos días?
+   - variantes : Cantos días? · Durante cantos días teño que tomalo?
+   - fausses : Durante cantas días? · Durante canto días? · Cantos días teño?
+
+5. **Unha semana. E beba moita auga.**
+   - consigne : Demande si tu peux aller travailler.
+   - modèle : De acordo. Podo ir traballar?
+   - variantes : Vale. Podo ir traballar? · Podo traballar?
+   - fausses : De acordo. Podes ir traballar? · De acordo. Podo ir traballo? · De acordo. Poida ir traballar?
+
+6. **Si, pero se non está mellor, volva o luns.**
+   - consigne : Remercie la médecin et dis au revoir.
+   - modèle : Moitas grazas. Ata logo.
+   - variantes : Grazas. Adeus! · Moitas grazas, ata logo.
+   - fausses : De nada. Ata logo. · Moitas grazas. Boas noites, ola! · Síntoo. Ata logo.
+
+À retenir : a tose = la toux · un arrefriado = un rhume · Menos mal = Heureusement · o medicamento = le médicament
+
+
+## Au registre municipal (B1) — `b1padron`
+
+_Tu viens d'emménager et tu vas à la mairie pour t'inscrire au registre municipal._ · personnage : Employé de mairie
+
+1. **Bos días. En que podo axudalo?**
+   - consigne : Dis que tu viens t'inscrire au registre municipal.
+   - modèle : Bos días. Veño facer o empadroamento.
+   - variantes : Veño facer o empadroamento. · Bos días, veño polo empadroamento.
+   - fausses : Bos días. Vou facer o empadroamento onte. · Bos días. Veño facer a comunidade de veciños. · Bos días. Vén facer o empadroamento.
+
+2. **Moi ben. Ten cita?**
+   - consigne : Dis que oui, tu as rendez-vous à dix heures.
+   - modèle : Si, teño cita ás dez.
+   - variantes : Si, ás dez. · Si, teño unha cita ás dez.
+   - fausses : Si, son cita ás dez. · Si, teño cita aos dez. · Non, teño cita ás dez.
+
+3. **Déixeme o seu pasaporte e o contrato de aluguer?**
+   - consigne : Donne-les et demande s'il a besoin d'autre chose.
+   - modèle : Aquí ten. Necesita algo máis?
+   - variantes : Aquí ten. Algo máis? · Si, aquí ten. Necesita algo máis?
+   - fausses : Aquí ten. Necesito algo máis? · Aquí tes. Necesita algo máis? · Aquí ten. Necesita algo menos?
+
+4. **Si, pero tamén necesito unha factura da luz.**
+   - consigne : Excuse-toi : tu ne l'as pas apportée. Demande si tu peux l'envoyer par e-mail.
+   - modèle : Síntoo, non a trouxen. Podo envíala por correo?
+   - variantes : Síntoo, non a teño aquí. Podo envíala por correo? · Desculpe, non a trouxen. Podo mandala por correo?
+   - fausses : Síntoo, non trouxen a. Podo envíala por correo? · Síntoo, non a trouxen. Pode envíala por correo? · Grazas, non a trouxen. Podo envíala por correo?
+
+5. **Si, por correo. Ten dez días.**
+   - consigne : Demande quand ce sera prêt.
+   - modèle : Perfecto. Cando estará listo?
+   - variantes : Vale. Cando estará listo? · Cando estará listo o empadroamento?
+   - fausses : Perfecto. Cando será listo? · Perfecto. Cando estaba listo? · Perfecto. Onde estará listo?
+
+6. **Nunha semana, máis ou menos.**
+   - consigne : Remercie-le pour son aide.
+   - modèle : Moi ben. Moitas grazas pola súa axuda.
+   - variantes : Moitas grazas pola súa axuda. · Grazas pola súa axuda.
+   - fausses : Moi ben. Moitas grazas para a súa axuda. · Moi ben. De nada pola súa axuda. · Moi ben. Moitas grazas pola miña axuda.
+
+À retenir : o empadroamento = l'inscription au registre municipal · a cita = le rendez-vous · a factura da luz = la facture d'électricité · Cando estará listo? = Quand est-ce que ce sera prêt ?
+
+
+## Vol annulé (B1) — `b1vuelo`
+
+_À l'aéroport, ton vol a été annulé. Tu parles à l'agente de la compagnie._ · personnage : Agente
+
+1. **Boas tardes. En que podo axudalo?**
+   - consigne : Dis qu'ils ont annulé ton vol.
+   - modèle : Boas tardes. Cancelaron o meu voo.
+   - variantes : Cancelaron o meu voo. · Boas tardes, o meu voo está cancelado.
+   - fausses : Boas tardes. Cancelaron o meu voo mañá. · Boas tardes. Cancelei o seu voo. · Boas tardes. Cancelaron a meu voo.
+
+2. **Síntoo moito. Déixeme o seu pasaporte?**
+   - consigne : Donne-le et demande s'il y a un autre vol aujourd'hui.
+   - modèle : Aquí ten. Hai outro voo hoxe?
+   - variantes : Si, aquí ten. Hai outro voo hoxe? · Hai outro voo hoxe?
+   - fausses : Aquí ten. Está outro voo hoxe? · Aquí ten. Hai outro voo onte? · Aquí ten. Hai un outro voo hoxe?
+
+3. **Hoxe non, pero hai un mañá ás sete.**
+   - consigne : Demande où tu vas dormir cette nuit.
+   - modèle : E onde vou durmir esta noite?
+   - variantes : E onde durmo esta noite? · Vale, e onde vou durmir esta noite?
+   - fausses : E onde vou durmir onte á noite? · E cando vou durmir esta noite? · E onde vai durmir esta noite?
+
+4. **A compañía págalle unha habitación preto do aeroporto.**
+   - consigne : Accepte et demande ce qui se passe avec tes bagages.
+   - modèle : Vale. E a miña equipaxe?
+   - variantes : De acordo. E a miña equipaxe? · Vale, que pasa coa miña equipaxe?
+   - fausses : Vale. E o meu equipaxe? · Vale. E a súa equipaxe? · Non. E a miña equipaxe?
+
+5. **A súa equipaxe viaxa con vostede mañá.**
+   - consigne : Demande-lui de te l'écrire, s'il te plaît.
+   - modèle : Entendido. Pode escribilo, por favor?
+   - variantes : Pode escribilo, por favor? · Vale. Pode escribilo, por favor?
+   - fausses : Entendido. Podo escribilo, por favor? · Entendido. Pode comelo, por favor? · Entendido. Pode escribir o, por favor?
+
+6. **Claro, aquí ten. Desculpe as molestias.**
+   - consigne : Dis que ce n'est pas grave.
+   - modèle : Non pasa nada. Grazas pola súa axuda.
+   - variantes : Non pasa nada, grazas. · Non se preocupe. Grazas pola súa axuda.
+   - fausses : Non pasa ninguén. Grazas pola súa axuda. · Non pasa nada. Grazas para a súa axuda. · Si pasa nada. Grazas pola súa axuda.
+
+À retenir : cancelar un voo = annuler un vol · a equipaxe = les bagages · Desculpe as molestias = Excusez le dérangement · Non pasa nada = Ce n'est pas grave
+
+
+## Apprendre à cuisiner (B1) — `b1consejo`
+
+_Un ami veut apprendre à cuisiner et te demande des conseils._ · personnage : Ami
+
+1. **Ola, quero aprender a cociñar. Que me recomendas?**
+   - consigne : Recommande-lui d'aller dans une école de cuisine.
+   - modèle : Recoméndoche que vaias a unha escola de cociña.
+   - variantes : Recoméndoche ir a unha escola de cociña. · Recoméndoche que vaias a unha escola.
+   - fausses : Che recomendo que vaias a unha escola de cociña. · Recoméndoche que vas a unha escola de cociña. · Recoméndoche que ir a unha escola de cociña.
+
+2. **Unha escola é demasiado cara.**
+   - consigne : Conseille-lui de regarder des recettes sur internet.
+   - modèle : Pois aconséllote que mires receitas en internet.
+   - variantes : Aconséllote que mires receitas en internet. · Pois mira receitas en internet.
+   - fausses : Pois te aconsello que mires receitas en internet. · Pois aconséllote que miras receitas en internet. · Pois aconséllote que mirar receitas en internet.
+
+3. **Vale. E que prato fago primeiro?**
+   - consigne : Dis que tu commencerais par quelque chose de facile.
+   - modèle : Eu comezaría por algo doado.
+   - variantes : Comezaría por algo sinxelo. · Eu comezaría por algo fácil.
+   - fausses : Eu comezaría por algo difícil. · Eu comecei por algo doado mañá. · Eu comezaría para algo doado.
+
+4. **E se me sae mal?**
+   - consigne : Rassure-le : c'est normal que ce soit raté au début.
+   - modèle : Tranquilo, é normal que saia mal ao principio.
+   - variantes : É normal que saia mal ao principio. · Tranquilo, é normal.
+   - fausses : Tranquilo, é normal que sae mal ao principio. · Tranquilo, é normal que sairá mal ao principio. · Nervioso, é normal que saia mal ao principio.
+
+5. **Tes razón. Queres vir probalo?**
+   - consigne : Accepte et dis-lui de t'appeler quand ce sera prêt.
+   - modèle : Claro! Chámame cando estea listo.
+   - variantes : Claro! Chámame cando estea. · Si, chámame cando estea listo.
+   - fausses : Claro! Chámame cando está listo. · Claro! Chámame cando estará listo. · Claro! Chámame cando estou listo.
+
+6. **Perfecto. Moitas grazas pola túa axuda!**
+   - consigne : Dis « de rien » et souhaite-lui que ça se passe bien.
+   - modèle : De nada. Que che saia moi ben!
+   - variantes : De nada! Que che saia ben. · De nada, que che saia moi ben!
+   - fausses : De nada. Que che sae moi ben! · De nada. Que che saia moi mal! · Por favor. Que che saia moi ben!
+
+À retenir : Recoméndoche que… = Je te recommande de… · Aconséllote que… = Je te conseille de… · É normal que saia mal = C'est normal que ce soit raté · cando estea listo = quand ce sera prêt
+
+
+## Une commande arrivée cassée (B2) — `b2reclamacion`
+
+_Tu appelles le service client : ta commande est arrivée cassée._ · personnage : Agent du service client
+
+1. **Atención ao cliente, bos días.**
+   - consigne : Dis que ta commande n'est pas arrivée.
+   - modèle : Bos días. O meu pedido non chegou.
+   - variantes : O meu pedido non chegou. · Bos días, o pedido aínda non chegou.
+   - fausses : Bos días. O meu pedido non chegaron. · Bos días. O seu pedido non chegou. · Bos días. O meu pedido non chegará onte.
+
+2. **Síntoo moito. Cando o pediu?**
+   - consigne : Dis que ça fait deux semaines et qu'elle n'est toujours pas arrivée.
+   - modèle : Hai dúas semanas e aínda non chegou.
+   - variantes : Hai dúas semanas. · Fai dúas semanas e aínda non chegou.
+   - fausses : Hai dúas semanas e xa chegou. · Dentro de dúas semanas e aínda non chegou. · Hai dúas semanas e aínda non chegará.
+
+3. **Quere que lle enviemos outro?**
+   - consigne : Dis que tu préférerais qu'on te rembourse.
+   - modèle : Preferiría que me devolvesen os cartos.
+   - variantes : Prefiro que me devolvan os cartos. · Preferiría que me devolvesen os cartos, por favor.
+   - fausses : Preferiría que me devolven os cartos. · Preferiría que me devolverán os cartos. · Preferiría que lle devolvesen os cartos.
+
+4. **Si, claro. Tardará uns dez días.**
+   - consigne : Dis que tu lui serais reconnaissant(e) que ce soit plus rapide.
+   - modèle : Agradeceríalle que fose máis rápido.
+   - variantes : Agradeceríalle que fose un pouco máis rápido. · Agradeceríalle que tardase menos.
+   - fausses : Agradeceríalle que é máis rápido. · Agradeceríalle que será máis rápido. · Agradeceríalle que fose máis lento.
+
+5. **Farei o posible.**
+   - consigne : Dis que tu comprends et demande s'il peut te l'envoyer par e-mail.
+   - modèle : Entendo. Pode envialo por correo?
+   - variantes : Pode envialo por correo? · Vale. Pode envialo por correo?
+   - fausses : Entendo. Podo envialo por correo? · Entendo. Pode envialo por praia? · Entendo. Puido envialo mañá por correo?
+
+6. **Claro. Desculpe as molestias.**
+   - consigne : Remercie-le et dis que tu espères que tout ira bien.
+   - modèle : Grazas. Espero que todo vaia ben.
+   - variantes : Grazas, espero que todo vaia ben. · Moitas grazas. Espero que todo vaia ben.
+   - fausses : Grazas. Espero que todo vai ben. · Grazas. Espero que todo irá ben. · Grazas. Espero que todo vaia mal.
+
+À retenir : o pedido = la commande · Preferiría que me devolvesen os cartos = Je préférerais être remboursé(e) · Agradeceríalle que… = Je vous serais reconnaissant(e) de… · Espero que todo vaia ben = J'espère que tout ira bien
+
+
+## Réunion d'équipe (B2) — `b2reunion`
+
+_En réunion, ta directrice fait le point sur les chiffres du trimestre._ · personnage : Directrice
+
+1. **Ben, comecemos. Como foi a facturación este trimestre?**
+   - consigne : Dis qu'il a augmenté de dix pour cent par rapport au précédent.
+   - modèle : Subiu un dez por cento respecto ao anterior.
+   - variantes : Subiu un dez por cento. · Subiu un dez por cento respecto ao trimestre anterior.
+   - fausses : Subiu un dez por cento respecto ao ano que vén. · Subiron un dez por cento respecto ao anterior. · Subirá un dez por cento respecto ao anterior onte.
+
+2. **Moi ben. E os gastos?**
+   - consigne : Dis que les dépenses ont aussi augmenté, mais moins.
+   - modèle : Os gastos tamén subiron, aínda que menos.
+   - variantes : Tamén subiron, aínda que menos. · Os gastos subiron tamén, pero menos.
+   - fausses : Os gastos tamén subiron, aínda que máis. · Os gastos tamén subiu, aínda que menos. · Os gastos tamén subirán onte, aínda que menos.
+
+3. **Entón, deberiamos investir máis en publicidade?**
+   - consigne : Dis que tu ne le ferais pas sans réduire d'abord les dépenses.
+   - modèle : Eu non o faría sen reducir antes os gastos.
+   - variantes : Eu non o faría sen reducir os gastos antes. · Non o faría sen reducir antes os gastos.
+   - fausses : Eu non o farías sen reducir antes os gastos. · Eu non o faría para reducir antes os gastos. · Ti non o faría sen reducir antes os gastos.
+
+4. **Xa, pero sen publicidade non hai crecemento.**
+   - consigne : Dis qu'elle a raison, mais que tu aimerais nuancer.
+   - modèle : Tes razón, aínda que me gustaría matizalo.
+   - variantes : É verdade, aínda que me gustaría matizalo. · Tes razón, pero gustaríame matizalo.
+   - fausses : Tes razón, aínda que gustaríame matizalo. · Tes razón, aínda que che gustaría matizalo. · Tes razón, aínda que me gustará matizalo onte.
+
+5. **Adiante, escoito.**
+   - consigne : Dis que si on investissait petit à petit, on perdrait moins d'argent.
+   - modèle : Se investísemos aos poucos, perderiamos menos cartos.
+   - variantes : Investindo aos poucos, perderiamos menos cartos. · Se investísemos aos poucos, perderiamos menos.
+   - fausses : Se investimos aos poucos, perderiamos menos cartos. · Se investiriamos aos poucos, perderiamos menos cartos. · Se investísemos aos poucos, perderemos máis cartos.
+
+6. **Paréceme razoable. Podes preparar unha proposta?**
+   - consigne : Dis que oui, elle sera prête avant vendredi.
+   - modèle : Claro, estará lista antes do venres.
+   - variantes : Si, estará lista antes do venres. · Claro, telo antes do venres.
+   - fausses : Claro, estará listo antes do venres. · Claro, estaba lista antes do venres que vén. · Claro, será lista antes do venres.
+
+À retenir : a facturación = le chiffre d'affaires · os gastos = les dépenses · matizar = nuancer · Se investísemos… = Si on investissait…
+
+
+## Le bail se termine (B2) — `b2vivienda`
+
+_Ton propriétaire t'appelle : ton bail se termine et il veut augmenter le loyer._ · personnage : Propriétaire
+
+1. **Chámoo polo contrato de arrendamento. Remata en xuño.**
+   - consigne : Dis que tu le sais et que tu aimerais rester dans l'appartement.
+   - modèle : Si, xa o sei. Gustaríame seguir no piso.
+   - variantes : Xa o sei. Gustaríame seguir no piso. · Si, xa o sei. Quero seguir no piso.
+   - fausses : Si, xa o sei. Me gustaría seguir no piso. · Si, xa o sei. Gustaríache seguir no piso. · Si, xa o sei. Gustaríame seguir no piso o ano pasado.
+
+2. **O problema é que vou subir o aluguer un quince por cento.**
+   - consigne : Dis que ça te paraît trop.
+   - modèle : Un quince por cento? Paréceme demasiado.
+   - variantes : Paréceme demasiado. · Un quince por cento? É demasiado.
+   - fausses : Un quince por cento? Parézome demasiado. · Un quince por cento? Paréceme pouco. · Un quince por cento? Pareceume demasiado mañá.
+
+3. **Os prezos subiron moito no barrio.**
+   - consigne : Dis que tu comprends, mais que tu paies toujours à temps depuis cinq ans.
+   - modèle : Enténdoo, pero levo cinco anos pagando sempre a tempo.
+   - variantes : Enténdoo, pero levo cinco anos pagando a tempo. · Xa, pero levo cinco anos pagando sempre a tempo.
+   - fausses : Enténdoo, pero levo cinco anos pagado sempre a tempo. · Enténdoo, pero leva cinco anos pagando sempre a tempo. · Enténdoo, pero levarei cinco anos pagando sempre a tempo onte.
+
+4. **É verdade, sempre pagou ben.**
+   - consigne : Demande si vous ne pourriez pas trouver un accord.
+   - modèle : Non poderiamos chegar a un acordo?
+   - variantes : Poderiamos chegar a un acordo? · Non podemos chegar a un acordo?
+   - fausses : Non podemos chegar a un acordo onte? · Non poderiamos chegar a unha acordo? · Non poderiamos chegar dun acordo?
+
+5. **Que propón?**
+   - consigne : Dis que tu accepterais cinq pour cent si vous signiez pour trois ans.
+   - modèle : Aceptaría un cinco por cento se asinásemos por tres anos.
+   - variantes : Aceptaría un cinco por cento cun contrato de tres anos. · Un cinco por cento, se asinásemos por tres anos.
+   - fausses : Aceptaría un cinco por cento se asinamos por tres anos. · Aceptaría un cinco por cento se asinariamos por tres anos. · Aceptei un cinco por cento se asinásemos por tres anos.
+
+6. **Déixeme pensalo e chámoo mañá.**
+   - consigne : Accepte et dis que tu espères que vous trouverez un accord.
+   - modèle : De acordo. Espero que cheguemos a un acordo.
+   - variantes : Vale. Espero que cheguemos a un acordo. · De acordo, espero que cheguemos a un acordo.
+   - fausses : De acordo. Espero que chegamos a un acordo. · De acordo. Espero que chegaremos a un acordo. · De acordo. Esperas que cheguemos a un acordo.
+
+À retenir : o contrato de arrendamento = le bail · levo cinco anos pagando = je paie depuis cinq ans · chegar a un acordo = trouver un accord · se asinásemos = si nous signions
+
+
+## Le nouveau traitement (B2) — `b2salud`
+
+_Tu retournes voir ta médecin : ton nouveau traitement a des effets secondaires._ · personnage : Médecin
+
+1. **Que tal co novo tratamento?**
+   - consigne : Dis que ça va mieux, mais que tu as un effet secondaire.
+   - modèle : Mellor, pero teño un efecto secundario.
+   - variantes : Mellor, aínda que teño un efecto secundario. · Estou mellor, pero teño un efecto secundario.
+   - fausses : Mellor, pero teño unha efecto secundario. · Mellor, pero ten un efecto secundario. · Mellor, pero terei un efecto secundario onte.
+
+2. **Que síntomas ten?**
+   - consigne : Dis que tu as mal à la tête et que tu dors moins bien.
+   - modèle : Dóeme a cabeza e durmo peor.
+   - variantes : Dóeme a cabeza e non durmo ben. · Teño dor de cabeza e durmo peor.
+   - fausses : Me doe a cabeza e durmo peor. · Dóeme a cabeza e durmo mellor. · Dóelle a cabeza e durmo peor.
+
+3. **Pasa moito ao principio.**
+   - consigne : Demande s'il ne vaudrait pas mieux changer de médicament.
+   - modèle : Non sería mellor cambiar de medicamento?
+   - variantes : Non sería mellor cambiar o medicamento? · E non sería mellor cambiar de medicamento?
+   - fausses : Non será mellor cambiar de medicamento onte? · Non sería mellor cambiar a medicamento? · Non serías mellor cambiar de medicamento?
+
+4. **Prefiro agardar un pouco. Se seguise igual, cambiariámolo.**
+   - consigne : Accepte et demande si tu peux te faire vacciner.
+   - modèle : De acordo. Podo poñer a vacina?
+   - variantes : Vale. Podo poñer a vacina? · De acordo. Podo vacinarme?
+   - fausses : De acordo. Podes poñer a vacina? · De acordo. Podo poñer o vacina? · De acordo. Puiden poñer a vacina mañá?
+
+5. **Si, non hai ningún problema.**
+   - consigne : Demande si tu dois revenir dans un mois.
+   - modèle : Perfecto. Teño que volver dentro dun mes?
+   - variantes : Teño que volver dentro dun mes? · Vale. Volvo dentro dun mes?
+   - fausses : Perfecto. Tes que volver dentro dun mes? · Perfecto. Teño que volver hai un mes? · Perfecto. Teño que volver dentro dunha mes?
+
+6. **Si, e chámeme se se atopa peor.**
+   - consigne : Dis que tu le feras et remercie-la pour tout.
+   - modèle : Fareino. Moitas grazas por todo.
+   - variantes : Fareino, grazas por todo. · De acordo. Moitas grazas por todo.
+   - fausses : Fíxeno. Moitas grazas por todo. · Fareino. De nada por todo. · Farás. Moitas grazas por todo.
+
+À retenir : o tratamento = le traitement · un efecto secundario = un effet secondaire · Non sería mellor…? = Ne vaudrait-il pas mieux… ? · a vacina = le vaccin
+
+
+## Une rue piétonne (B2) — `b2ciudad`
+
+_Ton voisin n'est pas content : la rue va être fermée aux voitures._ · personnage : Voisin
+
+1. **Viches que van pechar a rúa aos coches?**
+   - consigne : Dis que oui, ça va devenir une zone piétonne.
+   - modèle : Si, vai ser unha zona peonil.
+   - variantes : Si, será unha zona peonil. · Si, vana facer peonil.
+   - fausses : Si, vai estar unha zona peonil. · Si, foi unha zona peonil mañá. · Si, vai ser un zona peonil.
+
+2. **A min non me gusta. Haberá máis atascos.**
+   - consigne : Dis que c'est possible, mais qu'il y aura moins de pollution.
+   - modèle : Pode ser, pero haberá menos contaminación.
+   - variantes : É posible, pero haberá menos contaminación. · Pode ser, pero o aire estará máis limpo.
+   - fausses : Pode ser, pero haberá máis contaminación. · Pode ser, pero houbo menos contaminación mañá. · Pode ser, pero haberá menos contaminado.
+
+3. **Xa, pero as tendas perderán clientes.**
+   - consigne : Dis que tu ne crois pas que ce soit le cas, au contraire.
+   - modèle : Non creo que sexa así, ao contrario.
+   - variantes : Non creo que sexa así. · Eu non creo que sexa así, ao contrario.
+   - fausses : Non creo que é así, ao contrario. · Non creo que era así onte, ao contrario. · Creo que sexa así, ao contrario.
+
+4. **Ti cres? E como imos ir ao centro?**
+   - consigne : Dis : à vélo ou en transports en commun, c'est plus durable.
+   - modèle : En bici ou en transporte público, que é máis sostible.
+   - variantes : En bici ou en transporte público. · En transporte público ou en bici, é máis sostible.
+   - fausses : En bici ou en transporte público, que é menos sostible. · En bici ou en transporte público, que está máis sostible. · En bici ou en transporte público, que era máis sostible mañá.
+
+5. **Se houbese un carril bici, quizais o usaría.**
+   - consigne : Dis qu'ils vont en faire une l'année prochaine.
+   - modèle : Pois van facer un o ano que vén.
+   - variantes : Van facer un o ano que vén. · Pois farán un o ano que vén.
+   - fausses : Pois fixeron un o ano que vén. · Pois van facer un o ano pasado. · Pois vas facer un o ano que vén.
+
+6. **Ben, xa veremos. Oxalá teñas razón.**
+   - consigne : Dis qu'il verra qu'au final ça lui plaira.
+   - modèle : Xa verás como ao final che gusta.
+   - variantes : Xa verás como che gusta. · Xa verás, ao final vaiche gustar.
+   - fausses : Xa verás como ao final gústache. · Xa verás como ao principio che gusta. · Xa verás como ao final me gusta.
+
+À retenir : unha zona peonil = une zone piétonne · Non creo que sexa así = Je ne crois pas que ce soit le cas · sostible = durable · o carril bici = la piste cyclable
+
+
+## Annoncer sa démission (B2) — `b2dimision`
+
+_Tu demandes à parler à ta cheffe : tu as décidé de démissionner._ · personnage : Cheffe
+
+1. **Ola, querías falar comigo?**
+   - consigne : Dis que tu regrettes de le lui dire, mais que tu vas présenter ta démission.
+   - modèle : Si. Síntoo, pero vou presentar a miña dimisión.
+   - variantes : Si. Lamento dicilo, pero vou presentar a miña dimisión. · Síntoo, pero vou dimitir.
+   - fausses : Si. Síntoo, pero fun presentar a miña dimisión mañá. · Si. Alégrome, pero vou presentar a miña dimisión. · Si. Síntoo, pero vou presentar a túa dimisión.
+
+2. **Vaia! Non mo esperaba. Por que?**
+   - consigne : Dis que tu as trouvé un meilleur travail.
+   - modèle : Atopei un traballo mellor.
+   - variantes : Atopei outro traballo mellor. · Porque atopei un traballo mellor.
+   - fausses : Atopei un traballo peor. · Atopaches un traballo mellor. · Atoparei un traballo mellor onte.
+
+3. **E se che pagásemos máis?**
+   - consigne : Remercie-la, mais dis que tu as déjà pris ta décision.
+   - modèle : Grazas, pero xa tomei a decisión.
+   - variantes : Agradézoo, pero xa tomei a decisión. · Grazas, pero xa o decidín.
+   - fausses : Grazas, pero xa tomarei a decisión onte. · Grazas, pero xa tomaches a decisión. · Grazas, pero xa tomei o decisión.
+
+4. **Enténdoo. Cando marcharías?**
+   - consigne : Dis : dans un mois, pour qu'elle ait le temps de chercher quelqu'un.
+   - modèle : Dentro dun mes, para que teñas tempo de buscar a alguén.
+   - variantes : Nun mes, para que teñas tempo de buscar a alguén. · Dentro dun mes, así tes tempo de buscar a alguén.
+   - fausses : Dentro dun mes, para que tes tempo de buscar a alguén. · Dentro dun mes, para que terás tempo de buscar a alguén. · Hai un mes, para que teñas tempo de buscar a alguén.
+
+5. **Grazas. Poderías deixalo todo listo?**
+   - consigne : Dis que bien sûr, tu feras tout ton possible.
+   - modèle : Claro, farei todo o posible.
+   - variantes : Si, farei todo o posible. · Claro, deixareino todo listo.
+   - fausses : Claro, fixen todo o posible mañá. · Claro, farás todo o posible. · Claro, farei todo o imposible.
+
+6. **Grazas. Imos botarte de menos.**
+   - consigne : Dis que toi aussi, et que ça a été un plaisir de travailler avec elle.
+   - modèle : Eu tamén. Foi un pracer traballar contigo.
+   - variantes : E eu a vós. Foi un pracer traballar contigo. · Eu tamén. Foi un pracer.
+   - fausses : Eu tamén. Foi un pracer traballar con ti. · Eu tamén. Estivo un pracer traballar contigo. · Eu tamén. Será un pracer traballar contigo onte.
+
+À retenir : presentar a dimisión = donner sa démission · para que teñas tempo = pour que tu aies le temps · botar de menos = regretter (une personne absente) · Foi un pracer = Ça a été un plaisir
+
+
+## Un deuil au travail (C1) — `c1pesame`
+
+_Le père d'une collègue est décédé. Tu vas la voir à son retour._ · personnage : Collègue
+
+1. **Grazas por vir. Foi unha semana moi dura.**
+   - consigne : Présente-lui tes sincères condoléances.
+   - modèle : Síntoo moitísimo. O meu máis sentido pésame.
+   - variantes : O meu máis sentido pésame. · Síntoo moito. O meu máis sentido pésame.
+   - fausses : Alégrome moito. O meu máis sentido pésame. · Síntoo moitísimo. O teu máis sentido pésame. · Que ben! O meu máis sentido pésame.
+
+2. **Non puiden avisar a case ninguén, todo foi moi rápido.**
+   - consigne : Dis que si tu l'avais su, tu l'aurais appelée plus tôt.
+   - modèle : Se o soubese, chamaríate antes.
+   - variantes : Se o soubese, chamaríate. · De sabelo, chamaríate antes.
+   - fausses : Se o sabía, chamaríate antes. · Se o sabería, chamaríate antes. · Se o soubese, te chamaría antes.
+
+3. **Grazas. Non sei cando volverei ao traballo.**
+   - consigne : Rassure-la et dis-lui de prendre le temps qu'il lui faudra.
+   - modèle : Non te preocupes. Tómate o tempo que precises.
+   - variantes : Tómate o tempo que precises. · Tranquila, tómate o tempo que precises.
+   - fausses : Non te preocupes. Tómate o tempo que precisaches. · Non te preocupes. Tómate o tempo que precisases. · Preocúpate. Tómate o tempo que precises.
+
+4. **Preocúpanme os meus clientes, a verdade.**
+   - consigne : Propose de t'occuper de ses clients cette semaine.
+   - modèle : Se queres, encárgome eu deles esta semana.
+   - variantes : Eu encárgome deles esta semana. · Se queres, encárgome dos teus clientes esta semana.
+   - fausses : Se queres, me encargo eu deles esta semana. · Se queres, encárgaste eu deles esta semana. · Se queres, encargueime eu deles a semana que vén.
+
+5. **Non sei como agradecercho.**
+   - consigne : Dis qu'elle n'a rien à te remercier, que c'est la moindre des choses.
+   - modèle : Non tes nada que agradecerme, é o mínimo.
+   - variantes : Non tes nada que agradecerme. · Non hai nada que agradecer, é o mínimo.
+   - fausses : Non tes nada que agradecerte, é o mínimo. · Non teño nada que agradecerme, é o mínimo. · Non tes nada que agradecerme, é o máximo.
+
+6. **Es un sol. Grazas de verdade.**
+   - consigne : Dis que tu es là pour tout ce dont elle aura besoin.
+   - modèle : Aquí estou para o que precises.
+   - variantes : Para o que precises, aquí estou. · Xa sabes, aquí estou para o que precises.
+   - fausses : Aquí estou polo que precises. · Aquí estás para o que precises. · Aquí estou para o que precisaches.
+
+À retenir : O meu máis sentido pésame = Toutes mes condoléances · Se o soubese = Si je l'avais su · Tómate o tempo que precises = Prends le temps qu'il te faudra · para o que precises = pour tout ce dont tu auras besoin
+
+
+## La négociation (C1) — `c1negociacion`
+
+_Tu représentes le personnel face au directeur des ressources humaines, qui annonce des licenciements._ · personnage : Directeur des ressources humaines
+
+1. **A empresa vai presentar un expediente de regulación de emprego.**
+   - consigne : Dis que le comité n'accepte pas les licenciements dans ces conditions.
+   - modèle : O comité non acepta os despedimentos nestas condicións.
+   - variantes : O comité non acepta despedimentos nestas condicións. · Non aceptamos os despedimentos nestas condicións.
+   - fausses : O comité acepta os despedimentos nestas condicións. · O comité non acepta os despedimentos nestas condición. · O comité non aceptará os despedimentos onte nestas condicións.
+
+2. **Os números non nos deixan outra opción.**
+   - consigne : Objecte que l'entreprise a pourtant fait des bénéfices l'an dernier.
+   - modèle : Non obstante, a empresa tivo beneficios o ano pasado.
+   - variantes : Non obstante, o ano pasado houbo beneficios. · Así e todo, a empresa tivo beneficios o ano pasado.
+   - fausses : Por tanto, a empresa tivo beneficios o ano pasado. · Non obstante, a empresa tivo beneficios o ano que vén. · Non obstante, a empresa ten beneficios o ano pasado.
+
+3. **É certo, pero este ano vai mal.**
+   - consigne : Demande qu'on réduise d'abord la masse salariale de la direction.
+   - modèle : Entón pedimos que primeiro se reduza a masa salarial da dirección.
+   - variantes : Pedimos que primeiro se reduza a masa salarial da dirección. · Entón, que se reduza primeiro a masa salarial da dirección.
+   - fausses : Entón pedimos que primeiro se reduce a masa salarial da dirección. · Entón pedimos que primeiro se reducirá a masa salarial da dirección. · Entón pedimos que primeiro se reduza a masa salarial do comité.
+
+4. **Iso non depende de min.**
+   - consigne : Préviens que sinon, le comité fera grève.
+   - modèle : En caso contrario, o comité fará folga.
+   - variantes : Se non, o comité fará folga. · En caso contrario, faremos folga.
+   - fausses : En caso contrario, o comité fixo folga mañá. · En caso contrario, a dirección fará folga. · Por tanto, o comité fará folga.
+
+5. **Non fai falta chegar a iso. Que propoñen?**
+   - consigne : Dis que vous négocieriez à condition que le préavis soit prolongé.
+   - modèle : Negociariamos sempre que se prorrogase o preaviso.
+   - variantes : Negociariamos se se prorrogase o preaviso. · Estariamos dispostos a negociar sempre que se prorrogase o preaviso.
+   - fausses : Negociariamos sempre que se prorrogaba o preaviso. · Negociariamos sempre que se prorrogará o preaviso. · Negociamos onte sempre que se prorrogase o preaviso.
+
+6. **Imos estudalo coa dirección.**
+   - consigne : Dis que vous attendez une proposition écrite avant vendredi.
+   - modèle : Agardamos unha proposta por escrito antes do venres.
+   - variantes : Agardamos unha proposta escrita antes do venres. · Queremos unha proposta por escrito antes do venres.
+   - fausses : Agardamos unha proposta por escrita antes do venres. · Agardamos unha proposta para escrito antes do venres. · Agardabamos unha proposta por escrito antes do venres pasado.
+
+À retenir : un expediente de regulación de emprego = un plan social · a masa salarial = la masse salariale · En caso contrario = Sinon · prorrogar o preaviso = prolonger le préavis
+
+
+## Réunion de quartier (C1) — `c1barrio`
+
+_À la réunion de quartier, une conseillère municipale répond aux habitants sur le logement._ · personnage : Conseillère municipale
+
+1. **Boas tardes a todos. Quen quere falar primeiro?**
+   - consigne : Dis que la flambée des loyers t'inquiète.
+   - modèle : Eu. Preocúpame a escalada dos alugueres.
+   - variantes : Preocúpame a escalada dos alugueres. · Eu. Preocúpame moito a escalada dos alugueres.
+   - fausses : Eu. Me preocupa a escalada dos alugueres. · Eu. Preocupábame a escalada dos alugueres mañá. · Eu. Preocúpame a escalada das alugueres.
+
+2. **É un problema que coñecemos ben.**
+   - consigne : Dis que beaucoup de voisins ont dû quitter le quartier.
+   - modèle : Moitos veciños tiveron que marchar do barrio.
+   - variantes : Moitos veciños tiveron que deixar o barrio. · Moitos veciños tiveron que irse do barrio.
+   - fausses : Moitos veciños tivo que marchar do barrio. · Moitos veciños terán que marchar do barrio onte. · Poucos veciños tiveron que marchar do barrio.
+
+3. **Xa o sabemos.**
+   - consigne : Demande ce que la mairie compte faire contre la spéculation immobilière.
+   - modèle : Que pensa facer o concello contra a especulación inmobiliaria?
+   - variantes : Que vai facer o concello contra a especulación inmobiliaria? · Que pensan facer contra a especulación inmobiliaria?
+   - fausses : Que pensan facer o concello contra a especulación inmobiliaria? · Que pensou facer o concello mañá contra a especulación inmobiliaria? · Que pensa facer o concello para a especulación inmobiliaria?
+
+4. **Imos aprobar unha nova ordenanza municipal.**
+   - consigne : Objecte qu'une ordonnance ne servira à rien si elle n'est pas appliquée.
+   - modèle : Unha ordenanza non servirá de nada se ninguén a respecta.
+   - variantes : A ordenanza non servirá de nada se ninguén a respecta. · Unha ordenanza non serve de nada se ninguén a respecta.
+   - fausses : Unha ordenanza non servirá de nada se ninguén a respectará. · Unha ordenanza non servirá de nada se ninguén a respectase. · Un ordenanza non servirá de nada se ninguén a respecta.
+
+5. **E vostede que propón?**
+   - consigne : Dis qu'il faudrait limiter les licences d'appartements touristiques.
+   - modèle : Habería que limitar as licenzas de pisos turísticos.
+   - variantes : Habería que limitar os pisos turísticos. · Eu limitaría as licenzas de pisos turísticos.
+   - fausses : Había que limitar as licenzas de pisos turísticos. · Habería que dar máis licenzas de pisos turísticos. · Habería que limitar os licenzas de pisos turísticos.
+
+6. **Imos estudalo con moito interese.**
+   - consigne : Remercie-la, mais dis que vous attendez des mesures concrètes.
+   - modèle : Grazas, pero agardamos medidas concretas.
+   - variantes : Agradézollo, pero agardamos medidas concretas. · Grazas, aínda que agardamos medidas concretas.
+   - fausses : Grazas, pero agardabamos medidas concretas mañá. · De nada, pero agardamos medidas concretas. · Grazas, pero agardamos medida concretas.
+
+À retenir : a escalada dos alugueres = la flambée des loyers · a especulación inmobiliaria = la spéculation immobilière · a ordenanza municipal = l'arrêté municipal · medidas concretas = des mesures concrètes
+
+
+## Débat à la radio (C1) — `c1debate`
+
+_Tu participes à un débat à la radio sur les pistes cyclables en ville._ · personnage : Animateur
+
+1. **Segundo algúns, a cidade non precisa máis carrís bici. Que opina?**
+   - consigne : Dis que tu ne partages pas cet argument.
+   - modèle : Non comparto este argumento.
+   - variantes : Non comparto en absoluto este argumento. · Eu non comparto este argumento.
+   - fausses : Non comparto esta argumento. · Comparto este argumento. · Non compartín este argumento mañá.
+
+2. **Por que?**
+   - consigne : Dis que les données disent justement le contraire.
+   - modèle : Porque os datos din xusto o contrario.
+   - variantes : Os datos din xusto o contrario. · Porque os datos din o contrario.
+   - fausses : Porque os datos din xusto o mesmo. · Porque os datos di xusto o contrario. · Para que os datos din xusto o contrario.
+
+3. **Pero hai demasiados coches, non?**
+   - consigne : Dis que tu ne nies pas que ce soit un problème, mais qu'il y a des solutions.
+   - modèle : Non nego que sexa un problema, pero hai solucións.
+   - variantes : Non nego que sexa un problema, aínda que hai solucións. · Non o nego, pero hai solucións.
+   - fausses : Non nego que sería un problema, pero hai solucións. · Non nego que foi un problema mañá, pero hai solucións. · Non nego que sexa un problema, pero non hai ningunha solución.
+
+4. **Hai un estudo que di que os carrís bici non se usan.**
+   - consigne : Dis qu'à ton avis, cette étude n'est pas impartiale.
+   - modèle : Na miña opinión, este estudo non é imparcial.
+   - variantes : Ese estudo non é imparcial. · Ao meu xuízo, este estudo non é imparcial.
+   - fausses : Na miña opinión, este estudo non está imparcial. · Na miña opinión, esta estudo non é imparcial. · Na miña opinión, este estudo non era imparcial mañá.
+
+5. **Quédanos un minuto. Algo máis?**
+   - consigne : Dis qu'il faudrait écouter les habitants avant de décider.
+   - modèle : Si. Habería que escoitar os veciños antes de decidir.
+   - variantes : Habería que escoitar os veciños antes de decidir. · Si, habería que escoitar primeiro os veciños.
+   - fausses : Si. Había que escoitar os veciños antes de decidir. · Si. Habería que escoitar os veciños despois de decidir. · Si. Habería que escoitar os veciños antes de decido.
+
+6. **Para rematar, que nos di?**
+   - consigne : Conclus : en définitive, il faut arriver à un consensus.
+   - modèle : En definitiva, hai que chegar a un consenso.
+   - variantes : En definitiva, precisamos un consenso. · En definitiva, temos que chegar a un consenso.
+   - fausses : En definitiva, hai que chegar a unha consenso. · En definitiva, hai que chegar dun consenso. · En definitiva, había que chegar a un consenso mañá.
+
+À retenir : Non comparto este argumento = Je ne partage pas cet argument · Non nego que sexa… = Je ne nie pas que ce soit… · imparcial = impartial · En definitiva = En définitive
+
+
+## Une clause abusive (C1) — `c1clausula`
+
+_Tu consultes une avocate au sujet d'une clause de ton contrat de travail._ · personnage : Avocate
+
+1. **Bos días. Cónteme, cal é o problema?**
+   - consigne : Dis que ton contrat contient une clause qui te semble abusive.
+   - modèle : O meu contrato ten unha cláusula que me parece abusiva.
+   - variantes : Hai unha cláusula no meu contrato que me parece abusiva. · O meu contrato ten unha cláusula abusiva.
+   - fausses : O meu contrato ten unha cláusula que me parezo abusiva. · O meu contrato ten un cláusula que me parece abusiva. · O meu contrato tiña unha cláusula que me parecerá abusiva.
+
+2. **Que di esa cláusula?**
+   - consigne : Dis : qu'on peut te licencier sans préavis.
+   - modèle : Que poden despedirme sen preaviso.
+   - variantes : Que me poden despedir sen preaviso. · Di que poden despedirme sen preaviso.
+   - fausses : Que poden despedirme con preaviso. · Que poden despedirse sen preaviso. · Que poderán despedirme sen preaviso onte.
+
+3. **Iso, efectivamente, podería ser abusivo.**
+   - consigne : Demande ce que tu pourrais faire à ce sujet.
+   - modèle : Que podería facer ao respecto?
+   - variantes : E que podería facer ao respecto? · Que podo facer ao respecto?
+   - fausses : Que poderías facer ao respecto? · Que puiden facer ao respecto mañá? · Que podería facer a respecto?
+
+4. **Primeiro, asinou o contrato sen lelo?**
+   - consigne : Dis que oui, tu as signé le contrat sans bien le lire.
+   - modèle : Si, asinei o contrato sen lelo ben.
+   - variantes : Si, asineino sen lelo ben. · Si, asinei sen lelo con atención.
+   - fausses : Si, asinarei o contrato sen lelo ben onte. · Si, asinaches o contrato sen lelo ben. · Si, asinei a contrato sen lelo ben.
+
+5. **Podemos presentar unha reclamación.**
+   - consigne : Demande combien de temps prendrait la démarche.
+   - modèle : Canto tempo levaría tramitala?
+   - variantes : Canto tempo levaría? · Canto se tardaría en tramitala?
+   - fausses : Canto tempo levará tramitala onte? · Canta tempo levaría tramitala? · Canto tempo levaría tramitalo?
+
+6. **Uns tres meses, máis ou menos.**
+   - consigne : Dis que tu vas bien y réfléchir et que tu la rappelles.
+   - modèle : Pensareino ben e chámoa.
+   - variantes : Pensareino ben e volvo chamala. · Pénsoo ben e chámoa.
+   - fausses : Penseino ben e chámoa mañá. · Pensareino ben e chámome. · Pensareino ben e chámote.
+
+À retenir : unha cláusula abusiva = une clause abusive · sen preaviso = sans préavis · ao respecto = à ce sujet · tramitar = faire les démarches
+
+
+## Visite d'une cave (C1) — `c1bodega`
+
+_Tu visites une cave à vin avec un guide._ · personnage : Guide
+
+1. **Benvidos á adega. Aquí facemos viño desde hai cen anos.**
+   - consigne : Demande quand ont lieu les vendanges.
+   - modèle : Que interesante! Cando é a vendima?
+   - variantes : Cando é a vendima? · Que interesante! Cando fan a vendima?
+   - fausses : Que interesante! Cando está a vendima? · Que interesante! Onde é a vendima? · Que interesante! Cando foi a vendima mañá?
+
+2. **En setembro, ao final do verán.**
+   - consigne : Demande quelle variété de raisin ils utilisent.
+   - modèle : E que variedade de uva usan?
+   - variantes : Que variedade de uva usan? · E con que variedade de uva traballan?
+   - fausses : E que variedade de uva uso? · E que variedade de uva usan onte? · E que variedade de auga usan?
+
+3. **Sobre todo unha variedade da zona.**
+   - consigne : Demande si le vin a une appellation d'origine.
+   - modèle : O viño ten denominación de orixe?
+   - variantes : Ten denominación de orixe? · E o viño ten denominación de orixe?
+   - fausses : O viño é denominación de orixe? · O viño ten denominación da orixe? · O viño tiña denominación de orixe mañá?
+
+4. **Si, desde hai trinta anos.**
+   - consigne : Dis que tu aurais aimé venir pendant les vendanges.
+   - modèle : Gustaríame ter vido durante a vendima.
+   - variantes : Gustaríame ter vido na vendima. · Encantaríame ter vido durante a vendima.
+   - fausses : Me gustaría ter vido durante a vendima. · Gustaríache ter vido durante a vendima. · Gustarame ter vido durante a vendima onte.
+
+5. **Pois volva o ano que vén, é precioso.**
+   - consigne : Dis que tu le feras et demande s'ils utilisent des additifs.
+   - modèle : Fareino. Usan aditivos no viño?
+   - variantes : Usan aditivos? · Fareino. O viño leva aditivos?
+   - fausses : Fíxeno. Usan aditivos no viño? · Fareino. Usan aditivos na auga? · Fareino. Usaron aditivos no viño mañá?
+
+6. **Moi poucos, case ningún.**
+   - consigne : Dis qu'alors tu vas prendre deux bouteilles.
+   - modèle : Entón levarei dúas botellas.
+   - variantes : Levarei dúas botellas. · Entón lévome dúas botellas.
+   - fausses : Entón levei dúas botellas mañá. · Entón levarás dúas botellas. · Entón levarei dúas botella.
+
+À retenir : a vendima = les vendanges · a variedade de uva = le cépage · a denominación de orixe = l'appellation d'origine · Gustaríame ter vido = J'aurais aimé venir
 

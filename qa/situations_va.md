@@ -1,7 +1,7 @@
-# Relecture native — situations A1–A2 (valencien)
+# Relecture native — situations A1–C1 (valencien)
 
 Pour chaque échange : réplique du personnage, consigne donnée à l'apprenant, réponse modèle, variantes acceptées et réponses fausses proposées dans le format à choix.
-À vérifier : naturel et correction de chaque phrase, registre (vouvoiement du personnage), variantes réellement acceptables, réponses fausses réellement fausses mais plausibles.
+À vérifier : naturel et correction de chaque phrase, registre (vouvoiement ou tutoiement selon le personnage), variantes réellement acceptables, réponses fausses réellement fausses mais plausibles.
 
 ## Au marché (A1) — `a1mercado`
 
@@ -1033,4 +1033,778 @@ _Dans une agence, tu réserves une excursion pour le week-end._ · personnage : 
    - fausses : Perfecte! De res. · Perfecte! Ho sent molt. · Quina llàstima! Moltes gràcies.
 
 À retenir : reservar una excursió = réserver une excursion · Cal portar alguna cosa? = Il faut apporter quelque chose ? · el dinar = le déjeuner
+
+
+## Le chauffe-eau en panne (B1) — `b1calentador`
+
+_Tu appelles le propriétaire de ton appartement : le chauffe-eau ne marche plus._ · personnage : Propriétaire
+
+1. **Diga?**
+   - consigne : Dis que le chauffe-eau ne marche pas depuis hier.
+   - modèle : Bon dia. El calentador no va des d'ahir.
+   - variantes : El calentador no va des d'ahir. · Hola, el calentador no va des d'ahir.
+   - fausses : Bon dia. El calentador no va des de demà. · Bon dia. El calentador no anava demà. · Bon dia. El calentador no va fins ahir.
+
+2. **Vaja, ho sent. Què li passa?**
+   - consigne : Explique qu'il n'y a pas d'eau chaude.
+   - modèle : No hi ha aigua calenta.
+   - variantes : No tinc aigua calenta. · No ix aigua calenta.
+   - fausses : No hi ha aigua freda. · No és aigua calenta. · No hi ha aigua calenta a la platja.
+
+3. **Serà una avaria. Cridaré un tècnic.**
+   - consigne : Demande s'il peut venir cette semaine.
+   - modèle : Pot vindre esta setmana?
+   - variantes : Podria vindre esta setmana? · Pot vindre el tècnic esta setmana?
+   - fausses : Pot vindre l'any passat? · Puc vindre esta setmana? · Pot vindre esta setmana ahir?
+
+4. **El tècnic pot anar dijous per la vesprada.**
+   - consigne : Dis que jeudi tu travailles et demande si vendredi serait possible.
+   - modèle : Dijous treballe. Podria ser divendres?
+   - variantes : Treballe dijous. Podria ser divendres? · Dijous treballe. Pot ser divendres?
+   - fausses : Dijous treballe. Podria ser divendres passat? · Dijous vaig treballar. Podria ser ahir? · Dijous treballe. Podria ser dijous?
+
+5. **Sí, divendres a les deu. Li va bé?**
+   - consigne : Accepte et remercie-le pour son aide.
+   - modèle : Perfecte. Moltes gràcies per la seua ajuda.
+   - variantes : Perfecte, gràcies per la seua ajuda. · Molt bé. Moltes gràcies per la seua ajuda.
+   - fausses : Perfecte. Moltes gràcies per la seua avaria. · Perfecte. Moltes gràcies per la meua ajuda. · Perfecte. De res per la seua ajuda.
+
+6. **De res. Si hi ha un altre problema, cride'm.**
+   - consigne : Dis que tu le feras et souhaite-lui une bonne journée.
+   - modèle : D'acord. Que tinga un bon dia!
+   - variantes : Val. Que tinga un bon dia! · D'acord, gràcies. Que tinga un bon dia!
+   - fausses : D'acord. Que té un bon dia! · D'acord. Que tinc un bon dia! · D'acord. Que tinga un mal dia!
+
+À retenir : el calentador = le chauffe-eau · una avaria = une panne · Podria ser…? = Ça pourrait être… ? · Que tinga un bon dia! = Bonne journée !
+
+
+## L'entretien d'embauche (B1) — `b1entrevista`
+
+_Tu passes un entretien pour un poste dans une entreprise._ · personnage : Recruteuse
+
+1. **Bon dia. Per què vol este treball?**
+   - consigne : Dis que tu aimes travailler avec des clients.
+   - modèle : Perquè m'agrada treballar amb clients.
+   - variantes : M'agrada treballar amb clients. · Perquè m'encanta treballar amb clients.
+   - fausses : Perquè m'agrada treballar sense clients. · Perquè m'agraden treballar amb clients. · Perquè li agrada treballar amb clients.
+
+2. **Té experiència en vendes?**
+   - consigne : Dis que tu as travaillé cinq ans dans la vente.
+   - modèle : Sí, he treballat cinc anys en vendes.
+   - variantes : Sí, cinc anys en vendes. · Sí, vaig treballar cinc anys en vendes.
+   - fausses : Sí, he treballada cinc anys en vendes. · Sí, treballaré cinc anys en vendes. · No, he treballat cinc anys en vendes.
+
+3. **Molt bé. El treball és a l'oficina, amb un dia de teletreball.**
+   - consigne : Dis que ça te convient et demande quels sont les horaires.
+   - modèle : Em pareix molt bé. Quin és l'horari?
+   - variantes : Em pareix bé. Quin és l'horari? · Molt bé. Quin horari té el treball?
+   - fausses : Em parec molt bé. Quin és l'horari? · Em pareix molt bé. Qui és l'horari? · Em pareix molt malament. Quin és l'horari?
+
+4. **De nou a cinc, amb un període de prova de dos mesos.**
+   - consigne : Demande quand tu commencerais.
+   - modèle : Entesos. Quan començaria?
+   - variantes : Quan començaria a treballar? · D'acord. Quan començaria?
+   - fausses : Entesos. Quan vaig començar? · Entesos. On començaria? · Entesos. Quan començaria ahir?
+
+5. **El mes que ve, si tot va bé. Té alguna pregunta?**
+   - consigne : Demande si c'est un contrat à durée indéterminée.
+   - modèle : Sí. És un contracte indefinit?
+   - variantes : El contracte és indefinit? · Sí, és un contracte indefinit?
+   - fausses : Sí. Està un contracte indefinit? · Sí. És un contracte d'ahir? · No. És un contracte indefinit?
+
+6. **Sí. El cridarem la setmana que ve.**
+   - consigne : Remercie-la pour son temps et dis que tu attends son appel.
+   - modèle : Moltes gràcies pel seu temps. Espere la seua cridada.
+   - variantes : Gràcies pel seu temps. Espere la seua cridada. · Moltes gràcies. Espere la seua cridada.
+   - fausses : Moltes gràcies per al seu temps. Espere la seua cridada. · De res pel seu temps. Espere la seua cridada. · Moltes gràcies pel seu temps. Espere la meua cridada.
+
+À retenir : el període de prova = la période d'essai · un contracte indefinit = un CDI · Quan començaria? = Quand est-ce que je commencerais ? · Espere la seua cridada = J'attends votre appel
+
+
+## Une toux qui ne passe pas (B1) — `b1medico`
+
+_Tu tousses depuis une semaine et tu vas chez la médecin._ · personnage : Médecin
+
+1. **Bona vesprada. Què li passa?**
+   - consigne : Dis que tu tousses depuis une semaine.
+   - modèle : Tinc tos des de fa una setmana.
+   - variantes : Tinc tos des de fa set dies. · Des de fa una setmana tinc tos.
+   - fausses : Tinc tos des de la setmana que ve. · Soc tos des de fa una setmana. · Tinc tos d'ací a una setmana.
+
+2. **Té febre?**
+   - consigne : Dis que non, mais que tu dors très mal.
+   - modèle : No, però dorm molt mal.
+   - variantes : No, però no dorm bé. · No, però dorm mal.
+   - fausses : No, però dorms molt mal. · No, però dormen molt mal. · Sí, però dorm molt bé.
+
+3. **No és res greu, és un constipat.**
+   - consigne : Dis que tu es soulagé(e) et demande si tu as besoin d'un médicament.
+   - modèle : Menys mal. Necessite algun medicament?
+   - variantes : Menys mal. Necessite un medicament? · He de prendre algun medicament?
+   - fausses : Menys mal. Necessita algun medicament? · Més mal. Necessite algun medicament? · Menys mal. Necessite alguna medicament?
+
+4. **Sí, prenga açò tres vegades al dia, després de menjar.**
+   - consigne : Demande pendant combien de jours.
+   - modèle : Durant quants dies?
+   - variantes : Quants dies? · Durant quants dies l'he de prendre?
+   - fausses : Durant quantes dies? · Durant quant dies? · Quants dies tinc?
+
+5. **Una setmana. I prenga molta aigua.**
+   - consigne : Demande si tu peux aller travailler.
+   - modèle : D'acord. Puc anar a treballar?
+   - variantes : Val. Puc anar a treballar? · Puc treballar?
+   - fausses : D'acord. Pots anar a treballar? · D'acord. Puc anar a treball? · D'acord. Puga anar a treballar?
+
+6. **Sí, però si no està millor, torne dilluns.**
+   - consigne : Remercie la médecin et dis au revoir.
+   - modèle : Moltes gràcies. Fins després.
+   - variantes : Gràcies. Adéu! · Moltes gràcies, fins després.
+   - fausses : De res. Fins després. · Moltes gràcies. Bona nit, hola! · Ho sent. Fins després.
+
+À retenir : la tos = la toux · un constipat = un rhume · Menys mal = Heureusement · el medicament = le médicament
+
+
+## Au registre municipal (B1) — `b1padron`
+
+_Tu viens d'emménager et tu vas à la mairie pour t'inscrire au registre municipal._ · personnage : Employé de mairie
+
+1. **Bon dia. En què puc ajudar-lo?**
+   - consigne : Dis que tu viens t'inscrire au registre municipal.
+   - modèle : Bon dia. Vinc a fer l'empadronament.
+   - variantes : Vinc a fer l'empadronament. · Bon dia, vinc per l'empadronament.
+   - fausses : Bon dia. Vaig a fer l'empadronament ahir. · Bon dia. Vinc a fer la comunitat de veïns. · Bon dia. Ve a fer l'empadronament.
+
+2. **Molt bé. Té cita?**
+   - consigne : Dis que oui, tu as rendez-vous à dix heures.
+   - modèle : Sí, tinc cita a les deu.
+   - variantes : Sí, a les deu. · Sí, tinc una cita a les deu.
+   - fausses : Sí, soc cita a les deu. · Sí, tinc cita a la deu. · No, tinc cita a les deu.
+
+3. **Em deixa el passaport i el contracte de lloguer?**
+   - consigne : Donne-les et demande s'il a besoin d'autre chose.
+   - modèle : Ací té. Necessita alguna cosa més?
+   - variantes : Ací té. Alguna cosa més? · Sí, ací té. Necessita alguna cosa més?
+   - fausses : Ací té. Necessite alguna cosa més? · Ací tens. Necessita alguna cosa més? · Ací té. Necessita alguna cosa menys?
+
+4. **Sí, però també necessite una factura de la llum.**
+   - consigne : Excuse-toi : tu ne l'as pas apportée. Demande si tu peux l'envoyer par e-mail.
+   - modèle : Ho sent, no l'he portada. La puc enviar per correu?
+   - variantes : Ho sent, no la tinc ací. La puc enviar per correu? · Perdone, no l'he portada. Li la puc enviar per correu?
+   - fausses : Ho sent, no l'he portada. La pot enviar per correu? · Ho sent, no l'he portada. La puc enviar per platja? · Gràcies, no l'he portada. La puc enviar per correu?
+
+5. **Sí, per correu. Té deu dies.**
+   - consigne : Demande quand ce sera prêt.
+   - modèle : Perfecte. Quan estarà preparat?
+   - variantes : D'acord. Quan estarà preparat? · Quan estarà preparat l'empadronament?
+   - fausses : Perfecte. Quan serà preparat? · Perfecte. Quan estava preparat? · Perfecte. On estarà preparat?
+
+6. **D'ací a una setmana, més o menys.**
+   - consigne : Remercie-le pour son aide.
+   - modèle : Molt bé. Moltes gràcies per la seua ajuda.
+   - variantes : Moltes gràcies per la seua ajuda. · Gràcies per la seua ajuda.
+   - fausses : Molt bé. Moltes gràcies per a la seua ajuda. · Molt bé. De res per la seua ajuda. · Molt bé. Moltes gràcies per la meua ajuda.
+
+À retenir : l'empadronament = l'inscription au registre municipal · la cita = le rendez-vous · la factura de la llum = la facture d'électricité · Quan estarà preparat? = Quand est-ce que ce sera prêt ?
+
+
+## Vol annulé (B1) — `b1vuelo`
+
+_À l'aéroport, ton vol a été annulé. Tu parles à l'agente de la compagnie._ · personnage : Agente
+
+1. **Bona vesprada. En què puc ajudar-lo?**
+   - consigne : Dis que ton vol ne part pas aujourd'hui.
+   - modèle : Bona vesprada. El meu vol no ix hui.
+   - variantes : El meu vol no ix hui. · Bona vesprada, el meu vol no ix.
+   - fausses : Bona vesprada. El meu vol no ix ahir. · Bona vesprada. El seu vol no ix hui. · Bona vesprada. El meu vol no ixen hui.
+
+2. **Ho sent molt. Em deixa el passaport?**
+   - consigne : Donne-le et demande s'il y a un autre vol aujourd'hui.
+   - modèle : Ací té. Hi ha un altre vol hui?
+   - variantes : Sí, ací té. Hi ha un altre vol hui? · Hi ha un altre vol hui?
+   - fausses : Ací té. Està un altre vol hui? · Ací té. Hi ha un altre vol ahir? · Ací té. Hi ha un altre vol l'any passat?
+
+3. **Hui no, però n'hi ha un demà a les set.**
+   - consigne : Demande où tu vas dormir cette nuit.
+   - modèle : I on dormiré esta nit?
+   - variantes : I on dorm esta nit? · D'acord, i on dormiré esta nit?
+   - fausses : I on dormiré ahir? · I quan dormiré esta nit? · I on dormirà esta nit?
+
+4. **La companyia li paga una habitació prop de l'aeroport.**
+   - consigne : Accepte et demande ce qui se passe avec tes bagages.
+   - modèle : D'acord. I el meu equipatge?
+   - variantes : Val. I el meu equipatge? · D'acord, què passa amb el meu equipatge?
+   - fausses : D'acord. I el seu equipatge? · D'acord. I els meu equipatge? · No. I el meu equipatge?
+
+5. **El seu equipatge viatja amb vosté demà.**
+   - consigne : Demande-lui de te l'écrire, s'il te plaît.
+   - modèle : Entesos. Me'l pot escriure, per favor?
+   - variantes : Me'l pot escriure, per favor? · D'acord. Me'l pot escriure, per favor?
+   - fausses : Entesos. Me'l puc escriure, per favor? · Entesos. Te'l pot escriure, per favor? · Entesos. Me'l pot menjar, per favor?
+
+6. **Clar, ací té. Perdone les molèsties.**
+   - consigne : Dis que ce n'est pas grave.
+   - modèle : No passa res. Gràcies per la seua ajuda.
+   - variantes : No passa res, gràcies. · No es preocupe. Gràcies per la seua ajuda.
+   - fausses : No passa ningú. Gràcies per la seua ajuda. · No passa res. Gràcies per a la seua ajuda. · Sí passa res. Gràcies per la seua ajuda.
+
+À retenir : El meu vol no ix = Mon vol ne part pas · l'equipatge = les bagages · Perdone les molèsties = Excusez le dérangement · No passa res = Ce n'est pas grave
+
+
+## Apprendre à cuisiner (B1) — `b1consejo`
+
+_Un ami veut apprendre à cuisiner et te demande des conseils._ · personnage : Ami
+
+1. **Hola, vull aprendre a cuinar. Què em recomanes?**
+   - consigne : Recommande-lui d'aller dans une école de cuisine.
+   - modèle : Et recomane que vages a una escola de cuina.
+   - variantes : Et recomane anar a una escola de cuina. · Et recomane que vages a una escola.
+   - fausses : Et recomane que vas a una escola de cuina. · Et recomane que anar a una escola de cuina. · Em recomanes que vages a una escola de cuina.
+
+2. **Una escola és massa cara.**
+   - consigne : Conseille-lui de regarder des recettes sur internet.
+   - modèle : T'aconselle que mires receptes en internet.
+   - variantes : T'aconselle que mires receptes en internet. · Mira receptes en internet.
+   - fausses : T'aconselle que mirar receptes en internet. · T'aconselle que miraràs receptes en internet. · M'aconselles que mires receptes en internet.
+
+3. **D'acord. I quin plat faig primer?**
+   - consigne : Dis que tu commencerais par quelque chose de facile.
+   - modèle : Jo començaria per alguna cosa fàcil.
+   - variantes : Començaria per alguna cosa senzilla. · Jo començaria per una cosa fàcil.
+   - fausses : Jo començaria per alguna cosa difícil. · Jo vaig començar per alguna cosa fàcil demà. · Jo començaria per a alguna cosa fàcil.
+
+4. **I si em ix malament?**
+   - consigne : Rassure-le : c'est normal que ce soit raté au début.
+   - modèle : Tranquil, és normal que isca malament al principi.
+   - variantes : És normal que isca malament al principi. · Tranquil, és normal.
+   - fausses : Tranquil, és normal que ix malament al principi. · Tranquil, és normal que eixirà malament al principi. · Nerviós, és normal que isca malament al principi.
+
+5. **Tens raó. Vols vindre a menjar?**
+   - consigne : Accepte et dis-lui de t'appeler quand ce sera prêt.
+   - modèle : Clar! Crida'm quan estiga preparat.
+   - variantes : Clar! Crida'm quan estiga. · Sí, crida'm quan estiga preparat.
+   - fausses : Clar! Crida'm quan està preparat. · Clar! Crida'm quan estarà preparat. · Clar! Crida'm quan estic preparat.
+
+6. **Perfecte. Moltes gràcies per la teua ajuda!**
+   - consigne : Dis « de rien » et souhaite-lui que ça se passe bien.
+   - modèle : De res. Que t'isca molt bé!
+   - variantes : De res! Que t'isca bé. · De res, que t'isca molt bé!
+   - fausses : De res. Que t'ix molt bé! · De res. Que t'isca molt malament! · Per favor. Que t'isca molt bé!
+
+À retenir : T'aconselle que… = Je te conseille de… · Et recomane que… = Je te recommande de… · És normal que isca malament = C'est normal que ce soit raté · quan estiga preparat = quand ce sera prêt
+
+
+## Une commande arrivée cassée (B2) — `b2reclamacion`
+
+_Tu appelles le service client : ta commande est arrivée cassée._ · personnage : Agent du service client
+
+1. **Bon dia, en què el puc ajudar?**
+   - consigne : Dis que ta commande est arrivée cassée.
+   - modèle : Bon dia. La meua comanda ha arribat trencada.
+   - variantes : La meua comanda ha arribat trencada. · Bon dia, la comanda va arribar trencada.
+   - fausses : Bon dia. La meua comanda ha arribat trencat. · Bon dia. La seua comanda ha arribat trencada. · Bon dia. La meua comanda arribarà trencada ahir.
+
+2. **Lamente molt el problema. Quan la va rebre?**
+   - consigne : Dis que tu l'as reçue hier et qu'elle était déjà cassée.
+   - modèle : La vaig rebre ahir i ja estava trencada.
+   - variantes : Ahir, i ja estava trencada. · La vaig rebre ahir, ja trencada.
+   - fausses : La vaig rebre demà i ja estava trencada. · La rebré ahir i ja estava trencada. · Ho vaig rebre ahir i ja estava trencada.
+
+3. **Vol que li n'enviem una altra?**
+   - consigne : Dis que tu préférerais qu'on te rembourse.
+   - modèle : Preferiria que em tornaren els diners.
+   - variantes : Preferisc que em tornen els diners. · Preferiria que em tornaren els diners, per favor.
+   - fausses : Preferiria que em tornar els diners. · Preferiria que em tornaran els diners. · Preferiria que li tornaren els diners.
+
+4. **Sí, clar. Tardarà uns deu dies.**
+   - consigne : Dis que tu lui serais reconnaissant(e) que ce soit plus rapide.
+   - modèle : Li agrairia que fóra més ràpid.
+   - variantes : Li agrairia que fóra un poc més ràpid. · Li agrairia que tardara menys.
+   - fausses : Li agrairia que és més ràpid. · Li agrairia que serà més ràpid. · Li agrairia que fóra més lent.
+
+5. **Ho intentaré.**
+   - consigne : Dis que tu comprends et demande s'il peut te l'envoyer par e-mail.
+   - modèle : Entesos. M'ho pot enviar per correu?
+   - variantes : M'ho pot enviar per correu? · D'acord. M'ho pot enviar per correu?
+   - fausses : Entesos. M'ho puc enviar per correu? · Entesos. T'ho pot enviar per correu? · Entesos. M'ho va poder enviar demà per correu?
+
+6. **Clar. Perdone les molèsties.**
+   - consigne : Remercie-le et dis que tu espères que tout ira bien.
+   - modèle : Gràcies. Espere que tot vaja bé.
+   - variantes : Gràcies, espere que tot vaja bé. · Moltes gràcies. Espere que tot vaja bé.
+   - fausses : Gràcies. Espere que tot va bé. · Gràcies. Espere que tot anirà bé. · Gràcies. Espere que tot vaja malament.
+
+À retenir : la comanda = la commande · Preferiria que em tornaren els diners = Je préférerais être remboursé(e) · Li agrairia que… = Je vous serais reconnaissant(e) de… · Espere que tot vaja bé = J'espère que tout ira bien
+
+
+## Réunion d'équipe (B2) — `b2reunion`
+
+_En réunion, ta directrice fait le point sur les chiffres du trimestre._ · personnage : Directrice
+
+1. **Bé, comencem. Com ha anat la facturació este trimestre?**
+   - consigne : Dis qu'il a augmenté de dix pour cent par rapport au précédent.
+   - modèle : Ha pujat un deu per cent respecte a l'anterior.
+   - variantes : Ha pujat un deu per cent. · Ha pujat un deu per cent respecte al trimestre anterior.
+   - fausses : Ha pujat un deu per cent respecte a l'any que ve. · Ha pujada un deu per cent respecte a l'anterior. · Pujarà un deu per cent respecte a l'anterior ahir.
+
+2. **Molt bé. I les despeses?**
+   - consigne : Dis que les dépenses ont aussi augmenté, mais moins.
+   - modèle : Les despeses també han pujat, encara que menys.
+   - variantes : També han pujat, encara que menys. · Les despeses han pujat també, però menys.
+   - fausses : Les despeses també han pujat, encara que més. · Les despeses també ha pujat, encara que menys. · Les despeses també pujaran ahir, encara que menys.
+
+3. **Llavors, hauríem d'invertir més en publicitat?**
+   - consigne : Dis que tu ne le ferais pas sans réduire d'abord les dépenses.
+   - modèle : Jo no ho faria sense reduir abans les despeses.
+   - variantes : Jo no ho faria sense reduir les despeses abans. · No ho faria sense reduir abans les despeses.
+   - fausses : Jo no ho fa sense reduir abans les despeses. · Jo no ho faria per reduir abans les despeses. · Tu no ho faria sense reduir abans les despeses.
+
+4. **Ja, però sense publicitat no hi ha creixement.**
+   - consigne : Dis qu'elle a raison, mais que tu aimerais nuancer.
+   - modèle : Tens raó, encara que m'agradaria matisar-ho.
+   - variantes : És veritat, encara que m'agradaria matisar-ho. · Tens raó, però m'agradaria matisar-ho.
+   - fausses : Tens raó, encara que t'agradaria matisar-ho. · Tens raó, encara que m'agradarà matisar-ho ahir. · Tens raó, encara que m'agradaria matisar-te.
+
+5. **Endavant, t'escolte.**
+   - consigne : Dis que si on investissait petit à petit, on perdrait moins d'argent.
+   - modèle : Si invertírem a poc a poc, perdríem menys diners.
+   - variantes : Si invertírem a poc a poc, perdríem menys diners. · Invertint a poc a poc, perdríem menys diners.
+   - fausses : Si invertim a poc a poc, perdríem menys diners. · Si invertiríem a poc a poc, perdríem menys diners. · Si invertírem a poc a poc, perdrem més diners.
+
+6. **Em pareix bé. Pots preparar una proposta?**
+   - consigne : Dis que oui, tu la lui envoies avant vendredi.
+   - modèle : Clar, te l'envie abans de divendres.
+   - variantes : Sí, te l'envie abans de divendres. · Clar, la tindràs abans de divendres.
+   - fausses : Clar, me l'envie abans de divendres. · Clar, te l'envies abans de divendres. · Clar, te la vaig enviar abans de divendres que ve.
+
+À retenir : la facturació = le chiffre d'affaires · les despeses = les dépenses · matisar = nuancer · Si invertírem… = Si on investissait…
+
+
+## Le bail se termine (B2) — `b2vivienda`
+
+_Ton propriétaire t'appelle : ton bail se termine et il veut augmenter le loyer._ · personnage : Propriétaire
+
+1. **Li telefone pel contracte d'arrendament. S'acaba al juny.**
+   - consigne : Dis que tu le sais et que tu aimerais rester dans l'appartement.
+   - modèle : Sí, ho sé. M'agradaria continuar en el pis.
+   - variantes : Ja ho sé. M'agradaria continuar en el pis. · Sí, ho sé. Vull continuar en el pis.
+   - fausses : Sí, ho sé. M'agradaria continuar en el pis l'any passat. · Sí, ho sé. T'agradaria continuar en el pis. · Sí, ho sé. M'agradaria acabar en el pis.
+
+2. **El problema és que pujaré el lloguer un quinze per cent.**
+   - consigne : Dis que ça te paraît trop.
+   - modèle : Un quinze per cent? Em pareix massa.
+   - variantes : Em pareix massa. · Un quinze per cent? És massa.
+   - fausses : Un quinze per cent? Em parec massa. · Un quinze per cent? Em pareix poc. · Un quinze per cent? Em va parèixer massa demà.
+
+3. **Els preus han pujat molt al barri.**
+   - consigne : Dis que tu comprends, mais que tu paies toujours à temps depuis cinq ans.
+   - modèle : Ho entenc, però porte cinc anys pagant sempre a temps.
+   - variantes : Ho entenc, però porte cinc anys pagant a temps. · Ja, però porte cinc anys pagant sempre a temps.
+   - fausses : Ho entenc, però porte cinc anys pagat sempre a temps. · Ho entenc, però porta cinc anys pagant sempre a temps. · Ho entenc, però portaré cinc anys pagant sempre a temps ahir.
+
+4. **És veritat, sempre ha pagat bé.**
+   - consigne : Demande si vous ne pourriez pas trouver un accord.
+   - modèle : No podríem arribar a un acord?
+   - variantes : Podríem arribar a un acord? · No podem arribar a un acord?
+   - fausses : No podem arribar a un acord ahir? · No podríem arribar a una acord? · No podríem arribar d'un acord?
+
+5. **Què proposa?**
+   - consigne : Dis que tu accepterais cinq pour cent si vous signiez pour trois ans.
+   - modèle : Acceptaria un cinc per cent si firmàrem per tres anys.
+   - variantes : Acceptaria un cinc per cent amb un contracte de tres anys. · Un cinc per cent, si firmàrem per tres anys.
+   - fausses : Acceptaria un cinc per cent si firmem per tres anys. · Acceptaria un cinc per cent si firmaríem per tres anys. · Vaig acceptar un cinc per cent si firmàrem per tres anys.
+
+6. **Deixe'm pensar-ho i el cride demà.**
+   - consigne : Accepte et dis que tu espères que vous trouverez un accord.
+   - modèle : D'acord. Espere que arribem a un acord.
+   - variantes : Val. Espere que arribem a un acord. · D'acord, espere que arribem a un acord.
+   - fausses : D'acord. Espere que vam arribar a un acord. · D'acord. Espere que arribem a una acord. · D'acord. Esperes que arribem a un acord.
+
+À retenir : el contracte d'arrendament = le bail · porte cinc anys pagant = je paie depuis cinq ans · arribar a un acord = trouver un accord · si firmàrem = si nous signions
+
+
+## Le nouveau traitement (B2) — `b2salud`
+
+_Tu retournes voir ta médecin : ton nouveau traitement a des effets secondaires._ · personnage : Médecin
+
+1. **Com va amb el nou tractament?**
+   - consigne : Dis que ça va mieux, mais que tu as un effet secondaire.
+   - modèle : Millor, però tinc un efecte secundari.
+   - variantes : Millor, encara que tinc un efecte secundari. · Estic millor, però tinc un efecte secundari.
+   - fausses : Millor, però tinc una efecte secundari. · Millor, però té un efecte secundari. · Millor, però tindré un efecte secundari ahir.
+
+2. **Quins símptomes té?**
+   - consigne : Dis que tu as mal à la tête et que tu dors moins bien.
+   - modèle : Em fa mal el cap i dorm pitjor.
+   - variantes : Em fa mal el cap i no dorm bé. · Tinc mal de cap i dorm pitjor.
+   - fausses : Em fan mal el cap i dorm pitjor. · Em fa mal el cap i dorm millor. · Li fa mal el cap i dorm pitjor.
+
+3. **Passa molt al principi.**
+   - consigne : Demande s'il ne vaudrait pas mieux changer de médicament.
+   - modèle : No seria millor canviar de medicament?
+   - variantes : No seria millor canviar el medicament? · I no seria millor canviar de medicament?
+   - fausses : No serà millor canviar de medicament ahir? · No seria millor canviar a medicament? · No series millor canviar de medicament?
+
+4. **Preferisc esperar un poc. Si continua igual, el canviarem.**
+   - consigne : Accepte et demande si tu peux te faire vacciner.
+   - modèle : D'acord. Em puc posar la vacuna?
+   - variantes : Val. Em puc posar la vacuna? · D'acord. Puc posar-me la vacuna?
+   - fausses : D'acord. Et puc posar la vacuna? · D'acord. Em puc posar el vacuna? · D'acord. Em vaig poder posar la vacuna demà?
+
+5. **Sí, no hi ha cap problema.**
+   - consigne : Demande si tu dois revenir dans un mois.
+   - modèle : Perfecte. He de tornar d'ací a un mes?
+   - variantes : He de tornar d'ací a un mes? · D'acord. Torne d'ací a un mes?
+   - fausses : Perfecte. Has de tornar d'ací a un mes? · Perfecte. He de tornar fa un mes? · Perfecte. He de tornar d'ací a una mes?
+
+6. **Sí, i telefone'm si es troba pitjor.**
+   - consigne : Dis que tu le feras et remercie-la pour tout.
+   - modèle : Ho faré. Moltes gràcies per tot.
+   - variantes : Ho faré, gràcies per tot. · D'acord. Moltes gràcies per tot.
+   - fausses : Ho vaig fer. Moltes gràcies per tot. · Ho faré. De res per tot. · Ho faràs. Moltes gràcies per tot.
+
+À retenir : el tractament = le traitement · un efecte secundari = un effet secondaire · No seria millor…? = Ne vaudrait-il pas mieux… ? · la vacuna = le vaccin
+
+
+## Une rue piétonne (B2) — `b2ciudad`
+
+_Ton voisin n'est pas content : la rue va être fermée aux voitures._ · personnage : Voisin
+
+1. **Has vist que en el carrer ja no hi haurà cotxes?**
+   - consigne : Dis que oui, ça va devenir une zone piétonne.
+   - modèle : Sí, serà una zona de vianants.
+   - variantes : Sí, la faran de vianants. · Sí, serà zona de vianants.
+   - fausses : Sí, estarà una zona de vianants. · Sí, era una zona de vianants demà. · Sí, serà un zona de vianants.
+
+2. **A mi no m'agrada. Hi haurà més embussos.**
+   - consigne : Dis que c'est possible, mais qu'il y aura moins de pollution.
+   - modèle : Pot ser, però hi haurà menys contaminació.
+   - variantes : És possible, però hi haurà menys contaminació. · Pot ser, però l'aire estarà més net.
+   - fausses : Pot ser, però hi haurà més contaminació. · Pot ser, però hi va haver menys contaminació demà. · Pot ser, però hi haurà menys contaminat.
+
+3. **Ja, però les botigues perdran clients.**
+   - consigne : Dis que tu ne crois pas que ce soit le cas, au contraire.
+   - modèle : No crec que siga així, al contrari.
+   - variantes : No crec que siga així. · Jo no crec que siga així, al contrari.
+   - fausses : No crec que és així, al contrari. · No crec que era així ahir, al contrari. · Crec que siga així, al contrari.
+
+4. **Tu creus? I com anirem al centre?**
+   - consigne : Dis : à vélo ou en transports en commun, c'est plus durable.
+   - modèle : En bici o en transport públic, que és més sostenible.
+   - variantes : En bici o en transport públic. · En transport públic o en bici, és més sostenible.
+   - fausses : En bici o en transport públic, que és menys sostenible. · En bici o en transport públic, que està més sostenible. · En bici o en transport públic, que era més sostenible demà.
+
+5. **Si hi haguera un carril bici, potser el faria servir.**
+   - consigne : Dis qu'ils vont en faire une l'année prochaine.
+   - modèle : En faran un l'any que ve.
+   - variantes : Faran un carril bici l'any que ve. · L'any que ve en faran un.
+   - fausses : En van fer un l'any que ve. · En faran un l'any passat. · En faràs un l'any que ve.
+
+6. **Bé, ja ho veurem. Tant de bo tingues raó.**
+   - consigne : Dis qu'il verra qu'au final ça lui plaira.
+   - modèle : Ja veuràs com al final t'agrada.
+   - variantes : Ja veuràs com t'agrada. · Ja veuràs, al final t'agradarà.
+   - fausses : Ja veuràs com al principi t'agrada. · Ja veuràs com al final m'agrada. · Ja veuràs com al final t'agraden.
+
+À retenir : una zona de vianants = une zone piétonne · No crec que siga així = Je ne crois pas que ce soit le cas · sostenible = durable · el carril bici = la piste cyclable
+
+
+## Annoncer sa démission (B2) — `b2dimision`
+
+_Tu demandes à parler à ta cheffe : tu as décidé de démissionner._ · personnage : Cheffe
+
+1. **Hola, volies parlar amb mi?**
+   - consigne : Dis que tu regrettes de le lui dire, mais que tu vas présenter ta démission.
+   - modèle : Sí. Lamente dir-t'ho, però presentaré la meua dimissió.
+   - variantes : Sí. Ho sent, però presentaré la meua dimissió. · Lamente dir-t'ho, però dimitiré.
+   - fausses : Sí. Lamente dir-t'ho, però vaig presentar la meua dimissió demà. · Sí. M'alegre de dir-t'ho, però presentaré la meua dimissió. · Sí. Lamente dir-t'ho, però presentaré la teua dimissió.
+
+2. **Vaja! No m'ho esperava. Per què?**
+   - consigne : Dis que tu as trouvé un meilleur travail.
+   - modèle : He trobat un treball millor.
+   - variantes : He trobat un altre treball millor. · Perquè he trobat un treball millor.
+   - fausses : He trobat un treball pitjor. · Has trobat un treball millor. · He trobada un treball millor.
+
+3. **I si et pagàrem més?**
+   - consigne : Remercie-la, mais dis que tu as déjà pris ta décision.
+   - modèle : Gràcies, però ja he pres la decisió.
+   - variantes : T'ho agraïsc, però ja he pres la decisió. · Gràcies, però ja ho he decidit.
+   - fausses : Gràcies, però ja he presa la decisió. · Gràcies, però ja prendré la decisió ahir. · Gràcies, però ja has pres la decisió.
+
+4. **Ho entenc. Quan te n'aniries?**
+   - consigne : Dis : dans un mois, pour qu'elle ait le temps de chercher quelqu'un.
+   - modèle : D'ací a un mes, perquè tingues temps de buscar algú.
+   - variantes : En un mes, perquè tingues temps de buscar algú. · D'ací a un mes, així tens temps de buscar algú.
+   - fausses : D'ací a un mes, perquè tens temps de buscar algú. · D'ací a un mes, perquè tindràs temps de buscar algú. · Fa un mes, perquè tingues temps de buscar algú.
+
+5. **Gràcies. Podries deixar-ho tot preparat?**
+   - consigne : Dis que bien sûr, tu feras tout ton possible.
+   - modèle : Clar, faré tot el possible.
+   - variantes : Sí, faré tot el possible. · Clar, ho deixaré tot preparat.
+   - fausses : Clar, vaig fer tot el possible demà. · Clar, faràs tot el possible. · Clar, faré tot l'impossible.
+
+6. **Gràcies. Et trobarem a faltar.**
+   - consigne : Dis que toi aussi, et que tu as beaucoup aimé travailler avec elle.
+   - modèle : Jo també. M'ha agradat molt treballar amb tu.
+   - variantes : I jo a vosaltres. M'ha agradat molt treballar amb tu. · Jo també. M'ha agradat molt.
+   - fausses : Jo també. M'ha agradat molt treballar amb mi. · Jo també. M'agradarà molt treballar amb tu ahir. · Jo també. M'ha agradat molt treballant amb tu.
+
+À retenir : presentar la dimissió = donner sa démission · perquè tingues temps = pour que tu aies le temps · trobar a faltar = regretter (une personne absente) · M'ha agradat molt = J'ai beaucoup aimé
+
+
+## Un deuil au travail (C1) — `c1pesame`
+
+_Le père d'une collègue est décédé. Tu vas la voir à son retour._ · personnage : Collègue
+
+1. **Gràcies per vindre. Ha sigut una setmana molt dura.**
+   - consigne : Présente-lui tes sincères condoléances.
+   - modèle : Ho sent moltíssim. El meu més sentit condol.
+   - variantes : El meu més sentit condol. · Ho sent molt. El meu més sentit condol.
+   - fausses : M'alegre molt. El meu més sentit condol. · Ho sent moltíssim. El teu més sentit condol. · Que bé! El meu més sentit condol.
+
+2. **No vaig poder avisar quasi ningú, tot va ser molt ràpid.**
+   - consigne : Dis que si tu l'avais su, tu l'aurais appelée plus tôt.
+   - modèle : Si ho haguera sabut, t'hauria telefonat abans.
+   - variantes : Si ho haguera sabut, t'hauria telefonat. · Si ho haguera sabut, t'hauria cridat abans.
+   - fausses : Si ho havia sabut, t'hauria telefonat abans. · Si ho hauria sabut, t'hauria telefonat abans. · Si ho haguera sabut, m'hauria telefonat abans.
+
+3. **Gràcies. No sé quan tornaré a la faena.**
+   - consigne : Rassure-la et dis-lui de prendre le temps qu'il lui faudra.
+   - modèle : No et preocupes. Pren-te el temps que necessites.
+   - variantes : Pren-te el temps que necessites. · Tranquil·la, pren-te el temps que necessites.
+   - fausses : No et preocupes. Pren-te el temps que vas necessitar. · No et preocupes. Pren-te el temps que necessitares. · Preocupa't. Pren-te el temps que necessites.
+
+4. **Em preocupen els meus clients, la veritat.**
+   - consigne : Propose de t'occuper de ses clients cette semaine.
+   - modèle : Si vols, m'encarregue jo d'ells esta setmana.
+   - variantes : Jo m'encarregue d'ells esta setmana. · Si vols, m'encarregue dels teus clients esta setmana.
+   - fausses : Si vols, m'encarregue jo d'elles esta setmana. · Si vols, t'encarregues jo d'ells esta setmana. · Si vols, em vaig encarregar jo d'ells la setmana que ve.
+
+5. **No sé com agrair-t'ho.**
+   - consigne : Dis qu'elle n'a rien à te remercier, que c'est la moindre des choses.
+   - modèle : No has de donar-me les gràcies, és el mínim.
+   - variantes : No has de donar-me les gràcies. · No cal que em dones les gràcies, és el mínim.
+   - fausses : No has de donar-te les gràcies, és el mínim. · No he de donar-me les gràcies, és el mínim. · No has de donar-me les gràcies, és el màxim.
+
+6. **Ets un sol. Gràcies de veritat.**
+   - consigne : Dis que tu es là pour tout ce dont elle aura besoin.
+   - modèle : Ací estic per al que necessites.
+   - variantes : Per al que necessites, ací estic. · Ja ho saps, ací estic per al que necessites.
+   - fausses : Ací estàs per al que necessites. · Ací estic per al que vas necessitar. · Ací estic per al que necessitares.
+
+À retenir : El meu més sentit condol = Toutes mes condoléances · Si ho haguera sabut = Si je l'avais su · Pren-te el temps que necessites = Prends le temps qu'il te faudra · per al que necessites = pour tout ce dont tu auras besoin
+
+
+## La négociation (C1) — `c1negociacion`
+
+_Tu représentes le personnel face au directeur des ressources humaines, qui annonce des licenciements._ · personnage : Directeur des ressources humaines
+
+1. **L'empresa presentarà un expedient de regulació d'ocupació.**
+   - consigne : Dis que le comité n'accepte pas les licenciements dans ces conditions.
+   - modèle : El comité no accepta els acomiadaments en estes condicions.
+   - variantes : El comité no accepta acomiadaments en estes condicions. · No acceptem els acomiadaments en estes condicions.
+   - fausses : El comité accepta els acomiadaments en estes condicions. · El comité no accepta els acomiadaments en estes condició. · El comité no acceptarà els acomiadaments ahir en estes condicions.
+
+2. **Els números no són bons.**
+   - consigne : Objecte que l'entreprise a pourtant fait des bénéfices l'an dernier.
+   - modèle : No obstant això, l'empresa va tindre beneficis l'any passat.
+   - variantes : No obstant això, l'any passat hi va haver beneficis. · Tot i això, l'empresa va tindre beneficis l'any passat.
+   - fausses : Per tant, l'empresa va tindre beneficis l'any passat. · No obstant això, l'empresa va tindre beneficis l'any que ve. · No obstant això, l'empresa té beneficis l'any passat.
+
+3. **És cert, però enguany va malament.**
+   - consigne : Demande qu'on réduise d'abord la masse salariale de la direction.
+   - modèle : Llavors demanem que primer es reduïsca la massa salarial de la direcció.
+   - variantes : Demanem que primer es reduïsca la massa salarial de la direcció. · Llavors, que es reduïsca primer la massa salarial de la direcció.
+   - fausses : Llavors demanem que primer es redueix la massa salarial de la direcció. · Llavors demanem que primer es reduirà la massa salarial de la direcció. · Llavors demanem que primer es reduïsca la massa salarial del comité.
+
+4. **Això no depén de mi.**
+   - consigne : Préviens que sinon, le comité fera grève.
+   - modèle : En cas contrari, el comité farà vaga.
+   - variantes : Si no, el comité farà vaga. · En cas contrari, farem vaga.
+   - fausses : En cas contrari, el comité va fer vaga demà. · En cas contrari, l'empresa farà vaga. · Per tant, el comité farà vaga.
+
+5. **No cal arribar a això. Què proposen?**
+   - consigne : Dis que vous négocieriez à condition que le préavis soit prolongé.
+   - modèle : Negociaríem sempre que es prorrogara el preavís.
+   - variantes : Negociaríem si es prorrogara el preavís. · Estaríem disposats a negociar sempre que es prorrogara el preavís.
+   - fausses : Negociaríem sempre que es prorrogava el preavís. · Negociaríem sempre que es prorrogarà el preavís. · Vam negociar ahir sempre que es prorrogara el preavís.
+
+6. **Ho estudiarem.**
+   - consigne : Dis que vous attendez une proposition écrite avant vendredi.
+   - modèle : Esperem una proposta per escrit abans de divendres.
+   - variantes : Esperem una proposta escrita abans de divendres. · Volem una proposta per escrit abans de divendres.
+   - fausses : Esperem una proposta per escrita abans de divendres. · Esperem una proposta per a escrit abans de divendres. · Esperàvem una proposta per escrit abans de divendres passat.
+
+À retenir : un expedient de regulació d'ocupació = un plan social · la massa salarial = la masse salariale · En cas contrari = Sinon · prorrogar el preavís = prolonger le préavis
+
+
+## Réunion de quartier (C1) — `c1barrio`
+
+_À la réunion de quartier, une conseillère municipale répond aux habitants sur le logement._ · personnage : Conseillère municipale
+
+1. **Bona vesprada a tots. Qui vol parlar primer?**
+   - consigne : Dis que la flambée des loyers t'inquiète.
+   - modèle : Jo. Em preocupa l'escalada dels lloguers.
+   - variantes : Em preocupa l'escalada dels lloguers. · Jo. Em preocupa molt l'escalada dels lloguers.
+   - fausses : Jo. Em preocupe l'escalada dels lloguers. · Jo. Em preocupava l'escalada dels lloguers demà. · Jo. Em preocupa l'escalada de les lloguers.
+
+2. **És un problema que coneixem bé.**
+   - consigne : Dis que beaucoup de voisins ont dû quitter le quartier.
+   - modèle : Molts veïns han hagut d'anar-se'n del barri.
+   - variantes : Molts veïns se n'han hagut d'anar del barri. · Molts veïns han hagut de deixar el barri.
+   - fausses : Molts veïns han haguts d'anar-se'n del barri. · Molts veïns hauran d'anar-se'n del barri ahir. · Pocs veïns han hagut d'anar-se'n del barri.
+
+3. **Ho sabem, i ho lamentem.**
+   - consigne : Demande ce que la mairie compte faire contre la spéculation immobilière.
+   - modèle : Què pensa fer l'ajuntament contra l'especulació immobiliària?
+   - variantes : Què farà l'ajuntament contra l'especulació immobiliària? · Què pensen fer contra l'especulació immobiliària?
+   - fausses : Què pensen fer l'ajuntament contra l'especulació immobiliària? · Què va pensar fer l'ajuntament demà contra l'especulació immobiliària? · Què pensa fer l'ajuntament per a l'especulació immobiliària?
+
+4. **Aprovarem una nova ordenança municipal.**
+   - consigne : Objecte qu'une ordonnance ne servira à rien si elle n'est pas appliquée.
+   - modèle : Una ordenança no servirà de res si ningú la respecta.
+   - variantes : L'ordenança no servirà de res si ningú la respecta. · Una ordenança no serveix de res si ningú la respecta.
+   - fausses : Una ordenança no servirà de res si ningú la respectarà. · Una ordenança no servirà de res si ningú la respectara. · Un ordenança no servirà de res si ningú la respecta.
+
+5. **I vosté què proposa?**
+   - consigne : Dis qu'il faudrait limiter les licences d'appartements touristiques.
+   - modèle : Caldria limitar les llicències dels pisos de vacances.
+   - variantes : Caldria limitar els pisos de vacances. · Jo limitaria les llicències dels pisos de vacances.
+   - fausses : Calia limitar les llicències dels pisos de vacances. · Caldria augmentar les llicències dels pisos de vacances. · Caldria limitar els llicències dels pisos de vacances.
+
+6. **Ho estudiarem amb molt d'interés.**
+   - consigne : Remercie-la, mais dis que vous attendez des mesures concrètes.
+   - modèle : Gràcies, però esperem mesures concretes.
+   - variantes : Li ho agraïsc, però esperem mesures concretes. · Gràcies, encara que esperem mesures concretes.
+   - fausses : Gràcies, però esperàvem mesures concretes demà. · De res, però esperem mesures concretes. · Gràcies, però esperem mesura concretes.
+
+À retenir : l'escalada dels lloguers = la flambée des loyers · l'especulació immobiliària = la spéculation immobilière · l'ordenança municipal = l'arrêté municipal · mesures concretes = des mesures concrètes
+
+
+## Débat à la radio (C1) — `c1debate`
+
+_Tu participes à un débat à la radio sur les pistes cyclables en ville._ · personnage : Animateur
+
+1. **Segons alguns, la ciutat no necessita més carrils bici. Què n'opina?**
+   - consigne : Dis que tu ne partages pas cet argument.
+   - modèle : No compartisc eixe argument.
+   - variantes : No compartisc gens eixe argument. · Jo no compartisc eixe argument.
+   - fausses : No compartisc eixa argument. · Compartisc eixe argument. · No vaig compartir eixe argument demà.
+
+2. **Per què?**
+   - consigne : Dis que les données disent justement le contraire.
+   - modèle : Perquè les dades diuen justament el contrari.
+   - variantes : Les dades diuen justament el contrari. · Perquè les dades diuen el contrari.
+   - fausses : Perquè les dades diuen justament el mateix. · Perquè les dades diu justament el contrari. · Per a què les dades diuen justament el contrari.
+
+3. **Però hi ha massa cotxes, no?**
+   - consigne : Dis que tu ne nies pas que ce soit un problème, mais qu'il y a des solutions.
+   - modèle : No negue que siga un problema, però hi ha solucions.
+   - variantes : No negue que siga un problema, encara que hi ha solucions. · No ho negue, però hi ha solucions.
+   - fausses : No negue que seria un problema, però hi ha solucions. · No negue que va ser un problema demà, però hi ha solucions. · No negue que siga un problema, i no hi ha solucions.
+
+4. **Hi ha un estudi que diu que els carrils bici no s'utilitzen.**
+   - consigne : Dis qu'à ton avis, cette étude n'est pas impartiale.
+   - modèle : Al meu parer, eixe estudi no és imparcial.
+   - variantes : Eixe estudi no és imparcial. · Segons la meua opinió, eixe estudi no és imparcial.
+   - fausses : Al meu parer, eixe estudi no està imparcial. · Al meu parer, eixa estudi no és imparcial. · Al meu parer, eixe estudi no era imparcial demà.
+
+5. **Ens queda un minut. Alguna cosa més?**
+   - consigne : Dis qu'il faudrait écouter les habitants avant de décider.
+   - modèle : Sí. Caldria escoltar els veïns abans de decidir.
+   - variantes : Caldria escoltar els veïns abans de decidir. · Sí, caldria escoltar primer els veïns.
+   - fausses : Sí. Calia escoltar els veïns abans de decidir. · Sí. Caldria escoltar els veïns després de decidir. · Sí. Caldria escoltar els veïns abans de decideix.
+
+6. **Per acabar, què ens diu?**
+   - consigne : Conclus : en définitive, il faut arriver à un consensus.
+   - modèle : En definitiva, cal arribar a un consens.
+   - variantes : En definitiva, necessitem un consens. · En definitiva, hem d'arribar a un consens.
+   - fausses : En definitiva, cal arribar a una consens. · En definitiva, cal arribar d'un consens. · En definitiva, calia arribar a un consens demà.
+
+À retenir : No compartisc eixe argument = Je ne partage pas cet argument · No negue que siga… = Je ne nie pas que ce soit… · imparcial = impartial · En definitiva = En définitive
+
+
+## Une clause abusive (C1) — `c1clausula`
+
+_Tu consultes une avocate au sujet d'une clause de ton contrat de travail._ · personnage : Avocate
+
+1. **Bon dia. Explique'm, quin és el problema?**
+   - consigne : Dis que ton contrat contient une clause qui te semble abusive.
+   - modèle : El meu contracte té una clàusula que em pareix abusiva.
+   - variantes : Hi ha una clàusula en el meu contracte que em pareix abusiva. · El meu contracte té una clàusula abusiva.
+   - fausses : El meu contracte té una clàusula que em parec abusiva. · El meu contracte té un clàusula que em pareix abusiva. · El meu contracte tenia una clàusula que em pareixerà abusiva.
+
+2. **Què diu eixa clàusula?**
+   - consigne : Dis : qu'on peut te licencier sans préavis.
+   - modèle : Que poden acomiadar-me sense preavís.
+   - variantes : Que em poden acomiadar sense preavís. · Diu que poden acomiadar-me sense preavís.
+   - fausses : Que poden acomiadar-me amb preavís. · Que poden acomiadar-se sense preavís. · Que podran acomiadar-me sense preavís ahir.
+
+3. **Això, efectivament, podria ser abusiu.**
+   - consigne : Demande ce que tu pourrais faire à ce sujet.
+   - modèle : Què podria fer al respecte?
+   - variantes : I què podria fer al respecte? · Què puc fer al respecte?
+   - fausses : Què podries fer al respecte? · Què vaig poder fer al respecte demà? · Què podria fer a respecte?
+
+4. **Primer, el va firmar sense llegir-lo?**
+   - consigne : Dis que oui, tu l'as signé sans le lire attentivement.
+   - modèle : Sí, el vaig firmar sense llegir-lo amb deteniment.
+   - variantes : Sí, el vaig firmar sense llegir-lo bé. · Sí, el vaig firmar sense llegir-lo amb deteniment, per desgràcia.
+   - fausses : Sí, la vaig firmar sense llegir-lo amb deteniment. · Sí, el firmaré sense llegir-lo ahir amb deteniment. · Sí, el vaig firmar sense llegir-lo amb deteniments.
+
+5. **Podem presentar una reclamació.**
+   - consigne : Demande combien de temps prendrait la démarche.
+   - modèle : Quant de temps tardaria tramitar-la?
+   - variantes : Quant de temps tardaria? · Quant de temps es tardaria a tramitar-la?
+   - fausses : Quant de temps tardarà tramitar-la ahir? · Quanta temps tardaria tramitar-la? · Quant de temps tardaria tramitar-lo?
+
+6. **Uns tres mesos, més o menys.**
+   - consigne : Dis que tu vas bien y réfléchir et que tu la rappelles.
+   - modèle : Ho pensaré bé i la telefone.
+   - variantes : Ho pensaré bé i la tornaré a telefonar. · Ho pense bé i la telefone.
+   - fausses : Ho vaig pensar bé i la telefone demà. · Ho pensaré bé i em telefone. · Ho pensaré bé i et telefone.
+
+À retenir : una clàusula abusiva = une clause abusive · sense preavís = sans préavis · al respecte = à ce sujet · tramitar = faire les démarches
+
+
+## Visite d'une cave (C1) — `c1bodega`
+
+_Tu visites une cave à vin avec un guide._ · personnage : Guide
+
+1. **Benvinguts al celler. Fa cent anys que treballem ací.**
+   - consigne : Demande quand ont lieu les vendanges.
+   - modèle : Que interessant! Quan és la verema?
+   - variantes : Quan és la verema? · Que interessant! Quan fan la verema?
+   - fausses : Que interessant! Quan està la verema? · Que interessant! On és la verema? · Que interessant! Quan va ser la verema demà?
+
+2. **Al setembre, a final de l'estiu.**
+   - consigne : Demande quelle variété de raisin ils utilisent.
+   - modèle : I quina varietat de raïm utilitzen?
+   - variantes : Quina varietat de raïm utilitzen? · I amb quina varietat de raïm treballen?
+   - fausses : I quina varietat de raïm utilitze? · I quina varietat de raïm utilitzen ahir? · I quina varietat d'aigua utilitzen?
+
+3. **Sobretot una varietat de la zona.**
+   - consigne : Demande si le vin a une appellation d'origine.
+   - modèle : I té denominació d'origen?
+   - variantes : Té denominació d'origen? · I el vi té denominació d'origen?
+   - fausses : I és denominació d'origen? · I té denominació de l'origen? · I tenia denominació d'origen demà?
+
+4. **Sí, des de fa trenta anys.**
+   - consigne : Dis que tu aurais aimé venir pendant les vendanges.
+   - modèle : M'hauria agradat vindre durant la verema.
+   - variantes : M'hauria agradat vindre per la verema. · M'hauria encantat vindre durant la verema.
+   - fausses : M'havia agradat vindre durant la verema. · T'hauria agradat vindre durant la verema. · M'agradarà vindre durant la verema ahir.
+
+5. **Torne l'any que ve.**
+   - consigne : Dis que tu le feras et demande s'ils utilisent des additifs.
+   - modèle : Ho faré. Utilitzen additius?
+   - variantes : Utilitzen additius? · Ho faré. El vi porta additius?
+   - fausses : Ho vaig fer. Utilitzen additius? · Ho faré. Utilitzen additius en l'aigua? · Ho faré. Van utilitzar additius demà?
+
+6. **Molt pocs, quasi cap.**
+   - consigne : Dis qu'alors tu vas acheter deux bouteilles.
+   - modèle : Llavors compraré dues botelles.
+   - variantes : M'enduré dues botelles. · Llavors en compre dues botelles.
+   - fausses : Llavors vaig comprar dues botelles demà. · Llavors compraràs dues botelles. · Llavors compraré dues botella.
+
+À retenir : la verema = les vendanges · la varietat de raïm = le cépage · la denominació d'origen = l'appellation d'origine · M'hauria agradat = J'aurais aimé
 

@@ -1,0 +1,289 @@
+# Lot D — situations B1. Même format que sit_suite_a1.txt (== id | niveau | titre | contexte | personnage ; # consignes ; -- langue ; réplique ‖ modèle ‖ variantes ;; … ‖ 3 fausses ;; … ‖ mots-clés ; … [‖ consigne propre à la langue] ; V: mot = traduction ;; …).
+
+== b1calentador | 3 | Le chauffe-eau en panne | Tu appelles le propriétaire de ton appartement : le chauffe-eau ne marche plus. | Propriétaire
+# Dis que le chauffe-eau ne marche pas depuis hier.
+# Explique qu'il n'y a pas d'eau chaude.
+# Demande s'il peut venir cette semaine.
+# Dis que jeudi tu travailles et demande si vendredi serait possible.
+# Accepte et remercie-le pour son aide.
+# Dis que tu le feras et souhaite-lui une bonne journée.
+-- es
+¿Dígame? ‖ Buenos días. El calentador no va desde ayer. ‖ El calentador no va desde ayer. ;; Hola, el calentador no funciona desde ayer. ‖ Buenos días. El calentador no va desde mañana. ;; Buenos días. El calentador no iba mañana. ;; Buenos días. El calentador no va hasta ayer. ‖ calentador
+Vaya, lo siento. ¿Qué le pasa? ‖ No hay agua caliente. ‖ No tengo agua caliente. ;; No sale agua caliente. ‖ No hay agua fría. ;; No es agua caliente. ;; No hay agua caliente en la playa. ‖ agua ; caliente
+Será una avería. Voy a llamar a un técnico. ‖ ¿Puede venir esta semana? ‖ ¿Puede venir el técnico esta semana? ;; ¿Podría venir esta semana? ‖ ¿Puede venir el año pasado? ;; ¿Puedo venir esta semana? ;; ¿Puede venir esta semana ayer? ‖ venir ; semana
+El técnico puede ir el jueves por la tarde. ‖ El jueves trabajo. ¿Podría ser el viernes? ‖ El jueves trabajo. ¿Puede ser el viernes? ;; Trabajo el jueves. ¿Podría ser el viernes? ‖ El jueves trabajo. ¿Podría ser el viernes pasado? ;; El jueves trabajé. ¿Podría ser ayer? ;; El jueves trabajo. ¿Podría ser el jueves? ‖ viernes
+Sí, el viernes a las diez. ¿Le va bien? ‖ Perfecto. Le agradezco mucho su ayuda. ‖ Perfecto, le agradezco su ayuda. ;; Muy bien. Le agradezco mucho su ayuda. ‖ Perfecto. Le agradezco mucho su avería. ;; Perfecto. Me agradezco mucho. ;; Lo siento. Le agradezco mucho su avería. ‖ agradezco
+De nada. Si hay otro problema, llámeme. ‖ De acuerdo. ¡Que tenga un buen día! ‖ Vale. ¡Que tenga un buen día! ;; De acuerdo, gracias. ¡Que tenga un buen día! ‖ De acuerdo. ¡Que tiene un buen día! ;; De acuerdo. ¡Que tengo un buen día! ;; De acuerdo. ¡Que tenga un mal día! ‖ tenga ; día
+V: el calentador = le chauffe-eau ;; una avería = une panne ;; ¿Podría ser…? = Ça pourrait être… ? ;; ¡Que tenga un buen día! = Bonne journée !
+-- va
+Diga? ‖ Bon dia. El calentador no va des d'ahir. ‖ El calentador no va des d'ahir. ;; Hola, el calentador no va des d'ahir. ‖ Bon dia. El calentador no va des de demà. ;; Bon dia. El calentador no anava demà. ;; Bon dia. El calentador no va fins ahir. ‖ calentador
+Vaja, ho sent. Què li passa? ‖ No hi ha aigua calenta. ‖ No tinc aigua calenta. ;; No ix aigua calenta. ‖ No hi ha aigua freda. ;; No és aigua calenta. ;; No hi ha aigua calenta a la platja. ‖ aigua ; calenta
+Serà una avaria. Cridaré un tècnic. ‖ Pot vindre esta setmana? ‖ Podria vindre esta setmana? ;; Pot vindre el tècnic esta setmana? ‖ Pot vindre l'any passat? ;; Puc vindre esta setmana? ;; Pot vindre esta setmana ahir? ‖ vindre ; setmana
+El tècnic pot anar dijous per la vesprada. ‖ Dijous treballe. Podria ser divendres? ‖ Treballe dijous. Podria ser divendres? ;; Dijous treballe. Pot ser divendres? ‖ Dijous treballe. Podria ser divendres passat? ;; Dijous vaig treballar. Podria ser ahir? ;; Dijous treballe. Podria ser dijous? ‖ divendres
+Sí, divendres a les deu. Li va bé? ‖ Perfecte. Moltes gràcies per la seua ajuda. ‖ Perfecte, gràcies per la seua ajuda. ;; Molt bé. Moltes gràcies per la seua ajuda. ‖ Perfecte. Moltes gràcies per la seua avaria. ;; Perfecte. Moltes gràcies per la meua ajuda. ;; Perfecte. De res per la seua ajuda. ‖ gràcies ; ajuda
+De res. Si hi ha un altre problema, cride'm. ‖ D'acord. Que tinga un bon dia! ‖ Val. Que tinga un bon dia! ;; D'acord, gràcies. Que tinga un bon dia! ‖ D'acord. Que té un bon dia! ;; D'acord. Que tinc un bon dia! ;; D'acord. Que tinga un mal dia! ‖ tinga ; dia
+V: el calentador = le chauffe-eau ;; una avaria = une panne ;; Podria ser…? = Ça pourrait être… ? ;; Que tinga un bon dia! = Bonne journée !
+-- ca
+Digui? ‖ Bon dia. L'escalfador no va des d'ahir. ‖ L'escalfador no va des d'ahir. ;; Hola, l'escalfador no va des d'ahir. ‖ Bon dia. L'escalfador no va des de demà. ;; Bon dia. L'escalfador no anava demà. ;; Bon dia. L'escalfador no va fins ahir. ‖ escalfador
+Vaja, ho sento. Què li passa? ‖ No hi ha aigua calenta. ‖ No tinc aigua calenta. ;; No surt aigua calenta. ‖ No hi ha aigua freda. ;; No és aigua calenta. ;; No hi ha aigua calenta a la platja. ‖ aigua ; calenta
+Deu ser una avaria. Trucaré a un tècnic. ‖ Pot venir aquesta setmana? ‖ Podria venir aquesta setmana? ;; Pot venir el tècnic aquesta setmana? ‖ Pot venir l'any passat? ;; Puc venir aquesta setmana? ;; Pot venir aquesta setmana ahir? ‖ venir ; setmana
+El tècnic hi pot anar dijous a la tarda. ‖ Dijous treballo. Podria ser divendres? ‖ Treballo dijous. Podria ser divendres? ;; Dijous treballo. Pot ser divendres? ‖ Dijous treballo. Podria ser divendres passat? ;; Dijous vaig treballar. Podria ser ahir? ;; Dijous treballo. Podria ser dijous? ‖ divendres
+Sí, divendres a les deu. Li va bé? ‖ Perfecte. Moltes gràcies per la seva ajuda. ‖ Perfecte, gràcies per la seva ajuda. ;; Molt bé. Moltes gràcies per la seva ajuda. ‖ Perfecte. Moltes gràcies per la seva avaria. ;; Perfecte. Moltes gràcies per la meva ajuda. ;; Perfecte. De res per la seva ajuda. ‖ gràcies ; ajuda
+De res. Si hi ha cap altre problema, truqui'm. ‖ D'acord. Que tingui un bon dia! ‖ Molt bé. Que tingui un bon dia! ;; D'acord, gràcies. Que tingui un bon dia! ‖ D'acord. Que té un bon dia! ;; D'acord. Que tinc un bon dia! ;; D'acord. Que tingui un mal dia! ‖ tingui ; dia
+V: l'escalfador = le chauffe-eau ;; una avaria = une panne ;; Podria ser…? = Ça pourrait être… ? ;; Que tingui un bon dia! = Bonne journée !
+-- gl
+Si, dígame? ‖ Bos días. O quentador non vai desde onte. ‖ O quentador non vai desde onte. ;; Ola, o quentador non vai desde onte. ‖ Bos días. O quentador non vai desde mañá. ;; Bos días. O quentador non ía mañá. ;; Bos días. O quentador non vai ata onte. ‖ quentador
+Vaia, síntoo. Que lle pasa? ‖ Non hai auga quente. ‖ Non teño auga quente. ;; Non sae auga quente. ‖ Si hai auga quente. ;; Non é auga quente. ;; Non hai auga quente na praia. ‖ auga ; quente
+Será unha avaría. Vou chamar un técnico. ‖ Pode vir esta semana? ‖ Podería vir esta semana? ;; Pode vir o técnico esta semana? ‖ Pode vir o ano pasado? ;; Podo vir esta semana? ;; Pode vir esta semana onte? ‖ vir ; semana
+O técnico pode ir o xoves pola tarde. ‖ O xoves traballo. Podería ser o venres? ‖ Traballo o xoves. Podería ser o venres? ;; O xoves traballo. Pode ser o venres? ‖ O xoves traballo. Podería ser o venres pasado? ;; O xoves traballei. Podería ser onte? ;; O xoves traballo. Podería ser o xoves? ‖ venres
+Si, o venres ás dez. Vaille ben? ‖ Perfecto. Moitas grazas pola súa axuda. ‖ Perfecto, grazas pola súa axuda. ;; Moi ben. Moitas grazas pola súa axuda. ‖ Perfecto. Moitas grazas pola súa avaría. ;; Perfecto. Moitas grazas pola miña axuda. ;; Perfecto. De nada pola súa axuda. ‖ grazas ; axuda
+De nada. Se hai outro problema, chámeme. ‖ De acordo. Que teña un bo día! ‖ Vale. Que teña un bo día! ;; De acordo, grazas. Que teña un bo día! ‖ De acordo. Que ten un bo día! ;; De acordo. Que teño un bo día! ;; De acordo. Que teña un mal día! ‖ teña ; día
+V: o quentador = le chauffe-eau ;; unha avaría = une panne ;; Podería ser…? = Ça pourrait être… ? ;; Que teña un bo día! = Bonne journée !
+-- eu
+Bai, esan? ‖ Egun on. Berogailua ez dabil atzotik. ‖ Berogailua ez dabil atzotik. ;; Kaixo, berogailua ez dabil atzotik. ‖ Egun on. Berogailua ez dabil bihartik. ;; Egun on. Berogailua ondo dabil atzotik. ;; Egun on. Berogailua ez dabil atzora arte. ‖ berogailua
+A, sentitzen dut. Zer gertatzen da? ‖ Ez dago ur berorik. ‖ Ez daukat ur berorik. ;; Ez dut ur berorik. ‖ Ez dago ur hotzik. ;; Ez da ur beroa. ;; Ez dago ur berorik hondartzan. ‖ ur
+Matxura bat izango da. Teknikari bati deituko diot. ‖ Gaur edo bihar etor daiteke? ‖ Teknikaria gaur edo bihar etor daiteke? ;; Bihar etor daiteke? ‖ Iaz etor daiteke? ;; Gaur edo bihar etor naiteke? ;; Gaur edo atzo etor daiteke? ‖ etor ‖ Demande s'il peut venir aujourd'hui ou demain.
+Teknikaria ostegun arratsaldean joan daiteke. ‖ Ostegunean lan egiten dut. Ostiralean izan daiteke? ‖ Ostegunean lanean nago. Ostiralean izan daiteke? ;; Ostegunean lan egiten dut. Ostirala izan daiteke? ‖ Ostegunean lan egiten dut. Joan den ostiralean izan daiteke? ;; Ostegunean lan egin nuen. Atzo izan daiteke? ;; Ostegunean lan egiten dut. Ostegunean izan daiteke? ‖ ostiralean
+Bai, ostiralean hamarretan. Ondo datorkizu? ‖ Oso ondo. Eskerrik asko zure laguntzagatik. ‖ Oso ondo, eskerrik asko zure laguntzagatik. ;; Oso ondo. Eskerrik asko zure laguntzagatik. ‖ Oso ondo. Eskerrik asko zure matxuragatik. ;; Oso ondo. Eskerrik asko nire laguntzagatik. ;; Oso ondo. Ez horregatik zure laguntzagatik. ‖ eskerrik ; laguntzagatik
+Ez horregatik. Zerbait behar baduzu, deitu iezadazu. ‖ Ados. Egun ona izan! ‖ Ongi. Egun ona izan! ;; Ados, eskerrik asko. Egun ona izan! ‖ Ados. Egun ona dut! ;; Ados. Egun ona naiz! ;; Ados. Egun ona izan zen! ‖ egun ; ona
+V: berogailua = le chauffe-eau ;; matxura = une panne ;; …izan daiteke? = Ça pourrait être… ? ;; Egun ona izan! = Bonne journée !
+
+== b1entrevista | 3 | L'entretien d'embauche | Tu passes un entretien pour un poste dans une entreprise. | Recruteuse
+# Dis que tu aimes travailler avec des clients.
+# Dis que tu as travaillé cinq ans dans la vente.
+# Dis que ça te convient et demande quels sont les horaires.
+# Demande quand tu commencerais.
+# Demande si c'est un contrat à durée indéterminée.
+# Remercie-la pour son temps et dis que tu attends son appel.
+-- es
+Buenos días. ¿Por qué quiere este puesto? ‖ Porque me gusta trabajar con clientes. ‖ Me gusta trabajar con clientes. ;; Porque me encanta trabajar con clientes. ‖ Porque me gusta trabajar sin clientes. ;; Porque me gustan trabajar con clientes. ;; Porque le gusta trabajar con clientes. ‖ clientes
+¿Tiene experiencia en ventas? ‖ Sí, he trabajado cinco años en ventas. ‖ Sí, cinco años en ventas. ;; Sí, trabajé cinco años en ventas. ‖ Sí, he trabajada cinco años en ventas. ;; Sí, voy a trabajar cinco años en ventas. ;; No, he trabajado cinco años en ventas. ‖ cinco ; ventas
+Muy bien. El puesto es en la oficina, con un día de teletrabajo. ‖ Me parece muy bien. ¿Cuál es el horario? ‖ Me parece bien. ¿Cuál es el horario? ;; Muy bien. ¿Qué horario tiene el puesto? ‖ Me parezco muy bien. ¿Cuál es el horario? ;; Me parece muy bien. ¿Quién es el horario? ;; Me parece muy mal. ¿Cuál es el horario? ‖ horario
+De nueve a cinco, con un periodo de prueba de dos meses. ‖ Entiendo. ¿Cuándo empezaría? ‖ ¿Cuándo empezaría a trabajar? ;; Vale. ¿Cuándo empezaría? ‖ Entiendo. ¿Cuándo empecé? ;; Entiendo. ¿Dónde empezaría? ;; Entiendo. ¿Cuándo empezaría ayer? ‖ empezaría
+El mes que viene, si todo va bien. ¿Tiene alguna pregunta? ‖ Sí. ¿Es un contrato indefinido? ‖ ¿El contrato es indefinido? ;; Sí, ¿es un contrato indefinido? ‖ Sí. ¿Está un contrato indefinido? ;; Sí. ¿Es un contrato de ayer? ;; No. ¿Es un contrato indefinido? ‖ contrato ; indefinido
+Sí. Le llamaremos la semana que viene. ‖ Muchas gracias por su tiempo. Espero su llamada. ‖ Gracias por su tiempo. Espero su llamada. ;; Muchas gracias. Espero su llamada. ‖ Muchas gracias para su tiempo. Espero su llamada. ;; De nada por su tiempo. Espero su llamada. ;; Muchas gracias por su tiempo. Espero mi llamada. ‖ gracias ; llamada
+V: el puesto = le poste ;; el periodo de prueba = la période d'essai ;; un contrato indefinido = un CDI ;; ¿Cuándo empezaría? = Quand est-ce que je commencerais ?
+-- va
+Bon dia. Per què vol este treball? ‖ Perquè m'agrada treballar amb clients. ‖ M'agrada treballar amb clients. ;; Perquè m'encanta treballar amb clients. ‖ Perquè m'agrada treballar sense clients. ;; Perquè m'agraden treballar amb clients. ;; Perquè li agrada treballar amb clients. ‖ clients
+Té experiència en vendes? ‖ Sí, he treballat cinc anys en vendes. ‖ Sí, cinc anys en vendes. ;; Sí, vaig treballar cinc anys en vendes. ‖ Sí, he treballada cinc anys en vendes. ;; Sí, treballaré cinc anys en vendes. ;; No, he treballat cinc anys en vendes. ‖ cinc ; vendes
+Molt bé. El treball és a l'oficina, amb un dia de teletreball. ‖ Em pareix molt bé. Quin és l'horari? ‖ Em pareix bé. Quin és l'horari? ;; Molt bé. Quin horari té el treball? ‖ Em parec molt bé. Quin és l'horari? ;; Em pareix molt bé. Qui és l'horari? ;; Em pareix molt malament. Quin és l'horari? ‖ horari
+De nou a cinc, amb un període de prova de dos mesos. ‖ Entesos. Quan començaria? ‖ Quan començaria a treballar? ;; D'acord. Quan començaria? ‖ Entesos. Quan vaig començar? ;; Entesos. On començaria? ;; Entesos. Quan començaria ahir? ‖ començaria
+El mes que ve, si tot va bé. Té alguna pregunta? ‖ Sí. És un contracte indefinit? ‖ El contracte és indefinit? ;; Sí, és un contracte indefinit? ‖ Sí. Està un contracte indefinit? ;; Sí. És un contracte d'ahir? ;; No. És un contracte indefinit? ‖ contracte ; indefinit
+Sí. El cridarem la setmana que ve. ‖ Moltes gràcies pel seu temps. Espere la seua cridada. ‖ Gràcies pel seu temps. Espere la seua cridada. ;; Moltes gràcies. Espere la seua cridada. ‖ Moltes gràcies per al seu temps. Espere la seua cridada. ;; De res pel seu temps. Espere la seua cridada. ;; Moltes gràcies pel seu temps. Espere la meua cridada. ‖ gràcies ; cridada
+V: el període de prova = la période d'essai ;; un contracte indefinit = un CDI ;; Quan començaria? = Quand est-ce que je commencerais ? ;; Espere la seua cridada = J'attends votre appel
+-- ca
+Bon dia. Per què vol aquesta feina? ‖ Perquè m'agrada treballar amb clients. ‖ M'agrada treballar amb clients. ;; Perquè m'encanta treballar amb clients. ‖ Perquè m'agrada treballar sense clients. ;; Perquè m'agraden treballar amb clients. ;; Perquè li agrada treballar amb clients. ‖ clients
+Té experiència en vendes? ‖ Sí, he treballat cinc anys en vendes. ‖ Sí, cinc anys en vendes. ;; Sí, vaig treballar cinc anys en vendes. ‖ Sí, he treballada cinc anys en vendes. ;; Sí, treballaré cinc anys en vendes. ;; No, he treballat cinc anys en vendes. ‖ cinc ; vendes
+Molt bé. La feina és a l'oficina, amb un dia de teletreball. ‖ Em sembla molt bé. Quin és l'horari? ‖ Em sembla bé. Quin és l'horari? ;; Molt bé. Quin horari té la feina? ‖ Em semblo molt bé. Quin és l'horari? ;; Em sembla molt bé. Qui és l'horari? ;; Em sembla molt malament. Quin és l'horari? ‖ horari
+De nou a cinc, amb un període de prova de dos mesos. ‖ Entesos. Quan començaria? ‖ Quan començaria a treballar? ;; D'acord. Quan començaria? ‖ Entesos. Quan vaig començar? ;; Entesos. On començaria? ;; Entesos. Quan començaria ahir? ‖ començaria
+El mes que ve, si tot va bé. Té cap pregunta? ‖ Sí. És un contracte indefinit? ‖ El contracte és indefinit? ;; Sí, és un contracte indefinit? ‖ Sí. Està un contracte indefinit? ;; Sí. És un contracte d'ahir? ;; No. És un contracte indefinit? ‖ contracte ; indefinit
+Sí. Li trucarem la setmana que ve. ‖ Moltes gràcies pel seu temps. Espero la seva trucada. ‖ Gràcies pel seu temps. Espero la seva trucada. ;; Moltes gràcies. Espero la seva trucada. ‖ Moltes gràcies per al seu temps. Espero la seva trucada. ;; De res pel seu temps. Espero la seva trucada. ;; Moltes gràcies pel seu temps. Espero la meva trucada. ‖ gràcies ; trucada
+V: el període de prova = la période d'essai ;; un contracte indefinit = un CDI ;; Quan començaria? = Quand est-ce que je commencerais ? ;; Espero la seva trucada = J'attends votre appel
+-- gl
+Bos días. Por que quere este posto? ‖ Porque me gusta traballar con clientes. ‖ Gústame traballar con clientes. ;; Porque me encanta traballar con clientes. ‖ Porque me gusta traballar sen clientes. ;; Porque me gustan traballar con clientes. ;; Porque lle gusta traballar con clientes. ‖ clientes
+Ten experiencia en vendas? ‖ Si, traballei cinco anos en vendas. ‖ Si, cinco anos en vendas. ;; Si, traballei cinco anos nas vendas. ‖ Si, traballarei cinco anos en vendas. ;; Si, traballaches cinco anos en vendas. ;; Non, traballei cinco anos en vendas. ‖ cinco ; vendas
+Moi ben. O posto é na oficina, cun día de teletraballo. ‖ Paréceme moi ben. Cal é o horario? ‖ Paréceme ben. Cal é o horario? ;; Moi ben. Que horario ten o posto? ‖ Parézome moi ben. Cal é o horario? ;; Paréceme moi ben. Quen é o horario? ;; Paréceme moi mal. Cal é o horario? ‖ horario
+De nove a cinco, cun período de proba de dous meses. ‖ Entendo. Cando comezaría? ‖ Cando comezaría a traballar? ;; Vale. Cando comezaría? ‖ Entendo. Cando comecei? ;; Entendo. Onde comezaría? ;; Entendo. Cando comezaría onte? ‖ comezaría
+O mes que vén, se todo vai ben. Ten algunha pregunta? ‖ Si. É un contrato indefinido? ‖ O contrato é indefinido? ;; Si, é un contrato indefinido? ‖ Si. Está un contrato indefinido? ;; Si. É un contrato de onte? ;; Non. É un contrato indefinido? ‖ contrato ; indefinido
+Si. Chamarémolo a semana que vén. ‖ Moitas grazas polo seu tempo. Agardo a súa chamada. ‖ Grazas polo seu tempo. Agardo a súa chamada. ;; Moitas grazas. Agardo a súa chamada. ‖ Moitas grazas para o seu tempo. Agardo a súa chamada. ;; De nada polo seu tempo. Agardo a súa chamada. ;; Moitas grazas polo seu tempo. Agardo a miña chamada. ‖ grazas ; chamada
+V: o posto = le poste ;; o período de proba = la période d'essai ;; un contrato indefinido = un CDI ;; Cando comezaría? = Quand est-ce que je commencerais ?
+-- eu
+Egun on. Zergatik nahi duzu lanpostu hau? ‖ Bezeroekin lan egitea gustatzen zait. ‖ Bezeroekin lan egitea asko gustatzen zait. ;; Bezeroekin lan egitea maite dut. ‖ Bezerorik gabe lan egitea gustatzen zait. ;; Bezeroekin lan egitea gustatzen naiz. ;; Bezeroekin lan egitea gustatzen zaizu. ‖ bezeroekin
+Salmentan esperientziarik duzu? ‖ Bai, bost urtez lan egin dut salmentan. ‖ Bai, bost urte salmentan. ;; Bai, bost urtez aritu naiz salmentan. ‖ Bai, bost urtez lan egingo dut salmentan. ;; Bai, bost urtez lan egin duzu salmentan. ;; Ez, bost urtez lan egin dut salmentan. ‖ bost ; salmentan
+Oso ondo. Lana bulegoan da, telelan egun batekin. ‖ Oso ondo iruditzen zait. Zein da ordutegia? ‖ Ondo iruditzen zait. Zein da ordutegia? ;; Oso ondo. Zein ordutegi du lanak? ‖ Oso ondo iruditzen naiz. Zein da ordutegia? ;; Oso ondo iruditzen zait. Nor da ordutegia? ;; Oso gaizki iruditzen zait. Zein da ordutegia? ‖ ordutegia
+Bederatzietatik bostetara, bi hilabeteko proba aldiarekin. ‖ Ulertzen dut. Noiz hasiko nintzateke? ‖ Noiz hasiko nintzateke lanean? ;; Ados. Noiz hasiko nintzateke? ‖ Ulertzen dut. Noiz hasi nintzen? ;; Ulertzen dut. Non hasiko nintzateke? ;; Ulertzen dut. Noiz hasiko nintzateke atzo? ‖ noiz ; hasiko
+Datorren hilean. Galderarik duzu? ‖ Bai. Kontratu mugagabea da? ‖ Kontratua mugagabea da? ;; Bai, kontratu mugagabea da? ‖ Bai. Kontratu mugagabea dago? ;; Bai. Atzoko kontratua da? ;; Ez. Kontratu mugagabea da? ‖ kontratu ; mugagabea
+Bai. Datorren astean deituko dizugu. ‖ Eskerrik asko zure denboragatik. Laster arte! ‖ Eskerrik asko. Laster arte! ;; Mila esker zure denboragatik. ‖ Ez horregatik zure denboragatik. Laster arte! ;; Eskerrik asko nire denboragatik. Laster arte! ;; Barkatu zure denboragatik. Laster arte! ‖ eskerrik ‖ Remercie-la pour son temps et dis « à bientôt ».
+V: lanpostua = le poste ;; proba aldia = la période d'essai ;; kontratu mugagabea = un CDI ;; Noiz hasiko nintzateke? = Quand est-ce que je commencerais ?
+
+== b1medico | 3 | Une toux qui ne passe pas | Tu tousses depuis une semaine et tu vas chez la médecin. | Médecin
+# Dis que tu tousses depuis une semaine.
+# Dis que non, mais que tu dors très mal.
+# Dis que tu es soulagé(e) et demande si tu as besoin d'un médicament.
+# Demande pendant combien de jours.
+# Demande si tu peux aller travailler.
+# Remercie la médecin et dis au revoir.
+-- es
+Buenas tardes. ¿Qué le pasa? ‖ Tengo tos desde hace una semana. ‖ Tengo tos desde hace siete días. ;; Desde hace una semana tengo tos. ‖ Tengo tos desde la semana que viene. ;; Soy tos desde hace una semana. ;; Tengo tos dentro de una semana. ‖ tos ; semana
+¿Tiene fiebre? ‖ No, pero duermo muy mal. ‖ No, pero no duermo bien. ;; No, pero duermo mal. ‖ No, pero dormo muy mal. ;; No, pero duerme muy mal. ;; Sí, pero duermo muy bien. ‖ duermo
+No es nada grave, es un resfriado. ‖ Menos mal. ¿Necesito algún medicamento? ‖ Menos mal. ¿Necesito un medicamento? ;; ¿Tengo que tomar algún medicamento? ‖ Menos mal. ¿Necesito alguno medicamento? ;; Menos mal. ¿Necesita algún medicamento? ;; Más mal. ¿Necesito algún medicamento? ‖ medicamento
+Sí, tome esto tres veces al día, después de comer. ‖ ¿Durante cuántos días? ‖ ¿Cuántos días? ;; ¿Durante cuántos días tengo que tomarlo? ‖ ¿Durante cuántas días? ;; ¿Durante cuánto días? ;; ¿Cuántos días tengo? ‖ días
+Una semana. Y beba mucha agua. ‖ De acuerdo. ¿Puedo ir a trabajar? ‖ Vale. ¿Puedo ir a trabajar? ;; ¿Puedo trabajar? ‖ De acuerdo. ¿Puedes ir a trabajar? ;; De acuerdo. ¿Puedo ir a trabajo? ;; De acuerdo. ¿Pueda ir a trabajar? ‖ trabajar
+Sí, pero si no está mejor, vuelva el lunes. ‖ Muchas gracias. Hasta luego. ‖ Gracias. ¡Adiós! ;; Muchas gracias, hasta luego. ‖ De nada. Hasta luego. ;; Muchas gracias. ¡Buenas noches, hola! ;; Lo siento. Hasta luego. ‖ gracias
+V: la tos = la toux ;; un resfriado = un rhume ;; Menos mal = Heureusement ;; el medicamento = le médicament
+-- va
+Bona vesprada. Què li passa? ‖ Tinc tos des de fa una setmana. ‖ Tinc tos des de fa set dies. ;; Des de fa una setmana tinc tos. ‖ Tinc tos des de la setmana que ve. ;; Soc tos des de fa una setmana. ;; Tinc tos d'ací a una setmana. ‖ tos ; setmana
+Té febre? ‖ No, però dorm molt mal. ‖ No, però no dorm bé. ;; No, però dorm mal. ‖ No, però dorms molt mal. ;; No, però dormen molt mal. ;; Sí, però dorm molt bé. ‖ dorm
+No és res greu, és un constipat. ‖ Menys mal. Necessite algun medicament? ‖ Menys mal. Necessite un medicament? ;; He de prendre algun medicament? ‖ Menys mal. Necessita algun medicament? ;; Més mal. Necessite algun medicament? ;; Menys mal. Necessite alguna medicament? ‖ medicament
+Sí, prenga açò tres vegades al dia, després de menjar. ‖ Durant quants dies? ‖ Quants dies? ;; Durant quants dies l'he de prendre? ‖ Durant quantes dies? ;; Durant quant dies? ;; Quants dies tinc? ‖ dies
+Una setmana. I prenga molta aigua. ‖ D'acord. Puc anar a treballar? ‖ Val. Puc anar a treballar? ;; Puc treballar? ‖ D'acord. Pots anar a treballar? ;; D'acord. Puc anar a treball? ;; D'acord. Puga anar a treballar? ‖ treballar
+Sí, però si no està millor, torne dilluns. ‖ Moltes gràcies. Fins després. ‖ Gràcies. Adéu! ;; Moltes gràcies, fins després. ‖ De res. Fins després. ;; Moltes gràcies. Bona nit, hola! ;; Ho sent. Fins després. ‖ gràcies
+V: la tos = la toux ;; un constipat = un rhume ;; Menys mal = Heureusement ;; el medicament = le médicament
+-- ca
+Bona tarda. Què li passa? ‖ Tinc tos des de fa una setmana. ‖ Tinc tos des de fa set dies. ;; Des de fa una setmana tinc tos. ‖ Tinc tos des de la setmana que ve. ;; Sóc tos des de fa una setmana. ;; Tinc tos d'aquí a una setmana. ‖ tos ; setmana
+Té febre? ‖ No, però dormo molt malament. ‖ No, però no dormo bé. ;; No, però dormo malament. ‖ No, però dorms molt malament. ;; No, però dormen molt malament. ;; Sí, però dormo molt bé. ‖ dormo
+No és res greu, és un refredat. ‖ Menys mal. Necessito algun medicament? ‖ Menys mal. Necessito un medicament? ;; He de prendre algun medicament? ‖ Menys mal. Necessita algun medicament? ;; Més mal. Necessito algun medicament? ;; Menys mal. Necessito alguna medicament? ‖ medicament
+Sí, prengui això tres vegades al dia, després de menjar. ‖ Durant quants dies? ‖ Quants dies? ;; Durant quants dies l'he de prendre? ‖ Durant quantes dies? ;; Durant quant dies? ;; Quants dies tinc? ‖ dies
+Una setmana. I begui molta aigua. ‖ D'acord. Puc anar a treballar? ‖ Molt bé. Puc anar a treballar? ;; Puc treballar? ‖ D'acord. Pots anar a treballar? ;; D'acord. Puc anar a feina? ;; D'acord. Pugui anar a treballar? ‖ treballar
+Sí, però si no està millor, torni dilluns. ‖ Moltes gràcies. Fins després. ‖ Gràcies. Adeu! ;; Moltes gràcies, fins després. ‖ De res. Fins després. ;; Moltes gràcies. Bona nit, hola! ;; Ho sento. Fins després. ‖ gràcies
+V: la tos = la toux ;; un refredat = un rhume ;; Menys mal = Heureusement ;; el medicament = le médicament
+-- gl
+Boas tardes. Que lle pasa? ‖ Teño tose desde hai unha semana. ‖ Teño tose desde hai sete días. ;; Desde hai unha semana teño tose. ‖ Teño tose desde a semana que vén. ;; Son tose desde hai unha semana. ;; Teño tose dentro dunha semana. ‖ tose ; semana
+Ten febre? ‖ Non, pero durmo moi mal. ‖ Non, pero non durmo ben. ;; Non, pero durmo mal. ‖ Non, pero dormes moi mal. ;; Non, pero dorme moi mal. ;; Si, pero durmo moi ben. ‖ durmo
+Non é nada grave, é un arrefriado. ‖ Menos mal. Necesito algún medicamento? ‖ Menos mal. Necesito un medicamento? ;; Teño que tomar algún medicamento? ‖ Menos mal. Necesita algún medicamento? ;; Máis mal. Necesito algún medicamento? ;; Menos mal. Necesito algunha medicamento? ‖ medicamento
+Si, tome isto tres veces ao día, despois de comer. ‖ Durante cantos días? ‖ Cantos días? ;; Durante cantos días teño que tomalo? ‖ Durante cantas días? ;; Durante canto días? ;; Cantos días teño? ‖ días
+Unha semana. E beba moita auga. ‖ De acordo. Podo ir traballar? ‖ Vale. Podo ir traballar? ;; Podo traballar? ‖ De acordo. Podes ir traballar? ;; De acordo. Podo ir traballo? ;; De acordo. Poida ir traballar? ‖ traballar
+Si, pero se non está mellor, volva o luns. ‖ Moitas grazas. Ata logo. ‖ Grazas. Adeus! ;; Moitas grazas, ata logo. ‖ De nada. Ata logo. ;; Moitas grazas. Boas noites, ola! ;; Síntoo. Ata logo. ‖ grazas
+V: a tose = la toux ;; un arrefriado = un rhume ;; Menos mal = Heureusement ;; o medicamento = le médicament
+-- eu
+Arratsalde on. Zer gertatzen zaizu? ‖ Eztul asko egiten dut duela astebete. ‖ Duela astebete eztul asko egiten dut. ;; Eztula dut duela astebete. ‖ Eztul asko egiten duzu duela astebete. ;; Eztul asko egiten naiz duela astebete. ;; Eztul asko egingo dut duela astebete. ‖ eztul
+Sukarra duzu? ‖ Ez, baina oso gaizki lo egiten dut. ‖ Ez, baina ez dut ondo lo egiten. ;; Ez, baina gaizki lo egiten dut. ‖ Ez, baina oso gaizki lo egiten duzu. ;; Ez, baina oso gaizki lo egiten naiz. ;; Bai, baina oso ondo lo egiten dut. ‖ lo
+Ez da ezer larria, hotzeria da. ‖ Zorionez. Sendagai bat behar dut? ‖ Zorionez. Sendagairik behar dut? ;; Sendagai bat hartu behar dut? ‖ Zorionez. Sendagai bat behar duzu? ;; Zoritxarrez. Sendagai bat behar dut? ;; Zorionez. Sendagai bat behar naiz? ‖ sendagai
+Bai, hartu hau egunean hiru aldiz, jan ondoren. ‖ Zenbat egunez? ‖ Zenbat egunez hartu behar dut? ;; Zenbat egun? ‖ Zein egunez? ;; Zenbat egun naiz? ;; Noiz egunez? ‖ egunez
+Astebete. Eta edan ur asko. ‖ Ados. Lanera joan naiteke? ‖ Ongi. Lanera joan naiteke? ;; Lan egin dezaket? ‖ Ados. Lanera joan zaitezke? ;; Ados. Lanean joan naiteke? ;; Ados. Lanera joan dezaket? ‖ lanera
+Bai, baina hobeto ez bazaude, itzuli astelehenean. ‖ Eskerrik asko. Gero arte. ‖ Eskerrik asko. Agur! ;; Mila esker, gero arte. ‖ Ez horregatik. Gero arte. ;; Eskerrik asko. Gabon, kaixo! ;; Barkatu. Gero arte. ‖ eskerrik
+V: eztula = la toux ;; hotzeria = un rhume ;; Zorionez = Heureusement ;; sendagaia = le médicament
+
+== b1padron | 3 | Au registre municipal | Tu viens d'emménager et tu vas à la mairie pour t'inscrire au registre municipal. | Employé de mairie
+# Dis que tu viens t'inscrire au registre municipal.
+# Dis que oui, tu as rendez-vous à dix heures.
+# Donne-les et demande s'il a besoin d'autre chose.
+# Excuse-toi : tu ne l'as pas apportée. Demande si tu peux l'envoyer par e-mail.
+# Demande quand ce sera prêt.
+# Remercie-le pour son aide.
+-- es
+Buenos días. ¿En qué puedo ayudarle? ‖ Buenos días. Vengo a hacer el empadronamiento. ‖ Vengo a hacer el empadronamiento. ;; Buenos días, vengo para el empadronamiento. ‖ Buenos días. Vengo a hacer el empadronamiento mañana pasado. ;; Buenos días. Voy a hacer el empadronamiento ayer. ;; Buenos días. Vengo a hacer la comunidad de vecinos. ‖ empadronamiento
+Muy bien. ¿Tiene cita? ‖ Sí, tengo cita a las diez. ‖ Sí, a las diez. ;; Sí, tengo una cita a las diez. ‖ Sí, soy cita a las diez. ;; Sí, tengo cita a los diez. ;; No, tengo cita a las diez. ‖ cita ; diez
+¿Me deja su pasaporte y el contrato de alquiler? ‖ Aquí tiene. ¿Necesita algo más? ‖ Aquí tiene. ¿Algo más? ;; Sí, aquí tiene. ¿Necesita algo más? ‖ Aquí tiene. ¿Necesito algo más? ;; Aquí tienes. ¿Necesita nada más? ;; Aquí tiene. ¿Necesita algo menos? ‖ necesita
+Sí, falta una factura de la luz. ‖ Lo siento, no la he traído. ¿Puedo enviarla por correo? ‖ Lo siento, no la tengo aquí. ¿Puedo enviarla por correo? ;; Perdone, no la he traído. ¿Se la puedo enviar por correo? ‖ Lo siento, no lo he traído. ¿Puedo enviarla por correo? ;; Lo siento, no la he traída. ¿Puedo enviarla por correo? ;; Lo siento, no la he traído. ¿Puede enviarla por correo? ‖ correo
+Sí, por correo. Tiene diez días. ‖ Perfecto. ¿Cuándo estará listo? ‖ Vale. ¿Cuándo estará listo? ;; ¿Cuándo estará listo el empadronamiento? ‖ Perfecto. ¿Cuándo será listo? ;; Perfecto. ¿Cuándo estaba listo? ;; Perfecto. ¿Dónde estará listo? ‖ listo
+En una semana, más o menos. ‖ Muy bien. Muchas gracias por su ayuda. ‖ Muchas gracias por su ayuda. ;; Gracias por su ayuda. ‖ Muy bien. Muchas gracias para su ayuda. ;; Muy bien. De nada por su ayuda. ;; Muy bien. Muchas gracias por mi ayuda. ‖ gracias ; ayuda
+V: el empadronamiento = l'inscription au registre municipal ;; la cita = le rendez-vous ;; la factura de la luz = la facture d'électricité ;; ¿Cuándo estará listo? = Quand est-ce que ce sera prêt ?
+-- va
+Bon dia. En què puc ajudar-lo? ‖ Bon dia. Vinc a fer l'empadronament. ‖ Vinc a fer l'empadronament. ;; Bon dia, vinc per l'empadronament. ‖ Bon dia. Vaig a fer l'empadronament ahir. ;; Bon dia. Vinc a fer la comunitat de veïns. ;; Bon dia. Ve a fer l'empadronament. ‖ empadronament
+Molt bé. Té cita? ‖ Sí, tinc cita a les deu. ‖ Sí, a les deu. ;; Sí, tinc una cita a les deu. ‖ Sí, soc cita a les deu. ;; Sí, tinc cita a la deu. ;; No, tinc cita a les deu. ‖ cita ; deu
+Em deixa el passaport i el contracte de lloguer? ‖ Ací té. Necessita alguna cosa més? ‖ Ací té. Alguna cosa més? ;; Sí, ací té. Necessita alguna cosa més? ‖ Ací té. Necessite alguna cosa més? ;; Ací tens. Necessita alguna cosa més? ;; Ací té. Necessita alguna cosa menys? ‖ necessita
+Sí, però també necessite una factura de la llum. ‖ Ho sent, no l'he portada. La puc enviar per correu? ‖ Ho sent, no la tinc ací. La puc enviar per correu? ;; Perdone, no l'he portada. Li la puc enviar per correu? ‖ Ho sent, no l'he portada. La pot enviar per correu? ;; Ho sent, no l'he portada. La puc enviar per platja? ;; Gràcies, no l'he portada. La puc enviar per correu? ‖ correu
+Sí, per correu. Té deu dies. ‖ Perfecte. Quan estarà preparat? ‖ D'acord. Quan estarà preparat? ;; Quan estarà preparat l'empadronament? ‖ Perfecte. Quan serà preparat? ;; Perfecte. Quan estava preparat? ;; Perfecte. On estarà preparat? ‖ preparat
+D'ací a una setmana, més o menys. ‖ Molt bé. Moltes gràcies per la seua ajuda. ‖ Moltes gràcies per la seua ajuda. ;; Gràcies per la seua ajuda. ‖ Molt bé. Moltes gràcies per a la seua ajuda. ;; Molt bé. De res per la seua ajuda. ;; Molt bé. Moltes gràcies per la meua ajuda. ‖ gràcies ; ajuda
+V: l'empadronament = l'inscription au registre municipal ;; la cita = le rendez-vous ;; la factura de la llum = la facture d'électricité ;; Quan estarà preparat? = Quand est-ce que ce sera prêt ?
+-- ca
+Bon dia. En què el puc ajudar? ‖ Bon dia. Vinc a fer l'empadronament. ‖ Vinc a fer l'empadronament. ;; Bon dia, vinc per l'empadronament. ‖ Bon dia. Vaig a fer l'empadronament ahir. ;; Bon dia. Vinc a fer la comunitat de veïns. ;; Bon dia. Ve a fer l'empadronament. ‖ empadronament
+Molt bé. Té cita? ‖ Sí, tinc cita a les deu. ‖ Sí, a les deu. ;; Sí, tinc una cita a les deu. ‖ Sí, sóc cita a les deu. ;; Sí, tinc cita als deu. ;; No, tinc cita a les deu. ‖ cita ; deu
+Em deixa el passaport i el contracte de lloguer? ‖ Aquí té. Necessita res més? ‖ Aquí té. Res més? ;; Sí, aquí té. Necessita res més? ‖ Aquí té. Necessito res més? ;; Aquí tens. Necessita res més? ;; Aquí té. Necessita res menys? ‖ necessita
+Sí, però també necessito una factura de la llum. ‖ Ho sento, no l'he portada. La puc enviar per correu? ‖ Ho sento, no la tinc aquí. La puc enviar per correu? ;; Perdoni, no l'he portada. Li la puc enviar per correu? ‖ Ho sento, no l'he portada. La pot enviar per correu? ;; Ho sento, no l'he portada. La puc enviar per platja? ;; Gràcies, no l'he portada. La puc enviar per correu? ‖ correu
+Sí, per correu. Té deu dies. ‖ Perfecte. Quan estarà preparat? ‖ D'acord. Quan estarà preparat? ;; Quan estarà preparat l'empadronament? ‖ Perfecte. Quan serà preparat? ;; Perfecte. Quan estava preparat? ;; Perfecte. On estarà preparat? ‖ preparat
+D'aquí a una setmana, més o menys. ‖ Molt bé. Moltes gràcies per la seva ajuda. ‖ Moltes gràcies per la seva ajuda. ;; Gràcies per la seva ajuda. ‖ Molt bé. Moltes gràcies per a la seva ajuda. ;; Molt bé. De res per la seva ajuda. ;; Molt bé. Moltes gràcies per la meva ajuda. ‖ gràcies ; ajuda
+V: l'empadronament = l'inscription au registre municipal ;; la cita = le rendez-vous ;; la factura de la llum = la facture d'électricité ;; Quan estarà preparat? = Quand est-ce que ce sera prêt ?
+-- gl
+Bos días. En que podo axudalo? ‖ Bos días. Veño facer o empadroamento. ‖ Veño facer o empadroamento. ;; Bos días, veño polo empadroamento. ‖ Bos días. Vou facer o empadroamento onte. ;; Bos días. Veño facer a comunidade de veciños. ;; Bos días. Vén facer o empadroamento. ‖ empadroamento
+Moi ben. Ten cita? ‖ Si, teño cita ás dez. ‖ Si, ás dez. ;; Si, teño unha cita ás dez. ‖ Si, son cita ás dez. ;; Si, teño cita aos dez. ;; Non, teño cita ás dez. ‖ cita ; dez
+Déixeme o seu pasaporte e o contrato de aluguer? ‖ Aquí ten. Necesita algo máis? ‖ Aquí ten. Algo máis? ;; Si, aquí ten. Necesita algo máis? ‖ Aquí ten. Necesito algo máis? ;; Aquí tes. Necesita algo máis? ;; Aquí ten. Necesita algo menos? ‖ necesita
+Si, pero tamén necesito unha factura da luz. ‖ Síntoo, non a trouxen. Podo envíala por correo? ‖ Síntoo, non a teño aquí. Podo envíala por correo? ;; Desculpe, non a trouxen. Podo mandala por correo? ‖ Síntoo, non trouxen a. Podo envíala por correo? ;; Síntoo, non a trouxen. Pode envíala por correo? ;; Grazas, non a trouxen. Podo envíala por correo? ‖ correo
+Si, por correo. Ten dez días. ‖ Perfecto. Cando estará listo? ‖ Vale. Cando estará listo? ;; Cando estará listo o empadroamento? ‖ Perfecto. Cando será listo? ;; Perfecto. Cando estaba listo? ;; Perfecto. Onde estará listo? ‖ listo
+Nunha semana, máis ou menos. ‖ Moi ben. Moitas grazas pola súa axuda. ‖ Moitas grazas pola súa axuda. ;; Grazas pola súa axuda. ‖ Moi ben. Moitas grazas para a súa axuda. ;; Moi ben. De nada pola súa axuda. ;; Moi ben. Moitas grazas pola miña axuda. ‖ grazas ; axuda
+V: o empadroamento = l'inscription au registre municipal ;; a cita = le rendez-vous ;; a factura da luz = la facture d'électricité ;; Cando estará listo? = Quand est-ce que ce sera prêt ?
+-- eu
+Egun on. Zertan lagun zaitzaket? ‖ Egun on. Erroldatzera nator. ‖ Erroldatzera nator. ;; Egun on, erroldatu nahi dut. ‖ Egun on. Erroldatzera joan nintzen bihar. ;; Egun on. Jabeen komunitatera nator. ;; Egun on. Erroldatzera dator. ‖ erroldatzera
+Oso ondo. Hitzordua duzu? ‖ Bai, hamarretan dut hitzordua. ‖ Bai, hamarretan. ;; Bai, hitzordua hamarretan dut. ‖ Bai, hamarretan naiz hitzordua. ;; Ez, hamarretan dut hitzordua. ;; Bai, hamarretan duzu hitzordua. ‖ hitzordua
+Pasaportea eta alokairu kontratua utziko dizkidazu? ‖ Hemen dituzu. Beste zerbait behar duzu? ‖ Hemen dituzu. Beste zerbait? ;; Bai, hemen dituzu. Beste zerbait behar duzu? ‖ Hemen dituzu. Beste zerbait behar dut? ;; Hemen dituzu. Beste zerbait behar zara? ;; Hemen ditut. Beste zerbait behar duzu? ‖ behar
+Bai, baina argiaren faktura ere behar dut. ‖ Barkatu, ez dut ekarri. Posta elektronikoz bidal dezaket? ‖ Barkatu, ez daukat hemen. Posta elektronikoz bidal dezaket? ;; Sentitzen dut, ez dut ekarri. Posta elektronikoz bidal dezaket? ‖ Barkatu, ez dut ekarri. Posta elektronikoz bidal dezakezu? ;; Eskerrik asko, ez dut ekarri. Posta elektronikoz bidal dezaket? ;; Barkatu, ez naiz ekarri. Posta elektronikoz bidal dezaket? ‖ bidal
+Bai, posta elektronikoz. Hamar egun dituzu. ‖ Ados. Noiz egongo da prest? ‖ Ados. Noiz egongo da prest? ;; Noiz egongo da prest erroldatzea? ‖ Ados. Noiz izango naiz prest? ;; Ados. Noiz zegoen prest? ;; Ados. Non egongo da prest? ‖ prest
+Astebete barru. ‖ Oso ondo. Eskerrik asko zure laguntzagatik. ‖ Eskerrik asko zure laguntzagatik. ;; Mila esker zure laguntzagatik. ‖ Oso ondo. Ez horregatik zure laguntzagatik. ;; Oso ondo. Eskerrik asko nire laguntzagatik. ;; Oso ondo. Eskerrik asko zure matxuragatik. ‖ eskerrik ; laguntzagatik
+V: erroldatu = s'inscrire au registre municipal ;; hitzordua = le rendez-vous ;; argiaren faktura = la facture d'électricité ;; Noiz egongo da prest? = Quand est-ce que ce sera prêt ?
+
+== b1vuelo | 3 | Vol annulé | À l'aéroport, ton vol a été annulé. Tu parles à l'agente de la compagnie. | Agente
+# Dis qu'ils ont annulé ton vol.
+# Donne-le et demande s'il y a un autre vol aujourd'hui.
+# Demande où tu vas dormir cette nuit.
+# Accepte et demande ce qui se passe avec tes bagages.
+# Demande-lui de te l'écrire, s'il te plaît.
+# Dis que ce n'est pas grave.
+-- es
+Buenas tardes. ¿En qué puedo ayudarle? ‖ Buenas tardes. Han cancelado mi vuelo. ‖ Han cancelado mi vuelo. ;; Buenas tardes, mi vuelo está cancelado. ‖ Buenas tardes. Han cancelado mi vuelo mañana pasado. ;; Buenas tardes. Han cancelada mi vuelo. ;; Buenas tardes. He cancelado su vuelo. ‖ cancelado ; vuelo
+Lo siento mucho. ¿Me deja su pasaporte? ‖ Aquí tiene. ¿Hay otro vuelo hoy? ‖ Sí, aquí tiene. ¿Hay otro vuelo hoy? ;; ¿Hay otro vuelo hoy? ‖ Aquí tiene. ¿Está otro vuelo hoy? ;; Aquí tiene. ¿Hay otro vuelo ayer? ;; Aquí tiene. ¿Hay un otro vuelo hoy? ‖ vuelo ; hoy
+Hoy no, pero hay uno mañana a las siete. ‖ ¿Y dónde voy a dormir esta noche? ‖ ¿Y dónde duermo esta noche? ;; Vale, ¿y dónde voy a dormir esta noche? ‖ ¿Y dónde voy a dormir anoche? ;; ¿Y cuándo voy a dormir esta noche? ;; ¿Y dónde va a dormir esta noche? ‖ dormir ; noche
+La compañía le paga una habitación cerca del aeropuerto. ‖ Vale. ¿Y mi equipaje? ‖ De acuerdo. ¿Y mi equipaje? ;; Vale, ¿qué pasa con mi equipaje? ‖ Vale. ¿Y su equipaje? ;; Vale. ¿Y mis equipaje? ;; No. ¿Y mi equipaje? ‖ equipaje
+Su equipaje viaja con usted mañana. ‖ Entendido. ¿Me lo puede escribir, por favor? ‖ ¿Me lo puede escribir, por favor? ;; Vale. ¿Puede escribírmelo, por favor? ‖ Entendido. ¿Me lo puedo escribir, por favor? ;; Entendido. ¿Te lo puede escribir, por favor? ;; Entendido. ¿Me lo puede comer, por favor? ‖ escribir
+Claro, aquí tiene. Perdone las molestias. ‖ No pasa nada. Gracias por su ayuda. ‖ No pasa nada, gracias. ;; No se preocupe. Gracias por su ayuda. ‖ No pasa nadie. Gracias por su ayuda. ;; No pasa nada. Gracias para su ayuda. ;; Pasa nada. Gracias por su ayuda. ‖ pasa ; nada
+V: cancelar un vuelo = annuler un vol ;; el equipaje = les bagages ;; Perdone las molestias = Excusez le dérangement ;; No pasa nada = Ce n'est pas grave
+-- va
+Bona vesprada. En què puc ajudar-lo? ‖ Bona vesprada. El meu vol no ix hui. ‖ El meu vol no ix hui. ;; Bona vesprada, el meu vol no ix. ‖ Bona vesprada. El meu vol no ix ahir. ;; Bona vesprada. El seu vol no ix hui. ;; Bona vesprada. El meu vol no ixen hui. ‖ vol ‖ Dis que ton vol ne part pas aujourd'hui.
+Ho sent molt. Em deixa el passaport? ‖ Ací té. Hi ha un altre vol hui? ‖ Sí, ací té. Hi ha un altre vol hui? ;; Hi ha un altre vol hui? ‖ Ací té. Està un altre vol hui? ;; Ací té. Hi ha un altre vol ahir? ;; Ací té. Hi ha un altre vol l'any passat? ‖ vol ; hui
+Hui no, però n'hi ha un demà a les set. ‖ I on dormiré esta nit? ‖ I on dorm esta nit? ;; D'acord, i on dormiré esta nit? ‖ I on dormiré ahir? ;; I quan dormiré esta nit? ;; I on dormirà esta nit? ‖ nit
+La companyia li paga una habitació prop de l'aeroport. ‖ D'acord. I el meu equipatge? ‖ Val. I el meu equipatge? ;; D'acord, què passa amb el meu equipatge? ‖ D'acord. I el seu equipatge? ;; D'acord. I els meu equipatge? ;; No. I el meu equipatge? ‖ equipatge
+El seu equipatge viatja amb vosté demà. ‖ Entesos. Me'l pot escriure, per favor? ‖ Me'l pot escriure, per favor? ;; D'acord. Me'l pot escriure, per favor? ‖ Entesos. Me'l puc escriure, per favor? ;; Entesos. Te'l pot escriure, per favor? ;; Entesos. Me'l pot menjar, per favor? ‖ escriure
+Clar, ací té. Perdone les molèsties. ‖ No passa res. Gràcies per la seua ajuda. ‖ No passa res, gràcies. ;; No es preocupe. Gràcies per la seua ajuda. ‖ No passa ningú. Gràcies per la seua ajuda. ;; No passa res. Gràcies per a la seua ajuda. ;; Sí passa res. Gràcies per la seua ajuda. ‖ passa ; res
+V: El meu vol no ix = Mon vol ne part pas ;; l'equipatge = les bagages ;; Perdone les molèsties = Excusez le dérangement ;; No passa res = Ce n'est pas grave
+-- ca
+Bona tarda. En què el puc ajudar? ‖ Bona tarda. El meu vol no surt avui. ‖ El meu vol no surt avui. ;; Bona tarda, el meu vol no surt. ‖ Bona tarda. El meu vol no surt ahir. ;; Bona tarda. El seu vol no surt avui. ;; Bona tarda. El meu vol no surten avui. ‖ vol ‖ Dis que ton vol ne part pas aujourd'hui.
+Ho sento molt. Em deixa el passaport? ‖ Aquí té. Hi ha cap altre vol avui? ‖ Sí, aquí té. Hi ha cap altre vol avui? ;; Hi ha un altre vol avui? ‖ Aquí té. Està cap altre vol avui? ;; Aquí té. Hi ha cap altre vol ahir? ;; Aquí té. Hi ha cap altre vol l'any passat? ‖ vol ; avui
+Avui no, però n'hi ha un demà a les set. ‖ I on dormiré aquesta nit? ‖ I on dormo aquesta nit? ;; D'acord, i on dormiré aquesta nit? ‖ I on dormiré ahir a la nit? ;; I quan dormiré aquesta nit? ;; I on dormirà aquesta nit? ‖ nit
+La companyia li paga una habitació a prop de l'aeroport. ‖ D'acord. I el meu equipatge? ‖ Molt bé. I el meu equipatge? ;; D'acord, què passa amb el meu equipatge? ‖ D'acord. I el seu equipatge? ;; D'acord. I els meu equipatge? ;; No. I el meu equipatge? ‖ equipatge
+El seu equipatge viatja amb vostè demà. ‖ Entesos. Me'l pot escriure, si us plau? ‖ Me'l pot escriure, si us plau? ;; D'acord. Me'l pot escriure, si us plau? ‖ Entesos. Me'l puc escriure, si us plau? ;; Entesos. Te'l pot escriure, si us plau? ;; Entesos. Me'l pot menjar, si us plau? ‖ escriure
+És clar, aquí té. Perdoni les molèsties. ‖ No passa res. Gràcies per la seva ajuda. ‖ No passa res, gràcies. ;; No es preocupi. Gràcies per la seva ajuda. ‖ No passa ningú. Gràcies per la seva ajuda. ;; No passa res. Gràcies per a la seva ajuda. ;; Sí passa res. Gràcies per la seva ajuda. ‖ passa ; res
+V: El meu vol no surt = Mon vol ne part pas ;; l'equipatge = les bagages ;; Perdoni les molèsties = Excusez le dérangement ;; No passa res = Ce n'est pas grave
+-- gl
+Boas tardes. En que podo axudalo? ‖ Boas tardes. Cancelaron o meu voo. ‖ Cancelaron o meu voo. ;; Boas tardes, o meu voo está cancelado. ‖ Boas tardes. Cancelaron o meu voo mañá. ;; Boas tardes. Cancelei o seu voo. ;; Boas tardes. Cancelaron a meu voo. ‖ voo
+Síntoo moito. Déixeme o seu pasaporte? ‖ Aquí ten. Hai outro voo hoxe? ‖ Si, aquí ten. Hai outro voo hoxe? ;; Hai outro voo hoxe? ‖ Aquí ten. Está outro voo hoxe? ;; Aquí ten. Hai outro voo onte? ;; Aquí ten. Hai un outro voo hoxe? ‖ voo ; hoxe
+Hoxe non, pero hai un mañá ás sete. ‖ E onde vou durmir esta noite? ‖ E onde durmo esta noite? ;; Vale, e onde vou durmir esta noite? ‖ E onde vou durmir onte á noite? ;; E cando vou durmir esta noite? ;; E onde vai durmir esta noite? ‖ durmir ; noite
+A compañía págalle unha habitación preto do aeroporto. ‖ Vale. E a miña equipaxe? ‖ De acordo. E a miña equipaxe? ;; Vale, que pasa coa miña equipaxe? ‖ Vale. E o meu equipaxe? ;; Vale. E a súa equipaxe? ;; Non. E a miña equipaxe? ‖ equipaxe
+A súa equipaxe viaxa con vostede mañá. ‖ Entendido. Pode escribilo, por favor? ‖ Pode escribilo, por favor? ;; Vale. Pode escribilo, por favor? ‖ Entendido. Podo escribilo, por favor? ;; Entendido. Pode comelo, por favor? ;; Entendido. Pode escribir o, por favor? ‖ pode
+Claro, aquí ten. Desculpe as molestias. ‖ Non pasa nada. Grazas pola súa axuda. ‖ Non pasa nada, grazas. ;; Non se preocupe. Grazas pola súa axuda. ‖ Non pasa ninguén. Grazas pola súa axuda. ;; Non pasa nada. Grazas para a súa axuda. ;; Si pasa nada. Grazas pola súa axuda. ‖ pasa ; nada
+V: cancelar un voo = annuler un vol ;; a equipaxe = les bagages ;; Desculpe as molestias = Excusez le dérangement ;; Non pasa nada = Ce n'est pas grave
+-- eu
+Arratsalde on. Zertan lagun zaitzaket? ‖ Arratsalde on. Nire hegaldia bertan behera utzi dute. ‖ Nire hegaldia bertan behera utzi dute. ;; Arratsalde on, nire hegaldia bertan behera geratu da. ‖ Arratsalde on. Nire hegaldia bertan behera utziko dute atzo. ;; Arratsalde on. Zure hegaldia bertan behera utzi dut. ;; Arratsalde on. Nire hegaldia bertan behera utzi naute. ‖ hegaldia
+Asko sentitzen dut. Pasaportea, mesedez? ‖ Hemen duzu. Beste hegaldi bat dago gaur? ‖ Bai, hemen duzu. Beste hegaldi bat dago gaur? ;; Beste hegaldirik badago gaur? ‖ Hemen duzu. Beste hegaldi bat dago atzo? ;; Hemen dut. Beste hegaldi bat dago gaur? ;; Hemen duzu. Beste hegaldi bat dago iaz? ‖ gaur
+Gaur ez, baina bihar zazpietan bat dago. ‖ Eta non egingo dut lo gaur gauean? ‖ Eta non lo egingo dut gaur? ;; Ados, eta non egingo dut lo gaur gauean? ‖ Eta non egin nuen lo gaur gauean? ;; Eta noiz egingo dut lo gaur gauean? ;; Eta non egingo duzu lo gaur gauean? ‖ lo
+Aireportutik gertu gela bat ordainduko dizugu. ‖ Ados. Eta nire ekipajea? ‖ Ongi. Eta nire ekipajea? ;; Ados, zer gertatzen da nire ekipajearekin? ‖ Ados. Eta zure ekipajea? ;; Ez. Eta nire ekipajea? ;; Ados. Eta nik ekipajea? ‖ ekipajea
+Zure ekipajea zurekin bidaiatuko da bihar. ‖ Ulertuta. Idatz dezakezu, mesedez? ‖ Idatz dezakezu, mesedez? ;; Ados. Idatz dezakezu, mesedez? ‖ Ulertuta. Idatz dezaket, mesedez? ;; Ulertuta. Jan dezakezu, mesedez? ;; Ulertuta. Idatzi nuen, mesedez? ‖ idatz
+Noski, hemen duzu. Barkatu eragozpenengatik. ‖ Lasai. Eskerrik asko zure laguntzagatik. ‖ Lasai, eskerrik asko. ;; Ez dago arazorik. Eskerrik asko zure laguntzagatik. ‖ Urduri. Eskerrik asko zure laguntzagatik. ;; Lasai. Eskerrik asko nire laguntzagatik. ;; Lasai. Ez horregatik zure laguntzagatik. ‖ lasai
+V: bertan behera utzi = annuler ;; ekipajea = les bagages ;; Barkatu eragozpenengatik = Excusez le dérangement ;; Lasai = Ne t'inquiète pas, ce n'est pas grave
+
+== b1consejo | 3 | Apprendre à cuisiner | Un ami veut apprendre à cuisiner et te demande des conseils. | Ami
+# Recommande-lui d'aller dans une école de cuisine.
+# Conseille-lui de regarder des recettes sur internet.
+# Dis que tu commencerais par quelque chose de facile.
+# Rassure-le : c'est normal que ce soit raté au début.
+# Accepte et dis-lui de t'appeler quand ce sera prêt.
+# Dis « de rien » et souhaite-lui que ça se passe bien.
+-- es
+Hola, quiero aprender a cocinar. ¿Qué me recomiendas? ‖ Te recomiendo que vayas a una escuela de cocina. ‖ Te recomiendo ir a una escuela de cocina. ;; Te recomiendo que vayas a una escuela. ‖ Te recomiendo que vas a una escuela de cocina. ;; Te recomiendo que ir a una escuela de cocina. ;; Me recomiendas que vayas a una escuela de cocina. ‖ recomiendo
+Una escuela es demasiado cara. ‖ Pues te aconsejo que mires recetas en internet. ‖ Te aconsejo que mires recetas en internet. ;; Pues mira recetas en internet. ‖ Pues te aconsejo que miras recetas en internet. ;; Pues te aconsejo que mirar recetas en internet. ;; Pues me aconsejas que mires recetas en internet. ‖ aconsejo ; recetas
+Vale. ¿Y qué plato hago primero? ‖ Yo empezaría por algo fácil. ‖ Yo empezaría por algo sencillo. ;; Empezaría por algo fácil. ‖ Yo empezaría por algo difícil. ;; Yo empecé por algo fácil mañana. ;; Yo empezaría para algo fácil. ‖ empezaría ; fácil
+¿Y si me sale mal? ‖ Tranquilo, es normal que salga mal al principio. ‖ Es normal que salga mal al principio. ;; Tranquilo, es normal. ‖ Tranquilo, es normal que sale mal al principio. ;; Tranquilo, es normal que saldrá mal al principio. ;; Nervioso, es normal que salga mal al principio. ‖ normal
+Tienes razón. ¿Quieres venir a probarlo? ‖ ¡Claro! Llámame cuando esté listo. ‖ ¡Claro! Llámame cuando esté. ;; Sí, llámame cuando esté listo. ‖ ¡Claro! Llámame cuando está listo. ;; ¡Claro! Llámame cuando estará listo. ;; ¡Claro! Llámame cuando estoy listo. ‖ cuando ; esté
+Perfecto. ¡Muchas gracias por tu ayuda! ‖ De nada. ¡Que te salga muy bien! ‖ ¡De nada! Que te salga bien. ;; De nada, ¡que te salga muy bien! ‖ De nada. ¡Que te sale muy bien! ;; De nada. ¡Que te salga muy mal! ;; Por favor. ¡Que te salga muy bien! ‖ salga
+V: Te recomiendo que… = Je te recommande de… ;; Te aconsejo que… = Je te conseille de… ;; Es normal que salga mal = C'est normal que ce soit raté ;; cuando esté listo = quand ce sera prêt
+-- va
+Hola, vull aprendre a cuinar. Què em recomanes? ‖ Et recomane que vages a una escola de cuina. ‖ Et recomane anar a una escola de cuina. ;; Et recomane que vages a una escola. ‖ Et recomane que vas a una escola de cuina. ;; Et recomane que anar a una escola de cuina. ;; Em recomanes que vages a una escola de cuina. ‖ recomane
+Una escola és massa cara. ‖ T'aconselle que mires receptes en internet. ‖ T'aconselle que mires receptes en internet. ;; Mira receptes en internet. ‖ T'aconselle que mirar receptes en internet. ;; T'aconselle que miraràs receptes en internet. ;; M'aconselles que mires receptes en internet. ‖ aconselle ; receptes
+D'acord. I quin plat faig primer? ‖ Jo començaria per alguna cosa fàcil. ‖ Començaria per alguna cosa senzilla. ;; Jo començaria per una cosa fàcil. ‖ Jo començaria per alguna cosa difícil. ;; Jo vaig començar per alguna cosa fàcil demà. ;; Jo començaria per a alguna cosa fàcil. ‖ començaria ; fàcil
+I si em ix malament? ‖ Tranquil, és normal que isca malament al principi. ‖ És normal que isca malament al principi. ;; Tranquil, és normal. ‖ Tranquil, és normal que ix malament al principi. ;; Tranquil, és normal que eixirà malament al principi. ;; Nerviós, és normal que isca malament al principi. ‖ normal
+Tens raó. Vols vindre a menjar? ‖ Clar! Crida'm quan estiga preparat. ‖ Clar! Crida'm quan estiga. ;; Sí, crida'm quan estiga preparat. ‖ Clar! Crida'm quan està preparat. ;; Clar! Crida'm quan estarà preparat. ;; Clar! Crida'm quan estic preparat. ‖ quan ; estiga
+Perfecte. Moltes gràcies per la teua ajuda! ‖ De res. Que t'isca molt bé! ‖ De res! Que t'isca bé. ;; De res, que t'isca molt bé! ‖ De res. Que t'ix molt bé! ;; De res. Que t'isca molt malament! ;; Per favor. Que t'isca molt bé! ‖ isca
+V: T'aconselle que… = Je te conseille de… ;; Et recomane que… = Je te recommande de… ;; És normal que isca malament = C'est normal que ce soit raté ;; quan estiga preparat = quand ce sera prêt
+-- ca
+Hola, vull aprendre a cuinar. Què em recomanes? ‖ Et recomano que vagis a una escola de cuina. ‖ Et recomano anar a una escola de cuina. ;; Et recomano que vagis a una escola. ‖ Et recomano que vas a una escola de cuina. ;; Et recomano que anar a una escola de cuina. ;; Em recomanes que vagis a una escola de cuina. ‖ recomano
+Una escola és massa cara. ‖ Doncs t'aconsello que miris receptes a internet. ‖ T'aconsello que miris receptes a internet. ;; Doncs mira receptes a internet. ‖ Doncs t'aconsello que mires receptes a internet. ;; Doncs t'aconsello que mirar receptes a internet. ;; Doncs m'aconselles que miris receptes a internet. ‖ aconsello ; receptes
+D'acord. I quin plat faig primer? ‖ Jo començaria per alguna cosa fàcil. ‖ Començaria per alguna cosa senzilla. ;; Jo començaria per una cosa fàcil. ‖ Jo començaria per alguna cosa difícil. ;; Jo vaig començar per alguna cosa fàcil demà. ;; Jo començaria per a alguna cosa fàcil. ‖ començaria ; fàcil
+I si em surt malament? ‖ Tranquil, és normal que surti malament al principi. ‖ És normal que surti malament al principi. ;; Tranquil, és normal. ‖ Tranquil, és normal que surt malament al principi. ;; Tranquil, és normal que sortirà malament al principi. ;; Nerviós, és normal que surti malament al principi. ‖ normal
+Tens raó. Vols venir a menjar? ‖ És clar! Truca'm quan estigui preparat. ‖ És clar! Truca'm quan estigui. ;; Sí, truca'm quan estigui preparat. ‖ És clar! Truca'm quan està preparat. ;; És clar! Truca'm quan estarà preparat. ;; És clar! Truca'm quan estic preparat. ‖ quan ; estigui
+Perfecte. Moltes gràcies per la teva ajuda! ‖ De res. Que et surti molt bé! ‖ De res! Que et surti bé. ;; De res, que et surti molt bé! ‖ De res. Que et surt molt bé! ;; De res. Que et surti molt malament! ;; Si us plau. Que et surti molt bé! ‖ surti
+V: T'aconsello que… = Je te conseille de… ;; Et recomano que… = Je te recommande de… ;; És normal que surti malament = C'est normal que ce soit raté ;; quan estigui preparat = quand ce sera prêt
+-- gl
+Ola, quero aprender a cociñar. Que me recomendas? ‖ Recoméndoche que vaias a unha escola de cociña. ‖ Recoméndoche ir a unha escola de cociña. ;; Recoméndoche que vaias a unha escola. ‖ Che recomendo que vaias a unha escola de cociña. ;; Recoméndoche que vas a unha escola de cociña. ;; Recoméndoche que ir a unha escola de cociña. ‖ escola
+Unha escola é demasiado cara. ‖ Pois aconséllote que mires receitas en internet. ‖ Aconséllote que mires receitas en internet. ;; Pois mira receitas en internet. ‖ Pois te aconsello que mires receitas en internet. ;; Pois aconséllote que miras receitas en internet. ;; Pois aconséllote que mirar receitas en internet. ‖ receitas
+Vale. E que prato fago primeiro? ‖ Eu comezaría por algo doado. ‖ Comezaría por algo sinxelo. ;; Eu comezaría por algo fácil. ‖ Eu comezaría por algo difícil. ;; Eu comecei por algo doado mañá. ;; Eu comezaría para algo doado. ‖ comezaría
+E se me sae mal? ‖ Tranquilo, é normal que saia mal ao principio. ‖ É normal que saia mal ao principio. ;; Tranquilo, é normal. ‖ Tranquilo, é normal que sae mal ao principio. ;; Tranquilo, é normal que sairá mal ao principio. ;; Nervioso, é normal que saia mal ao principio. ‖ normal
+Tes razón. Queres vir probalo? ‖ Claro! Chámame cando estea listo. ‖ Claro! Chámame cando estea. ;; Si, chámame cando estea listo. ‖ Claro! Chámame cando está listo. ;; Claro! Chámame cando estará listo. ;; Claro! Chámame cando estou listo. ‖ cando ; estea
+Perfecto. Moitas grazas pola túa axuda! ‖ De nada. Que che saia moi ben! ‖ De nada! Que che saia ben. ;; De nada, que che saia moi ben! ‖ De nada. Que che sae moi ben! ;; De nada. Que che saia moi mal! ;; Por favor. Que che saia moi ben! ‖ saia
+V: Recoméndoche que… = Je te recommande de… ;; Aconséllote que… = Je te conseille de… ;; É normal que saia mal = C'est normal que ce soit raté ;; cando estea listo = quand ce sera prêt
+-- eu
+Kaixo, sukaldatzen ikasi nahi dut. Zer gomendatzen duzu? ‖ Sukaldaritza eskola bat gomendatzen dizut. ‖ Eskola batera joatea gomendatzen dizut. ;; Sukaldaritza eskolara joan zaitez. ‖ Sukaldaritza eskola bat gomendatzen duzu. ;; Sukaldaritza eskola bat gomendatzen naiz. ;; Sukaldaritza eskola bat gomendatzen dizut atzo. ‖ gomendatzen
+Eskola bat garestiegia da. ‖ Orduan, interneten errezetak begiratzea aholkatzen dizut. ‖ Interneten errezetak begiratzea aholkatzen dizut. ;; Orduan, begiratu errezetak interneten. ‖ Orduan, interneten errezetak begiratzea aholkatzen duzu. ;; Orduan, interneten errezetak begiratu aholkatzen dizut. ;; Orduan, interneten errezetak begiratzea aholkatzen naiz. ‖ errezetak
+Ados. Eta zein plater egingo dut lehenengo? ‖ Nik zerbait errazarekin hasiko nintzateke. ‖ Zerbait errazarekin hasiko nintzateke. ;; Nik zerbait errazarekin hasiko nuke. ‖ Nik zerbait zailarekin hasiko nintzateke. ;; Nik zerbait errazarekin hasi nintzen bihar. ;; Zuk zerbait errazarekin hasiko nintzateke. ‖ hasiko
+Eta gaizki egiten badut? ‖ Lasai, normala da hasieran gaizki egitea. ‖ Normala da hasieran gaizki egitea. ;; Lasai, normala da. ‖ Urduri, normala da hasieran gaizki egitea. ;; Lasai, normala da amaieran gaizki egitea. ;; Lasai, normala naiz hasieran gaizki egitea. ‖ normala
+Arrazoi duzu. Etxera etorri nahi duzu? ‖ Noski! Deitu iezadazu prest dagoenean. ‖ Noski! Deitu prest dagoenean. ;; Bai, deitu iezadazu prest dagoenean. ‖ Noski! Deitu iezadazu prest zegoenean. ;; Noski! Deitu iezadazu prest ez dagoenean. ;; Noski! Deitu iezadazu prest dagoenean atzo. ‖ dagoenean
+Oso ondo. Eskerrik asko zure laguntzagatik! ‖ Ez horregatik. Zorte on! ‖ Ez horregatik! Zorte on. ;; Ez horregatik, zorte on! ‖ Barkatu. Zorte on! ;; Mesedez. Zorte on! ;; Ez horregatik. Zorte ona naiz! ‖ zorte ‖ Dis « de rien » et souhaite-lui bonne chance.
+V: …gomendatzen dizut = je te recommande… ;; …aholkatzen dizut = je te conseille… ;; normala da = c'est normal ;; prest dagoenean = quand ce sera prêt

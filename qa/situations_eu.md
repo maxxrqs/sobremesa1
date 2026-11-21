@@ -1,7 +1,7 @@
-# Relecture native — situations A1–A2 (basque)
+# Relecture native — situations A1–C1 (basque)
 
 Pour chaque échange : réplique du personnage, consigne donnée à l'apprenant, réponse modèle, variantes acceptées et réponses fausses proposées dans le format à choix.
-À vérifier : naturel et correction de chaque phrase, registre (vouvoiement du personnage), variantes réellement acceptables, réponses fausses réellement fausses mais plausibles.
+À vérifier : naturel et correction de chaque phrase, registre (vouvoiement ou tutoiement selon le personnage), variantes réellement acceptables, réponses fausses réellement fausses mais plausibles.
 
 ## Au marché (A1) — `a1mercado`
 
@@ -1021,4 +1021,778 @@ _Dans une agence, tu réserves une excursion pour le week-end._ · personnage : 
    - fausses : Oso ondo! Ez horregatik. · Oso ondo! Barkatu asko. · Pena da! Eskerrik asko.
 
 À retenir : txangoa = l'excursion · erreserbatu = réserver · bazkaldu = déjeuner
+
+
+## Le chauffe-eau en panne (B1) — `b1calentador`
+
+_Tu appelles le propriétaire de ton appartement : le chauffe-eau ne marche plus._ · personnage : Propriétaire
+
+1. **Bai, esan?**
+   - consigne : Dis que le chauffe-eau ne marche pas depuis hier.
+   - modèle : Egun on. Berogailua ez dabil atzotik.
+   - variantes : Berogailua ez dabil atzotik. · Kaixo, berogailua ez dabil atzotik.
+   - fausses : Egun on. Berogailua ez dabil bihartik. · Egun on. Berogailua ondo dabil atzotik. · Egun on. Berogailua ez dabil atzora arte.
+
+2. **A, sentitzen dut. Zer gertatzen da?**
+   - consigne : Explique qu'il n'y a pas d'eau chaude.
+   - modèle : Ez dago ur berorik.
+   - variantes : Ez daukat ur berorik. · Ez dut ur berorik.
+   - fausses : Ez dago ur hotzik. · Ez da ur beroa. · Ez dago ur berorik hondartzan.
+
+3. **Matxura bat izango da. Teknikari bati deituko diot.**
+   - consigne : Demande s'il peut venir aujourd'hui ou demain.
+   - modèle : Gaur edo bihar etor daiteke?
+   - variantes : Teknikaria gaur edo bihar etor daiteke? · Bihar etor daiteke?
+   - fausses : Iaz etor daiteke? · Gaur edo bihar etor naiteke? · Gaur edo atzo etor daiteke?
+
+4. **Teknikaria ostegun arratsaldean joan daiteke.**
+   - consigne : Dis que jeudi tu travailles et demande si vendredi serait possible.
+   - modèle : Ostegunean lan egiten dut. Ostiralean izan daiteke?
+   - variantes : Ostegunean lanean nago. Ostiralean izan daiteke? · Ostegunean lan egiten dut. Ostirala izan daiteke?
+   - fausses : Ostegunean lan egiten dut. Joan den ostiralean izan daiteke? · Ostegunean lan egin nuen. Atzo izan daiteke? · Ostegunean lan egiten dut. Ostegunean izan daiteke?
+
+5. **Bai, ostiralean hamarretan. Ondo datorkizu?**
+   - consigne : Accepte et remercie-le pour son aide.
+   - modèle : Oso ondo. Eskerrik asko zure laguntzagatik.
+   - variantes : Oso ondo, eskerrik asko zure laguntzagatik. · Oso ondo. Eskerrik asko zure laguntzagatik.
+   - fausses : Oso ondo. Eskerrik asko zure matxuragatik. · Oso ondo. Eskerrik asko nire laguntzagatik. · Oso ondo. Ez horregatik zure laguntzagatik.
+
+6. **Ez horregatik. Zerbait behar baduzu, deitu iezadazu.**
+   - consigne : Dis que tu le feras et souhaite-lui une bonne journée.
+   - modèle : Ados. Egun ona izan!
+   - variantes : Ongi. Egun ona izan! · Ados, eskerrik asko. Egun ona izan!
+   - fausses : Ados. Egun ona dut! · Ados. Egun ona naiz! · Ados. Egun ona izan zen!
+
+À retenir : berogailua = le chauffe-eau · matxura = une panne · …izan daiteke? = Ça pourrait être… ? · Egun ona izan! = Bonne journée !
+
+
+## L'entretien d'embauche (B1) — `b1entrevista`
+
+_Tu passes un entretien pour un poste dans une entreprise._ · personnage : Recruteuse
+
+1. **Egun on. Zergatik nahi duzu lanpostu hau?**
+   - consigne : Dis que tu aimes travailler avec des clients.
+   - modèle : Bezeroekin lan egitea gustatzen zait.
+   - variantes : Bezeroekin lan egitea asko gustatzen zait. · Bezeroekin lan egitea maite dut.
+   - fausses : Bezerorik gabe lan egitea gustatzen zait. · Bezeroekin lan egitea gustatzen naiz. · Bezeroekin lan egitea gustatzen zaizu.
+
+2. **Salmentan esperientziarik duzu?**
+   - consigne : Dis que tu as travaillé cinq ans dans la vente.
+   - modèle : Bai, bost urtez lan egin dut salmentan.
+   - variantes : Bai, bost urte salmentan. · Bai, bost urtez aritu naiz salmentan.
+   - fausses : Bai, bost urtez lan egingo dut salmentan. · Bai, bost urtez lan egin duzu salmentan. · Ez, bost urtez lan egin dut salmentan.
+
+3. **Oso ondo. Lana bulegoan da, telelan egun batekin.**
+   - consigne : Dis que ça te convient et demande quels sont les horaires.
+   - modèle : Oso ondo iruditzen zait. Zein da ordutegia?
+   - variantes : Ondo iruditzen zait. Zein da ordutegia? · Oso ondo. Zein ordutegi du lanak?
+   - fausses : Oso ondo iruditzen naiz. Zein da ordutegia? · Oso ondo iruditzen zait. Nor da ordutegia? · Oso gaizki iruditzen zait. Zein da ordutegia?
+
+4. **Bederatzietatik bostetara, bi hilabeteko proba aldiarekin.**
+   - consigne : Demande quand tu commencerais.
+   - modèle : Ulertzen dut. Noiz hasiko nintzateke?
+   - variantes : Noiz hasiko nintzateke lanean? · Ados. Noiz hasiko nintzateke?
+   - fausses : Ulertzen dut. Noiz hasi nintzen? · Ulertzen dut. Non hasiko nintzateke? · Ulertzen dut. Noiz hasiko nintzateke atzo?
+
+5. **Datorren hilean. Galderarik duzu?**
+   - consigne : Demande si c'est un contrat à durée indéterminée.
+   - modèle : Bai. Kontratu mugagabea da?
+   - variantes : Kontratua mugagabea da? · Bai, kontratu mugagabea da?
+   - fausses : Bai. Kontratu mugagabea dago? · Bai. Atzoko kontratua da? · Ez. Kontratu mugagabea da?
+
+6. **Bai. Datorren astean deituko dizugu.**
+   - consigne : Remercie-la pour son temps et dis « à bientôt ».
+   - modèle : Eskerrik asko zure denboragatik. Laster arte!
+   - variantes : Eskerrik asko. Laster arte! · Mila esker zure denboragatik.
+   - fausses : Ez horregatik zure denboragatik. Laster arte! · Eskerrik asko nire denboragatik. Laster arte! · Barkatu zure denboragatik. Laster arte!
+
+À retenir : lanpostua = le poste · proba aldia = la période d'essai · kontratu mugagabea = un CDI · Noiz hasiko nintzateke? = Quand est-ce que je commencerais ?
+
+
+## Une toux qui ne passe pas (B1) — `b1medico`
+
+_Tu tousses depuis une semaine et tu vas chez la médecin._ · personnage : Médecin
+
+1. **Arratsalde on. Zer gertatzen zaizu?**
+   - consigne : Dis que tu tousses depuis une semaine.
+   - modèle : Eztul asko egiten dut duela astebete.
+   - variantes : Duela astebete eztul asko egiten dut. · Eztula dut duela astebete.
+   - fausses : Eztul asko egiten duzu duela astebete. · Eztul asko egiten naiz duela astebete. · Eztul asko egingo dut duela astebete.
+
+2. **Sukarra duzu?**
+   - consigne : Dis que non, mais que tu dors très mal.
+   - modèle : Ez, baina oso gaizki lo egiten dut.
+   - variantes : Ez, baina ez dut ondo lo egiten. · Ez, baina gaizki lo egiten dut.
+   - fausses : Ez, baina oso gaizki lo egiten duzu. · Ez, baina oso gaizki lo egiten naiz. · Bai, baina oso ondo lo egiten dut.
+
+3. **Ez da ezer larria, hotzeria da.**
+   - consigne : Dis que tu es soulagé(e) et demande si tu as besoin d'un médicament.
+   - modèle : Zorionez. Sendagai bat behar dut?
+   - variantes : Zorionez. Sendagairik behar dut? · Sendagai bat hartu behar dut?
+   - fausses : Zorionez. Sendagai bat behar duzu? · Zoritxarrez. Sendagai bat behar dut? · Zorionez. Sendagai bat behar naiz?
+
+4. **Bai, hartu hau egunean hiru aldiz, jan ondoren.**
+   - consigne : Demande pendant combien de jours.
+   - modèle : Zenbat egunez?
+   - variantes : Zenbat egunez hartu behar dut? · Zenbat egun?
+   - fausses : Zein egunez? · Zenbat egun naiz? · Noiz egunez?
+
+5. **Astebete. Eta edan ur asko.**
+   - consigne : Demande si tu peux aller travailler.
+   - modèle : Ados. Lanera joan naiteke?
+   - variantes : Ongi. Lanera joan naiteke? · Lan egin dezaket?
+   - fausses : Ados. Lanera joan zaitezke? · Ados. Lanean joan naiteke? · Ados. Lanera joan dezaket?
+
+6. **Bai, baina hobeto ez bazaude, itzuli astelehenean.**
+   - consigne : Remercie la médecin et dis au revoir.
+   - modèle : Eskerrik asko. Gero arte.
+   - variantes : Eskerrik asko. Agur! · Mila esker, gero arte.
+   - fausses : Ez horregatik. Gero arte. · Eskerrik asko. Gabon, kaixo! · Barkatu. Gero arte.
+
+À retenir : eztula = la toux · hotzeria = un rhume · Zorionez = Heureusement · sendagaia = le médicament
+
+
+## Au registre municipal (B1) — `b1padron`
+
+_Tu viens d'emménager et tu vas à la mairie pour t'inscrire au registre municipal._ · personnage : Employé de mairie
+
+1. **Egun on. Zertan lagun zaitzaket?**
+   - consigne : Dis que tu viens t'inscrire au registre municipal.
+   - modèle : Egun on. Erroldatzera nator.
+   - variantes : Erroldatzera nator. · Egun on, erroldatu nahi dut.
+   - fausses : Egun on. Erroldatzera joan nintzen bihar. · Egun on. Jabeen komunitatera nator. · Egun on. Erroldatzera dator.
+
+2. **Oso ondo. Hitzordua duzu?**
+   - consigne : Dis que oui, tu as rendez-vous à dix heures.
+   - modèle : Bai, hamarretan dut hitzordua.
+   - variantes : Bai, hamarretan. · Bai, hitzordua hamarretan dut.
+   - fausses : Bai, hamarretan naiz hitzordua. · Ez, hamarretan dut hitzordua. · Bai, hamarretan duzu hitzordua.
+
+3. **Pasaportea eta alokairu kontratua utziko dizkidazu?**
+   - consigne : Donne-les et demande s'il a besoin d'autre chose.
+   - modèle : Hemen dituzu. Beste zerbait behar duzu?
+   - variantes : Hemen dituzu. Beste zerbait? · Bai, hemen dituzu. Beste zerbait behar duzu?
+   - fausses : Hemen dituzu. Beste zerbait behar dut? · Hemen dituzu. Beste zerbait behar zara? · Hemen ditut. Beste zerbait behar duzu?
+
+4. **Bai, baina argiaren faktura ere behar dut.**
+   - consigne : Excuse-toi : tu ne l'as pas apportée. Demande si tu peux l'envoyer par e-mail.
+   - modèle : Barkatu, ez dut ekarri. Posta elektronikoz bidal dezaket?
+   - variantes : Barkatu, ez daukat hemen. Posta elektronikoz bidal dezaket? · Sentitzen dut, ez dut ekarri. Posta elektronikoz bidal dezaket?
+   - fausses : Barkatu, ez dut ekarri. Posta elektronikoz bidal dezakezu? · Eskerrik asko, ez dut ekarri. Posta elektronikoz bidal dezaket? · Barkatu, ez naiz ekarri. Posta elektronikoz bidal dezaket?
+
+5. **Bai, posta elektronikoz. Hamar egun dituzu.**
+   - consigne : Demande quand ce sera prêt.
+   - modèle : Ados. Noiz egongo da prest?
+   - variantes : Ados. Noiz egongo da prest? · Noiz egongo da prest erroldatzea?
+   - fausses : Ados. Noiz izango naiz prest? · Ados. Noiz zegoen prest? · Ados. Non egongo da prest?
+
+6. **Astebete barru.**
+   - consigne : Remercie-le pour son aide.
+   - modèle : Oso ondo. Eskerrik asko zure laguntzagatik.
+   - variantes : Eskerrik asko zure laguntzagatik. · Mila esker zure laguntzagatik.
+   - fausses : Oso ondo. Ez horregatik zure laguntzagatik. · Oso ondo. Eskerrik asko nire laguntzagatik. · Oso ondo. Eskerrik asko zure matxuragatik.
+
+À retenir : erroldatu = s'inscrire au registre municipal · hitzordua = le rendez-vous · argiaren faktura = la facture d'électricité · Noiz egongo da prest? = Quand est-ce que ce sera prêt ?
+
+
+## Vol annulé (B1) — `b1vuelo`
+
+_À l'aéroport, ton vol a été annulé. Tu parles à l'agente de la compagnie._ · personnage : Agente
+
+1. **Arratsalde on. Zertan lagun zaitzaket?**
+   - consigne : Dis qu'ils ont annulé ton vol.
+   - modèle : Arratsalde on. Nire hegaldia bertan behera utzi dute.
+   - variantes : Nire hegaldia bertan behera utzi dute. · Arratsalde on, nire hegaldia bertan behera geratu da.
+   - fausses : Arratsalde on. Nire hegaldia bertan behera utziko dute atzo. · Arratsalde on. Zure hegaldia bertan behera utzi dut. · Arratsalde on. Nire hegaldia bertan behera utzi naute.
+
+2. **Asko sentitzen dut. Pasaportea, mesedez?**
+   - consigne : Donne-le et demande s'il y a un autre vol aujourd'hui.
+   - modèle : Hemen duzu. Beste hegaldi bat dago gaur?
+   - variantes : Bai, hemen duzu. Beste hegaldi bat dago gaur? · Beste hegaldirik badago gaur?
+   - fausses : Hemen duzu. Beste hegaldi bat dago atzo? · Hemen dut. Beste hegaldi bat dago gaur? · Hemen duzu. Beste hegaldi bat dago iaz?
+
+3. **Gaur ez, baina bihar zazpietan bat dago.**
+   - consigne : Demande où tu vas dormir cette nuit.
+   - modèle : Eta non egingo dut lo gaur gauean?
+   - variantes : Eta non lo egingo dut gaur? · Ados, eta non egingo dut lo gaur gauean?
+   - fausses : Eta non egin nuen lo gaur gauean? · Eta noiz egingo dut lo gaur gauean? · Eta non egingo duzu lo gaur gauean?
+
+4. **Aireportutik gertu gela bat ordainduko dizugu.**
+   - consigne : Accepte et demande ce qui se passe avec tes bagages.
+   - modèle : Ados. Eta nire ekipajea?
+   - variantes : Ongi. Eta nire ekipajea? · Ados, zer gertatzen da nire ekipajearekin?
+   - fausses : Ados. Eta zure ekipajea? · Ez. Eta nire ekipajea? · Ados. Eta nik ekipajea?
+
+5. **Zure ekipajea zurekin bidaiatuko da bihar.**
+   - consigne : Demande-lui de te l'écrire, s'il te plaît.
+   - modèle : Ulertuta. Idatz dezakezu, mesedez?
+   - variantes : Idatz dezakezu, mesedez? · Ados. Idatz dezakezu, mesedez?
+   - fausses : Ulertuta. Idatz dezaket, mesedez? · Ulertuta. Jan dezakezu, mesedez? · Ulertuta. Idatzi nuen, mesedez?
+
+6. **Noski, hemen duzu. Barkatu eragozpenengatik.**
+   - consigne : Dis que ce n'est pas grave.
+   - modèle : Lasai. Eskerrik asko zure laguntzagatik.
+   - variantes : Lasai, eskerrik asko. · Ez dago arazorik. Eskerrik asko zure laguntzagatik.
+   - fausses : Urduri. Eskerrik asko zure laguntzagatik. · Lasai. Eskerrik asko nire laguntzagatik. · Lasai. Ez horregatik zure laguntzagatik.
+
+À retenir : bertan behera utzi = annuler · ekipajea = les bagages · Barkatu eragozpenengatik = Excusez le dérangement · Lasai = Ne t'inquiète pas, ce n'est pas grave
+
+
+## Apprendre à cuisiner (B1) — `b1consejo`
+
+_Un ami veut apprendre à cuisiner et te demande des conseils._ · personnage : Ami
+
+1. **Kaixo, sukaldatzen ikasi nahi dut. Zer gomendatzen duzu?**
+   - consigne : Recommande-lui d'aller dans une école de cuisine.
+   - modèle : Sukaldaritza eskola bat gomendatzen dizut.
+   - variantes : Eskola batera joatea gomendatzen dizut. · Sukaldaritza eskolara joan zaitez.
+   - fausses : Sukaldaritza eskola bat gomendatzen duzu. · Sukaldaritza eskola bat gomendatzen naiz. · Sukaldaritza eskola bat gomendatzen dizut atzo.
+
+2. **Eskola bat garestiegia da.**
+   - consigne : Conseille-lui de regarder des recettes sur internet.
+   - modèle : Orduan, interneten errezetak begiratzea aholkatzen dizut.
+   - variantes : Interneten errezetak begiratzea aholkatzen dizut. · Orduan, begiratu errezetak interneten.
+   - fausses : Orduan, interneten errezetak begiratzea aholkatzen duzu. · Orduan, interneten errezetak begiratu aholkatzen dizut. · Orduan, interneten errezetak begiratzea aholkatzen naiz.
+
+3. **Ados. Eta zein plater egingo dut lehenengo?**
+   - consigne : Dis que tu commencerais par quelque chose de facile.
+   - modèle : Nik zerbait errazarekin hasiko nintzateke.
+   - variantes : Zerbait errazarekin hasiko nintzateke. · Nik zerbait errazarekin hasiko nuke.
+   - fausses : Nik zerbait zailarekin hasiko nintzateke. · Nik zerbait errazarekin hasi nintzen bihar. · Zuk zerbait errazarekin hasiko nintzateke.
+
+4. **Eta gaizki egiten badut?**
+   - consigne : Rassure-le : c'est normal que ce soit raté au début.
+   - modèle : Lasai, normala da hasieran gaizki egitea.
+   - variantes : Normala da hasieran gaizki egitea. · Lasai, normala da.
+   - fausses : Urduri, normala da hasieran gaizki egitea. · Lasai, normala da amaieran gaizki egitea. · Lasai, normala naiz hasieran gaizki egitea.
+
+5. **Arrazoi duzu. Etxera etorri nahi duzu?**
+   - consigne : Accepte et dis-lui de t'appeler quand ce sera prêt.
+   - modèle : Noski! Deitu iezadazu prest dagoenean.
+   - variantes : Noski! Deitu prest dagoenean. · Bai, deitu iezadazu prest dagoenean.
+   - fausses : Noski! Deitu iezadazu prest zegoenean. · Noski! Deitu iezadazu prest ez dagoenean. · Noski! Deitu iezadazu prest dagoenean atzo.
+
+6. **Oso ondo. Eskerrik asko zure laguntzagatik!**
+   - consigne : Dis « de rien » et souhaite-lui bonne chance.
+   - modèle : Ez horregatik. Zorte on!
+   - variantes : Ez horregatik! Zorte on. · Ez horregatik, zorte on!
+   - fausses : Barkatu. Zorte on! · Mesedez. Zorte on! · Ez horregatik. Zorte ona naiz!
+
+À retenir : …gomendatzen dizut = je te recommande… · …aholkatzen dizut = je te conseille… · normala da = c'est normal · prest dagoenean = quand ce sera prêt
+
+
+## Une commande arrivée cassée (B2) — `b2reclamacion`
+
+_Tu appelles le service client : ta commande est arrivée cassée._ · personnage : Agent du service client
+
+1. **Egun on, zertan lagun zaitzaket?**
+   - consigne : Dis que ta commande est arrivée cassée.
+   - modèle : Egun on. Nire eskaera hautsita iritsi da.
+   - variantes : Nire eskaera hautsita iritsi da. · Egun on, eskaera hautsita iritsi zait.
+   - fausses : Egun on. Zure eskaera hautsita iritsi da. · Egun on. Nire eskaera hautsita iritsiko da atzo. · Egun on. Nire eskaera osorik iritsi da.
+
+2. **Asko sentitzen dut. Noiz jaso zenuen?**
+   - consigne : Dis que tu l'as reçue hier et qu'elle était déjà cassée.
+   - modèle : Atzo jaso nuen, eta hautsita zegoen.
+   - variantes : Atzo, eta hautsita zegoen. · Atzo jaso nuen, hautsita.
+   - fausses : Bihar jaso nuen, eta hautsita zegoen. · Atzo jasoko dut, eta hautsita zegoen. · Atzo jaso zenuen, eta hautsita zegoen.
+
+3. **Beste bat bidaltzea nahi duzu?**
+   - consigne : Dis que tu préférerais qu'on te rembourse.
+   - modèle : Nahiago nuke dirua itzultzea.
+   - variantes : Nahiago dut dirua itzultzea. · Nahiago nuke dirua itzultzea, mesedez.
+   - fausses : Nahiago zenuke dirua itzultzea. · Nahiago nuke dirua ez itzultzea. · Nahiago nuen dirua itzultzea bihar.
+
+4. **Bai, noski. Hamar bat egun beharko ditu.**
+   - consigne : Dis que tu lui serais reconnaissant(e) que ce soit plus rapide.
+   - modèle : Eskertuko nizuke lehenago bidaltzea.
+   - variantes : Eskertuko nizuke pixka bat lehenago bidaltzea. · Eskertuko nizuke lehenago bidaltzea, mesedez.
+   - fausses : Eskertuko nizuke inoiz ez bidaltzea. · Eskertuko zenidake lehenago bidaltzea. · Eskertu nizun lehenago bidaltzea bihar.
+
+5. **Saiatuko naiz.**
+   - consigne : Dis que tu comprends et demande s'il peut te l'envoyer par e-mail.
+   - modèle : Ulertzen dut. Posta elektronikoz bidal dezakezu?
+   - variantes : Posta elektronikoz bidal dezakezu? · Ados. Posta elektronikoz bidal dezakezu?
+   - fausses : Ulertzen dut. Posta elektronikoz bidal dezaket? · Ulertzen dut. Hondartzaz bidal dezakezu? · Ulertzen dut. Posta elektronikoz bidali zenuen bihar?
+
+6. **Noski. Barkatu eragozpenengatik.**
+   - consigne : Remercie-le et dis que tu espères que tout ira bien.
+   - modèle : Eskerrik asko. Dena ondo joatea espero dut.
+   - variantes : Eskerrik asko, dena ondo joatea espero dut. · Mila esker. Dena ondo joatea espero dut.
+   - fausses : Eskerrik asko. Dena ondo joatea espero duzu. · Eskerrik asko. Dena gaizki joatea espero dut. · Eskerrik asko. Dena ondo joan zen bihar.
+
+À retenir : eskaera = la commande · Nahiago nuke dirua itzultzea = Je préférerais être remboursé(e) · Eskertuko nizuke… = Je vous serais reconnaissant(e) de… · Dena ondo joatea espero dut = J'espère que tout ira bien
+
+
+## Réunion d'équipe (B2) — `b2reunion`
+
+_En réunion, ta directrice fait le point sur les chiffres du trimestre._ · personnage : Directrice
+
+1. **Hasiko gara. Nola joan dira salmentak azken hiru hilabeteetan?**
+   - consigne : Dis qu'il a augmenté de dix pour cent.
+   - modèle : Ehuneko hamar igo dira.
+   - variantes : Ehuneko hamar igo dira aurrekoekin alderatuta. · Ehuneko hamar egin dute gora.
+   - fausses : Ehuneko hamar igoko dira atzo. · Ehuneko hamar igo naiz. · Ehuneko hamar jaitsi dira.
+
+2. **Oso ondo. Eta fakturak?**
+   - consigne : Dis que les factures ont aussi augmenté, mais moins.
+   - modèle : Fakturak ere igo dira, baina gutxiago.
+   - variantes : Ere igo dira, baina gutxiago. · Fakturak ere igo dira, gutxiago baina.
+   - fausses : Fakturak ere igo dira, baina gehiago. · Fakturak ere igo da, baina gutxiago. · Fakturak ere igoko dira atzo, baina gutxiago.
+
+3. **Orduan, publizitatean gehiago inbertitu beharko genuke?**
+   - consigne : Dis que tu ne le ferais pas sans réduire d'abord les factures.
+   - modèle : Nik ez nuke egingo fakturak murriztu gabe.
+   - variantes : Ez nuke egingo fakturak murriztu gabe. · Nik ez nuke egingo, fakturak murriztu gabe.
+   - fausses : Zuk ez nuke egingo fakturak murriztu gabe. · Nik ez nuke egingo fakturak handitu gabe. · Nik ez nintzateke egingo fakturak murriztu gabe.
+
+4. **Bai, baina publizitaterik gabe ez dago hazkunderik.**
+   - consigne : Dis qu'elle a raison, mais que tu aimerais nuancer.
+   - modèle : Arrazoi duzu, baina ñabartu nahiko nuke.
+   - variantes : Egia da, baina ñabartu nahiko nuke. · Arrazoi duzu, hala ere ñabartu nahiko nuke.
+   - fausses : Arrazoi dut, baina ñabartu nahiko nuke. · Arrazoi duzu, baina ñabartu nahiko zenuke. · Arrazoi duzu, baina ñabartu nahi nuen bihar.
+
+5. **Aurrera, entzuten zaitut.**
+   - consigne : Dis que si on investit petit à petit, on perdra moins d'argent.
+   - modèle : Pixkanaka inbertitzen badugu, diru gutxiago galduko dugu.
+   - variantes : Pixkanaka inbertituz, diru gutxiago galduko dugu. · Pixkanaka inbertitzen badugu, gutxiago galduko dugu.
+   - fausses : Pixkanaka inbertitzen dugu, diru gutxiago galduko dugu. · Pixkanaka inbertitzen badugu, diru gehiago galduko dugu. · Pixkanaka inbertitzen badugu, diru gutxiago galdu genuen.
+
+6. **Zentzuzkoa iruditzen zait. Proposamen bat prestatu dezakezu?**
+   - consigne : Dis que oui, tu la lui envoies avant vendredi.
+   - modèle : Noski, ostirala baino lehen bidaliko dizut.
+   - variantes : Bai, ostirala baino lehen bidaliko dizut. · Noski, ostirala baino lehen izango duzu.
+   - fausses : Noski, ostirala baino lehen bidali nizun. · Noski, ostirala baino lehen jasoko dut. · Noski, joan den ostirala baino lehen bidaliko dizut.
+
+À retenir : salmentak = les ventes · fakturak = les factures · ñabartu = nuancer · inbertitzen badugu = si on investit
+
+
+## Le bail se termine (B2) — `b2vivienda`
+
+_Ton propriétaire t'appelle : ton bail se termine et il veut augmenter le loyer._ · personnage : Propriétaire
+
+1. **Errentamendu kontratuagatik deitzen dizut. Ekainean amaitzen da.**
+   - consigne : Dis que tu le sais et que tu aimerais rester dans l'appartement.
+   - modèle : Bai, badakit. Pisuan jarraitu nahiko nuke.
+   - variantes : Badakit. Pisuan jarraitu nahiko nuke. · Bai, badakit. Pisuan jarraitu nahi dut.
+   - fausses : Bai, badakit. Pisuan jarraitu nahiko zenuke. · Bai, badakit. Pisuan jarraitu nahi nuen iaz. · Bai, badakit. Pisuan amaitu nahiko nuke.
+
+2. **Baina alokairua ehuneko hamabost igoko dut.**
+   - consigne : Dis que ça te paraît trop.
+   - modèle : Ehuneko hamabost? Gehiegi iruditzen zait.
+   - variantes : Gehiegi iruditzen zait. · Ehuneko hamabost? Gehiegi da.
+   - fausses : Ehuneko hamabost? Gehiegi iruditzen naiz. · Ehuneko hamabost? Gutxi iruditzen zait. · Ehuneko hamabost? Gehiegi iruditu zitzaidan bihar.
+
+3. **Prezioak asko igo dira auzoan.**
+   - consigne : Dis que tu comprends, mais que tu paies toujours à temps depuis cinq ans.
+   - modèle : Ulertzen dut, baina bost urtez beti garaiz ordaindu dut.
+   - variantes : Ulertzen dut, baina bost urtez garaiz ordaindu dut. · Bai, baina bost urtez beti garaiz ordaindu dut.
+   - fausses : Ulertzen dut, baina bost urtez beti garaiz ordainduko dut. · Ulertzen dut, baina bost urtez beti garaiz ordaindu duzu. · Ulertzen dut, baina bost urtez inoiz ez dut garaiz ordaindu.
+
+4. **Egia da, beti ondo ordaindu duzu.**
+   - consigne : Demande si vous ne pourriez pas trouver un accord.
+   - modèle : Ezin genuke akordio batera iritsi?
+   - variantes : Akordio batera iritsi gintezke? · Ezin dugu akordio batera iritsi?
+   - fausses : Ezin dugu akordio batera iritsi atzo? · Ezin genuke akordio batean iritsi? · Ezin zenuke akordio batera iritsi?
+
+5. **Zer proposatzen duzu?**
+   - consigne : Dis que tu accepterais cinq pour cent si vous signiez pour trois ans.
+   - modèle : Ehuneko bost onartuko nuke, hiru urterako sinatzen badugu.
+   - variantes : Ehuneko bost onartuko nuke, hiru urteko kontratuarekin. · Ehuneko bost, hiru urterako sinatzen badugu.
+   - fausses : Ehuneko bost onartuko nuke, hiru urterako sinatu genuen bihar. · Ehuneko bost onartuko nuke, hiru urterako sinatu genuen. · Ehuneko bost onartu nuen, hiru urterako sinatzen badugu.
+
+6. **Utzi pentsatzen, eta bihar deituko dizut.**
+   - consigne : Accepte et dis que tu veux trouver un accord.
+   - modèle : Ados. Akordio batera iritsi nahi dut.
+   - variantes : Ongi. Akordio batera iritsi nahi dut. · Ados, akordio batera iritsi nahi nuke.
+   - fausses : Ados. Akordio batera iritsi nahi duzu. · Ados. Akordio batera iritsi nahi nuen bihar. · Ados. Akordio batean iritsi nahi dut.
+
+À retenir : errentamendu kontratua = le bail · bost urtez = pendant cinq ans · akordio batera iritsi = trouver un accord · sinatzen badugu = si nous signons
+
+
+## Le nouveau traitement (B2) — `b2salud`
+
+_Tu retournes voir ta médecin : ton nouveau traitement a des effets secondaires._ · personnage : Médecin
+
+1. **Zer moduz tratamendu berriarekin?**
+   - consigne : Dis que ça va mieux, mais que tu as quelques effets secondaires.
+   - modèle : Hobeto, baina albo ondorio batzuk ditut.
+   - variantes : Hobeto nago, baina albo ondorio batzuk ditut. · Hobeto, albo ondorio batzuk ditudan arren.
+   - fausses : Hobeto, baina albo ondorio batzuk dituzu. · Hobeto, baina albo ondorio batzuk naiz. · Hobeto, baina albo ondorio batzuk izango ditut atzo.
+
+2. **Zer sintoma dituzu?**
+   - consigne : Dis que tu as mal à la tête et que tu dors moins bien.
+   - modèle : Buruko mina dut eta gaizki lo egiten dut.
+   - variantes : Buruko mina dut eta ez dut ondo lo egiten. · Burua min dut eta gaizki lo egiten dut.
+   - fausses : Buruko mina duzu eta gaizki lo egiten dut. · Buruko mina dut eta hobeto lo egiten dut. · Buruko mina naiz eta gaizki lo egiten dut.
+
+3. **Asko gertatzen da hasieran.**
+   - consigne : Demande s'il ne vaudrait pas mieux changer de médicament.
+   - modèle : Ez litzateke hobe sendagaia aldatzea?
+   - variantes : Ez litzateke hobe beste sendagai bat hartzea? · Hobe ez litzateke sendagaia aldatzea?
+   - fausses : Ez da hobe sendagaia aldatzea atzo? · Ez litzateke hobe sendagaia aldatzen? · Ez zinateke hobe sendagaia aldatzea?
+
+4. **Pixka bat itxarotea nahiago dut. Berdin jarraituko bazenu, aldatuko genuke.**
+   - consigne : Accepte et demande si tu peux te faire vacciner.
+   - modèle : Ados. Txertoa jarri dezaket?
+   - variantes : Ongi. Txertoa jarri dezaket? · Ados. Txertoa jarri dezaket?
+   - fausses : Ados. Txertoa jarri dezakezu? · Ados. Txertoa jarri nuen bihar? · Ados. Txertoa jarri naiteke?
+
+5. **Bai, noski.**
+   - consigne : Demande si tu dois revenir dans un mois.
+   - modèle : Oso ondo. Hilabete barru itzuli behar dut?
+   - variantes : Hilabete barru itzuli behar dut? · Ados. Hilabete barru itzuliko naiz?
+   - fausses : Oso ondo. Hilabete barru itzuli behar duzu? · Oso ondo. Duela hilabete itzuli behar dut? · Oso ondo. Hilabete barru itzuli behar naiz?
+
+6. **Bai, eta deitu iezadazu gaizki bazaude.**
+   - consigne : Dis que tu le feras et remercie-la pour tout.
+   - modèle : Hala egingo dut. Eskerrik asko denagatik.
+   - variantes : Hala egingo dut, eskerrik asko. · Ados. Eskerrik asko denagatik.
+   - fausses : Hala egin nuen. Eskerrik asko denagatik. · Hala egingo duzu. Eskerrik asko denagatik. · Hala egingo dut. Ez horregatik denagatik.
+
+À retenir : tratamendua = le traitement · albo ondorioak = les effets secondaires · Ez litzateke hobe…? = Ne vaudrait-il pas mieux… ? · txertoa = le vaccin
+
+
+## Une rue piétonne (B2) — `b2ciudad`
+
+_Ton voisin n'est pas content : la rue va être fermée aux voitures._ · personnage : Voisin
+
+1. **Ikusi duzu kalea autoei itxiko dietela?**
+   - consigne : Dis que oui, ça va devenir une zone piétonne.
+   - modèle : Bai, oinezkoentzako gune bat izango da.
+   - variantes : Bai, oinezkoentzako gunea izango da. · Bai, oinezkoentzat izango da.
+   - fausses : Bai, oinezkoentzako gune bat izan zen bihar. · Bai, autoentzako gune bat izango da. · Bai, oinezkoentzako gune bat egongo naiz.
+
+2. **Niri ez zait gustatzen. Auto ilara gehiago egongo dira.**
+   - consigne : Dis que c'est possible, mais qu'il y aura moins de pollution.
+   - modèle : Agian, baina kutsadura gutxiago egongo da.
+   - variantes : Baliteke, baina kutsadura gutxiago egongo da. · Agian, baina airea garbiagoa egongo da.
+   - fausses : Agian, baina kutsadura gehiago egongo da. · Agian, baina kutsadura gutxiago egon zen bihar. · Agian, baina kutsadura gutxiago egongo naiz.
+
+3. **Bai, baina dendek bezeroak galduko dituzte.**
+   - consigne : Dis que tu ne crois pas que ce soit le cas, au contraire.
+   - modèle : Ez dut uste egia denik, alderantziz.
+   - variantes : Ez dut uste egia denik. · Nik ez dut uste egia denik, alderantziz.
+   - fausses : Uste dut egia denik, alderantziz. · Ez duzu uste egia denik, alderantziz. · Ez dut uste egia zenik bihar, alderantziz.
+
+4. **Benetan? Eta nola joango gara erdigunera?**
+   - consigne : Dis : à vélo ou en transports en commun, c'est plus durable.
+   - modèle : Bizikletaz edo garraio publikoan, jasangarriagoa delako.
+   - variantes : Bizikletaz edo garraio publikoan. · Garraio publikoan edo bizikletaz, jasangarriagoa da.
+   - fausses : Bizikletaz edo garraio publikoan, jasangarriagoa ez delako. · Bizikletaz edo garraio publikoan, jasangarriagoa naizelako. · Bizikletaz edo garraio publikoan, jasangarriagoa zen bihar.
+
+5. **Bidegorri bat egongo balitz, agian erabiliko nuke.**
+   - consigne : Dis qu'ils vont en faire une l'année prochaine.
+   - modèle : Datorren urtean bat egingo dute.
+   - variantes : Datorren urtean bidegorri bat egingo dute. · Bat egingo dute datorren urtean.
+   - fausses : Joan den urtean bat egingo dute. · Datorren urtean bat egin zuten. · Datorren urtean bat egingo duzu.
+
+6. **Ikusiko dugu. Agian arrazoi duzu.**
+   - consigne : Dis qu'il verra qu'au final ça lui plaira.
+   - modèle : Ikusiko duzu azkenean gustatuko zaizula.
+   - variantes : Ikusiko duzu gustatuko zaizula. · Ikusiko duzu, azkenean gustatuko zaizu.
+   - fausses : Ikusiko duzu hasieran gustatuko zaizula. · Ikusiko duzu azkenean ez zaizula gustatuko. · Ikusiko duzu azkenean gustatuko naizela.
+
+À retenir : oinezkoentzako gunea = une zone piétonne · Ez dut uste egia denik = Je ne crois pas que ce soit le cas · jasangarria = durable · bidegorria = la piste cyclable
+
+
+## Annoncer sa démission (B2) — `b2dimision`
+
+_Tu demandes à parler à ta cheffe : tu as décidé de démissionner._ · personnage : Cheffe
+
+1. **Kaixo, nirekin hitz egin nahi zenuen?**
+   - consigne : Dis que tu regrettes de le lui dire, mais que tu vas présenter ta démission.
+   - modèle : Bai. Sentitzen dut, baina dimisioa aurkeztuko dut.
+   - variantes : Bai. Sentitzen dut esatea, baina dimisioa aurkeztuko dut. · Sentitzen dut, baina lana utziko dut.
+   - fausses : Bai. Sentitzen dut, baina dimisioa aurkeztu nuen bihar. · Bai. Pozten naiz, baina dimisioa aurkeztuko dut. · Bai. Sentitzen dut, baina dimisioa aurkeztuko duzu.
+
+2. **Benetan? Zergatik?**
+   - consigne : Dis que tu as trouvé un meilleur travail.
+   - modèle : Lan hobe bat aurkitu dut.
+   - variantes : Beste lan hobe bat aurkitu dut. · Lan hobe bat aurkitu dudalako.
+   - fausses : Lan txarrago bat aurkitu dut. · Lan hobe bat aurkitu duzu. · Lan hobe bat aurkituko dut atzo.
+
+3. **Eta soldata igotzen badugu?**
+   - consigne : Remercie-la, mais dis que tu as déjà pris ta décision.
+   - modèle : Eskerrik asko, baina erabakia hartu dut jada.
+   - variantes : Eskerrik asko, baina erabakita dago. · Mila esker, baina erabakia hartu dut jada.
+   - fausses : Eskerrik asko, baina erabakia hartuko dut atzo. · Eskerrik asko, baina erabakia hartu duzu jada. · Ez horregatik, baina erabakia hartu dut jada.
+
+4. **Ulertzen dut. Noiz joango zinateke?**
+   - consigne : Dis : dans un mois, pour qu'elle ait le temps de chercher quelqu'un.
+   - modèle : Hilabete barru, norbait bilatzeko denbora izan dezazun.
+   - variantes : Hilabete barru, norbait bilatzeko denbora izateko. · Hilabete barru, horrela norbait bilatzeko denbora izango duzu.
+   - fausses : Hilabete barru, norbait bilatzeko denbora izan duzu. · Hilabete barru, norbait bilatzeko denbora izan dezaket. · Duela hilabete, norbait bilatzeko denbora izan dezazun.
+
+5. **Eskerrik asko. Dena prest utziko duzu?**
+   - consigne : Dis que bien sûr, tu laisseras tout prêt.
+   - modèle : Noski, dena prest utziko dut.
+   - variantes : Bai, dena prest utziko dut. · Noski, ahal dudan guztia egingo dut.
+   - fausses : Noski, dena prest utzi nuen bihar. · Noski, dena prest utziko duzu. · Ez, dena prest utziko dut.
+
+6. **Eskerrik asko. Faltan botako zaitugu.**
+   - consigne : Dis que toi aussi, et que ça a été un plaisir de travailler avec elle.
+   - modèle : Nik ere bai. Plazer bat izan da zurekin lan egitea.
+   - variantes : Nik ere bai. Plazer bat izan da. · Baita nik ere. Plazer bat izan da zurekin lan egitea.
+   - fausses : Nik ere bai. Plazer bat izan da nirekin lan egitea. · Nik ere bai. Plazer bat izango da zurekin lan egitea atzo. · Nik ere ez. Plazer bat izan da zurekin lan egitea.
+
+À retenir : dimisioa aurkeztu = donner sa démission · denbora izan dezazun = pour que tu aies le temps · faltan bota = regretter (une personne absente) · Plazer bat izan da = Ça a été un plaisir
+
+
+## Un deuil au travail (C1) — `c1pesame`
+
+_Le père d'une collègue est décédé. Tu vas la voir à son retour._ · personnage : Collègue
+
+1. **Eskerrik asko etortzeagatik. Aste oso gogorra izan da.**
+   - consigne : Présente-lui tes sincères condoléances.
+   - modèle : Asko sentitzen dut. Nire doluminik beroenak.
+   - variantes : Nire doluminik beroenak. · Benetan sentitzen dut. Nire doluminik beroenak.
+   - fausses : Pozten naiz. Nire doluminik beroenak. · Asko sentitzen dut. Zure doluminik beroenak. · Oso ondo! Nire doluminik beroenak.
+
+2. **Ia inori ez nion abisatu, dena oso azkar gertatu zen.**
+   - consigne : Dis que si tu l'avais su, tu l'aurais appelée plus tôt.
+   - modèle : Jakin izan banu, lehenago deituko nizukeen.
+   - variantes : Jakin izan banu, deituko nizukeen. · Jakin banu, lehenago deituko nizukeen.
+   - fausses : Jakin dut, lehenago deituko nizukeen. · Jakin izan banu, lehenago deituko zenidakeen. · Jakin izan banu, geroago deituko nizukeen.
+
+3. **Eskerrik asko. Ez dakit noiz itzuliko naizen lanera.**
+   - consigne : Rassure-la et dis-lui de prendre le temps qu'il lui faudra.
+   - modèle : Lasai. Behar duzun denbora hartu.
+   - variantes : Behar duzun denbora hartu. · Lasai, behar duzun denbora hartu.
+   - fausses : Urduri. Behar duzun denbora hartu. · Lasai. Behar duzun denbora galdu. · Lasai. Behar duzun denbora hartu nuen.
+
+4. **Nire bezeroek kezkatzen naute, egia esan.**
+   - consigne : Propose de t'occuper de ses clients cette semaine.
+   - modèle : Nahi baduzu, ni arduratuko naiz haietaz aste honetan.
+   - variantes : Ni arduratuko naiz haietaz aste honetan. · Nahi baduzu, ni arduratuko naiz zure bezeroez.
+   - fausses : Nahi baduzu, zu arduratuko naiz haietaz aste honetan. · Nahi baduzu, ni arduratu nintzen haietaz datorren astean. · Nahi baduzu, ni arduratuko zara haietaz aste honetan.
+
+5. **Ez dakit nola eskertu.**
+   - consigne : Dis qu'elle n'a rien à te remercier, que c'est la moindre des choses.
+   - modèle : Ez dago zer eskerturik.
+   - variantes : Ez dago zer eskerturik, benetan. · Ez dago ezer eskertzeko.
+   - fausses : Badago zer eskerturik. · Ez nago zer eskerturik. · Ez zegoen zer eskerturik bihar.
+
+6. **Oso ona zara. Eskerrik asko benetan.**
+   - consigne : Dis que tu es là pour tout ce dont elle aura besoin.
+   - modèle : Hemen nago behar duzun guztirako.
+   - variantes : Behar duzun guztirako, hemen nago. · Badakizu, hemen nago behar duzun guztirako.
+   - fausses : Hemen zaude behar duzun guztirako. · Hemen nago behar ez duzun guztirako. · Hemen nengoen behar duzun guztirako bihar.
+
+À retenir : Nire doluminik beroenak = Toutes mes condoléances · Jakin izan banu = Si je l'avais su · Behar duzun denbora hartu = Prends le temps qu'il te faudra · behar duzun guztirako = pour tout ce dont tu auras besoin
+
+
+## La négociation (C1) — `c1negociacion`
+
+_Tu représentes le personnel face au directeur des ressources humaines, qui annonce des licenciements._ · personnage : Directeur des ressources humaines
+
+1. **Enpresak enplegu erregulazioko espediente bat aurkeztuko du.**
+   - consigne : Dis que le comité n'accepte pas les licenciements dans ces conditions.
+   - modèle : Batzordeak ez ditu kaleratzeak onartzen baldintza hauetan.
+   - variantes : Batzordeak ez ditu kaleratzeak onartzen. · Ez ditugu kaleratzeak onartzen baldintza hauetan.
+   - fausses : Batzordeak kaleratzeak onartzen ditu baldintza hauetan. · Batzordeak ez ditu kaleratzeak onartuko atzo baldintza hauetan. · Batzordeak ez du kaleratzeak onartzen baldintza hauetan.
+
+2. **Zenbakiak ez dira onak.**
+   - consigne : Objecte que l'entreprise a pourtant fait des bénéfices l'an dernier.
+   - modèle : Hala ere, enpresak irabaziak izan zituen iaz.
+   - variantes : Hala ere, iaz irabaziak izan ziren. · Alabaina, enpresak irabaziak izan zituen iaz.
+   - fausses : Beraz, enpresak irabaziak izan zituen iaz. · Hala ere, enpresak irabaziak izan zituen datorren urtean. · Hala ere, enpresak irabaziak ditu iaz.
+
+3. **Egia da, baina urte hau txarra da.**
+   - consigne : Demande qu'on réduise d'abord la masse salariale de la direction.
+   - modèle : Orduan, lehenik zuzendarien soldata masa murrizteko eskatzen dugu.
+   - variantes : Lehenik zuzendarien soldata masa murrizteko eskatzen dugu. · Orduan, zuzendarien soldata masa murriztu dadila lehenik.
+   - fausses : Orduan, lehenik zuzendarien soldata masa murriztu eskatzen dugu. · Orduan, lehenik zuzendarien soldata masa murrizteko eskatzen duzu. · Orduan, lehenik batzordearen soldata masa murrizteko eskatzen dugu.
+
+4. **Hori ez dago nire esku.**
+   - consigne : Préviens que sinon, le comité fera grève.
+   - modèle : Bestela, batzordeak greba egingo du.
+   - variantes : Bestela, greba egingo dugu. · Horrela ez bada, batzordeak greba egingo du.
+   - fausses : Bestela, batzordeak greba egin zuen bihar. · Bestela, zuzendaritzak greba egingo du. · Beraz, batzordeak greba egingo du.
+
+5. **Ez da horraino iritsi behar. Zer proposatzen duzue?**
+   - consigne : Dis que vous négocieriez à condition que le préavis soit prolongé.
+   - modèle : Negoziatuko genuke, aurreabisua luzatzen bada.
+   - variantes : Aurreabisua luzatzen bada, negoziatuko genuke. · Negoziatzeko prest geundeke, aurreabisua luzatzen bada.
+   - fausses : Negoziatu genuen, aurreabisua luzatzen bada. · Negoziatuko genuke, aurreabisua laburtzen bada. · Negoziatuko zenuke, aurreabisua luzatzen bada.
+
+6. **Pentsatuko dugu.**
+   - consigne : Dis que vous attendez une proposition écrite avant vendredi.
+   - modèle : Proposamen idatzi bat nahi dugu ostirala baino lehen.
+   - variantes : Proposamen idatzia nahi dugu ostirala baino lehen. · Ostirala baino lehen proposamen idatzi bat nahi dugu.
+   - fausses : Proposamen idatzi bat nahi genuen joan den ostirala baino lehen. · Proposamen idatzi bat nahi duzue ostirala baino lehen. · Proposamen idatzi bat nahi dugu ostirala baino geroago.
+
+À retenir : enplegu erregulazioko espedientea = un plan social · soldata masa = la masse salariale · Bestela = Sinon · aurreabisua luzatu = prolonger le préavis
+
+
+## Réunion de quartier (C1) — `c1barrio`
+
+_À la réunion de quartier, une conseillère municipale répond aux habitants sur le logement._ · personnage : Conseillère municipale
+
+1. **Arratsalde on guztioi. Nork hitz egin nahi du lehenengo?**
+   - consigne : Dis que la flambée des loyers est excessive.
+   - modèle : Nik. Alokairuen gorakada handiegia da.
+   - variantes : Alokairuen gorakada handiegia da. · Nik. Alokairuen gorakadak kezkatzen nau.
+   - fausses : Nik. Alokairuen gorakada txikiegia da. · Nik. Alokairuen gorakada handiegia zen bihar. · Zuk. Alokairuen gorakada handiegia da.
+
+2. **Ondo ezagutzen dugu hori.**
+   - consigne : Dis que beaucoup de voisins ont dû quitter le quartier.
+   - modèle : Bizilagun askok auzotik joan behar izan dute.
+   - variantes : Bizilagun askok auzoa utzi behar izan dute. · Auzokide askok auzotik joan behar izan dute.
+   - fausses : Bizilagun askok auzotik joan behar izango dute atzo. · Bizilagun gutxik auzotik joan behar izan dute. · Bizilagun askok auzora joan behar izan dute.
+
+3. **Badakigu, eta sentitzen dugu.**
+   - consigne : Demande ce que la mairie compte faire contre la spéculation immobilière.
+   - modèle : Zer egingo du udalak higiezinen espekulazioarekin?
+   - variantes : Zer egin nahi du udalak higiezinen espekulazioarekin? · Zer egingo duzue higiezinen espekulazioarekin?
+   - fausses : Zer egin zuen udalak bihar higiezinen espekulazioarekin? · Zer egingo du udalak higiezinen espekulazioaren alde? · Zer egingo dute udalak higiezinen espekulazioarekin?
+
+4. **Udal ordenantza berri bat onartuko dugu.**
+   - consigne : Objecte qu'une ordonnance ne servira à rien si elle n'est pas appliquée.
+   - modèle : Ordenantza bat ez da nahikoa, inork betetzen ez badu.
+   - variantes : Ordenantza ez da nahikoa, inork betetzen ez badu. · Inork betetzen ez badu, ordenantza bat ez da nahikoa.
+   - fausses : Ordenantza bat nahikoa da, inork betetzen ez badu. · Ordenantza bat ez zen nahikoa bihar, inork betetzen ez badu. · Ordenantza bat ez naiz nahikoa, inork betetzen ez badu.
+
+5. **Eta zuk zer proposatzen duzu?**
+   - consigne : Dis qu'il faudrait limiter les licences d'appartements touristiques.
+   - modèle : Oporretako pisuen lizentziak mugatu beharko lirateke.
+   - variantes : Oporretako pisuak mugatu beharko lirateke. · Nik oporretako pisuen lizentziak mugatuko nituzke.
+   - fausses : Oporretako pisuen lizentziak mugatu beharko ziren bihar. · Oporretako pisuen lizentziak handitu beharko lirateke. · Oporretako pisuen lizentziak mugatu beharko zinateke.
+
+6. **Ondo pentsatuko dugu.**
+   - consigne : Remercie-la, mais dis que vous attendez des mesures concrètes.
+   - modèle : Eskerrik asko, baina neurri zehatzak nahi ditugu.
+   - variantes : Mila esker, baina neurri zehatzak nahi ditugu. · Eskerrik asko, hala ere neurri zehatzak nahi ditugu.
+   - fausses : Eskerrik asko, baina neurri zehatzak nahi genituen bihar. · Ez horregatik, baina neurri zehatzak nahi ditugu. · Eskerrik asko, baina neurri zehatzak nahi duzue.
+
+À retenir : alokairuen gorakada = la flambée des loyers · higiezinen espekulazioa = la spéculation immobilière · udal ordenantza = l'arrêté municipal · neurri zehatzak = des mesures concrètes
+
+
+## Débat à la radio (C1) — `c1debate`
+
+_Tu participes à un débat à la radio sur les pistes cyclables en ville._ · personnage : Animateur
+
+1. **Batzuen ustez, hiriak ez du bidegorri gehiago behar. Zer iritzi duzu?**
+   - consigne : Dis que tu ne partages pas cet argument.
+   - modèle : Ez nago argudio horrekin ados.
+   - variantes : Ez nago batere ados argudio horrekin. · Nik ez dut argudio hori onartzen.
+   - fausses : Argudio horrekin ados nago. · Ez zaude argudio horrekin ados. · Ez nengoen argudio horrekin ados bihar.
+
+2. **Zergatik?**
+   - consigne : Dis que les données disent justement le contraire.
+   - modèle : Datuek kontrakoa esaten dute.
+   - variantes : Datuek justu kontrakoa esaten dute. · Datuek kontrakoa diote.
+   - fausses : Datuek gauza bera esaten dute. · Datuek kontrakoa esaten du. · Datuek kontrakoa esan zuten bihar.
+
+3. **Baina auto gehiegi daude, ezta?**
+   - consigne : Dis que tu ne nies pas que ce soit vrai, mais qu'on peut faire quelque chose.
+   - modèle : Ez dut ukatzen egia denik, baina zerbait egin daiteke.
+   - variantes : Ez dut ukatzen egia denik. · Ez dut ukatzen, baina zerbait egin daiteke.
+   - fausses : Ukatzen dut egia denik, baina zerbait egin daiteke. · Ez dut ukatzen egia zenik bihar, baina zerbait egin daiteke. · Ez duzu ukatzen egia denik, baina zerbait egin daiteke.
+
+4. **Ikerketa baten arabera, bidegorriak ez dira erabiltzen.**
+   - consigne : Dis qu'à ton avis, cette étude n'est pas impartiale.
+   - modèle : Nire ustez, ikerketa hori ez da inpartziala.
+   - variantes : Ikerketa hori ez da inpartziala. · Nire iritziz, ikerketa hori ez da inpartziala.
+   - fausses : Nire ustez, ikerketa hori ez dago inpartziala. · Nire ustez, ikerketa hori ez zen inpartziala bihar. · Zure ustez, ikerketa hori ez da inpartziala.
+
+5. **Minutu bat geratzen zaigu. Beste zerbait?**
+   - consigne : Dis qu'il faudrait écouter les habitants avant de décider.
+   - modèle : Bai. Erabaki aurretik, bizilagunak entzun behar dira.
+   - variantes : Erabaki aurretik, bizilagunak entzun behar dira. · Bai, lehenik bizilagunak entzun behar dira.
+   - fausses : Bai. Erabaki ondoren, bizilagunak entzun behar dira. · Bai. Erabaki aurretik, bizilagunak entzun behar ziren bihar. · Bai. Erabaki aurretik, bizilagunak entzun behar naiz.
+
+6. **Amaitzeko, zer esango zenuke?**
+   - consigne : Conclus : en définitive, il faut arriver à un accord.
+   - modèle : Azken finean, akordio batera iritsi behar dugu.
+   - variantes : Azken finean, akordio bat behar dugu. · Azken batean, akordio batera iritsi behar dugu.
+   - fausses : Azken finean, akordio batera iritsi behar zenuten. · Azken finean, akordio batean iritsi behar dugu. · Azken finean, akordio batera iritsi behar genuen bihar.
+
+À retenir : Ez nago argudio horrekin ados = Je ne partage pas cet argument · Ez dut ukatzen… denik = Je ne nie pas que… · inpartziala = impartial · Azken finean = En définitive
+
+
+## Une clause abusive (C1) — `c1clausula`
+
+_Tu consultes une avocate au sujet d'une clause de ton contrat de travail._ · personnage : Avocate
+
+1. **Egun on. Kontatu, zer gertatzen da?**
+   - consigne : Dis que ton contrat contient une clause abusive.
+   - modèle : Nire kontratuak klausula abusibo bat du.
+   - variantes : Nire kontratuan klausula abusibo bat dago. · Klausula abusibo bat du nire kontratuak.
+   - fausses : Zure kontratuak klausula abusibo bat du. · Nire kontratuak klausula abusibo bat izango du atzo. · Nire kontratuak klausula abusibo bat da.
+
+2. **Zer esaten du klausula horrek?**
+   - consigne : Dis : qu'on peut te licencier sans préavis.
+   - modèle : Aurreabisurik gabe kaleratu ahal naute.
+   - variantes : Aurreabisurik gabe kalera nazaketela. · Aurreabisurik gabe bota ahal naute.
+   - fausses : Aurreabisuarekin kaleratu ahal naute. · Aurreabisurik gabe kaleratu ahal zaituzte. · Aurreabisurik gabe kaleratu ahal naute atzo.
+
+3. **Hori, egiaz, abusiboa izan daiteke.**
+   - consigne : Demande ce que tu pourrais faire à ce sujet.
+   - modèle : Zer egin dezaket horren inguruan?
+   - variantes : Eta zer egin dezaket horren inguruan? · Zer egin dezaket?
+   - fausses : Zer egin dezakezu horren inguruan? · Zer egin nuen bihar horren inguruan? · Zer egin naiteke horren inguruan?
+
+4. **Lehenik, irakurri gabe sinatu zenuen?**
+   - consigne : Dis que oui, tu l'as signé sans le lire attentivement.
+   - modèle : Bai, arretaz irakurri gabe sinatu nuen.
+   - variantes : Bai, ondo irakurri gabe sinatu nuen. · Bai, tamalez, arretaz irakurri gabe sinatu nuen.
+   - fausses : Bai, arretaz irakurri gabe sinatuko dut atzo. · Bai, arretaz irakurri gabe sinatu zenuen. · Ez, arretaz irakurri gabe sinatu nuen.
+
+5. **Erreklamazio bat aurkez dezakegu.**
+   - consigne : Demande combien de temps prendrait la démarche.
+   - modèle : Zenbat denbora beharko luke izapidetzeak?
+   - variantes : Zenbat denbora beharko luke? · Zenbat denbora behar da izapidetzeko?
+   - fausses : Zenbat denbora behar izan zuen bihar izapidetzeak? · Zein denbora beharko luke izapidetzeak? · Zenbat denbora beharko nuke izapidetzeak?
+
+6. **Hiru hilabete inguru.**
+   - consigne : Dis que tu vas bien y réfléchir et que tu la rappelles.
+   - modèle : Ondo pentsatuko dut eta deituko dizut.
+   - variantes : Ondo pentsatuko dut eta berriro deituko dizut. · Pentsatuko dut eta deituko dizut.
+   - fausses : Ondo pentsatu nuen eta deituko dizut bihar. · Ondo pentsatuko duzu eta deituko dizut. · Gaizki pentsatuko dut eta deituko dizut.
+
+À retenir : klausula abusiboa = une clause abusive · aurreabisurik gabe = sans préavis · horren inguruan = à ce sujet · izapidetu = faire les démarches
+
+
+## Visite d'une cave (C1) — `c1bodega`
+
+_Tu visites une cave à vin avec un guide._ · personnage : Guide
+
+1. **Ongi etorri upategira. Hemen ardoa egiten dugu.**
+   - consigne : Demande quand ont lieu les vendanges.
+   - modèle : Zein interesgarria! Noiz da mahats bilketa?
+   - variantes : Noiz da mahats bilketa? · Zein interesgarria! Noiz egiten duzue mahats bilketa?
+   - fausses : Zein interesgarria! Noiz dago mahats bilketa? · Zein interesgarria! Non da mahats bilketa? · Zein interesgarria! Noiz izan zen mahats bilketa bihar?
+
+2. **Irailean, udaren amaieran.**
+   - consigne : Demande quelle variété de raisin ils utilisent.
+   - modèle : Eta zein mahats mota erabiltzen duzue?
+   - variantes : Zein mahats mota erabiltzen duzue? · Eta zein mahats motarekin lan egiten duzue?
+   - fausses : Eta zein mahats mota erabiltzen dut? · Eta zein mahats mota erabili zenuten bihar? · Eta zein ur mota erabiltzen duzue?
+
+3. **Batez ere inguruko mota bat.**
+   - consigne : Demande si le vin a une appellation d'origine.
+   - modèle : Ardoak jatorri deitura du?
+   - variantes : Jatorri deitura du? · Eta ardoak jatorri deitura du?
+   - fausses : Ardoak jatorri deitura da? · Ardoak jatorri deitura zuen bihar? · Urak jatorri deitura du?
+
+4. **Bai, aspalditik.**
+   - consigne : Dis que tu aimerais venir pendant les vendanges.
+   - modèle : Mahats bilketan etortzea gustatuko litzaidake.
+   - variantes : Mahats bilketan etortzea asko gustatuko litzaidake. · Gustatuko litzaidake mahats bilketan etortzea.
+   - fausses : Mahats bilketan etortzea gustatu zitzaidan bihar. · Mahats bilketan etortzea gustatuko litzaizuke. · Mahats bilketan etortzea gustatuko naiz.
+
+5. **Etorri datorren urtean, oso polita da.**
+   - consigne : Dis que tu le feras et demande s'ils utilisent des additifs.
+   - modèle : Hala egingo dut. Gehigarriak erabiltzen dituzue?
+   - variantes : Gehigarriak erabiltzen dituzue? · Hala egingo dut. Ardoak gehigarriak ditu?
+   - fausses : Hala egin nuen. Gehigarriak erabiltzen dituzue? · Hala egingo dut. Gehigarriak erabiltzen ditut? · Hala egingo dut. Gehigarriak erabili zenituzten bihar?
+
+6. **Oso gutxi, ia batere ez.**
+   - consigne : Dis qu'alors tu vas prendre deux bouteilles.
+   - modèle : Orduan bi botila eramango ditut.
+   - variantes : Bi botila eramango ditut. · Orduan bi botila erosiko ditut.
+   - fausses : Orduan bi botila eraman nuen bihar. · Orduan bi botila eramango dituzu. · Orduan bi botila eramango dut.
+
+À retenir : mahats bilketa = les vendanges · mahats mota = le cépage · jatorri deitura = l'appellation d'origine · …gustatuko litzaidake = j'aimerais…
 
