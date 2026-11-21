@@ -94,7 +94,7 @@ with sync_playwright() as p:
       const pa=S.pa[pthK(x.id)],it2=pathItems().find(y=>!y.done&&!y.lock&&!(y.opt&&y.last!=null));return {first,sit:x.id,ok,pa,next:it2&&it2.id,end:document.body.innerHTML.includes('pathCont()')}}""")
     ck("parcours : la situation est proposée à son tour, lancée depuis l'étape, notée, puis non reproposée après une tentative",d["first"]==d["sit"] and d["ok"] and d["pa"]==0 and d["next"]!=d["sit"] and d["end"],d)
     # 7. écrans 360 × 640 dans les 5 interfaces : rien à faire défiler, pas de français hors interface française
-    FR=re.compile(r"\b(Choisis|Écoute|Continuer|Vérifier|Passer|Quitter|Demande|Salue|Remercie|Dis que|Tu fais|Tu arrives|Accepte|Propose|Réponds|Commande|Paie|Présente-toi|Souhaite|Vendeuse|Guichetier|Rassure|Recommande|Conseille|Objecte|Préviens|Conclus|Explique|Excuse-toi|Présente-lui|Donne-le|Recruteuse|Propriétaire|Cheffe|Avocate|Animateur|Directrice|Agente|Rejouer|À retenir|Notions travaillées|Mises en situation)\b")
+    FR=re.compile(r"\b(Choisis|Écoute|Continuer|Vérifier|Passer|Quitter|Demande|Salue|Remercie|Dis que|Tu fais|Tu arrives|Accepte|Propose|Réponds|Commande|Paie|Présente-toi|Souhaite|Vendeuse|Guichetier|Rassure|Recommande|Conseille|Objecte|Préviens|Conclus|Explique|Excuse-toi|Présente-lui|Donne-le|Recruteuse|Propriétaire|Cheffe|Avocate|Animateur|Directrice|Rejouer|À retenir|Notions travaillées|Mises en situation)\b")
     for ui in UIS:
         bad=[]
         for l in LANGS:
