@@ -1,0 +1,68 @@
+# Génération audio reproductible des situations du lot C (branche dédiée audio-gen-c3).
+# Ne déploie rien : les clips, le rapport et les extraits d'écoute sont rendus comme artefact du job et poussés sur une branche
+# isolée audio-out-c3… nommée dans audio/plan.json (orpheline) ; main, chantier-3 et v/ ne sont jamais modifiés.
+# Modèles téléchargés depuis leurs sources officielles à une révision figée, vérifiés (taille + SHA-256) : audio/modeles.lock.json.
+name: Audio lot C (génération vérifiée)
+on:
+  push:
+    branches: [audio-gen-c3]
+    paths: ["audio/**", "tools/audio_ci/**", ".github/workflows/audio-gen.yml"]
+  workflow_dispatch: {}
+permissions:
+  contents: write  # uniquement pour publier les résultats sur la branche audio-out-c3 (les artefacts ne sont pas téléchargeables depuis l'environnement de Claude)
+concurrency: { group: audio-gen-c3, cancel-in-progress: false }
+jobs:
+  audio:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    env:
+      AUDIO_OUTILS: /opt/audio_outils
+      AUDIO_MODELES: /opt/audio_modeles
+      KOKORO_PY: /opt/vk/bin/python
+      PHONEMIZER_ESPEAK_LIBRARY: /usr/local/lib/libespeak-ng.so
+      ESPEAK_DATA_PATH: /usr/local/share/espeak-ng-data
+      HF_HUB_DISABLE_TELEMETRY: "1"
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 1 }
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.13" }
+      - name: Paquets système
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg build-essential autoconf automake libtool pkg-config >/dev/null
+      - name: Outils à révision figée (aHoTTS, minimal-tts-api, espeak-ng dev-ca)
+        run: |
+          set -euo pipefail
+          sudo mkdir -p $AUDIO_OUTILS $AUDIO_MODELES && sudo chown -R $USER $AUDIO_OUTILS $AUDIO_MODELES /opt
+          get() { mkdir -p "$AUDIO_OUTILS/$1" && cd "$AUDIO_OUTILS/$1" && git init -q && git fetch -q --depth 1 "$2" "$3" && git checkout -q FETCH_HEAD && test "$(git rev-parse HEAD)" = "$3" || { echo "OUTIL INACCESSIBLE OU RÉVISION DIFFÉRENTE : $1 $3"; exit 1; }; }
+          L=audio/modeles.lock.json; q() { python -c "import json;print(json.load(open('$L'))['outils']['$1']['$2'])"; }
+          ( get aHoTTS "$(q ahotts git)" "$(q ahotts commit)" )
+          ( get minimal-tts-api "$(q minimal_tts_api git)" "$(q minimal_tts_api commit)" )
+          ( get espeak-ng "$(q espeak_ng git)" "$(q espeak_ng commit)" )
+          cd $AUDIO_OUTILS/espeak-ng && ./autogen.sh >/dev/null && ./configure --prefix=/usr/local >/dev/null && make -j"$(nproc)" >/dev/null && sudo make install >/dev/null && sudo ldconfig
+          echo "espeak-ng ca-va : $(echo 'bon dia' | espeak-ng -v ca-va -q --ipa)"
+      - name: Python (deux environnements séparés)
+        run: |
+          set -euo pipefail
+          pip install -q numpy==2.5.5 onnxruntime==1.32.0 soundfile==0.14.0 phonemizer==3.3.0 unidecode==1.4.0 huggingface_hub==0.36.2
+          python -m venv /opt/vk && /opt/vk/bin/pip install -q kokoro-onnx==0.4.9 numpy==2.5.5 onnxruntime==1.32.0 soundfile==0.14.0
+      - name: Génération
+        run: python tools/audio_ci/generer.py out
+      - name: Vérification
+        if: always()
+        run: python tools/audio_ci/verifier.py out
+      - name: Résultats (artefact)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: audio-lot-c-${{ github.run_number }}
+          path: out/
+          retention-days: 30
+          if-no-files-found: warn
+      - name: Résultats (branche isolée audio-out-c3…, propre à chaque plan)
+        if: always()
+        run: |
+          set -euo pipefail
+          test -d out || exit 0
+          B=$(python -c "import json;print(json.load(open('audio/plan.json'))['branche_resultats'])"); case "$B" in audio-out-c3*) ;; *) echo "BRANCHE DE RÉSULTATS REFUSÉE : $B"; exit 1;; esac
+          cd out && git init -q -b "$B" && git add -A && git -c user.name=audio-ci -c user.email=audio-ci@users.noreply.github.com commit -qm "Résultats audio lot C — essai ${GITHUB_RUN_NUMBER} (${GITHUB_SHA::7})"
+          git push -q -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" "$B"

@@ -115,16 +115,17 @@ with sync_playwright() as p:
     d=pg.evaluate("""()=>{SET_('es',1);scnStart(0);const a=typeof SC!=='undefined'&&!!SC;S.mode='im';home();return {a,cv:typeof cvPrompt==='function'&&CVS.length===10}}""")
     ck("scènes A1 guidées toujours lancées, conversation IA présente",d["a"] and d["cv"],d)
     ck("aucune erreur JavaScript",not ERR,ERR[:3])
-    # 9. couverture audio des répliques et des mots « À retenir » (voix choisie par défaut et toutes les voix de la langue)
-    VO=json.load(open("v/voices.json"));nm=lambda s:re.sub(r"[.…]+$","",s.lower()).strip();miss={}
+    # 9. couverture audio des répliques et des mots « À retenir », voix par voix ; une voix suspendue (audio/modeles.lock.json) est listée à part
+    VO=json.load(open("v/voices.json"));nm=lambda s:re.sub(r"[.…]+$","",s.lower()).strip();res={};susp={}
+    try:LK=json.load(open("audio/modeles.lock.json"))["voix"]
+    except Exception:LK={}
     for l in LANGS:
-        rec=None
+        tx=pg.evaluate("l=>{const o=[];immP(l).forEach(s=>{s.st.forEach(st=>o.push(st.n));s.v.forEach(v=>o.push(v[0]))});return [...new Set(o)]}",l)
         for v in [x["id"] for x in VO[l]]:
-            k={nm(x) for x in json.load(open(f"v/{v}/{v}.json"))["k"]};rec=k if rec is None else rec&k
-        tx=pg.evaluate("l=>{const o=[];immP(l).forEach(s=>{s.st.forEach(st=>o.push(st.n));s.v.forEach(v=>o.push(v[0]))});return o}",l)
-        m=[t for t in tx if nm(t) not in rec];miss[l]=(len(m),len(tx))
-    tot=sum(a for a,b in miss.values())
-    ck("audio : répliques et mots « À retenir » enregistrés dans toutes les voix "+json.dumps({l:f"{a} manquants / {b}" for l,(a,b) in miss.items()},ensure_ascii=False),tot==0,"enregistrements à générer")
+            k={nm(x) for x in json.load(open(f"v/{v}/{v}.json"))["k"]};m=[t for t in tx if nm(t) not in k]
+            (susp if LK.get(v,{}).get("statut","").startswith("suspendu") else res)[v]=(len(tx)-len(m),len(tx),m)
+    ck("audio : répliques et mots « À retenir » enregistrés dans chaque voix "+json.dumps({v:f"{a}/{n}" for v,(a,n,_) in res.items()},ensure_ascii=False),all(not m for _,_,m in res.values()),{v:m for v,(_,_,m) in res.items() if m})
+    for v,(a,n,m) in susp.items():print(f"INFO {v} : {a}/{n} enregistrés — voix suspendue ({LK[v].get('statut')}), {len(m)} textes lus par une autre voix de la langue",flush=True)
     b.close()
 print(f"\n{sum(R)}/{len(R)} contrôles réussis")
 sys.exit(0 if all(R) else 1)

@@ -1021,7 +1021,7 @@ function hpJS(pw,salt){let x=salt+":"+pw;for(let i=0;i<3000;i++)x=sha256(x+salt)
 const withTimeout=(p,ms)=>Promise.race([p,new Promise(r=>setTimeout(()=>r(null),ms))]);
 var UI="fr";
 const UIL={fr:"Français",en:"English",it:"Italiano",de:"Deutsch",pt:"Português"};
-const TR={};const trLoad=l=>(l==="fr"||TR[l])?Promise.resolve():fetch("tr/"+l+".json?v=60").then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{TR[l]=j}).catch(()=>{});
+const TR={};const trLoad=l=>(l==="fr"||TR[l])?Promise.resolve():fetch("tr/"+l+".json?v=61").then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{TR[l]=j}).catch(()=>{});
 try{const s=ST.get("cast_ui"),n=(navigator.language||"fr").slice(0,2);UI=UIL[s]?s:(UIL[n]?n:"fr")}catch(e){}
 const gl=s=>{if(UI==="fr"||!TR[UI])return s;let t=TR[UI][s];if(t!=null)return t;const n=s.match(NUMRE);if(n){t=TR[UI][s.replace(NUMRE,"#")];if(t!=null){let i=0;return t.replace(/#/g,()=>i<n.length?n[i++]:"#")}const b=s.match(/^(.*\S)\s+(\d+)$/);if(b&&TR[UI][b[1]]!=null)return TR[UI][b[1]]+" "+b[2]}return s};
 const tr=(s,...a)=>gl(s).replace(/\{(\d)\}/g,(m,i)=>a[i]);
@@ -1855,7 +1855,7 @@ function srDue(){const n=dayN(),sr=S.sr||{},sn=new Set();return ALL.concat(typeo
 const MKA={tf:1,tfL:1,pair:1,pic:1,es2fr:1,listen:1,exM:1,exL:1,excV:1,rep:1,speak:1,odd:1,
   cloze:2,ctxC:2,listenP:2,readP:2,read:2,dlg:2,ord:2,err:2,sep:2,gen:2,listenT:2,exc:2,conj:2,itr:2,itf:2,irp:2,
   fr2es:3,exE:3,fr2P:3,build:3,dict:3,ctxP:3,speakC:3,speakQ:3,itrE:3,itfE:3,
-  type:4,excT:4,conjT:4,speakF:4,irpE:4};/* exercices intégrés (chantier 3, lot B) : itr/itf/irp avec propositions, itrE/itfE à écrire dans une phrase, irpE réponse libre */
+  type:4,excT:4,conjT:4,speakF:4,irpE:4,sitR:2,sitW:3,sitO:3};/* exercices intégrés (chantier 3, lot B) : itr/itf/irp avec propositions, itrE/itfE à écrire dans une phrase, irpE réponse libre */
 /* preuves exigées par palier (1 à 4) selon la difficulté de la notion (1 transparente · 2 courante · 3 difficile) ;
    pour une notion difficile, les preuves des paliers 3 et 4 doivent venir de jours différents */
 /* paramètres ajustables du carnet : preuves par palier (selon la difficulté), délais d'ancrage en jours (validés provisoirement),
@@ -1967,7 +1967,7 @@ function adDsMig(){if(S.dsm)return;S.ds=S.ds||{};const ix=mkIdx();for(const k of
 const adIn=k=>{try{adDsMig()}catch(e){}return !!(S.ds||{})[adDK(k)]||((S.sc||{})[k]||0)>0||!!(S.sr||{})[k]};
 /* rang du parcours réellement atteint pour une étape : les étapes de nouveautés précédentes du niveau doivent avoir été faites */
 /* niveau entièrement parcouru : toutes ses étapes validées (données de progression existantes, clés langue:niveau:étape) */
-function adLvDone(L){const pc=(pqData().plans||{})[L],P=S.pth||{};return !!pc&&pc.flat.filter(x=>!x.test).every(x=>(P[lg()+":"+L+":"+x.id]||0)>=6)}
+function adLvDone(L){const pc=(pqData().plans||{})[L],P=S.pth||{};return !!pc&&pc.flat.filter(x=>!x.test&&!x.opt).every(x=>(P[lg()+":"+L+":"+x.id]||0)>=6)}
 /* rang de la progression réellement effectuée : niveaux précédents entièrement parcourus, puis étapes de nouveautés faites
    sans interruption (validées ou au moins jouées) ; s'arrête au premier niveau précédent inachevé */
 function adRk(st){if(!st||st.rk==null)return st&&st.rk;const pl=pathPlanMain(),P=S.pth||{},pa=S.pa||{},l=lg(),L0=lv();if(!pl.flat.some(x=>x.id===st.id))return st.rk;
@@ -2065,7 +2065,7 @@ function axFetchJ(u,tries){const go=async()=>{const ac=new AbortController(),to=
 /* index d'une voix (v) ; sans voix choisie : ancien jeu castillan uniquement */
 function axIdx(l,v){const k=v||l;if(!v&&l!=="es")return Promise.resolve(null);
   const t=AX.ixt[k];if(AX.idx[k])return AX.idx[k];if(t&&Date.now()-t<4000)return Promise.resolve(null);
-  return AX.idx[k]=axFetchJ(v?"v/"+v+"/"+v+".json?v=22":"a/"+l+".json?v=14",2).then(x=>{if(!v&&l==="es"){AX.okes=1;try{vnote()}catch(e){}}return x}).catch(e=>{delete AX.idx[k];AX.ixt[k]=/^http4/.test(String(e))?Date.now()+3e10:Date.now();return null})}
+  return AX.idx[k]=axFetchJ(v?"v/"+v+"/"+v+".json?v=23":"a/"+l+".json?v=14",2).then(x=>{if(!v&&l==="es"){AX.okes=1;try{vnote()}catch(e){}}return x}).catch(e=>{delete AX.idx[k];AX.ixt[k]=/^http4/.test(String(e))?Date.now()+3e10:Date.now();return null})}
 const axUrl=(v,n)=>v?"v/"+v+"/"+n+"?v=2":"a/"+n+"?v=2";
 function axPack(l,v,i,n){const k=(v||l)+"/"+n;return AX.pk[k]||(AX.pk[k]=fetch(axUrl(v,n)).then(r=>{if(!r.ok)throw 0;return r.arrayBuffer()}).then(b=>(AX.pkd[k]=b)).catch(()=>{delete AX.pk[k];return null}))}
 const axMp3=b=>{if(!b||b.byteLength<4)return false;const u=new Uint8Array(b,0,3);return(u[0]===73&&u[1]===68&&u[2]===51)||(u[0]===255&&(u[1]&224)===224)};
@@ -5441,6 +5441,7 @@ function pathPlanMain(){
     if(st.pt&&st.pt.includes("conj")&&!st.vs)st.vs=kn.vb.slice(0,40);
     if(st.ru&&st.t==="Conjugaison"){st.ws=(kwL.length>=8?kwL:allW).slice(-12);st.pt=pqFit(st.pt,kn);if(!st.pt.length){st.pt=["es2fr","fr2es","listen","type"];st.t=null}}
   });
+  sitPlace(pc,L,l);
   pthMig(pc);
   return PLC={k:ck,d:ALL,units:pc.units,map:pc.map,flat:pc.flat,L};
 }
@@ -5449,7 +5450,7 @@ function pthMig(pc){
   const mk=lg()+":"+lv();S.pmv=S.pmv||{};if(S.pmv[mk])return;S.pmv[mk]=2;
   const pd=S.pth||{};let old;try{old=pathPlanV1()}catch(e){return}
   const od=old.flat.filter(x=>!x.test&&(pd[pthK(x.id)]||0)>=6);if(!od.length)return;
-  const allOld=old.flat.filter(x=>!x.test).every(x=>(pd[pthK(x.id)]||0)>=6),W=new Set(),X=new Set(),Q=new Set();
+  const allOld=old.flat.filter(x=>!x.test&&!x.opt).every(x=>(pd[pthK(x.id)]||0)>=6),W=new Set(),X=new Set(),Q=new Set();
   od.forEach(x=>{(x.ws||[]).forEach(w=>W.add(w[0]));x.xs&&x.xs.forEach(e=>X.add(e));x.qs&&x.qs.forEach(k=>Q.add(k))});
   const ok=st=>allOld||(st.ws&&st.ws.length?st.ws.every(w=>W.has(w[0])):st.xs?[...st.xs].every(e=>X.has(e)):st.qs&&st.qs.size?[...st.qs].every(k=>Q.has(k)):false);
   S.pth=S.pth||{};
@@ -5538,7 +5539,7 @@ function ratPlan(r){
   return{k:"rat",d:ALL,units:[{n:1,title:"🛟 "+tr("Rattrapage"),steps}],map,flat};
 }
 function pathPlan(){xens();const r=(S.rat||{})[lg()];return r&&r.lvl===lv()?ratPlan(r):pathPlanMain()}
-function mainDone(){const pd=S.pth||{};return pathPlanMain().flat.filter(x=>!x.test).every(x=>(pd[pthK(x.id)]||0)>=6)}
+function mainDone(){const pd=S.pth||{};return pathPlanMain().flat.filter(x=>!x.test&&!x.opt).every(x=>(pd[pthK(x.id)]||0)>=6)}
 function endErr(){
   const q=document.querySelector(".q.end");if(!q)return;
   q.classList.remove("errc");void q.offsetWidth;q.classList.add("errc");
@@ -5566,6 +5567,7 @@ function lkErr(el){
 function pstart(id){
   const st=pathPlan().map[id];if(!st)return;
   const it0=pathItems().find(x=>x.id===id);if(it0&&it0.lock)return;
+  if(st.sit){sitGo(id,st);return}
   if(adCons(id,st))return;
   LK2=1;FXS=0;xens();SCR="home";INL=1;
   R={mode:"lesson",t:st.t||"Chunk",n:0,ok:0,xp:0,cat:null,pid:id,pt:st.pt||null,ws:st.ws||null,dp:st.dp||null,gp:st.gp||null,go:st.go||null,xs:st.xs||null,qs:st.qs||null,vs:st.vs||null,pp:st.pp||null,kn:st.kn||null,tn:st.tn||null};
@@ -5579,14 +5581,14 @@ function pstart(id){
   try{adFix(st)}catch(e){}next();
 }
 /* « Continuer le parcours » : ouvre directement la prochaine étape à faire (sinon retour à l'accueil) */
-function pathCont(){let it=null;try{it=pathItems().find(x=>!x.done&&!x.lock)}catch(e){}if(!it){home();return}if(it.test){lvTest();return}pstart(it.id)}
+function pathCont(){let it=null;try{it=pathItems().find(x=>!x.done&&!x.lock&&!(x.opt&&x.last!=null))}catch(e){}if(!it){home();return}if(it.test){lvTest();return}pstart(it.id)}
 function pathItems(){
   const pl=pathPlan(),pd=S.pth||{},all=!!S.pthAll,out=[];
-  pl.units.forEach(u=>u.steps.forEach(x=>{const it={id:x.id,ic:x.ic,lab:x.lab,sub:x.sub,u:u.n,go:x.test?"lvTest()":`pstart('${x.id}')`,test:!!x.test};it.best=x.test?0:pd[pthK(it.id)]||0;it.done=!x.test&&it.best>=6;const la=(S.pa||{})[pthK(it.id)];it.last=x.test||la==null?null:la;out.push(it)}));
-  let open=true;out.forEach(x=>{x.lock=!x.done&&!open&&!all;if(!x.done)open=false});
+  pl.units.forEach(u=>u.steps.forEach(x=>{const sx=x.sit?immP(lg()).find(z=>z.id===x.sit):null;const it={id:x.id,ic:x.ic,lab:sx?scT(sx).t:x.lab,sub:x.sit?tr(x.sub):x.sub,u:u.n,go:x.test?"lvTest()":`pstart('${x.id}')`,test:!!x.test,opt:!!x.opt};it.best=x.test?0:pd[pthK(it.id)]||0;it.done=!x.test&&it.best>=6;const la=(S.pa||{})[pthK(it.id)];it.last=x.test||la==null?null:la;out.push(it)}));
+  let open=true;out.forEach(x=>{x.lock=!x.done&&!open&&!all;if(!x.done&&!x.opt)open=false});
   return out;
 }
-function lvSteps(){const pd=S.pth||{};return pathPlan().flat.filter(x=>!x.test).every(x=>(pd[pthK(x.id)]||0)>=6)}
+function lvSteps(){const pd=S.pth||{};return pathPlan().flat.filter(x=>!x.test&&!x.opt).every(x=>(pd[pthK(x.id)]||0)>=6)}
 /* PROG-v2 : critères de maîtrise du niveau en cours, en plus des étapes validées
    - vocabulaire retenu dans la durée : au moins 55 % des mots du niveau revus avec succès un autre jour (boîte ≥ 2) ;
    - pas de retard de révision (moins de 25 mots en attente) ;
@@ -6731,7 +6733,112 @@ function tend(){
   const rows=[1,2,3,4,5].filter(l=>T.res[l]).map(l=>{const r=T.res[l],v=Math.round(r.sc*100);return `${NL[l]} : <b>${v} %</b> ${r.sc>=.6?"✅":"—"}`}).join("<br>");
   $.innerHTML=head()+`<div class="q end">${mas("bravo",110)}<p>${tr("Niveau estimé")}</p><div class="big" style="font-size:32px">${NL[Math.max(1,T.pass)]}</div>${part}${T.pass&&!solid?`<p class="skl">${tr("Palier validé de justesse : on le consolide avant de passer au suivant.")}</p>`:""}<p>${tr("Les exercices se concentrent maintenant sur {0}, avec plus d'entraînement sur tes points faibles.",`<b>${NL[S.lvl]}</b>`)}</p>${S.lvl>1?`<p class="skl">${tr("Les mots des niveaux précédents sont comptés comme déjà vus : ils reviennent en révision, pas en découverte.")}</p>`:""}<p class="skl">${rows}</p><p class="skl">${tr("Score par palier, corrigé du hasard : une mauvaise réponse fait perdre des points, « Je ne sais pas » n'en fait pas perdre. Il faut 60 % pour valider un palier.")}</p>${T.skipAll?`<p class="skl">${tr("{0} question(s) d'écoute ignorée(s) : l'écoute n'a pas été testée à fond.",T.skipAll)}</p>`:""}${T.pass===5?`<p class="skl">${tr("Tu as validé tous les paliers, jusqu'au C1 : excellent niveau !")}</p>`:""}<button class="btn" onclick="obNext()">${tr("Commencer")}</button></div>`;
 }
-const XI=/*XI*/{};
+const XI=/*XI*/{es:`S|a1mercado|1|Au marché|Tu fais tes courses au marché : des oranges et du fromage.|Vendeuse
+T|a1mercado|Buenos días, ¿qué desea?|Salue et demande six oranges.|Buenos días, seis naranjas, por favor.|Hola, seis naranjas, por favor.;;Buenos días, quiero seis naranjas.|Buenas noches, seis naranjas, de nada.;;Buenos días, me llamo seis naranjas.;;Adiós, seis naranjas, gracias.|seis;naranjas
+T|a1mercado|Aquí tiene. ¿Algo más?|Demande aussi du fromage.|Sí, también quiero queso.|Sí, queso también, por favor.;;Sí, quiero queso, por favor.|Sí, también soy queso.;;No, también quiero queso.;;Sí, el queso está en la playa.|queso
+T|a1mercado|El queso es muy bueno hoy.|Demande le prix du fromage.|¿Cuánto cuesta?|¿Cuánto cuesta el queso?;;¿Cuánto es?|¿Cuánto tiempo?;;¿Dónde cuesta?;;¿Cuándo cuesta el queso?|cuánto
+T|a1mercado|Cuesta seis euros.|Dis que c'est tout et demande combien ça fait.|Vale. No, nada más, gracias. ¿Cuánto es?|Nada más, gracias. ¿Cuánto es?;;No, nada más. ¿Cuánto es?|Sí, nada más, por favor.;;Nada más, gracias. ¿Dónde es?;;Vale, todo, gracias. ¿Quién es?|nada;más
+T|a1mercado|Son ocho euros.|Demande si tu peux payer par carte.|¿Puedo pagar con tarjeta?|¿Se puede pagar con tarjeta?;;¿Puedo pagar con tarjeta, por favor?|¿Puedo comer con tarjeta?;;¿Puedes pagar con tarjeta?;;¿Puedo pagar sin tarjeta?|pagar;tarjeta
+T|a1mercado|Sí, puede pagar con tarjeta. Gracias, ¡hasta luego!|Remercie et dis au revoir.|Gracias a usted. ¡Hasta luego!|Muchas gracias. ¡Adiós!;;Gracias. ¡Hasta luego!|De nada. ¡Buenos días!;;Lo siento. ¡Hola!;;Por favor. ¡Hasta luego!|gracias
+V|a1mercado|la naranja|l'orange
+V|a1mercado|el queso|le fromage
+V|a1mercado|¿Algo más?|Autre chose ?
+V|a1mercado|¿Cuánto cuesta?|Combien ça coûte ?
+S|a2tren|2|Le train est parti|Tu arrives à la gare trop tard : ton train est déjà parti.|Guichetier
+T|a2tren|Buenos días, ¿en qué puedo ayudarle?|Dis que tu as raté le train de dix heures.|Buenos días. He perdido el tren de las diez.|Perdí el tren de las diez.;;Buenos días, he perdido el tren de las diez.|Buenos días. Voy a perder el tren de las diez.;;Buenos días. He perdido el tren de las diez años.;;Buenos días. Pierdo el tren mañana.|perdido;tren
+T|a2tren|No pasa nada.|Demande à quelle heure part le prochain train.|¿A qué hora sale el próximo tren?|¿Cuándo sale el próximo tren?;;¿A qué hora sale el siguiente tren?|¿A qué hora llegó el tren de ayer?;;¿Qué hora es el próximo tren?;;¿Dónde sale el próximo tren?|hora;sale
+T|a2tren|El próximo tren sale a las once y media.|Demande si tu peux utiliser ton billet.|¿Puedo usar mi billete?|¿Puedo usar el billete?;;¿Vale mi billete?|¿Puedo usar mi billete ayer?;;¿Puedes comer mi billete?;;¿Puedo usar mi billete de nada?|billete
+T|a2tren|Sí, pero tiene que pagar cinco euros más.|Accepte et demande si tu peux payer par carte.|Vale. ¿Puedo pagar con tarjeta?|De acuerdo. ¿Puedo pagar con tarjeta?;;Vale, ¿se puede pagar con tarjeta?|Vale. ¿Puedo pagar con tren?;;No. ¿He pagado con tarjeta?;;Vale. ¿Puedo pagar con tarjeta anoche?|pagar;tarjeta
+T|a2tren|Sí, claro. ¿Va a volver hoy?|Dis que tu vas rentrer dimanche.|No, voy a volver el domingo.|No, vuelvo el domingo.;;No, el domingo.|No, volví el domingo.;;Sí, voy a volver el domingo pasado.;;No, voy a volver ayer.|domingo
+T|a2tren|Muy bien. Aquí tiene su billete. ¡Buen viaje!|Remercie et dis au revoir.|Muchas gracias. ¡Hasta luego!|Gracias. ¡Adiós!;;Muchas gracias, adiós.|De nada. ¡Buen viaje!;;Lo siento mucho. ¡Hola!;;Por favor. ¡Buenos días!|gracias
+V|a2tren|perder el tren|rater le train
+V|a2tren|el próximo tren|le prochain train
+V|a2tren|el billete|le billet
+V|a2tren|¡Buen viaje!|Bon voyage !`,va:`S|a1mercado|1|Au marché|Tu fais tes courses au marché : des oranges et du fromage.|Vendeuse
+T|a1mercado|Bon dia, què vol?|Salue et demande six oranges.|Bon dia, sis taronges, per favor.|Hola, sis taronges, per favor.;;Bon dia, vull sis taronges.|Bona nit, sis taronges, de res.;;Bon dia, em dic sis taronges.;;Adéu, sis taronges, gràcies.|sis;taronges
+T|a1mercado|Ací té. Alguna cosa més?|Demande aussi du fromage.|Sí, també vull formatge.|Sí, formatge també, per favor.;;Sí, vull formatge, per favor.|Sí, també soc formatge.;;No, també vull formatge.;;Sí, el formatge està en la platja.|formatge
+T|a1mercado|El formatge és molt bo hui.|Demande le prix du fromage.|Quant costa?|Quant costa el formatge?;;Quant és?|Quant de temps?;;On costa?;;Quan costa el formatge?|quant
+T|a1mercado|Costa sis euros.|Dis que c'est tout et demande combien ça fait.|D'acord. No, res més, gràcies. Quant és?|Res més, gràcies. Quant és?;;No, res més. Quant és?|Sí, res més, per favor.;;Res més, gràcies. On és?;;D'acord, tot, gràcies. Qui és?|res;més
+T|a1mercado|Són huit euros.|Demande si tu peux payer par carte.|Puc pagar amb targeta?|Es pot pagar amb targeta?;;Puc pagar amb targeta, per favor?|Puc menjar amb targeta?;;Pots pagar amb targeta?;;Puc pagar sense targeta?|pagar;targeta
+T|a1mercado|Sí, pot pagar amb targeta. Gràcies, fins després!|Remercie et dis au revoir.|Gràcies a vosté. Fins després!|Moltes gràcies. Adéu!;;Gràcies. Fins després!|De res. Bon dia!;;Ho sent. Hola!;;Per favor. Fins després!|gràcies
+V|a1mercado|la taronja|l'orange
+V|a1mercado|el formatge|le fromage
+V|a1mercado|Alguna cosa més?|Autre chose ?
+V|a1mercado|Quant costa?|Combien ça coûte ?
+S|a2tren|2|Le train est parti|Tu arrives à la gare trop tard : ton train est déjà parti.|Guichetier
+T|a2tren|Bon dia, en què puc ajudar-lo?|Dis que tu as raté le train de dix heures.|Bon dia. He perdut el tren de les deu.|Vaig perdre el tren de les deu.;;Bon dia, he perdut el tren de les deu.|Bon dia. Vaig a perdre el tren de les deu.;;Bon dia. He perdut el tren de les deu anys.;;Bon dia. Perd el tren demà.|perdut;tren
+T|a2tren|No passa res.|Demande à quelle heure part le prochain train.|A quina hora ix el pròxim tren?|Quan ix el pròxim tren?;;A quina hora ix el tren següent?|A quina hora va arribar el tren d'ahir?;;Quina hora és el pròxim tren?;;On ix el pròxim tren?|hora;ix
+T|a2tren|El pròxim tren ix a les onze i mitja.|Demande si tu peux utiliser ton billet.|Puc utilitzar el meu bitllet?|Puc fer servir el meu bitllet?;;Val el meu bitllet?|Puc utilitzar el meu bitllet ahir?;;Pots menjar el meu bitllet?;;Puc utilitzar el meu bitllet de res?|bitllet
+T|a2tren|Sí, però ha de pagar cinc euros més.|Accepte et demande si tu peux payer par carte.|D'acord. Puc pagar amb targeta?|Val. Puc pagar amb targeta?;;D'acord, es pot pagar amb targeta?|D'acord. Puc pagar amb tren?;;No. He pagat amb targeta?;;D'acord. Puc pagar amb targeta ahir a la nit?|pagar;targeta
+T|a2tren|Sí, clar. Tornarà hui?|Dis que tu vas rentrer dimanche.|No, tornaré diumenge.|No, torne diumenge.;;No, diumenge.|No, vaig tornar diumenge.;;Sí, tornaré diumenge passat.;;No, tornaré ahir.|diumenge
+T|a2tren|Molt bé. Ací té el seu bitllet. Bon viatge!|Remercie et dis au revoir.|Moltes gràcies. Fins després!|Gràcies. Adéu!;;Moltes gràcies, adéu.|De res. Bon viatge!;;Ho sent molt. Hola!;;Per favor. Bon dia!|gràcies
+V|a2tren|perdre el tren|rater le train
+V|a2tren|el pròxim tren|le prochain train
+V|a2tren|el bitllet|le billet
+V|a2tren|Bon viatge!|Bon voyage !`,ca:`S|a1mercado|1|Au marché|Tu fais tes courses au marché : des oranges et du fromage.|Vendeuse
+T|a1mercado|Bon dia, què vol?|Salue et demande six oranges.|Bon dia, sis taronges, si us plau.|Hola, sis taronges, si us plau.;;Bon dia, vull sis taronges.|Bona nit, sis taronges, de res.;;Bon dia, em dic sis taronges.;;Adeu, sis taronges, gràcies.|sis;taronges
+T|a1mercado|Aquí té. Alguna cosa més?|Demande aussi du fromage.|Sí, també vull formatge.|Sí, formatge també, si us plau.;;Sí, vull formatge, si us plau.|Sí, també sóc formatge.;;No, també vull formatge.;;Sí, el formatge és a la platja.|formatge
+T|a1mercado|El formatge és molt bo avui.|Demande le prix du fromage.|Quant costa?|Quant costa el formatge?;;Quant és?|Quant de temps?;;On costa?;;Quan costa el formatge?|quant
+T|a1mercado|Costa sis euros.|Dis que c'est tout et demande combien ça fait.|D'acord. No, res més, gràcies. Quant és?|Res més, gràcies. Quant és?;;No, res més. Quant és?|Sí, res més, si us plau.;;Res més, gràcies. On és?;;D'acord, tot, gràcies. Qui és?|res;més
+T|a1mercado|Són vuit euros.|Demande si tu peux payer par carte.|Puc pagar amb targeta?|Es pot pagar amb targeta?;;Puc pagar amb targeta, si us plau?|Puc menjar amb targeta?;;Pots pagar amb targeta?;;Puc pagar sense targeta?|pagar;targeta
+T|a1mercado|Sí, pot pagar amb targeta. Gràcies, fins després!|Remercie et dis au revoir.|Gràcies a vostè. Fins després!|Moltes gràcies. Adeu!;;Gràcies. Fins després!|De res. Bon dia!;;Ho sento. Hola!;;Si us plau. Fins després!|gràcies
+V|a1mercado|la taronja|l'orange
+V|a1mercado|el formatge|le fromage
+V|a1mercado|Alguna cosa més?|Autre chose ?
+V|a1mercado|Quant costa?|Combien ça coûte ?
+S|a2tren|2|Le train est parti|Tu arrives à la gare trop tard : ton train est déjà parti.|Guichetier
+T|a2tren|Bon dia, en què el puc ajudar?|Dis que tu as raté le train de dix heures.|Bon dia. He perdut el tren de les deu.|Vaig perdre el tren de les deu.;;Bon dia, he perdut el tren de les deu.|Bon dia. Vaig a perdre el tren de les deu.;;Bon dia. He perdut el tren de les deu anys.;;Bon dia. Perdo el tren demà.|perdut;tren
+T|a2tren|No passa res.|Demande à quelle heure part le prochain train.|A quina hora surt el pròxim tren?|Quan surt el pròxim tren?;;A quina hora surt el tren següent?|A quina hora va arribar el tren d'ahir?;;Quina hora és el pròxim tren?;;On surt el pròxim tren?|hora;surt
+T|a2tren|El pròxim tren surt a les onze i mitja.|Demande si tu peux utiliser ton billet.|Puc fer servir el meu bitllet?|Puc utilitzar el meu bitllet?;;Val el meu bitllet?|Puc fer servir el meu bitllet ahir?;;Pots menjar el meu bitllet?;;Puc fer servir el meu bitllet de res?|bitllet
+T|a2tren|Sí, però ha de pagar cinc euros més.|Accepte et demande si tu peux payer par carte.|D'acord. Puc pagar amb targeta?|Val. Puc pagar amb targeta?;;D'acord, es pot pagar amb targeta?|D'acord. Puc pagar amb tren?;;No. He pagat amb targeta?;;D'acord. Puc pagar amb targeta ahir a la nit?|pagar;targeta
+T|a2tren|Sí, és clar. Tornarà avui?|Dis que tu vas rentrer dimanche.|No, tornaré diumenge.|No, torno diumenge.;;No, diumenge.|No, vaig tornar diumenge.;;Sí, tornaré diumenge passat.;;No, tornaré ahir.|diumenge
+T|a2tren|Molt bé. Aquí té el seu bitllet. Bon viatge!|Remercie et dis au revoir.|Moltes gràcies. Fins després!|Gràcies. Adeu!;;Moltes gràcies, adeu.|De res. Bon viatge!;;Ho sento molt. Hola!;;Si us plau. Bon dia!|gràcies
+V|a2tren|perdre el tren|rater le train
+V|a2tren|el pròxim tren|le prochain train
+V|a2tren|el bitllet|le billet
+V|a2tren|Bon viatge!|Bon voyage !`,gl:`S|a1mercado|1|Au marché|Tu fais tes courses au marché : des oranges et du fromage.|Vendeuse
+T|a1mercado|Bos días, que desexa?|Salue et demande six oranges.|Bos días, seis laranxas, por favor.|Ola, seis laranxas, por favor.;;Bos días, quero seis laranxas.|Boas noites, seis laranxas, de nada.;;Bos días, chámome seis laranxas.;;Adeus, seis laranxas, grazas.|seis;laranxas
+T|a1mercado|Aquí ten. Algo máis?|Demande aussi du fromage.|Si, tamén quero queixo.|Si, queixo tamén, por favor.;;Si, quero queixo, por favor.|Si, tamén son queixo.;;Non, tamén quero queixo.;;Si, o queixo está na praia.|queixo
+T|a1mercado|O queixo é moi bo hoxe.|Demande le prix du fromage.|Canto custa?|Canto custa o queixo?;;Canto é?|Canto tempo?;;Onde custa?;;Cando custa o queixo?|canto
+T|a1mercado|Custa seis euros.|Dis que c'est tout et demande combien ça fait.|Vale. Non, nada máis, grazas. Canto é?|Nada máis, grazas. Canto é?;;Non, nada máis. Canto é?|Si, nada máis, por favor.;;Nada máis, grazas. Onde é?;;Vale, todo, grazas. Quen é?|nada;máis
+T|a1mercado|Son oito euros.|Demande si tu peux payer par carte.|Podo pagar con tarxeta?|Pódese pagar con tarxeta?;;Podo pagar con tarxeta, por favor?|Podo comer con tarxeta?;;Podes pagar con tarxeta?;;Podo pagar sen tarxeta?|pagar;tarxeta
+T|a1mercado|Si, pode pagar con tarxeta. Grazas, ata logo!|Remercie et dis au revoir.|Grazas a vostede. Ata logo!|Moitas grazas. Adeus!;;Grazas. Ata logo!|De nada. Bos días!;;Síntoo. Ola!;;Por favor. Ata logo!|grazas
+V|a1mercado|a laranxa|l'orange
+V|a1mercado|o queixo|le fromage
+V|a1mercado|Algo máis?|Autre chose ?
+V|a1mercado|Canto custa?|Combien ça coûte ?
+S|a2tren|2|Le train est parti|Tu arrives à la gare trop tard : ton train est déjà parti.|Guichetier
+T|a2tren|Bos días, en que podo axudalo?|Dis que tu as raté le train de dix heures.|Bos días. Perdín o tren das dez.|Perdín o tren das dez.;;Bos días, perdín o tren das dez.|Bos días. Vou perder o tren das dez.;;Bos días. Perdín o tren das dez anos.;;Bos días. Perdo o tren mañá.|perdín;tren
+T|a2tren|Non pasa nada.|Demande à quelle heure part le prochain train.|A que hora sae o próximo tren?|Cando sae o próximo tren?;;A que hora sae o seguinte tren?|A que hora chegou o tren de onte?;;Que hora é o próximo tren?;;Onde sae o próximo tren?|hora;sae
+T|a2tren|O próximo tren sae ás once e media.|Demande si tu peux utiliser ton billet.|Podo usar o meu billete?|Podo usar o billete?;;Vale o meu billete?|Podo usar o meu billete onte?;;Podes comer o meu billete?;;Podo usar o meu billete de nada?|billete
+T|a2tren|Si, pero ten que pagar cinco euros máis.|Accepte et demande si tu peux payer par carte.|Vale. Podo pagar con tarxeta?|De acordo. Podo pagar con tarxeta?;;Vale, pódese pagar con tarxeta?|Vale. Podo pagar con tren?;;Non. Paguei con tarxeta?;;Vale. Podo pagar con tarxeta onte á noite?|pagar;tarxeta
+T|a2tren|Si, claro. Vai volver hoxe?|Dis que tu vas rentrer dimanche.|Non, vou volver o domingo.|Non, volvo o domingo.;;Non, o domingo.|Non, volvín o domingo.;;Si, vou volver o domingo pasado.;;Non, vou volver onte.|domingo
+T|a2tren|Moi ben. Aquí ten o seu billete. Boa viaxe!|Remercie et dis au revoir.|Moitas grazas. Ata logo!|Grazas. Adeus!;;Moitas grazas, adeus.|De nada. Boa viaxe!;;Síntoo moito. Ola!;;Por favor. Bos días!|grazas
+V|a2tren|perder o tren|rater le train
+V|a2tren|o próximo tren|le prochain train
+V|a2tren|o billete|le billet
+V|a2tren|Boa viaxe!|Bon voyage !`,eu:`S|a1mercado|1|Au marché|Tu fais tes courses au marché : des oranges et du fromage.|Vendeuse
+T|a1mercado|Egun on, zer nahi duzu?|Salue et demande six oranges.|Egun on, sei laranja, mesedez.|Kaixo, sei laranja, mesedez.;;Egun on, sei laranja nahi dut.|Gabon, sei laranja, ez horregatik.;;Egun on, sei laranja deitzen naiz.;;Agur, sei laranja, eskerrik asko.|sei;laranja
+T|a1mercado|Hemen duzu. Beste zerbait?|Demande aussi du fromage.|Bai, gazta ere nahi dut.|Bai, gazta ere bai, mesedez.;;Bai, gazta nahi dut, mesedez.|Bai, ni ere gazta naiz.;;Ez, gazta ere nahi dut.;;Bai, gazta hondartzan dago.|gazta
+T|a1mercado|Gazta ona da.|Demande le prix du fromage.|Zenbat balio du?|Zenbat balio du gaztak?;;Zenbat da?|Zenbat ordu?;;Non balio du?;;Noiz balio du gaztak?|zenbat
+T|a1mercado|Sei euro balio du.|Dis que c'est tout et demande combien ça fait.|Ados. Ez, besterik ez, eskerrik asko. Zenbat da?|Besterik ez, eskerrik asko. Zenbat da?;;Ez, besterik ez. Zenbat da?;;Ez, ezer gehiago ez. Zenbat da?|Bai, besterik ez, mesedez.;;Besterik ez, eskerrik asko. Non da?;;Ados, dena, eskerrik asko. Nor da?|zenbat
+T|a1mercado|Zortzi euro dira.|Donne l'argent : dis « voilà ».|Hemen duzu.|Hemen dituzu.;;Tori, hemen duzu.|Hemen naiz.;;Han duzu atzo.;;Hemen duzu, ez horregatik.|hemen
+T|a1mercado|Eskerrik asko. Gero arte!|Remercie et dis au revoir.|Eskerrik asko zuri. Gero arte!|Eskerrik asko. Agur!;;Mila esker. Gero arte!|Ez horregatik. Egun on!;;Barkatu. Kaixo!;;Mesedez. Gero arte!|eskerrik
+V|a1mercado|laranja|l'orange
+V|a1mercado|gazta|le fromage
+V|a1mercado|Beste zerbait?|Autre chose ?
+V|a1mercado|Zenbat balio du?|Combien ça coûte ?
+S|a2tren|2|Le train est parti|Tu arrives à la gare trop tard : ton train est déjà parti.|Guichetier
+T|a2tren|Egun on, zertan lagun zaitzaket?|Dis que tu as raté le train de dix heures.|Egun on. Hamarretako trena galdu dut.|Hamarretako trena galdu dut.;;Egun on, hamarretako trena galdu dut.|Egun on. Hamarretako trena galduko dut.;;Egun on. Hamarretako trena galdu duzu.;;Egun on. Bihar trena galtzen dut.|trena;galdu
+T|a2tren|Lasai.|Demande à quelle heure part le prochain train.|Zer ordutan irteten da hurrengo trena?|Noiz irteten da hurrengo trena?;;Zer ordutan dago hurrengo trena?|Zer ordutan iritsi zen atzoko trena?;;Zer ordu da hurrengo trena?;;Non irteten da hurrengo trena?|ordutan;trena
+T|a2tren|Hurrengo trena hamaika eta erdietan irteten da.|Demande si tu peux utiliser ton billet.|Nire txartelak balio du?|Txartelak balio du?;;Nire txartela erabil dezaket?|Nire txartelak atzo balio du?;;Nire txartela jaten duzu?;;Nire txartelak ez horregatik balio du?|txartelak
+T|a2tren|Bai, baina bost euro gehiago ordaindu behar duzu.|Accepte et demande si tu peux payer par carte.|Ados. Txartelarekin ordaindu ahal dut?|Ondo. Txartelarekin ordaindu ahal dut?;;Ados, txartelaz ordain daiteke?;;Txartelarekin ordaindu ahal dut?|Ados. Trenarekin ordaindu ahal dut?;;Ez. Txartelarekin ordaindu dut?;;Ados. Atzo txartelarekin ordaindu ahal dut?|txartelarekin;ordaindu
+T|a2tren|Bai, noski. Gaur itzuliko zara?|Dis que tu vas rentrer dimanche.|Ez, igandean itzuliko naiz.|Ez, igandean itzultzen naiz.;;Ez, igandean.|Ez, igandean itzuli nintzen.;;Bai, igandean itzuli naiz.;;Ez, atzo itzuliko naiz.|igandean
+T|a2tren|Oso ondo. Hemen duzu zure txartela. Bidaia ona!|Remercie et dis au revoir.|Eskerrik asko. Gero arte!|Mila esker. Agur!;;Eskerrik asko, agur.|Ez horregatik. Bidaia ona!;;Barkatu. Kaixo!;;Mesedez. Egun on!|eskerrik
+V|a2tren|trena galdu|rater le train
+V|a2tren|hurrengo trena|le prochain train
+V|a2tren|txartela|le billet
+V|a2tren|Bidaia ona!|Bon voyage !`}/*XI-END*/;
 /*EV-BEGIN*/
 /* Évaluation centralisée des réponses écrites (exercices « écris » et dictée).
    Retourne s = 1 (correct / variante / faute mineure), .5 (presque : genre, nombre, conjugaison, accent qui change le mot) ou 0.
@@ -6977,7 +7084,7 @@ function xpTog(d){try{if(d.open){R.xpo=1;const f=document.getElementById("fb");i
 const sf=n=>Number.isInteger(n)?String(n):String(n).replace(".",",");
 const nzI=x=>String(x).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^\p{L}\p{N}\s]/gu," ").replace(/\s+/g," ").trim();
 const XIT={};
-function scT(s){const x=(XIT[UI]||{})[lg()+":"+s.id];return x?{t:x.t,c:x.c}:{t:s.ti,c:s.cx}}
+function scT(s){const x=(XIT[UI]||{})[lg()+":"+s.id];return x?{t:x.t,c:x.c}:{t:gl(s.ti),c:gl(s.cx)}}
 const IMMC={};let IM=null,IMV=[];
 function immP(l){
   if(IMMC[l])return IMMC[l];const sc=[],m={};
@@ -6987,13 +7094,14 @@ function immP(l){
       if(c==="R"&&f.length===8)s.st.push({k:"R",a:f[2]==="a",n:f[3],g:f[4],o:f.slice(5)});
       else if(c==="W"&&f.length===7)s.st.push({k:"W",n:f[2],i:f[3],m:f[4],va:f[5]?f[5].split(";;"):[],kw:f[6].split(";").filter(Boolean)});
       else if(c==="O"&&f.length===6)s.st.push({k:"O",n:f[2],i:f[3],m:f[4],va:f[5]?f[5].split(";;"):[]});
+      else if(c==="T"&&f.length===8)s.st.push({k:"T",n:f[2],i:f[3],m:f[4],va:f[5]?f[5].split(";;"):[],o:f[6]?f[6].split(";;"):[],kw:f[7].split(";").filter(Boolean)});
       else if(c==="V"&&f.length===4)s.v.push([f[2],f[3]]);
     }});
   return IMMC[l]=sc;
 }
 function setMode(m){S.mode=m;save();home()}
 function seg(){const m=S.mode==="cv"?"cv":"im";return `<div class="seg" role="tablist"><button class="${m==="im"?"on":""}" onclick="setMode('im')">🎭 ${tr("Scènes")}</button><button class="${m==="cv"?"on":""}" onclick="setMode('cv')">💬 Discussion libre</button></div>`}
-function immList(){return cvCard()}
+function immList(){return sitCard()+cvCard()}
 /* ===== Conversation libre avec la mascotte ===== */
 const CVS=[
  {id:"cafe",e:"☕",t:"Au café",p:"You are a friendly waiter/waitress in a busy café in Valencia. The learner is a customer."},
@@ -7133,70 +7241,120 @@ function cvDraw(keep){
   g("cverr").innerHTML=c.err?`<div class="fb ko">${em}${c.err==="nosample"?"":` <button class="chip" onclick="cvTurn('')">${tr("Réessayer")}</button>`}</div>`:"";
   const i=g("cvin");g("cvsend").disabled=!!c.busy;const mc=g("cvmic");if(mc){mc.disabled=!!c.busy;mc.classList.toggle("on",!!c.rec)}
   auSync()}
-function imStart(id){LK2=1;FXS=0;stopSp();const s=immP(lg()).find(x=>x.id===id);if(!s)return;SCR="home";IM={s,i:0,ok:0,n:0,xp:0,h:[],rev:false,done:false,typed:false};imShow()}
+/* notions d'une phrase de situation : verbes et expressions (analyse des exercices intégrés) + mots et expressions du vocabulaire (formes au pluriel comprises) */
+const SITIX={};
+function sitIx(L){const ck=L+"|"+ALL.length+"|"+LP.length+"|"+XP.length;if(SITIX[L]&&SITIX[L].ck===ck)return SITIX[L];
+  const ART=/^(el|la|los|las|l'|els|les|o|a|os|as|un|una|lo)\s+/,m=new Map(),add=(f,k)=>{f=EV.raw(f.replace(/^l'/,""));if(!f||m.has(f))return;m.set(f,k)};
+  XP.forEach(x=>add(x.e,"e:"+x.e));
+  ALL.concat(LP).forEach(w=>{if(!w||!w[0])return;const k=w[0],b=String(k).replace(ART,"").split(" / ")[0];add(k,k);add(b,k);if(L!=="eu"){add(b+"s",k);add(b+"es",k)}else{add(b.replace(/a$/,""),k)}});
+  const ls=[...m.keys()].map(f=>[f.split(" "),m.get(f)]).sort((a,b)=>b[0].length-a[0].length);return SITIX[L]={ck,ls}}
+function sitNo(L,t){const K=new Set();try{itAn(L,[t,""]).keys.forEach(k=>{if(/^v:/.test(k))K.add(k)})}catch(e){}
+  try{const tv=EV.raw(t).split(" ").filter(Boolean),used=new Array(tv.length).fill(0);
+    for(const [ft,k] of sitIx(L).ls){if(ft.length>tv.length)continue;for(let i=0;i+ft.length<=tv.length;i++){if(ft.every((x,j)=>tv[i+j]===x&&!used[i+j])){K.add(k);for(let j=0;j<ft.length;j++)used[i+j]=1;break}}}}catch(e){}
+  return [...K]}
+function imStart(id,pid){LK2=1;FXS=0;stopSp();try{axUnlock()}catch(e){}const s=immP(lg()).find(x=>x.id===id);if(!s)return;SCR="home";
+  const L=lg();s.st.forEach(st=>{if(!st.ks){st.ks=sitNo(L,st.m||st.g);st.kn=sitNo(L,st.n)}});
+  IM={s,i:0,ok:0,n:0,xp:0,h:[],rev:false,done:false,typed:false,pid:pid||null,ap:new Set(),rec:new Set(),wk:new Set()};const im=IM;
+  sitRec(s).then(r=>{if(IM===im){im.rec=r;if(!im.done&&im.i===0&&im.s.st[0]){const st=im.s.st[0];if(st.k==="R"&&sitAud(st)){st.a=true;imDraw()}}}}).catch(()=>{});
+  imShow()}
+/* textes du personnage réellement enregistrés dans la voix choisie (sinon : texte toujours visible) */
+async function sitRec(s){const l=lg(),o=new Set();try{if(!AX.manv){const m=await vxMan();AX.manv=m||{}}const v=vxPick(l),ix=await axIdx(l,v);if(ix)s.st.forEach(st=>{if(axFind(ix,st.n))o.add(st.n)})}catch(e){}return o}
+/* palier moyen des notions d'une étape dans le carnet (absentes = 0) */
+function sitP(ks){const sr=S.sr||{},v=(ks||[]).filter(k=>sr[k]).map(k=>sr[k].p||0);return v.length?v.reduce((a,b)=>a+b,0)/v.length:0}
+/* format choisi selon les acquis : réponse à choisir (notions fragiles), à écrire (palier 2), à dire (palier 3 et plus, écrit possible) */
+function sitMode(st){const p=sitP(st.ks);return p<1.5?"R":p<3?"W":"O"}
+const sitAud=st=>!!(IM&&IM.rec.has(st.n))&&sitP(st.kn)>=2;
 function imShow(){
-  stopSp();const st=IM.s.st[IM.i];if(!st)return imEnd();
-  IM.done=false;IM.rev=false;IM.typed=false;if(st.k==="R")IM.opts=shuf([st.g,...st.o]);
+  stopSp();const s0=IM.s.st[IM.i];if(!s0)return imEnd();
+  if(s0.k==="T"){const md=sitMode(s0);IM.cur=Object.assign({},s0,{k:md,g:s0.m,a:md==="R"&&sitAud(s0),src:s0})}else IM.cur=s0;
+  const st=IM.cur;IM.done=false;IM.rev=false;IM.typed=false;if(st.k==="R")IM.opts=shuf([st.g,...st.o]);
   imDraw();if(!(st.k==="R"&&!st.a))aud("q",[st.n]);
   setTimeout(()=>{const e=document.getElementById("ti");if(e)e.focus()},60);
 }
 function imKey(st){return st.k==="R"?(st.a&&!IM.rev?"co":"ce"):st.k==="W"||IM.typed?"ee":"eo"}
 function imDraw(){
-  const s=IM.s,st=s.st[IM.i],n=s.st.length;
-  const hist=IM.h.map(x=>`<div class="bub ${x.w}${x.ok===true?" ok":x.ok===false?" ko":""}">${esc(x.t)}</div>`).join("");
-  const sp=`<button class="spk sm" data-a="q" onclick="aud('q',[IM.s.st[IM.i].n])" aria-label="Écouter ou arrêter">🔊</button>`;
+  const s=IM.s,st=IM.cur||s.st[IM.i],n=s.st.length;
+  /* écran sans défilement (360 × 640) : seul le dernier échange reste affiché au-dessus de la réplique en cours */
+  const hist=IM.h.slice(window.innerHeight>=720?-2:IM.done?-2:IM.h.length).map(x=>`<div class="bub ${x.w}${x.ok===true?" ok":x.ok===false?" ko":""}" translate="no">${esc(x.t)}</div>`).join("");
+  const sp=`<button class="spk sm" data-a="q" onclick="aud('q',[IM.cur.n])" aria-label="${tr("Écouter ou arrêter")}">🔊</button>`;
   let b="";
-  if(IM.done)b=`<div class="fb fbm ${IM.g?"ok":"ko"}">${mas(IM.g?"bravo":"triste",56)}<div><span>${IM.g?"¡Muy bien !":"Pas tout à fait."}</span> ${IM.fbt}</div></div><button class="btn" onclick="IM.i++;imShow()">Continuer</button>`;
+  if(IM.done)b=`<div class="fb fbm ${IM.g?"ok":"ko"}">${mas(IM.g?"bravo":"triste",56)}<div><span>${IM.g?"¡Muy bien!":tr("Pas tout à fait.")}</span> ${IM.fbt}</div></div><button class="btn" onclick="IM.i++;imShow()">${tr("Continuer")}</button>`;
   else{
     const hid=st.k==="R"&&st.a&&!IM.rev;
-    b=`<div class="bub npc">${sp} ${hid?"<i>🎧 …</i>":st.n}</div>`;
-    if(st.k==="R")b+=(hid?`<p class="skl">Écoute, puis choisis la bonne réponse. <button class="chip" onclick="IM.rev=true;imDraw()">Voir le texte</button></p>`:`<p class="skl">Choisis la bonne réponse.</p>`)+IM.opts.map((o,i)=>`<button class="opt" onclick="imR(${i})">${o}</button>`).join("");
+    b=`<div class="bub npc">${sp} <span translate="no">${hid?"<i>🎧 …</i>":esc(st.n)}</span></div>`;
+    if(st.i)b+=`<p class="sub">${esc(gl(st.i))}</p>`;
+    if(st.k==="R")b+=(hid?`<p class="skl">${tr("Écoute, puis choisis la bonne réponse.")} <button class="chip" onclick="IM.rev=true;imDraw()">${tr("Voir le texte")}</button></p>`:st.i?"":`<p class="skl">${tr("Choisis la bonne réponse.")}</p>`)+IM.opts.map((o,i)=>`<button class="opt" translate="no" onclick="imR(${i})">${esc(o)}</button>`).join("");
     else{
-      b+=`<p class="sub">${st.i}</p>`;
-      const inp=`<input class="in" id="ti" aria-label="${tr("Écris ta réponse…")}" autocomplete="off" autocapitalize="none" spellcheck="false" onkeydown="if(event.key==='Enter')imW()"><button class="btn" onclick="imW()">Vérifier</button> `;
-      if(st.k==="W"||IM.typed||!SR)b+=(st.k==="O"&&!SR?`<p class="skl">Reconnaissance vocale indisponible sur ce navigateur : écris ta réponse.</p>`:"")+inp;
-      else b+=`<button class="btn" onclick="imRec()">🎤 Parler</button> <button class="chip" onclick="IM.typed=true;imDraw();document.getElementById('ti').focus()">⌨️ Écrire à la place</button> `;
-      b+=`<button class="btn ghost" onclick="imSkip()">Passer</button><div id="ifb"></div>`;
+      const inp=`<input class="in" id="ti" aria-label="${tr("Écris ta réponse…")}" autocomplete="off" autocapitalize="none" spellcheck="false" onkeydown="if(event.key==='Enter')imW()"><button class="btn" onclick="imW()">${tr("Vérifier")}</button> `;
+      if(st.k==="W"||IM.typed||!SR)b+=(st.k==="O"&&!SR?`<p class="skl">${tr("Reconnaissance vocale indisponible sur ce navigateur : écris ta réponse.")}</p>`:"")+inp;
+      else b+=`<button class="btn" onclick="imRec()">${tr("🎤 Parler")}</button> <button class="chip" onclick="IM.typed=true;imDraw();document.getElementById('ti').focus()">${tr("⌨️ Écrire à la place")}</button> `;
+      b+=`<button class="btn ghost" onclick="imSkip()">${tr("Passer")}</button><div id="ifb"></div>`;
     }
   }
-  const sy=window.scrollY;$.innerHTML=head()+`<p class="skl"><b>${scT(s).t}</b> · ${s.ch} <button class="chip" onclick="imQuit()">Quitter</button></p><div class="bar" style="margin:0 0 10px"><i style="width:${Math.round(100*IM.i/n)}%"></i></div><p class="sub">${scT(s).c}</p><div class="q chat">${hist}${b}</div>`;
+  const sy=window.scrollY,T=scT(s);$.innerHTML=head()+`<p class="skl" style="display:flex;align-items:center;gap:8px;margin:0 0 6px"><span style="flex:1"><b>${esc(T.t)}</b> · ${esc(gl(s.ch))}</span><button class="chip" style="padding:4px 10px;min-height:0" onclick="imQuit()" aria-label="${tr("Quitter")}">✕</button></p><div class="bar" style="margin:0 0 8px"><i style="width:${Math.round(100*IM.i/n)}%"></i></div>${IM.i===0&&!IM.done?`<p class="sub">${esc(T.c)}</p>`:""}<div class="q chat">${hist}${b}</div>`;
   window.scrollTo(0,IM.h.length?sy:0);
   auSync();
 }
-function imQuit(){stopSp();S.mode="im";home()}
+function imQuit(){stopSp();const p=IM&&IM.pid;IM=null;if(p){home();return}S.mode="im";home()}
+const MKA_SIT={R:"sitR",W:"sitW",O:"sitO"};
 function imDone(good,k,mine,fbt){
-  if(IM.done)return;IM.done=true;stopSp();const st=IM.s.st[IM.i];
+  if(IM.done)return;IM.done=true;stopSp();const st=IM.cur||IM.s.st[IM.i];
   IM.n++;if(good){IM.ok++;IM.xp+=10}fxOk(good);
-  S.sk=S.sk||{};S.sk[k]=.9*sk(k)+.1*(good?1:0);save();
+  S.sk=S.sk||{};S.sk[k]=.9*sk(k)+.1*(good?1:0);
+  /* carnet : une preuve d'appui par notion et par situation, seulement après une réussite (ni création, ni date, palier ≤ 2) */
+  (st.ks||[]).forEach(x=>IM.wk.add(x));
+  if(good&&st.ks)st.ks.forEach(x=>{if(IM.ap.has(x))return;try{if(mkApp(x,{ty:MKA_SIT[st.k]||"sitR"},1))IM.ap.add(x)}catch(e){}});
+  save();
   IM.h.push({w:"npc",t:st.n},{w:"me",t:mine||"…",ok:good});IM.g=good;IM.fbt=fbt;imDraw();
-  if(good||k==="eo"){const ix=IM.i;setTimeout(()=>{if(IM.i===ix&&IM.done&&document.querySelector(".fbm")){IM.i++;imShow()}},good?1300:4500)}
+  if(good||k==="eo"){const ix=IM.i;setTimeout(()=>{if(IM&&IM.i===ix&&IM.done&&document.querySelector(".fbm")){IM.i++;imShow()}},good?1300:4500)}
 }
-function imR(i){const st=IM.s.st[IM.i];if(IM.done)return;const o=IM.opts[i],g=o===st.g;imDone(g,imKey(st),o,g?"":tr("Réponse attendue : {0}",st.g))}
+function imR(i){const st=IM.cur;if(IM.done)return;const o=IM.opts[i],g=o===st.g;imDone(g,imKey(st),o,g?"":tr("Réponse attendue : {0}",esc(st.g)))}
 function imW(){
-  const st=IM.s.st[IM.i],e=document.getElementById("ti");if(IM.done||!e||!e.value.trim())return;const v=e.value.trim();
-  let g;if(st.k==="W"){const q=nzI(v);g=[st.m,...st.va].some(x=>nzI(x)===q)||(st.kw.length>0&&st.kw.every(k=>q.includes(nzI(k))))}else g=imO([v],st).s>=.8;
-  imDone(g,imKey(st),v,tr("Modèle : {0}",st.m));
+  const st=IM.cur,e=document.getElementById("ti");if(IM.done||!e||!e.value.trim())return;const v=e.value.trim();
+  let g;if(st.k==="W"){const q=nzI(v);g=[st.m,...st.va].some(x=>nzI(x)===q);if(!g){let gs=0;try{gs=EV.grade(v,{es:st.m,acc:[st.m,...st.va]}).s}catch(er){}g=gs>=1||(gs>=.5&&st.kw.length>0&&st.kw.every(k=>q.split(" ").includes(nzI(k))))}}else g=imO([v],st).s>=.8;
+  imDone(g,imKey(st),v,tr("Modèle : {0}",esc(st.m)));
 }
 function imO(alts,st,m){let g=null;[st.m,...(st.va||[])].forEach(c=>{if(!c)return;const x=eoGrade(alts,c,lv(),m);if(!g||x.s>g.s)g=x});return g||{s:0,full:false,u:""}}
-function imSkip(){const st=IM.s.st[IM.i];if(IM.done)return;imDone(false,imKey(st),"…",tr("Modèle : {0}",st.m||st.g))}
+function imSkip(){const st=IM.cur;if(IM.done)return;imDone(false,imKey(st),"…",tr("Modèle : {0}",esc(st.m||st.g)))}
 async function imRec(){
   if(SRC){try{SRC.stop()}catch(e){}return}
-  const fb=document.getElementById("ifb"),st=IM.s.st[IM.i];const r=new SR();r.lang=LANGS[lg()].s;r.maxAlternatives=10;
-  fb.innerHTML=`<p class="sub">Je t'écoute…</p>`;
+  const fb=document.getElementById("ifb"),st=IM.cur;const r=new SR();r.lang=LANGS[lg()].s;r.maxAlternatives=10;
+  fb.innerHTML=`<p class="sub">${tr("Je t'écoute…")}</p>`;
   if(IOSW)stopSp();const pre=IOSW?"":await micPre();if(pre){fb.innerHTML=micErr(pre,"IM.typed=true;imDraw()","imRec()");return}
   srAttach(r,(a,m)=>{if(IM.done)return;const g=imO(a,st,m);
       if(g.u&&(g.u==="lang"||IM.uq!==st)){IM.uq=st;fb.innerHTML=eoUns(g,"IM.typed=true;imDraw()","imRec()");return}
-      imDone(g.full||g.s>=.7&&!g.cm,"eo",a[0],tr("Modèle : {0}",st.m)+" · "+tr("Reconnu : {0} %",Math.round(g.s*100)))},
+      imDone(g.full||g.s>=.7&&!g.cm,"eo",a[0],tr("Modèle : {0}",esc(st.m))+" · "+tr("Reconnu : {0} %",Math.round(g.s*100)))},
     (code,ss)=>{if(IM.done)return;fb.innerHTML=micErr(code,"IM.typed=true;imDraw()","imRec()",ss)});
   try{r.start()}catch(e){SRC=null;micSess(0);fb.innerHTML=micErr((e&&e.name)||"error","IM.typed=true;imDraw()","imRec()")}
 }
+const sitLab=k=>String(k).replace(/^[a-z]:/,"");
 function imEnd(){
-  stopSp();const s=IM.s,p=Math.round(100*IM.ok/Math.max(1,IM.n)),bonus=IM.ok===IM.n?10:0;
-  dayTick();addXp(IM.xp+bonus);qTick(IM.ok,IM.n);qAdd("imm",1);S.imm=S.imm||{};const k=lg()+":"+s.id;S.imm[k]=Math.max(S.imm[k]||0,p);save();
-  IMV=s.v.map(v=>v[0]);
-  $.innerHTML=head()+`<div class="q end">${notes()}${mas(IM.ok>=IM.n*.7?"bravo":IM.ok<=IM.n*.3?"triste":"content",120)}<div class="big">${IM.ok}/${IM.n}</div><p><span>+${IM.xp+bonus} XP</span>${bonus?" <span>(sans faute !)</span>":""}</p>${s.v.length?`<h3>À retenir</h3><ul class="vlist">${s.v.map((v,i)=>`<li><button class="spk sm" data-a="v${i}" onclick="aud('v${i}',[IMV[${i}]])" aria-label="Écouter ou arrêter">🔊</button> <b>${v[0]}</b> — ${gl(v[1])}</li>`).join("")}</ul>`:""}<button class="btn" onclick="imStart('${s.id}')">Rejouer</button><br><button class="btn ghost" onclick="imQuit()">Autre scénario</button></div>`;FX.play(IM.ok>=IM.n*.7?"level":IM.ok<=IM.n*.3?"bad":"good");if(IM.ok>=IM.n*.8)FX.confetti();
+  stopSp();const s=IM.s,p=Math.round(100*IM.ok/Math.max(1,IM.n)),bonus=IM.ok===IM.n?10:0,pid=IM.pid;
+  dayTick();addXp(IM.xp+bonus);qTick(IM.ok,IM.n);qAdd("imm",1);S.imm=S.imm||{};const k=lg()+":"+s.id;S.imm[k]=Math.max(S.imm[k]||0,p);
+  /* étape facultative du parcours : meilleure note sur 10 et dernière tentative (aucune incidence sur le déblocage) */
+  if(pid){const pk=pthK(pid),sc=Math.round(10*IM.ok/Math.max(1,IM.n));S.pth=S.pth||{};S.pth[pk]=Math.max(S.pth[pk]||0,sc);S.pa=S.pa||{};S.pa[pk]=sc}
+  save();
+  IMV=s.v.map(v=>v[0]);const wk=[...IM.wk].filter(x=>(S.sr||{})[x]).slice(0,10);
+  $.innerHTML=head()+`<div class="q end">${notes()}${mas(IM.ok>=IM.n*.7?"bravo":IM.ok<=IM.n*.3?"triste":"content",120)}<div class="big">${IM.ok}/${IM.n}</div><p><span>+${IM.xp+bonus} XP</span>${bonus?` <span>${tr("(sans faute !)")}</span>`:""}</p>${s.v.length?`<h3>${tr("À retenir")}</h3><ul class="vlist">${s.v.map((v,i)=>`<li><button class="spk sm" data-a="v${i}" onclick="aud('v${i}',[IMV[${i}]])" aria-label="${tr("Écouter ou arrêter")}">🔊</button> <b translate="no">${esc(v[0])}</b> — ${esc(gl(v[1]))}</li>`).join("")}</ul>`:""}${wk.length?`<p class="sub">${tr("Notions travaillées")} : <span translate="no">${wk.map(x=>esc(sitLab(x))).join(" · ")}</span></p>`:""}${pid?`<button class="btn" onclick="IM=null;pathCont()">${tr("Continuer le parcours")}</button><br><button class="btn ghost" onclick="imStart('${s.id}','${pid}')">${tr("Rejouer")}</button>`:`<button class="btn" onclick="imStart('${s.id}')">${tr("Rejouer")}</button><br><button class="btn ghost" onclick="imQuit()">${tr("Autre scénario")}</button>`}</div>`;FX.play(IM.ok>=IM.n*.7?"level":IM.ok<=IM.n*.3?"bad":"good");if(IM.ok>=IM.n*.8)FX.confetti();
   auSync();
 }
+/* ===== Situations A1–A2 : rang des notions, ouverture selon la progression réellement effectuée, place dans le parcours ===== */
+function sitTx(s){const o=[];s.st.forEach(st=>{const fr=st.i||"";o.push([st.n,fr]);if(st.k==="T"||st.k==="W"||st.k==="O")o.push([st.m,fr]);if(st.g)o.push([st.g,fr]);(st.o||[]).forEach(x=>o.push([x,fr]))});return o}
+function sitRk(s){if(s.rk!=null)return s.rk;let r=0;try{sitTx(s).forEach(([t,fr])=>{const q=pqRank(t,fr);if(q.r>r)r=q.r})}catch(e){r=Infinity}return s.rk=r}
+/* rang de progression atteint (niveaux précédents entièrement parcourus, puis étapes de nouveautés faites sans interruption) */
+function sitR0(){try{const pl=pathPlanMain(),f=pl.flat.filter(x=>x.rk!=null&&!x.opt);if(!f.length)return 0;const r=adRk(f[f.length-1]);return r==null?0:r}catch(e){return 0}}
+function sitOK(s,R0,K){if(s.l>lv())return false;if(sitRk(s)<=R0)return true;if(sitRk(s)===Infinity)return false;
+  return sitTx(s).every(([t,fr])=>{const q=pqRank(t,fr);if(q.r===Infinity)return false;return (q.tk||[]).filter(x=>x[1]<Infinity).every(([w,r])=>r<=R0||K.has(w))})}
+function sitPlace(pc,L,l){if(pc.sitk===l+L)return;pc.sitk=l+L;let ss=[];try{ss=immP(l).filter(s=>s.l===L).map(s=>[s,sitRk(s)]).filter(x=>x[1]<Infinity).sort((a,b)=>a[1]-b[1])}catch(e){return}
+  const us=pc.units,used=new Set();
+  ss.forEach(([s,r])=>{const id="s"+s.id;if(pc.map[id])return;
+    for(let u=1;u<us.length;u++){const st=us[u].steps;if(!st.length||st.some(x=>x.test))continue;const ur=Math.max(...st.map(x=>x.rk||0));if(ur<r||used.has(u)||used.has(u-1)||used.has(u+1))continue;
+      const x={id,ic:"🎭",lab:s.ti,sub:"Mise en situation (facultative)",sit:s.id,opt:1,rk:ur},bi=st.findIndex(y=>y.bil||y.id[0]==="m"),at=bi>=0?bi:st.length,nx=st[at];
+      st.splice(at,0,x);pc.map[id]=x;const fi=nx?pc.flat.indexOf(nx):-1;if(fi>=0)pc.flat.splice(fi,0,x);else pc.flat.push(x);used.add(u);break}})}
+function sitGo(id,st){IM=null;imStart(st.sit,id)}
+function sitCard(){const L=lg(),ss=immP(L).filter(s=>s.l<=lv());if(!ss.length)return "";const R0=sitR0();let K=new Set();try{K=adKnown()}catch(e){}
+  const op=ss.filter(s=>sitOK(s,R0,K)),nb=ss.length-op.length,best=S.imm||{};
+  return `<div class="cvc"><div class="cvh">${mas("content",64)}<div><b>${tr("Mises en situation")}</b><div class="sub">${tr("Des conversations courtes avec les mots que tu as déjà appris. Réponds en choisissant, en écrivant ou à l'oral selon ce que tu maîtrises.")}</div></div></div><div class="cvg">${op.map(s=>{const b=best[L+":"+s.id];return `<button class="chip" onclick="imStart('${s.id}')">🎭 ${esc(scT(s).t)}${b!=null?` · ${b} %`:""}</button>`}).join("")}</div>${nb?`<p class="sub">🔒 ${tr("{0} autres situations se débloquent en avançant dans le parcours.",nb)}</p>`:""}</div>`}
 const TLN={es:"Castellano",va:"Valencià",ca:"Català",gl:"Galego",eu:"Euskara",fr:"Français",en:"English",it:"Italiano",de:"Deutsch",pt:"Português"},
 TLP={es:"Castilian Spanish (Spain, RAE norm)",va:"Valencian (AVL norm, Valencian forms)",ca:"Catalan (IEC norm)",gl:"Galician (RAG/ILG norm)",eu:"Standard Basque (batua, Euskaltzaindia)",fr:"French",en:"English",it:"Italian",de:"German",pt:"European Portuguese"},
 TLC={es:"es",va:"ca",ca:"ca",gl:"gl",eu:"eu",fr:"fr",en:"en",it:"it",de:"de",pt:"pt"},DPL=["es","fr","en","it","de","pt"];
@@ -8431,7 +8589,7 @@ function unitUnlocked(pid){
   const pl=pathPlan();if(!pl||!pl.units||pl.k==="rat")return null;const us=pl.units,pd=S.pth||{};
   const ui=us.findIndex(u=>u.steps.some(x=>x.id===pid));if(ui<0||ui>=us.length-1)return null;
   const u=us[ui];if(u.steps[u.steps.length-1].id!==pid)return null;
-  if(!u.steps.filter(x=>!x.test).every(x=>(pd[pthK(x.id)]||0)>=6))return null;
+  if(!u.steps.filter(x=>!x.test&&!x.opt).every(x=>(pd[pthK(x.id)]||0)>=6))return null;
   const nx=us[ui+1],first=nx.steps.find(x=>!x.test&&(pd[pthK(x.id)]||0)<6)||nx.steps[0];
   return{n:ui+2,title:nx.title||"",obj:nx.obj||"",go:first&&!first.test?first.id:null,test:!!(first&&first.test)};
 }
