@@ -1,13 +1,29 @@
 {
-  "_lisez_moi": "Plan de la génération audio du lot C. mode « echantillon » : 3 clips représentatifs par voix (réplique la plus longue, la plus courte, un mot « À retenir ») ; mode « complet » : tous les manquants des situations (voix au statut « confirme » seulement). Les voix au statut « provisoire » (galicien) ne sont générées qu'en échantillon. branche_resultats : branche isolée qui reçoit les résultats (jamais réutilisée d'un plan à l'autre).",
+  "_lisez_moi": "Plan de la génération audio des situations (lots C et D). mode « echantillon » : 3 clips représentatifs par voix (réplique la plus longue, la plus courte, un mot « À retenir ») ; mode « complet » : tous les manquants des situations (voix au statut « confirme » seulement). Les voix au statut « provisoire » (galicien) ne sont générées qu'en échantillon. branche_resultats : branche isolée qui reçoit les résultats (jamais réutilisée d'un plan à l'autre).",
   "mode": "complet",
   "par_voix": 0,
   "voix": [
-    "gl_c"
+    "es_dora",
+    "va_gina",
+    "va_lluc",
+    "ca_elia",
+    "ca_grau",
+    "gl_a",
+    "gl_b",
+    "gl_c",
+    "eu_antton"
   ],
   "controle_identite": [
-    "gl_c"
+    "es_dora",
+    "va_gina",
+    "va_lluc",
+    "ca_elia",
+    "ca_grau",
+    "gl_a",
+    "gl_b",
+    "gl_c",
+    "eu_antton"
   ],
   "identifier_galicien": false,
-  "branche_resultats": "audio-out-c3-suite110-gl3"
+  "branche_resultats": "audio-out-c3-lotd"
 }

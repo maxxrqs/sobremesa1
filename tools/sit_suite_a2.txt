@@ -473,7 +473,7 @@ Kaixo! Zer moduz asteburua? Zer egin zenuen? ‖ Larunbatean etxean geratu nintz
 Eta zer egin zenuen etxean? ‖ Pisua garbitu nuen. ‖ Dena garbitu nuen. ;; Pisua garbitu nuen, dena. ‖ Pisua garbitzen dut. ;; Pisua garbitu zenuen. ;; Postrea garbitu nuen. ‖ garbitu ‖ Dis que tu as nettoyé l'appartement.
 Zer aspergarria! Eta igandean? ‖ Igandean hondartzara joan nintzen. ‖ Hondartzara joan nintzen. ;; Igandean lagunekin hondartzara joan nintzen. ‖ Igandean hondartzara noa. ;; Igandean hondartzara joan zinen. ;; Igandean hondartzara joan nintzen bihar. ‖ hondartzara
 Oso ondo! Eta gaur? Zer moduz lana? ‖ Lanaz nekatuta nago. ‖ Lanean nekatuta nago. ;; Uf, lanaz nekatuta nago. ‖ Lanaz nekatuta zaude. ;; Postreaz nekatuta nago. ;; Lanarekin pozik nago. ‖ nekatuta ‖ Dis que tu es fatigué(e) du travail.
-Pena da! Zerbait hartzera goaz gaur gauean? ‖ Ez, eskerrik asko. Nahiago dut atseden hartu. ‖ Nahiago dut etxean atseden hartu. ;; Gaur ez. Nahiago dut atseden hartu. ‖ Bai, eskerrik asko. Nahiago dut atseden hartu. ;; Ez, eskerrik asko. Nahiago duzu atseden hartu. ;; Ez, eskerrik asko. Nahiago dut lan gehiago egin. ‖ atseden
+Pena da! Zerbait hartzera goaz gaur gauean? ‖ Gaur ez. Nahiago dut atseden hartu. ‖ Ez, eskerrik asko. Nahiago dut atseden hartu. ;; Nahiago dut etxean atseden hartu. ‖ Bai. Nahiago dut atseden hartu. ;; Gaur ez. Nahiago duzu atseden hartu. ;; Gaur ez. Nahiago dut lan egin. ‖ atseden
 Ados. Bihar arte! ‖ Bihar arte! ‖ Ados, bihar arte. ;; Bihar arte, beraz! ‖ Atzo arte! ;; Egun on, bihar! ;; Barkatu, bihar! ‖ bihar
 V: etxean geratu nintzen = je suis resté à la maison ;; garbitu = nettoyer ;; atseden hartu = se reposer
 

@@ -1,24 +1,3398 @@
 {
-"Accepte et demande si tu peux payer par carte.":{"en":"Agree and ask if you can pay by card.","it":"Accetta e chiedi se puoi pagare con la carta.","de":"Stimm zu und frag, ob du mit Karte zahlen kannst.","pt":"Aceita e pergunta se podes pagar com cartão."},
-"Demande aussi du fromage.":{"en":"Ask for some cheese too.","it":"Chiedi anche del formaggio.","de":"Bitte auch um Käse.","pt":"Pede também queijo."},
-"Demande le prix du fromage.":{"en":"Ask how much the cheese costs.","it":"Chiedi il prezzo del formaggio.","de":"Frag, was der Käse kostet.","pt":"Pergunta o preço do queijo."},
-"Demande si tu peux utiliser ton billet.":{"en":"Ask if you can use your ticket.","it":"Chiedi se puoi usare il tuo biglietto.","de":"Frag, ob du deine Fahrkarte benutzen kannst.","pt":"Pergunta se podes usar o teu bilhete."},
-"Demande à quelle heure part le prochain train.":{"en":"Ask what time the next train leaves.","it":"Chiedi a che ora parte il prossimo treno.","de":"Frag, um wie viel Uhr der nächste Zug fährt.","pt":"Pergunta a que horas parte o próximo comboio."},
-"Des conversations courtes avec les mots que tu as déjà appris. Réponds en choisissant, en écrivant ou à l'oral selon ce que tu maîtrises.":{"en":"Short conversations using words you have already learned. Answer by choosing, writing or speaking, depending on what you have mastered.","it":"Brevi conversazioni con le parole che hai già imparato. Rispondi scegliendo, scrivendo o a voce, secondo ciò che padroneggi.","de":"Kurze Gespräche mit Wörtern, die du schon gelernt hast. Antworte durch Auswählen, Schreiben oder Sprechen – je nachdem, was du beherrschst.","pt":"Conversas curtas com as palavras que já aprendeste. Responde escolhendo, escrevendo ou a falar, conforme o que dominas."},
-"Dis que c'est tout et demande combien ça fait.":{"en":"Say that's all and ask how much it comes to.","it":"Di' che è tutto e chiedi quanto fa.","de":"Sag, dass das alles ist, und frag, was es macht.","pt":"Diz que é tudo e pergunta quanto é."},
-"Dis que tu as raté le train de dix heures.":{"en":"Say you missed the ten o'clock train.","it":"Di' che hai perso il treno delle dieci.","de":"Sag, dass du den Zug um zehn Uhr verpasst hast.","pt":"Diz que perdeste o comboio das dez."},
-"Dis que tu vas rentrer dimanche.":{"en":"Say you are going to come back on Sunday.","it":"Di' che tornerai domenica.","de":"Sag, dass du am Sonntag zurückkommst.","pt":"Diz que vais voltar no domingo."},
-"Donne l'argent : dis « voilà ».":{"en":"Hand over the money: say “here you are”.","it":"Dai i soldi: di' «ecco».","de":"Gib das Geld: Sag „bitte schön“.","pt":"Dá o dinheiro: diz «aqui tem»."},
-"Guichetier":{"en":"Ticket clerk","it":"Bigliettaio","de":"Schalterbeamter","pt":"Funcionário da bilheteira"},
-"Le train est parti":{"en":"The train has left","it":"Il treno è partito","de":"Der Zug ist weg","pt":"O comboio já partiu"},
-"Mise en situation (facultative)":{"en":"Real-life situation (optional)","it":"Situazione reale (facoltativa)","de":"Alltagssituation (freiwillig)","pt":"Situação real (opcional)"},
-"Mises en situation":{"en":"Real-life situations","it":"Situazioni reali","de":"Alltagssituationen","pt":"Situações reais"},
-"Notions travaillées":{"en":"Points practised","it":"Nozioni esercitate","de":"Geübte Inhalte","pt":"Noções praticadas"},
-"Remercie et dis au revoir.":{"en":"Say thank you and goodbye.","it":"Ringrazia e saluta.","de":"Bedank dich und verabschiede dich.","pt":"Agradece e despede-te."},
-"Salue et demande six oranges.":{"en":"Say hello and ask for six oranges.","it":"Saluta e chiedi sei arance.","de":"Grüß und bitte um sechs Orangen.","pt":"Cumprimenta e pede seis laranjas."},
-"Tu arrives à la gare trop tard : ton train est déjà parti.":{"en":"You get to the station too late: your train has already left.","it":"Arrivi in stazione troppo tardi: il tuo treno è già partito.","de":"Du kommst zu spät zum Bahnhof: Dein Zug ist schon weg.","pt":"Chegas à estação tarde demais: o teu comboio já partiu."},
-"Tu fais tes courses au marché : des oranges et du fromage.":{"en":"You are shopping at the market: oranges and cheese.","it":"Fai la spesa al mercato: arance e formaggio.","de":"Du kaufst auf dem Markt ein: Orangen und Käse.","pt":"Fazes compras no mercado: laranjas e queijo."},
-"Vendeuse":{"en":"Stallholder","it":"Venditrice","de":"Verkäuferin","pt":"Vendedora"},
-"le prochain train":{"en":"the next train","it":"il prossimo treno","de":"der nächste Zug","pt":"o próximo comboio"},
-"{0} autres situations se débloquent en avançant dans le parcours.":{"en":"{0} more situations unlock as you progress along the path.","it":"Altre {0} situazioni si sbloccano andando avanti nel percorso.","de":"{0} weitere Situationen werden freigeschaltet, wenn du im Lernpfad vorankommst.","pt":"Mais {0} situações desbloqueiam-se à medida que avanças no percurso."}
+"Accepte et demande si tu peux payer par carte.": {
+"en": "Agree and ask if you can pay by card.",
+"it": "Accetta e chiedi se puoi pagare con la carta.",
+"de": "Stimm zu und frag, ob du mit Karte zahlen kannst.",
+"pt": "Aceita e pergunta se podes pagar com cartão."
+},
+"Demande aussi du fromage.": {
+"en": "Ask for some cheese too.",
+"it": "Chiedi anche del formaggio.",
+"de": "Bitte auch um Käse.",
+"pt": "Pede também queijo."
+},
+"Demande le prix du fromage.": {
+"en": "Ask how much the cheese costs.",
+"it": "Chiedi il prezzo del formaggio.",
+"de": "Frag, was der Käse kostet.",
+"pt": "Pergunta o preço do queijo."
+},
+"Demande si tu peux utiliser ton billet.": {
+"en": "Ask if you can use your ticket.",
+"it": "Chiedi se puoi usare il tuo biglietto.",
+"de": "Frag, ob du deine Fahrkarte benutzen kannst.",
+"pt": "Pergunta se podes usar o teu bilhete."
+},
+"Demande à quelle heure part le prochain train.": {
+"en": "Ask what time the next train leaves.",
+"it": "Chiedi a che ora parte il prossimo treno.",
+"de": "Frag, um wie viel Uhr der nächste Zug fährt.",
+"pt": "Pergunta a que horas parte o próximo comboio."
+},
+"Des conversations courtes avec les mots que tu as déjà appris. Réponds en choisissant, en écrivant ou à l'oral selon ce que tu maîtrises.": {
+"en": "Short conversations using words you have already learned. Answer by choosing, writing or speaking, depending on what you have mastered.",
+"it": "Brevi conversazioni con le parole che hai già imparato. Rispondi scegliendo, scrivendo o a voce, secondo ciò che padroneggi.",
+"de": "Kurze Gespräche mit Wörtern, die du schon gelernt hast. Antworte durch Auswählen, Schreiben oder Sprechen – je nachdem, was du beherrschst.",
+"pt": "Conversas curtas com as palavras que já aprendeste. Responde escolhendo, escrevendo ou a falar, conforme o que dominas."
+},
+"Dis que c'est tout et demande combien ça fait.": {
+"en": "Say that's all and ask how much it comes to.",
+"it": "Di' che è tutto e chiedi quanto fa.",
+"de": "Sag, dass das alles ist, und frag, was es macht.",
+"pt": "Diz que é tudo e pergunta quanto é."
+},
+"Dis que tu as raté le train de dix heures.": {
+"en": "Say you missed the ten o'clock train.",
+"it": "Di' che hai perso il treno delle dieci.",
+"de": "Sag, dass du den Zug um zehn Uhr verpasst hast.",
+"pt": "Diz que perdeste o comboio das dez."
+},
+"Dis que tu vas rentrer dimanche.": {
+"en": "Say you are going to come back on Sunday.",
+"it": "Di' che tornerai domenica.",
+"de": "Sag, dass du am Sonntag zurückkommst.",
+"pt": "Diz que vais voltar no domingo."
+},
+"Donne l'argent : dis « voilà ».": {
+"en": "Hand over the money: say “here you are”.",
+"it": "Dai i soldi: di' «ecco».",
+"de": "Gib das Geld: Sag „bitte schön“.",
+"pt": "Dá o dinheiro: diz «aqui tem»."
+},
+"Guichetier": {
+"en": "Ticket clerk",
+"it": "Bigliettaio",
+"de": "Schalterbeamter",
+"pt": "Funcionário da bilheteira"
+},
+"Le train est parti": {
+"en": "The train has left",
+"it": "Il treno è partito",
+"de": "Der Zug ist weg",
+"pt": "O comboio já partiu"
+},
+"Mise en situation (facultative)": {
+"en": "Real-life situation (optional)",
+"it": "Situazione reale (facoltativa)",
+"de": "Alltagssituation (freiwillig)",
+"pt": "Situação real (opcional)"
+},
+"Mises en situation": {
+"en": "Real-life situations",
+"it": "Situazioni reali",
+"de": "Alltagssituationen",
+"pt": "Situações reais"
+},
+"Notions travaillées": {
+"en": "Points practised",
+"it": "Nozioni esercitate",
+"de": "Geübte Inhalte",
+"pt": "Noções praticadas"
+},
+"Remercie et dis au revoir.": {
+"en": "Say thank you and goodbye.",
+"it": "Ringrazia e saluta.",
+"de": "Bedank dich und verabschiede dich.",
+"pt": "Agradece e despede-te."
+},
+"Salue et demande six oranges.": {
+"en": "Say hello and ask for six oranges.",
+"it": "Saluta e chiedi sei arance.",
+"de": "Grüß und bitte um sechs Orangen.",
+"pt": "Cumprimenta e pede seis laranjas."
+},
+"Tu arrives à la gare trop tard : ton train est déjà parti.": {
+"en": "You get to the station too late: your train has already left.",
+"it": "Arrivi in stazione troppo tardi: il tuo treno è già partito.",
+"de": "Du kommst zu spät zum Bahnhof: Dein Zug ist schon weg.",
+"pt": "Chegas à estação tarde demais: o teu comboio já partiu."
+},
+"Tu fais tes courses au marché : des oranges et du fromage.": {
+"en": "You are shopping at the market: oranges and cheese.",
+"it": "Fai la spesa al mercato: arance e formaggio.",
+"de": "Du kaufst auf dem Markt ein: Orangen und Käse.",
+"pt": "Fazes compras no mercado: laranjas e queijo."
+},
+"Vendeuse": {
+"en": "Stallholder",
+"it": "Venditrice",
+"de": "Verkäuferin",
+"pt": "Vendedora"
+},
+"le prochain train": {
+"en": "the next train",
+"it": "il prossimo treno",
+"de": "der nächste Zug",
+"pt": "o próximo comboio"
+},
+"{0} autres situations se débloquent en avançant dans le parcours.": {
+"en": "{0} more situations unlock as you progress along the path.",
+"it": "Altre {0} situazioni si sbloccano andando avanti nel percorso.",
+"de": "{0} weitere Situationen werden freigeschaltet, wenn du im Lernpfad vorankommst.",
+"pt": "Mais {0} situações desbloqueiam-se à medida que avanças no percurso."
+},
+"Mise en situation (révision, facultative)": {
+"en": "Real-life situation (review, optional)",
+"it": "Situazione reale (ripasso, facoltativa)",
+"de": "Alltagssituation (Wiederholung, freiwillig)",
+"pt": "Situação real (revisão, opcional)"
+},
+"Accepte : oui, bien sûr que tu veux.": {
+"en": "Accept: yes, of course you want to.",
+"it": "Accetta: sì, certo che vuoi.",
+"de": "Nimm an: Ja, natürlich willst du.",
+"pt": "Aceita: sim, claro que queres."
+},
+"Accepte : oui, bien sûr.": {
+"en": "Accept: yes, of course.",
+"it": "Accetta: sì, certo.",
+"de": "Nimm an: Ja, natürlich.",
+"pt": "Aceita: sim, claro."
+},
+"Accepte : oui, tu as envie d'un café.": {
+"en": "Accept: yes, you'd like a coffee.",
+"it": "Accetta: sì, hai voglia di un caffè.",
+"de": "Nimm an: Ja, du hast Lust auf einen Kaffee.",
+"pt": "Aceita: sim, apetece-te um café."
+},
+"Accepte d'y aller ensemble.": {
+"en": "Agree to go together.",
+"it": "Accetta di andarci insieme.",
+"de": "Sag zu, zusammen hinzugehen.",
+"pt": "Aceita ir juntos."
+},
+"Accepte le rendez-vous de mardi.": {
+"en": "Accept the Tuesday appointment.",
+"it": "Accetta l'appuntamento di martedì.",
+"de": "Nimm den Termin am Dienstag an.",
+"pt": "Aceita a marcação de terça-feira."
+},
+"Agent": {
+"en": "Agent",
+"it": "Agente",
+"de": "Mitarbeiter",
+"pt": "Agente"
+},
+"Allons-y": {
+"en": "Let's go",
+"it": "Andiamo",
+"de": "Gehen wir",
+"pt": "Vamos"
+},
+"Ami": {
+"en": "Friend",
+"it": "Amico",
+"de": "Freund",
+"pt": "Amigo"
+},
+"Amie": {
+"en": "Friend",
+"it": "Amica",
+"de": "Freundin",
+"pt": "Amiga"
+},
+"Au marché, tu achètes des fruits et des légumes.": {
+"en": "At the market, you buy fruit and vegetables.",
+"it": "Al mercato compri frutta e verdura.",
+"de": "Auf dem Markt kaufst du Obst und Gemüse.",
+"pt": "No mercado, compras fruta e legumes."
+},
+"Au restaurant, tu demandes conseil à la serveuse et tu invites un ami.": {
+"en": "At the restaurant, you ask the waitress for advice and treat a friend.",
+"it": "Al ristorante chiedi consiglio alla cameriera e offri a un amico.",
+"de": "Im Restaurant fragst du die Kellnerin um Rat und lädst einen Freund ein.",
+"pt": "No restaurante, pedes conselho à empregada e convidas um amigo."
+},
+"Au supermarché, tu fais la queue à la caisse.": {
+"en": "At the supermarket, you queue at the checkout.",
+"it": "Al supermercato fai la fila alla cassa.",
+"de": "Im Supermarkt stehst du an der Kasse an.",
+"pt": "No supermercado, estás na fila da caixa."
+},
+"Bon week-end !": {
+"en": "Have a good weekend!",
+"it": "Buon fine settimana!",
+"de": "Schönes Wochenende!",
+"pt": "Bom fim de semana!"
+},
+"Boulanger": {
+"en": "Baker",
+"it": "Panettiere",
+"de": "Bäcker",
+"pt": "Padeiro"
+},
+"C'est bien la file ?": {
+"en": "Is this the queue?",
+"it": "È questa la fila?",
+"de": "Ist das hier die Schlange?",
+"pt": "É esta a fila?"
+},
+"C'est en promotion": {
+"en": "It's on offer",
+"it": "È in offerta",
+"de": "Es ist im Angebot",
+"pt": "Está em promoção"
+},
+"C'est moi qui paie": {
+"en": "I'm paying",
+"it": "Pago io",
+"de": "Ich zahle",
+"pt": "Pago eu"
+},
+"C'est sur mon chemin": {
+"en": "It's on my way",
+"it": "È sulla mia strada",
+"de": "Das liegt auf meinem Weg",
+"pt": "Fica-me de caminho"
+},
+"Cliente": {
+"en": "Customer",
+"it": "Cliente",
+"de": "Kundin",
+"pt": "Cliente"
+},
+"Collègue": {
+"en": "Colleague",
+"it": "Collega",
+"de": "Kollege",
+"pt": "Colega"
+},
+"Combien c'est ?": {
+"en": "How much is it?",
+"it": "Quanto costa?",
+"de": "Wie viel kostet das?",
+"pt": "Quanto é?"
+},
+"Commande aussi un café noir pour ta collègue.": {
+"en": "Also order a black coffee for your colleague.",
+"it": "Ordina anche un caffè nero per la tua collega.",
+"de": "Bestell auch einen schwarzen Kaffee für deine Kollegin.",
+"pt": "Pede também um café simples para a tua colega."
+},
+"Commande du poisson.": {
+"en": "Order fish.",
+"it": "Ordina del pesce.",
+"de": "Bestell Fisch.",
+"pt": "Pede peixe."
+},
+"Commande un café crème.": {
+"en": "Order a white coffee.",
+"it": "Ordina un caffè con latte.",
+"de": "Bestell einen Milchkaffee.",
+"pt": "Pede um café com leite."
+},
+"Commande un « cortado » (café noisette).": {
+"en": "Order a \"cortado\" (coffee with a dash of milk).",
+"it": "Ordina un «cortado» (caffè macchiato).",
+"de": "Bestell einen „cortado“ (Espresso mit etwas Milch).",
+"pt": "Pede um «cortado» (café pingado)."
+},
+"Commande une paella à partager.": {
+"en": "Order a paella to share.",
+"it": "Ordina una paella da dividere.",
+"de": "Bestell eine Paella zum Teilen.",
+"pt": "Pede uma paella para partilhar."
+},
+"Comment tu t'appelles ?": {
+"en": "What's your name?",
+"it": "Come ti chiami?",
+"de": "Wie heißt du?",
+"pt": "Como te chamas?"
+},
+"Dans la rue, tu demandes l'heure à une passante.": {
+"en": "In the street, you ask a passer-by the time.",
+"it": "Per strada chiedi l'ora a una passante.",
+"de": "Auf der Straße fragst du eine Passantin nach der Uhrzeit.",
+"pt": "Na rua, perguntas as horas a uma transeunte."
+},
+"Dans une agence, tu réserves une excursion pour le week-end.": {
+"en": "At an agency, you book an excursion for the weekend.",
+"it": "In un'agenzia prenoti un'escursione per il fine settimana.",
+"de": "In einem Reisebüro buchst du einen Ausflug fürs Wochenende.",
+"pt": "Numa agência, reservas uma excursão para o fim de semana."
+},
+"Dans une boutique de vêtements": {
+"en": "In a clothes shop",
+"it": "In un negozio di abbigliamento",
+"de": "In einem Bekleidungsgeschäft",
+"pt": "Numa loja de roupa"
+},
+"Demande ce qu'elle te recommande.": {
+"en": "Ask what she recommends.",
+"it": "Chiedi cosa ti consiglia.",
+"de": "Frag, was sie dir empfiehlt.",
+"pt": "Pergunta o que ela te recomenda."
+},
+"Demande ce qu'il y a aujourd'hui.": {
+"en": "Ask what there is today.",
+"it": "Chiedi cosa c'è oggi.",
+"de": "Frag, was es heute gibt.",
+"pt": "Pergunta o que há hoje."
+},
+"Demande ce qu'il y a dans la paella.": {
+"en": "Ask what's in the paella.",
+"it": "Chiedi cosa c'è nella paella.",
+"de": "Frag, was in der Paella ist.",
+"pt": "Pergunta o que leva a paella."
+},
+"Demande ce qu'il y a dedans.": {
+"en": "Ask what's in it.",
+"it": "Chiedi cosa c'è dentro.",
+"de": "Frag, was drin ist.",
+"pt": "Pergunta o que leva."
+},
+"Demande ce qu'il y a pour le déjeuner.": {
+"en": "Ask what there is for lunch.",
+"it": "Chiedi cosa c'è per pranzo.",
+"de": "Frag, was es zum Mittagessen gibt.",
+"pt": "Pergunta o que há para o almoço."
+},
+"Demande ce qu'ils ont à grignoter.": {
+"en": "Ask what they have to nibble on.",
+"it": "Chiedi cosa hanno da stuzzicare.",
+"de": "Frag, was es zum Knabbern gibt.",
+"pt": "Pergunta o que têm para petiscar."
+},
+"Demande combien c'est.": {
+"en": "Ask how much it is.",
+"it": "Chiedi quanto costa.",
+"de": "Frag, wie viel es kostet.",
+"pt": "Pergunta quanto é."
+},
+"Demande combien coûte l'appartement.": {
+"en": "Ask how much the flat costs.",
+"it": "Chiedi quanto costa l'appartamento.",
+"de": "Frag, wie viel die Wohnung kostet.",
+"pt": "Pergunta quanto custa o apartamento."
+},
+"Demande combien coûte le loyer.": {
+"en": "Ask how much the rent is.",
+"it": "Chiedi quanto costa l'affitto.",
+"de": "Frag, wie hoch die Miete ist.",
+"pt": "Pergunta quanto custa a renda."
+},
+"Demande combien d'heures il faut à pied.": {
+"en": "Ask how many hours it takes on foot.",
+"it": "Chiedi quante ore ci vogliono a piedi.",
+"de": "Frag, wie viele Stunden man zu Fuß braucht.",
+"pt": "Pergunta quantas horas são a pé."
+},
+"Demande combien de cachets tu dois prendre.": {
+"en": "Ask how many tablets you should take.",
+"it": "Chiedi quante pastiglie devi prendere.",
+"de": "Frag, wie viele Tabletten du nehmen sollst.",
+"pt": "Pergunta quantos comprimidos deves tomar."
+},
+"Demande combien de temps il faut.": {
+"en": "Ask how long it takes.",
+"it": "Chiedi quanto tempo ci vuole.",
+"de": "Frag, wie lange es dauert.",
+"pt": "Pergunta quanto tempo demora."
+},
+"Demande combien elles coûtent.": {
+"en": "Ask how much they cost.",
+"it": "Chiedi quanto costano.",
+"de": "Frag, wie viel sie kosten.",
+"pt": "Pergunta quanto custam."
+},
+"Demande combien est la caution.": {
+"en": "Ask how much the deposit is.",
+"it": "Chiedi quant'è la cauzione.",
+"de": "Frag, wie hoch die Kaution ist.",
+"pt": "Pergunta quanto é a caução."
+},
+"Demande combien est le loyer.": {
+"en": "Ask how much the rent is.",
+"it": "Chiedi quant'è l'affitto.",
+"de": "Frag, wie hoch die Miete ist.",
+"pt": "Pergunta quanto é a renda."
+},
+"Demande combien il coûte.": {
+"en": "Ask how much it costs.",
+"it": "Chiedi quanto costa.",
+"de": "Frag, wie viel er kostet.",
+"pt": "Pergunta quanto custa."
+},
+"Demande combien tu dois en prendre par jour.": {
+"en": "Ask how many you should take a day.",
+"it": "Chiedi quante devi prenderne al giorno.",
+"de": "Frag, wie viele du pro Tag nehmen sollst.",
+"pt": "Pergunta quantos deves tomar por dia."
+},
+"Demande combien ça coûte.": {
+"en": "Ask how much it costs.",
+"it": "Chiedi quanto costa.",
+"de": "Frag, wie viel es kostet.",
+"pt": "Pergunta quanto custa."
+},
+"Demande combien ça fait en tout.": {
+"en": "Ask how much it comes to in total.",
+"it": "Chiedi quanto fa in tutto.",
+"de": "Frag, wie viel es insgesamt macht.",
+"pt": "Pergunta quanto é no total."
+},
+"Demande combien ça fait.": {
+"en": "Ask how much it comes to.",
+"it": "Chiedi quanto fa.",
+"de": "Frag, wie viel das macht.",
+"pt": "Pergunta quanto é."
+},
+"Demande de l'eau.": {
+"en": "Ask for water.",
+"it": "Chiedi dell'acqua.",
+"de": "Bitte um Wasser.",
+"pt": "Pede água."
+},
+"Demande de répéter.": {
+"en": "Ask them to repeat.",
+"it": "Chiedi di ripetere.",
+"de": "Bitte darum, es zu wiederholen.",
+"pt": "Pede para repetir."
+},
+"Demande du riz.": {
+"en": "Ask for rice.",
+"it": "Chiedi del riso.",
+"de": "Frag nach Reis.",
+"pt": "Pede arroz."
+},
+"Demande l'addition.": {
+"en": "Ask for the bill.",
+"it": "Chiedi il conto.",
+"de": "Bitte um die Rechnung.",
+"pt": "Pede a conta."
+},
+"Demande la carte.": {
+"en": "Ask for the menu.",
+"it": "Chiedi il menù.",
+"de": "Bitte um die Speisekarte.",
+"pt": "Pede a ementa."
+},
+"Demande le ticket.": {
+"en": "Ask for the receipt.",
+"it": "Chiedi lo scontrino.",
+"de": "Bitte um den Kassenbon.",
+"pt": "Pede o talão."
+},
+"Demande où est l'appartement.": {
+"en": "Ask where the flat is.",
+"it": "Chiedi dov'è l'appartamento.",
+"de": "Frag, wo die Wohnung ist.",
+"pt": "Pergunta onde fica o apartamento."
+},
+"Demande quand tu peux signer le contrat.": {
+"en": "Ask when you can sign the contract.",
+"it": "Chiedi quando puoi firmare il contratto.",
+"de": "Frag, wann du den Vertrag unterschreiben kannst.",
+"pt": "Pergunta quando podes assinar o contrato."
+},
+"Demande quand vous signerez le contrat.": {
+"en": "Ask when you'll sign the contract.",
+"it": "Chiedi quando firmerete il contratto.",
+"de": "Frag, wann ihr den Vertrag unterschreibt.",
+"pt": "Pergunta quando vão assinar o contrato."
+},
+"Demande quels papiers il faut.": {
+"en": "Ask which documents are needed.",
+"it": "Chiedi quali documenti servono.",
+"de": "Frag, welche Unterlagen nötig sind.",
+"pt": "Pergunta que papéis são precisos."
+},
+"Demande qui est le dernier de la file.": {
+"en": "Ask who is last in the queue.",
+"it": "Chiedi chi è l'ultimo della fila.",
+"de": "Frag, wer der Letzte in der Schlange ist.",
+"pt": "Pergunta quem é o último da fila."
+},
+"Demande s'il a de la monnaie.": {
+"en": "Ask if he has change.",
+"it": "Chiedi se ha da cambiare.",
+"de": "Frag, ob er Wechselgeld hat.",
+"pt": "Pergunta se tem troco."
+},
+"Demande s'il faut apporter quelque chose.": {
+"en": "Ask if you need to bring anything.",
+"it": "Chiedi se bisogna portare qualcosa.",
+"de": "Frag, ob man etwas mitbringen muss.",
+"pt": "Pergunta se é preciso levar alguma coisa."
+},
+"Demande s'il faut une ordonnance.": {
+"en": "Ask if you need a prescription.",
+"it": "Chiedi se serve la ricetta.",
+"de": "Frag, ob man ein Rezept braucht.",
+"pt": "Pergunta se é precisa receita."
+},
+"Demande s'il y a du fromage.": {
+"en": "Ask if there's any cheese.",
+"it": "Chiedi se c'è del formaggio.",
+"de": "Frag, ob es Käse gibt.",
+"pt": "Pergunta se há queijo."
+},
+"Demande s'il y a du poisson.": {
+"en": "Ask if there's any fish.",
+"it": "Chiedi se c'è del pesce.",
+"de": "Frag, ob es Fisch gibt.",
+"pt": "Pergunta se há peixe."
+},
+"Demande s'il y a le déjeuner.": {
+"en": "Ask if lunch is included.",
+"it": "Chiedi se c'è il pranzo.",
+"de": "Frag, ob es Mittagessen gibt.",
+"pt": "Pergunta se há almoço."
+},
+"Demande s'il y en a une plus petite.": {
+"en": "Ask if there's a smaller one.",
+"it": "Chiedi se ce n'è una più piccola.",
+"de": "Frag, ob es eine kleinere gibt.",
+"pt": "Pergunta se há uma mais pequena."
+},
+"Demande si c'est bien la file d'attente.": {
+"en": "Ask if this is the queue.",
+"it": "Chiedi se questa è la fila.",
+"de": "Frag, ob das die Schlange ist.",
+"pt": "Pergunta se esta é a fila."
+},
+"Demande si c'est loin.": {
+"en": "Ask if it's far.",
+"it": "Chiedi se è lontano.",
+"de": "Frag, ob es weit ist.",
+"pt": "Pergunta se é longe."
+},
+"Demande si ce produit est en promotion.": {
+"en": "Ask if this product is on offer.",
+"it": "Chiedi se questo prodotto è in offerta.",
+"de": "Frag, ob dieses Produkt im Angebot ist.",
+"pt": "Pergunta se este produto está em promoção."
+},
+"Demande si l'appartement est grand.": {
+"en": "Ask if the flat is big.",
+"it": "Chiedi se l'appartamento è grande.",
+"de": "Frag, ob die Wohnung groß ist.",
+"pt": "Pergunta se o apartamento é grande."
+},
+"Demande si l'appartement est propre.": {
+"en": "Ask if the flat is clean.",
+"it": "Chiedi se l'appartamento è pulito.",
+"de": "Frag, ob die Wohnung sauber ist.",
+"pt": "Pergunta se o apartamento está limpo."
+},
+"Demande si la TVA est comprise.": {
+"en": "Ask if VAT is included.",
+"it": "Chiedi se l'IVA è compresa.",
+"de": "Frag, ob die Mehrwertsteuer inbegriffen ist.",
+"pt": "Pergunta se o IVA está incluído."
+},
+"Demande si le déjeuner est compris.": {
+"en": "Ask if lunch is included.",
+"it": "Chiedi se il pranzo è compreso.",
+"de": "Frag, ob das Mittagessen inbegriffen ist.",
+"pt": "Pergunta se o almoço está incluído."
+},
+"Demande si les charges sont comprises.": {
+"en": "Ask if bills are included.",
+"it": "Chiedi se le spese sono incluse.",
+"de": "Frag, ob die Nebenkosten inbegriffen sind.",
+"pt": "Pergunta se as despesas estão incluídas."
+},
+"Demande si samedi lui convient.": {
+"en": "Ask if Saturday suits him.",
+"it": "Chiedi se sabato gli va bene.",
+"de": "Frag, ob ihm Samstag passt.",
+"pt": "Pergunta se o sábado lhe dá jeito."
+},
+"Demande si tu dois prendre le bus.": {
+"en": "Ask if you have to take the bus.",
+"it": "Chiedi se devi prendere l'autobus.",
+"de": "Frag, ob du den Bus nehmen musst.",
+"pt": "Pergunta se tens de apanhar o autocarro."
+},
+"Demande si tu peux l'essayer.": {
+"en": "Ask if you can try it on.",
+"it": "Chiedi se puoi provarla.",
+"de": "Frag, ob du sie anprobieren kannst.",
+"pt": "Pergunta se a podes experimentar."
+},
+"Demande si tu prends le métro.": {
+"en": "Ask if you should take the metro.",
+"it": "Chiedi se prendi la metro.",
+"de": "Frag, ob du die U-Bahn nehmen sollst.",
+"pt": "Pergunta se apanhas o metro."
+},
+"Demande une table pour deux.": {
+"en": "Ask for a table for two.",
+"it": "Chiedi un tavolo per due.",
+"de": "Bitte um einen Tisch für zwei.",
+"pt": "Pede uma mesa para dois."
+},
+"Demande à quelle heure part le bus.": {
+"en": "Ask what time the bus leaves.",
+"it": "Chiedi a che ora parte l'autobus.",
+"de": "Frag, wann der Bus abfährt.",
+"pt": "Pergunta a que horas parte o autocarro."
+},
+"Demande-lui de parler plus lentement.": {
+"en": "Ask her to speak more slowly.",
+"it": "Chiedile di parlare più lentamente.",
+"de": "Bitte sie, langsamer zu sprechen.",
+"pt": "Pede-lhe para falar mais devagar."
+},
+"Demande-lui à quelle heure commence la réunion.": {
+"en": "Ask him what time the meeting starts.",
+"it": "Chiedigli a che ora inizia la riunione.",
+"de": "Frag ihn, wann die Besprechung anfängt.",
+"pt": "Pergunta-lhe a que horas começa a reunião."
+},
+"Demander son chemin": {
+"en": "Asking the way",
+"it": "Chiedere la strada",
+"de": "Nach dem Weg fragen",
+"pt": "Pedir indicações"
+},
+"Depuis trois mois": {
+"en": "For three months",
+"it": "Da tre mesi",
+"de": "Seit drei Monaten",
+"pt": "Há três meses"
+},
+"Dis au revoir.": {
+"en": "Say goodbye.",
+"it": "Saluta.",
+"de": "Verabschiede dich.",
+"pt": "Despede-te."
+},
+"Dis bon week-end.": {
+"en": "Say have a good weekend.",
+"it": "Augura buon fine settimana.",
+"de": "Wünsch ein schönes Wochenende.",
+"pt": "Deseja bom fim de semana."
+},
+"Dis d'où tu viens.": {
+"en": "Say where you're from.",
+"it": "Di' da dove vieni.",
+"de": "Sag, woher du kommst.",
+"pt": "Diz de onde és."
+},
+"Dis qu'elle est trop grande.": {
+"en": "Say it's too big.",
+"it": "Di' che è troppo grande.",
+"de": "Sag, dass sie zu groß ist.",
+"pt": "Diz que é demasiado grande."
+},
+"Dis qu'elle te plaît et demande combien elle coûte.": {
+"en": "Say you like it and ask how much it costs.",
+"it": "Di' che ti piace e chiedi quanto costa.",
+"de": "Sag, dass sie dir gefällt, und frag, was sie kostet.",
+"pt": "Diz que gostas e pergunta quanto custa."
+},
+"Dis qu'il peut garder la monnaie.": {
+"en": "Say he can keep the change.",
+"it": "Di' che può tenere il resto.",
+"de": "Sag, dass er das Wechselgeld behalten kann.",
+"pt": "Diz que pode ficar com o troco."
+},
+"Dis que c'est bon marché et que tu en veux un.": {
+"en": "Say it's cheap and you want one.",
+"it": "Di' che è economico e che ne vuoi uno.",
+"de": "Sag, dass es billig ist und du eins willst.",
+"pt": "Diz que é barato e que queres um."
+},
+"Dis que c'est bon marché et que tu le prends.": {
+"en": "Say it's cheap and you'll take it.",
+"it": "Di' che è economico e che lo prendi.",
+"de": "Sag, dass es billig ist und du es nimmst.",
+"pt": "Diz que é barato e que o levas."
+},
+"Dis que c'est cher.": {
+"en": "Say it's expensive.",
+"it": "Di' che è caro.",
+"de": "Sag, dass es teuer ist.",
+"pt": "Diz que é caro."
+},
+"Dis que c'est parfait et remercie.": {
+"en": "Say it's perfect and thank them.",
+"it": "Di' che è perfetto e ringrazia.",
+"de": "Sag, dass es perfekt ist, und bedank dich.",
+"pt": "Diz que é perfeito e agradece."
+},
+"Dis que c'est pour deux personnes.": {
+"en": "Say it's for two people.",
+"it": "Di' che è per due persone.",
+"de": "Sag, dass es für zwei Personen ist.",
+"pt": "Diz que é para duas pessoas."
+},
+"Dis que c'est pour t'inscrire au registre des habitants (« el padrón »).": {
+"en": "Say it's to register as a resident (\"el padrón\").",
+"it": "Di' che è per iscriverti all'anagrafe («el padrón»).",
+"de": "Sag, dass es für die Anmeldung im Einwohnerregister ist („el padrón“).",
+"pt": "Diz que é para te inscreveres no registo de residentes («el padrón»)."
+},
+"Dis que c'est pour t'inscrire comme habitant.": {
+"en": "Say it's to register as a resident.",
+"it": "Di' che è per iscriverti come residente.",
+"de": "Sag, dass es für die Anmeldung als Einwohner ist.",
+"pt": "Diz que é para te inscreveres como residente."
+},
+"Dis que c'est pour t'inscrire à la mairie.": {
+"en": "Say it's to register at the town hall.",
+"it": "Di' che è per iscriverti in comune.",
+"de": "Sag, dass es für die Anmeldung im Rathaus ist.",
+"pt": "Diz que é para te inscreveres na câmara municipal."
+},
+"Dis que c'est toi qui invites.": {
+"en": "Say it's your treat.",
+"it": "Di' che offri tu.",
+"de": "Sag, dass du einlädst.",
+"pt": "Diz que és tu que convidas."
+},
+"Dis que c'est toi qui paies.": {
+"en": "Say you're paying.",
+"it": "Di' che paghi tu.",
+"de": "Sag, dass du zahlst.",
+"pt": "Diz que és tu que pagas."
+},
+"Dis que c'est tout et demande combien ça fait en tout.": {
+"en": "Say that's all and ask how much it comes to in total.",
+"it": "Di' che è tutto e chiedi quanto fa in tutto.",
+"de": "Sag, dass das alles ist, und frag, wie viel es insgesamt macht.",
+"pt": "Diz que é tudo e pergunta quanto é no total."
+},
+"Dis que c'est tout et demande-lui d'encaisser.": {
+"en": "Say that's all and ask her to ring it up.",
+"it": "Di' che è tutto e chiedile di battere lo scontrino.",
+"de": "Sag, dass das alles ist, und bitte sie zu kassieren.",
+"pt": "Diz que é tudo e pede-lhe para cobrar."
+},
+"Dis que c'est trop cher.": {
+"en": "Say it's too expensive.",
+"it": "Di' che è troppo caro.",
+"de": "Sag, dass es zu teuer ist.",
+"pt": "Diz que é demasiado caro."
+},
+"Dis que c'est très cher.": {
+"en": "Say it's very expensive.",
+"it": "Di' che è molto caro.",
+"de": "Sag, dass es sehr teuer ist.",
+"pt": "Diz que é muito caro."
+},
+"Dis que ce n'est pas cher et que tu veux l'acheter.": {
+"en": "Say it's not expensive and you want to buy it.",
+"it": "Di' che non è caro e che vuoi comprarlo.",
+"de": "Sag, dass es nicht teuer ist und du es kaufen willst.",
+"pt": "Diz que não é caro e que o queres comprar."
+},
+"Dis que ce n'est pas loin : c'est juste en face du marché.": {
+"en": "Say it's not far: it's right opposite the market.",
+"it": "Di' che non è lontano: è proprio di fronte al mercato.",
+"de": "Sag, dass es nicht weit ist: direkt gegenüber vom Markt.",
+"pt": "Diz que não é longe: é mesmo em frente ao mercado."
+},
+"Dis que ce n'est pas loin : c'est près du marché.": {
+"en": "Say it's not far: it's near the market.",
+"it": "Di' che non è lontano: è vicino al mercato.",
+"de": "Sag, dass es nicht weit ist: in der Nähe vom Markt.",
+"pt": "Diz que não é longe: é perto do mercado."
+},
+"Dis que celle-ci te va bien et que tu la prends.": {
+"en": "Say this one fits you and you'll take it.",
+"it": "Di' che questa ti sta bene e che la prendi.",
+"de": "Sag, dass diese dir passt und du sie nimmst.",
+"pt": "Diz que esta te fica bem e que a levas."
+},
+"Dis que demain tu prendras le métro, parce qu'il va pleuvoir.": {
+"en": "Say tomorrow you'll take the metro because it's going to rain.",
+"it": "Di' che domani prenderai la metro perché pioverà.",
+"de": "Sag, dass du morgen die U-Bahn nimmst, weil es regnen wird.",
+"pt": "Diz que amanhã vais de metro, porque vai chover."
+},
+"Dis que dimanche tu es allé(e) à la plage.": {
+"en": "Say that on Sunday you went to the beach.",
+"it": "Di' che domenica sei andato/a al mare.",
+"de": "Sag, dass du am Sonntag am Strand warst.",
+"pt": "Diz que no domingo foste à praia."
+},
+"Dis que la chambre te plaît.": {
+"en": "Say you like the room.",
+"it": "Di' che la stanza ti piace.",
+"de": "Sag, dass dir das Zimmer gefällt.",
+"pt": "Diz que gostas do quarto."
+},
+"Dis que ta collègue veut un café noir.": {
+"en": "Say your colleague wants a black coffee.",
+"it": "Di' che la tua collega vuole un caffè nero.",
+"de": "Sag, dass deine Kollegin einen schwarzen Kaffee möchte.",
+"pt": "Diz que a tua colega quer um café simples."
+},
+"Dis que ta collègue veut une petite bière (« una caña »).": {
+"en": "Say your colleague wants a small beer (\"una caña\").",
+"it": "Di' che la tua collega vuole una birra piccola («una caña»).",
+"de": "Sag, dass deine Kollegin ein kleines Bier möchte („una caña“).",
+"pt": "Diz que a tua colega quer uma imperial («una caña»)."
+},
+"Dis que tu apprends la langue.": {
+"en": "Say you're learning the language.",
+"it": "Di' che stai imparando la lingua.",
+"de": "Sag, dass du die Sprache lernst.",
+"pt": "Diz que estás a aprender a língua."
+},
+"Dis que tu as attrapé un rhume.": {
+"en": "Say you've caught a cold.",
+"it": "Di' che hai preso il raffreddore.",
+"de": "Sag, dass du dich erkältet hast.",
+"pt": "Diz que apanhaste uma constipação."
+},
+"Dis que tu as aussi mal à la gorge.": {
+"en": "Say you also have a sore throat.",
+"it": "Di' che hai anche mal di gola.",
+"de": "Sag, dass du auch Halsschmerzen hast.",
+"pt": "Diz que também te dói a garganta."
+},
+"Dis que tu as beaucoup travaillé hier.": {
+"en": "Say you worked a lot yesterday.",
+"it": "Di' che ieri hai lavorato molto.",
+"de": "Sag, dass du gestern viel gearbeitet hast.",
+"pt": "Diz que ontem trabalhaste muito."
+},
+"Dis que tu as compris et remercie-la.": {
+"en": "Say you've understood and thank her.",
+"it": "Di' che hai capito e ringraziala.",
+"de": "Sag, dass du verstanden hast, und bedank dich bei ihr.",
+"pt": "Diz que percebeste e agradece-lhe."
+},
+"Dis que tu as de la fièvre.": {
+"en": "Say you have a fever.",
+"it": "Di' che hai la febbre.",
+"de": "Sag, dass du Fieber hast.",
+"pt": "Diz que tens febre."
+},
+"Dis que tu as déjà rempli le formulaire.": {
+"en": "Say you've already filled in the form.",
+"it": "Di' che hai già compilato il modulo.",
+"de": "Sag, dass du das Formular schon ausgefüllt hast.",
+"pt": "Diz que já preencheste o formulário."
+},
+"Dis que tu as mal à la gorge.": {
+"en": "Say you have a sore throat.",
+"it": "Di' che hai mal di gola.",
+"de": "Sag, dass du Halsschmerzen hast.",
+"pt": "Diz que te dói a garganta."
+},
+"Dis que tu as nettoyé l'appartement et fait la vaisselle.": {
+"en": "Say you cleaned the flat and did the dishes.",
+"it": "Di' che hai pulito l'appartamento e lavato i piatti.",
+"de": "Sag, dass du die Wohnung geputzt und abgewaschen hast.",
+"pt": "Diz que limpaste o apartamento e lavaste a loiça."
+},
+"Dis que tu as nettoyé l'appartement.": {
+"en": "Say you cleaned the flat.",
+"it": "Di' che hai pulito l'appartamento.",
+"de": "Sag, dass du die Wohnung geputzt hast.",
+"pt": "Diz que limpaste o apartamento."
+},
+"Dis que tu as seulement deux bouteilles.": {
+"en": "Say you only have two bottles.",
+"it": "Di' che hai solo due bottiglie.",
+"de": "Sag, dass du nur zwei Flaschen hast.",
+"pt": "Diz que só tens duas garrafas."
+},
+"Dis que tu as seulement deux choses.": {
+"en": "Say you only have two things.",
+"it": "Di' che hai solo due cose.",
+"de": "Sag, dass du nur zwei Sachen hast.",
+"pt": "Diz que só tens duas coisas."
+},
+"Dis que tu as tout sauf le contrat.": {
+"en": "Say you have everything except the contract.",
+"it": "Di' che hai tutto tranne il contratto.",
+"de": "Sag, dass du alles hast außer dem Vertrag.",
+"pt": "Diz que tens tudo menos o contrato."
+},
+"Dis que tu as travaillé huit ans dans des magasins.": {
+"en": "Say you worked in shops for eight years.",
+"it": "Di' che hai lavorato otto anni nei negozi.",
+"de": "Sag, dass du acht Jahre in Geschäften gearbeitet hast.",
+"pt": "Diz que trabalhaste oito anos em lojas."
+},
+"Dis que tu bois de l'eau.": {
+"en": "Say you'll have water.",
+"it": "Di' che bevi acqua.",
+"de": "Sag, dass du Wasser trinkst.",
+"pt": "Diz que bebes água."
+},
+"Dis que tu cherches la plage.": {
+"en": "Say you're looking for the beach.",
+"it": "Di' che cerchi la spiaggia.",
+"de": "Sag, dass du den Strand suchst.",
+"pt": "Diz que procuras a praia."
+},
+"Dis que tu cherches un appartement à louer.": {
+"en": "Say you're looking for a flat to rent.",
+"it": "Di' che cerchi un appartamento in affitto.",
+"de": "Sag, dass du eine Mietwohnung suchst.",
+"pt": "Diz que procuras um apartamento para arrendar."
+},
+"Dis que tu cherches un appartement.": {
+"en": "Say you're looking for a flat.",
+"it": "Di' che cerchi un appartamento.",
+"de": "Sag, dass du eine Wohnung suchst.",
+"pt": "Diz que procuras um apartamento."
+},
+"Dis que tu dois y réfléchir.": {
+"en": "Say you need to think about it.",
+"it": "Di' che devi pensarci.",
+"de": "Sag, dass du darüber nachdenken musst.",
+"pt": "Diz que tens de pensar."
+},
+"Dis que tu dors mal.": {
+"en": "Say you sleep badly.",
+"it": "Di' che dormi male.",
+"de": "Sag, dass du schlecht schläfst.",
+"pt": "Diz que dormes mal."
+},
+"Dis que tu en as marre du travail.": {
+"en": "Say you're fed up with work.",
+"it": "Di' che sei stufo/a del lavoro.",
+"de": "Sag, dass du die Arbeit satthast.",
+"pt": "Diz que estás farto/a do trabalho."
+},
+"Dis que tu en veux un.": {
+"en": "Say you want one.",
+"it": "Di' che ne vuoi uno.",
+"de": "Sag, dass du eins willst.",
+"pt": "Diz que queres um."
+},
+"Dis que tu es allergique au lait.": {
+"en": "Say you're allergic to milk.",
+"it": "Di' che sei allergico/a al latte.",
+"de": "Sag, dass du gegen Milch allergisch bist.",
+"pt": "Diz que és alérgico/a ao leite."
+},
+"Dis que tu es en Espagne depuis trois mois.": {
+"en": "Say you've been in Spain for three months.",
+"it": "Di' che sei in Spagna da tre mesi.",
+"de": "Sag, dass du seit drei Monaten in Spanien bist.",
+"pt": "Diz que estás em Espanha há três meses."
+},
+"Dis que tu es enchanté(e).": {
+"en": "Say you're pleased to meet them.",
+"it": "Di' che sei lieto/a di conoscerla.",
+"de": "Sag, dass du dich freust.",
+"pt": "Diz que estás encantado/a."
+},
+"Dis que tu es enrhumé(e).": {
+"en": "Say you have a cold.",
+"it": "Di' che sei raffreddato/a.",
+"de": "Sag, dass du erkältet bist.",
+"pt": "Diz que estás constipado/a."
+},
+"Dis que tu es fatigué(e) du travail.": {
+"en": "Say you're tired from work.",
+"it": "Di' che sei stanco/a del lavoro.",
+"de": "Sag, dass du von der Arbeit müde bist.",
+"pt": "Diz que estás cansado/a do trabalho."
+},
+"Dis que tu es fatigué(e).": {
+"en": "Say you're tired.",
+"it": "Di' che sei stanco/a.",
+"de": "Sag, dass du müde bist.",
+"pt": "Diz que estás cansado/a."
+},
+"Dis que tu es perdu.": {
+"en": "Say you're lost.",
+"it": "Di' che ti sei perso.",
+"de": "Sag, dass du dich verlaufen hast.",
+"pt": "Diz que estás perdido."
+},
+"Dis que tu es resté(e) à la maison.": {
+"en": "Say you stayed at home.",
+"it": "Di' che sei rimasto/a a casa.",
+"de": "Sag, dass du zu Hause geblieben bist.",
+"pt": "Diz que ficaste em casa."
+},
+"Dis que tu es très fatigué(e) par le travail.": {
+"en": "Say you're very tired from work.",
+"it": "Di' che sei molto stanco/a per il lavoro.",
+"de": "Sag, dass dich die Arbeit sehr müde macht.",
+"pt": "Diz que estás muito cansado/a do trabalho."
+},
+"Dis que tu es vendeur.": {
+"en": "Say you're a salesperson.",
+"it": "Di' che sei venditore.",
+"de": "Sag, dass du Verkäufer bist.",
+"pt": "Diz que és vendedor."
+},
+"Dis que tu fais les courses et demande du riz.": {
+"en": "Say you're doing the shopping and ask for rice.",
+"it": "Di' che fai la spesa e chiedi del riso.",
+"de": "Sag, dass du einkaufst, und frag nach Reis.",
+"pt": "Diz que estás a fazer compras e pede arroz."
+},
+"Dis que tu habites à Valence.": {
+"en": "Say you live in Valencia.",
+"it": "Di' che abiti a Valencia.",
+"de": "Sag, dass du in Valencia wohnst.",
+"pt": "Diz que moras em Valência."
+},
+"Dis que tu le prends.": {
+"en": "Say you'll take it.",
+"it": "Di' che lo prendi.",
+"de": "Sag, dass du es nimmst.",
+"pt": "Diz que o levas."
+},
+"Dis que tu n'as pas compris.": {
+"en": "Say you didn't understand.",
+"it": "Di' che non hai capito.",
+"de": "Sag, dass du nicht verstanden hast.",
+"pt": "Diz que não percebeste."
+},
+"Dis que tu ne sais pas encore.": {
+"en": "Say you don't know yet.",
+"it": "Di' che non lo sai ancora.",
+"de": "Sag, dass du es noch nicht weißt.",
+"pt": "Diz que ainda não sabes."
+},
+"Dis que tu ne veux pas de dessert, merci.": {
+"en": "Say you don't want dessert, thanks.",
+"it": "Di' che non vuoi il dolce, grazie.",
+"de": "Sag, dass du keinen Nachtisch möchtest, danke.",
+"pt": "Diz que não queres sobremesa, obrigado."
+},
+"Dis que tu paies en espèces.": {
+"en": "Say you're paying in cash.",
+"it": "Di' che paghi in contanti.",
+"de": "Sag, dass du bar zahlst.",
+"pt": "Diz que pagas em dinheiro."
+},
+"Dis que tu paies par carte.": {
+"en": "Say you're paying by card.",
+"it": "Di' che paghi con la carta.",
+"de": "Sag, dass du mit Karte zahlst.",
+"pt": "Diz que pagas com cartão."
+},
+"Dis que tu préfères rester tranquille ce soir.": {
+"en": "Say you'd rather have a quiet evening.",
+"it": "Di' che stasera preferisci stare tranquillo/a.",
+"de": "Sag, dass du heute Abend lieber deine Ruhe hast.",
+"pt": "Diz que preferes ficar sossegado/a esta noite."
+},
+"Dis que tu t'es tordu la cheville.": {
+"en": "Say you've twisted your ankle.",
+"it": "Di' che ti sei slogato/a la caviglia.",
+"de": "Sag, dass du dir den Knöchel verstaucht hast.",
+"pt": "Diz que torceste o tornozelo."
+},
+"Dis que tu tousses.": {
+"en": "Say you have a cough.",
+"it": "Di' che hai la tosse.",
+"de": "Sag, dass du Husten hast.",
+"pt": "Diz que tens tosse."
+},
+"Dis que tu travailles dans la vente.": {
+"en": "Say you work in sales.",
+"it": "Di' che lavori nelle vendite.",
+"de": "Sag, dass du im Verkauf arbeitest.",
+"pt": "Diz que trabalhas em vendas."
+},
+"Dis que tu vas au travail.": {
+"en": "Say you're going to work.",
+"it": "Di' che vai al lavoro.",
+"de": "Sag, dass du zur Arbeit gehst.",
+"pt": "Diz que vais para o trabalho."
+},
+"Dis que tu vas y réfléchir.": {
+"en": "Say you'll think about it.",
+"it": "Di' che ci penserai.",
+"de": "Sag, dass du darüber nachdenken wirst.",
+"pt": "Diz que vais pensar."
+},
+"Dis que tu vas à pied.": {
+"en": "Say you're walking.",
+"it": "Di' che vai a piedi.",
+"de": "Sag, dass du zu Fuß gehst.",
+"pt": "Diz que vais a pé."
+},
+"Dis que tu veux aussi de l'eau.": {
+"en": "Say you'd also like water.",
+"it": "Di' che vuoi anche dell'acqua.",
+"de": "Sag, dass du auch Wasser möchtest.",
+"pt": "Diz que também queres água."
+},
+"Dis que tu veux aussi rendre ces chaussures.": {
+"en": "Say you also want to return these shoes.",
+"it": "Di' che vuoi anche restituire queste scarpe.",
+"de": "Sag, dass du auch diese Schuhe zurückgeben willst.",
+"pt": "Diz que também queres devolver estes sapatos."
+},
+"Dis que tu veux demander un rendez-vous.": {
+"en": "Say you want to make an appointment.",
+"it": "Di' che vuoi chiedere un appuntamento.",
+"de": "Sag, dass du einen Termin möchtest.",
+"pt": "Diz que queres marcar uma hora."
+},
+"Dis que tu veux l'acheter.": {
+"en": "Say you want to buy it.",
+"it": "Di' che vuoi comprarlo.",
+"de": "Sag, dass du es kaufen willst.",
+"pt": "Diz que o queres comprar."
+},
+"Dis que tu veux réserver l'excursion à l'Albufera.": {
+"en": "Say you want to book the excursion to the Albufera.",
+"it": "Di' che vuoi prenotare l'escursione all'Albufera.",
+"de": "Sag, dass du den Ausflug zur Albufera buchen willst.",
+"pt": "Diz que queres reservar a excursão à Albufera."
+},
+"Dis que tu veux réserver une excursion.": {
+"en": "Say you want to book an excursion.",
+"it": "Di' che vuoi prenotare un'escursione.",
+"de": "Sag, dass du einen Ausflug buchen willst.",
+"pt": "Diz que queres reservar uma excursão."
+},
+"Dis que tu veux t'inscrire à la mairie.": {
+"en": "Say you want to register at the town hall.",
+"it": "Di' che vuoi iscriverti in comune.",
+"de": "Sag, dass du dich im Rathaus anmelden willst.",
+"pt": "Diz que te queres inscrever na câmara municipal."
+},
+"Dis que tu y vas à pied.": {
+"en": "Say you're going on foot.",
+"it": "Di' che ci vai a piedi.",
+"de": "Sag, dass du zu Fuß hingehst.",
+"pt": "Diz que vais a pé."
+},
+"Dis que tu y vas à vélo.": {
+"en": "Say you're going by bike.",
+"it": "Di' che ci vai in bici.",
+"de": "Sag, dass du mit dem Fahrrad hinfährst.",
+"pt": "Diz que vais de bicicleta."
+},
+"Dis que vous voulez aussi de l'eau.": {
+"en": "Say you'd also like water.",
+"it": "Di' che volete anche dell'acqua.",
+"de": "Sag, dass ihr auch Wasser möchtet.",
+"pt": "Diz que também querem água."
+},
+"Dis que vous voulez une portion à partager.": {
+"en": "Say you want a portion to share.",
+"it": "Di' che volete una porzione da dividere.",
+"de": "Sag, dass ihr eine Portion zum Teilen möchtet.",
+"pt": "Diz que querem uma dose para partilhar."
+},
+"Dis que vous êtes deux.": {
+"en": "Say there are two of you.",
+"it": "Di' che siete in due.",
+"de": "Sag, dass ihr zu zweit seid.",
+"pt": "Diz que são dois."
+},
+"Dis que ça ne te dérange pas : c'est sur ton chemin.": {
+"en": "Say you don't mind: it's on your way.",
+"it": "Di' che non ti disturba: è sulla tua strada.",
+"de": "Sag, dass es dich nicht stört: es liegt auf deinem Weg.",
+"pt": "Diz que não te importas: fica-te de caminho."
+},
+"Dis que ça te paraît bien.": {
+"en": "Say it sounds good to you.",
+"it": "Di' che ti sembra bene.",
+"de": "Sag, dass es dir gut erscheint.",
+"pt": "Diz que te parece bem."
+},
+"Dis que ça te va et que la chambre te plaît beaucoup.": {
+"en": "Say that's fine and you really like the room.",
+"it": "Di' che va bene e che la stanza ti piace molto.",
+"de": "Sag, dass es in Ordnung ist und dir das Zimmer sehr gefällt.",
+"pt": "Diz que está bem e que gostas muito do quarto."
+},
+"Dis à demain.": {
+"en": "Say see you tomorrow.",
+"it": "Di' a domani.",
+"de": "Sag bis morgen.",
+"pt": "Diz até amanhã."
+},
+"Dis à samedi.": {
+"en": "Say see you on Saturday.",
+"it": "Di' a sabato.",
+"de": "Sag bis Samstag.",
+"pt": "Diz até sábado."
+},
+"Dis à tout à l'heure.": {
+"en": "Say see you later.",
+"it": "Di' a dopo.",
+"de": "Sag bis später.",
+"pt": "Diz até logo."
+},
+"Elle est trop grande pour moi": {
+"en": "It's too big for me",
+"it": "È troppo grande per me",
+"de": "Sie ist mir zu groß",
+"pt": "Fica-me grande"
+},
+"Employée": {
+"en": "Clerk",
+"it": "Impiegata",
+"de": "Angestellte",
+"pt": "Funcionária"
+},
+"En vélo au travail": {
+"en": "Cycling to work",
+"it": "In bici al lavoro",
+"de": "Mit dem Rad zur Arbeit",
+"pt": "De bicicleta para o trabalho"
+},
+"Encaissez-moi, s'il vous plaît": {
+"en": "Could you ring me up, please",
+"it": "Mi faccia il conto, per favore",
+"de": "Kassieren Sie bitte",
+"pt": "Cobre-me, por favor"
+},
+"Excuse-toi et demande où est l'arrêt de métro.": {
+"en": "Apologise and ask where the metro stop is.",
+"it": "Scusati e chiedi dov'è la fermata della metro.",
+"de": "Entschuldige dich und frag, wo die U-Bahn-Haltestelle ist.",
+"pt": "Pede desculpa e pergunta onde é a paragem do metro."
+},
+"Faire connaissance": {
+"en": "Getting to know someone",
+"it": "Fare conoscenza",
+"de": "Jemanden kennenlernen",
+"pt": "Conhecer alguém"
+},
+"Il faut apporter quelque chose ?": {
+"en": "Do we need to bring anything?",
+"it": "Bisogna portare qualcosa?",
+"de": "Muss man etwas mitbringen?",
+"pt": "É preciso levar alguma coisa?"
+},
+"Il y a du fromage ?": {
+"en": "Is there any cheese?",
+"it": "C'è del formaggio?",
+"de": "Gibt es Käse?",
+"pt": "Há queijo?"
+},
+"Invitée": {
+"en": "Guest",
+"it": "Invitata",
+"de": "Gast",
+"pt": "Convidada"
+},
+"J'en ai marre de…": {
+"en": "I'm fed up with…",
+"it": "Sono stufo di…",
+"de": "Ich habe genug von…",
+"pt": "Estou farto de…"
+},
+"Je dois y réfléchir": {
+"en": "I need to think about it",
+"it": "Devo pensarci",
+"de": "Ich muss darüber nachdenken",
+"pt": "Tenho de pensar"
+},
+"Je ne comprends pas": {
+"en": "I don't understand",
+"it": "Non capisco",
+"de": "Ich verstehe nicht",
+"pt": "Não percebo"
+},
+"Je peux l'essayer ?": {
+"en": "Can I try it on?",
+"it": "Posso provarla?",
+"de": "Kann ich sie anprobieren?",
+"pt": "Posso experimentar?"
+},
+"Je suis allergique à…": {
+"en": "I'm allergic to…",
+"it": "Sono allergico a…",
+"de": "Ich bin allergisch gegen…",
+"pt": "Sou alérgico a…"
+},
+"Je suis ici depuis trois mois": {
+"en": "I've been here for three months",
+"it": "Sono qui da tre mesi",
+"de": "Ich bin seit drei Monaten hier",
+"pt": "Estou cá há três meses"
+},
+"Je suis resté à la maison": {
+"en": "I stayed at home",
+"it": "Sono rimasto a casa",
+"de": "Ich bin zu Hause geblieben",
+"pt": "Fiquei em casa"
+},
+"Je tousse": {
+"en": "I have a cough",
+"it": "Ho la tosse",
+"de": "Ich habe Husten",
+"pt": "Tenho tosse"
+},
+"Je vais y réfléchir": {
+"en": "I'll think about it",
+"it": "Ci penserò",
+"de": "Ich überlege es mir",
+"pt": "Vou pensar"
+},
+"Je viens de…": {
+"en": "I'm from…",
+"it": "Vengo da…",
+"de": "Ich komme aus…",
+"pt": "Sou de…"
+},
+"Je voudrais rendre ceci": {
+"en": "I'd like to return this",
+"it": "Vorrei restituire questo",
+"de": "Ich möchte das zurückgeben",
+"pt": "Queria devolver isto"
+},
+"L'heure dans la rue": {
+"en": "Asking the time in the street",
+"it": "L'ora per strada",
+"de": "Die Uhrzeit auf der Straße",
+"pt": "As horas na rua"
+},
+"La TVA est comprise ?": {
+"en": "Is VAT included?",
+"it": "L'IVA è compresa?",
+"de": "Ist die Mehrwertsteuer inbegriffen?",
+"pt": "O IVA está incluído?"
+},
+"La file d'attente": {
+"en": "The queue",
+"it": "La fila",
+"de": "Die Schlange",
+"pt": "A fila"
+},
+"Le déjeuner est compris ?": {
+"en": "Is lunch included?",
+"it": "Il pranzo è compreso?",
+"de": "Ist das Mittagessen inbegriffen?",
+"pt": "O almoço está incluído?"
+},
+"Le premier jour au bureau, un collègue se présente.": {
+"en": "On your first day at the office, a colleague introduces himself.",
+"it": "Il primo giorno in ufficio, un collega si presenta.",
+"de": "Am ersten Tag im Büro stellt sich ein Kollege vor.",
+"pt": "No primeiro dia no escritório, um colega apresenta-se."
+},
+"Le week-end": {
+"en": "The weekend",
+"it": "Il fine settimana",
+"de": "Das Wochenende",
+"pt": "O fim de semana"
+},
+"Les charges sont comprises ?": {
+"en": "Are bills included?",
+"it": "Le spese sono incluse?",
+"de": "Sind die Nebenkosten inbegriffen?",
+"pt": "As despesas estão incluídas?"
+},
+"Lundi matin, une amie te demande ce que tu as fait ce week-end.": {
+"en": "On Monday morning, a friend asks what you did at the weekend.",
+"it": "Lunedì mattina un'amica ti chiede cosa hai fatto nel fine settimana.",
+"de": "Am Montagmorgen fragt dich eine Freundin, was du am Wochenende gemacht hast.",
+"pt": "Segunda de manhã, uma amiga pergunta-te o que fizeste no fim de semana."
+},
+"Médecin": {
+"en": "Doctor",
+"it": "Medico",
+"de": "Ärztin",
+"pt": "Médico"
+},
+"Nous sommes deux": {
+"en": "There are two of us",
+"it": "Siamo in due",
+"de": "Wir sind zu zweit",
+"pt": "Somos dois"
+},
+"On y va ensemble ?": {
+"en": "Shall we go together?",
+"it": "Ci andiamo insieme?",
+"de": "Gehen wir zusammen?",
+"pt": "Vamos juntos?"
+},
+"Paie et remercie.": {
+"en": "Pay and say thank you.",
+"it": "Paga e ringrazia.",
+"de": "Bezahl und bedank dich.",
+"pt": "Paga e agradece."
+},
+"Passant": {
+"en": "Pedestrian",
+"it": "Passante",
+"de": "Passant",
+"pt": "Transeunte"
+},
+"Passante": {
+"en": "Pedestrian",
+"it": "Passante",
+"de": "Passantin",
+"pt": "Transeunte"
+},
+"Perdu en ville": {
+"en": "Lost in town",
+"it": "Perso in città",
+"de": "Verlaufen in der Stadt",
+"pt": "Perdido na cidade"
+},
+"Pharmacienne": {
+"en": "Pharmacist",
+"it": "Farmacista",
+"de": "Apothekerin",
+"pt": "Farmacêutica"
+},
+"Propose de passer chez lui.": {
+"en": "Offer to come by his place.",
+"it": "Proponi di passare da lui.",
+"de": "Schlag vor, bei ihm vorbeizukommen.",
+"pt": "Propõe passar por casa dele."
+},
+"Propose de vous retrouver à huit heures et demie.": {
+"en": "Suggest meeting at half past eight.",
+"it": "Proponi di vedervi alle otto e mezza.",
+"de": "Schlag vor, euch um halb neun zu treffen.",
+"pt": "Propõe encontrarem-se às oito e meia."
+},
+"Propose de vous retrouver à huit heures.": {
+"en": "Suggest meeting at eight.",
+"it": "Proponi di vedervi alle otto.",
+"de": "Schlag vor, euch um acht zu treffen.",
+"pt": "Propõe encontrarem-se às oito."
+},
+"Propriétaire": {
+"en": "Landlord",
+"it": "Proprietario",
+"de": "Vermieter",
+"pt": "Senhorio"
+},
+"Présente-toi et dis que tu es nouveau.": {
+"en": "Introduce yourself and say you're new.",
+"it": "Presentati e di' che sei nuovo.",
+"de": "Stell dich vor und sag, dass du neu bist.",
+"pt": "Apresenta-te e diz que és novo."
+},
+"Qu'est-ce qu'il y a aujourd'hui ?": {
+"en": "What is there today?",
+"it": "Cosa c'è oggi?",
+"de": "Was gibt es heute?",
+"pt": "O que há hoje?"
+},
+"Qu'est-ce que tu fais comme travail ?": {
+"en": "What do you do for work?",
+"it": "Che lavoro fai?",
+"de": "Was arbeitest du?",
+"pt": "Em que trabalhas?"
+},
+"Qu'est-ce que tu fais dans la vie ?": {
+"en": "What do you do for a living?",
+"it": "Che cosa fai nella vita?",
+"de": "Was machst du beruflich?",
+"pt": "O que fazes na vida?"
+},
+"Que me conseillez-vous ?": {
+"en": "What do you recommend?",
+"it": "Cosa mi consiglia?",
+"de": "Was empfehlen Sie mir?",
+"pt": "O que me recomenda?"
+},
+"Que nous conseillez-vous ?": {
+"en": "What do you recommend for us?",
+"it": "Cosa ci consiglia?",
+"de": "Was empfehlen Sie uns?",
+"pt": "O que nos recomenda?"
+},
+"Qui est le dernier ?": {
+"en": "Who's last?",
+"it": "Chi è l'ultimo?",
+"de": "Wer ist der Letzte?",
+"pt": "Quem é o último?"
+},
+"Remercie et dis que tu parles un peu.": {
+"en": "Thank them and say you speak a little.",
+"it": "Ringrazia e di' che parli un po'.",
+"de": "Bedank dich und sag, dass du ein bisschen sprichst.",
+"pt": "Agradece e diz que falas um pouco."
+},
+"Remercie et dis à demain.": {
+"en": "Thank them and say see you tomorrow.",
+"it": "Ringrazia e di' a domani.",
+"de": "Bedank dich und sag bis morgen.",
+"pt": "Agradece e diz até amanhã."
+},
+"Remercie et souhaite une bonne journée.": {
+"en": "Thank them and wish them a good day.",
+"it": "Ringrazia e augura una buona giornata.",
+"de": "Bedank dich und wünsch einen schönen Tag.",
+"pt": "Agradece e deseja um bom dia."
+},
+"Remercie-la : elle te laisse passer.": {
+"en": "Thank her: she's letting you go ahead.",
+"it": "Ringraziala: ti lascia passare.",
+"de": "Bedank dich bei ihr: Sie lässt dich vor.",
+"pt": "Agradece-lhe: ela deixa-te passar."
+},
+"Remercie-la.": {
+"en": "Thank her.",
+"it": "Ringraziala.",
+"de": "Bedank dich bei ihr.",
+"pt": "Agradece-lhe."
+},
+"Remercie.": {
+"en": "Say thank you.",
+"it": "Ringrazia.",
+"de": "Bedank dich.",
+"pt": "Agradece."
+},
+"Rendez-vous à la mairie": {
+"en": "Appointment at the town hall",
+"it": "Appuntamento in comune",
+"de": "Termin im Rathaus",
+"pt": "Marcação na câmara municipal"
+},
+"Réponds que tu ne parles pas bien.": {
+"en": "Reply that you don't speak it well.",
+"it": "Rispondi che non parli bene.",
+"de": "Antworte, dass du nicht gut sprichst.",
+"pt": "Responde que não falas bem."
+},
+"Réponds que tu vas bien.": {
+"en": "Reply that you're fine.",
+"it": "Rispondi che stai bene.",
+"de": "Antworte, dass es dir gut geht.",
+"pt": "Responde que estás bem."
+},
+"Réponds à la salutation et dis comment tu t'appelles.": {
+"en": "Return the greeting and say your name.",
+"it": "Rispondi al saluto e di' come ti chiami.",
+"de": "Erwidere den Gruß und sag, wie du heißt.",
+"pt": "Responde ao cumprimento e diz como te chamas."
+},
+"Répète l'indication : tout droit puis à droite.": {
+"en": "Repeat the directions: straight on, then right.",
+"it": "Ripeti l'indicazione: dritto e poi a destra.",
+"de": "Wiederhole die Wegbeschreibung: geradeaus, dann rechts.",
+"pt": "Repete a indicação: sempre em frente e depois à direita."
+},
+"Répète l'indication : tout droit puis à gauche.": {
+"en": "Repeat the directions: straight on, then left.",
+"it": "Ripeti l'indicazione: dritto e poi a sinistra.",
+"de": "Wiederhole die Wegbeschreibung: geradeaus, dann links.",
+"pt": "Repete a indicação: sempre em frente e depois à esquerda."
+},
+"Réserver une excursion": {
+"en": "Booking an excursion",
+"it": "Prenotare un'escursione",
+"de": "Einen Ausflug buchen",
+"pt": "Reservar uma excursão"
+},
+"Salue et demande du pain.": {
+"en": "Say hello and ask for bread.",
+"it": "Saluta e chiedi del pane.",
+"de": "Grüß und frag nach Brot.",
+"pt": "Cumprimenta e pede pão."
+},
+"Salue et demande l'heure.": {
+"en": "Say hello and ask the time.",
+"it": "Saluta e chiedi l'ora.",
+"de": "Grüß und frag nach der Uhrzeit.",
+"pt": "Cumprimenta e pergunta as horas."
+},
+"Salue et dis que tu es malade.": {
+"en": "Say hello and say you're ill.",
+"it": "Saluta e di' che sei malato/a.",
+"de": "Grüß und sag, dass du krank bist.",
+"pt": "Cumprimenta e diz que estás doente."
+},
+"Salue et dis que tu ne te sens pas bien.": {
+"en": "Say hello and say you don't feel well.",
+"it": "Saluta e di' che non ti senti bene.",
+"de": "Grüß und sag, dass du dich nicht wohlfühlst.",
+"pt": "Cumprimenta e diz que não te sentes bem."
+},
+"Salue et dis que tu veux regarder.": {
+"en": "Say hello and say you'd like to look around.",
+"it": "Saluta e di' che vuoi dare un'occhiata.",
+"de": "Grüß und sag, dass du dich umsehen möchtest.",
+"pt": "Cumprimenta e diz que queres ver."
+},
+"Serveur": {
+"en": "Waiter",
+"it": "Cameriere",
+"de": "Kellner",
+"pt": "Empregado"
+},
+"Serveuse": {
+"en": "Waitress",
+"it": "Cameriera",
+"de": "Kellnerin",
+"pt": "Empregada"
+},
+"Souhaite-lui une bonne journée.": {
+"en": "Wish her a good day.",
+"it": "Augurale una buona giornata.",
+"de": "Wünsch ihr einen schönen Tag.",
+"pt": "Deseja-lhe um bom dia."
+},
+"Tu achètes du pain et tu paies.": {
+"en": "You buy bread and pay.",
+"it": "Compri il pane e paghi.",
+"de": "Du kaufst Brot und bezahlst.",
+"pt": "Compras pão e pagas."
+},
+"Tu appelles pour une chambre dans un appartement partagé.": {
+"en": "You call about a room in a shared flat.",
+"it": "Chiami per una stanza in un appartamento condiviso.",
+"de": "Du rufst wegen eines Zimmers in einer WG an.",
+"pt": "Ligas por causa de um quarto num apartamento partilhado."
+},
+"Tu cherches l'arrêt de métro dans le centre-ville.": {
+"en": "You're looking for the metro stop in the city centre.",
+"it": "Cerchi la fermata della metro in centro.",
+"de": "Du suchst die U-Bahn-Haltestelle in der Innenstadt.",
+"pt": "Procuras a paragem do metro no centro."
+},
+"Tu cherches un cadeau dans un petit magasin.": {
+"en": "You're looking for a present in a small shop.",
+"it": "Cerchi un regalo in un piccolo negozio.",
+"de": "Du suchst ein Geschenk in einem kleinen Laden.",
+"pt": "Procuras um presente numa pequena loja."
+},
+"Tu déjeunes au restaurant avec un ami.": {
+"en": "You have lunch at a restaurant with a friend.",
+"it": "Pranzi al ristorante con un amico.",
+"de": "Du isst mit einem Freund im Restaurant zu Mittag.",
+"pt": "Almoças no restaurante com um amigo."
+},
+"Tu es perdu dans le quartier et tu demandes de l'aide.": {
+"en": "You're lost in the neighbourhood and ask for help.",
+"it": "Ti sei perso nel quartiere e chiedi aiuto.",
+"de": "Du hast dich im Viertel verlaufen und bittest um Hilfe.",
+"pt": "Estás perdido no bairro e pedes ajuda."
+},
+"Tu essaies une veste et tu veux en rapporter une autre.": {
+"en": "You try on a jacket and want to return something else.",
+"it": "Provi una giacca e vuoi restituire un'altra cosa.",
+"de": "Du probierst eine Jacke an und willst etwas anderes zurückgeben.",
+"pt": "Experimentas um casaco e queres devolver outra coisa."
+},
+"Tu n'as pas compris : demande-lui de répéter.": {
+"en": "You didn't understand: ask her to repeat.",
+"it": "Non hai capito: chiedile di ripetere.",
+"de": "Du hast nicht verstanden: Bitte sie, es zu wiederholen.",
+"pt": "Não percebeste: pede-lhe para repetir."
+},
+"Tu n'as pas compris : dis-le-lui.": {
+"en": "You didn't understand: tell her.",
+"it": "Non hai capito: diglielo.",
+"de": "Du hast nicht verstanden: Sag es ihr.",
+"pt": "Não percebeste: diz-lho."
+},
+"Tu ne te sens pas bien et tu vas chez le médecin.": {
+"en": "You don't feel well and go to the doctor.",
+"it": "Non ti senti bene e vai dal medico.",
+"de": "Du fühlst dich nicht wohl und gehst zum Arzt.",
+"pt": "Não te sentes bem e vais ao médico."
+},
+"Tu ne te sens pas bien et tu vas à la pharmacie.": {
+"en": "You don't feel well and go to the pharmacy.",
+"it": "Non ti senti bene e vai in farmacia.",
+"de": "Du fühlst dich nicht wohl und gehst in die Apotheke.",
+"pt": "Não te sentes bem e vais à farmácia."
+},
+"Tu prends un café avec une collègue.": {
+"en": "You have a coffee with a colleague.",
+"it": "Prendi un caffè con una collega.",
+"de": "Du trinkst einen Kaffee mit einer Kollegin.",
+"pt": "Tomas um café com uma colega."
+},
+"Tu travailles dans quoi ?": {
+"en": "What line of work are you in?",
+"it": "In che campo lavori?",
+"de": "In welchem Bereich arbeitest du?",
+"pt": "Trabalhas em quê?"
+},
+"Tu veux prendre un café ?": {
+"en": "Do you want to have a coffee?",
+"it": "Vuoi prendere un caffè?",
+"de": "Willst du einen Kaffee trinken?",
+"pt": "Queres tomar um café?"
+},
+"Tu veux t'inscrire à la mairie et tu demandes un rendez-vous.": {
+"en": "You want to register at the town hall and ask for an appointment.",
+"it": "Vuoi iscriverti in comune e chiedi un appuntamento.",
+"de": "Du willst dich im Rathaus anmelden und bittest um einen Termin.",
+"pt": "Queres inscrever-te na câmara municipal e pedes uma marcação."
+},
+"Tu visites une chambre et tu poses des questions avant de signer.": {
+"en": "You view a room and ask questions before signing.",
+"it": "Visiti una stanza e fai domande prima di firmare.",
+"de": "Du besichtigst ein Zimmer und stellst vor der Unterschrift Fragen.",
+"pt": "Visitas um quarto e fazes perguntas antes de assinar."
+},
+"Un ami t'appelle pour se voir cette semaine.": {
+"en": "A friend calls to meet up this week.",
+"it": "Un amico ti chiama per vedervi questa settimana.",
+"de": "Ein Freund ruft an, um sich diese Woche zu treffen.",
+"pt": "Um amigo liga-te para se encontrarem esta semana."
+},
+"Un café entre amis": {
+"en": "Coffee with a friend",
+"it": "Un caffè tra amici",
+"de": "Ein Kaffee unter Freunden",
+"pt": "Um café entre amigos"
+},
+"Un nouveau collègue": {
+"en": "A new colleague",
+"it": "Un nuovo collega",
+"de": "Ein neuer Kollege",
+"pt": "Um novo colega"
+},
+"Un voisin te croise devant l'immeuble le matin.": {
+"en": "A neighbour bumps into you outside the building in the morning.",
+"it": "Un vicino ti incontra davanti al palazzo la mattina.",
+"de": "Ein Nachbar trifft dich morgens vor dem Haus.",
+"pt": "Um vizinho cruza-se contigo à porta do prédio de manhã."
+},
+"Une chambre à louer": {
+"en": "A room to rent",
+"it": "Una stanza in affitto",
+"de": "Ein Zimmer zu vermieten",
+"pt": "Um quarto para arrendar"
+},
+"Vendeur": {
+"en": "Shop assistant",
+"it": "Commesso",
+"de": "Verkäufer",
+"pt": "Vendedor"
+},
+"Voisin": {
+"en": "Neighbour",
+"it": "Vicino",
+"de": "Nachbar",
+"pt": "Vizinho"
+},
+"Vous avez de la monnaie ?": {
+"en": "Do you have change?",
+"it": "Ha da cambiare?",
+"de": "Haben Sie Wechselgeld?",
+"pt": "Tem troco?"
+},
+"Vous me donnez le ticket ?": {
+"en": "Can I have the receipt?",
+"it": "Mi dà lo scontrino?",
+"de": "Geben Sie mir den Kassenbon?",
+"pt": "Dá-me o talão?"
+},
+"Vous pouvez répéter ?": {
+"en": "Can you repeat that?",
+"it": "Può ripetere?",
+"de": "Können Sie das wiederholen?",
+"pt": "Pode repetir?"
+},
+"en face": {
+"en": "opposite",
+"it": "di fronte",
+"de": "gegenüber",
+"pt": "em frente"
+},
+"en promotion": {
+"en": "on offer",
+"it": "in offerta",
+"de": "im Angebot",
+"pt": "em promoção"
+},
+"je suis resté à la maison": {
+"en": "I stayed at home",
+"it": "sono rimasto a casa",
+"de": "ich bin zu Hause geblieben",
+"pt": "fiquei em casa"
+},
+"juste en face": {
+"en": "right opposite",
+"it": "proprio di fronte",
+"de": "direkt gegenüber",
+"pt": "mesmo em frente"
+},
+"l'arrêt de métro": {
+"en": "the metro stop",
+"it": "la fermata della metro",
+"de": "die U-Bahn-Haltestelle",
+"pt": "a paragem do metro"
+},
+"la station de métro": {
+"en": "the metro station",
+"it": "la stazione della metro",
+"de": "die U-Bahn-Station",
+"pt": "a estação de metro"
+},
+"le cachet": {
+"en": "the tablet",
+"it": "la pastiglia",
+"de": "die Tablette",
+"pt": "o comprimido"
+},
+"le déjeuner": {
+"en": "lunch",
+"it": "il pranzo",
+"de": "das Mittagessen",
+"pt": "o almoço"
+},
+"le registre des habitants": {
+"en": "the residents' register",
+"it": "l'anagrafe",
+"de": "das Einwohnerregister",
+"pt": "o registo de residentes"
+},
+"le ticket": {
+"en": "the receipt",
+"it": "lo scontrino",
+"de": "der Kassenbon",
+"pt": "o talão"
+},
+"les papiers": {
+"en": "the documents",
+"it": "i documenti",
+"de": "die Unterlagen",
+"pt": "os papéis"
+},
+"pour grignoter": {
+"en": "to nibble on",
+"it": "da stuzzicare",
+"de": "zum Knabbern",
+"pt": "para petiscar"
+},
+"prendre le métro": {
+"en": "to take the metro",
+"it": "prendere la metro",
+"de": "die U-Bahn nehmen",
+"pt": "apanhar o metro"
+},
+"près de": {
+"en": "near",
+"it": "vicino a",
+"de": "in der Nähe von",
+"pt": "perto de"
+},
+"remplir le formulaire": {
+"en": "to fill in the form",
+"it": "compilare il modulo",
+"de": "das Formular ausfüllen",
+"pt": "preencher o formulário"
+},
+"réserver une excursion": {
+"en": "to book an excursion",
+"it": "prenotare un'escursione",
+"de": "einen Ausflug buchen",
+"pt": "reservar uma excursão"
+},
+"un café crème": {
+"en": "a white coffee",
+"it": "un caffè con latte",
+"de": "ein Milchkaffee",
+"pt": "um café com leite"
+},
+"un café noir": {
+"en": "a black coffee",
+"it": "un caffè nero",
+"de": "ein schwarzer Kaffee",
+"pt": "um café simples"
+},
+"un café noisette": {
+"en": "a coffee with a dash of milk",
+"it": "un caffè macchiato",
+"de": "ein Espresso mit etwas Milch",
+"pt": "um café pingado"
+},
+"une petite bière": {
+"en": "a small beer",
+"it": "una birra piccola",
+"de": "ein kleines Bier",
+"pt": "uma imperial"
+},
+"une portion à partager": {
+"en": "a portion to share",
+"it": "una porzione da dividere",
+"de": "eine Portion zum Teilen",
+"pt": "uma dose para partilhar"
+},
+"À la boulangerie": {
+"en": "At the bakery",
+"it": "Al panificio",
+"de": "In der Bäckerei",
+"pt": "Na padaria"
+},
+"À une fête, une personne vient te parler.": {
+"en": "At a party, someone comes over to talk to you.",
+"it": "A una festa, una persona viene a parlarti.",
+"de": "Auf einer Party spricht dich jemand an.",
+"pt": "Numa festa, uma pessoa vem falar contigo."
+},
+"Ça te va ?": {
+"en": "Does that suit you?",
+"it": "Ti va bene?",
+"de": "Passt dir das?",
+"pt": "Dá-te jeito?"
+},
+"à huit heures et demie": {
+"en": "at half past eight",
+"it": "alle otto e mezza",
+"de": "um halb neun",
+"pt": "às oito e meia"
+},
+"à partager": {
+"en": "to share",
+"it": "da dividere",
+"de": "zum Teilen",
+"pt": "para partilhar"
+},
+"à vélo": {
+"en": "by bike",
+"it": "in bici",
+"de": "mit dem Fahrrad",
+"pt": "de bicicleta"
+},
+"ça te va ?": {
+"en": "does that suit you?",
+"it": "ti va bene?",
+"de": "passt dir das?",
+"pt": "dá-te jeito?"
+},
+"Accepte et demande ce qui se passe avec tes bagages.": {
+"en": "Agree and ask what happens with your luggage.",
+"it": "Accetta e chiedi cosa succede con i tuoi bagagli.",
+"de": "Stimm zu und frag, was mit deinem Gepäck passiert.",
+"pt": "Aceita e pergunta o que acontece à tua bagagem."
+},
+"Accepte et demande si tu peux te faire vacciner.": {
+"en": "Agree and ask if you can get vaccinated.",
+"it": "Accetta e chiedi se puoi fare il vaccino.",
+"de": "Stimm zu und frag, ob du dich impfen lassen kannst.",
+"pt": "Aceita e pergunta se podes tomar a vacina."
+},
+"Accepte et dis que tu espères que vous trouverez un accord.": {
+"en": "Agree and say you hope you'll reach an agreement.",
+"it": "Accetta e di' che speri troviate un accordo.",
+"de": "Stimm zu und sag, dass du hoffst, dass ihr euch einigt.",
+"pt": "Aceita e diz que esperas que cheguem a um acordo."
+},
+"Accepte et dis que tu veux trouver un accord.": {
+"en": "Agree and say you want to reach an agreement.",
+"it": "Accetta e di' che vuoi trovare un accordo.",
+"de": "Stimm zu und sag, dass du dich einigen willst.",
+"pt": "Aceita e diz que queres chegar a um acordo."
+},
+"Accepte et dis-lui de t'appeler quand ce sera prêt.": {
+"en": "Agree and tell him to call you when it's ready.",
+"it": "Accetta e digli di chiamarti quando è pronto.",
+"de": "Stimm zu und sag ihm, er soll dich anrufen, wenn es fertig ist.",
+"pt": "Aceita e diz-lhe para te ligar quando estiver pronto."
+},
+"Accepte et remercie-le pour son aide.": {
+"en": "Agree and thank him for his help.",
+"it": "Accetta e ringrazialo per il suo aiuto.",
+"de": "Stimm zu und bedank dich für seine Hilfe.",
+"pt": "Aceita e agradece-lhe a ajuda."
+},
+"Agent du service client": {
+"en": "Customer service agent",
+"it": "Operatore del servizio clienti",
+"de": "Kundenservice-Mitarbeiter",
+"pt": "Funcionário do apoio ao cliente"
+},
+"Agente": {
+"en": "Agent",
+"it": "Addetta",
+"de": "Mitarbeiterin",
+"pt": "Funcionária"
+},
+"Animateur": {
+"en": "Host",
+"it": "Conduttore",
+"de": "Moderator",
+"pt": "Apresentador"
+},
+"Annoncer sa démission": {
+"en": "Announcing your resignation",
+"it": "Annunciare le dimissioni",
+"de": "Die Kündigung ankündigen",
+"pt": "Anunciar a demissão"
+},
+"Apprendre à cuisiner": {
+"en": "Learning to cook",
+"it": "Imparare a cucinare",
+"de": "Kochen lernen",
+"pt": "Aprender a cozinhar"
+},
+"Au registre municipal": {
+"en": "At the town hall register",
+"it": "All'anagrafe",
+"de": "Beim Einwohnermeldeamt",
+"pt": "No registo municipal"
+},
+"Avocate": {
+"en": "Lawyer",
+"it": "Avvocata",
+"de": "Anwältin",
+"pt": "Advogada"
+},
+"Bonne journée !": {
+"en": "Have a nice day!",
+"it": "Buona giornata!",
+"de": "Schönen Tag noch!",
+"pt": "Tenha um bom dia!"
+},
+"C'est normal que ce soit raté": {
+"en": "It's normal for it to go wrong",
+"it": "È normale che venga male",
+"de": "Es ist normal, dass es schiefgeht",
+"pt": "É normal que corra mal"
+},
+"Cheffe": {
+"en": "Boss",
+"it": "Capa",
+"de": "Chefin",
+"pt": "Chefe"
+},
+"Conclus : en définitive, il faut arriver à un accord.": {
+"en": "Conclude: ultimately, an agreement must be reached.",
+"it": "Concludi: in definitiva, bisogna arrivare a un accordo.",
+"de": "Schließe ab: Letztlich muss man sich einigen.",
+"pt": "Conclui: em suma, é preciso chegar a um acordo."
+},
+"Conclus : en définitive, il faut arriver à un consensus.": {
+"en": "Conclude: ultimately, a consensus must be reached.",
+"it": "Concludi: in definitiva, bisogna arrivare a un consenso.",
+"de": "Schließe ab: Letztlich muss man einen Konsens finden.",
+"pt": "Conclui: em suma, é preciso chegar a um consenso."
+},
+"Conseille-lui de regarder des recettes sur internet.": {
+"en": "Advise him to look up recipes online.",
+"it": "Consigliagli di guardare ricette su internet.",
+"de": "Rate ihm, sich Rezepte im Internet anzusehen.",
+"pt": "Aconselha-o a ver receitas na internet."
+},
+"Conseillère municipale": {
+"en": "City councillor",
+"it": "Consigliera comunale",
+"de": "Stadträtin",
+"pt": "Vereadora"
+},
+"Demande ce que la mairie compte faire contre la spéculation immobilière.": {
+"en": "Ask what the council plans to do about property speculation.",
+"it": "Chiedi cosa intende fare il comune contro la speculazione immobiliare.",
+"de": "Frag, was die Stadt gegen Immobilienspekulation tun will.",
+"pt": "Pergunta o que a câmara pensa fazer contra a especulação imobiliária."
+},
+"Demande ce que tu pourrais faire à ce sujet.": {
+"en": "Ask what you could do about it.",
+"it": "Chiedi cosa potresti fare al riguardo.",
+"de": "Frag, was du dagegen tun könntest.",
+"pt": "Pergunta o que poderias fazer a esse respeito."
+},
+"Demande combien de temps prendrait la démarche.": {
+"en": "Ask how long the procedure would take.",
+"it": "Chiedi quanto tempo richiederebbe la pratica.",
+"de": "Frag, wie lange das Verfahren dauern würde.",
+"pt": "Pergunta quanto tempo demoraria o processo."
+},
+"Demande où tu vas dormir cette nuit.": {
+"en": "Ask where you're going to sleep tonight.",
+"it": "Chiedi dove dormirai stanotte.",
+"de": "Frag, wo du heute Nacht schlafen sollst.",
+"pt": "Pergunta onde vais dormir esta noite."
+},
+"Demande pendant combien de jours.": {
+"en": "Ask for how many days.",
+"it": "Chiedi per quanti giorni.",
+"de": "Frag, wie viele Tage lang.",
+"pt": "Pergunta durante quantos dias."
+},
+"Demande qu'on réduise d'abord la masse salariale de la direction.": {
+"en": "Ask that management's wage bill be cut first.",
+"it": "Chiedi che si riduca prima il monte salari della dirigenza.",
+"de": "Fordere, dass zuerst die Gehaltssumme der Geschäftsleitung gekürzt wird.",
+"pt": "Pede que se reduza primeiro a massa salarial da direção."
+},
+"Demande quand ce sera prêt.": {
+"en": "Ask when it will be ready.",
+"it": "Chiedi quando sarà pronto.",
+"de": "Frag, wann es fertig ist.",
+"pt": "Pergunta quando estará pronto."
+},
+"Demande quand ont lieu les vendanges.": {
+"en": "Ask when the grape harvest takes place.",
+"it": "Chiedi quando si fa la vendemmia.",
+"de": "Frag, wann die Weinlese ist.",
+"pt": "Pergunta quando é a vindima."
+},
+"Demande quand tu commencerais.": {
+"en": "Ask when you would start.",
+"it": "Chiedi quando inizieresti.",
+"de": "Frag, wann du anfangen würdest.",
+"pt": "Pergunta quando começarias."
+},
+"Demande quelle variété de raisin ils utilisent.": {
+"en": "Ask which grape variety they use.",
+"it": "Chiedi quale varietà d'uva usano.",
+"de": "Frag, welche Rebsorte sie verwenden.",
+"pt": "Pergunta que casta usam."
+},
+"Demande s'il ne vaudrait pas mieux changer de médicament.": {
+"en": "Ask if it wouldn't be better to change medicine.",
+"it": "Chiedi se non sarebbe meglio cambiare medicinale.",
+"de": "Frag, ob es nicht besser wäre, das Medikament zu wechseln.",
+"pt": "Pergunta se não seria melhor mudar de medicamento."
+},
+"Demande s'il peut venir aujourd'hui ou demain.": {
+"en": "Ask if he can come today or tomorrow.",
+"it": "Chiedi se può venire oggi o domani.",
+"de": "Frag, ob er heute oder morgen kommen kann.",
+"pt": "Pergunta se pode vir hoje ou amanhã."
+},
+"Demande s'il peut venir cette semaine.": {
+"en": "Ask if he can come this week.",
+"it": "Chiedi se può venire questa settimana.",
+"de": "Frag, ob er diese Woche kommen kann.",
+"pt": "Pergunta se ele pode vir esta semana."
+},
+"Demande si c'est un contrat à durée indéterminée.": {
+"en": "Ask if it's a permanent contract.",
+"it": "Chiedi se è un contratto a tempo indeterminato.",
+"de": "Frag, ob es ein unbefristeter Vertrag ist.",
+"pt": "Pergunta se é um contrato sem termo."
+},
+"Demande si le vin a une appellation d'origine.": {
+"en": "Ask if the wine has a designation of origin.",
+"it": "Chiedi se il vino ha una denominazione di origine.",
+"de": "Frag, ob der Wein eine geschützte Herkunftsbezeichnung hat.",
+"pt": "Pergunta se o vinho tem denominação de origem."
+},
+"Demande si tu dois revenir dans un mois.": {
+"en": "Ask if you have to come back in a month.",
+"it": "Chiedi se devi tornare tra un mese.",
+"de": "Frag, ob du in einem Monat wiederkommen musst.",
+"pt": "Pergunta se tens de voltar daqui a um mês."
+},
+"Demande si tu peux aller travailler.": {
+"en": "Ask if you can go to work.",
+"it": "Chiedi se puoi andare a lavorare.",
+"de": "Frag, ob du arbeiten gehen kannst.",
+"pt": "Pergunta se podes ir trabalhar."
+},
+"Demande si vous ne pourriez pas trouver un accord.": {
+"en": "Ask if you couldn't reach an agreement.",
+"it": "Chiedi se non potreste trovare un accordo.",
+"de": "Frag, ob ihr euch nicht einigen könntet.",
+"pt": "Pergunta se não poderiam chegar a um acordo."
+},
+"Demande-lui de te l'écrire, s'il te plaît.": {
+"en": "Ask her to write it down for you, please.",
+"it": "Chiedile di scrivertelo, per favore.",
+"de": "Bitte sie, es dir aufzuschreiben.",
+"pt": "Pede-lhe que to escreva, por favor."
+},
+"Directeur des ressources humaines": {
+"en": "HR director",
+"it": "Direttore delle risorse umane",
+"de": "Personalchef",
+"pt": "Diretor de recursos humanos"
+},
+"Directrice": {
+"en": "Manager",
+"it": "Direttrice",
+"de": "Chefin",
+"pt": "Diretora"
+},
+"Dis : dans un mois, pour qu'elle ait le temps de chercher quelqu'un.": {
+"en": "Say: in a month, so she has time to find someone.",
+"it": "Di': tra un mese, così ha il tempo di cercare qualcuno.",
+"de": "Sag: in einem Monat, damit sie Zeit hat, jemanden zu suchen.",
+"pt": "Diz: daqui a um mês, para que ela tenha tempo de procurar alguém."
+},
+"Dis : qu'on peut te licencier sans préavis.": {
+"en": "Say: that they can dismiss you without notice.",
+"it": "Di': che possono licenziarti senza preavviso.",
+"de": "Sag: dass man dich ohne Kündigungsfrist entlassen kann.",
+"pt": "Diz: que te podem despedir sem pré-aviso."
+},
+"Dis : à vélo ou en transports en commun, c'est plus durable.": {
+"en": "Say: by bike or public transport, it's more sustainable.",
+"it": "Di': in bici o con i mezzi pubblici, è più sostenibile.",
+"de": "Sag: mit dem Fahrrad oder den Öffis, das ist nachhaltiger.",
+"pt": "Diz: de bicicleta ou de transportes públicos, é mais sustentável."
+},
+"Dis qu'alors tu vas acheter deux bouteilles.": {
+"en": "Say then you'll buy two bottles.",
+"it": "Di' che allora compri due bottiglie.",
+"de": "Sag, dass du dann zwei Flaschen kaufst.",
+"pt": "Diz que então vais comprar duas garrafas."
+},
+"Dis qu'alors tu vas prendre deux bouteilles.": {
+"en": "Say then you'll take two bottles.",
+"it": "Di' che allora prendi due bottiglie.",
+"de": "Sag, dass du dann zwei Flaschen nimmst.",
+"pt": "Diz que então vais levar duas garrafas."
+},
+"Dis qu'elle a raison, mais que tu aimerais nuancer.": {
+"en": "Say she's right, but you'd like to qualify that.",
+"it": "Di' che ha ragione, ma che vorresti fare una precisazione.",
+"de": "Sag, dass sie recht hat, du das aber gern differenzieren würdest.",
+"pt": "Diz que ela tem razão, mas que gostarias de matizar."
+},
+"Dis qu'elle n'a rien à te remercier, que c'est la moindre des choses.": {
+"en": "Say she has nothing to thank you for, it's the least you can do.",
+"it": "Di' che non ha niente da ringraziarti, è il minimo.",
+"de": "Sag, dass sie dir nicht zu danken braucht, das ist das Mindeste.",
+"pt": "Diz que ela não tem nada que agradecer, é o mínimo."
+},
+"Dis qu'il a augmenté de dix pour cent par rapport au précédent.": {
+"en": "Say it rose by ten percent compared with the previous one.",
+"it": "Di' che è aumentato del dieci per cento rispetto al precedente.",
+"de": "Sag, dass er um zehn Prozent gegenüber dem vorherigen gestiegen ist.",
+"pt": "Diz que subiu dez por cento em relação ao anterior."
+},
+"Dis qu'il a augmenté de dix pour cent.": {
+"en": "Say they rose by ten percent.",
+"it": "Di' che sono aumentate del dieci per cento.",
+"de": "Sag, dass sie um zehn Prozent gestiegen sind.",
+"pt": "Diz que subiram dez por cento."
+},
+"Dis qu'il faudrait limiter les licences d'appartements touristiques.": {
+"en": "Say holiday-flat licences should be limited.",
+"it": "Di' che bisognerebbe limitare le licenze per gli appartamenti turistici.",
+"de": "Sag, dass man die Lizenzen für Ferienwohnungen begrenzen sollte.",
+"pt": "Diz que seria preciso limitar as licenças de alojamento turístico."
+},
+"Dis qu'il faudrait écouter les habitants avant de décider.": {
+"en": "Say residents should be listened to before deciding.",
+"it": "Di' che bisognerebbe ascoltare gli abitanti prima di decidere.",
+"de": "Sag, dass man die Anwohner anhören sollte, bevor man entscheidet.",
+"pt": "Diz que seria preciso ouvir os moradores antes de decidir."
+},
+"Dis qu'il verra qu'au final ça lui plaira.": {
+"en": "Say he'll see that in the end he'll like it.",
+"it": "Di' che vedrà che alla fine gli piacerà.",
+"de": "Sag, dass er sehen wird, dass es ihm am Ende gefällt.",
+"pt": "Diz que vai ver que no fim vai gostar."
+},
+"Dis qu'ils ont annulé ton vol.": {
+"en": "Say they've cancelled your flight.",
+"it": "Di' che hanno cancellato il tuo volo.",
+"de": "Sag, dass sie deinen Flug gestrichen haben.",
+"pt": "Diz que cancelaram o teu voo."
+},
+"Dis qu'ils vont en faire une l'année prochaine.": {
+"en": "Say they're going to build one next year.",
+"it": "Di' che ne faranno una l'anno prossimo.",
+"de": "Sag, dass sie nächstes Jahr einen bauen.",
+"pt": "Diz que vão fazer uma no próximo ano."
+},
+"Dis qu'à ton avis, cette étude n'est pas impartiale.": {
+"en": "Say that in your opinion this study isn't impartial.",
+"it": "Di' che secondo te questo studio non è imparziale.",
+"de": "Sag, dass diese Studie deiner Meinung nach nicht unparteiisch ist.",
+"pt": "Diz que, na tua opinião, esse estudo não é imparcial."
+},
+"Dis que beaucoup de voisins ont dû quitter le quartier.": {
+"en": "Say many neighbours have had to leave the area.",
+"it": "Di' che molti vicini hanno dovuto lasciare il quartiere.",
+"de": "Sag, dass viele Nachbarn das Viertel verlassen mussten.",
+"pt": "Diz que muitos vizinhos tiveram de sair do bairro."
+},
+"Dis que bien sûr, tu feras tout ton possible.": {
+"en": "Say of course, you'll do everything you can.",
+"it": "Di' che certo, farai tutto il possibile.",
+"de": "Sag, dass du natürlich dein Bestes tun wirst.",
+"pt": "Diz que claro, farás tudo o que puderes."
+},
+"Dis que bien sûr, tu laisseras tout prêt.": {
+"en": "Say of course, you'll leave everything ready.",
+"it": "Di' che certo, lascerai tutto pronto.",
+"de": "Sag, dass du natürlich alles vorbereitet hinterlassen wirst.",
+"pt": "Diz que claro, vais deixar tudo pronto."
+},
+"Dis que c'est possible, mais qu'il y aura moins de pollution.": {
+"en": "Say that's possible, but there will be less pollution.",
+"it": "Di' che è possibile, ma ci sarà meno inquinamento.",
+"de": "Sag, dass das möglich ist, aber es weniger Luftverschmutzung geben wird.",
+"pt": "Diz que é possível, mas que haverá menos poluição."
+},
+"Dis que ce n'est pas grave.": {
+"en": "Say it's no problem.",
+"it": "Di' che non fa niente.",
+"de": "Sag, dass es nicht schlimm ist.",
+"pt": "Diz que não faz mal."
+},
+"Dis que jeudi tu travailles et demande si vendredi serait possible.": {
+"en": "Say you work on Thursday and ask if Friday would be possible.",
+"it": "Di' che giovedì lavori e chiedi se venerdì sarebbe possibile.",
+"de": "Sag, dass du am Donnerstag arbeitest, und frag, ob Freitag möglich wäre.",
+"pt": "Diz que na quinta-feira trabalhas e pergunta se sexta-feira seria possível."
+},
+"Dis que la flambée des loyers est excessive.": {
+"en": "Say the soaring rents are excessive.",
+"it": "Di' che l'impennata degli affitti è eccessiva.",
+"de": "Sag, dass der Mietanstieg zu stark ist.",
+"pt": "Diz que a escalada das rendas é excessiva."
+},
+"Dis que la flambée des loyers t'inquiète.": {
+"en": "Say the soaring rents worry you.",
+"it": "Di' che l'impennata degli affitti ti preoccupa.",
+"de": "Sag, dass dich die explodierenden Mieten beunruhigen.",
+"pt": "Diz que a escalada das rendas te preocupa."
+},
+"Dis que le chauffe-eau ne marche pas depuis hier.": {
+"en": "Say that the water heater hasn't worked since yesterday.",
+"it": "Di' che lo scaldabagno non funziona da ieri.",
+"de": "Sag, dass der Boiler seit gestern nicht funktioniert.",
+"pt": "Diz que o esquentador não funciona desde ontem."
+},
+"Dis que le comité n'accepte pas les licenciements dans ces conditions.": {
+"en": "Say the committee does not accept the layoffs under these conditions.",
+"it": "Di' che il comitato non accetta i licenziamenti a queste condizioni.",
+"de": "Sag, dass der Betriebsrat die Entlassungen unter diesen Bedingungen nicht akzeptiert.",
+"pt": "Diz que a comissão não aceita os despedimentos nestas condições."
+},
+"Dis que les données disent justement le contraire.": {
+"en": "Say the data show exactly the opposite.",
+"it": "Di' che i dati dicono proprio il contrario.",
+"de": "Sag, dass die Daten genau das Gegenteil zeigen.",
+"pt": "Diz que os dados dizem precisamente o contrário."
+},
+"Dis que les dépenses ont aussi augmenté, mais moins.": {
+"en": "Say expenses also went up, but less.",
+"it": "Di' che anche le spese sono aumentate, ma meno.",
+"de": "Sag, dass die Ausgaben auch gestiegen sind, aber weniger.",
+"pt": "Diz que as despesas também subiram, mas menos."
+},
+"Dis que les factures ont aussi augmenté, mais moins.": {
+"en": "Say the bills also went up, but less.",
+"it": "Di' che anche le bollette sono aumentate, ma meno.",
+"de": "Sag, dass die Rechnungen auch gestiegen sind, aber weniger.",
+"pt": "Diz que as faturas também subiram, mas menos."
+},
+"Dis que non, mais que tu dors très mal.": {
+"en": "Say no, but that you sleep very badly.",
+"it": "Di' di no, ma che dormi molto male.",
+"de": "Sag nein, aber dass du sehr schlecht schläfst.",
+"pt": "Diz que não, mas que dormes muito mal."
+},
+"Dis que oui, elle sera prête avant vendredi.": {
+"en": "Say yes, it will be ready before Friday.",
+"it": "Di' di sì, sarà pronta prima di venerdì.",
+"de": "Sag ja, er wird vor Freitag fertig sein.",
+"pt": "Diz que sim, estará pronta antes de sexta-feira."
+},
+"Dis que oui, tu as rendez-vous à dix heures.": {
+"en": "Say yes, you have an appointment at ten.",
+"it": "Di' di sì, hai un appuntamento alle dieci.",
+"de": "Sag ja, du hast um zehn einen Termin.",
+"pt": "Diz que sim, tens marcação às dez."
+},
+"Dis que oui, tu as signé le contrat sans bien le lire.": {
+"en": "Say yes, you signed the contract without reading it properly.",
+"it": "Di' di sì, hai firmato il contratto senza leggerlo bene.",
+"de": "Sag ja, du hast den Vertrag unterschrieben, ohne ihn richtig zu lesen.",
+"pt": "Diz que sim, assinaste o contrato sem o ler bem."
+},
+"Dis que oui, tu l'as signé sans le lire attentivement.": {
+"en": "Say yes, you signed it without reading it carefully.",
+"it": "Di' di sì, l'hai firmato senza leggerlo attentamente.",
+"de": "Sag ja, du hast ihn unterschrieben, ohne ihn genau zu lesen.",
+"pt": "Diz que sim, assinaste-o sem o ler com atenção."
+},
+"Dis que oui, tu la lui envoies avant vendredi.": {
+"en": "Say yes, you'll send it to her before Friday.",
+"it": "Di' di sì, gliela mandi prima di venerdì.",
+"de": "Sag ja, du schickst ihn ihr vor Freitag.",
+"pt": "Diz que sim, envias-lha antes de sexta-feira."
+},
+"Dis que oui, ça va devenir une zone piétonne.": {
+"en": "Say yes, it's going to become a pedestrian zone.",
+"it": "Di' di sì, diventerà una zona pedonale.",
+"de": "Sag ja, es wird eine Fußgängerzone.",
+"pt": "Diz que sim, vai ser uma zona pedonal."
+},
+"Dis que si on investissait petit à petit, le risque serait plus faible.": {
+"en": "Say that if we invested little by little, the risk would be lower.",
+"it": "Di' che se investissimo poco a poco, il rischio sarebbe minore.",
+"de": "Sag, dass das Risiko geringer wäre, wenn wir nach und nach investieren würden.",
+"pt": "Diz que, se investíssemos pouco a pouco, o risco seria menor."
+},
+"Dis que si on investissait petit à petit, on perdrait moins d'argent.": {
+"en": "Say that if we invested little by little, we'd lose less money.",
+"it": "Di' che se investissimo poco a poco, perderemmo meno soldi.",
+"de": "Sag, dass wir weniger Geld verlieren würden, wenn wir nach und nach investieren würden.",
+"pt": "Diz que, se investíssemos pouco a pouco, perderíamos menos dinheiro."
+},
+"Dis que si on investit petit à petit, on perdra moins d'argent.": {
+"en": "Say that if we invest little by little, we'll lose less money.",
+"it": "Di' che se investiamo poco a poco, perderemo meno soldi.",
+"de": "Sag, dass wir weniger Geld verlieren, wenn wir nach und nach investieren.",
+"pt": "Diz que, se investirmos pouco a pouco, perderemos menos dinheiro."
+},
+"Dis que si tu l'avais su, tu l'aurais appelée plus tôt.": {
+"en": "Say that if you'd known, you'd have called her earlier.",
+"it": "Di' che se l'avessi saputo, l'avresti chiamata prima.",
+"de": "Sag, dass du sie früher angerufen hättest, wenn du es gewusst hättest.",
+"pt": "Diz que, se tivesses sabido, lhe terias ligado mais cedo."
+},
+"Dis que ta commande est arrivée cassée.": {
+"en": "Say your order arrived broken.",
+"it": "Di' che il tuo ordine è arrivato rotto.",
+"de": "Sag, dass deine Bestellung kaputt angekommen ist.",
+"pt": "Diz que a tua encomenda chegou partida."
+},
+"Dis que ta commande n'est pas arrivée.": {
+"en": "Say your order hasn't arrived.",
+"it": "Di' che il tuo ordine non è arrivato.",
+"de": "Sag, dass deine Bestellung nicht angekommen ist.",
+"pt": "Diz que a tua encomenda não chegou."
+},
+"Dis que toi aussi, et que tu as beaucoup aimé travailler avec elle.": {
+"en": "Say the same goes for you, and you really enjoyed working with her.",
+"it": "Di' che anche tu, e che ti è piaciuto molto lavorare con lei.",
+"de": "Sag, dass es dir genauso geht und du sehr gern mit ihr gearbeitet hast.",
+"pt": "Diz que tu também, e que gostaste muito de trabalhar com ela."
+},
+"Dis que toi aussi, et que ça a été un plaisir de travailler avec elle.": {
+"en": "Say the same goes for you, and it's been a pleasure working with her.",
+"it": "Di' che anche tu, e che è stato un piacere lavorare con lei.",
+"de": "Sag, dass es dir genauso geht und es eine Freude war, mit ihr zu arbeiten.",
+"pt": "Diz que tu também, e que foi um prazer trabalhar com ela."
+},
+"Dis que ton contrat contient une clause abusive.": {
+"en": "Say your contract contains an unfair clause.",
+"it": "Di' che il tuo contratto contiene una clausola abusiva.",
+"de": "Sag, dass dein Vertrag eine missbräuchliche Klausel enthält.",
+"pt": "Diz que o teu contrato tem uma cláusula abusiva."
+},
+"Dis que ton contrat contient une clause qui te semble abusive.": {
+"en": "Say your contract contains a clause that seems unfair to you.",
+"it": "Di' che il tuo contratto contiene una clausola che ti sembra abusiva.",
+"de": "Sag, dass dein Vertrag eine Klausel enthält, die dir missbräuchlich vorkommt.",
+"pt": "Diz que o teu contrato tem uma cláusula que te parece abusiva."
+},
+"Dis que ton vol ne part pas aujourd'hui.": {
+"en": "Say your flight isn't leaving today.",
+"it": "Di' che il tuo volo oggi non parte.",
+"de": "Sag, dass dein Flug heute nicht geht.",
+"pt": "Diz que o teu voo não parte hoje."
+},
+"Dis que tu accepterais cinq pour cent si vous signiez pour trois ans.": {
+"en": "Say you'd accept five percent if you signed for three years.",
+"it": "Di' che accetteresti il cinque per cento se firmaste per tre anni.",
+"de": "Sag, dass du fünf Prozent akzeptieren würdest, wenn ihr für drei Jahre unterschreiben würdet.",
+"pt": "Diz que aceitarias cinco por cento se assinassem por três anos."
+},
+"Dis que tu aimerais venir pendant les vendanges.": {
+"en": "Say you'd like to come during the harvest.",
+"it": "Di' che ti piacerebbe venire durante la vendemmia.",
+"de": "Sag, dass du gern während der Weinlese kommen würdest.",
+"pt": "Diz que gostarias de vir durante a vindima."
+},
+"Dis que tu aimes travailler avec des clients.": {
+"en": "Say you like working with customers.",
+"it": "Di' che ti piace lavorare con i clienti.",
+"de": "Sag, dass du gern mit Kunden arbeitest.",
+"pt": "Diz que gostas de trabalhar com clientes."
+},
+"Dis que tu as mal à la tête et que tu dors moins bien.": {
+"en": "Say you have a headache and you sleep worse.",
+"it": "Di' che hai mal di testa e che dormi peggio.",
+"de": "Sag, dass du Kopfschmerzen hast und schlechter schläfst.",
+"pt": "Diz que te dói a cabeça e que dormes pior."
+},
+"Dis que tu as travaillé cinq ans dans la vente.": {
+"en": "Say you've worked in sales for five years.",
+"it": "Di' che hai lavorato cinque anni nelle vendite.",
+"de": "Sag, dass du fünf Jahre im Verkauf gearbeitet hast.",
+"pt": "Diz que trabalhaste cinco anos em vendas."
+},
+"Dis que tu as trouvé un meilleur travail.": {
+"en": "Say you've found a better job.",
+"it": "Di' che hai trovato un lavoro migliore.",
+"de": "Sag, dass du eine bessere Stelle gefunden hast.",
+"pt": "Diz que encontraste um trabalho melhor."
+},
+"Dis que tu aurais aimé venir pendant les vendanges.": {
+"en": "Say you would have liked to come during the harvest.",
+"it": "Di' che ti sarebbe piaciuto venire durante la vendemmia.",
+"de": "Sag, dass du gern während der Weinlese gekommen wärst.",
+"pt": "Diz que terias gostado de vir durante a vindima."
+},
+"Dis que tu commencerais par quelque chose de facile.": {
+"en": "Say you would start with something easy.",
+"it": "Di' che inizieresti da qualcosa di facile.",
+"de": "Sag, dass du mit etwas Einfachem anfangen würdest.",
+"pt": "Diz que começarias por algo fácil."
+},
+"Dis que tu comprends et demande s'il peut te l'envoyer par e-mail.": {
+"en": "Say you understand and ask if he can send it to you by email.",
+"it": "Di' che capisci e chiedi se può mandartelo per e-mail.",
+"de": "Sag, dass du verstehst, und frag, ob er es dir per E-Mail schicken kann.",
+"pt": "Diz que percebes e pergunta se to pode enviar por e-mail."
+},
+"Dis que tu comprends, mais que tu paies toujours à temps depuis cinq ans.": {
+"en": "Say you understand, but you've always paid on time for five years.",
+"it": "Di' che capisci, ma che da cinque anni paghi sempre puntuale.",
+"de": "Sag, dass du verstehst, aber seit fünf Jahren immer pünktlich zahlst.",
+"pt": "Diz que percebes, mas que há cinco anos pagas sempre a horas."
+},
+"Dis que tu es là pour tout ce dont elle aura besoin.": {
+"en": "Say you're there for anything she needs.",
+"it": "Di' che ci sei per qualsiasi cosa le serva.",
+"de": "Sag, dass du für alles da bist, was sie braucht.",
+"pt": "Diz que estás cá para tudo o que ela precisar."
+},
+"Dis que tu es soulagé(e) et demande si tu as besoin d'un médicament.": {
+"en": "Say you're relieved and ask if you need any medicine.",
+"it": "Di' che sei sollevato/a e chiedi se ti serve un medicinale.",
+"de": "Sag, dass du erleichtert bist, und frag, ob du ein Medikament brauchst.",
+"pt": "Diz que estás aliviado(a) e pergunta se precisas de algum medicamento."
+},
+"Dis que tu l'as reçue hier et qu'elle était déjà cassée.": {
+"en": "Say you received it yesterday and it was already broken.",
+"it": "Di' che l'hai ricevuto ieri ed era già rotto.",
+"de": "Sag, dass du sie gestern bekommen hast und sie schon kaputt war.",
+"pt": "Diz que a recebeste ontem e já estava partida."
+},
+"Dis que tu le feras et demande s'ils utilisent des additifs.": {
+"en": "Say you will and ask if they use additives.",
+"it": "Di' che lo farai e chiedi se usano additivi.",
+"de": "Sag, dass du das machst, und frag, ob sie Zusatzstoffe verwenden.",
+"pt": "Diz que o farás e pergunta se usam aditivos."
+},
+"Dis que tu le feras et remercie-la pour tout.": {
+"en": "Say you will and thank her for everything.",
+"it": "Di' che lo farai e ringraziala di tutto.",
+"de": "Sag, dass du das machst, und bedank dich für alles.",
+"pt": "Diz que o farás e agradece-lhe tudo."
+},
+"Dis que tu le feras et souhaite-lui une bonne journée.": {
+"en": "Say you will and wish him a good day.",
+"it": "Di' che lo farai e auguragli una buona giornata.",
+"de": "Sag, dass du das machst, und wünsch ihm einen schönen Tag.",
+"pt": "Diz que o farás e deseja-lhe um bom dia."
+},
+"Dis que tu le sais et que tu aimerais rester dans l'appartement.": {
+"en": "Say you know and you'd like to stay in the flat.",
+"it": "Di' che lo sai e che ti piacerebbe restare nell'appartamento.",
+"de": "Sag, dass du es weißt und gern in der Wohnung bleiben würdest.",
+"pt": "Diz que sabes e que gostarias de ficar no apartamento."
+},
+"Dis que tu lui serais reconnaissant(e) que ce soit plus rapide.": {
+"en": "Say you'd be grateful if it were quicker.",
+"it": "Di' che gli saresti grato/a se fosse più veloce.",
+"de": "Sag, dass du dankbar wärst, wenn es schneller ginge.",
+"pt": "Diz que lhe agradecerias que fosse mais rápido."
+},
+"Dis que tu ne crois pas que ce soit le cas, au contraire.": {
+"en": "Say you don't think that's the case, quite the opposite.",
+"it": "Di' che non credi che sia così, anzi.",
+"de": "Sag, dass du nicht glaubst, dass das so ist, im Gegenteil.",
+"pt": "Diz que não achas que seja assim, pelo contrário."
+},
+"Dis que tu ne le ferais pas sans réduire d'abord les dépenses.": {
+"en": "Say you wouldn't do it without cutting expenses first.",
+"it": "Di' che non lo faresti senza prima ridurre le spese.",
+"de": "Sag, dass du es nicht tun würdest, ohne vorher die Ausgaben zu senken.",
+"pt": "Diz que não o farias sem primeiro reduzir as despesas."
+},
+"Dis que tu ne le ferais pas sans réduire d'abord les factures.": {
+"en": "Say you wouldn't do it without cutting the bills first.",
+"it": "Di' che non lo faresti senza prima ridurre le bollette.",
+"de": "Sag, dass du es nicht tun würdest, ohne vorher die Rechnungen zu senken.",
+"pt": "Diz que não o farias sem primeiro reduzir as faturas."
+},
+"Dis que tu ne nies pas que ce soit un problème, mais qu'il y a des solutions.": {
+"en": "Say you don't deny it's a problem, but there are solutions.",
+"it": "Di' che non neghi che sia un problema, ma che ci sono soluzioni.",
+"de": "Sag, dass du nicht bestreitest, dass es ein Problem ist, es aber Lösungen gibt.",
+"pt": "Diz que não negas que seja um problema, mas que há soluções."
+},
+"Dis que tu ne nies pas que ce soit vrai, mais qu'on peut faire quelque chose.": {
+"en": "Say you don't deny it's true, but something can be done.",
+"it": "Di' che non neghi che sia vero, ma che si può fare qualcosa.",
+"de": "Sag, dass du nicht bestreitest, dass es stimmt, man aber etwas tun kann.",
+"pt": "Diz que não negas que seja verdade, mas que se pode fazer alguma coisa."
+},
+"Dis que tu ne partages pas cet argument.": {
+"en": "Say you don't share that argument.",
+"it": "Di' che non condividi questo argomento.",
+"de": "Sag, dass du dieses Argument nicht teilst.",
+"pt": "Diz que não partilhas esse argumento."
+},
+"Dis que tu préférerais qu'on te rembourse.": {
+"en": "Say you would prefer a refund.",
+"it": "Di' che preferiresti un rimborso.",
+"de": "Sag, dass du lieber dein Geld zurück hättest.",
+"pt": "Diz que preferias ser reembolsado(a)."
+},
+"Dis que tu regrettes de le lui dire, mais que tu vas présenter ta démission.": {
+"en": "Say you're sorry to tell her, but you're going to hand in your resignation.",
+"it": "Di' che ti dispiace dirglielo, ma che presenterai le dimissioni.",
+"de": "Sag, dass es dir leidtut, es ihr zu sagen, du aber kündigen wirst.",
+"pt": "Diz que lamentas dizer-lho, mas que vais apresentar a tua demissão."
+},
+"Dis que tu tousses depuis une semaine.": {
+"en": "Say you've been coughing for a week.",
+"it": "Di' che tossisci da una settimana.",
+"de": "Sag, dass du seit einer Woche hustest.",
+"pt": "Diz que tens tosse há uma semana."
+},
+"Dis que tu vas bien y réfléchir et que tu la rappelles.": {
+"en": "Say you'll think it over carefully and call her back.",
+"it": "Di' che ci penserai bene e la richiamerai.",
+"de": "Sag, dass du es dir gut überlegen und sie zurückrufen wirst.",
+"pt": "Diz que vais pensar bem e que lhe voltas a ligar."
+},
+"Dis que tu viens t'inscrire au registre municipal.": {
+"en": "Say you've come to register as a resident.",
+"it": "Di' che vieni a iscriverti all'anagrafe.",
+"de": "Sag, dass du dich anmelden möchtest.",
+"pt": "Diz que vens inscrever-te no registo municipal."
+},
+"Dis que vous attendez une proposition écrite avant vendredi.": {
+"en": "Say you expect a written proposal before Friday.",
+"it": "Di' che aspettate una proposta scritta entro venerdì.",
+"de": "Sag, dass ihr vor Freitag einen schriftlichen Vorschlag erwartet.",
+"pt": "Diz que esperam uma proposta por escrito antes de sexta-feira."
+},
+"Dis que vous négocieriez à condition que le préavis soit prolongé.": {
+"en": "Say you would negotiate provided the notice period were extended.",
+"it": "Di' che trattereste a condizione che il preavviso venisse prolungato.",
+"de": "Sag, dass ihr verhandeln würdet, sofern die Kündigungsfrist verlängert würde.",
+"pt": "Diz que negociariam desde que o pré-aviso fosse prolongado."
+},
+"Dis que ça fait deux semaines et qu'elle n'est toujours pas arrivée.": {
+"en": "Say it's been two weeks and it still hasn't arrived.",
+"it": "Di' che sono passate due settimane e non è ancora arrivato.",
+"de": "Sag, dass es zwei Wochen her ist und sie immer noch nicht da ist.",
+"pt": "Diz que já passaram duas semanas e ainda não chegou."
+},
+"Dis que ça te convient et demande quels sont les horaires.": {
+"en": "Say that suits you and ask what the hours are.",
+"it": "Di' che ti va bene e chiedi qual è l'orario.",
+"de": "Sag, dass dir das passt, und frag nach den Arbeitszeiten.",
+"pt": "Diz que te convém e pergunta qual é o horário."
+},
+"Dis que ça te paraît trop.": {
+"en": "Say it seems like too much.",
+"it": "Di' che ti sembra troppo.",
+"de": "Sag, dass dir das zu viel erscheint.",
+"pt": "Diz que te parece demasiado."
+},
+"Dis que ça va mieux, mais que tu as quelques effets secondaires.": {
+"en": "Say you're better, but you have some side effects.",
+"it": "Di' che va meglio, ma che hai qualche effetto collaterale.",
+"de": "Sag, dass es dir besser geht, du aber einige Nebenwirkungen hast.",
+"pt": "Diz que estás melhor, mas que tens alguns efeitos secundários."
+},
+"Dis que ça va mieux, mais que tu as un effet secondaire.": {
+"en": "Say you're better, but you have a side effect.",
+"it": "Di' che va meglio, ma che hai un effetto collaterale.",
+"de": "Sag, dass es dir besser geht, du aber eine Nebenwirkung hast.",
+"pt": "Diz que estás melhor, mas que tens um efeito secundário."
+},
+"Dis « de rien » et souhaite-lui bonne chance.": {
+"en": "Say \"you're welcome\" and wish him good luck.",
+"it": "Di' «di niente» e auguragli buona fortuna.",
+"de": "Sag „gern geschehen\" und wünsch ihm viel Glück.",
+"pt": "Diz «de nada» e deseja-lhe boa sorte."
+},
+"Dis « de rien » et souhaite-lui que ça se passe bien.": {
+"en": "Say \"you're welcome\" and wish him good luck with it.",
+"it": "Di' «di niente» e auguragli che vada bene.",
+"de": "Sag „gern geschehen\" und wünsch ihm, dass es gut wird.",
+"pt": "Diz «de nada» e deseja-lhe que corra bem."
+},
+"Donne-le et demande s'il y a un autre vol aujourd'hui.": {
+"en": "Hand it over and ask if there's another flight today.",
+"it": "Consegnalo e chiedi se c'è un altro volo oggi.",
+"de": "Gib ihn ihr und frag, ob es heute noch einen Flug gibt.",
+"pt": "Entrega-o e pergunta se há outro voo hoje."
+},
+"Donne-les et demande s'il a besoin d'autre chose.": {
+"en": "Hand them over and ask if he needs anything else.",
+"it": "Consegnali e chiedi se ha bisogno di altro.",
+"de": "Gib sie ihm und frag, ob er noch etwas braucht.",
+"pt": "Entrega-os e pergunta se precisa de mais alguma coisa."
+},
+"Débat à la radio": {
+"en": "Radio debate",
+"it": "Dibattito alla radio",
+"de": "Radiodebatte",
+"pt": "Debate na rádio"
+},
+"Employé de mairie": {
+"en": "Town hall clerk",
+"it": "Impiegato comunale",
+"de": "Sachbearbeiter im Rathaus",
+"pt": "Funcionário da câmara"
+},
+"En définitive": {
+"en": "Ultimately",
+"it": "In definitiva",
+"de": "Letztlich",
+"pt": "Em suma"
+},
+"En réunion, ta directrice fait le point sur les chiffres du trimestre.": {
+"en": "In a meeting, your manager reviews the quarter's figures.",
+"it": "In riunione, la tua direttrice fa il punto sui numeri del trimestre.",
+"de": "In einer Besprechung geht deine Chefin die Zahlen des Quartals durch.",
+"pt": "Numa reunião, a tua diretora faz o ponto da situação dos números do trimestre."
+},
+"Excuse-toi : tu ne l'as pas apportée. Demande si tu peux l'envoyer par e-mail.": {
+"en": "Apologise: you didn't bring it. Ask if you can send it by email.",
+"it": "Scusati: non l'hai portata. Chiedi se puoi mandarla per e-mail.",
+"de": "Entschuldige dich: Du hast sie nicht dabei. Frag, ob du sie per E-Mail schicken kannst.",
+"pt": "Pede desculpa: não a trouxeste. Pergunta se a podes enviar por e-mail."
+},
+"Explique qu'il n'y a pas d'eau chaude.": {
+"en": "Explain that there's no hot water.",
+"it": "Spiega che non c'è acqua calda.",
+"de": "Erkläre, dass es kein warmes Wasser gibt.",
+"pt": "Explica que não há água quente."
+},
+"Guide": {
+"en": "Guide",
+"it": "Guida",
+"de": "Führer",
+"pt": "Guia"
+},
+"Heureusement": {
+"en": "Thank goodness",
+"it": "Meno male",
+"de": "Zum Glück",
+"pt": "Ainda bem"
+},
+"J'ai beaucoup aimé": {
+"en": "I really enjoyed it",
+"it": "Mi è piaciuto molto",
+"de": "Es hat mir sehr gefallen",
+"pt": "Gostei muito"
+},
+"J'attends votre appel": {
+"en": "I look forward to your call",
+"it": "Aspetto la sua chiamata",
+"de": "Ich warte auf Ihren Anruf",
+"pt": "Aguardo a sua chamada"
+},
+"J'aurais aimé": {
+"en": "I would have liked",
+"it": "Mi sarebbe piaciuto",
+"de": "Ich hätte gern",
+"pt": "Teria gostado"
+},
+"J'aurais aimé venir": {
+"en": "I would have liked to come",
+"it": "Mi sarebbe piaciuto venire",
+"de": "Ich wäre gern gekommen",
+"pt": "Teria gostado de vir"
+},
+"J'espère que tout ira bien": {
+"en": "I hope everything goes well",
+"it": "Spero che vada tutto bene",
+"de": "Ich hoffe, dass alles gut geht",
+"pt": "Espero que corra tudo bem"
+},
+"Je ne crois pas que ce soit le cas": {
+"en": "I don't think that's the case",
+"it": "Non credo che sia così",
+"de": "Ich glaube nicht, dass das so ist",
+"pt": "Não acho que seja assim"
+},
+"Je ne nie pas que ce soit…": {
+"en": "I don't deny that it's…",
+"it": "Non nego che sia…",
+"de": "Ich bestreite nicht, dass es … ist",
+"pt": "Não nego que seja…"
+},
+"Je ne nie pas que…": {
+"en": "I don't deny that…",
+"it": "Non nego che…",
+"de": "Ich bestreite nicht, dass …",
+"pt": "Não nego que…"
+},
+"Je ne partage pas cet argument": {
+"en": "I don't share that argument",
+"it": "Non condivido questo argomento",
+"de": "Ich teile dieses Argument nicht",
+"pt": "Não partilho esse argumento"
+},
+"Je préférerais être remboursé(e)": {
+"en": "I'd prefer a refund",
+"it": "Preferirei essere rimborsato/a",
+"de": "Ich hätte lieber mein Geld zurück",
+"pt": "Preferia ser reembolsado(a)"
+},
+"Je te conseille de…": {
+"en": "I advise you to…",
+"it": "Ti suggerisco di…",
+"de": "Ich rate dir, …",
+"pt": "Aconselho-te a…"
+},
+"Je te recommande de…": {
+"en": "I recommend that you…",
+"it": "Ti consiglio di…",
+"de": "Ich empfehle dir, …",
+"pt": "Recomendo-te que…"
+},
+"Je vous serais reconnaissant(e) de…": {
+"en": "I'd be grateful if you…",
+"it": "Le sarei grato/a se…",
+"de": "Ich wäre Ihnen dankbar, wenn…",
+"pt": "Agradecia-lhe que…"
+},
+"L'entretien d'embauche": {
+"en": "The job interview",
+"it": "Il colloquio di lavoro",
+"de": "Das Vorstellungsgespräch",
+"pt": "A entrevista de emprego"
+},
+"La négociation": {
+"en": "The negotiation",
+"it": "La trattativa",
+"de": "Die Verhandlung",
+"pt": "A negociação"
+},
+"Le bail se termine": {
+"en": "The lease is ending",
+"it": "Il contratto d'affitto scade",
+"de": "Der Mietvertrag läuft aus",
+"pt": "O contrato de arrendamento acaba"
+},
+"Le chauffe-eau en panne": {
+"en": "The water heater is broken",
+"it": "Lo scaldabagno è guasto",
+"de": "Der Boiler ist kaputt",
+"pt": "O esquentador avariou"
+},
+"Le nouveau traitement": {
+"en": "The new treatment",
+"it": "La nuova terapia",
+"de": "Die neue Behandlung",
+"pt": "O novo tratamento"
+},
+"Le père d'une collègue est décédé. Tu vas la voir à son retour.": {
+"en": "A colleague's father has died. You go to see her when she's back.",
+"it": "Il padre di una collega è morto. Vai a trovarla al suo rientro.",
+"de": "Der Vater einer Kollegin ist gestorben. Du gehst zu ihr, als sie zurück ist.",
+"pt": "O pai de uma colega faleceu. Vais falar com ela quando regressa."
+},
+"Mon vol ne part pas": {
+"en": "My flight isn't leaving",
+"it": "Il mio volo non parte",
+"de": "Mein Flug geht nicht",
+"pt": "O meu voo não parte"
+},
+"Ne t'inquiète pas, ce n'est pas grave": {
+"en": "Don't worry, it's no problem",
+"it": "Tranquillo, non fa niente",
+"de": "Keine Sorge, das ist nicht schlimm",
+"pt": "Não te preocupes, não faz mal"
+},
+"Ne vaudrait-il pas mieux… ?": {
+"en": "Wouldn't it be better to…?",
+"it": "Non sarebbe meglio…?",
+"de": "Wäre es nicht besser, …?",
+"pt": "Não seria melhor…?"
+},
+"Objecte qu'une ordonnance ne servira à rien si elle n'est pas appliquée.": {
+"en": "Object that a by-law will be useless if it isn't enforced.",
+"it": "Obietta che un'ordinanza non servirà a nulla se non viene applicata.",
+"de": "Wende ein, dass eine Verordnung nichts nützt, wenn sie nicht durchgesetzt wird.",
+"pt": "Objeta que um regulamento não servirá de nada se não for aplicado."
+},
+"Objecte que l'entreprise a pourtant fait des bénéfices l'an dernier.": {
+"en": "Object that the company nevertheless made a profit last year.",
+"it": "Obietta che l'azienda ha comunque avuto utili l'anno scorso.",
+"de": "Wende ein, dass das Unternehmen letztes Jahr trotzdem Gewinne gemacht hat.",
+"pt": "Objeta que, no entanto, a empresa teve lucros no ano passado."
+},
+"Prends le temps qu'il te faudra": {
+"en": "Take all the time you need",
+"it": "Prenditi tutto il tempo che ti serve",
+"de": "Nimm dir so viel Zeit, wie du brauchst",
+"pt": "Tira o tempo de que precisares"
+},
+"Propose de t'occuper de ses clients cette semaine.": {
+"en": "Offer to take care of her clients this week.",
+"it": "Proponi di occuparti dei suoi clienti questa settimana.",
+"de": "Biete an, dich diese Woche um ihre Kunden zu kümmern.",
+"pt": "Oferece-te para tratar dos clientes dela esta semana."
+},
+"Présente-lui tes sincères condoléances.": {
+"en": "Offer her your sincere condolences.",
+"it": "Porgile le tue sentite condoglianze.",
+"de": "Sprich ihr dein aufrichtiges Beileid aus.",
+"pt": "Apresenta-lhe as tuas sinceras condolências."
+},
+"Préviens que sinon, le comité fera grève.": {
+"en": "Warn that otherwise the committee will go on strike.",
+"it": "Avverti che altrimenti il comitato sciopererà.",
+"de": "Warne, dass der Betriebsrat sonst streiken wird.",
+"pt": "Avisa que, caso contrário, a comissão fará greve."
+},
+"Quand est-ce que ce sera prêt ?": {
+"en": "When will it be ready?",
+"it": "Quando sarà pronto?",
+"de": "Wann ist es fertig?",
+"pt": "Quando é que estará pronto?"
+},
+"Quand est-ce que je commencerais ?": {
+"en": "When would I start?",
+"it": "Quando inizierei?",
+"de": "Wann würde ich anfangen?",
+"pt": "Quando é que começaria?"
+},
+"Rassure-la et dis-lui de prendre le temps qu'il lui faudra.": {
+"en": "Reassure her and tell her to take all the time she needs.",
+"it": "Rassicurala e dille di prendersi tutto il tempo che le serve.",
+"de": "Beruhige sie und sag ihr, sie soll sich so viel Zeit nehmen, wie sie braucht.",
+"pt": "Tranquiliza-a e diz-lhe para tirar o tempo de que precisar."
+},
+"Rassure-le : c'est normal que ce soit raté au début.": {
+"en": "Reassure him: it's normal for it to go wrong at first.",
+"it": "Rassicuralo: è normale che all'inizio venga male.",
+"de": "Beruhige ihn: Es ist normal, dass es am Anfang schiefgeht.",
+"pt": "Tranquiliza-o: é normal que corra mal no início."
+},
+"Recommande-lui d'aller dans une école de cuisine.": {
+"en": "Recommend that he go to a cooking school.",
+"it": "Consigliagli di andare a una scuola di cucina.",
+"de": "Empfiehl ihm, eine Kochschule zu besuchen.",
+"pt": "Recomenda-lhe que vá a uma escola de culinária."
+},
+"Recruteuse": {
+"en": "Recruiter",
+"it": "Selezionatrice",
+"de": "Personalerin",
+"pt": "Recrutadora"
+},
+"Remercie la médecin et dis au revoir.": {
+"en": "Thank the doctor and say goodbye.",
+"it": "Ringrazia la dottoressa e saluta.",
+"de": "Bedank dich bei der Ärztin und verabschiede dich.",
+"pt": "Agradece à médica e despede-te."
+},
+"Remercie-la pour son temps et dis que tu attends son appel.": {
+"en": "Thank her for her time and say you'll wait for her call.",
+"it": "Ringraziala per il suo tempo e di' che aspetti la sua chiamata.",
+"de": "Bedank dich für ihre Zeit und sag, dass du auf ihren Anruf wartest.",
+"pt": "Agradece-lhe o tempo e diz que aguardas a chamada dela."
+},
+"Remercie-la pour son temps et dis « à bientôt ».": {
+"en": "Thank her for her time and say \"see you soon\".",
+"it": "Ringraziala per il suo tempo e di' «a presto».",
+"de": "Bedank dich für ihre Zeit und sag „bis bald\".",
+"pt": "Agradece-lhe o tempo e diz «até breve»."
+},
+"Remercie-la, mais dis que tu as déjà pris ta décision.": {
+"en": "Thank her, but say you've already made your decision.",
+"it": "Ringraziala, ma di' che hai già preso la tua decisione.",
+"de": "Bedank dich, aber sag, dass du deine Entscheidung schon getroffen hast.",
+"pt": "Agradece-lhe, mas diz que já tomaste a tua decisão."
+},
+"Remercie-la, mais dis que vous attendez des mesures concrètes.": {
+"en": "Thank her, but say you're expecting concrete measures.",
+"it": "Ringraziala, ma di' che vi aspettate misure concrete.",
+"de": "Bedank dich, aber sag, dass ihr konkrete Maßnahmen erwartet.",
+"pt": "Agradece-lhe, mas diz que esperam medidas concretas."
+},
+"Remercie-le et dis que tu espères que tout ira bien.": {
+"en": "Thank him and say you hope everything goes well.",
+"it": "Ringrazialo e di' che speri vada tutto bene.",
+"de": "Bedank dich und sag, dass du hoffst, dass alles gut geht.",
+"pt": "Agradece-lhe e diz que esperas que corra tudo bem."
+},
+"Remercie-le pour son aide.": {
+"en": "Thank him for his help.",
+"it": "Ringrazialo per il suo aiuto.",
+"de": "Bedank dich für seine Hilfe.",
+"pt": "Agradece-lhe a ajuda."
+},
+"Réunion d'équipe": {
+"en": "Team meeting",
+"it": "Riunione di squadra",
+"de": "Teambesprechung",
+"pt": "Reunião de equipa"
+},
+"Réunion de quartier": {
+"en": "Neighbourhood meeting",
+"it": "Riunione di quartiere",
+"de": "Bürgerversammlung im Viertel",
+"pt": "Reunião de bairro"
+},
+"Si je l'avais su": {
+"en": "If I had known",
+"it": "Se l'avessi saputo",
+"de": "Wenn ich das gewusst hätte",
+"pt": "Se eu tivesse sabido"
+},
+"Si on investissait…": {
+"en": "If we invested…",
+"it": "Se investissimo…",
+"de": "Wenn wir investieren würden…",
+"pt": "Se investíssemos…"
+},
+"Ton propriétaire t'appelle : ton bail se termine et il veut augmenter le loyer.": {
+"en": "Your landlord calls you: your lease is ending and he wants to raise the rent.",
+"it": "Il tuo proprietario ti chiama: il contratto scade e vuole aumentare l'affitto.",
+"de": "Dein Vermieter ruft an: Dein Mietvertrag läuft aus und er will die Miete erhöhen.",
+"pt": "O teu senhorio liga-te: o contrato está a acabar e ele quer aumentar a renda."
+},
+"Ton voisin n'est pas content : la rue va être fermée aux voitures.": {
+"en": "Your neighbour isn't happy: the street is going to be closed to cars.",
+"it": "Il tuo vicino non è contento: la strada verrà chiusa alle auto.",
+"de": "Dein Nachbar ist unzufrieden: Die Straße wird für Autos gesperrt.",
+"pt": "O teu vizinho não está contente: a rua vai ser fechada aos carros."
+},
+"Toutes mes condoléances": {
+"en": "My deepest condolences",
+"it": "Sentite condoglianze",
+"de": "Mein aufrichtiges Beileid",
+"pt": "Os meus sentidos pêsames"
+},
+"Tu appelles le propriétaire de ton appartement : le chauffe-eau ne marche plus.": {
+"en": "You call your landlord: the water heater has stopped working.",
+"it": "Chiami il proprietario del tuo appartamento: lo scaldabagno non funziona più.",
+"de": "Du rufst deinen Vermieter an: Der Boiler funktioniert nicht mehr.",
+"pt": "Ligas ao senhorio do teu apartamento: o esquentador deixou de funcionar."
+},
+"Tu appelles le service client : ta commande est arrivée cassée.": {
+"en": "You call customer service: your order arrived broken.",
+"it": "Chiami il servizio clienti: il tuo ordine è arrivato rotto.",
+"de": "Du rufst den Kundenservice an: Deine Bestellung ist kaputt angekommen.",
+"pt": "Ligas para o apoio ao cliente: a tua encomenda chegou partida."
+},
+"Tu consultes une avocate au sujet d'une clause de ton contrat de travail.": {
+"en": "You consult a lawyer about a clause in your employment contract.",
+"it": "Consulti un'avvocata su una clausola del tuo contratto di lavoro.",
+"de": "Du lässt dich von einer Anwältin zu einer Klausel in deinem Arbeitsvertrag beraten.",
+"pt": "Consultas uma advogada sobre uma cláusula do teu contrato de trabalho."
+},
+"Tu demandes à parler à ta cheffe : tu as décidé de démissionner.": {
+"en": "You ask to speak to your boss: you've decided to resign.",
+"it": "Chiedi di parlare con la tua capa: hai deciso di dimetterti.",
+"de": "Du bittest deine Chefin um ein Gespräch: Du hast beschlossen zu kündigen.",
+"pt": "Pedes para falar com a tua chefe: decidiste demitir-te."
+},
+"Tu participes à un débat à la radio sur les pistes cyclables en ville.": {
+"en": "You take part in a radio debate about cycle lanes in the city.",
+"it": "Partecipi a un dibattito alla radio sulle piste ciclabili in città.",
+"de": "Du nimmst an einer Radiodebatte über Radwege in der Stadt teil.",
+"pt": "Participas num debate na rádio sobre ciclovias na cidade."
+},
+"Tu passes un entretien pour un poste dans une entreprise.": {
+"en": "You have an interview for a position in a company.",
+"it": "Fai un colloquio per un posto in un'azienda.",
+"de": "Du hast ein Vorstellungsgespräch für eine Stelle in einer Firma.",
+"pt": "Tens uma entrevista para um lugar numa empresa."
+},
+"Tu représentes le personnel face au directeur des ressources humaines, qui annonce des licenciements.": {
+"en": "You represent the staff before the HR director, who is announcing layoffs.",
+"it": "Rappresenti il personale davanti al direttore delle risorse umane, che annuncia dei licenziamenti.",
+"de": "Du vertrittst die Belegschaft gegenüber dem Personalchef, der Entlassungen ankündigt.",
+"pt": "Representas os trabalhadores perante o diretor de recursos humanos, que anuncia despedimentos."
+},
+"Tu retournes voir ta médecin : ton nouveau traitement a des effets secondaires.": {
+"en": "You go back to your doctor: your new treatment has side effects.",
+"it": "Torni dalla tua dottoressa: la nuova terapia ha effetti collaterali.",
+"de": "Du gehst wieder zu deiner Ärztin: Deine neue Behandlung hat Nebenwirkungen.",
+"pt": "Voltas à tua médica: o novo tratamento tem efeitos secundários."
+},
+"Tu tousses depuis une semaine et tu vas chez la médecin.": {
+"en": "You've been coughing for a week and you go to the doctor.",
+"it": "Tossisci da una settimana e vai dalla dottoressa.",
+"de": "Du hustest seit einer Woche und gehst zur Ärztin.",
+"pt": "Andas a tossir há uma semana e vais à médica."
+},
+"Tu viens d'emménager et tu vas à la mairie pour t'inscrire au registre municipal.": {
+"en": "You've just moved in and go to the town hall to register as a resident.",
+"it": "Ti sei appena trasferito/a e vai in comune per iscriverti all'anagrafe.",
+"de": "Du bist gerade umgezogen und gehst zum Rathaus, um dich anzumelden.",
+"pt": "Acabaste de te mudar e vais à câmara municipal para te inscreveres no registo municipal."
+},
+"Tu visites une cave à vin avec un guide.": {
+"en": "You visit a winery with a guide.",
+"it": "Visiti una cantina con una guida.",
+"de": "Du besichtigst einen Weinkeller mit einem Führer.",
+"pt": "Visitas uma adega com um guia."
+},
+"Un ami veut apprendre à cuisiner et te demande des conseils.": {
+"en": "A friend wants to learn to cook and asks you for advice.",
+"it": "Un amico vuole imparare a cucinare e ti chiede consiglio.",
+"de": "Ein Freund will kochen lernen und bittet dich um Rat.",
+"pt": "Um amigo quer aprender a cozinhar e pede-te conselhos."
+},
+"Un deuil au travail": {
+"en": "A bereavement at work",
+"it": "Un lutto al lavoro",
+"de": "Ein Trauerfall bei der Arbeit",
+"pt": "Um luto no trabalho"
+},
+"Une clause abusive": {
+"en": "An unfair clause",
+"it": "Una clausola abusiva",
+"de": "Eine missbräuchliche Klausel",
+"pt": "Uma cláusula abusiva"
+},
+"Une commande arrivée cassée": {
+"en": "An order that arrived broken",
+"it": "Un ordine arrivato rotto",
+"de": "Eine kaputt gelieferte Bestellung",
+"pt": "Uma encomenda que chegou partida"
+},
+"Une rue piétonne": {
+"en": "A pedestrian street",
+"it": "Una strada pedonale",
+"de": "Eine Fußgängerstraße",
+"pt": "Uma rua pedonal"
+},
+"Une toux qui ne passe pas": {
+"en": "A cough that won't go away",
+"it": "Una tosse che non passa",
+"de": "Ein Husten, der nicht weggeht",
+"pt": "Uma tosse que não passa"
+},
+"Visite d'une cave": {
+"en": "Visiting a winery",
+"it": "Visita a una cantina",
+"de": "Besuch eines Weinkellers",
+"pt": "Visita a uma adega"
+},
+"Vol annulé": {
+"en": "Flight cancelled",
+"it": "Volo cancellato",
+"de": "Flug gestrichen",
+"pt": "Voo cancelado"
+},
+"annuler un vol": {
+"en": "to cancel a flight",
+"it": "cancellare un volo",
+"de": "einen Flug streichen",
+"pt": "cancelar um voo"
+},
+"c'est normal": {
+"en": "it's normal",
+"it": "è normale",
+"de": "es ist normal",
+"pt": "é normal"
+},
+"cassé": {
+"en": "broken",
+"it": "rotto",
+"de": "kaputt",
+"pt": "partido"
+},
+"des mesures concrètes": {
+"en": "concrete measures",
+"it": "misure concrete",
+"de": "konkrete Maßnahmen",
+"pt": "medidas concretas"
+},
+"donner sa démission": {
+"en": "to hand in one's resignation",
+"it": "dare le dimissioni",
+"de": "kündigen",
+"pt": "apresentar a demissão"
+},
+"durable": {
+"en": "sustainable",
+"it": "sostenibile",
+"de": "nachhaltig",
+"pt": "sustentável"
+},
+"faire les démarches": {
+"en": "to handle the paperwork",
+"it": "sbrigare la pratica",
+"de": "das Verfahren abwickeln",
+"pt": "tratar do processo"
+},
+"j'aimerais…": {
+"en": "I'd like…",
+"it": "mi piacerebbe…",
+"de": "ich würde gern …",
+"pt": "gostaria…"
+},
+"je paie depuis cinq ans": {
+"en": "I've been paying for five years",
+"it": "pago da cinque anni",
+"de": "ich zahle seit fünf Jahren",
+"pt": "pago há cinco anos"
+},
+"je te conseille…": {
+"en": "I advise you…",
+"it": "ti suggerisco…",
+"de": "ich rate dir …",
+"pt": "aconselho-te…"
+},
+"je te recommande…": {
+"en": "I recommend you…",
+"it": "ti consiglio…",
+"de": "ich empfehle dir …",
+"pt": "recomendo-te…"
+},
+"la commande": {
+"en": "the order",
+"it": "l'ordine",
+"de": "die Bestellung",
+"pt": "a encomenda"
+},
+"le traitement": {
+"en": "the treatment",
+"it": "la terapia",
+"de": "die Behandlung",
+"pt": "o tratamento"
+},
+"les dépenses": {
+"en": "expenses",
+"it": "le spese",
+"de": "die Ausgaben",
+"pt": "as despesas"
+},
+"les effets secondaires": {
+"en": "side effects",
+"it": "gli effetti collaterali",
+"de": "die Nebenwirkungen",
+"pt": "os efeitos secundários"
+},
+"les factures": {
+"en": "the bills",
+"it": "le bollette",
+"de": "die Rechnungen",
+"pt": "as faturas"
+},
+"pendant cinq ans": {
+"en": "for five years",
+"it": "per cinque anni",
+"de": "fünf Jahre lang",
+"pt": "durante cinco anos"
+},
+"pour que tu aies le temps": {
+"en": "so that you have time",
+"it": "perché tu abbia tempo",
+"de": "damit du Zeit hast",
+"pt": "para que tenhas tempo"
+},
+"pour tout ce dont tu auras besoin": {
+"en": "for anything you need",
+"it": "per qualsiasi cosa ti serva",
+"de": "für alles, was du brauchst",
+"pt": "para tudo o que precisares"
+},
+"prolonger le préavis": {
+"en": "to extend the notice period",
+"it": "prolungare il preavviso",
+"de": "die Kündigungsfrist verlängern",
+"pt": "prolongar o pré-aviso"
+},
+"quand ce sera prêt": {
+"en": "when it's ready",
+"it": "quando sarà pronto",
+"de": "wenn es fertig ist",
+"pt": "quando estiver pronto"
+},
+"regretter (une personne absente)": {
+"en": "to miss (someone)",
+"it": "sentire la mancanza (di qualcuno)",
+"de": "(jemanden) vermissen",
+"pt": "ter saudades (de alguém)"
+},
+"sans préavis": {
+"en": "without notice",
+"it": "senza preavviso",
+"de": "ohne Kündigungsfrist",
+"pt": "sem pré-aviso"
+},
+"si nous signions": {
+"en": "if we signed",
+"it": "se firmassimo",
+"de": "wenn wir unterschreiben würden",
+"pt": "se assinássemos"
+},
+"si nous signons": {
+"en": "if we sign",
+"it": "se firmiamo",
+"de": "wenn wir unterschreiben",
+"pt": "se assinarmos"
+},
+"si on investit": {
+"en": "if we invest",
+"it": "se investiamo",
+"de": "wenn wir investieren",
+"pt": "se investirmos"
+},
+"trouver un accord": {
+"en": "to reach an agreement",
+"it": "trovare un accordo",
+"de": "sich einigen",
+"pt": "chegar a um acordo"
+},
+"un CDI": {
+"en": "a permanent contract",
+"it": "un contratto a tempo indeterminato",
+"de": "ein unbefristeter Vertrag",
+"pt": "um contrato sem termo"
+},
+"un effet secondaire": {
+"en": "a side effect",
+"it": "un effetto collaterale",
+"de": "eine Nebenwirkung",
+"pt": "um efeito secundário"
+},
+"un plan social": {
+"en": "a collective redundancy plan",
+"it": "un piano di licenziamenti collettivi",
+"de": "ein Sozialplan",
+"pt": "um despedimento coletivo"
+},
+"un rhume": {
+"en": "a cold",
+"it": "un raffreddore",
+"de": "eine Erkältung",
+"pt": "uma constipação"
+},
+"une clause abusive": {
+"en": "an unfair clause",
+"it": "una clausola abusiva",
+"de": "eine missbräuchliche Klausel",
+"pt": "uma cláusula abusiva"
+},
+"une panne": {
+"en": "a breakdown",
+"it": "un guasto",
+"de": "eine Panne",
+"pt": "uma avaria"
+},
+"une zone piétonne": {
+"en": "a pedestrian zone",
+"it": "una zona pedonale",
+"de": "eine Fußgängerzone",
+"pt": "uma zona pedonal"
+},
+"À l'aéroport, ton vol a été annulé. Tu parles à l'agente de la compagnie.": {
+"en": "At the airport, your flight has been cancelled. You talk to the airline agent.",
+"it": "All'aeroporto il tuo volo è stato cancellato. Parli con l'addetta della compagnia.",
+"de": "Am Flughafen wurde dein Flug gestrichen. Du sprichst mit der Mitarbeiterin der Fluggesellschaft.",
+"pt": "No aeroporto, o teu voo foi cancelado. Falas com a funcionária da companhia."
+},
+"À la réunion de quartier, une conseillère municipale répond aux habitants sur le logement.": {
+"en": "At the neighbourhood meeting, a city councillor answers residents' questions about housing.",
+"it": "Alla riunione di quartiere, una consigliera comunale risponde agli abitanti sulla casa.",
+"de": "Bei der Bürgerversammlung beantwortet eine Stadträtin Fragen der Anwohner zum Wohnen.",
+"pt": "Na reunião de bairro, uma vereadora responde aos moradores sobre a habitação."
+},
+"Ça a été un plaisir": {
+"en": "It's been a pleasure",
+"it": "È stato un piacere",
+"de": "Es war mir eine Freude",
+"pt": "Foi um prazer"
+},
+"Ça pourrait être… ?": {
+"en": "Could it be…?",
+"it": "Potrebbe essere…?",
+"de": "Ginge vielleicht…?",
+"pt": "Poderia ser…?"
+},
+"à ce sujet": {
+"en": "about it",
+"it": "al riguardo",
+"de": "diesbezüglich",
+"pt": "a esse respeito"
+}
 }

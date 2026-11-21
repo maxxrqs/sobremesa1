@@ -1,0 +1,45 @@
+# Lot D (chantier 3) : paires de notions à distinguer (XK), utilisées par xpl() dans la correction.
+# Format : id|niveau (2 = A2 … 5 = C1)|formes A (virgules)|formes B|libellé|explication (fr, traduite par gl)|exemple A|traduction A (fr)|exemple B|traduction B (fr)
+# Une paire n’est proposée que si son niveau est atteint et si ses deux exemples ne contiennent que des notions déjà rencontrées.
+-- es
+serestar|2|es,soy,eres,son,somos,era,fue|está,estoy,estás,están,estamos,estaba|ser / estar|Ser : identité, caractéristique durable, origine. Estar : état passager, résultat.|Es médico.|Il est médecin.|Está cansado.|Il est fatigué.
+hayesta|2|hay|está,están|hay / está|Hay présente quelque chose de nouveau (il y a). Está situe quelque chose de connu.|Hay un banco cerca.|Il y a une banque près d'ici.|El banco está cerca.|La banque est près d'ici.
+muymucho|2|muy|mucho,muchos,muchas|muy / mucho|Muy devant un adjectif ou un adverbe ; mucho avec un nom ou après un verbe.|Es muy caro.|C'est très cher.|Trabaja mucho.|Il travaille beaucoup.
+pedirpreg|2|pedir,pido,pides,pide,pedimos,piden,pedí,pidió|preguntar,pregunto,preguntas,pregunta,preguntamos,preguntan,pregunté,preguntó|pedir / preguntar|Pedir : demander quelque chose (un objet, un service). Preguntar : poser une question.|Pido la cuenta.|Je demande l'addition.|Pregunto la hora.|Je demande l'heure.
+saberconocer|2|saber,sé,sabes,sabe,sabemos,saben|conocer,conozco,conoces,conoce,conocemos,conocen|saber / conocer|Saber : un fait, une information, savoir faire. Conocer : une personne, un lieu.|Sé nadar.|Je sais nager.|Conozco a tu hermano.|Je connais ton frère.
+porpara|3|para|por|para / por|Para : but, destinataire, échéance. Por : cause, passage, échange.|Trabajo para una empresa.|Je travaille pour une entreprise.|Gracias por tu ayuda.|Merci pour ton aide.
+traerllevar|3|traer,traigo,traes,trae,traemos,traen,trajo|llevar,llevo,llevas,lleva,llevamos,llevan,llevó|traer / llevar|Traer : vers l'endroit où l'on est. Llevar : vers un autre endroit.|Trae pan, por favor.|Apporte du pain, s'il te plaît.|Llevo a los niños a la escuela.|J'emmène les enfants à l'école.
+sinopero|4|sino|pero|sino / pero|Sino corrige après une négation (pas ceci, mais cela) ; pero ajoute une opposition.|No es caro, sino barato.|Ce n'est pas cher, c'est bon marché.|Es caro, pero bueno.|C'est cher, mais bon.
+-- va
+serestar|2|és,soc,ets,són,som,era|està,estic,estàs,estan,estem,estava|ser / estar|Ser : identité, caractéristique durable, origine. Estar : état passager, résultat.|És metge.|Il est médecin.|Està cansat.|Il est fatigué.
+hayesta|2|hi ha|està,estan|hi ha / està|Hi ha présente quelque chose de nouveau (il y a). Està situe quelque chose de connu.|Hi ha un banc prop d'ací.|Il y a une banque près d'ici.|El banc està prop d'ací.|La banque est près d'ici.
+pedirpreg|2|demanar,demane,demanes,demana,demanem,demanen|preguntar,pregunte,preguntes,pregunta,preguntem,pregunten|demanar / preguntar|Demanar : demander quelque chose (un objet, un service). Preguntar : poser une question.|Demane el compte.|Je demande l'addition.|Pregunte l'hora.|Je demande l'heure.
+saberconocer|2|saber,sé,saps,sap,sabem,saben|conéixer,conec,coneixes,coneix,coneixem,coneixen|saber / conéixer|Saber : un fait, une information, savoir faire. Conéixer : une personne, un lieu.|Sé nadar.|Je sais nager.|Conec el teu germà.|Je connais ton frère.
+anarvenir|3|vindre,vinc,vens,ve,venim,venen,vine|anar,vaig,vas,anem,van|vindre / anar|Vindre : vers l'endroit où l'on est. Anar : vers un autre endroit.|Vine a casa!|Viens à la maison !|Vaig a l'oficina.|Je vais au bureau.
+perpera|3|per a|per|per a / per|Per a : but, destinataire. Per : cause, passage, échange.|Treballe per a una empresa.|Je travaille pour une entreprise.|Gràcies per la teua ajuda.|Merci pour ton aide.
+sinopero|4|sinó|però|sinó / però|Sinó corrige après une négation (pas ceci, mais cela) ; però ajoute une opposition.|No és car, sinó barat.|Ce n'est pas cher, c'est bon marché.|És car, però bo.|C'est cher, mais bon.
+-- ca
+serestar|2|és,sóc,ets,són,som,era|està,estic,estàs,estan,estem,estava|ser / estar|Ser : identité, caractéristique durable, origine. Estar : état passager, résultat.|És metge.|Il est médecin.|Està cansat.|Il est fatigué.
+hayesta|2|hi ha|està,estan|hi ha / està|Hi ha présente quelque chose de nouveau (il y a). Està situe quelque chose de connu.|Hi ha un banc a prop.|Il y a une banque près d'ici.|El banc està a prop.|La banque est près d'ici.
+pedirpreg|2|demanar,demano,demanes,demana,demanem,demanen|preguntar,pregunto,preguntes,pregunta,preguntem,pregunten|demanar / preguntar|Demanar : demander quelque chose (un objet, un service). Preguntar : poser une question.|Demano el compte.|Je demande l'addition.|Pregunto l'hora.|Je demande l'heure.
+saberconocer|2|saber,sé,saps,sap,sabem,saben|conèixer,conec,coneixes,coneix,coneixem,coneixen|saber / conèixer|Saber : un fait, une information, savoir faire. Conèixer : une personne, un lieu.|Sé nedar.|Je sais nager.|Conec el teu germà.|Je connais ton frère.
+anarvenir|3|venir,vinc,vens,ve,venim,venen,vine|anar,vaig,vas,anem,van|venir / anar|Venir : vers l'endroit où l'on est. Anar : vers un autre endroit.|Vine a casa!|Viens à la maison !|Vaig a l'oficina.|Je vais au bureau.
+perpera|3|per a|per|per a / per|Per a : but, destinataire. Per : cause, passage, échange.|Treballo per a una empresa.|Je travaille pour une entreprise.|Gràcies per la teva ajuda.|Merci pour ton aide.
+sinopero|5|sinó|però|sinó / però|Sinó corrige après une négation (pas ceci, mais cela) ; però ajoute une opposition.|No és car, sinó barat.|Ce n'est pas cher, c'est bon marché.|És car, però bo.|C'est cher, mais bon.
+-- gl
+serestar|2|é,son,es,somos,era,foi|está,estou,estás,están,estamos,estaba|ser / estar|Ser : identité, caractéristique durable, origine. Estar : état passager, résultat.|É médico.|Il est médecin.|Está canso.|Il est fatigué.
+hayesta|2|hai|está,están|hai / está|Hai présente quelque chose de nouveau (il y a). Está situe quelque chose de connu.|Hai un banco preto.|Il y a une banque près d'ici.|O banco está preto.|La banque est près d'ici.
+muymucho|2|moi|moito,moita,moitos,moitas|moi / moito|Moi devant un adjectif ou un adverbe ; moito avec un nom ou après un verbe.|É moi caro.|C'est très cher.|Traballa moito.|Il travaille beaucoup.
+pedirpreg|2|pedir,pido,pides,pide,pedimos,piden,pedín,pediu|preguntar,pregunto,preguntas,pregunta,preguntamos,preguntan,preguntei,preguntou|pedir / preguntar|Pedir : demander quelque chose (un objet, un service). Preguntar : poser une question.|Pido a conta.|Je demande l'addition.|Pregunto a hora.|Je demande l'heure.
+saberconocer|2|saber,sei,sabes,sabe,sabemos,saben|coñecer,coñezo,coñeces,coñece,coñecemos,coñecen|saber / coñecer|Saber : un fait, une information, savoir faire. Coñecer : une personne, un lieu.|Sei nadar.|Je sais nager.|Coñezo o teu irmán.|Je connais ton frère.
+anarvenir|3|vir,veño,vés,vén,vimos,veñen,ven|ir,vou,vas,imos,van|vir / ir|Vir : vers l'endroit où l'on est. Ir : vers un autre endroit.|Ven á casa!|Viens à la maison !|Vou á oficina.|Je vais au bureau.
+traerllevar|3|traer,traio,traes,trae,traemos,traen,trouxo|levar,levo,levas,leva,levamos,levan,levou|traer / levar|Traer : vers l'endroit où l'on est. Levar : vers un autre endroit.|Trae pan, por favor.|Apporte du pain, s'il te plaît.|Levo os nenos ao colexio.|J'emmène les enfants à l'école.
+sinopero|5|senón|pero|senón / pero|Senón corrige après une négation (pas ceci, mais cela) ; pero ajoute une opposition.|Non é caro, senón barato.|Ce n'est pas cher, c'est bon marché.|É caro, pero bo.|C'est cher, mais bon.
+-- eu
+izanegon|2|da,naiz,zara,dira,gara,zen|dago,nago,zaude,daude,gaude,zegoen|izan / egon|Izan : identité, caractéristique durable. Egon : état passager, lieu.|Medikua da.|Il est médecin.|Nekatuta dago.|Il est fatigué.
+ninik|2|ni|nik|ni / nik|Ni : sujet d'un verbe sans complément d'objet (naiz, nago). Nik (ergatif) : sujet d'un verbe avec complément d'objet (dut, dakit).|Ni medikua naiz.|Je suis médecin.|Nik kafe bat nahi dut.|Je veux un café.
+zuzuk|2|zu|zuk|zu / zuk|Zu : sujet d'un verbe sans complément d'objet (zara, zaude). Zuk (ergatif) : sujet d'un verbe avec complément d'objet (duzu, dakizu).|Zu medikua zara.|Tu es médecin.|Zuk kafea nahi duzu?|Tu veux un café ?
+nahibehar|2|nahi|behar|nahi / behar|Nahi : vouloir. Behar : devoir, avoir besoin de.|Kafea nahi dut.|Je veux du café.|Lan egin behar dut.|Je dois travailler.
+ran|2|etxera,lanera,hondartzara|etxean,lanean,hondartzan|-ra / -n|-ra : vers un lieu (mouvement). -n : dans un lieu (sans mouvement).|Etxera noa.|Je vais à la maison.|Etxean nago.|Je suis à la maison.
+galdeeska|2|galdetu,galdetzen|eskatu,eskatzen|galdetu / eskatu|Galdetu : poser une question. Eskatu : demander quelque chose (un objet, un service).|Ordua galdetu dut.|J'ai demandé l'heure.|Kontua eskatu dut.|J'ai demandé l'addition.
+bainabaizik|4|baizik|baina|baizik / baina|Baizik corrige après une négation (pas ceci, mais cela) ; baina ajoute une opposition.|Ez da garestia, merkea baizik.|Ce n'est pas cher, c'est bon marché.|Garestia da, baina ona.|C'est cher, mais bon.
