@@ -1,5 +1,6 @@
 # Génération audio reproductible des situations du lot C (branche dédiée audio-gen-c3).
-# Ne publie rien et ne pousse rien : les clips, le rapport et les extraits d'écoute sont rendus comme artefact du job.
+# Ne déploie rien : les clips, le rapport et les extraits d'écoute sont rendus comme artefact du job et poussés sur la branche
+# isolée audio-out-c3 (orpheline, réécrite à chaque essai) ; main, chantier-3 et v/ ne sont jamais modifiés.
 # Modèles téléchargés depuis leurs sources officielles à une révision figée, vérifiés (taille + SHA-256) : audio/modeles.lock.json.
 name: Audio lot C (génération vérifiée)
 on:
@@ -8,7 +9,7 @@ on:
     paths: ["audio/**", "tools/audio_ci/**", ".github/workflows/audio-gen.yml"]
   workflow_dispatch: {}
 permissions:
-  contents: read
+  contents: write  # uniquement pour publier les résultats sur la branche audio-out-c3 (les artefacts ne sont pas téléchargeables depuis l'environnement de Claude)
 concurrency: { group: audio-gen-c3, cancel-in-progress: false }
 jobs:
   audio:
@@ -57,3 +58,10 @@ jobs:
           path: out/
           retention-days: 30
           if-no-files-found: warn
+      - name: Résultats (branche isolée audio-out-c3)
+        if: always()
+        run: |
+          set -euo pipefail
+          test -d out || exit 0
+          cd out && git init -q -b audio-out-c3 && git add -A && git -c user.name=audio-ci -c user.email=audio-ci@users.noreply.github.com commit -qm "Résultats audio lot C — essai ${GITHUB_RUN_NUMBER} (${GITHUB_SHA::7})"
+          git push -q -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" audio-out-c3
