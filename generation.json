@@ -1,0 +1,215 @@
+{
+ "mode": "complet",
+ "voix": {
+  "es_dora": {
+   "demandes": [
+    "Aquí tiene. ¿Algo más?",
+    "El queso es muy bueno hoy.",
+    "Cuesta seis euros.",
+    "Son ocho euros.",
+    "Sí, puede pagar con tarjeta. Gracias, ¡hasta luego!",
+    "No pasa nada.",
+    "El próximo tren sale a las once y media.",
+    "Sí, pero tiene que pagar cinco euros más.",
+    "Sí, claro. ¿Va a volver hoy?",
+    "Muy bien. Aquí tiene su billete. ¡Buen viaje!",
+    "perder el tren",
+    "el próximo tren",
+    "¡Buen viaje!"
+   ],
+   "generes": 13,
+   "echecs": [],
+   "paquets": [
+    "es_dora_g14.mp3"
+   ],
+   "secondes": 41.1
+  },
+  "va_gina": {
+   "demandes": [
+    "Bon dia, què vol?",
+    "Ací té. Alguna cosa més?",
+    "El formatge és molt bo hui.",
+    "Costa sis euros.",
+    "Són huit euros.",
+    "Sí, pot pagar amb targeta. Gràcies, fins després!",
+    "No passa res.",
+    "El pròxim tren ix a les onze i mitja.",
+    "Sí, però ha de pagar cinc euros més.",
+    "Sí, clar. Tornarà hui?",
+    "Molt bé. Ací té el seu bitllet. Bon viatge!",
+    "el pròxim tren"
+   ],
+   "generes": 12,
+   "echecs": [],
+   "paquets": [
+    "va_gina_g9.mp3"
+   ],
+   "secondes": 9.0
+  },
+  "va_lluc": {
+   "demandes": [
+    "Bon dia, què vol?",
+    "Ací té. Alguna cosa més?",
+    "El formatge és molt bo hui.",
+    "Costa sis euros.",
+    "Són huit euros.",
+    "Sí, pot pagar amb targeta. Gràcies, fins després!",
+    "No passa res.",
+    "El pròxim tren ix a les onze i mitja.",
+    "Sí, però ha de pagar cinc euros més.",
+    "Sí, clar. Tornarà hui?",
+    "Molt bé. Ací té el seu bitllet. Bon viatge!",
+    "el pròxim tren"
+   ],
+   "generes": 12,
+   "echecs": [],
+   "paquets": [
+    "va_lluc_g9.mp3"
+   ],
+   "secondes": 4.9
+  },
+  "ca_elia": {
+   "demandes": [
+    "Bon dia, què vol?",
+    "Aquí té. Alguna cosa més?",
+    "El formatge és molt bo avui.",
+    "Costa sis euros.",
+    "Són vuit euros.",
+    "Sí, pot pagar amb targeta. Gràcies, fins després!",
+    "Bon dia, en què el puc ajudar?",
+    "El pròxim tren surt a les onze i mitja.",
+    "Sí, però ha de pagar cinc euros més.",
+    "Sí, és clar. Tornarà avui?",
+    "Molt bé. Aquí té el seu bitllet. Bon viatge!",
+    "el pròxim tren",
+    "Bon viatge!"
+   ],
+   "generes": 13,
+   "echecs": [],
+   "paquets": [
+    "ca_elia_g10.mp3"
+   ],
+   "secondes": 5.3
+  },
+  "ca_grau": {
+   "demandes": [
+    "Bon dia, què vol?",
+    "Aquí té. Alguna cosa més?",
+    "El formatge és molt bo avui.",
+    "Costa sis euros.",
+    "Són vuit euros.",
+    "Sí, pot pagar amb targeta. Gràcies, fins després!",
+    "Bon dia, en què el puc ajudar?",
+    "El pròxim tren surt a les onze i mitja.",
+    "Sí, però ha de pagar cinc euros més.",
+    "Sí, és clar. Tornarà avui?",
+    "Molt bé. Aquí té el seu bitllet. Bon viatge!",
+    "el pròxim tren",
+    "Bon viatge!"
+   ],
+   "generes": 13,
+   "echecs": [],
+   "paquets": [
+    "ca_grau_g10.mp3"
+   ],
+   "secondes": 5.5
+  },
+  "gl_a": {
+   "demandes": [
+    "Bos días, que desexa?",
+    "Aquí ten. Algo máis?",
+    "O queixo é moi bo hoxe.",
+    "Custa seis euros.",
+    "Son oito euros.",
+    "Si, pode pagar con tarxeta. Grazas, ata logo!",
+    "Bos días, en que podo axudalo?",
+    "O próximo tren sae ás once e media.",
+    "Si, pero ten que pagar cinco euros máis.",
+    "Si, claro. Vai volver hoxe?",
+    "Moi ben. Aquí ten o seu billete. Boa viaxe!",
+    "perder o tren",
+    "o próximo tren",
+    "Boa viaxe!"
+   ],
+   "generes": 14,
+   "echecs": [],
+   "paquets": [
+    "gl_a_g12.mp3"
+   ],
+   "secondes": 17.3
+  },
+  "gl_b": {
+   "demandes": [
+    "Bos días, que desexa?",
+    "Aquí ten. Algo máis?",
+    "O queixo é moi bo hoxe.",
+    "Custa seis euros.",
+    "Son oito euros.",
+    "Si, pode pagar con tarxeta. Grazas, ata logo!",
+    "Bos días, en que podo axudalo?",
+    "O próximo tren sae ás once e media.",
+    "Si, pero ten que pagar cinco euros máis.",
+    "Si, claro. Vai volver hoxe?",
+    "Moi ben. Aquí ten o seu billete. Boa viaxe!",
+    "perder o tren",
+    "o próximo tren",
+    "Boa viaxe!"
+   ],
+   "generes": 14,
+   "echecs": [],
+   "paquets": [
+    "gl_b_g23.mp3"
+   ],
+   "secondes": 16.1
+  },
+  "gl_c": {
+   "demandes": [
+    "Bos días, que desexa?",
+    "Aquí ten. Algo máis?",
+    "O queixo é moi bo hoxe.",
+    "Custa seis euros.",
+    "Son oito euros.",
+    "Si, pode pagar con tarxeta. Grazas, ata logo!",
+    "Bos días, en que podo axudalo?",
+    "O próximo tren sae ás once e media.",
+    "Si, pero ten que pagar cinco euros máis.",
+    "Si, claro. Vai volver hoxe?",
+    "Moi ben. Aquí ten o seu billete. Boa viaxe!",
+    "perder o tren",
+    "o próximo tren",
+    "Boa viaxe!"
+   ],
+   "generes": 14,
+   "echecs": [],
+   "paquets": [
+    "gl_c_g22.mp3"
+   ],
+   "secondes": 16.9
+  },
+  "eu_antton": {
+   "demandes": [
+    "Egun on, zer nahi duzu?",
+    "Hemen duzu. Beste zerbait?",
+    "Gazta ona da.",
+    "Sei euro balio du.",
+    "Zortzi euro dira.",
+    "Eskerrik asko. Gero arte!",
+    "Egun on, zertan lagun zaitzaket?",
+    "Hurrengo trena hamaika eta erdietan irteten da.",
+    "Bai, baina bost euro gehiago ordaindu behar duzu.",
+    "Bai, noski. Gaur itzuliko zara?",
+    "Oso ondo. Hemen duzu zure txartela. Bidaia ona!",
+    "trena galdu",
+    "hurrengo trena",
+    "txartela",
+    "Bidaia ona!"
+   ],
+   "generes": 15,
+   "echecs": [],
+   "paquets": [
+    "eu_antton_g10.mp3"
+   ],
+   "secondes": 30.7
+  }
+ }
+}

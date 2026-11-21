@@ -1,0 +1,1540 @@
+{
+ "identite": {
+  "es_dora": {
+   "refs": [
+    "Un kilo de naranjas, por favor.",
+    "Tengo dolor de cabeza.",
+    "Queramos o no, las cosas han cambiado.",
+    "Tengo miedo del perro."
+   ],
+   "dist": {
+    "es_laura": 27.67,
+    "es_dora": 12.04
+   },
+   "f0_gen": 183.1,
+   "f0_app": {
+    "es_laura": 186.9,
+    "es_dora": 175.0
+   },
+   "verdict": "identique"
+  },
+  "va_gina": {
+   "refs": [
+    "Ja és tard, toque el dos.",
+    "si tinguera diners",
+    "Reconec que em vaig equivocar.",
+    "Mengem en un restaurant."
+   ],
+   "dist": {
+    "va_gina": 11.82,
+    "va_lluc": 31.31
+   },
+   "f0_gen": 221.6,
+   "f0_app": {
+    "va_gina": 189.3,
+    "va_lluc": 153.1
+   },
+   "verdict": "identique"
+  },
+  "va_lluc": {
+   "refs": [
+    "Ja és tard, toque el dos.",
+    "si tinguera diners",
+    "Reconec que em vaig equivocar.",
+    "Mengem en un restaurant."
+   ],
+   "dist": {
+    "va_gina": 30.29,
+    "va_lluc": 10.69
+   },
+   "f0_gen": 157.8,
+   "f0_app": {
+    "va_gina": 189.3,
+    "va_lluc": 153.1
+   },
+   "verdict": "identique"
+  },
+  "ca_elia": {
+   "refs": [
+    "Reconec que em vaig equivocar.",
+    "Mengem en un restaurant.",
+    "Qui va a Sevilla, perd la cadira",
+    "Ahir en Daniel no va anar a treballar perquè estava malalt."
+   ],
+   "dist": {
+    "ca_elia": 11.65,
+    "ca_grau": 33.36
+   },
+   "f0_gen": 183.0,
+   "f0_app": {
+    "ca_elia": 185.3,
+    "ca_grau": 118.2
+   },
+   "verdict": "identique"
+  },
+  "ca_grau": {
+   "refs": [
+    "Reconec que em vaig equivocar.",
+    "Mengem en un restaurant.",
+    "Qui va a Sevilla, perd la cadira",
+    "Ahir en Daniel no va anar a treballar perquè estava malalt."
+   ],
+   "dist": {
+    "ca_elia": 32.89,
+    "ca_grau": 11.8
+   },
+   "f0_gen": 118.2,
+   "f0_app": {
+    "ca_elia": 185.3,
+    "ca_grau": 118.2
+   },
+   "verdict": "identique"
+  },
+  "gl_a": {
+   "refs": [
+    "Quero que pagues",
+    "Despois de comermos, fomos pasear",
+    "O ministro afirmou que a situación mellorará.",
+    "O banco concedeulle un préstamo para abrir o bar."
+   ],
+   "dist": {
+    "gl_b": 31.3,
+    "gl_c": 23.6,
+    "gl_a": 13.6
+   },
+   "f0_gen": 87.1,
+   "f0_app": {
+    "gl_b": 239.7,
+    "gl_c": 103.5,
+    "gl_a": 116.7
+   },
+   "verdict": "identique"
+  },
+  "gl_b": {
+   "refs": [
+    "Quero que pagues",
+    "Despois de comermos, fomos pasear",
+    "O ministro afirmou que a situación mellorará.",
+    "O banco concedeulle un préstamo para abrir o bar."
+   ],
+   "dist": {
+    "gl_b": 14.26,
+    "gl_c": 29.33,
+    "gl_a": 31.2
+   },
+   "f0_gen": 220.0,
+   "f0_app": {
+    "gl_b": 239.7,
+    "gl_c": 103.5,
+    "gl_a": 116.7
+   },
+   "verdict": "identique"
+  },
+  "gl_c": {
+   "refs": [
+    "Quero que pagues",
+    "Despois de comermos, fomos pasear",
+    "O ministro afirmou que a situación mellorará.",
+    "O banco concedeulle un préstamo para abrir o bar."
+   ],
+   "dist": {
+    "gl_b": 29.94,
+    "gl_c": 12.02,
+    "gl_a": 23.99
+   },
+   "f0_gen": 111.7,
+   "f0_app": {
+    "gl_b": 239.7,
+    "gl_c": 103.5,
+    "gl_a": 116.7
+   },
+   "verdict": "identique"
+  },
+  "eu_antton": {
+   "refs": [
+    "beldur izaten nintzen",
+    "Elkarteak diru-laguntza publiko bat jaso du.",
+    "Ez da hitz egiteko une egokia.",
+    "barre egin dute"
+   ],
+   "dist": {
+    "eu_antton": 12.82
+   },
+   "f0_gen": 129.0,
+   "f0_app": {
+    "eu_antton": 131.7
+   },
+   "verdict": "identique",
+   "seuil": 18.93
+  }
+ },
+ "galicien": null,
+ "clips": {
+  "es_dora": {
+   "reference_s_par_car": 0.087,
+   "clips": [
+    {
+     "texte": "Aquí tiene. ¿Algo más?",
+     "duree": 1.62,
+     "s_par_car": 0.074,
+     "pic": 0.68,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "El queso es muy bueno hoy.",
+     "duree": 2.01,
+     "s_par_car": 0.077,
+     "pic": 0.72,
+     "silences": [
+      0.12,
+      0.21
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Cuesta seis euros.",
+     "duree": 1.46,
+     "s_par_car": 0.081,
+     "pic": 0.71,
+     "silences": [
+      0.12,
+      0.21
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Son ocho euros.",
+     "duree": 1.33,
+     "s_par_car": 0.089,
+     "pic": 0.7,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Sí, puede pagar con tarjeta. Gracias, ¡hasta luego!",
+     "duree": 3.13,
+     "s_par_car": 0.061,
+     "pic": 0.85,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "No pasa nada.",
+     "duree": 1.28,
+     "s_par_car": 0.098,
+     "pic": 0.72,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "El próximo tren sale a las once y media.",
+     "duree": 2.59,
+     "s_par_car": 0.065,
+     "pic": 0.71,
+     "silences": [
+      0.12,
+      0.21
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Sí, pero tiene que pagar cinco euros más.",
+     "duree": 2.66,
+     "s_par_car": 0.065,
+     "pic": 0.69,
+     "silences": [
+      0.12,
+      0.18
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Sí, claro. ¿Va a volver hoy?",
+     "duree": 1.85,
+     "s_par_car": 0.066,
+     "pic": 0.72,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Muy bien. Aquí tiene su billete. ¡Buen viaje!",
+     "duree": 2.74,
+     "s_par_car": 0.061,
+     "pic": 0.71,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "perder el tren",
+     "duree": 1.18,
+     "s_par_car": 0.084,
+     "pic": 0.68,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "el próximo tren",
+     "duree": 1.33,
+     "s_par_car": 0.089,
+     "pic": 0.73,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "¡Buen viaje!",
+     "duree": 1.1,
+     "s_par_car": 0.091,
+     "pic": 0.71,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    }
+   ]
+  },
+  "va_gina": {
+   "reference_s_par_car": 0.081,
+   "clips": [
+    {
+     "texte": "Bon dia, què vol?",
+     "duree": 1.2,
+     "s_par_car": 0.071,
+     "pic": 0.73,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Ací té. Alguna cosa més?",
+     "duree": 1.91,
+     "s_par_car": 0.079,
+     "pic": 0.73,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "El formatge és molt bo hui.",
+     "duree": 1.7,
+     "s_par_car": 0.063,
+     "pic": 0.7,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Costa sis euros.",
+     "duree": 1.25,
+     "s_par_car": 0.078,
+     "pic": 0.71,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Són huit euros.",
+     "duree": 1.1,
+     "s_par_car": 0.073,
+     "pic": 0.72,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Sí, pot pagar amb targeta. Gràcies, fins després!",
+     "duree": 3.29,
+     "s_par_car": 0.067,
+     "pic": 0.73,
+     "silences": [
+      0.12,
+      0.21
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "No passa res.",
+     "duree": 1.02,
+     "s_par_car": 0.078,
+     "pic": 0.7,
+     "silences": [
+      0.12,
+      0.21
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "El pròxim tren ix a les onze i mitja.",
+     "duree": 2.3,
+     "s_par_car": 0.062,
+     "pic": 0.71,
+     "silences": [
+      0.12,
+      0.18
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Sí, però ha de pagar cinc euros més.",
+     "duree": 2.22,
+     "s_par_car": 0.062,
+     "pic": 0.67,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Sí, clar. Tornarà hui?",
+     "duree": 1.52,
+     "s_par_car": 0.069,
+     "pic": 0.72,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Molt bé. Ací té el seu bitllet. Bon viatge!",
+     "duree": 2.72,
+     "s_par_car": 0.063,
+     "pic": 0.75,
+     "silences": [
+      0.12,
+      0.18
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "el pròxim tren",
+     "duree": 1.15,
+     "s_par_car": 0.082,
+     "pic": 0.74,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    }
+   ]
+  },
+  "va_lluc": {
+   "reference_s_par_car": 0.082,
+   "clips": [
+    {
+     "texte": "Bon dia, què vol?",
+     "duree": 1.25,
+     "s_par_car": 0.074,
+     "pic": 0.73,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Ací té. Alguna cosa més?",
+     "duree": 1.88,
+     "s_par_car": 0.078,
+     "pic": 0.69,
+     "silences": [
+      0.12,
+      0.18
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "El formatge és molt bo hui.",
+     "duree": 1.7,
+     "s_par_car": 0.063,
+     "pic": 0.7,
+     "silences": [
+      0.12,
+      0.18
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Costa sis euros.",
+     "duree": 1.36,
+     "s_par_car": 0.085,
+     "pic": 0.72,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Són huit euros.",
+     "duree": 1.12,
+     "s_par_car": 0.075,
+     "pic": 0.71,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Sí, pot pagar amb targeta. Gràcies, fins després!",
+     "duree": 3.42,
+     "s_par_car": 0.07,
+     "pic": 0.73,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "No passa res.",
+     "duree": 1.1,
+     "s_par_car": 0.084,
+     "pic": 0.71,
+     "silences": [
+      0.12,
+      0.18
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "El pròxim tren ix a les onze i mitja.",
+     "duree": 2.46,
+     "s_par_car": 0.066,
+     "pic": 0.7,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Sí, però ha de pagar cinc euros més.",
+     "duree": 2.43,
+     "s_par_car": 0.067,
+     "pic": 0.71,
+     "silences": [
+      0.12,
+      0.18
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Sí, clar. Tornarà hui?",
+     "duree": 1.72,
+     "s_par_car": 0.078,
+     "pic": 0.72,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Molt bé. Ací té el seu bitllet. Bon viatge!",
+     "duree": 2.9,
+     "s_par_car": 0.067,
+     "pic": 0.75,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "el pròxim tren",
+     "duree": 1.15,
+     "s_par_car": 0.082,
+     "pic": 0.73,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    }
+   ]
+  },
+  "ca_elia": {
+   "reference_s_par_car": 0.08,
+   "clips": [
+    {
+     "texte": "Bon dia, què vol?",
+     "duree": 1.31,
+     "s_par_car": 0.077,
+     "pic": 0.73,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Aquí té. Alguna cosa més?",
+     "duree": 2.04,
+     "s_par_car": 0.082,
+     "pic": 0.73,
+     "silences": [
+      0.12,
+      0.18
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "El formatge és molt bo avui.",
+     "duree": 1.72,
+     "s_par_car": 0.062,
+     "pic": 0.71,
+     "silences": [
+      0.12,
+      0.16
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Costa sis euros.",
+     "duree": 1.33,
+     "s_par_car": 0.083,
+     "pic": 0.72,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Són vuit euros.",
+     "duree": 1.23,
+     "s_par_car": 0.082,
+     "pic": 0.69,
+     "silences": [
+      0.12,
+      0.18
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Sí, pot pagar amb targeta. Gràcies, fins després!",
+     "duree": 3.6,
+     "s_par_car": 0.074,
+     "pic": 0.7,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Bon dia, en què el puc ajudar?",
+     "duree": 2.01,
+     "s_par_car": 0.067,
+     "pic": 0.69,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "El pròxim tren surt a les onze i mitja.",
+     "duree": 2.35,
+     "s_par_car": 0.06,
+     "pic": 0.7,
+     "silences": [
+      0.12,
+      0.18
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Sí, però ha de pagar cinc euros més.",
+     "duree": 2.27,
+     "s_par_car": 0.063,
+     "pic": 0.7,
+     "silences": [
+      0.12,
+      0.21
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Sí, és clar. Tornarà avui?",
+     "duree": 1.91,
+     "s_par_car": 0.073,
+     "pic": 0.7,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Molt bé. Aquí té el seu bitllet. Bon viatge!",
+     "duree": 3.03,
+     "s_par_car": 0.069,
+     "pic": 0.7,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "el pròxim tren",
+     "duree": 1.23,
+     "s_par_car": 0.088,
+     "pic": 0.71,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Bon viatge!",
+     "duree": 0.97,
+     "s_par_car": 0.088,
+     "pic": 0.7,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    }
+   ]
+  },
+  "ca_grau": {
+   "reference_s_par_car": 0.078,
+   "clips": [
+    {
+     "texte": "Bon dia, què vol?",
+     "duree": 1.25,
+     "s_par_car": 0.074,
+     "pic": 0.73,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Aquí té. Alguna cosa més?",
+     "duree": 1.99,
+     "s_par_car": 0.079,
+     "pic": 0.72,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "El formatge és molt bo avui.",
+     "duree": 1.91,
+     "s_par_car": 0.068,
+     "pic": 0.73,
+     "silences": [
+      0.12,
+      0.21
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Costa sis euros.",
+     "duree": 1.23,
+     "s_par_car": 0.077,
+     "pic": 0.71,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Són vuit euros.",
+     "duree": 1.2,
+     "s_par_car": 0.08,
+     "pic": 0.71,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Sí, pot pagar amb targeta. Gràcies, fins després!",
+     "duree": 3.81,
+     "s_par_car": 0.078,
+     "pic": 0.75,
+     "silences": [
+      0.12,
+      0.21
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Bon dia, en què el puc ajudar?",
+     "duree": 1.99,
+     "s_par_car": 0.066,
+     "pic": 0.78,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "El pròxim tren surt a les onze i mitja.",
+     "duree": 2.48,
+     "s_par_car": 0.064,
+     "pic": 0.7,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Sí, però ha de pagar cinc euros més.",
+     "duree": 2.35,
+     "s_par_car": 0.065,
+     "pic": 0.72,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Sí, és clar. Tornarà avui?",
+     "duree": 1.88,
+     "s_par_car": 0.072,
+     "pic": 0.7,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Molt bé. Aquí té el seu bitllet. Bon viatge!",
+     "duree": 3.03,
+     "s_par_car": 0.069,
+     "pic": 0.72,
+     "silences": [
+      0.12,
+      0.21
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "el pròxim tren",
+     "duree": 1.23,
+     "s_par_car": 0.088,
+     "pic": 0.7,
+     "silences": [
+      0.12,
+      0.21
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Bon viatge!",
+     "duree": 0.89,
+     "s_par_car": 0.081,
+     "pic": 0.74,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    }
+   ]
+  },
+  "gl_a": {
+   "reference_s_par_car": 0.092,
+   "clips": [
+    {
+     "texte": "Bos días, que desexa?",
+     "duree": 1.41,
+     "s_par_car": 0.067,
+     "pic": 0.72,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Aquí ten. Algo máis?",
+     "duree": 2.25,
+     "s_par_car": 0.112,
+     "pic": 0.71,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "O queixo é moi bo hoxe.",
+     "duree": 1.44,
+     "s_par_car": 0.062,
+     "pic": 0.7,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Custa seis euros.",
+     "duree": 1.31,
+     "s_par_car": 0.077,
+     "pic": 0.71,
+     "silences": [
+      0.12,
+      0.21
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Son oito euros.",
+     "duree": 1.28,
+     "s_par_car": 0.085,
+     "pic": 0.71,
+     "silences": [
+      0.11,
+      0.18
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Si, pode pagar con tarxeta. Grazas, ata logo!",
+     "duree": 3.71,
+     "s_par_car": 0.082,
+     "pic": 0.71,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Bos días, en que podo axudalo?",
+     "duree": 1.83,
+     "s_par_car": 0.061,
+     "pic": 0.72,
+     "silences": [
+      0.12,
+      0.17
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "O próximo tren sae ás once e media.",
+     "duree": 2.22,
+     "s_par_car": 0.063,
+     "pic": 0.73,
+     "silences": [
+      0.12,
+      0.18
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Si, pero ten que pagar cinco euros máis.",
+     "duree": 2.38,
+     "s_par_car": 0.059,
+     "pic": 0.71,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Si, claro. Vai volver hoxe?",
+     "duree": 2.4,
+     "s_par_car": 0.089,
+     "pic": 0.74,
+     "silences": [
+      0.11,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Moi ben. Aquí ten o seu billete. Boa viaxe!",
+     "duree": 4.02,
+     "s_par_car": 0.094,
+     "pic": 0.73,
+     "silences": [
+      0.13,
+      0.21
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "perder o tren",
+     "duree": 0.97,
+     "s_par_car": 0.074,
+     "pic": 0.73,
+     "silences": [
+      0.12,
+      0.22
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "o próximo tren",
+     "duree": 1.2,
+     "s_par_car": 0.086,
+     "pic": 0.71,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Boa viaxe!",
+     "duree": 0.91,
+     "s_par_car": 0.091,
+     "pic": 0.73,
+     "silences": [
+      0.12,
+      0.22
+     ],
+     "problemes": []
+    }
+   ]
+  },
+  "gl_b": {
+   "reference_s_par_car": 0.091,
+   "clips": [
+    {
+     "texte": "Bos días, que desexa?",
+     "duree": 1.46,
+     "s_par_car": 0.07,
+     "pic": 0.73,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Aquí ten. Algo máis?",
+     "duree": 2.35,
+     "s_par_car": 0.118,
+     "pic": 0.72,
+     "silences": [
+      0.11,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "O queixo é moi bo hoxe.",
+     "duree": 1.65,
+     "s_par_car": 0.072,
+     "pic": 0.71,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Custa seis euros.",
+     "duree": 1.33,
+     "s_par_car": 0.078,
+     "pic": 0.74,
+     "silences": [
+      0.12,
+      0.18
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Son oito euros.",
+     "duree": 1.36,
+     "s_par_car": 0.091,
+     "pic": 0.75,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Si, pode pagar con tarxeta. Grazas, ata logo!",
+     "duree": 3.89,
+     "s_par_car": 0.086,
+     "pic": 0.74,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Bos días, en que podo axudalo?",
+     "duree": 1.99,
+     "s_par_car": 0.066,
+     "pic": 0.74,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "O próximo tren sae ás once e media.",
+     "duree": 2.43,
+     "s_par_car": 0.069,
+     "pic": 0.69,
+     "silences": [
+      0.12,
+      0.18
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Si, pero ten que pagar cinco euros máis.",
+     "duree": 2.43,
+     "s_par_car": 0.061,
+     "pic": 0.72,
+     "silences": [
+      0.12,
+      0.21
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Si, claro. Vai volver hoxe?",
+     "duree": 2.56,
+     "s_par_car": 0.095,
+     "pic": 0.73,
+     "silences": [
+      0.12,
+      0.21
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Moi ben. Aquí ten o seu billete. Boa viaxe!",
+     "duree": 4.21,
+     "s_par_car": 0.098,
+     "pic": 0.69,
+     "silences": [
+      0.12,
+      0.18
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "perder o tren",
+     "duree": 1.04,
+     "s_par_car": 0.08,
+     "pic": 0.72,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "o próximo tren",
+     "duree": 1.18,
+     "s_par_car": 0.084,
+     "pic": 0.71,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Boa viaxe!",
+     "duree": 1.04,
+     "s_par_car": 0.104,
+     "pic": 0.71,
+     "silences": [
+      0.12,
+      0.18
+     ],
+     "problemes": []
+    }
+   ]
+  },
+  "gl_c": {
+   "reference_s_par_car": 0.09,
+   "clips": [
+    {
+     "texte": "Bos días, que desexa?",
+     "duree": 1.46,
+     "s_par_car": 0.07,
+     "pic": 0.68,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Aquí ten. Algo máis?",
+     "duree": 2.3,
+     "s_par_car": 0.115,
+     "pic": 0.7,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "O queixo é moi bo hoxe.",
+     "duree": 1.52,
+     "s_par_car": 0.066,
+     "pic": 0.69,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Custa seis euros.",
+     "duree": 1.25,
+     "s_par_car": 0.074,
+     "pic": 0.69,
+     "silences": [
+      0.12,
+      0.18
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Son oito euros.",
+     "duree": 1.18,
+     "s_par_car": 0.078,
+     "pic": 0.7,
+     "silences": [
+      0.11,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Si, pode pagar con tarxeta. Grazas, ata logo!",
+     "duree": 3.66,
+     "s_par_car": 0.081,
+     "pic": 0.75,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Bos días, en que podo axudalo?",
+     "duree": 1.96,
+     "s_par_car": 0.065,
+     "pic": 0.71,
+     "silences": [
+      0.12,
+      0.18
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "O próximo tren sae ás once e media.",
+     "duree": 2.06,
+     "s_par_car": 0.059,
+     "pic": 0.7,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Si, pero ten que pagar cinco euros máis.",
+     "duree": 2.43,
+     "s_par_car": 0.061,
+     "pic": 0.71,
+     "silences": [
+      0.12,
+      0.21
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Si, claro. Vai volver hoxe?",
+     "duree": 2.56,
+     "s_par_car": 0.095,
+     "pic": 0.74,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Moi ben. Aquí ten o seu billete. Boa viaxe!",
+     "duree": 4.23,
+     "s_par_car": 0.098,
+     "pic": 0.72,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "perder o tren",
+     "duree": 0.97,
+     "s_par_car": 0.074,
+     "pic": 0.71,
+     "silences": [
+      0.12,
+      0.21
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "o próximo tren",
+     "duree": 1.18,
+     "s_par_car": 0.084,
+     "pic": 0.72,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Boa viaxe!",
+     "duree": 0.99,
+     "s_par_car": 0.099,
+     "pic": 0.71,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    }
+   ]
+  },
+  "eu_antton": {
+   "reference_s_par_car": 0.116,
+   "clips": [
+    {
+     "texte": "Egun on, zer nahi duzu?",
+     "duree": 2.01,
+     "s_par_car": 0.087,
+     "pic": 0.72,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Hemen duzu. Beste zerbait?",
+     "duree": 2.82,
+     "s_par_car": 0.109,
+     "pic": 0.82,
+     "silences": [
+      0.12,
+      0.21
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Gazta ona da.",
+     "duree": 1.2,
+     "s_par_car": 0.092,
+     "pic": 0.71,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Sei euro balio du.",
+     "duree": 1.38,
+     "s_par_car": 0.077,
+     "pic": 0.72,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Zortzi euro dira.",
+     "duree": 1.54,
+     "s_par_car": 0.091,
+     "pic": 0.72,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Eskerrik asko. Gero arte!",
+     "duree": 2.74,
+     "s_par_car": 0.11,
+     "pic": 0.71,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Egun on, zertan lagun zaitzaket?",
+     "duree": 2.51,
+     "s_par_car": 0.078,
+     "pic": 0.71,
+     "silences": [
+      0.12,
+      0.18
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Hurrengo trena hamaika eta erdietan irteten da.",
+     "duree": 2.98,
+     "s_par_car": 0.063,
+     "pic": 0.75,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Bai, baina bost euro gehiago ordaindu behar duzu.",
+     "duree": 2.87,
+     "s_par_car": 0.059,
+     "pic": 0.71,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Bai, noski. Gaur itzuliko zara?",
+     "duree": 3.37,
+     "s_par_car": 0.109,
+     "pic": 0.72,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Oso ondo. Hemen duzu zure txartela. Bidaia ona!",
+     "duree": 5.41,
+     "s_par_car": 0.115,
+     "pic": 0.71,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "trena galdu",
+     "duree": 1.07,
+     "s_par_car": 0.097,
+     "pic": 0.72,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "hurrengo trena",
+     "duree": 1.23,
+     "s_par_car": 0.088,
+     "pic": 0.71,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "txartela",
+     "duree": 0.94,
+     "s_par_car": 0.118,
+     "pic": 0.73,
+     "silences": [
+      0.12,
+      0.18
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Bidaia ona!",
+     "duree": 1.23,
+     "s_par_car": 0.112,
+     "pic": 0.71,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    }
+   ]
+  }
+ },
+ "echecs": []
+}
