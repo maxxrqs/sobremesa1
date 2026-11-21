@@ -64,13 +64,24 @@ def f0(x, sr=SR):
     return float(np.median(out)) if out else 0.0
 
 
+ECOUTE = []
+NOMS = {"es": "castillan", "va": "valencien", "ca": "catalan", "gl": "galicien", "eu": "basque"}
+
+
+def modele_de(voix, cm=None):
+    v = LOCK["voix"][voix]; m = cm or v.get("modele")
+    return {"matxa": f"matxa (locuteur {v.get('locuteur')}, accent {v.get('accent')})", "kokoro": f"kokoro {v.get('voix_kokoro')}"}.get(m, m)
+
+
 def ecoute(nom, morceaux):
+    """morceaux : liste de (octets, étiquette) ; une entrée par fichier dans ecoute/INDEX.md (ordre, texte, voix, source)."""
     os.makedirs(os.path.join(OUT, "ecoute"), exist_ok=True)
-    sil = np.zeros(int(0.8 * SR), np.float32); y = []
-    for b in morceaux:
-        x, sr = decoder(b); y += [x, sil]
+    sil = np.zeros(int(0.8 * SR), np.float32); y = []; t0 = 0.0; seg = []
+    for b, lab in morceaux:
+        x, sr = decoder(b); seg.append(f"{t0:5.1f} s — {lab}"); y += [x, sil]; t0 += (len(x) + len(sil)) / SR
     pcm = (np.clip(np.concatenate(y), -1, 1) * 32767).astype("<i2").tobytes()
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "s16le", "-ar", str(SR), "-ac", "1", "-i", "-", "-b:a", "48k", os.path.join(OUT, "ecoute", nom + ".mp3")], input=pcm, check=True)
+    ECOUTE.append((nom, seg))
 
 
 def references(langue, n=4):
@@ -98,7 +109,8 @@ def identite():
         ok = all(d[voix] * 1.10 < x for x in autres.values()) if autres else None
         c["verdict"] = "identique" if ok else ("à juger (voix seule dans sa langue)" if ok is None else "DIFFÉRENTE")
         R["identite"][voix] = c
-        ecoute("identite_" + voix, [m for t, b in zip(c["refs"][:2], g[:2]) for m in (clip_existant(voix, t), b)])
+        L = NOMS[v["langue"]]
+        ecoute(f"{voix}_comparaison_clip_actuel_puis_regenere", [m for t, b in zip(c["refs"][:2], g[:2]) for m in ((clip_existant(voix, t), f"{L} · {voix} · « {t} » · clip actuel de l'appli"), (b, f"{L} · {voix} · « {t} » · régénéré par {modele_de(voix)}"))])
         if ok is False: echec(f"identité : {voix} ne ressemble pas à sa voix de l'appli {d}")
     # voix seule dans sa langue (basque) : seuil tiré des voix confirmées identiques des autres langues
     same = [c["dist"][k] for k, c in R["identite"].items() if c["verdict"] == "identique"]
@@ -123,7 +135,7 @@ def galicien():
         rang = sorted(cand, key=lambda cm: M[cm]["dist"][app]); a, b = rang[0], rang[1]
         prop[app] = {"meilleur": a, "distance": M[a]["dist"][app], "suivant": b, "distance_suivant": M[b]["dist"][app],
                      "ecart_relatif": round((M[b]["dist"][app] - M[a]["dist"][app]) / M[a]["dist"][app], 3)}
-        ecoute(f"galicien_{app}_original_puis_candidats", [clip_existant(app, refs[0])] + [G[cm][0] for cm in cand])
+        ecoute(f"gl_{app}_original_puis_6_candidats", [(clip_existant(app, refs[0]), f"galicien · {app} · « {refs[0]} » · clip actuel de l'appli")] + [(G[cm][0], f"galicien · « {refs[0]} » · candidat {cm}") for cm in cand])
     R["galicien"] = {"candidats": cand, "refs": refs, "matrice": {cm: M[cm]["dist"] for cm in cand}, "f0": {cm: M[cm]["f0_gen"] for cm in cand},
                      "f0_app": M[cand[0]]["f0_app"], "proposition": prop,
                      "note": "Proposition à valider par Max : aucune correspondance n'est appliquée automatiquement."}
@@ -168,7 +180,8 @@ def clips():
             if pb: echec(f"{voix} « {t} » : {pb}")
         R["clips"][voix] = {"reference_s_par_car": round(ref, 3), "clips": L}
         if gp["k"]:
-            ecoute("echantillon_" + voix, [open(os.path.join(d, gp["p"][pi]), "rb").read()[o:o + l] for pi, o, l in gp["k"].values()])
+            lg_ = LOCK["voix"][voix]["langue"]
+            ecoute(f"{voix}_nouveaux_textes", [(open(os.path.join(d, gp["p"][pi]), "rb").read()[o:o + l], f"{NOMS[lg_]} · {voix} · « {t} » · nouveau clip, {modele_de(voix)}") for t, (pi, o, l) in gp["k"].items()])
 
 
 def rapport():
@@ -186,6 +199,9 @@ def rapport():
         m += ["", f"F0 des voix de l'appli : {G['f0_app']}", ""] + [f"- **{a}** : {p['meilleur']} ({p['distance']}), puis {p['suivant']} ({p['distance_suivant']}), écart {p['ecart_relatif'] * 100:.0f} %" for a, p in G["proposition"].items()] + ["", G["note"], ""]
     for v, c in R["clips"].items():
         m += [f"## Clips {v}", ""] + [f"- « {x['texte']} » : {x['duree']} s, {x['s_par_car']} s/car (voix {c['reference_s_par_car']}), pic {x['pic']}, silences {x['silences']}{' — ' + '; '.join(x['problemes']) if x['problemes'] else ' — conforme'}" for x in c["clips"]] + [""]
+    if ECOUTE:
+        m += ["## Extraits d'écoute (dossier ecoute/)", ""]
+        for nom, seg in ECOUTE: m += [f"### {nom}.mp3", ""] + [f"- {x}" for x in seg] + [""]
     open(os.path.join(OUT, "rapport.md"), "w", encoding="utf-8").write("\n".join(m))
     json.dump(R, open(os.path.join(OUT, "rapport.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 

@@ -39,8 +39,9 @@ def main():
     T = textes_situations(); res = {"mode": PLAN["mode"], "voix": {}}
     for voix in PLAN["voix"]:
         v = LOCK["voix"][voix]
-        if v.get("statut") != "confirme" or (v["moteur"] == "ahotts" and not v.get("modele")):
-            raise Arret(f"VOIX NON CONFIRMÉE : {voix} (statut {v.get('statut')}) — génération refusée")
+        ok = v.get("statut") == "confirme" or (v.get("statut") == "provisoire" and PLAN["mode"] == "echantillon")
+        if not ok or (v["moteur"] == "ahotts" and not v.get("modele")):
+            raise Arret(f"VOIX NON CONFIRMÉE : {voix} (statut {v.get('statut')}, mode {PLAN['mode']}) — génération refusée")
         miss = manquants(voix, T.get(v["langue"], []))
         if PLAN["mode"] == "echantillon":
             # échantillon représentatif : la réplique la plus longue, la plus courte et un mot « À retenir » (ordre stable)

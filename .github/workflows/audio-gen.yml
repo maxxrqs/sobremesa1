@@ -1,6 +1,6 @@
 # Génération audio reproductible des situations du lot C (branche dédiée audio-gen-c3).
-# Ne déploie rien : les clips, le rapport et les extraits d'écoute sont rendus comme artefact du job et poussés sur la branche
-# isolée audio-out-c3 (orpheline, réécrite à chaque essai) ; main, chantier-3 et v/ ne sont jamais modifiés.
+# Ne déploie rien : les clips, le rapport et les extraits d'écoute sont rendus comme artefact du job et poussés sur une branche
+# isolée audio-out-c3… nommée dans audio/plan.json (orpheline) ; main, chantier-3 et v/ ne sont jamais modifiés.
 # Modèles téléchargés depuis leurs sources officielles à une révision figée, vérifiés (taille + SHA-256) : audio/modeles.lock.json.
 name: Audio lot C (génération vérifiée)
 on:
@@ -58,10 +58,11 @@ jobs:
           path: out/
           retention-days: 30
           if-no-files-found: warn
-      - name: Résultats (branche isolée audio-out-c3)
+      - name: Résultats (branche isolée audio-out-c3…, propre à chaque plan)
         if: always()
         run: |
           set -euo pipefail
           test -d out || exit 0
-          cd out && git init -q -b audio-out-c3 && git add -A && git -c user.name=audio-ci -c user.email=audio-ci@users.noreply.github.com commit -qm "Résultats audio lot C — essai ${GITHUB_RUN_NUMBER} (${GITHUB_SHA::7})"
-          git push -q -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" audio-out-c3
+          B=$(python -c "import json;print(json.load(open('audio/plan.json'))['branche_resultats'])"); case "$B" in audio-out-c3*) ;; *) echo "BRANCHE DE RÉSULTATS REFUSÉE : $B"; exit 1;; esac
+          cd out && git init -q -b "$B" && git add -A && git -c user.name=audio-ci -c user.email=audio-ci@users.noreply.github.com commit -qm "Résultats audio lot C — essai ${GITHUB_RUN_NUMBER} (${GITHUB_SHA::7})"
+          git push -q -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" "$B"
