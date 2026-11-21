@@ -1,0 +1,41 @@
+{
+ "mode": "echantillon",
+ "voix": {
+  "gl_a": {
+   "demandes": [
+    "Si, pode pagar con tarxeta. Grazas, ata logo!",
+    "Boa viaxe!"
+   ],
+   "generes": 2,
+   "echecs": [],
+   "paquets": [
+    "gl_a_g12.mp3"
+   ],
+   "secondes": 4.2
+  },
+  "gl_b": {
+   "demandes": [
+    "Si, pode pagar con tarxeta. Grazas, ata logo!",
+    "Boa viaxe!"
+   ],
+   "generes": 2,
+   "echecs": [],
+   "paquets": [
+    "gl_b_g23.mp3"
+   ],
+   "secondes": 2.9
+  },
+  "gl_c": {
+   "demandes": [
+    "Si, pode pagar con tarxeta. Grazas, ata logo!",
+    "Boa viaxe!"
+   ],
+   "generes": 2,
+   "echecs": [],
+   "paquets": [
+    "gl_c_g22.mp3"
+   ],
+   "secondes": 2.6
+  }
+ }
+}
