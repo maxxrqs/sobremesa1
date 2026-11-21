@@ -1,0 +1,90 @@
+{
+ "mode": "echantillon",
+ "voix": {
+  "es_laura": {
+   "demandes": [
+    "Sí, puede pagar con tarjeta. Gracias, ¡hasta luego!",
+    "¡Buen viaje!"
+   ],
+   "generes": 2,
+   "echecs": [],
+   "paquets": [
+    "es_laura_g7.mp3"
+   ],
+   "secondes": 4.8
+  },
+  "es_dora": {
+   "demandes": [
+    "Sí, puede pagar con tarjeta. Gracias, ¡hasta luego!",
+    "¡Buen viaje!"
+   ],
+   "generes": 2,
+   "echecs": [],
+   "paquets": [
+    "es_dora_g14.mp3"
+   ],
+   "secondes": 5.2
+  },
+  "va_gina": {
+   "demandes": [
+    "Sí, pot pagar amb targeta. Gràcies, fins després!",
+    "No passa res."
+   ],
+   "generes": 2,
+   "echecs": [],
+   "paquets": [
+    "va_gina_g9.mp3"
+   ],
+   "secondes": 3.4
+  },
+  "va_lluc": {
+   "demandes": [
+    "Sí, pot pagar amb targeta. Gràcies, fins després!",
+    "No passa res."
+   ],
+   "generes": 2,
+   "echecs": [],
+   "paquets": [
+    "va_lluc_g9.mp3"
+   ],
+   "secondes": 0.4
+  },
+  "ca_elia": {
+   "demandes": [
+    "Sí, pot pagar amb targeta. Gràcies, fins després!",
+    "Bon viatge!"
+   ],
+   "generes": 2,
+   "echecs": [],
+   "paquets": [
+    "ca_elia_g10.mp3"
+   ],
+   "secondes": 0.4
+  },
+  "ca_grau": {
+   "demandes": [
+    "Sí, pot pagar amb targeta. Gràcies, fins després!",
+    "Bon viatge!"
+   ],
+   "generes": 2,
+   "echecs": [],
+   "paquets": [
+    "ca_grau_g10.mp3"
+   ],
+   "secondes": 0.4
+  },
+  "eu_antton": {
+   "demandes": [
+    "Bai, baina bost euro gehiago ordaindu behar duzu.",
+    "trena galdu",
+    "txartela"
+   ],
+   "generes": 3,
+   "echecs": [],
+   "paquets": [
+    "eu_antton_g10.mp3"
+   ],
+   "secondes": 4.2
+  }
+ }
+}

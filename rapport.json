@@ -1,0 +1,417 @@
+{
+ "identite": {
+  "es_laura": {
+   "refs": [
+    "Un kilo de naranjas, por favor.",
+    "Tengo dolor de cabeza.",
+    "Queramos o no, las cosas han cambiado.",
+    "Tengo miedo del perro."
+   ],
+   "dist": {
+    "es_laura": 14.11,
+    "es_dora": 26.09
+   },
+   "f0_gen": 190.2,
+   "f0_app": {
+    "es_laura": 186.9,
+    "es_dora": 175.0
+   },
+   "verdict": "identique"
+  },
+  "es_dora": {
+   "refs": [
+    "Un kilo de naranjas, por favor.",
+    "Tengo dolor de cabeza.",
+    "Queramos o no, las cosas han cambiado.",
+    "Tengo miedo del perro."
+   ],
+   "dist": {
+    "es_laura": 27.69,
+    "es_dora": 12.38
+   },
+   "f0_gen": 182.3,
+   "f0_app": {
+    "es_laura": 186.9,
+    "es_dora": 175.0
+   },
+   "verdict": "identique"
+  },
+  "va_gina": {
+   "refs": [
+    "Ja és tard, toque el dos.",
+    "si tinguera diners",
+    "Reconec que em vaig equivocar.",
+    "Mengem en un restaurant."
+   ],
+   "dist": {
+    "va_gina": 11.72,
+    "va_lluc": 30.79
+   },
+   "f0_gen": 220.0,
+   "f0_app": {
+    "va_gina": 189.3,
+    "va_lluc": 153.1
+   },
+   "verdict": "identique"
+  },
+  "va_lluc": {
+   "refs": [
+    "Ja és tard, toque el dos.",
+    "si tinguera diners",
+    "Reconec que em vaig equivocar.",
+    "Mengem en un restaurant."
+   ],
+   "dist": {
+    "va_gina": 30.07,
+    "va_lluc": 11.23
+   },
+   "f0_gen": 157.5,
+   "f0_app": {
+    "va_gina": 189.3,
+    "va_lluc": 153.1
+   },
+   "verdict": "identique"
+  },
+  "ca_elia": {
+   "refs": [
+    "Reconec que em vaig equivocar.",
+    "Mengem en un restaurant.",
+    "Qui va a Sevilla, perd la cadira",
+    "Ahir en Daniel no va anar a treballar perquè estava malalt."
+   ],
+   "dist": {
+    "ca_elia": 10.9,
+    "ca_grau": 33.29
+   },
+   "f0_gen": 183.0,
+   "f0_app": {
+    "ca_elia": 185.3,
+    "ca_grau": 118.2
+   },
+   "verdict": "identique"
+  },
+  "ca_grau": {
+   "refs": [
+    "Reconec que em vaig equivocar.",
+    "Mengem en un restaurant.",
+    "Qui va a Sevilla, perd la cadira",
+    "Ahir en Daniel no va anar a treballar perquè estava malalt."
+   ],
+   "dist": {
+    "ca_elia": 32.82,
+    "ca_grau": 11.85
+   },
+   "f0_gen": 118.5,
+   "f0_app": {
+    "ca_elia": 185.3,
+    "ca_grau": 118.2
+   },
+   "verdict": "identique"
+  },
+  "eu_antton": {
+   "refs": [
+    "beldur izaten nintzen",
+    "Elkarteak diru-laguntza publiko bat jaso du.",
+    "Ez da hitz egiteko une egokia.",
+    "barre egin dute"
+   ],
+   "dist": {
+    "eu_antton": 13.28
+   },
+   "f0_gen": 129.3,
+   "f0_app": {
+    "eu_antton": 131.7
+   },
+   "verdict": "identique",
+   "seuil": 20.1
+  }
+ },
+ "galicien": {
+  "candidats": [
+   "hitz_gl_brais",
+   "hitz_gl_celtia",
+   "hitz_gl_iago",
+   "hitz_gl_icia",
+   "hitz_gl_paulo",
+   "hitz_gl_sabela"
+  ],
+  "refs": [
+   "Quero que pagues",
+   "Despois de comermos, fomos pasear",
+   "O ministro afirmou que a situación mellorará.",
+   "O banco concedeulle un préstamo para abrir o bar."
+  ],
+  "matrice": {
+   "hitz_gl_brais": {
+    "gl_b": 29.56,
+    "gl_c": 29.17,
+    "gl_a": 30.14
+   },
+   "hitz_gl_celtia": {
+    "gl_b": 14.83,
+    "gl_c": 29.34,
+    "gl_a": 30.82
+   },
+   "hitz_gl_iago": {
+    "gl_b": 31.23,
+    "gl_c": 23.53,
+    "gl_a": 14.31
+   },
+   "hitz_gl_icia": {
+    "gl_b": 26.11,
+    "gl_c": 29.53,
+    "gl_a": 33.91
+   },
+   "hitz_gl_paulo": {
+    "gl_b": 29.76,
+    "gl_c": 11.67,
+    "gl_a": 23.53
+   },
+   "hitz_gl_sabela": {
+    "gl_b": 25.84,
+    "gl_c": 30.32,
+    "gl_a": 34.58
+   }
+  },
+  "f0": {
+   "hitz_gl_brais": 165.8,
+   "hitz_gl_celtia": 220.6,
+   "hitz_gl_iago": 91.0,
+   "hitz_gl_icia": 238.4,
+   "hitz_gl_paulo": 108.9,
+   "hitz_gl_sabela": 210.0
+  },
+  "f0_app": {
+   "gl_b": 239.7,
+   "gl_c": 103.5,
+   "gl_a": 116.7
+  },
+  "proposition": {
+   "gl_a": {
+    "meilleur": "hitz_gl_iago",
+    "distance": 14.31,
+    "suivant": "hitz_gl_paulo",
+    "distance_suivant": 23.53,
+    "ecart_relatif": 0.644
+   },
+   "gl_b": {
+    "meilleur": "hitz_gl_celtia",
+    "distance": 14.83,
+    "suivant": "hitz_gl_sabela",
+    "distance_suivant": 25.84,
+    "ecart_relatif": 0.742
+   },
+   "gl_c": {
+    "meilleur": "hitz_gl_paulo",
+    "distance": 11.67,
+    "suivant": "hitz_gl_iago",
+    "distance_suivant": 23.53,
+    "ecart_relatif": 1.016
+   }
+  },
+  "note": "Proposition à valider par Max : aucune correspondance n'est appliquée automatiquement."
+ },
+ "clips": {
+  "es_laura": {
+   "reference_s_par_car": 0.09,
+   "clips": [
+    {
+     "texte": "Sí, puede pagar con tarjeta. Gracias, ¡hasta luego!",
+     "duree": 3.79,
+     "s_par_car": 0.074,
+     "pic": 0.7,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "¡Buen viaje!",
+     "duree": 1.07,
+     "s_par_car": 0.089,
+     "pic": 0.77,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    }
+   ]
+  },
+  "es_dora": {
+   "reference_s_par_car": 0.087,
+   "clips": [
+    {
+     "texte": "Sí, puede pagar con tarjeta. Gracias, ¡hasta luego!",
+     "duree": 3.13,
+     "s_par_car": 0.061,
+     "pic": 0.73,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "¡Buen viaje!",
+     "duree": 1.1,
+     "s_par_car": 0.091,
+     "pic": 0.71,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    }
+   ]
+  },
+  "va_gina": {
+   "reference_s_par_car": 0.081,
+   "clips": [
+    {
+     "texte": "Sí, pot pagar amb targeta. Gràcies, fins després!",
+     "duree": 3.29,
+     "s_par_car": 0.067,
+     "pic": 0.79,
+     "silences": [
+      0.12,
+      0.21
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "No passa res.",
+     "duree": 0.99,
+     "s_par_car": 0.076,
+     "pic": 0.7,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    }
+   ]
+  },
+  "va_lluc": {
+   "reference_s_par_car": 0.082,
+   "clips": [
+    {
+     "texte": "Sí, pot pagar amb targeta. Gràcies, fins després!",
+     "duree": 3.42,
+     "s_par_car": 0.07,
+     "pic": 0.76,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "No passa res.",
+     "duree": 1.1,
+     "s_par_car": 0.084,
+     "pic": 0.7,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    }
+   ]
+  },
+  "ca_elia": {
+   "reference_s_par_car": 0.08,
+   "clips": [
+    {
+     "texte": "Sí, pot pagar amb targeta. Gràcies, fins després!",
+     "duree": 3.6,
+     "s_par_car": 0.074,
+     "pic": 0.73,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Bon viatge!",
+     "duree": 0.97,
+     "s_par_car": 0.088,
+     "pic": 0.75,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    }
+   ]
+  },
+  "ca_grau": {
+   "reference_s_par_car": 0.078,
+   "clips": [
+    {
+     "texte": "Sí, pot pagar amb targeta. Gràcies, fins després!",
+     "duree": 3.81,
+     "s_par_car": 0.078,
+     "pic": 0.76,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Bon viatge!",
+     "duree": 0.89,
+     "s_par_car": 0.081,
+     "pic": 0.66,
+     "silences": [
+      0.12,
+      0.18
+     ],
+     "problemes": []
+    }
+   ]
+  },
+  "eu_antton": {
+   "reference_s_par_car": 0.116,
+   "clips": [
+    {
+     "texte": "Bai, baina bost euro gehiago ordaindu behar duzu.",
+     "duree": 2.85,
+     "s_par_car": 0.058,
+     "pic": 0.72,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "trena galdu",
+     "duree": 1.04,
+     "s_par_car": 0.095,
+     "pic": 0.72,
+     "silences": [
+      0.12,
+      0.18
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "txartela",
+     "duree": 0.94,
+     "s_par_car": 0.118,
+     "pic": 0.72,
+     "silences": [
+      0.12,
+      0.18
+     ],
+     "problemes": []
+    }
+   ]
+  }
+ },
+ "echecs": []
+}
