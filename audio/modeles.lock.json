@@ -109,7 +109,8 @@
       "moteur": "ahotts",
       "langue": "es",
       "modele": "hitz_es_laura",
-      "statut": "confirme"
+      "statut": "suspendu_licence",
+      "note": "2026-11-21 : données ELRA-S0309 (TC-STAR Spanish Baseline Female Speech Database) sous licence ELRA END USER (non commercial, payante) / ELRA VAR (commercial) ; conditions du contrat non consultées et portée sur la voix synthétique ambiguë → aucune nouvelle génération tant que Max n'a pas tranché"
     },
     "es_dora": {
       "moteur": "kokoro",
@@ -162,7 +163,7 @@
       "langue": "gl",
       "modele": "hitz_gl_iago",
       "ancien_fichier": "vits__17_",
-      "statut": "provisoire",
+      "statut": "confirme",
       "candidats": [
         "hitz_gl_brais",
         "hitz_gl_celtia",
@@ -171,14 +172,14 @@
         "hitz_gl_paulo",
         "hitz_gl_sabela"
       ],
-      "note": "correspondance autorisée à l'essai le 2026-11-21 (distance acoustique la plus faible), à confirmer après écoute humaine ; génération limitée au mode échantillon"
+      "note": "correspondance validée par Max le 2026-11-21 pour la production des 10 situations (sans écoute humaine préalable ; distance acoustique la plus faible)"
     },
     "gl_b": {
       "moteur": "ahotts",
       "langue": "gl",
       "modele": "hitz_gl_celtia",
       "ancien_fichier": "vits__16_",
-      "statut": "provisoire",
+      "statut": "confirme",
       "candidats": [
         "hitz_gl_brais",
         "hitz_gl_celtia",
@@ -187,14 +188,14 @@
         "hitz_gl_paulo",
         "hitz_gl_sabela"
       ],
-      "note": "correspondance autorisée à l'essai le 2026-11-21 (distance acoustique la plus faible), à confirmer après écoute humaine ; génération limitée au mode échantillon"
+      "note": "correspondance validée par Max le 2026-11-21 pour la production des 10 situations (sans écoute humaine préalable ; distance acoustique la plus faible)"
     },
     "gl_c": {
       "moteur": "ahotts",
       "langue": "gl",
       "modele": "hitz_gl_paulo",
       "ancien_fichier": "vits__19_",
-      "statut": "provisoire",
+      "statut": "confirme",
       "candidats": [
         "hitz_gl_brais",
         "hitz_gl_celtia",
@@ -203,7 +204,7 @@
         "hitz_gl_paulo",
         "hitz_gl_sabela"
       ],
-      "note": "correspondance autorisée à l'essai le 2026-11-21 (distance acoustique la plus faible), à confirmer après écoute humaine ; génération limitée au mode échantillon"
+      "note": "correspondance validée par Max le 2026-11-21 pour la production des 10 situations (sans écoute humaine préalable ; distance acoustique la plus faible)"
     }
   },
   "traitement": {
