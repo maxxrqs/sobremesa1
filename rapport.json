@@ -1,0 +1,44 @@
+{
+ "identite": {
+  "gl_c": {
+   "refs": [
+    "Quero que pagues",
+    "Despois de comermos, fomos pasear",
+    "O ministro afirmou que a situación mellorará.",
+    "O banco concedeulle un préstamo para abrir o bar."
+   ],
+   "dist": {
+    "gl_b": 29.25,
+    "gl_c": 11.87,
+    "gl_a": 23.67
+   },
+   "f0_gen": 111.7,
+   "f0_app": {
+    "gl_b": 239.7,
+    "gl_c": 103.5,
+    "gl_a": 116.7
+   },
+   "verdict": "identique"
+  }
+ },
+ "galicien": null,
+ "clips": {
+  "gl_c": {
+   "reference_s_par_car": 0.084,
+   "clips": [
+    {
+     "texte": "Que mágoa.",
+     "duree": 0.73,
+     "s_par_car": 0.073,
+     "pic": 0.71,
+     "silences": [
+      0.12,
+      0.18
+     ],
+     "problemes": []
+    }
+   ]
+  }
+ },
+ "echecs": []
+}

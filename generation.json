@@ -1,0 +1,16 @@
+{
+ "mode": "complet",
+ "voix": {
+  "gl_c": {
+   "demandes": [
+    "Que mágoa."
+   ],
+   "generes": 1,
+   "echecs": [],
+   "paquets": [
+    "gl_c_g25.mp3"
+   ],
+   "secondes": 1.9
+  }
+ }
+}
