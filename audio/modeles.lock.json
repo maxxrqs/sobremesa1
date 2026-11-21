@@ -1,0 +1,34 @@
+{
+  "_lisez_moi": "Références exactes des moteurs et modèles de voix de Sobremesa. Chaque fichier est vérifié (taille + SHA-256) avant usage ; toute divergence ou source inaccessible arrête la génération. Une voix sans modèle confirmé (repo null) ne peut pas être générée.",
+  "outils": {
+    "ahotts": {"git": "https://github.com/hitz-zentroa/aHoTTS", "commit": "db56c5dd27a692b76cd23f7d784c9c465f6a9a18", "licence": "Apache-2.0"},
+    "minimal_tts_api": {"git": "https://github.com/langtech-bsc/minimal-tts-api", "commit": "b0084b203100b83ace8dfd2fde09fd18eb875e18", "licence": "voir dépôt (code d'inférence Matxa de référence)"},
+    "espeak_ng": {"git": "https://github.com/projecte-aina/espeak-ng", "commit": "7d3266e2430a7529766b18901d26db34b6963c83", "branche": "dev-ca", "licence": "GPL-3.0"}
+  },
+  "modeles": {
+    "hitz_es_laura": {"hf": "HiTZ/TTS-es_laura", "revision": "ca2ebab922b93ec3fdd185fc91f9e3cfbf8c2f8d", "fichier": "vits.onnx", "taille": 113473278, "sha256": "435db0e72c5a713a760ea07f844022e1a4be51296ab97c1040dd2ecf497d3f31", "licence": "Apache-2.0 (modèle) ; voix issue de ELRA-S0309"},
+    "hitz_eu_antton": {"hf": "HiTZ/TTS-eu_antton", "revision": "55a8b9259027f3344602936d3ae5373c7372d0bd", "fichier": "vits.onnx", "taille": 113474814, "sha256": "c049d4bf573f05abd005c49d3a319d1a4387cb3acaebe367a910682e55a3424b", "licence": "Apache-2.0 (modèle) ; données CC BY 4.0"},
+    "hitz_gl_brais": {"hf": "HiTZ/TTS-gl_brais", "revision": "988889bbd977ca426dfbe7c51dc1a1f5c5e4b34c", "fichier": "vits.onnx", "taille": 60333923, "sha256": "3bacbd045acd61cea1fde0c88828a321f93e16b6fd83af445e5cdaa954bb9dcc", "licence": "Apache-2.0 ; données Nos_Brais-GL CC BY 4.0"},
+    "hitz_gl_celtia": {"hf": "HiTZ/TTS-gl_celtia", "revision": "905c1f9251f437f04c69358fb3918cc601eda7c5", "fichier": "vits.onnx", "taille": 60333923, "sha256": "b72696ea5f0386d15d0de2ade19de900b7138f8847f8fb0e8ecfec643d1cc3df", "licence": "Apache-2.0 ; données Nos_Celtia-GL CC BY 4.0"},
+    "hitz_gl_iago": {"hf": "HiTZ/TTS-gl_iago", "revision": "70d6a32bb3ca21c539b4cb4d44a9a8c2686920ee", "fichier": "vits.onnx", "taille": 60333923, "sha256": "55e704f0cc2365ef95c615497a9faab4669d0fc1195d9f336f9b223a244030a3", "licence": "Apache-2.0 ; données CRPIH_UVigo-GL-Voices CC BY 4.0"},
+    "hitz_gl_icia": {"hf": "HiTZ/TTS-gl_icia", "revision": "fa19a359818c3ababa88cda0244046f15dbe41eb", "fichier": "vits.onnx", "taille": 60333923, "sha256": "8b3adf96c28bd6c0a73878bf8bdd2fa6db3b9a6a2c30ef1e20cd7a42a8cb0eaa", "licence": "Apache-2.0 ; données CRPIH_UVigo-GL-Voices CC BY 4.0"},
+    "hitz_gl_paulo": {"hf": "HiTZ/TTS-gl_paulo", "revision": "763205f89bdde686f4c8cc6d77e55d1c5316a7fc", "fichier": "vits.onnx", "taille": 60333923, "sha256": "e3f7093ba0e0b3d7abeb7996541544a106807a4930e533f0f71299e143dc8401", "licence": "Apache-2.0 ; données CRPIH_UVigo-GL-Voices CC BY 4.0"},
+    "hitz_gl_sabela": {"hf": "HiTZ/TTS-gl_sabela", "revision": "574ece65e9aeed6b7b04d9c66ccff7381c2090eb", "fichier": "vits.onnx", "taille": 60333923, "sha256": "b7df43263c2eefffa79b841431d542957c8c6478b41448be679ef36036087f22", "licence": "Apache-2.0 ; données CRPIH_UVigo-GL-Voices CC BY 4.0"},
+    "matxa": {"hf": "projecte-aina/matxa-tts-cat-multiaccent", "revision": "3197e253f147cf9e39106bf47d8505c9004065cc", "fichier": "matxa_multiaccent_wavenext_e2e.onnx", "taille": 140975037, "sha256": "e84f76ca4527a862018e2a8e166d81f116d631aa21daed3edc7d7531da777c76", "licence": "GPL-3.0 ; usage non commercial et recherche, usage commercial soumis à licence des voix (langtech@bsc.es)"},
+    "kokoro": {"url": "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/kokoro-v1.0.onnx", "taille": 325532387, "sha256": "7d5df8ecf7d4b1878015a32686053fd0eebe2bc377234608764cc0ef3636a6c5", "licence": "Apache-2.0"},
+    "kokoro_voix": {"url": "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/voices-v1.0.bin", "taille": 28214398, "sha256": "bca610b8308e8d99f32e6fe4197e7ec01679264efed0cac9140fe9c29f1fbf7d", "licence": "Apache-2.0"}
+  },
+  "voix": {
+    "es_laura": {"moteur": "ahotts", "langue": "es", "modele": "hitz_es_laura", "statut": "confirme"},
+    "es_dora": {"moteur": "kokoro", "langue": "es", "modele": "kokoro", "voix_kokoro": "ef_dora", "vitesse": 1.0, "statut": "confirme"},
+    "va_gina": {"moteur": "matxa", "langue": "va", "modele": "matxa", "accent": "valencia", "locuteur": 7, "statut": "confirme"},
+    "va_lluc": {"moteur": "matxa", "langue": "va", "modele": "matxa", "accent": "valencia", "locuteur": 6, "statut": "confirme"},
+    "ca_elia": {"moteur": "matxa", "langue": "ca", "modele": "matxa", "accent": "central", "locuteur": 3, "statut": "confirme"},
+    "ca_grau": {"moteur": "matxa", "langue": "ca", "modele": "matxa", "accent": "central", "locuteur": 2, "statut": "confirme"},
+    "eu_antton": {"moteur": "ahotts", "langue": "eu", "modele": "hitz_eu_antton", "statut": "confirme"},
+    "gl_a": {"moteur": "ahotts", "langue": "gl", "modele": null, "ancien_fichier": "vits__17_", "statut": "a_confirmer", "candidats": ["hitz_gl_brais", "hitz_gl_celtia", "hitz_gl_iago", "hitz_gl_icia", "hitz_gl_paulo", "hitz_gl_sabela"]},
+    "gl_b": {"moteur": "ahotts", "langue": "gl", "modele": null, "ancien_fichier": "vits__16_", "statut": "a_confirmer", "candidats": ["hitz_gl_brais", "hitz_gl_celtia", "hitz_gl_iago", "hitz_gl_icia", "hitz_gl_paulo", "hitz_gl_sabela"]},
+    "gl_c": {"moteur": "ahotts", "langue": "gl", "modele": null, "ancien_fichier": "vits__19_", "statut": "a_confirmer", "candidats": ["hitz_gl_brais", "hitz_gl_celtia", "hitz_gl_iago", "hitz_gl_icia", "hitz_gl_paulo", "hitz_gl_sabela"]}
+  },
+  "traitement": {"seuil_decoupe": 0.02, "marge_avant": 0.01, "marge_apres": 0.04, "niveau": 0.75, "silence_avant": 0.06, "silence_apres": 0.14, "ffmpeg": ["-ac", "1", "-ar", "22050", "-codec:a", "libmp3lame", "-b:a", "32k", "-write_xing", "0", "-id3v2_version", "0"], "paquet_max": 4800000, "matxa": {"temperature": 0.2, "length_scale": 0.89}}
+}
