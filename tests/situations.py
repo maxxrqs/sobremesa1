@@ -31,7 +31,7 @@ with sync_playwright() as p:
             s.st.forEach((st,i)=>{n++;if(st.k!=='T')bad.push(s.id+' type '+st.k);if(st.o.length!==3||st.o.includes(st.m)||new Set(st.o).size!==3)bad.push(s.id+i+' fausses');
               if(!st.i)bad.push(s.id+i+' consigne');const w=EV.raw(st.m).split(' ');st.kw.forEach(k=>{if(!w.includes(EV.raw(k)))bad.push(s.id+i+' mot-clé '+k)});
               if(!st.ks.length)bad.push(s.id+i+' aucune notion repérée');
-              sitTx({st:[st]}).forEach(([t,fr])=>{const q=pqRank(t,fr);if(q.r===Infinity||q.bad.length)bad.push(s.id+i+' inconnu « '+t+' » '+q.bad.join(','));else if(q.r>pqEnd(s.l))bad.push(s.id+i+' hors niveau « '+t+' » '+q.r)})});
+              sitTx({st:[st]}).forEach(([t,fr])=>{const q=pqRank(t,fr,1);if(q.r===Infinity||q.bad.length)bad.push(s.id+i+' inconnu « '+t+' » '+q.bad.join(','));else if(q.r>pqEnd(s.l))bad.push(s.id+i+' hors niveau « '+t+' » '+q.r)})});
             if(!s.v.length)bad.push(s.id+' à retenir vide')});
           return {n:ss.length,a1:ss.filter(s=>s.l===1).length,a2:ss.filter(s=>s.l===2).length,st:n,bad}}""",l)
         ck(f"{l} : {d['n']} situations (A1 {d['a1']}, A2 {d['a2']}, {d['st']} échanges), notions introduites au niveau et repérées",d["n"]>0 and not d["bad"],d["bad"][:8])
@@ -112,6 +112,30 @@ with sync_playwright() as p:
                     if m:bad.append(f"{l}/{sid}/{i} français : {m.group(0)}")
         ck(f"interface {ui} : écrans de situation sans défilement à 360 × 640 et entièrement traduits",not bad,bad[:6])
     pg.evaluate("()=>{UI='fr'}")
+    # 7b. langue d'interface : rang, place, ouverture et accès identiques dans les 5 interfaces ; situations validées à leur place d'origine
+    J5="""async ()=>{await trLoad(UI);const o={};for(const l of ["es","va","ca","gl","eu"]){for(const k in SITLAY)delete SITLAY[k];immP(l).forEach(s=>delete s.rk);
+      for(const L of [1,2]){SET_(l,L);const pl=pathPlanMain(),us=pl.units,ss=immP(l).filter(s=>s.l===L),sig=[];
+        o[l+L+'place']=pl.flat.filter(x=>x.sit).map(x=>x.sit+'@'+us.findIndex(u=>u.steps.includes(x))).sort().join(' ');
+        for(const u of us){const st=u.steps.filter(x=>!x.opt&&!x.test&&x.rk!=null);if(st.length)sig.push(ss.filter(s=>sitOK(s,Math.max(...st.map(x=>x.rk)),new Set())).length)}
+        let acc=0;for(const x of pl.flat.filter(y=>y.sit)){S.pth={};pl.flat.forEach(y=>{if(!y.opt&&!y.test&&y.rk!=null&&y.rk<=x.rk)S.pth[pthK(y.id)]=8});const it=pathItems().find(y=>y.id===x.id);if(it&&!it.lock){IM=null;pstart(x.id);if(IM&&IM.pid===x.id)acc++}}
+        S.pth={};IM=null;o[l+L+'ouv']=sig.join(',');o[l+L+'acc']=acc}
+      o[l+'rk']=immP(l).map(s=>s.id+':'+sitRk(s)).join(' ')}
+      return [UI,o]}"""
+    R5={}
+    for loc in ["fr-FR","en-US","it-IT","de-DE","pt-PT"]:
+        c5=b.new_context(viewport={"width":360,"height":640},locale=loc);p5=c5.new_page();p5.on("pageerror",lambda e:ERR.append(str(e)));p5.goto(BASE+"castellano.html");p5.wait_for_timeout(2500);p5.evaluate(H)
+        ui,o=p5.evaluate(J5);R5[ui]=o;c5.close()
+    ref=R5.get("fr",{})
+    ck("interfaces "+"/".join(R5)+" : rang, place, ouverture et accès des 120 situations identiques à l'interface française",len(R5)==5 and all(o==ref for o in R5.values()),{u:[k for k in o if o[k]!=ref.get(k)][:6] for u,o in R5.items() if o!=ref})
+    tot=sum(len(ref.get(l+str(L)+"place","").split()) for l in LANGS for L in (1,2));acc=sum(ref.get(l+str(L)+"acc",0) for l in LANGS for L in (1,2))
+    lv=[x for l in LANGS for L in (1,2) for x in ref.get(l+str(L)+"place","").split() if x.split("@")[0][1]!=str(L)]
+    ck(f"120 situations placées dans leur niveau et réellement lançables depuis le parcours ({tot} placées, {acc} lancées)",tot==120 and acc==120 and not lv,lv[:6])
+    CAS={"es":["a1panaderia","a1mesa","a1piso","a1medico","a1compra","a1perdido","a2quedar"],"va":["a1piso","a1tienda","a1compra","a2ropa"],"ca":["a1tienda","a1piso","a1compra"],"gl":["a1tienda"]}
+    badc=[f"{l}/{sid}" for l,ids in CAS.items() for sid in ids if not any(x.startswith(sid+"@") for x in ref.get(l+sid[1]+"place","").split())]
+    ck("cas signalés au bilan (es « le », « genial » ; va « emporte », « sis-cents » ; ca « moment », « cinquanta » ; gl « momento ») placés dans leur niveau dans les 5 interfaces",not badc,badc)
+    ORIG={"es":(22,23),"va":(21,23),"ca":(22,23),"gl":(21,22),"eu":(18,14)}
+    bo=[f"{l} {sid} u{u}≠u{exp}" for l,(u1,u2) in ORIG.items() for sid,exp in (("a1mercado",u1),("a2tren",u2)) for x in ref.get(l+sid[1]+"place","").split() if x.startswith(sid+"@") for u in [int(x.split("@")[1])] if u!=exp]
+    ck("situations validées avant le lot C à leur emplacement d'origine (a1mercado es u22, va u21, ca u22, gl u21, eu u18 ; a2tren inchangé)",not bo,bo)
     # 8. non-régression : scènes A1 guidées, conversation IA intacte
     d=pg.evaluate("""()=>{SET_('es',1);scnStart(0);const a=typeof SC!=='undefined'&&!!SC;S.mode='im';home();return {a,cv:typeof cvPrompt==='function'&&CVS.length===10}}""")
     ck("scènes A1 guidées toujours lancées, conversation IA présente",d["a"] and d["cv"],d)

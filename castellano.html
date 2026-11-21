@@ -1535,8 +1535,8 @@ var XDIRTY=1;function xens(){if(XDIRTY){XDIRTY=0;xbuild()}}
 let D={},PH=[],TX=[],ALL=[];
 function build(){
   const k=LK.indexOf(lg());D={};PH=[];TX=[];
-  RW.trim().split("\n").forEach(l=>{const c=l.split("|");(D[c[0]]=D[c[0]]||[]).push([c[3+k],gl(c[2]),+c[1]])});
-  RP.trim().split("\n").forEach(l=>{const c=l.split("|");PH.push([c[2+k],gl(c[1]),+c[0]])});
+  RW.trim().split("\n").forEach(l=>{const c=l.split("|"),w=[c[3+k],gl(c[2]),+c[1]];w.f=c[2];(D[c[0]]=D[c[0]]||[]).push(w)});
+  RP.trim().split("\n").forEach(l=>{const c=l.split("|"),x=[c[2+k],gl(c[1]),+c[0]];x.f=c[1];PH.push(x)});
   RT.trim().split("\n").forEach(l=>{const c=l.split("|");TX.push([c[6+k],c.slice(1,6).map(gl).join("|"),+c[0]])});
   ALL=Object.values(D).flat();
   XDIRTY=1;
@@ -5017,10 +5017,10 @@ const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"
 const G=s=>s?gl(s):s;
 function xbuild(){
   const l=lg();EX=[];EQ=[];XP=[];
-  (XC[l]||"").trim().split("\n").forEach(L=>{const f=L.split("|");if(f[0]==="R")EX.push({c:f[1],ts:f[2],t:G(f[2]),r:G(f[3]),e:f[4].split(" ; ").map(x=>{const p=x.split(" = ");return[p[0],G(p.slice(1).join(" = "))]}),n:G(f[5]),l:+f[6]});else if(f[0]==="Q"){/* options en français (pas en langue étudiée) : traduites seulement si les 4 ont une clé */const o=f.slice(3,7),D=UI!=="fr"&&TR[UI],T=D&&o.every(v=>D[v]!=null)?gl:v=>v;EQ.push({c:f[1],q:G(f[2]),k:f[2],as:f[3],a:T(f[3]),w:f.slice(4,7).map(T),x:G(f[7]),l:+f[8]})}});
-  (XE[l]||"").trim().split("\n").forEach(L=>{const f=L.split("|");if(f[0]==="E")XP.push({c:f[1],e:f[2],m:G(f[3]),lit:G(f[4]),x:f[5],xf:G(f[6]),g:G(f[7]),l:+f[8]})});
+  (XC[l]||"").trim().split("\n").forEach(L=>{const f=L.split("|");if(f[0]==="R")EX.push({c:f[1],ts:f[2],t:G(f[2]),r:G(f[3]),r0:f[3],e:f[4].split(" ; ").map(x=>{const p=x.split(" = ");return[p[0],G(p.slice(1).join(" = "))]}),n:G(f[5]),l:+f[6]});else if(f[0]==="Q"){/* options en français (pas en langue étudiée) : traduites seulement si les 4 ont une clé */const o=f.slice(3,7),D=UI!=="fr"&&TR[UI],T=D&&o.every(v=>D[v]!=null)?gl:v=>v;EQ.push({c:f[1],q:G(f[2]),k:f[2],as:f[3],a:T(f[3]),w:f.slice(4,7).map(T),x:G(f[7]),l:+f[8]})}});
+  (XE[l]||"").trim().split("\n").forEach(L=>{const f=L.split("|");if(f[0]==="E")XP.push({c:f[1],e:f[2],m:G(f[3]),m0:f[3],lit:G(f[4]),x:f[5],xf:G(f[6]),g:G(f[7]),l:+f[8]})});
   const k=LK.indexOf(l),seen=new Set();LP=[];
-  REF.forEach(r=>{const w=r.t[k];if(w&&!seen.has(w)){seen.add(w);const rc=[w,gl(r.fr),r.l];rc.c=r.c;rc.s=r.s;LP.push(rc)}});
+  REF.forEach(r=>{const w=r.t[k];if(w&&!seen.has(w)){seen.add(w);const rc=[w,gl(r.fr),r.l];rc.f=r.fr;rc.c=r.c;rc.s=r.s;LP.push(rc)}});
 }
 /* table mot étudié → phrase d'exemple, construite à la demande pour la langue courante */
 let CTXL=null,CTX=new Map();
@@ -5243,15 +5243,16 @@ function pqTenseHint(l,raw){/* temps devinés par la terminaison, pour les verbe
   if(l==="es"){if(/[^aeiou](é|ó)$/.test(w)&&w.length>=4)return"pret";if(/(aste|asteis|aron|ieron|isteis|iste)$/.test(w))return"pret";if(/(aba|abas|ábamos|aban)$/.test(w)||/[^r](ía|ías|íamos|ían)$/.test(w))return"imp";if(/(ría|rías|ríamos|rían)$/.test(w))return"cond";if(/(ré|rás|rá|remos|rán)$/.test(w))return"fut"}
   if(l==="gl"){if(/(aba|abas|abamos|aban)$/.test(w))return"cop";if(/(rei|rás|rá|remos|redes|rán)$/.test(w))return"fut";if(/(ría|rías|riamos|riades|rían)$/.test(w))return"cond";if(/(ou|eu|iu|ei|ín|aron|eron|iron)$/.test(w)&&w.length>=5)return"pret"}
   return null}
-function pqData(){
-  xens();const l=lg(),key=l+"|"+LP.length+"|"+ALL.length+"|"+XP.length+"|"+(typeof UI!=="undefined"?UI:"");if(PQ[key])return PQ[key];
+function pqData(F0){
+  xens();const l=lg(),key=l+"|"+LP.length+"|"+ALL.length+"|"+XP.length+"|"+(F0?"fr0":typeof UI!=="undefined"?UI:"");if(PQ[key])return PQ[key];
+  const RT_=ru=>F0?(ru.ts??ru.t)+" "+(ru.r0??ru.r):ru.t+" "+ru.r,WF_=w=>F0&&w.f!=null?w.f:w[1];
   const E={},TR={},plans={},put=(t,r)=>{if(E[t]==null||E[t]>r)E[t]=r};
   const lad=TLAD[l]||[];(lad[0]||[]).forEach(k=>TR[k]=0);
   for(let L=1;L<=5;L++){const pc=planCore(L);plans[L]=pc;pc.flat.forEach((st,i)=>{const r=L*1000+i;st.rk=r;if(!st.nw)return;
     (st.ws||[]).forEach(w=>pqToks(w[0]).forEach(t=>put(t,r)));
-    (st.ru||[]).forEach(ru=>{const ex=new Set(ru.e.flatMap(e=>pqToks(e[0])));pqToks(ru.t+" "+ru.r).forEach(t=>{if(ex.has(t)&&t.length>=2)put(t,r)})});(st.xi||[]).forEach(x=>pqToks(x.e).forEach(t=>put(t,r)));
+    (st.ru||[]).forEach(ru=>{const ex=new Set(ru.e.flatMap(e=>pqToks(e[0])));pqToks(RT_(ru)).forEach(t=>{if(ex.has(t)&&t.length>=2)put(t,r)})});(st.xi||[]).forEach(x=>pqToks(x.e).forEach(t=>put(t,r)));
     (st.tn||[]).forEach(k=>{if(TR[k]==null)TR[k]=r});
-    (st.ru||[]).forEach(ru=>PCMR.forEach((re,ci)=>{if(TR["cmp"+ci]==null&&re.test(ru.t+" "+ru.r)&&/particip|haber|haver|he |había|havia/i.test(ru.t+" "+ru.r))TR["cmp"+ci]=r}))})}
+    (st.ru||[]).forEach(ru=>PCMR.forEach((re,ci)=>{if(TR["cmp"+ci]==null&&re.test(RT_(ru))&&/particip|haber|haver|he |había|havia/i.test(RT_(ru)))TR["cmp"+ci]=r}))})}
   /* temps jamais introduits (hors échelle) : jamais exigés */
   const V={};for(const vk of Object.keys(VD[l]||{})){const d=VD[l][vk];for(const t of vlist(l,d)){if(t.c)continue;let rr;try{rr=vrows(l,d,t)}catch(e){continue}
     const kk=t.imv?"imv":t.k;(rr.F||[]).concat(rr.alt||[]).forEach(f=>pqToks(f).forEach(x=>{const o=V[x]=V[x]||{};(o[vk]=o[vk]||new Set()).add(kk)}))}}
@@ -5259,7 +5260,7 @@ function pqData(){
   const er=w=>Math.max(...pqToks(w[0]).map(t=>E[t]!=null?E[t]:Infinity)),sw=new Set(),WR=[];
   [...ALL,...LP].forEach(w=>{if(sw.has(w[0]))return;sw.add(w[0]);WR.push([w,er(w)])});
   const XR=XP.map(x=>[x,er([x.e])]);
-  const FRL=new Set();[...ALL,...LP].forEach(w=>pqToks(w[1]).forEach(t=>{if(t.length>=4)FRL.add(t)}));XP.forEach(x=>pqToks(x.m).forEach(t=>{if(t.length>=4)FRL.add(t)}));PH.forEach(x=>pqToks(x[1]).forEach(t=>{if(t.length>=4)FRL.add(t)}));
+  const FRL=new Set();[...ALL,...LP].forEach(w=>pqToks(WF_(w)).forEach(t=>{if(t.length>=4)FRL.add(t)}));XP.forEach(x=>pqToks(F0&&x.m0!=null?x.m0:x.m).forEach(t=>{if(t.length>=4)FRL.add(t)}));PH.forEach(x=>pqToks(WF_(x)).forEach(t=>{if(t.length>=4)FRL.add(t)}));
   const FRB={};FRL.forEach(f=>{(FRB[f.slice(0,3)]=FRB[f.slice(0,3)]||[]).push(f)});
   return PQ[key]={E,TR,V,B,plans,l,WR,XR,FRB,mem:new Map()};
 }
@@ -5296,8 +5297,8 @@ const PCMP={es:[/^(he|has|ha|hemos|habeis|han|haber|habiendo|hube)$/,/^(habia|ha
 const PCMR=[/(passé composé|perfecto|perfet|temps composés|he cantat|he vendido)/i,/(plus-que-parfait|había|havia)/i,/(conditionnel passé|conditionnel composé|habría|hauria|habería)/i,/(subjonctif.*(composé|plus-que-parfait)|hubiera|haguera|hagués|houbese)/i];
 const PPART={es:/(ado|ada|ados|adas|ido|ida|idos|idas|to|ta|tos|tas|cho|cha|so)$/,gl:/(ado|ada|ido|ida|to|ta)$/,va:/(at|ada|ats|ades|it|ida|its|ides|ut|uda|uts|udes|t|st|rt)$/,ca:/(at|ada|ats|ades|it|ida|its|ides|ut|uda|uts|udes|t|st|rt)$/};
 /* rang = moment du parcours (niveau × 1000 + étape) où tout le vocabulaire et les temps d'un texte ont été enseignés */
-function pqRank(txt,fr){
-  const pd=pqData(),key=txt+"|"+(fr||"");if(pd.mem.has(key))return pd.mem.get(key);
+function pqRank(txt,fr,F0){
+  const pd=pqData(F0),key=txt+"|"+(fr||"");if(pd.mem.has(key))return pd.mem.get(key);
   const l=pd.l,T=String(txt),raw=T.match(/[\p{L}\p{N}·'’-]+/gu)||[],FR=new Set(pqToks(fr||"")),bad=[],tkl=[];let rk=0,rk2=0,nt=0;
   const tr0=k=>pd.TR[k]==null?Infinity:pd.TR[k];
   /* noms propres : majuscule en milieu de phrase, ou répétée, ou présente dans la traduction */
@@ -8426,22 +8427,24 @@ function imEnd(){
 }
 /* ===== Situations A1–A2 : rang des notions, ouverture selon la progression réellement effectuée, place dans le parcours ===== */
 function sitTx(s){const o=[];s.st.forEach(st=>{const fr=st.i||"";o.push([st.n,fr]);if(st.k==="T"||st.k==="W"||st.k==="O")o.push([st.m,fr]);if(st.g)o.push([st.g,fr]);(st.o||[]).forEach(x=>o.push([x,fr]))});return o}
-function sitRk(s){if(s.rk!=null)return s.rk;let r=0;try{sitTx(s).forEach(([t,fr])=>{const q=pqRank(t,fr);if(q.r>r)r=q.r})}catch(e){r=Infinity}return s.rk=r}
+function sitRk(s){if(s.rk!=null)return s.rk;let r=0;try{sitTx(s).forEach(([t,fr])=>{const q=pqRank(t,fr,1);if(q.r>r)r=q.r})}catch(e){r=Infinity}return s.rk=r}
 /* rang de progression atteint (niveaux précédents entièrement parcourus, puis étapes de nouveautés faites sans interruption) */
 function sitR0(){try{const pl=pathPlanMain(),f=pl.flat.filter(x=>x.rk!=null&&!x.opt);if(!f.length)return 0;const r=adRk(f[f.length-1]);return r==null?0:r}catch(e){return 0}}
 function sitOK(s,R0,K){if(s.l>lv())return false;if(sitRk(s)<=R0)return true;if(sitRk(s)===Infinity)return false;
-  return sitTx(s).every(([t,fr])=>{const q=pqRank(t,fr);if(q.r===Infinity)return false;return (q.tk||[]).filter(x=>x[1]<Infinity).every(([w,r])=>r<=R0||K.has(w))})}
+  return sitTx(s).every(([t,fr])=>{const q=pqRank(t,fr,1);if(q.r===Infinity)return false;return (q.tk||[]).filter(x=>x[1]<Infinity).every(([w,r])=>r<=R0||K.has(w))})}
 /* place des situations dans le parcours, calculée une fois pour tous les niveaux d'une langue :
    1) première unité (hors unité 1) dont le rang couvre toutes les notions, sans voisine ; 2) à défaut, unité voisine libre ;
    3) à défaut (notions toutes introduites en fin de niveau), début du niveau suivant, en révision ; jamais deux par unité */
-const SITLAY={};
+const SITLAY={},SITFIX=["a1mercado","a2tren"];
 function sitLayout(l){const ck=l+"|"+(XI[l]||"").length;if(SITLAY[l]&&SITLAY[l].ck===ck)return SITLAY[l].m;const m={};
   let pend=[];const plans=(pqData().plans||{});
   for(let L=1;L<=5;L++){const pc=plans[L];const ss=immP(l).filter(s=>s.l===L).map(s=>[s,sitRk(s)]).filter(x=>x[1]<Infinity).sort((a,b)=>a[1]-b[1]);
     const q=pend.concat(ss);pend=[];if(!pc){pend=q;continue}
     const us=pc.units,n=us.map(()=>0),ur=us.map(u=>u.steps.some(x=>x.test)?-1:Math.max(0,...u.steps.filter(x=>!x.opt).map(x=>x.rk||0)));
     const pick=(r,k)=>{for(let u=1;u<us.length;u++){if(ur[u]<0||ur[u]<r)continue;if(k<2&&n[u])continue;if(k>1&&n[u]>k-1)continue;if(!k&&(n[u-1]||n[u+1]))continue;return u}return -1};
-    q.forEach(([s,r])=>{let u=-1;for(let k=0;k<4&&u<0;k++)u=pick(r,k);if(u<0){pend.push([s,r]);return}n[u]++;m[s.id]={L,u,rk:ur[u],rev:s.l<L}})}
+    /* situations validées avant le lot C : emplacement d'origine (première unité, hors unité 1, dont le rang couvre leurs notions) */
+    q.filter(([s])=>SITFIX.includes(s.id)&&s.l===L).forEach(([s,r])=>{for(let u=1;u<us.length;u++){const st=us[u].steps;if(!st.length||st.some(x=>x.test))continue;if(Math.max(...st.map(x=>x.rk||0))<r)continue;n[u]++;m[s.id]={L,u,rk:ur[u],rev:false};break}});
+    q.forEach(([s,r])=>{if(m[s.id])return;let u=-1;for(let k=0;k<4&&u<0;k++)u=pick(r,k);if(u<0){pend.push([s,r]);return}n[u]++;m[s.id]={L,u,rk:ur[u],rev:s.l<L}})}
   SITLAY[l]={ck,m};return m}
 function sitPlace(pc,L,l){if(pc.sitk===l+L)return;pc.sitk=l+L;let lay={};try{lay=sitLayout(l)}catch(e){return}
   const us=pc.units;
