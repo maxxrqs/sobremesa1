@@ -1,0 +1,51 @@
+{
+ "mode": "complet",
+ "voix": {
+  "gl_a": {
+   "demandes": [
+    "Que mágoa.",
+    "Que ben! E hoxe? Que tal o traballo?"
+   ],
+   "generes": 2,
+   "echecs": [],
+   "paquets": [
+    "gl_a_g14.mp3"
+   ],
+   "secondes": 3.4
+  },
+  "gl_b": {
+   "demandes": [
+    "Que ten?",
+    "Ola, que tal?",
+    "Que ben! Falas galego?",
+    "Que ben! E hoxe? Que tal o traballo?"
+   ],
+   "generes": 4,
+   "echecs": [],
+   "paquets": [
+    "gl_b_g25.mp3"
+   ],
+   "secondes": 3.6
+  },
+  "gl_c": {
+   "demandes": [
+    "Bos días. Que tal está?",
+    "Ola, que tal?",
+    "Que mágoa! Queres tomar un café esta semana?",
+    "Claro. Que tal?",
+    "Que mágoa."
+   ],
+   "generes": 4,
+   "echecs": [
+    [
+     "Que mágoa.",
+     "signal vide"
+    ]
+   ],
+   "paquets": [
+    "gl_c_g24.mp3"
+   ],
+   "secondes": 5.0
+  }
+ }
+}

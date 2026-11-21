@@ -1,0 +1,1 @@
+ÉCHECS DE SYNTHÈSE : voir out/generation.json

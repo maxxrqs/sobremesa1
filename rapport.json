@@ -1,0 +1,195 @@
+{
+ "identite": {
+  "gl_a": {
+   "refs": [
+    "Quero que pagues",
+    "Despois de comermos, fomos pasear",
+    "O ministro afirmou que a situación mellorará.",
+    "O banco concedeulle un préstamo para abrir o bar."
+   ],
+   "dist": {
+    "gl_b": 31.23,
+    "gl_c": 23.45,
+    "gl_a": 13.5
+   },
+   "f0_gen": 92.4,
+   "f0_app": {
+    "gl_b": 239.7,
+    "gl_c": 103.5,
+    "gl_a": 116.7
+   },
+   "verdict": "identique"
+  },
+  "gl_b": {
+   "refs": [
+    "Quero que pagues",
+    "Despois de comermos, fomos pasear",
+    "O ministro afirmou que a situación mellorará.",
+    "O banco concedeulle un préstamo para abrir o bar."
+   ],
+   "dist": {
+    "gl_b": 13.95,
+    "gl_c": 29.53,
+    "gl_a": 31.49
+   },
+   "f0_gen": 218.3,
+   "f0_app": {
+    "gl_b": 239.7,
+    "gl_c": 103.5,
+    "gl_a": 116.7
+   },
+   "verdict": "identique"
+  },
+  "gl_c": {
+   "refs": [
+    "Quero que pagues",
+    "Despois de comermos, fomos pasear",
+    "O ministro afirmou que a situación mellorará.",
+    "O banco concedeulle un préstamo para abrir o bar."
+   ],
+   "dist": {
+    "gl_b": 30.07,
+    "gl_c": 12.58,
+    "gl_a": 23.71
+   },
+   "f0_gen": 111.7,
+   "f0_app": {
+    "gl_b": 239.7,
+    "gl_c": 103.5,
+    "gl_a": 116.7
+   },
+   "verdict": "identique"
+  }
+ },
+ "galicien": null,
+ "clips": {
+  "gl_a": {
+   "reference_s_par_car": 0.085,
+   "clips": [
+    {
+     "texte": "Que mágoa.",
+     "duree": 0.78,
+     "s_par_car": 0.078,
+     "pic": 0.71,
+     "silences": [
+      0.13,
+      0.2
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Que ben! E hoxe? Que tal o traballo?",
+     "duree": 3.37,
+     "s_par_car": 0.094,
+     "pic": 0.72,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    }
+   ]
+  },
+  "gl_b": {
+   "reference_s_par_car": 0.087,
+   "clips": [
+    {
+     "texte": "Que ten?",
+     "duree": 0.73,
+     "s_par_car": 0.091,
+     "pic": 0.72,
+     "silences": [
+      0.12,
+      0.19
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Ola, que tal?",
+     "duree": 0.97,
+     "s_par_car": 0.074,
+     "pic": 0.73,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Que ben! Falas galego?",
+     "duree": 2.19,
+     "s_par_car": 0.1,
+     "pic": 0.73,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Que ben! E hoxe? Que tal o traballo?",
+     "duree": 3.53,
+     "s_par_car": 0.098,
+     "pic": 0.74,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    }
+   ]
+  },
+  "gl_c": {
+   "reference_s_par_car": 0.085,
+   "clips": [
+    {
+     "texte": "Bos días. Que tal está?",
+     "duree": 2.27,
+     "s_par_car": 0.099,
+     "pic": 0.72,
+     "silences": [
+      0.12,
+      0.18
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Ola, que tal?",
+     "duree": 1.02,
+     "s_par_car": 0.078,
+     "pic": 0.71,
+     "silences": [
+      0.12,
+      0.18
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Que mágoa! Queres tomar un café esta semana?",
+     "duree": 3.13,
+     "s_par_car": 0.071,
+     "pic": 0.72,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "Claro. Que tal?",
+     "duree": 1.78,
+     "s_par_car": 0.118,
+     "pic": 0.71,
+     "silences": [
+      0.12,
+      0.18
+     ],
+     "problemes": []
+    }
+   ]
+  }
+ },
+ "echecs": [
+  "gl_c : clés ≠ textes demandés"
+ ]
+}
