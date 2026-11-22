@@ -6,6 +6,40 @@ Usage : python3 tools/audio_ci/generer.py [out]"""
 import importlib.util, json, os, sys, time, traceback
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from commun import LOCK, RACINE, Arret, axN, index, prochain_paquet, synth, traiter, decoder
+import numpy as np
+
+# Sortie vide ou invalide du modèle (aHoTTS écrit alors un WAV silencieux sans erreur) : jusqu'à TENTATIVES synthèses
+# de la même phrase, à texte, voix, modèle et paramètres identiques. Toute autre erreur n'est jamais relancée.
+TENTATIVES = 4
+RELANCABLES = ("signal vide", "mp3 silencieux", "décodage impossible")
+CRETE_MIN = 0.05  # le clip traité est normalisé à 0,75 : en dessous, le MP3 n'est pas exploitable
+
+
+class Echec(Exception):
+    def __init__(self, msg, essais):
+        super().__init__(msg); self.essais = essais
+
+
+def controle_mp3(b):
+    """Décode le MP3 produit et refuse un fichier vide ou silencieux."""
+    x, _ = decoder(b)
+    if not len(x) or float(np.abs(x).max()) < CRETE_MIN:
+        raise RuntimeError("mp3 silencieux")
+
+
+def clip(voix, t):
+    """Renvoie (mp3, nombre d'essais) ; lève Echec(message, essais) après épuisement ou sur une erreur non relançable."""
+    for n in range(1, TENTATIVES + 1):
+        try:
+            x, sr = synth(voix, t)
+            b = traiter(x, sr); controle_mp3(b)
+            return b, n
+        except Arret:
+            raise
+        except Exception as e:
+            m = str(e)[:200]
+            if m not in RELANCABLES or n == TENTATIVES:
+                raise Echec(m, n)
 
 OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(RACINE, "out")
 PLAN = json.load(open(os.environ.get("AUDIO_PLAN") or os.path.join(RACINE, "audio", "plan.json"), encoding="utf-8"))
@@ -51,15 +85,13 @@ def main():
                 if t and t not in sel: sel.append(t)
             miss = sel[: PLAN.get("par_voix", 3)]
         d = os.path.join(OUT, voix); os.makedirs(d, exist_ok=True)
-        n0 = prochain_paquet(voix); pk = []; K = {}; cur = bytearray(); bad = []; t0 = time.time()
+        n0 = prochain_paquet(voix); pk = []; K = {}; cur = bytearray(); bad = []; essais = {}; t0 = time.time()
         for t in miss:
             try:
-                x, sr = synth(voix, t)
-                b = traiter(x, sr); decoder(b)
-            except Arret:
-                raise
-            except Exception as e:
-                bad.append([t, str(e)[:200]]); continue
+                b, n = clip(voix, t)
+            except Echec as e:
+                bad.append([t, str(e)]); essais[t] = {"tentatives": e.essais, "resultat": str(e)}; continue
+            essais[t] = {"tentatives": n, "resultat": "valide"}
             if cur and len(cur) + len(b) > LOCK["traitement"]["paquet_max"]:
                 pk.append(bytes(cur)); cur = bytearray()
             K[t] = [len(pk), len(cur), len(b)]; cur += b
@@ -68,7 +100,7 @@ def main():
         for n, b in zip(noms, pk):
             open(os.path.join(d, n), "wb").write(b)
         json.dump({"p": noms, "k": K}, open(os.path.join(d, "gap.json"), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
-        res["voix"][voix] = {"demandes": miss, "generes": len(K), "echecs": bad, "paquets": noms, "secondes": round(time.time() - t0, 1)}
+        res["voix"][voix] = {"demandes": miss, "generes": len(K), "echecs": bad, "tentatives": essais, "paquets": noms, "secondes": round(time.time() - t0, 1)}
         print(voix, len(K), "clips", len(bad), "échecs", flush=True)
     json.dump(res, open(os.path.join(OUT, "generation.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     if any(r["echecs"] for r in res["voix"].values()):

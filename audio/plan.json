@@ -3,9 +3,7 @@
   "mode": "complet",
   "par_voix": 0,
   "voix": [
-    "gl_a",
-    "gl_b",
-    "gl_c"
+    "gl_b"
   ],
   "controle_identite": [
     "es_dora",
@@ -19,5 +17,5 @@
     "eu_antton"
   ],
   "identifier_galicien": false,
-  "branche_resultats": "audio-out-c3-lotd2-gl2"
+  "branche_resultats": "audio-out-c3-lotd2-gl3"
 }
