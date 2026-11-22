@@ -1025,7 +1025,7 @@ _Dans une agence, tu réserves une excursion pour le week-end._ · personnage : 
 
 ## Le chauffe-eau en panne (B1) — `b1calentador`
 
-_Tu appelles le propriétaire de ton appartement : le chauffe-eau ne marche plus._ · personnage : Propriétaire
+_Tu appelles ton propriétaire : le chauffe-eau ne marche plus._ · personnage : Propriétaire
 
 1. **Bai, esan?**
    - consigne : Dis que le chauffe-eau ne marche pas depuis hier.
@@ -1154,13 +1154,13 @@ _Tu tousses depuis une semaine et tu vas chez la médecin._ · personnage : Méd
 
 ## Au registre municipal (B1) — `b1padron`
 
-_Tu viens d'emménager et tu vas à la mairie pour t'inscrire au registre municipal._ · personnage : Employé de mairie
+_Tu viens d'emménager : tu t'inscris au registre de la mairie._ · personnage : Employé de mairie
 
 1. **Egun on. Zertan lagun zaitzaket?**
    - consigne : Dis que tu viens t'inscrire au registre municipal.
-   - modèle : Egun on. Erroldatzera nator.
-   - variantes : Erroldatzera nator. · Egun on, erroldatu nahi dut.
-   - fausses : Egun on. Erroldatzera joan nintzen bihar. · Egun on. Jabeen komunitatera nator. · Egun on. Erroldatzera dator.
+   - modèle : Erroldatzera nator.
+   - variantes : Egun on. Erroldatzera nator. · Erroldatu nahi dut.
+   - fausses : Erroldatzera joan nintzen bihar. · Jabeen komunitatera nator. · Erroldatzera dator.
 
 2. **Oso ondo. Hitzordua duzu?**
    - consigne : Dis que oui, tu as rendez-vous à dix heures.
@@ -1197,13 +1197,13 @@ _Tu viens d'emménager et tu vas à la mairie pour t'inscrire au registre munici
 
 ## Vol annulé (B1) — `b1vuelo`
 
-_À l'aéroport, ton vol a été annulé. Tu parles à l'agente de la compagnie._ · personnage : Agente
+_À l'aéroport, ton vol est annulé. Tu vas au guichet._ · personnage : Agente
 
 1. **Arratsalde on. Zertan lagun zaitzaket?**
    - consigne : Dis qu'ils ont annulé ton vol.
-   - modèle : Arratsalde on. Nire hegaldia bertan behera utzi dute.
-   - variantes : Nire hegaldia bertan behera utzi dute. · Arratsalde on, nire hegaldia bertan behera geratu da.
-   - fausses : Arratsalde on. Nire hegaldia bertan behera utziko dute atzo. · Arratsalde on. Zure hegaldia bertan behera utzi dut. · Arratsalde on. Nire hegaldia bertan behera utzi naute.
+   - modèle : Nire hegaldia bertan behera utzi dute.
+   - variantes : Arratsalde on. Nire hegaldia bertan behera utzi dute. · Nire hegaldia bertan behera geratu da.
+   - fausses : Nire hegaldia bertan behera utziko dute atzo. · Zure hegaldia bertan behera utzi dut. · Nire hegaldia bertan behera utzi naute.
 
 2. **Asko sentitzen dut. Pasaportea, mesedez?**
    - consigne : Donne-le et demande s'il y a un autre vol aujourd'hui.
@@ -1240,13 +1240,13 @@ _À l'aéroport, ton vol a été annulé. Tu parles à l'agente de la compagnie.
 
 ## Apprendre à cuisiner (B1) — `b1consejo`
 
-_Un ami veut apprendre à cuisiner et te demande des conseils._ · personnage : Ami
+_Un ami veut apprendre à cuisiner et te demande conseil._ · personnage : Ami
 
-1. **Kaixo, sukaldatzen ikasi nahi dut. Zer gomendatzen duzu?**
+1. **Sukaldatzen ikasi nahi dut. Zer gomendatzen duzu?**
    - consigne : Recommande-lui d'aller dans une école de cuisine.
-   - modèle : Sukaldaritza eskola bat gomendatzen dizut.
-   - variantes : Eskola batera joatea gomendatzen dizut. · Sukaldaritza eskolara joan zaitez.
-   - fausses : Sukaldaritza eskola bat gomendatzen duzu. · Sukaldaritza eskola bat gomendatzen naiz. · Sukaldaritza eskola bat gomendatzen dizut atzo.
+   - modèle : Eskola bat gomendatzen dizut.
+   - variantes : Sukaldaritza eskola bat gomendatzen dizut. · Eskola batera joatea gomendatzen dizut.
+   - fausses : Eskola bat gomendatzen duzu. · Eskola bat gomendatzen naiz. · Eskola bat gomendatzen dizut atzo.
 
 2. **Eskola bat garestiegia da.**
    - consigne : Conseille-lui de regarder des recettes sur internet.
@@ -1283,13 +1283,13 @@ _Un ami veut apprendre à cuisiner et te demande des conseils._ · personnage : 
 
 ## Une commande arrivée cassée (B2) — `b2reclamacion`
 
-_Tu appelles le service client : ta commande est arrivée cassée._ · personnage : Agent du service client
+_Tu appelles le service client : ta commande pose problème._ · personnage : Agent du service client
 
 1. **Egun on, zertan lagun zaitzaket?**
    - consigne : Dis que ta commande est arrivée cassée.
-   - modèle : Egun on. Nire eskaera hautsita iritsi da.
-   - variantes : Nire eskaera hautsita iritsi da. · Egun on, eskaera hautsita iritsi zait.
-   - fausses : Egun on. Zure eskaera hautsita iritsi da. · Egun on. Nire eskaera hautsita iritsiko da atzo. · Egun on. Nire eskaera osorik iritsi da.
+   - modèle : Nire eskaera hautsita iritsi da.
+   - variantes : Egun on. Nire eskaera hautsita iritsi da. · Eskaera hautsita iritsi zait.
+   - fausses : Zure eskaera hautsita iritsi da. · Nire eskaera hautsita iritsiko da atzo. · Nire eskaera osorik iritsi da.
 
 2. **Asko sentitzen dut. Noiz jaso zenuen?**
    - consigne : Dis que tu l'as reçue hier et qu'elle était déjà cassée.
@@ -1326,9 +1326,9 @@ _Tu appelles le service client : ta commande est arrivée cassée._ · personnag
 
 ## Réunion d'équipe (B2) — `b2reunion`
 
-_En réunion, ta directrice fait le point sur les chiffres du trimestre._ · personnage : Directrice
+_Réunion : ta directrice fait le point sur le trimestre._ · personnage : Directrice
 
-1. **Hasiko gara. Nola joan dira salmentak azken hiru hilabeteetan?**
+1. **Nola joan dira salmentak azken hilabeteetan?**
    - consigne : Dis qu'il a augmenté de dix pour cent.
    - modèle : Ehuneko hamar igo dira.
    - variantes : Ehuneko hamar igo dira aurrekoekin alderatuta. · Ehuneko hamar egin dute gora.
@@ -1369,13 +1369,13 @@ _En réunion, ta directrice fait le point sur les chiffres du trimestre._ · per
 
 ## Le bail se termine (B2) — `b2vivienda`
 
-_Ton propriétaire t'appelle : ton bail se termine et il veut augmenter le loyer._ · personnage : Propriétaire
+_Ton bail se termine et ton propriétaire veut augmenter le loyer._ · personnage : Propriétaire
 
-1. **Errentamendu kontratuagatik deitzen dizut. Ekainean amaitzen da.**
+1. **Zure errentamendu kontratua ekainean amaitzen da.**
    - consigne : Dis que tu le sais et que tu aimerais rester dans l'appartement.
-   - modèle : Bai, badakit. Pisuan jarraitu nahiko nuke.
-   - variantes : Badakit. Pisuan jarraitu nahiko nuke. · Bai, badakit. Pisuan jarraitu nahi dut.
-   - fausses : Bai, badakit. Pisuan jarraitu nahiko zenuke. · Bai, badakit. Pisuan jarraitu nahi nuen iaz. · Bai, badakit. Pisuan amaitu nahiko nuke.
+   - modèle : Badakit. Pisuan jarraitu nahiko nuke.
+   - variantes : Bai, badakit. Pisuan jarraitu nahiko nuke. · Badakit. Pisuan jarraitu nahi dut.
+   - fausses : Badakit. Pisuan jarraitu nahiko zenuke. · Badakit. Pisuan amaitu nahiko nuke. · Badakit. Pisuan jarraitu nahi nuen iaz.
 
 2. **Baina alokairua ehuneko hamabost igoko dut.**
    - consigne : Dis que ça te paraît trop.
@@ -1412,13 +1412,13 @@ _Ton propriétaire t'appelle : ton bail se termine et il veut augmenter le loyer
 
 ## Le nouveau traitement (B2) — `b2salud`
 
-_Tu retournes voir ta médecin : ton nouveau traitement a des effets secondaires._ · personnage : Médecin
+_Ton nouveau traitement a des effets secondaires._ · personnage : Médecin
 
 1. **Zer moduz tratamendu berriarekin?**
    - consigne : Dis que ça va mieux, mais que tu as quelques effets secondaires.
-   - modèle : Hobeto, baina albo ondorio batzuk ditut.
-   - variantes : Hobeto nago, baina albo ondorio batzuk ditut. · Hobeto, albo ondorio batzuk ditudan arren.
-   - fausses : Hobeto, baina albo ondorio batzuk dituzu. · Hobeto, baina albo ondorio batzuk naiz. · Hobeto, baina albo ondorio batzuk izango ditut atzo.
+   - modèle : Hobeto, baina albo ondorioak ditut.
+   - variantes : Hobeto, baina albo ondorio batzuk ditut. · Hobeto nago, baina albo ondorioak ditut.
+   - fausses : Hobeto, baina albo ondorioak dituzu. · Hobeto, baina albo ondoriorik ez dut. · Hobeto, baina albo ondorioak izango ditut atzo.
 
 2. **Zer sintoma dituzu?**
    - consigne : Dis que tu as mal à la tête et que tu dors moins bien.
@@ -1440,9 +1440,9 @@ _Tu retournes voir ta médecin : ton nouveau traitement a des effets secondaires
 
 5. **Bai, noski.**
    - consigne : Demande si tu dois revenir dans un mois.
-   - modèle : Oso ondo. Hilabete barru itzuli behar dut?
-   - variantes : Hilabete barru itzuli behar dut? · Ados. Hilabete barru itzuliko naiz?
-   - fausses : Oso ondo. Hilabete barru itzuli behar duzu? · Oso ondo. Duela hilabete itzuli behar dut? · Oso ondo. Hilabete barru itzuli behar naiz?
+   - modèle : Hilabete barru itzuli behar dut?
+   - variantes : Oso ondo. Hilabete barru itzuli behar dut? · Hilabete barru itzuliko naiz?
+   - fausses : Hilabete barru itzuli behar duzu? · Duela hilabete itzuli behar dut? · Hilabete barru itzuli behar naiz?
 
 6. **Bai, eta deitu iezadazu gaizki bazaude.**
    - consigne : Dis que tu le feras et remercie-la pour tout.
@@ -1498,13 +1498,13 @@ _Ton voisin n'est pas content : la rue va être fermée aux voitures._ · person
 
 ## Annoncer sa démission (B2) — `b2dimision`
 
-_Tu demandes à parler à ta cheffe : tu as décidé de démissionner._ · personnage : Cheffe
+_Tu as décidé de démissionner. Tu vas voir ta cheffe._ · personnage : Cheffe
 
 1. **Kaixo, nirekin hitz egin nahi zenuen?**
-   - consigne : Dis que tu regrettes de le lui dire, mais que tu vas présenter ta démission.
-   - modèle : Bai. Sentitzen dut, baina dimisioa aurkeztuko dut.
-   - variantes : Bai. Sentitzen dut esatea, baina dimisioa aurkeztuko dut. · Sentitzen dut, baina lana utziko dut.
-   - fausses : Bai. Sentitzen dut, baina dimisioa aurkeztu nuen bihar. · Bai. Pozten naiz, baina dimisioa aurkeztuko dut. · Bai. Sentitzen dut, baina dimisioa aurkeztuko duzu.
+   - consigne : Dis que tu es désolé(e), mais que tu vas démissionner.
+   - modèle : Bai. Sentitzen dut, baina lana utziko dut.
+   - variantes : Sentitzen dut, baina dimisioa aurkeztuko dut. · Bai. Sentitzen dut, baina lana utzi behar dut.
+   - fausses : Bai. Sentitzen dut, baina lana utzi nuen bihar. · Bai. Pozten naiz, baina lana utziko dut. · Bai. Sentitzen dut, baina lana utziko duzu.
 
 2. **Benetan? Zergatik?**
    - consigne : Dis que tu as trouvé un meilleur travail.
@@ -1536,7 +1536,7 @@ _Tu demandes à parler à ta cheffe : tu as décidé de démissionner._ · perso
    - variantes : Nik ere bai. Plazer bat izan da. · Baita nik ere. Plazer bat izan da zurekin lan egitea.
    - fausses : Nik ere bai. Plazer bat izan da nirekin lan egitea. · Nik ere bai. Plazer bat izango da zurekin lan egitea atzo. · Nik ere ez. Plazer bat izan da zurekin lan egitea.
 
-À retenir : dimisioa aurkeztu = donner sa démission · denbora izan dezazun = pour que tu aies le temps · faltan bota = regretter (une personne absente) · Plazer bat izan da = Ça a été un plaisir
+À retenir : lana utzi = quitter son travail · denbora izan dezazun = pour que tu aies le temps · faltan bota = regretter (une personne absente) · Plazer bat izan da = Ça a été un plaisir
 
 
 ## Un deuil au travail (C1) — `c1pesame`
@@ -1584,13 +1584,13 @@ _Le père d'une collègue est décédé. Tu vas la voir à son retour._ · perso
 
 ## La négociation (C1) — `c1negociacion`
 
-_Tu représentes le personnel face au directeur des ressources humaines, qui annonce des licenciements._ · personnage : Directeur des ressources humaines
+_La direction annonce des licenciements._ · personnage : Directeur des ressources humaines
 
-1. **Enpresak enplegu erregulazioko espediente bat aurkeztuko du.**
-   - consigne : Dis que le comité n'accepte pas les licenciements dans ces conditions.
-   - modèle : Batzordeak ez ditu kaleratzeak onartzen baldintza hauetan.
-   - variantes : Batzordeak ez ditu kaleratzeak onartzen. · Ez ditugu kaleratzeak onartzen baldintza hauetan.
-   - fausses : Batzordeak kaleratzeak onartzen ditu baldintza hauetan. · Batzordeak ez ditu kaleratzeak onartuko atzo baldintza hauetan. · Batzordeak ez du kaleratzeak onartzen baldintza hauetan.
+1. **Enpresak kaleratzeak egin nahi ditu.**
+   - consigne : Dis que vous n'acceptez pas ces licenciements.
+   - modèle : Ez ditugu kaleratze hauek onartzen.
+   - variantes : Batzordeak ez ditu kaleratze hauek onartzen. · Ez ditugu kaleratze hauek onartzen baldintza hauetan.
+   - fausses : Kaleratze hauek onartzen ditugu. · Ez ditugu kaleratze hauek onartuko atzo. · Ez dugu kaleratze hauek onartzen.
 
 2. **Zenbakiak ez dira onak.**
    - consigne : Objecte que l'entreprise a pourtant fait des bénéfices l'an dernier.
@@ -1599,10 +1599,10 @@ _Tu représentes le personnel face au directeur des ressources humaines, qui ann
    - fausses : Beraz, enpresak irabaziak izan zituen iaz. · Hala ere, enpresak irabaziak izan zituen datorren urtean. · Hala ere, enpresak irabaziak ditu iaz.
 
 3. **Egia da, baina urte hau txarra da.**
-   - consigne : Demande qu'on réduise d'abord la masse salariale de la direction.
-   - modèle : Orduan, lehenik zuzendarien soldata masa murrizteko eskatzen dugu.
-   - variantes : Lehenik zuzendarien soldata masa murrizteko eskatzen dugu. · Orduan, zuzendarien soldata masa murriztu dadila lehenik.
-   - fausses : Orduan, lehenik zuzendarien soldata masa murriztu eskatzen dugu. · Orduan, lehenik zuzendarien soldata masa murrizteko eskatzen duzu. · Orduan, lehenik batzordearen soldata masa murrizteko eskatzen dugu.
+   - consigne : Demande qu'on réduise d'abord la masse salariale.
+   - modèle : Lehenik soldata masa murriztu behar da.
+   - variantes : Lehenik zuzendarien soldata masa murrizteko eskatzen dugu. · Orduan, lehenik soldata masa murriztu behar da.
+   - fausses : Lehenik soldata masa handitu behar da. · Lehenik soldata masa murriztu behar zen bihar. · Lehenik soldata masa murriztu behar naiz.
 
 4. **Hori ez dago nire esku.**
    - consigne : Préviens que sinon, le comité fera grève.
@@ -1622,18 +1622,18 @@ _Tu représentes le personnel face au directeur des ressources humaines, qui ann
    - variantes : Proposamen idatzia nahi dugu ostirala baino lehen. · Ostirala baino lehen proposamen idatzi bat nahi dugu.
    - fausses : Proposamen idatzi bat nahi genuen joan den ostirala baino lehen. · Proposamen idatzi bat nahi duzue ostirala baino lehen. · Proposamen idatzi bat nahi dugu ostirala baino geroago.
 
-À retenir : enplegu erregulazioko espedientea = un plan social · soldata masa = la masse salariale · Bestela = Sinon · aurreabisua luzatu = prolonger le préavis
+À retenir : kaleratzeak = les licenciements · soldata masa = la masse salariale · Bestela = Sinon · aurreabisua luzatu = prolonger le préavis
 
 
 ## Réunion de quartier (C1) — `c1barrio`
 
-_À la réunion de quartier, une conseillère municipale répond aux habitants sur le logement._ · personnage : Conseillère municipale
+_Réunion de quartier sur le logement, avec une conseillère municipale._ · personnage : Conseillère municipale
 
-1. **Arratsalde on guztioi. Nork hitz egin nahi du lehenengo?**
+1. **Arratsalde on. Nork hitz egin nahi du?**
    - consigne : Dis que la flambée des loyers est excessive.
-   - modèle : Nik. Alokairuen gorakada handiegia da.
-   - variantes : Alokairuen gorakada handiegia da. · Nik. Alokairuen gorakadak kezkatzen nau.
-   - fausses : Nik. Alokairuen gorakada txikiegia da. · Nik. Alokairuen gorakada handiegia zen bihar. · Zuk. Alokairuen gorakada handiegia da.
+   - modèle : Alokairuen gorakada handiegia da.
+   - variantes : Nik. Alokairuen gorakada handiegia da. · Alokairuen gorakadak kezkatzen nau.
+   - fausses : Alokairuen gorakada txikiegia da. · Alokairuen gorakada handiegia zen bihar. · Alokairuen gorakada handiegia naiz.
 
 2. **Ondo ezagutzen dugu hori.**
    - consigne : Dis que beaucoup de voisins ont dû quitter le quartier.
@@ -1670,7 +1670,7 @@ _À la réunion de quartier, une conseillère municipale répond aux habitants s
 
 ## Débat à la radio (C1) — `c1debate`
 
-_Tu participes à un débat à la radio sur les pistes cyclables en ville._ · personnage : Animateur
+_Débat à la radio sur les pistes cyclables en ville._ · personnage : Animateur
 
 1. **Batzuen ustez, hiriak ez du bidegorri gehiago behar. Zer iritzi duzu?**
    - consigne : Dis que tu ne partages pas cet argument.
@@ -1713,13 +1713,13 @@ _Tu participes à un débat à la radio sur les pistes cyclables en ville._ · p
 
 ## Une clause abusive (C1) — `c1clausula`
 
-_Tu consultes une avocate au sujet d'une clause de ton contrat de travail._ · personnage : Avocate
+_Tu consultes une avocate pour une clause de ton contrat._ · personnage : Avocate
 
-1. **Egun on. Kontatu, zer gertatzen da?**
+1. **Egun on. Zer gertatzen da?**
    - consigne : Dis que ton contrat contient une clause abusive.
-   - modèle : Nire kontratuak klausula abusibo bat du.
-   - variantes : Nire kontratuan klausula abusibo bat dago. · Klausula abusibo bat du nire kontratuak.
-   - fausses : Zure kontratuak klausula abusibo bat du. · Nire kontratuak klausula abusibo bat izango du atzo. · Nire kontratuak klausula abusibo bat da.
+   - modèle : Klausula abusibo bat dago.
+   - variantes : Nire kontratuak klausula abusibo bat du. · Nire kontratuan klausula abusibo bat dago.
+   - fausses : Klausula abusibo bat zegoen bihar. · Klausula abusibo bat daude. · Klausula abusibo bat naiz.
 
 2. **Zer esaten du klausula horrek?**
    - consigne : Dis : qu'on peut te licencier sans préavis.
@@ -1758,11 +1758,11 @@ _Tu consultes une avocate au sujet d'une clause de ton contrat de travail._ · p
 
 _Tu visites une cave à vin avec un guide._ · personnage : Guide
 
-1. **Ongi etorri upategira. Hemen ardoa egiten dugu.**
+1. **Ongi etorri upategira.**
    - consigne : Demande quand ont lieu les vendanges.
-   - modèle : Zein interesgarria! Noiz da mahats bilketa?
-   - variantes : Noiz da mahats bilketa? · Zein interesgarria! Noiz egiten duzue mahats bilketa?
-   - fausses : Zein interesgarria! Noiz dago mahats bilketa? · Zein interesgarria! Non da mahats bilketa? · Zein interesgarria! Noiz izan zen mahats bilketa bihar?
+   - modèle : Noiz da mahats bilketa?
+   - variantes : Zein interesgarria! Noiz da mahats bilketa? · Noiz egiten duzue mahats bilketa?
+   - fausses : Noiz dago mahats bilketa? · Non da mahats bilketa? · Noiz izan zen mahats bilketa bihar?
 
 2. **Irailean, udaren amaieran.**
    - consigne : Demande quelle variété de raisin ils utilisent.

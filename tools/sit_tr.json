@@ -2099,12 +2099,6 @@
 "de": "Frag, wie viele Tage lang.",
 "pt": "Pergunta durante quantos dias."
 },
-"Demande qu'on réduise d'abord la masse salariale de la direction.": {
-"en": "Ask that management's wage bill be cut first.",
-"it": "Chiedi che si riduca prima il monte salari della dirigenza.",
-"de": "Fordere, dass zuerst die Gehaltssumme der Geschäftsleitung gekürzt wird.",
-"pt": "Pede que se reduza primeiro a massa salarial da direção."
-},
 "Demande quand ce sera prêt.": {
 "en": "Ask when it will be ready.",
 "it": "Chiedi quando sarà pronto.",
@@ -2237,12 +2231,6 @@
 "de": "Sag, dass sie dir nicht zu danken braucht, das ist das Mindeste.",
 "pt": "Diz que ela não tem nada que agradecer, é o mínimo."
 },
-"Dis qu'il a augmenté de dix pour cent par rapport au précédent.": {
-"en": "Say it rose by ten percent compared with the previous one.",
-"it": "Di' che è aumentato del dieci per cento rispetto al precedente.",
-"de": "Sag, dass er um zehn Prozent gegenüber dem vorherigen gestiegen ist.",
-"pt": "Diz que subiu dez por cento em relação ao anterior."
-},
 "Dis qu'il a augmenté de dix pour cent.": {
 "en": "Say they rose by ten percent.",
 "it": "Di' che sono aumentate del dieci per cento.",
@@ -2330,7 +2318,7 @@
 "Dis que la flambée des loyers t'inquiète.": {
 "en": "Say the soaring rents worry you.",
 "it": "Di' che l'impennata degli affitti ti preoccupa.",
-"de": "Sag, dass dich die explodierenden Mieten beunruhigen.",
+"de": "Sag, dass dich der Mietanstieg beunruhigt.",
 "pt": "Diz que a escalada das rendas te preocupa."
 },
 "Dis que le chauffe-eau ne marche pas depuis hier.": {
@@ -2338,12 +2326,6 @@
 "it": "Di' che lo scaldabagno non funziona da ieri.",
 "de": "Sag, dass der Boiler seit gestern nicht funktioniert.",
 "pt": "Diz que o esquentador não funciona desde ontem."
-},
-"Dis que le comité n'accepte pas les licenciements dans ces conditions.": {
-"en": "Say the committee does not accept the layoffs under these conditions.",
-"it": "Di' che il comitato non accetta i licenziamenti a queste condizioni.",
-"de": "Sag, dass der Betriebsrat die Entlassungen unter diesen Bedingungen nicht akzeptiert.",
-"pt": "Diz que a comissão não aceita os despedimentos nestas condições."
 },
 "Dis que les données disent justement le contraire.": {
 "en": "Say the data show exactly the opposite.",
@@ -2458,12 +2440,6 @@
 "it": "Di' che il tuo contratto contiene una clausola abusiva.",
 "de": "Sag, dass dein Vertrag eine missbräuchliche Klausel enthält.",
 "pt": "Diz que o teu contrato tem uma cláusula abusiva."
-},
-"Dis que ton contrat contient une clause qui te semble abusive.": {
-"en": "Say your contract contains a clause that seems unfair to you.",
-"it": "Di' che il tuo contratto contiene una clausola che ti sembra abusiva.",
-"de": "Sag, dass dein Vertrag eine Klausel enthält, die dir missbräuchlich vorkommt.",
-"pt": "Diz que o teu contrato tem uma cláusula que te parece abusiva."
 },
 "Dis que ton vol ne part pas aujourd'hui.": {
 "en": "Say your flight isn't leaving today.",
@@ -2621,12 +2597,6 @@
 "de": "Sag, dass du lieber dein Geld zurück hättest.",
 "pt": "Diz que preferias ser reembolsado(a)."
 },
-"Dis que tu regrettes de le lui dire, mais que tu vas présenter ta démission.": {
-"en": "Say you're sorry to tell her, but you're going to hand in your resignation.",
-"it": "Di' che ti dispiace dirglielo, ma che presenterai le dimissioni.",
-"de": "Sag, dass es dir leidtut, es ihr zu sagen, du aber kündigen wirst.",
-"pt": "Diz que lamentas dizer-lho, mas que vais apresentar a tua demissão."
-},
 "Dis que tu tousses depuis une semaine.": {
 "en": "Say you've been coughing for a week.",
 "it": "Di' che tossisci da una settimana.",
@@ -2728,12 +2698,6 @@
 "it": "In definitiva",
 "de": "Letztlich",
 "pt": "Em suma"
-},
-"En réunion, ta directrice fait le point sur les chiffres du trimestre.": {
-"en": "In a meeting, your manager reviews the quarter's figures.",
-"it": "In riunione, la tua direttrice fa il punto sui numeri del trimestre.",
-"de": "In einer Besprechung geht deine Chefin die Zahlen des Quartals durch.",
-"pt": "Numa reunião, a tua diretora faz o ponto da situação dos números do trimestre."
 },
 "Excuse-toi : tu ne l'as pas apportée. Demande si tu peux l'envoyer par e-mail.": {
 "en": "Apologise: you didn't bring it. Ask if you can send it by email.",
@@ -3029,12 +2993,6 @@
 "de": "Wenn wir investieren würden…",
 "pt": "Se investíssemos…"
 },
-"Ton propriétaire t'appelle : ton bail se termine et il veut augmenter le loyer.": {
-"en": "Your landlord calls you: your lease is ending and he wants to raise the rent.",
-"it": "Il tuo proprietario ti chiama: il contratto scade e vuole aumentare l'affitto.",
-"de": "Dein Vermieter ruft an: Dein Mietvertrag läuft aus und er will die Miete erhöhen.",
-"pt": "O teu senhorio liga-te: o contrato está a acabar e ele quer aumentar a renda."
-},
 "Ton voisin n'est pas content : la rue va être fermée aux voitures.": {
 "en": "Your neighbour isn't happy: the street is going to be closed to cars.",
 "it": "Il tuo vicino non è contento: la strada verrà chiusa alle auto.",
@@ -3047,53 +3005,11 @@
 "de": "Mein aufrichtiges Beileid",
 "pt": "Os meus sentidos pêsames"
 },
-"Tu appelles le propriétaire de ton appartement : le chauffe-eau ne marche plus.": {
-"en": "You call your landlord: the water heater has stopped working.",
-"it": "Chiami il proprietario del tuo appartamento: lo scaldabagno non funziona più.",
-"de": "Du rufst deinen Vermieter an: Der Boiler funktioniert nicht mehr.",
-"pt": "Ligas ao senhorio do teu apartamento: o esquentador deixou de funcionar."
-},
-"Tu appelles le service client : ta commande est arrivée cassée.": {
-"en": "You call customer service: your order arrived broken.",
-"it": "Chiami il servizio clienti: il tuo ordine è arrivato rotto.",
-"de": "Du rufst den Kundenservice an: Deine Bestellung ist kaputt angekommen.",
-"pt": "Ligas para o apoio ao cliente: a tua encomenda chegou partida."
-},
-"Tu consultes une avocate au sujet d'une clause de ton contrat de travail.": {
-"en": "You consult a lawyer about a clause in your employment contract.",
-"it": "Consulti un'avvocata su una clausola del tuo contratto di lavoro.",
-"de": "Du lässt dich von einer Anwältin zu einer Klausel in deinem Arbeitsvertrag beraten.",
-"pt": "Consultas uma advogada sobre uma cláusula do teu contrato de trabalho."
-},
-"Tu demandes à parler à ta cheffe : tu as décidé de démissionner.": {
-"en": "You ask to speak to your boss: you've decided to resign.",
-"it": "Chiedi di parlare con la tua capa: hai deciso di dimetterti.",
-"de": "Du bittest deine Chefin um ein Gespräch: Du hast beschlossen zu kündigen.",
-"pt": "Pedes para falar com a tua chefe: decidiste demitir-te."
-},
-"Tu participes à un débat à la radio sur les pistes cyclables en ville.": {
-"en": "You take part in a radio debate about cycle lanes in the city.",
-"it": "Partecipi a un dibattito alla radio sulle piste ciclabili in città.",
-"de": "Du nimmst an einer Radiodebatte über Radwege in der Stadt teil.",
-"pt": "Participas num debate na rádio sobre ciclovias na cidade."
-},
 "Tu passes un entretien pour un poste dans une entreprise.": {
 "en": "You have an interview for a position in a company.",
 "it": "Fai un colloquio per un posto in un'azienda.",
 "de": "Du hast ein Vorstellungsgespräch für eine Stelle in einer Firma.",
 "pt": "Tens uma entrevista para um lugar numa empresa."
-},
-"Tu représentes le personnel face au directeur des ressources humaines, qui annonce des licenciements.": {
-"en": "You represent the staff before the HR director, who is announcing layoffs.",
-"it": "Rappresenti il personale davanti al direttore delle risorse umane, che annuncia dei licenziamenti.",
-"de": "Du vertrittst die Belegschaft gegenüber dem Personalchef, der Entlassungen ankündigt.",
-"pt": "Representas os trabalhadores perante o diretor de recursos humanos, que anuncia despedimentos."
-},
-"Tu retournes voir ta médecin : ton nouveau traitement a des effets secondaires.": {
-"en": "You go back to your doctor: your new treatment has side effects.",
-"it": "Torni dalla tua dottoressa: la nuova terapia ha effetti collaterali.",
-"de": "Du gehst wieder zu deiner Ärztin: Deine neue Behandlung hat Nebenwirkungen.",
-"pt": "Voltas à tua médica: o novo tratamento tem efeitos secundários."
 },
 "Tu tousses depuis une semaine et tu vas chez la médecin.": {
 "en": "You've been coughing for a week and you go to the doctor.",
@@ -3101,23 +3017,11 @@
 "de": "Du hustest seit einer Woche und gehst zur Ärztin.",
 "pt": "Andas a tossir há uma semana e vais à médica."
 },
-"Tu viens d'emménager et tu vas à la mairie pour t'inscrire au registre municipal.": {
-"en": "You've just moved in and go to the town hall to register as a resident.",
-"it": "Ti sei appena trasferito/a e vai in comune per iscriverti all'anagrafe.",
-"de": "Du bist gerade umgezogen und gehst zum Rathaus, um dich anzumelden.",
-"pt": "Acabaste de te mudar e vais à câmara municipal para te inscreveres no registo municipal."
-},
 "Tu visites une cave à vin avec un guide.": {
 "en": "You visit a winery with a guide.",
 "it": "Visiti una cantina con una guida.",
 "de": "Du besichtigst einen Weinkeller mit einem Führer.",
 "pt": "Visitas uma adega com um guia."
-},
-"Un ami veut apprendre à cuisiner et te demande des conseils.": {
-"en": "A friend wants to learn to cook and asks you for advice.",
-"it": "Un amico vuole imparare a cucinare e ti chiede consiglio.",
-"de": "Ein Freund will kochen lernen und bittet dich um Rat.",
-"pt": "Um amigo quer aprender a cozinhar e pede-te conselhos."
 },
 "Un deuil au travail": {
 "en": "A bereavement at work",
@@ -3184,12 +3088,6 @@
 "it": "misure concrete",
 "de": "konkrete Maßnahmen",
 "pt": "medidas concretas"
-},
-"donner sa démission": {
-"en": "to hand in one's resignation",
-"it": "dare le dimissioni",
-"de": "kündigen",
-"pt": "apresentar a demissão"
 },
 "durable": {
 "en": "sustainable",
@@ -3335,12 +3233,6 @@
 "de": "eine Nebenwirkung",
 "pt": "um efeito secundário"
 },
-"un plan social": {
-"en": "a collective redundancy plan",
-"it": "un piano di licenziamenti collettivi",
-"de": "ein Sozialplan",
-"pt": "um despedimento coletivo"
-},
 "un rhume": {
 "en": "a cold",
 "it": "un raffreddore",
@@ -3365,18 +3257,6 @@
 "de": "eine Fußgängerzone",
 "pt": "uma zona pedonal"
 },
-"À l'aéroport, ton vol a été annulé. Tu parles à l'agente de la compagnie.": {
-"en": "At the airport, your flight has been cancelled. You talk to the airline agent.",
-"it": "All'aeroporto il tuo volo è stato cancellato. Parli con l'addetta della compagnia.",
-"de": "Am Flughafen wurde dein Flug gestrichen. Du sprichst mit der Mitarbeiterin der Fluggesellschaft.",
-"pt": "No aeroporto, o teu voo foi cancelado. Falas com a funcionária da companhia."
-},
-"À la réunion de quartier, une conseillère municipale répond aux habitants sur le logement.": {
-"en": "At the neighbourhood meeting, a city councillor answers residents' questions about housing.",
-"it": "Alla riunione di quartiere, una consigliera comunale risponde agli abitanti sulla casa.",
-"de": "Bei der Bürgerversammlung beantwortet eine Stadträtin Fragen der Anwohner zum Wohnen.",
-"pt": "Na reunião de bairro, uma vereadora responde aos moradores sobre a habitação."
-},
 "Ça a été un plaisir": {
 "en": "It's been a pleasure",
 "it": "È stato un piacere",
@@ -3394,5 +3274,119 @@
 "it": "al riguardo",
 "de": "diesbezüglich",
 "pt": "a esse respeito"
+},
+"Tu appelles ton propriétaire : le chauffe-eau ne marche plus.": {
+"en": "You call your landlord: the water heater has stopped working.",
+"it": "Chiami il tuo proprietario: lo scaldabagno non funziona più.",
+"de": "Du rufst deinen Vermieter an: Der Boiler geht nicht mehr.",
+"pt": "Ligas ao senhorio: o esquentador deixou de funcionar."
+},
+"Tu viens d'emménager : tu t'inscris au registre de la mairie.": {
+"en": "You've just moved: you register at the town hall.",
+"it": "Ti sei appena trasferito/a: ti iscrivi all'anagrafe.",
+"de": "Du bist gerade umgezogen: Du meldest dich im Rathaus an.",
+"pt": "Acabaste de te mudar: inscreves-te no registo da câmara."
+},
+"À l'aéroport, ton vol est annulé. Tu vas au guichet.": {
+"en": "At the airport, your flight is cancelled. You go to the desk.",
+"it": "All'aeroporto il tuo volo è cancellato. Vai allo sportello.",
+"de": "Am Flughafen fällt dein Flug aus. Du gehst zum Schalter.",
+"pt": "No aeroporto, o teu voo foi cancelado. Vais ao balcão."
+},
+"Un ami veut apprendre à cuisiner et te demande conseil.": {
+"en": "A friend wants to learn to cook and asks your advice.",
+"it": "Un amico vuole imparare a cucinare e ti chiede consiglio.",
+"de": "Ein Freund will kochen lernen und fragt dich um Rat.",
+"pt": "Um amigo quer aprender a cozinhar e pede-te conselho."
+},
+"Tu appelles le service client : ta commande pose problème.": {
+"en": "You call customer service: there's a problem with your order.",
+"it": "Chiami il servizio clienti: c'è un problema con il tuo ordine.",
+"de": "Du rufst den Kundenservice an: Mit deiner Bestellung stimmt etwas nicht.",
+"pt": "Ligas para o apoio ao cliente: há um problema com a tua encomenda."
+},
+"Réunion : ta directrice fait le point sur le trimestre.": {
+"en": "Meeting: your manager reviews the quarter.",
+"it": "Riunione: la tua direttrice fa il punto sul trimestre.",
+"de": "Besprechung: Deine Chefin zieht Bilanz über das Quartal.",
+"pt": "Reunião: a tua diretora faz o balanço do trimestre."
+},
+"Ton bail se termine et ton propriétaire veut augmenter le loyer.": {
+"en": "Your lease is ending and your landlord wants to raise the rent.",
+"it": "Il tuo contratto scade e il proprietario vuole aumentare l'affitto.",
+"de": "Dein Mietvertrag läuft aus und dein Vermieter will die Miete erhöhen.",
+"pt": "O teu contrato acaba e o senhorio quer aumentar a renda."
+},
+"Ton nouveau traitement a des effets secondaires.": {
+"en": "Your new treatment has side effects.",
+"it": "La tua nuova terapia ha effetti collaterali.",
+"de": "Deine neue Behandlung hat Nebenwirkungen.",
+"pt": "O teu novo tratamento tem efeitos secundários."
+},
+"Tu as décidé de démissionner. Tu vas voir ta cheffe.": {
+"en": "You've decided to resign. You go to see your boss.",
+"it": "Hai deciso di dimetterti. Vai dalla tua capa.",
+"de": "Du hast beschlossen zu kündigen. Du gehst zu deiner Chefin.",
+"pt": "Decidiste demitir-te. Vais falar com a tua chefe."
+},
+"Réunion de quartier sur le logement, avec une conseillère municipale.": {
+"en": "Neighbourhood meeting on housing, with a city councillor.",
+"it": "Riunione di quartiere sulla casa, con una consigliera comunale.",
+"de": "Bürgerversammlung zum Wohnen, mit einer Stadträtin.",
+"pt": "Reunião de bairro sobre habitação, com uma vereadora."
+},
+"Débat à la radio sur les pistes cyclables en ville.": {
+"en": "Radio debate on cycle lanes in the city.",
+"it": "Dibattito alla radio sulle piste ciclabili in città.",
+"de": "Radiodebatte über Radwege in der Stadt.",
+"pt": "Debate na rádio sobre ciclovias na cidade."
+},
+"Tu consultes une avocate pour une clause de ton contrat.": {
+"en": "You see a lawyer about a clause in your contract.",
+"it": "Consulti un'avvocata per una clausola del tuo contratto.",
+"de": "Du lässt dich von einer Anwältin zu einer Klausel deines Vertrags beraten.",
+"pt": "Consultas uma advogada por causa de uma cláusula do teu contrato."
+},
+"quitter son travail": {
+"en": "to quit one's job",
+"it": "lasciare il lavoro",
+"de": "seine Stelle aufgeben",
+"pt": "deixar o trabalho"
+},
+"Demande qu'on réduise d'abord la masse salariale.": {
+"en": "Ask for the wage bill to be cut first.",
+"it": "Chiedi che si riduca prima il monte salari.",
+"de": "Fordere, dass zuerst die Lohnsumme gekürzt wird.",
+"pt": "Pede que se reduza primeiro a massa salarial."
+},
+"les licenciements": {
+"en": "layoffs",
+"it": "i licenziamenti",
+"de": "die Entlassungen",
+"pt": "os despedimentos"
+},
+"Dis que tu es désolé(e), mais que tu vas démissionner.": {
+"en": "Say you're sorry, but you're going to resign.",
+"it": "Di' che ti dispiace, ma che ti dimetterai.",
+"de": "Sag, dass es dir leidtut, du aber kündigen wirst.",
+"pt": "Diz que lamentas, mas que te vais demitir."
+},
+"Dis qu'une clause de ton contrat te semble abusive.": {
+"en": "Say a clause in your contract seems unfair to you.",
+"it": "Di' che una clausola del tuo contratto ti sembra abusiva.",
+"de": "Sag, dass dir eine Klausel in deinem Vertrag missbräuchlich vorkommt.",
+"pt": "Diz que uma cláusula do teu contrato te parece abusiva."
+},
+"La direction annonce des licenciements.": {
+"en": "Management is announcing layoffs.",
+"it": "La direzione annuncia licenziamenti.",
+"de": "Die Geschäftsleitung kündigt Entlassungen an.",
+"pt": "A direção anuncia despedimentos."
+},
+"Dis que vous n'acceptez pas ces licenciements.": {
+"en": "Say you don't accept these layoffs.",
+"it": "Di' che non accettate questi licenziamenti.",
+"de": "Sag, dass ihr diese Entlassungen nicht akzeptiert.",
+"pt": "Diz que não aceitam estes despedimentos."
 }
 }

@@ -1031,7 +1031,7 @@ _Dans une agence, tu réserves une excursion pour le week-end._ · personnage : 
 
 ## Le chauffe-eau en panne (B1) — `b1calentador`
 
-_Tu appelles le propriétaire de ton appartement : le chauffe-eau ne marche plus._ · personnage : Propriétaire
+_Tu appelles ton propriétaire : le chauffe-eau ne marche plus._ · personnage : Propriétaire
 
 1. **Digui?**
    - consigne : Dis que le chauffe-eau ne marche pas depuis hier.
@@ -1160,13 +1160,13 @@ _Tu tousses depuis une semaine et tu vas chez la médecin._ · personnage : Méd
 
 ## Au registre municipal (B1) — `b1padron`
 
-_Tu viens d'emménager et tu vas à la mairie pour t'inscrire au registre municipal._ · personnage : Employé de mairie
+_Tu viens d'emménager : tu t'inscris au registre de la mairie._ · personnage : Employé de mairie
 
 1. **Bon dia. En què el puc ajudar?**
    - consigne : Dis que tu viens t'inscrire au registre municipal.
-   - modèle : Bon dia. Vinc a fer l'empadronament.
-   - variantes : Vinc a fer l'empadronament. · Bon dia, vinc per l'empadronament.
-   - fausses : Bon dia. Vaig a fer l'empadronament ahir. · Bon dia. Vinc a fer la comunitat de veïns. · Bon dia. Ve a fer l'empadronament.
+   - modèle : Vinc a fer l'empadronament.
+   - variantes : Bon dia. Vinc a fer l'empadronament. · Vinc per l'empadronament.
+   - fausses : Vaig a fer l'empadronament ahir. · Vinc a fer la comunitat de veïns. · Ve a fer l'empadronament.
 
 2. **Molt bé. Té cita?**
    - consigne : Dis que oui, tu as rendez-vous à dix heures.
@@ -1203,7 +1203,7 @@ _Tu viens d'emménager et tu vas à la mairie pour t'inscrire au registre munici
 
 ## Vol annulé (B1) — `b1vuelo`
 
-_À l'aéroport, ton vol a été annulé. Tu parles à l'agente de la compagnie._ · personnage : Agente
+_À l'aéroport, ton vol est annulé. Tu vas au guichet._ · personnage : Agente
 
 1. **Bona tarda. En què el puc ajudar?**
    - consigne : Dis que ton vol ne part pas aujourd'hui.
@@ -1246,13 +1246,13 @@ _À l'aéroport, ton vol a été annulé. Tu parles à l'agente de la compagnie.
 
 ## Apprendre à cuisiner (B1) — `b1consejo`
 
-_Un ami veut apprendre à cuisiner et te demande des conseils._ · personnage : Ami
+_Un ami veut apprendre à cuisiner et te demande conseil._ · personnage : Ami
 
-1. **Hola, vull aprendre a cuinar. Què em recomanes?**
+1. **Vull aprendre a cuinar. Què em recomanes?**
    - consigne : Recommande-lui d'aller dans une école de cuisine.
-   - modèle : Et recomano que vagis a una escola de cuina.
-   - variantes : Et recomano anar a una escola de cuina. · Et recomano que vagis a una escola.
-   - fausses : Et recomano que vas a una escola de cuina. · Et recomano que anar a una escola de cuina. · Em recomanes que vagis a una escola de cuina.
+   - modèle : Et recomano que vagis a una escola.
+   - variantes : Et recomano que vagis a una escola de cuina. · Et recomano anar a una escola.
+   - fausses : Et recomano que vas a una escola. · Et recomano que anar a una escola. · Em recomanes que vagis a una escola.
 
 2. **Una escola és massa cara.**
    - consigne : Conseille-lui de regarder des recettes sur internet.
@@ -1289,13 +1289,13 @@ _Un ami veut apprendre à cuisiner et te demande des conseils._ · personnage : 
 
 ## Une commande arrivée cassée (B2) — `b2reclamacion`
 
-_Tu appelles le service client : ta commande est arrivée cassée._ · personnage : Agent du service client
+_Tu appelles le service client : ta commande pose problème._ · personnage : Agent du service client
 
 1. **Bon dia, en què el puc ajudar?**
    - consigne : Dis que ta commande est arrivée cassée.
-   - modèle : Bon dia. El que vaig comprar ha arribat trencat.
-   - variantes : El que vaig comprar ha arribat trencat. · Bon dia, el que vaig comprar va arribar trencat.
-   - fausses : Bon dia. El que vaig comprar ha arribat bé. · Bon dia. El que vas comprar ha arribat trencat. · Bon dia. El que vaig comprar arribarà trencat ahir.
+   - modèle : El que vaig comprar ha arribat trencat.
+   - variantes : Bon dia. El que vaig comprar ha arribat trencat. · El que vaig comprar va arribar trencat.
+   - fausses : El que vaig comprar ha arribat bé. · El que vas comprar ha arribat trencat. · El que vaig comprar arribarà trencat ahir.
 
 2. **Lamento molt el problema. Quan el va rebre?**
    - consigne : Dis que tu l'as reçue hier et qu'elle était déjà cassée.
@@ -1332,13 +1332,13 @@ _Tu appelles le service client : ta commande est arrivée cassée._ · personnag
 
 ## Réunion d'équipe (B2) — `b2reunion`
 
-_En réunion, ta directrice fait le point sur les chiffres du trimestre._ · personnage : Directrice
+_Réunion : ta directrice fait le point sur le trimestre._ · personnage : Directrice
 
-1. **Bé, comencem. Com ha anat la facturació aquest trimestre?**
-   - consigne : Dis qu'il a augmenté de dix pour cent par rapport au précédent.
-   - modèle : Ha pujat un deu per cent respecte a l'anterior.
-   - variantes : Ha pujat un deu per cent. · Ha pujat un deu per cent respecte al trimestre anterior.
-   - fausses : Ha pujat un deu per cent respecte a l'any que ve. · Ha pujada un deu per cent respecte a l'anterior. · Pujarà un deu per cent respecte a l'anterior ahir.
+1. **Com ha anat la facturació aquest trimestre?**
+   - consigne : Dis qu'il a augmenté de dix pour cent.
+   - modèle : Ha pujat un deu per cent.
+   - variantes : Ha pujat un deu per cent respecte a l'anterior. · Ha pujat un deu per cent, més o menys.
+   - fausses : Ha pujada un deu per cent. · Pujarà un deu per cent ahir. · Ha pujat un deu per cent l'any que ve.
 
 2. **Molt bé. I les despeses?**
    - consigne : Dis que les dépenses ont aussi augmenté, mais moins.
@@ -1375,13 +1375,13 @@ _En réunion, ta directrice fait le point sur les chiffres du trimestre._ · per
 
 ## Le bail se termine (B2) — `b2vivienda`
 
-_Ton propriétaire t'appelle : ton bail se termine et il veut augmenter le loyer._ · personnage : Propriétaire
+_Ton bail se termine et ton propriétaire veut augmenter le loyer._ · personnage : Propriétaire
 
-1. **Li truco pel contracte d'arrendament. S'acaba al juny.**
+1. **El seu contracte d'arrendament acaba al juny.**
    - consigne : Dis que tu le sais et que tu aimerais rester dans l'appartement.
-   - modèle : Sí, ho sé. M'agradaria continuar al pis.
-   - variantes : Ja ho sé. M'agradaria continuar al pis. · Sí, ho sé. Vull continuar al pis.
-   - fausses : Sí, ho sé. M'agradaria continuar al pis l'any passat. · Sí, ho sé. T'agradaria continuar al pis. · Sí, ho sé. M'agradaria acabar al pis.
+   - modèle : Ho sé. M'agradaria continuar al pis.
+   - variantes : Sí, ho sé. M'agradaria continuar al pis. · Ho sé. Vull continuar al pis.
+   - fausses : Ho sé. T'agradaria continuar al pis. · Ho sé. M'agradaria acabar al pis. · Ho sé. Em va agradar continuar demà.
 
 2. **El problema és que apujaré el lloguer un quinze per cent.**
    - consigne : Dis que ça te paraît trop.
@@ -1418,13 +1418,13 @@ _Ton propriétaire t'appelle : ton bail se termine et il veut augmenter le loyer
 
 ## Le nouveau traitement (B2) — `b2salud`
 
-_Tu retournes voir ta médecin : ton nouveau traitement a des effets secondaires._ · personnage : Médecin
+_Ton nouveau traitement a des effets secondaires._ · personnage : Médecin
 
 1. **Com va amb el nou tractament?**
    - consigne : Dis que ça va mieux, mais que tu as quelques effets secondaires.
-   - modèle : Millor, però tinc alguns efectes secundaris.
-   - variantes : Millor, tot i que tinc alguns efectes secundaris. · Estic millor, però tinc efectes secundaris.
-   - fausses : Millor, però tinc algunes efectes secundaris. · Millor, però té alguns efectes secundaris. · Millor, però tindré alguns efectes secundaris ahir.
+   - modèle : Millor, però tinc efectes secundaris.
+   - variantes : Millor, però tinc alguns efectes secundaris. · Estic millor, però amb efectes secundaris.
+   - fausses : Millor, però tens efectes secundaris. · Millor, però sense efectes secundaris. · Millor, però tindré efectes secundaris ahir.
 
 2. **Quins símptomes té?**
    - consigne : Dis que tu as mal à la tête et que tu dors moins bien.
@@ -1504,13 +1504,13 @@ _Ton voisin n'est pas content : la rue va être fermée aux voitures._ · person
 
 ## Annoncer sa démission (B2) — `b2dimision`
 
-_Tu demandes à parler à ta cheffe : tu as décidé de démissionner._ · personnage : Cheffe
+_Tu as décidé de démissionner. Tu vas voir ta cheffe._ · personnage : Cheffe
 
 1. **Hola, volies parlar amb mi?**
-   - consigne : Dis que tu regrettes de le lui dire, mais que tu vas présenter ta démission.
-   - modèle : Sí. Lamento dir-t'ho, però presentaré la meva dimissió.
-   - variantes : Sí. Ho sento, però presentaré la meva dimissió. · Lamento dir-t'ho, però dimitiré.
-   - fausses : Sí. Lamento dir-t'ho, però vaig presentar la meva dimissió demà. · Sí. M'alegro de dir-t'ho, però presentaré la meva dimissió. · Sí. Lamento dir-t'ho, però presentaré la teva dimissió.
+   - consigne : Dis que tu es désolé(e), mais que tu vas démissionner.
+   - modèle : Sí. Ho sento, però dimitiré.
+   - variantes : Ho sento, però presentaré la meva dimissió. · Sí. Lamento dir-t'ho, però dimitiré.
+   - fausses : Sí. Ho sento, però vaig dimitir demà. · Sí. Ho sento, però dimitiràs. · Sí. M'alegro, però dimitiré.
 
 2. **Vaja! No m'ho esperava. Per què?**
    - consigne : Dis que tu as trouvé un meilleur travail.
@@ -1542,7 +1542,7 @@ _Tu demandes à parler à ta cheffe : tu as décidé de démissionner._ · perso
    - variantes : I jo a vosaltres. M'ha agradat molt treballar amb tu. · Jo també. M'ha agradat molt.
    - fausses : Jo també. M'ha agradat molt treballar amb mi. · Jo també. M'agradarà molt treballar amb tu ahir. · Jo també. M'ha agradat molt treballant amb tu.
 
-À retenir : presentar la dimissió = donner sa démission · perquè tinguis temps = pour que tu aies le temps · trobar a faltar = regretter (une personne absente) · M'ha agradat molt = J'ai beaucoup aimé
+À retenir : dimitir = démissionner · perquè tinguis temps = pour que tu aies le temps · trobar a faltar = regretter (une personne absente) · M'ha agradat molt = J'ai beaucoup aimé
 
 
 ## Un deuil au travail (C1) — `c1pesame`
@@ -1590,13 +1590,13 @@ _Le père d'une collègue est décédé. Tu vas la voir à son retour._ · perso
 
 ## La négociation (C1) — `c1negociacion`
 
-_Tu représentes le personnel face au directeur des ressources humaines, qui annonce des licenciements._ · personnage : Directeur des ressources humaines
+_La direction annonce des licenciements._ · personnage : Directeur des ressources humaines
 
-1. **L'empresa presentarà un expedient de regulació d'ocupació.**
-   - consigne : Dis que le comité n'accepte pas les licenciements dans ces conditions.
-   - modèle : El comitè no accepta els acomiadaments en aquestes condicions.
-   - variantes : El comitè no accepta acomiadaments en aquestes condicions. · No acceptem els acomiadaments en aquestes condicions.
-   - fausses : El comitè accepta els acomiadaments en aquestes condicions. · El comitè no accepta els acomiadaments en aquestes condició. · El comitè no acceptarà els acomiadaments ahir en aquestes condicions.
+1. **L'empresa vol fer acomiadaments.**
+   - consigne : Dis que vous n'acceptez pas ces licenciements.
+   - modèle : No acceptem aquests acomiadaments.
+   - variantes : El comitè no accepta aquests acomiadaments. · No acceptem aquests acomiadaments en aquestes condicions.
+   - fausses : Acceptem aquests acomiadaments. · No acceptarem aquests acomiadaments ahir. · No acceptem aquestes acomiadaments.
 
 2. **Els números no són bons.**
    - consigne : Objecte que l'entreprise a pourtant fait des bénéfices l'an dernier.
@@ -1605,10 +1605,10 @@ _Tu représentes le personnel face au directeur des ressources humaines, qui ann
    - fausses : Per tant, l'empresa va tenir beneficis l'any passat. · No obstant això, l'empresa va tenir beneficis l'any que ve. · No obstant això, l'empresa té beneficis l'any passat.
 
 3. **És cert, però aquest any va malament.**
-   - consigne : Demande qu'on réduise d'abord la masse salariale de la direction.
-   - modèle : Llavors demanem que primer es redueixi la massa salarial de la direcció.
-   - variantes : Demanem que primer es redueixi la massa salarial de la direcció. · Llavors, que es redueixi primer la massa salarial de la direcció.
-   - fausses : Llavors demanem que primer es redueix la massa salarial de la direcció. · Llavors demanem que primer es reduirà la massa salarial de la direcció. · Llavors demanem que primer es redueixi la massa salarial del comitè.
+   - consigne : Demande qu'on réduise d'abord la masse salariale.
+   - modèle : Que es redueixi abans la massa salarial.
+   - variantes : Demanem que primer es redueixi la massa salarial de la direcció. · Llavors, que es redueixi abans la massa salarial.
+   - fausses : Que es redueix abans la massa salarial. · Que es reduirà abans la massa salarial. · Que es redueixi abans la massa salarial ahir.
 
 4. **Això no depèn de mi.**
    - consigne : Préviens que sinon, le comité fera grève.
@@ -1628,18 +1628,18 @@ _Tu représentes le personnel face au directeur des ressources humaines, qui ann
    - variantes : Esperem una proposta escrita abans de divendres. · Volem una proposta per escrit abans de divendres.
    - fausses : Esperem una proposta per escrita abans de divendres. · Esperem una proposta per a escrit abans de divendres. · Esperàvem una proposta per escrit abans de divendres passat.
 
-À retenir : un expedient de regulació d'ocupació = un plan social · la massa salarial = la masse salariale · En cas contrari = Sinon · prorrogar el preavís = prolonger le préavis
+À retenir : els acomiadaments = les licenciements · la massa salarial = la masse salariale · En cas contrari = Sinon · prorrogar el preavís = prolonger le préavis
 
 
 ## Réunion de quartier (C1) — `c1barrio`
 
-_À la réunion de quartier, une conseillère municipale répond aux habitants sur le logement._ · personnage : Conseillère municipale
+_Réunion de quartier sur le logement, avec une conseillère municipale._ · personnage : Conseillère municipale
 
-1. **Bona tarda a tothom. Qui vol parlar primer?**
+1. **Bona tarda. Qui vol parlar?**
    - consigne : Dis que la flambée des loyers t'inquiète.
-   - modèle : Jo. Em preocupa l'escalada dels lloguers.
-   - variantes : Em preocupa l'escalada dels lloguers. · Jo. Em preocupa molt l'escalada dels lloguers.
-   - fausses : Jo. Em preocupo l'escalada dels lloguers. · Jo. Em preocupava l'escalada dels lloguers demà. · Jo. Em preocupa l'escalada de les lloguers.
+   - modèle : Em preocupa l'escalada dels lloguers.
+   - variantes : Jo. Em preocupa l'escalada dels lloguers. · Em preocupa molt l'escalada dels lloguers.
+   - fausses : Em preocupo l'escalada dels lloguers. · Et preocupa l'escalada dels lloguers. · Em preocupa l'escalada de les lloguers.
 
 2. **És un problema que coneixem bé.**
    - consigne : Dis que beaucoup de voisins ont dû quitter le quartier.
@@ -1676,7 +1676,7 @@ _À la réunion de quartier, une conseillère municipale répond aux habitants s
 
 ## Débat à la radio (C1) — `c1debate`
 
-_Tu participes à un débat à la radio sur les pistes cyclables en ville._ · personnage : Animateur
+_Débat à la radio sur les pistes cyclables en ville._ · personnage : Animateur
 
 1. **Segons alguns, la ciutat no necessita més carrils bici. Què en pensa?**
    - consigne : Dis que tu ne partages pas cet argument.
@@ -1719,13 +1719,13 @@ _Tu participes à un débat à la radio sur les pistes cyclables en ville._ · p
 
 ## Une clause abusive (C1) — `c1clausula`
 
-_Tu consultes une avocate au sujet d'une clause de ton contrat de travail._ · personnage : Avocate
+_Tu consultes une avocate pour une clause de ton contrat._ · personnage : Avocate
 
-1. **Bon dia. Expliqui'm, quin és el problema?**
-   - consigne : Dis que ton contrat contient une clause qui te semble abusive.
-   - modèle : El meu contracte té una clàusula que em sembla abusiva.
-   - variantes : Hi ha una clàusula al meu contracte que em sembla abusiva. · El meu contracte té una clàusula abusiva.
-   - fausses : El meu contracte té una clàusula que em semblo abusiva. · El meu contracte té un clàusula que em sembla abusiva. · El meu contracte tenia una clàusula que em semblarà abusiva.
+1. **Bon dia. Quin és el problema?**
+   - consigne : Dis qu'une clause de ton contrat te semble abusive.
+   - modèle : Una clàusula em sembla abusiva.
+   - variantes : El meu contracte té una clàusula que em sembla abusiva. · Hi ha una clàusula abusiva al meu contracte.
+   - fausses : Una clàusula em semblo abusiva. · Un clàusula em sembla abusiva. · Una clàusula em va semblar abusiva demà.
 
 2. **Què diu aquesta clàusula?**
    - consigne : Dis : qu'on peut te licencier sans préavis.
@@ -1764,11 +1764,11 @@ _Tu consultes une avocate au sujet d'une clause de ton contrat de travail._ · p
 
 _Tu visites une cave à vin avec un guide._ · personnage : Guide
 
-1. **Benvinguts al celler. Fa cent anys que treballem aquí.**
+1. **Benvinguts al celler.**
    - consigne : Demande quand ont lieu les vendanges.
-   - modèle : Que interessant! Quan és la verema?
-   - variantes : Quan és la verema? · Que interessant! Quan fan la verema?
-   - fausses : Que interessant! Quan està la verema? · Que interessant! On és la verema? · Que interessant! Quan va ser la verema demà?
+   - modèle : Quan és la verema?
+   - variantes : Que interessant! Quan és la verema? · Quan fan la verema?
+   - fausses : Quan està la verema? · On és la verema? · Quan va ser la verema demà?
 
 2. **Al setembre, a final de l'estiu.**
    - consigne : Demande quelle variété de raisin ils utilisent.

@@ -42,7 +42,7 @@ with sync_playwright() as p:
     # ---------- 1. toutes les étapes débloquées dès le départ ----------
     res={}
     for l,L in [("es",1),("es",3),("ca",2),("eu",1),("gl",5),("va",4)]:
-        res[f"{l}{L}"]=ev("""([l,L])=>{SET_(l,L);CLR_();S.pthAll=1;const ids=pathItems().filter(x=>!x.test).map(x=>x.id);const pick=ids.filter((_,i)=>i%3===2).slice(0,14);const out=[];
+        res[f"{l}{L}"]=ev("""([l,L])=>{SET_(l,L);CLR_();S.pthAll=1;const pm=pathPlanMain().map;/* étapes de leçon seulement : une étape « Mise en situation » (sit) lance le moteur d'immersion, pas une leçon (cf. path.py) */const ids=pathItems().filter(x=>!x.test&&!(pm[x.id]||{}).sit).map(x=>x.id);const pick=ids.filter((_,i)=>i%3===2).slice(0,14);const out=[];
             for(const id of pick){CLR_();S.pthAll=1;out.push(CHK_(id,25))}return out}""",[l,L])
     bad={k:[x for x in v if x.get("err") or x["bad"] or x["phBad"] or x["ppBad"] or x["xkBad"] or x["wsBad"]] for k,v in res.items()}
     bad={k:v for k,v in bad.items() if v}

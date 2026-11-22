@@ -1037,7 +1037,7 @@ _Dans une agence, tu réserves une excursion pour le week-end._ · personnage : 
 
 ## Le chauffe-eau en panne (B1) — `b1calentador`
 
-_Tu appelles le propriétaire de ton appartement : le chauffe-eau ne marche plus._ · personnage : Propriétaire
+_Tu appelles ton propriétaire : le chauffe-eau ne marche plus._ · personnage : Propriétaire
 
 1. **Si, dígame?**
    - consigne : Dis que le chauffe-eau ne marche pas depuis hier.
@@ -1166,13 +1166,13 @@ _Tu tousses depuis une semaine et tu vas chez la médecin._ · personnage : Méd
 
 ## Au registre municipal (B1) — `b1padron`
 
-_Tu viens d'emménager et tu vas à la mairie pour t'inscrire au registre municipal._ · personnage : Employé de mairie
+_Tu viens d'emménager : tu t'inscris au registre de la mairie._ · personnage : Employé de mairie
 
 1. **Bos días. En que podo axudalo?**
    - consigne : Dis que tu viens t'inscrire au registre municipal.
-   - modèle : Bos días. Veño facer o empadroamento.
-   - variantes : Veño facer o empadroamento. · Bos días, veño polo empadroamento.
-   - fausses : Bos días. Vou facer o empadroamento onte. · Bos días. Veño facer a comunidade de veciños. · Bos días. Vén facer o empadroamento.
+   - modèle : Veño facer o empadroamento.
+   - variantes : Bos días. Veño facer o empadroamento. · Veño polo empadroamento.
+   - fausses : Vou facer o empadroamento onte. · Veño facer a comunidade de veciños. · Vén facer o empadroamento.
 
 2. **Moi ben. Ten cita?**
    - consigne : Dis que oui, tu as rendez-vous à dix heures.
@@ -1209,7 +1209,7 @@ _Tu viens d'emménager et tu vas à la mairie pour t'inscrire au registre munici
 
 ## Vol annulé (B1) — `b1vuelo`
 
-_À l'aéroport, ton vol a été annulé. Tu parles à l'agente de la compagnie._ · personnage : Agente
+_À l'aéroport, ton vol est annulé. Tu vas au guichet._ · personnage : Agente
 
 1. **Boas tardes. En que podo axudalo?**
    - consigne : Dis qu'ils ont annulé ton vol.
@@ -1252,13 +1252,13 @@ _À l'aéroport, ton vol a été annulé. Tu parles à l'agente de la compagnie.
 
 ## Apprendre à cuisiner (B1) — `b1consejo`
 
-_Un ami veut apprendre à cuisiner et te demande des conseils._ · personnage : Ami
+_Un ami veut apprendre à cuisiner et te demande conseil._ · personnage : Ami
 
-1. **Ola, quero aprender a cociñar. Que me recomendas?**
+1. **Quero aprender a cociñar. Que me recomendas?**
    - consigne : Recommande-lui d'aller dans une école de cuisine.
-   - modèle : Recoméndoche que vaias a unha escola de cociña.
-   - variantes : Recoméndoche ir a unha escola de cociña. · Recoméndoche que vaias a unha escola.
-   - fausses : Che recomendo que vaias a unha escola de cociña. · Recoméndoche que vas a unha escola de cociña. · Recoméndoche que ir a unha escola de cociña.
+   - modèle : Recoméndoche que vaias a unha escola.
+   - variantes : Recoméndoche que vaias a unha escola de cociña. · Recoméndoche ir a unha escola.
+   - fausses : Che recomendo que vaias a unha escola. · Recoméndoche que vas a unha escola. · Recoméndoche que ir a unha escola.
 
 2. **Unha escola é demasiado cara.**
    - consigne : Conseille-lui de regarder des recettes sur internet.
@@ -1295,13 +1295,13 @@ _Un ami veut apprendre à cuisiner et te demande des conseils._ · personnage : 
 
 ## Une commande arrivée cassée (B2) — `b2reclamacion`
 
-_Tu appelles le service client : ta commande est arrivée cassée._ · personnage : Agent du service client
+_Tu appelles le service client : ta commande pose problème._ · personnage : Agent du service client
 
 1. **Atención ao cliente, bos días.**
    - consigne : Dis que ta commande n'est pas arrivée.
-   - modèle : Bos días. O meu pedido non chegou.
-   - variantes : O meu pedido non chegou. · Bos días, o pedido aínda non chegou.
-   - fausses : Bos días. O meu pedido non chegaron. · Bos días. O seu pedido non chegou. · Bos días. O meu pedido non chegará onte.
+   - modèle : O meu pedido non chegou.
+   - variantes : Bos días. O meu pedido non chegou. · O pedido aínda non chegou.
+   - fausses : O meu pedido non chegaron. · O seu pedido non chegou. · O meu pedido non chegará onte.
 
 2. **Síntoo moito. Cando o pediu?**
    - consigne : Dis que ça fait deux semaines et qu'elle n'est toujours pas arrivée.
@@ -1338,13 +1338,13 @@ _Tu appelles le service client : ta commande est arrivée cassée._ · personnag
 
 ## Réunion d'équipe (B2) — `b2reunion`
 
-_En réunion, ta directrice fait le point sur les chiffres du trimestre._ · personnage : Directrice
+_Réunion : ta directrice fait le point sur le trimestre._ · personnage : Directrice
 
-1. **Ben, comecemos. Como foi a facturación este trimestre?**
-   - consigne : Dis qu'il a augmenté de dix pour cent par rapport au précédent.
-   - modèle : Subiu un dez por cento respecto ao anterior.
-   - variantes : Subiu un dez por cento. · Subiu un dez por cento respecto ao trimestre anterior.
-   - fausses : Subiu un dez por cento respecto ao ano que vén. · Subiron un dez por cento respecto ao anterior. · Subirá un dez por cento respecto ao anterior onte.
+1. **Como foi a facturación este trimestre?**
+   - consigne : Dis qu'il a augmenté de dix pour cent.
+   - modèle : Subiu un dez por cento.
+   - variantes : Subiu un dez por cento respecto ao anterior. · Subiu un dez por cento, máis ou menos.
+   - fausses : Subiron un dez por cento. · Subirá un dez por cento onte. · Subiu un dez por cento o ano que vén.
 
 2. **Moi ben. E os gastos?**
    - consigne : Dis que les dépenses ont aussi augmenté, mais moins.
@@ -1381,13 +1381,13 @@ _En réunion, ta directrice fait le point sur les chiffres du trimestre._ · per
 
 ## Le bail se termine (B2) — `b2vivienda`
 
-_Ton propriétaire t'appelle : ton bail se termine et il veut augmenter le loyer._ · personnage : Propriétaire
+_Ton bail se termine et ton propriétaire veut augmenter le loyer._ · personnage : Propriétaire
 
-1. **Chámoo polo contrato de arrendamento. Remata en xuño.**
+1. **O seu contrato de arrendamento remata en xuño.**
    - consigne : Dis que tu le sais et que tu aimerais rester dans l'appartement.
-   - modèle : Si, xa o sei. Gustaríame seguir no piso.
-   - variantes : Xa o sei. Gustaríame seguir no piso. · Si, xa o sei. Quero seguir no piso.
-   - fausses : Si, xa o sei. Me gustaría seguir no piso. · Si, xa o sei. Gustaríache seguir no piso. · Si, xa o sei. Gustaríame seguir no piso o ano pasado.
+   - modèle : Xa o sei. Gustaríame seguir no piso.
+   - variantes : Si, xa o sei. Gustaríame seguir no piso. · Xa o sei. Quero seguir no piso.
+   - fausses : Xa o sei. Me gustaría seguir no piso. · Xa o sei. Gustaríache seguir no piso. · Xa o sei. Gustoume seguir no piso mañá.
 
 2. **O problema é que vou subir o aluguer un quince por cento.**
    - consigne : Dis que ça te paraît trop.
@@ -1424,7 +1424,7 @@ _Ton propriétaire t'appelle : ton bail se termine et il veut augmenter le loyer
 
 ## Le nouveau traitement (B2) — `b2salud`
 
-_Tu retournes voir ta médecin : ton nouveau traitement a des effets secondaires._ · personnage : Médecin
+_Ton nouveau traitement a des effets secondaires._ · personnage : Médecin
 
 1. **Que tal co novo tratamento?**
    - consigne : Dis que ça va mieux, mais que tu as un effet secondaire.
@@ -1510,13 +1510,13 @@ _Ton voisin n'est pas content : la rue va être fermée aux voitures._ · person
 
 ## Annoncer sa démission (B2) — `b2dimision`
 
-_Tu demandes à parler à ta cheffe : tu as décidé de démissionner._ · personnage : Cheffe
+_Tu as décidé de démissionner. Tu vas voir ta cheffe._ · personnage : Cheffe
 
 1. **Ola, querías falar comigo?**
-   - consigne : Dis que tu regrettes de le lui dire, mais que tu vas présenter ta démission.
-   - modèle : Si. Síntoo, pero vou presentar a miña dimisión.
-   - variantes : Si. Lamento dicilo, pero vou presentar a miña dimisión. · Síntoo, pero vou dimitir.
-   - fausses : Si. Síntoo, pero fun presentar a miña dimisión mañá. · Si. Alégrome, pero vou presentar a miña dimisión. · Si. Síntoo, pero vou presentar a túa dimisión.
+   - consigne : Dis que tu es désolé(e), mais que tu vas démissionner.
+   - modèle : Si. Síntoo, pero vou dimitir.
+   - variantes : Síntoo, pero vou presentar a miña dimisión. · Si. Lamento dicilo, pero vou dimitir.
+   - fausses : Si. Síntoo, pero dimitín mañá. · Si. Síntoo, pero vas dimitir. · Si. Alégrome, pero vou dimitir.
 
 2. **Vaia! Non mo esperaba. Por que?**
    - consigne : Dis que tu as trouvé un meilleur travail.
@@ -1548,7 +1548,7 @@ _Tu demandes à parler à ta cheffe : tu as décidé de démissionner._ · perso
    - variantes : E eu a vós. Foi un pracer traballar contigo. · Eu tamén. Foi un pracer.
    - fausses : Eu tamén. Foi un pracer traballar con ti. · Eu tamén. Estivo un pracer traballar contigo. · Eu tamén. Será un pracer traballar contigo onte.
 
-À retenir : presentar a dimisión = donner sa démission · para que teñas tempo = pour que tu aies le temps · botar de menos = regretter (une personne absente) · Foi un pracer = Ça a été un plaisir
+À retenir : dimitir = démissionner · para que teñas tempo = pour que tu aies le temps · botar de menos = regretter (une personne absente) · Foi un pracer = Ça a été un plaisir
 
 
 ## Un deuil au travail (C1) — `c1pesame`
@@ -1596,13 +1596,13 @@ _Le père d'une collègue est décédé. Tu vas la voir à son retour._ · perso
 
 ## La négociation (C1) — `c1negociacion`
 
-_Tu représentes le personnel face au directeur des ressources humaines, qui annonce des licenciements._ · personnage : Directeur des ressources humaines
+_La direction annonce des licenciements._ · personnage : Directeur des ressources humaines
 
-1. **A empresa vai presentar un expediente de regulación de emprego.**
-   - consigne : Dis que le comité n'accepte pas les licenciements dans ces conditions.
-   - modèle : O comité non acepta os despedimentos nestas condicións.
-   - variantes : O comité non acepta despedimentos nestas condicións. · Non aceptamos os despedimentos nestas condicións.
-   - fausses : O comité acepta os despedimentos nestas condicións. · O comité non acepta os despedimentos nestas condición. · O comité non aceptará os despedimentos onte nestas condicións.
+1. **A empresa quere facer despedimentos.**
+   - consigne : Dis que vous n'acceptez pas ces licenciements.
+   - modèle : Non aceptamos estes despedimentos.
+   - variantes : O comité non acepta estes despedimentos. · Non aceptamos estes despedimentos nestas condicións.
+   - fausses : Aceptamos estes despedimentos. · Non aceptaremos estes despedimentos onte. · Non aceptamos estas despedimentos.
 
 2. **Os números non nos deixan outra opción.**
    - consigne : Objecte que l'entreprise a pourtant fait des bénéfices l'an dernier.
@@ -1611,10 +1611,10 @@ _Tu représentes le personnel face au directeur des ressources humaines, qui ann
    - fausses : Por tanto, a empresa tivo beneficios o ano pasado. · Non obstante, a empresa tivo beneficios o ano que vén. · Non obstante, a empresa ten beneficios o ano pasado.
 
 3. **É certo, pero este ano vai mal.**
-   - consigne : Demande qu'on réduise d'abord la masse salariale de la direction.
-   - modèle : Entón pedimos que primeiro se reduza a masa salarial da dirección.
-   - variantes : Pedimos que primeiro se reduza a masa salarial da dirección. · Entón, que se reduza primeiro a masa salarial da dirección.
-   - fausses : Entón pedimos que primeiro se reduce a masa salarial da dirección. · Entón pedimos que primeiro se reducirá a masa salarial da dirección. · Entón pedimos que primeiro se reduza a masa salarial do comité.
+   - consigne : Demande qu'on réduise d'abord la masse salariale.
+   - modèle : Que se reduza antes a masa salarial.
+   - variantes : Pedimos que primeiro se reduza a masa salarial da dirección. · Entón, que se reduza antes a masa salarial.
+   - fausses : Que se reduce antes a masa salarial. · Que se reducirá antes a masa salarial. · Que se reduza antes a masa salarial onte.
 
 4. **Iso non depende de min.**
    - consigne : Préviens que sinon, le comité fera grève.
@@ -1634,18 +1634,18 @@ _Tu représentes le personnel face au directeur des ressources humaines, qui ann
    - variantes : Agardamos unha proposta escrita antes do venres. · Queremos unha proposta por escrito antes do venres.
    - fausses : Agardamos unha proposta por escrita antes do venres. · Agardamos unha proposta para escrito antes do venres. · Agardabamos unha proposta por escrito antes do venres pasado.
 
-À retenir : un expediente de regulación de emprego = un plan social · a masa salarial = la masse salariale · En caso contrario = Sinon · prorrogar o preaviso = prolonger le préavis
+À retenir : os despedimentos = les licenciements · a masa salarial = la masse salariale · En caso contrario = Sinon · prorrogar o preaviso = prolonger le préavis
 
 
 ## Réunion de quartier (C1) — `c1barrio`
 
-_À la réunion de quartier, une conseillère municipale répond aux habitants sur le logement._ · personnage : Conseillère municipale
+_Réunion de quartier sur le logement, avec une conseillère municipale._ · personnage : Conseillère municipale
 
-1. **Boas tardes a todos. Quen quere falar primeiro?**
+1. **Boas tardes. Quen quere falar?**
    - consigne : Dis que la flambée des loyers t'inquiète.
-   - modèle : Eu. Preocúpame a escalada dos alugueres.
-   - variantes : Preocúpame a escalada dos alugueres. · Eu. Preocúpame moito a escalada dos alugueres.
-   - fausses : Eu. Me preocupa a escalada dos alugueres. · Eu. Preocupábame a escalada dos alugueres mañá. · Eu. Preocúpame a escalada das alugueres.
+   - modèle : Preocúpame a escalada dos alugueres.
+   - variantes : Eu. Preocúpame a escalada dos alugueres. · Preocúpame moito a escalada dos alugueres.
+   - fausses : Me preocupa a escalada dos alugueres. · Preocúpache a escalada dos alugueres. · Preocúpame a escalada das alugueres.
 
 2. **É un problema que coñecemos ben.**
    - consigne : Dis que beaucoup de voisins ont dû quitter le quartier.
@@ -1682,7 +1682,7 @@ _À la réunion de quartier, une conseillère municipale répond aux habitants s
 
 ## Débat à la radio (C1) — `c1debate`
 
-_Tu participes à un débat à la radio sur les pistes cyclables en ville._ · personnage : Animateur
+_Débat à la radio sur les pistes cyclables en ville._ · personnage : Animateur
 
 1. **Segundo algúns, a cidade non precisa máis carrís bici. Que opina?**
    - consigne : Dis que tu ne partages pas cet argument.
@@ -1725,13 +1725,13 @@ _Tu participes à un débat à la radio sur les pistes cyclables en ville._ · p
 
 ## Une clause abusive (C1) — `c1clausula`
 
-_Tu consultes une avocate au sujet d'une clause de ton contrat de travail._ · personnage : Avocate
+_Tu consultes une avocate pour une clause de ton contrat._ · personnage : Avocate
 
-1. **Bos días. Cónteme, cal é o problema?**
-   - consigne : Dis que ton contrat contient une clause qui te semble abusive.
-   - modèle : O meu contrato ten unha cláusula que me parece abusiva.
-   - variantes : Hai unha cláusula no meu contrato que me parece abusiva. · O meu contrato ten unha cláusula abusiva.
-   - fausses : O meu contrato ten unha cláusula que me parezo abusiva. · O meu contrato ten un cláusula que me parece abusiva. · O meu contrato tiña unha cláusula que me parecerá abusiva.
+1. **Bos días. Cal é o problema?**
+   - consigne : Dis qu'une clause de ton contrat te semble abusive.
+   - modèle : Unha cláusula paréceme abusiva.
+   - variantes : O meu contrato ten unha cláusula que me parece abusiva. · Hai unha cláusula abusiva no meu contrato.
+   - fausses : Unha cláusula me parece abusiva. · Un cláusula paréceme abusiva. · Unha cláusula pareceume abusiva mañá.
 
 2. **Que di esa cláusula?**
    - consigne : Dis : qu'on peut te licencier sans préavis.
@@ -1770,11 +1770,11 @@ _Tu consultes une avocate au sujet d'une clause de ton contrat de travail._ · p
 
 _Tu visites une cave à vin avec un guide._ · personnage : Guide
 
-1. **Benvidos á adega. Aquí facemos viño desde hai cen anos.**
+1. **Benvidos á adega.**
    - consigne : Demande quand ont lieu les vendanges.
-   - modèle : Que interesante! Cando é a vendima?
-   - variantes : Cando é a vendima? · Que interesante! Cando fan a vendima?
-   - fausses : Que interesante! Cando está a vendima? · Que interesante! Onde é a vendima? · Que interesante! Cando foi a vendima mañá?
+   - modèle : Cando é a vendima?
+   - variantes : Que interesante! Cando é a vendima? · Cando fan a vendima?
+   - fausses : Cando está a vendima? · Onde é a vendima? · Cando foi a vendima mañá?
 
 2. **En setembro, ao final do verán.**
    - consigne : Demande quelle variété de raisin ils utilisent.

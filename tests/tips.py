@@ -10,13 +10,13 @@ with sync_playwright() as p:
     pg.on("pageerror",lambda e:err.append(str(e)))
     pg.goto(BASE+"index.html");pg.wait_for_timeout(2500)
     d=pg.evaluate("""()=>{const o={n:0,lv:[],dup:[],unreach:[],long:[],noFr:[]};
-      for(const l of Object.keys(TIPS)){S.lang=l;build();const seen=new Set();
-        const heads=[...ALL.map(w=>tpN(w[0])),...PH.map(x=>tpN(x[0]))];
+      const L0=S.lvl;for(const l of Object.keys(TIPS)){S.lang=l;S.lvl=5;build();XDIRTY=1;xens();const seen=new Set();/* vocabulaire complet de la langue (tous niveaux, listes du parcours LP comprises), comme dans les leçons */
+        const heads=[...ALL.map(w=>tpN(w[0])),...LP.map(w=>tpN(w[0])),...PH.map(x=>tpN(x[0])),...XP.map(x=>tpN(x.e))];/* expressions : q.say des questions d'expression, que tpFind examine */
         for(const t of TIPS[l]){o.n++;if(!(t[1]>=1&&t[1]<=5))o.lv.push([l,t[0]]);const g=tpN(t[0]);if(seen.has(g))o.dup.push([l,t[0]]);seen.add(g);
           if(t[2].length>260||t[2].length<20)o.long.push([l,t[0],t[2].length]);
           const ok=heads.some(h=>h===g||(g.includes(' ')&&(' '+h+' ').includes(' '+g+' ')));if(!ok)o.unreach.push([l,t[0]]);
-          const w=ALL.find(w=>tpN(w[0])===g)||PH.find(x=>tpN(x[0])===g);const lvItem=w?(w[2]||1):null;if(lvItem&&lvItem>t[1])o.lv.push([l,t[0],'tip<item',t[1],lvItem])}}
-      return o}""")
+          const w=ALL.find(w=>tpN(w[0])===g)||LP.find(w=>tpN(w[0])===g)||PH.find(x=>tpN(x[0])===g);const lvItem=w?(w[2]||1):null;if(lvItem&&lvItem>t[1])o.lv.push([l,t[0],'tip<item',t[1],lvItem])}}
+      S.lvl=L0;return o}""")
     ck(f"{d['n']} astuces : niveaux valides, sans doublon, longueur raisonnable",not d['lv'] and not d['dup'] and not d['long'],d)
     ck("chaque déclencheur correspond à un mot ou une phrase réellement présents dans la langue",not d['unreach'],d['unreach'])
     miss={}

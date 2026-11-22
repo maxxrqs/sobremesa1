@@ -1037,7 +1037,7 @@ _Dans une agence, tu réserves une excursion pour le week-end._ · personnage : 
 
 ## Le chauffe-eau en panne (B1) — `b1calentador`
 
-_Tu appelles le propriétaire de ton appartement : le chauffe-eau ne marche plus._ · personnage : Propriétaire
+_Tu appelles ton propriétaire : le chauffe-eau ne marche plus._ · personnage : Propriétaire
 
 1. **¿Dígame?**
    - consigne : Dis que le chauffe-eau ne marche pas depuis hier.
@@ -1166,13 +1166,13 @@ _Tu tousses depuis une semaine et tu vas chez la médecin._ · personnage : Méd
 
 ## Au registre municipal (B1) — `b1padron`
 
-_Tu viens d'emménager et tu vas à la mairie pour t'inscrire au registre municipal._ · personnage : Employé de mairie
+_Tu viens d'emménager : tu t'inscris au registre de la mairie._ · personnage : Employé de mairie
 
 1. **Buenos días. ¿En qué puedo ayudarle?**
    - consigne : Dis que tu viens t'inscrire au registre municipal.
-   - modèle : Buenos días. Vengo a hacer el empadronamiento.
-   - variantes : Vengo a hacer el empadronamiento. · Buenos días, vengo para el empadronamiento.
-   - fausses : Buenos días. Vengo a hacer el empadronamiento mañana pasado. · Buenos días. Voy a hacer el empadronamiento ayer. · Buenos días. Vengo a hacer la comunidad de vecinos.
+   - modèle : Vengo a hacer el empadronamiento.
+   - variantes : Buenos días. Vengo a hacer el empadronamiento. · Vengo para el empadronamiento.
+   - fausses : Voy a hacer el empadronamiento ayer. · Vengo a hacer la comunidad de vecinos. · Viene a hacer el empadronamiento.
 
 2. **Muy bien. ¿Tiene cita?**
    - consigne : Dis que oui, tu as rendez-vous à dix heures.
@@ -1209,7 +1209,7 @@ _Tu viens d'emménager et tu vas à la mairie pour t'inscrire au registre munici
 
 ## Vol annulé (B1) — `b1vuelo`
 
-_À l'aéroport, ton vol a été annulé. Tu parles à l'agente de la compagnie._ · personnage : Agente
+_À l'aéroport, ton vol est annulé. Tu vas au guichet._ · personnage : Agente
 
 1. **Buenas tardes. ¿En qué puedo ayudarle?**
    - consigne : Dis qu'ils ont annulé ton vol.
@@ -1252,13 +1252,13 @@ _À l'aéroport, ton vol a été annulé. Tu parles à l'agente de la compagnie.
 
 ## Apprendre à cuisiner (B1) — `b1consejo`
 
-_Un ami veut apprendre à cuisiner et te demande des conseils._ · personnage : Ami
+_Un ami veut apprendre à cuisiner et te demande conseil._ · personnage : Ami
 
-1. **Hola, quiero aprender a cocinar. ¿Qué me recomiendas?**
+1. **Quiero aprender a cocinar. ¿Qué me recomiendas?**
    - consigne : Recommande-lui d'aller dans une école de cuisine.
-   - modèle : Te recomiendo que vayas a una escuela de cocina.
-   - variantes : Te recomiendo ir a una escuela de cocina. · Te recomiendo que vayas a una escuela.
-   - fausses : Te recomiendo que vas a una escuela de cocina. · Te recomiendo que ir a una escuela de cocina. · Me recomiendas que vayas a una escuela de cocina.
+   - modèle : Te recomiendo que vayas a una escuela.
+   - variantes : Te recomiendo que vayas a una escuela de cocina. · Te recomiendo ir a una escuela.
+   - fausses : Te recomiendo que vas a una escuela. · Te recomiendo que ir a una escuela. · Me recomiendas que vayas a una escuela.
 
 2. **Una escuela es demasiado cara.**
    - consigne : Conseille-lui de regarder des recettes sur internet.
@@ -1295,13 +1295,13 @@ _Un ami veut apprendre à cuisiner et te demande des conseils._ · personnage : 
 
 ## Une commande arrivée cassée (B2) — `b2reclamacion`
 
-_Tu appelles le service client : ta commande est arrivée cassée._ · personnage : Agent du service client
+_Tu appelles le service client : ta commande pose problème._ · personnage : Agent du service client
 
 1. **Atención al cliente, buenos días.**
    - consigne : Dis que ta commande est arrivée cassée.
-   - modèle : Buenos días. Mi pedido ha llegado roto.
-   - variantes : Mi pedido ha llegado roto. · Buenos días, el pedido llegó roto.
-   - fausses : Buenos días. Mi pedido ha llegado rota. · Buenos días. Su pedido ha llegado roto. · Buenos días. Mi pedido llegará roto ayer.
+   - modèle : Mi pedido ha llegado roto.
+   - variantes : Buenos días. Mi pedido ha llegado roto. · El pedido llegó roto.
+   - fausses : Mi pedido ha llegado rota. · Su pedido ha llegado roto. · Mi pedido llegará roto ayer.
 
 2. **Lamento mucho el problema. ¿Cuándo lo recibió?**
    - consigne : Dis que tu l'as reçue hier et qu'elle était déjà cassée.
@@ -1338,13 +1338,13 @@ _Tu appelles le service client : ta commande est arrivée cassée._ · personnag
 
 ## Réunion d'équipe (B2) — `b2reunion`
 
-_En réunion, ta directrice fait le point sur les chiffres du trimestre._ · personnage : Directrice
+_Réunion : ta directrice fait le point sur le trimestre._ · personnage : Directrice
 
-1. **Bueno, empecemos. ¿Cómo ha ido la facturación este trimestre?**
-   - consigne : Dis qu'il a augmenté de dix pour cent par rapport au précédent.
-   - modèle : Ha subido un diez por ciento respecto al anterior.
-   - variantes : Ha subido un diez por ciento. · Ha subido un diez por ciento respecto al trimestre anterior.
-   - fausses : Ha subido un diez por ciento respecto al año que viene. · Ha subida un diez por ciento respecto al anterior. · Subirá un diez por ciento respecto al anterior ayer.
+1. **¿Cómo ha ido la facturación este trimestre?**
+   - consigne : Dis qu'il a augmenté de dix pour cent.
+   - modèle : Ha subido un diez por ciento.
+   - variantes : Ha subido un diez por ciento respecto al anterior. · Ha subido un diez por ciento, más o menos.
+   - fausses : Ha subida un diez por ciento. · Subirá un diez por ciento ayer. · Ha subido un diez por ciento el año que viene.
 
 2. **Muy bien. ¿Y los gastos?**
    - consigne : Dis que les dépenses ont aussi augmenté, mais moins.
@@ -1381,13 +1381,13 @@ _En réunion, ta directrice fait le point sur les chiffres du trimestre._ · per
 
 ## Le bail se termine (B2) — `b2vivienda`
 
-_Ton propriétaire t'appelle : ton bail se termine et il veut augmenter le loyer._ · personnage : Propriétaire
+_Ton bail se termine et ton propriétaire veut augmenter le loyer._ · personnage : Propriétaire
 
-1. **Le llamo por el contrato de arrendamiento. Termina en junio.**
+1. **Su contrato de arrendamiento termina en junio.**
    - consigne : Dis que tu le sais et que tu aimerais rester dans l'appartement.
-   - modèle : Sí, lo sé. Me gustaría seguir en el piso.
-   - variantes : Ya lo sé. Me gustaría seguir en el piso. · Sí, lo sé. Quiero seguir en el piso.
-   - fausses : Sí, lo sé. Me gustaría seguir en el piso el año pasado. · Sí, lo sé. Te gustaría seguir en el piso. · Sí, lo sé. Me gustaría terminar en el piso.
+   - modèle : Lo sé. Me gustaría seguir en el piso.
+   - variantes : Sí, lo sé. Me gustaría seguir en el piso. · Lo sé. Quiero seguir en el piso.
+   - fausses : Lo sé. Te gustaría seguir en el piso. · Lo sé. Me gustaría terminar en el piso. · Lo sé. Me gustó seguir en el piso mañana.
 
 2. **El problema es que voy a subir el alquiler un quince por ciento.**
    - consigne : Dis que ça te paraît trop.
@@ -1424,13 +1424,13 @@ _Ton propriétaire t'appelle : ton bail se termine et il veut augmenter le loyer
 
 ## Le nouveau traitement (B2) — `b2salud`
 
-_Tu retournes voir ta médecin : ton nouveau traitement a des effets secondaires._ · personnage : Médecin
+_Ton nouveau traitement a des effets secondaires._ · personnage : Médecin
 
 1. **¿Qué tal con el nuevo tratamiento?**
    - consigne : Dis que ça va mieux, mais que tu as quelques effets secondaires.
-   - modèle : Mejor, pero tengo algunos efectos secundarios.
-   - variantes : Mejor, aunque tengo algunos efectos secundarios. · Estoy mejor, pero tengo efectos secundarios.
-   - fausses : Mejor, pero tengo algunas efectos secundarios. · Mejor, pero tiene algunos efectos secundarios. · Mejor, pero tendré algunos efectos secundarios ayer.
+   - modèle : Mejor, pero tengo efectos secundarios.
+   - variantes : Mejor, pero tengo algunos efectos secundarios. · Estoy mejor, pero con efectos secundarios.
+   - fausses : Mejor, pero tienes efectos secundarios. · Mejor, pero sin efectos secundarios. · Mejor, pero tendré efectos secundarios ayer.
 
 2. **¿Qué síntomas tiene?**
    - consigne : Dis que tu as mal à la tête et que tu dors moins bien.
@@ -1510,13 +1510,13 @@ _Ton voisin n'est pas content : la rue va être fermée aux voitures._ · person
 
 ## Annoncer sa démission (B2) — `b2dimision`
 
-_Tu demandes à parler à ta cheffe : tu as décidé de démissionner._ · personnage : Cheffe
+_Tu as décidé de démissionner. Tu vas voir ta cheffe._ · personnage : Cheffe
 
 1. **Hola, ¿querías hablar conmigo?**
-   - consigne : Dis que tu regrettes de le lui dire, mais que tu vas présenter ta démission.
-   - modèle : Sí. Lamento decírtelo, pero voy a presentar mi dimisión.
-   - variantes : Sí. Lo siento, pero voy a presentar mi dimisión. · Lamento decírtelo, pero voy a dimitir.
-   - fausses : Sí. Lamento decírtelo, pero presenté mi dimisión mañana. · Sí. Me alegro de decírtelo, pero voy a presentar mi dimisión. · Sí. Lamento decírtelo, pero voy a presentar tu dimisión.
+   - consigne : Dis que tu es désolé(e), mais que tu vas démissionner.
+   - modèle : Sí. Lo siento, pero voy a dimitir.
+   - variantes : Lo siento, pero voy a presentar mi dimisión. · Sí. Lamento decírtelo, pero voy a dimitir.
+   - fausses : Sí. Lo siento, pero dimití mañana. · Sí. Lo siento, pero vas a dimitir. · Sí. Me alegro, pero voy a dimitir.
 
 2. **¡Vaya! No me lo esperaba. ¿Por qué?**
    - consigne : Dis que tu as trouvé un meilleur travail.
@@ -1548,7 +1548,7 @@ _Tu demandes à parler à ta cheffe : tu as décidé de démissionner._ · perso
    - variantes : Y yo a vosotros. Ha sido un placer trabajar contigo. · Yo también. Ha sido un placer.
    - fausses : Yo también. Ha sido un placer trabajar con tú. · Yo también. Ha estado un placer trabajar contigo. · Yo también. Será un placer trabajar contigo ayer.
 
-À retenir : presentar la dimisión = donner sa démission · para que tengas tiempo = pour que tu aies le temps · echar de menos = regretter (une personne absente) · Ha sido un placer = Ça a été un plaisir
+À retenir : dimitir = démissionner · para que tengas tiempo = pour que tu aies le temps · echar de menos = regretter (une personne absente) · Ha sido un placer = Ça a été un plaisir
 
 
 ## Un deuil au travail (C1) — `c1pesame`
@@ -1596,13 +1596,13 @@ _Le père d'une collègue est décédé. Tu vas la voir à son retour._ · perso
 
 ## La négociation (C1) — `c1negociacion`
 
-_Tu représentes le personnel face au directeur des ressources humaines, qui annonce des licenciements._ · personnage : Directeur des ressources humaines
+_La direction annonce des licenciements._ · personnage : Directeur des ressources humaines
 
-1. **La empresa va a presentar un expediente de regulación de empleo.**
-   - consigne : Dis que le comité n'accepte pas les licenciements dans ces conditions.
-   - modèle : El comité no acepta los despidos en estas condiciones.
-   - variantes : El comité no acepta despidos en estas condiciones. · No aceptamos los despidos en estas condiciones.
-   - fausses : El comité acepta los despidos en estas condiciones. · El comité no acepta los despidos en estas condición. · El comité no aceptará los despidos ayer en estas condiciones.
+1. **La empresa quiere hacer despidos.**
+   - consigne : Dis que vous n'acceptez pas ces licenciements.
+   - modèle : No aceptamos estos despidos.
+   - variantes : El comité no acepta estos despidos. · No aceptamos estos despidos en estas condiciones.
+   - fausses : Aceptamos estos despidos. · No aceptaremos estos despidos ayer. · No aceptamos estas despidos.
 
 2. **Los números no nos dejan otra opción.**
    - consigne : Objecte que l'entreprise a pourtant fait des bénéfices l'an dernier.
@@ -1611,10 +1611,10 @@ _Tu représentes le personnel face au directeur des ressources humaines, qui ann
    - fausses : Por lo tanto, la empresa tuvo beneficios el año pasado. · Sin embargo, la empresa tuvo beneficios el año que viene. · Sin embargo, la empresa tiene beneficios el año pasado.
 
 3. **Es cierto, pero este año va mal.**
-   - consigne : Demande qu'on réduise d'abord la masse salariale de la direction.
-   - modèle : Entonces pedimos que primero se reduzca la masa salarial de la dirección.
-   - variantes : Pedimos que primero se reduzca la masa salarial de la dirección. · Entonces, que se reduzca primero la masa salarial de la dirección.
-   - fausses : Entonces pedimos que primero se reduce la masa salarial de la dirección. · Entonces pedimos que primero se reducirá la masa salarial de la dirección. · Entonces pedimos que primero se reduzca la masa salarial del comité.
+   - consigne : Demande qu'on réduise d'abord la masse salariale.
+   - modèle : Que se reduzca antes la masa salarial.
+   - variantes : Pedimos que primero se reduzca la masa salarial de la dirección. · Entonces, que se reduzca antes la masa salarial.
+   - fausses : Que se reduce antes la masa salarial. · Que se reducirá antes la masa salarial. · Que se reduzca antes la masa salarial ayer.
 
 4. **Eso no depende de mí.**
    - consigne : Préviens que sinon, le comité fera grève.
@@ -1634,18 +1634,18 @@ _Tu représentes le personnel face au directeur des ressources humaines, qui ann
    - variantes : Esperamos una propuesta escrita antes del viernes. · Queremos una propuesta por escrito antes del viernes.
    - fausses : Esperamos una propuesta por escrita antes del viernes. · Esperamos una propuesta para escrito antes del viernes. · Esperábamos una propuesta por escrito antes del viernes pasado.
 
-À retenir : un expediente de regulación de empleo = un plan social · la masa salarial = la masse salariale · De lo contrario = Sinon · prorrogar el preaviso = prolonger le préavis
+À retenir : los despidos = les licenciements · la masa salarial = la masse salariale · De lo contrario = Sinon · prorrogar el preaviso = prolonger le préavis
 
 
 ## Réunion de quartier (C1) — `c1barrio`
 
-_À la réunion de quartier, une conseillère municipale répond aux habitants sur le logement._ · personnage : Conseillère municipale
+_Réunion de quartier sur le logement, avec une conseillère municipale._ · personnage : Conseillère municipale
 
-1. **Buenas tardes a todos. ¿Quién quiere hablar primero?**
+1. **Buenas tardes. ¿Quién quiere hablar?**
    - consigne : Dis que la flambée des loyers t'inquiète.
-   - modèle : Yo. Me preocupa la escalada de los alquileres.
-   - variantes : Me preocupa la escalada de los alquileres. · Yo. Me preocupa mucho la escalada de los alquileres.
-   - fausses : Yo. Me preocupo la escalada de los alquileres. · Yo. Me preocupaba la escalada de los alquileres mañana. · Yo. Me preocupa la escalada de las alquileres.
+   - modèle : Me preocupa la escalada de los alquileres.
+   - variantes : Yo. Me preocupa la escalada de los alquileres. · Me preocupa mucho la escalada de los alquileres.
+   - fausses : Me preocupo la escalada de los alquileres. · Te preocupa la escalada de los alquileres. · Me preocupa la escalada de las alquileres.
 
 2. **Es un problema que conocemos bien.**
    - consigne : Dis que beaucoup de voisins ont dû quitter le quartier.
@@ -1682,7 +1682,7 @@ _À la réunion de quartier, une conseillère municipale répond aux habitants s
 
 ## Débat à la radio (C1) — `c1debate`
 
-_Tu participes à un débat à la radio sur les pistes cyclables en ville._ · personnage : Animateur
+_Débat à la radio sur les pistes cyclables en ville._ · personnage : Animateur
 
 1. **Según algunos, la ciudad no necesita más carriles bici. ¿Qué opina?**
    - consigne : Dis que tu ne partages pas cet argument.
@@ -1725,13 +1725,13 @@ _Tu participes à un débat à la radio sur les pistes cyclables en ville._ · p
 
 ## Une clause abusive (C1) — `c1clausula`
 
-_Tu consultes une avocate au sujet d'une clause de ton contrat de travail._ · personnage : Avocate
+_Tu consultes une avocate pour une clause de ton contrat._ · personnage : Avocate
 
-1. **Buenos días. Cuénteme, ¿cuál es el problema?**
-   - consigne : Dis que ton contrat contient une clause qui te semble abusive.
-   - modèle : Mi contrato tiene una cláusula que me parece abusiva.
-   - variantes : Hay una cláusula en mi contrato que me parece abusiva. · Mi contrato tiene una cláusula abusiva.
-   - fausses : Mi contrato tiene una cláusula que me parezco abusiva. · Mi contrato tiene un cláusula que me parece abusiva. · Mi contrato tenía una cláusula que me parecerá abusiva.
+1. **Buenos días. ¿Cuál es el problema?**
+   - consigne : Dis qu'une clause de ton contrat te semble abusive.
+   - modèle : Una cláusula me parece abusiva.
+   - variantes : Mi contrato tiene una cláusula que me parece abusiva. · Hay una cláusula abusiva en mi contrato.
+   - fausses : Una cláusula me parezco abusiva. · Un cláusula me parece abusiva. · Una cláusula me pareció abusiva mañana.
 
 2. **¿Qué dice esa cláusula?**
    - consigne : Dis : qu'on peut te licencier sans préavis.
@@ -1770,11 +1770,11 @@ _Tu consultes une avocate au sujet d'une clause de ton contrat de travail._ · p
 
 _Tu visites une cave à vin avec un guide._ · personnage : Guide
 
-1. **Bienvenidos a la bodega. Aquí hacemos vino desde hace cien años.**
+1. **Bienvenidos a la bodega.**
    - consigne : Demande quand ont lieu les vendanges.
-   - modèle : ¡Qué interesante! ¿Cuándo es la vendimia?
-   - variantes : ¿Cuándo es la vendimia? · ¡Qué interesante! ¿Cuándo hacen la vendimia?
-   - fausses : ¡Qué interesante! ¿Cuándo está la vendimia? · ¡Qué interesante! ¿Dónde es la vendimia? · ¡Qué interesante! ¿Cuándo fue la vendimia mañana?
+   - modèle : ¿Cuándo es la vendimia?
+   - variantes : ¡Qué interesante! ¿Cuándo es la vendimia? · ¿Cuándo hacen la vendimia?
+   - fausses : ¿Cuándo está la vendimia? · ¿Dónde es la vendimia? · ¿Cuándo fue la vendimia mañana?
 
 2. **En septiembre, al final del verano.**
    - consigne : Demande quelle variété de raisin ils utilisent.
