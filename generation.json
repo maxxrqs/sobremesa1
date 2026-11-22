@@ -1,0 +1,46 @@
+{
+ "mode": "complet",
+ "voix": {
+  "gl_a": {
+   "demandes": [
+    "Para rematar, que nos di?"
+   ],
+   "generes": 1,
+   "echecs": [],
+   "paquets": [
+    "gl_a_g16.mp3"
+   ],
+   "secondes": 2.8
+  },
+  "gl_b": {
+   "demandes": [
+    "Quero aprender a cociñar. Que me recomendas?",
+    "para o que precises"
+   ],
+   "generes": 0,
+   "echecs": [
+    [
+     "Quero aprender a cociñar. Que me recomendas?",
+     "signal vide"
+    ],
+    [
+     "para o que precises",
+     "signal vide"
+    ]
+   ],
+   "paquets": [],
+   "secondes": 3.8
+  },
+  "gl_c": {
+   "demandes": [
+    "Que teña un bo día!"
+   ],
+   "generes": 1,
+   "echecs": [],
+   "paquets": [
+    "gl_c_g27.mp3"
+   ],
+   "secondes": 1.7
+  }
+ }
+}

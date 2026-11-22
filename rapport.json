@@ -1,0 +1,213 @@
+{
+ "identite": {
+  "es_dora": {
+   "refs": [
+    "Un kilo de naranjas, por favor.",
+    "Tengo dolor de cabeza.",
+    "Queramos o no, las cosas han cambiado.",
+    "Tengo miedo del perro."
+   ],
+   "dist": {
+    "es_laura": 27.69,
+    "es_dora": 12.38
+   },
+   "f0_gen": 182.3,
+   "f0_app": {
+    "es_laura": 186.9,
+    "es_dora": 175.0
+   },
+   "verdict": "identique"
+  },
+  "va_gina": {
+   "refs": [
+    "Ja és tard, toque el dos.",
+    "si tinguera diners",
+    "Reconec que em vaig equivocar.",
+    "M'ha agradat molt"
+   ],
+   "dist": {
+    "va_gina": 11.59,
+    "va_lluc": 31.08
+   },
+   "f0_gen": 206.1,
+   "f0_app": {
+    "va_gina": 189.3,
+    "va_lluc": 153.1
+   },
+   "verdict": "identique"
+  },
+  "va_lluc": {
+   "refs": [
+    "Ja és tard, toque el dos.",
+    "si tinguera diners",
+    "Reconec que em vaig equivocar.",
+    "M'ha agradat molt"
+   ],
+   "dist": {
+    "va_gina": 29.85,
+    "va_lluc": 11.49
+   },
+   "f0_gen": 154.2,
+   "f0_app": {
+    "va_gina": 189.3,
+    "va_lluc": 153.1
+   },
+   "verdict": "identique"
+  },
+  "ca_elia": {
+   "refs": [
+    "Reconec que em vaig equivocar.",
+    "M'ha agradat molt",
+    "Mengem en un restaurant.",
+    "Qui va a Sevilla, perd la cadira"
+   ],
+   "dist": {
+    "ca_elia": 11.31,
+    "ca_grau": 33.59
+   },
+   "f0_gen": 183.4,
+   "f0_app": {
+    "ca_elia": 185.3,
+    "ca_grau": 118.2
+   },
+   "verdict": "identique"
+  },
+  "ca_grau": {
+   "refs": [
+    "Reconec que em vaig equivocar.",
+    "M'ha agradat molt",
+    "Mengem en un restaurant.",
+    "Qui va a Sevilla, perd la cadira"
+   ],
+   "dist": {
+    "ca_elia": 32.97,
+    "ca_grau": 11.37
+   },
+   "f0_gen": 119.2,
+   "f0_app": {
+    "ca_elia": 185.3,
+    "ca_grau": 118.2
+   },
+   "verdict": "identique"
+  },
+  "gl_a": {
+   "refs": [
+    "Quero que pagues",
+    "Despois de comermos, fomos pasear",
+    "O ministro afirmou que a situación mellorará.",
+    "O banco concedeulle un préstamo para abrir o bar."
+   ],
+   "dist": {
+    "gl_b": 31.05,
+    "gl_c": 23.75,
+    "gl_a": 13.48
+   },
+   "f0_gen": 89.5,
+   "f0_app": {
+    "gl_b": 239.7,
+    "gl_c": 103.5,
+    "gl_a": 116.7
+   },
+   "verdict": "identique"
+  },
+  "gl_b": {
+   "refs": [
+    "Quero que pagues",
+    "Despois de comermos, fomos pasear",
+    "O ministro afirmou que a situación mellorará.",
+    "O banco concedeulle un préstamo para abrir o bar."
+   ],
+   "dist": {
+    "gl_b": 15.12,
+    "gl_c": 29.41,
+    "gl_a": 31.4
+   },
+   "f0_gen": 217.2,
+   "f0_app": {
+    "gl_b": 239.7,
+    "gl_c": 103.5,
+    "gl_a": 116.7
+   },
+   "verdict": "identique"
+  },
+  "gl_c": {
+   "refs": [
+    "Quero que pagues",
+    "Despois de comermos, fomos pasear",
+    "O ministro afirmou que a situación mellorará.",
+    "O banco concedeulle un préstamo para abrir o bar."
+   ],
+   "dist": {
+    "gl_b": 30.08,
+    "gl_c": 12.69,
+    "gl_a": 23.65
+   },
+   "f0_gen": 111.1,
+   "f0_app": {
+    "gl_b": 239.7,
+    "gl_c": 103.5,
+    "gl_a": 116.7
+   },
+   "verdict": "identique"
+  },
+  "eu_antton": {
+   "refs": [
+    "beldur izaten nintzen",
+    "Elkarteak diru-laguntza publiko bat jaso du.",
+    "Ez da hitz egiteko une egokia.",
+    "barre egin dute"
+   ],
+   "dist": {
+    "eu_antton": 12.89
+   },
+   "f0_gen": 131.1,
+   "f0_app": {
+    "eu_antton": 131.7
+   },
+   "verdict": "identique",
+   "seuil": 19.38
+  }
+ },
+ "galicien": null,
+ "clips": {
+  "gl_a": {
+   "reference_s_par_car": 0.069,
+   "clips": [
+    {
+     "texte": "Para rematar, que nos di?",
+     "duree": 1.31,
+     "s_par_car": 0.052,
+     "pic": 0.71,
+     "silences": [
+      0.12,
+      0.2
+     ],
+     "problemes": []
+    }
+   ]
+  },
+  "gl_b": {
+   "reference_s_par_car": 0.069,
+   "clips": []
+  },
+  "gl_c": {
+   "reference_s_par_car": 0.067,
+   "clips": [
+    {
+     "texte": "Que teña un bo día!",
+     "duree": 1.18,
+     "s_par_car": 0.062,
+     "pic": 0.68,
+     "silences": [
+      0.11,
+      0.21
+     ],
+     "problemes": []
+    }
+   ]
+  }
+ },
+ "echecs": [
+  "gl_b : clés ≠ textes demandés"
+ ]
+}
