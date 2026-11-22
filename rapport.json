@@ -1,0 +1,202 @@
+{
+ "identite": {
+  "es_dora": {
+   "refs": [
+    "Un kilo de naranjas, por favor.",
+    "Tengo dolor de cabeza.",
+    "Queramos o no, las cosas han cambiado.",
+    "Tengo miedo del perro."
+   ],
+   "dist": {
+    "es_laura": 27.72,
+    "es_dora": 12.42
+   },
+   "f0_gen": 182.3,
+   "f0_app": {
+    "es_laura": 186.9,
+    "es_dora": 175.0
+   },
+   "verdict": "identique"
+  },
+  "va_gina": {
+   "refs": [
+    "Ja és tard, toque el dos.",
+    "si tinguera diners",
+    "Reconec que em vaig equivocar.",
+    "M'ha agradat molt"
+   ],
+   "dist": {
+    "va_gina": 11.37,
+    "va_lluc": 30.46
+   },
+   "f0_gen": 208.1,
+   "f0_app": {
+    "va_gina": 189.3,
+    "va_lluc": 153.1
+   },
+   "verdict": "identique"
+  },
+  "va_lluc": {
+   "refs": [
+    "Ja és tard, toque el dos.",
+    "si tinguera diners",
+    "Reconec que em vaig equivocar.",
+    "M'ha agradat molt"
+   ],
+   "dist": {
+    "va_gina": 29.22,
+    "va_lluc": 11.4
+   },
+   "f0_gen": 156.4,
+   "f0_app": {
+    "va_gina": 189.3,
+    "va_lluc": 153.1
+   },
+   "verdict": "identique"
+  },
+  "ca_elia": {
+   "refs": [
+    "Reconec que em vaig equivocar.",
+    "M'ha agradat molt",
+    "Mengem en un restaurant.",
+    "Qui va a Sevilla, perd la cadira"
+   ],
+   "dist": {
+    "ca_elia": 11.3,
+    "ca_grau": 33.38
+   },
+   "f0_gen": 183.4,
+   "f0_app": {
+    "ca_elia": 185.3,
+    "ca_grau": 118.2
+   },
+   "verdict": "identique"
+  },
+  "ca_grau": {
+   "refs": [
+    "Reconec que em vaig equivocar.",
+    "M'ha agradat molt",
+    "Mengem en un restaurant.",
+    "Qui va a Sevilla, perd la cadira"
+   ],
+   "dist": {
+    "ca_elia": 33.37,
+    "ca_grau": 11.51
+   },
+   "f0_gen": 116.6,
+   "f0_app": {
+    "ca_elia": 185.3,
+    "ca_grau": 118.2
+   },
+   "verdict": "identique"
+  },
+  "gl_a": {
+   "refs": [
+    "Quero que pagues",
+    "Despois de comermos, fomos pasear",
+    "O ministro afirmou que a situación mellorará.",
+    "O banco concedeulle un préstamo para abrir o bar."
+   ],
+   "dist": {
+    "gl_b": 31.58,
+    "gl_c": 23.88,
+    "gl_a": 14.26
+   },
+   "f0_gen": 87.4,
+   "f0_app": {
+    "gl_b": 239.7,
+    "gl_c": 103.5,
+    "gl_a": 116.7
+   },
+   "verdict": "identique"
+  },
+  "gl_b": {
+   "refs": [
+    "Quero que pagues",
+    "Despois de comermos, fomos pasear",
+    "O ministro afirmou que a situación mellorará.",
+    "O banco concedeulle un préstamo para abrir o bar."
+   ],
+   "dist": {
+    "gl_b": 14.9,
+    "gl_c": 29.48,
+    "gl_a": 31.91
+   },
+   "f0_gen": 223.4,
+   "f0_app": {
+    "gl_b": 239.7,
+    "gl_c": 103.5,
+    "gl_a": 116.7
+   },
+   "verdict": "identique"
+  },
+  "gl_c": {
+   "refs": [
+    "Quero que pagues",
+    "Despois de comermos, fomos pasear",
+    "O ministro afirmou que a situación mellorará.",
+    "O banco concedeulle un préstamo para abrir o bar."
+   ],
+   "dist": {
+    "gl_b": 29.6,
+    "gl_c": 11.94,
+    "gl_a": 23.87
+   },
+   "f0_gen": 108.9,
+   "f0_app": {
+    "gl_b": 239.7,
+    "gl_c": 103.5,
+    "gl_a": 116.7
+   },
+   "verdict": "identique"
+  },
+  "eu_antton": {
+   "refs": [
+    "beldur izaten nintzen",
+    "Elkarteak diru-laguntza publiko bat jaso du.",
+    "Ez da hitz egiteko une egokia.",
+    "barre egin dute"
+   ],
+   "dist": {
+    "eu_antton": 12.67
+   },
+   "f0_gen": 130.7,
+   "f0_app": {
+    "eu_antton": 131.7
+   },
+   "verdict": "identique",
+   "seuil": 19.39
+  }
+ },
+ "galicien": null,
+ "clips": {
+  "gl_b": {
+   "reference_s_par_car": 0.069,
+   "clips": [
+    {
+     "texte": "Quero aprender a cociñar. Que me recomendas?",
+     "duree": 3.08,
+     "s_par_car": 0.07,
+     "pic": 0.75,
+     "silences": [
+      0.12,
+      0.21
+     ],
+     "problemes": []
+    },
+    {
+     "texte": "para o que precises",
+     "duree": 1.23,
+     "s_par_car": 0.065,
+     "pic": 0.72,
+     "silences": [
+      0.12,
+      0.21
+     ],
+     "problemes": []
+    }
+   ]
+  }
+ },
+ "echecs": []
+}

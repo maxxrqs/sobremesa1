@@ -1,0 +1,27 @@
+{
+ "mode": "complet",
+ "voix": {
+  "gl_b": {
+   "demandes": [
+    "Quero aprender a cociñar. Que me recomendas?",
+    "para o que precises"
+   ],
+   "generes": 2,
+   "echecs": [],
+   "tentatives": {
+    "Quero aprender a cociñar. Que me recomendas?": {
+     "tentatives": 1,
+     "resultat": "valide"
+    },
+    "para o que precises": {
+     "tentatives": 1,
+     "resultat": "valide"
+    }
+   },
+   "paquets": [
+    "gl_b_g27.mp3"
+   ],
+   "secondes": 4.9
+  }
+ }
+}
