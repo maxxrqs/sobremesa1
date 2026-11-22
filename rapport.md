@@ -1,0 +1,2776 @@
+# Rapport de génération audio
+
+Mode : complet · échecs : 3
+
+## Échecs
+
+- gl_a : clés ≠ textes demandés
+- gl_b : clés ≠ textes demandés
+- gl_c : clés ≠ textes demandés
+
+## Identité des voix (distance MFCC-DTW, plus petit = plus proche)
+
+| Voix | Distances aux voix de l'appli | F0 générée / appli | Verdict |
+|---|---|---|---|
+| es_dora | es_laura 27.69, es_dora 12.38 | 182.3 / 175.0 Hz | identique |
+| va_gina | va_gina 11.73, va_lluc 31.08 | 222.2 / 189.3 Hz | identique |
+| va_lluc | va_gina 30.06, va_lluc 11.24 | 157.8 / 153.1 Hz | identique |
+| ca_elia | ca_elia 11.5, ca_grau 33.79 | 183.8 / 185.3 Hz | identique |
+| ca_grau | ca_elia 32.82, ca_grau 11.18 | 116.7 / 118.2 Hz | identique |
+| gl_a | gl_b 31.9, gl_c 24.32, gl_a 13.72 | 90.7 / 116.7 Hz | identique |
+| gl_b | gl_b 15.1, gl_c 29.72, gl_a 31.5 | 215.1 / 239.7 Hz | identique |
+| gl_c | gl_b 30.12, gl_c 12.52, gl_a 24.23 | 111.5 / 103.5 Hz | identique |
+| eu_antton | eu_antton 12.9 | 128.1 / 131.7 Hz | identique (seuil 19.66) |
+
+## Clips es_dora
+
+- « ¿Dígame? » : 0.89 s, 0.111 s/car (voix 0.071), pic 0.67, silences [0.12, 0.19] — conforme
+- « Vaya, lo siento. ¿Qué le pasa? » : 2.01 s, 0.067 s/car (voix 0.071), pic 0.69, silences [0.12, 0.2] — conforme
+- « Será una avería. Voy a llamar a un técnico. » : 2.72 s, 0.063 s/car (voix 0.071), pic 0.72, silences [0.12, 0.19] — conforme
+- « El técnico puede ir el jueves por la tarde. » : 2.74 s, 0.064 s/car (voix 0.071), pic 0.72, silences [0.12, 0.21] — conforme
+- « Sí, el viernes a las diez. ¿Le va bien? » : 2.27 s, 0.058 s/car (voix 0.071), pic 0.74, silences [0.12, 0.19] — conforme
+- « De nada. Si hay otro problema, llámeme. » : 2.38 s, 0.061 s/car (voix 0.071), pic 0.73, silences [0.12, 0.19] — conforme
+- « el calentador » : 1.18 s, 0.09 s/car (voix 0.071), pic 0.71, silences [0.12, 0.19] — conforme
+- « una avería » : 1.07 s, 0.107 s/car (voix 0.071), pic 0.71, silences [0.12, 0.2] — conforme
+- « ¿Podría ser…? » : 1.12 s, 0.086 s/car (voix 0.071), pic 0.69, silences [0.12, 0.19] — conforme
+- « ¡Que tenga un buen día! » : 1.72 s, 0.075 s/car (voix 0.071), pic 0.7, silences [0.11, 0.2] — conforme
+- « Buenos días. ¿Por qué quiere este puesto? » : 2.4 s, 0.059 s/car (voix 0.071), pic 0.7, silences [0.12, 0.2] — conforme
+- « ¿Tiene experiencia en ventas? » : 1.83 s, 0.063 s/car (voix 0.071), pic 0.71, silences [0.12, 0.18] — conforme
+- « Muy bien. El puesto es en la oficina, con un día de teletrabajo. » : 3.66 s, 0.057 s/car (voix 0.071), pic 0.7, silences [0.12, 0.19] — conforme
+- « De nueve a cinco, con un periodo de prueba de dos meses. » : 3.27 s, 0.058 s/car (voix 0.071), pic 0.72, silences [0.12, 0.19] — conforme
+- « El mes que viene, si todo va bien. ¿Tiene alguna pregunta? » : 3.4 s, 0.059 s/car (voix 0.071), pic 0.71, silences [0.11, 0.2] — conforme
+- « Sí. Le llamaremos la semana que viene. » : 2.32 s, 0.061 s/car (voix 0.071), pic 0.71, silences [0.12, 0.18] — conforme
+- « el puesto » : 1.02 s, 0.113 s/car (voix 0.071), pic 0.72, silences [0.12, 0.2] — conforme
+- « el periodo de prueba » : 1.46 s, 0.073 s/car (voix 0.071), pic 0.71, silences [0.11, 0.19] — conforme
+- « un contrato indefinido » : 1.78 s, 0.081 s/car (voix 0.071), pic 0.67, silences [0.12, 0.19] — conforme
+- « ¿Cuándo empezaría? » : 1.41 s, 0.078 s/car (voix 0.071), pic 0.69, silences [0.12, 0.2] — conforme
+- « No es nada grave, es un resfriado. » : 2.3 s, 0.068 s/car (voix 0.071), pic 0.69, silences [0.12, 0.2] — conforme
+- « Sí, tome esto tres veces al día, después de comer. » : 3.16 s, 0.063 s/car (voix 0.071), pic 0.71, silences [0.12, 0.21] — conforme
+- « Una semana. Y beba mucha agua. » : 2.17 s, 0.072 s/car (voix 0.071), pic 0.7, silences [0.12, 0.19] — conforme
+- « Sí, pero si no está mejor, vuelva el lunes. » : 2.59 s, 0.06 s/car (voix 0.071), pic 0.7, silences [0.12, 0.18] — conforme
+- « un resfriado » : 1.23 s, 0.102 s/car (voix 0.071), pic 0.69, silences [0.12, 0.2] — conforme
+- « Muy bien. ¿Tiene cita? » : 1.65 s, 0.075 s/car (voix 0.071), pic 0.73, silences [0.12, 0.2] — conforme
+- « ¿Me deja su pasaporte y el contrato de alquiler? » : 2.98 s, 0.062 s/car (voix 0.071), pic 0.72, silences [0.12, 0.21] — conforme
+- « Sí, falta una factura de la luz. » : 2.01 s, 0.063 s/car (voix 0.071), pic 0.7, silences [0.12, 0.19] — conforme
+- « Sí, por correo. Tiene diez días. » : 2.27 s, 0.071 s/car (voix 0.071), pic 0.71, silences [0.12, 0.18] — conforme
+- « En una semana, más o menos. » : 1.99 s, 0.074 s/car (voix 0.071), pic 0.7, silences [0.12, 0.2] — conforme
+- « la factura de la luz » : 1.49 s, 0.074 s/car (voix 0.071), pic 0.71, silences [0.12, 0.18] — conforme
+- « ¿Cuándo estará listo? » : 1.54 s, 0.073 s/car (voix 0.071), pic 0.73, silences [0.12, 0.18] — conforme
+- « Buenas tardes. ¿En qué puedo ayudarle? » : 2.3 s, 0.06 s/car (voix 0.071), pic 0.72, silences [0.12, 0.2] — conforme
+- « Lo siento mucho. ¿Me deja su pasaporte? » : 2.66 s, 0.068 s/car (voix 0.071), pic 0.7, silences [0.12, 0.19] — conforme
+- « Hoy no, pero hay uno mañana a las siete. » : 2.43 s, 0.061 s/car (voix 0.071), pic 0.73, silences [0.12, 0.2] — conforme
+- « La compañía le paga una habitación cerca del aeropuerto. » : 3.76 s, 0.067 s/car (voix 0.071), pic 0.73, silences [0.12, 0.19] — conforme
+- « Su equipaje viaja con usted mañana. » : 2.43 s, 0.069 s/car (voix 0.071), pic 0.69, silences [0.12, 0.19] — conforme
+- « Claro, aquí tiene. Perdone las molestias. » : 2.56 s, 0.062 s/car (voix 0.071), pic 0.7, silences [0.12, 0.19] — conforme
+- « cancelar un vuelo » : 1.49 s, 0.088 s/car (voix 0.071), pic 0.7, silences [0.12, 0.19] — conforme
+- « Perdone las molestias » : 1.57 s, 0.075 s/car (voix 0.071), pic 0.7, silences [0.12, 0.18] — conforme
+- « Hola, quiero aprender a cocinar. ¿Qué me recomiendas? » : 2.95 s, 0.056 s/car (voix 0.071), pic 0.72, silences [0.12, 0.19] — conforme
+- « Una escuela es demasiado cara. » : 2.14 s, 0.071 s/car (voix 0.071), pic 0.68, silences [0.12, 0.19] — conforme
+- « Vale. ¿Y qué plato hago primero? » : 2.01 s, 0.063 s/car (voix 0.071), pic 0.72, silences [0.12, 0.2] — conforme
+- « ¿Y si me sale mal? » : 1.41 s, 0.078 s/car (voix 0.071), pic 0.71, silences [0.12, 0.2] — conforme
+- « Tienes razón. ¿Quieres venir a probarlo? » : 2.38 s, 0.059 s/car (voix 0.071), pic 0.7, silences [0.12, 0.2] — conforme
+- « Perfecto. ¡Muchas gracias por tu ayuda! » : 2.59 s, 0.066 s/car (voix 0.071), pic 0.66, silences [0.12, 0.19] — conforme
+- « Te recomiendo que… » : 1.41 s, 0.078 s/car (voix 0.071), pic 0.73, silences [0.13, 0.2] — conforme
+- « Te aconsejo que… » : 1.38 s, 0.087 s/car (voix 0.071), pic 0.73, silences [0.12, 0.19] — conforme
+- « Es normal que salga mal » : 1.8 s, 0.078 s/car (voix 0.071), pic 0.75, silences [0.12, 0.19] — conforme
+- « cuando esté listo » : 1.36 s, 0.08 s/car (voix 0.071), pic 0.72, silences [0.12, 0.19] — conforme
+- « Atención al cliente, buenos días. » : 2.46 s, 0.074 s/car (voix 0.071), pic 0.72, silences [0.12, 0.19] — conforme
+- « Lamento mucho el problema. ¿Cuándo lo recibió? » : 2.72 s, 0.059 s/car (voix 0.071), pic 0.71, silences [0.12, 0.19] — conforme
+- « ¿Quiere que le enviemos otro? » : 1.72 s, 0.059 s/car (voix 0.071), pic 0.7, silences [0.12, 0.19] — conforme
+- « Sí, claro. Tardará unos diez días. » : 2.35 s, 0.069 s/car (voix 0.071), pic 0.7, silences [0.12, 0.19] — conforme
+- « Lo intentaré, pero no le puedo prometer nada. » : 2.82 s, 0.063 s/car (voix 0.071), pic 0.72, silences [0.12, 0.2] — conforme
+- « Claro. Disculpe las molestias. » : 2.04 s, 0.068 s/car (voix 0.071), pic 0.75, silences [0.12, 0.19] — conforme
+- « el pedido » : 0.99 s, 0.11 s/car (voix 0.071), pic 0.72, silences [0.12, 0.2] — conforme
+- « Preferiría que me devolvieran el dinero » : 2.59 s, 0.066 s/car (voix 0.071), pic 0.74, silences [0.12, 0.19] — conforme
+- « Espero que todo vaya bien » : 1.93 s, 0.077 s/car (voix 0.071), pic 0.7, silences [0.12, 0.2] — conforme
+- « Bueno, empecemos. ¿Cómo ha ido la facturación este trimestre? » : 3.58 s, 0.059 s/car (voix 0.071), pic 0.75, silences [0.12, 0.21] — conforme
+- « Muy bien. ¿Y los gastos? » : 1.67 s, 0.07 s/car (voix 0.071), pic 0.71, silences [0.12, 0.21] — conforme
+- « Entonces, ¿deberíamos invertir más en publicidad? » : 3.21 s, 0.066 s/car (voix 0.071), pic 0.73, silences [0.12, 0.19] — conforme
+- « Ya, pero sin publicidad no hay crecimiento. » : 2.77 s, 0.064 s/car (voix 0.071), pic 0.71, silences [0.12, 0.19] — conforme
+- « Adelante, te escucho. » : 1.59 s, 0.076 s/car (voix 0.071), pic 0.73, silences [0.12, 0.19] — conforme
+- « Me parece razonable. ¿Puedes preparar una propuesta? » : 3.19 s, 0.061 s/car (voix 0.071), pic 0.73, silences [0.12, 0.19] — conforme
+- « los gastos » : 1.12 s, 0.112 s/car (voix 0.071), pic 0.66, silences [0.12, 0.19] — conforme
+- « Si invirtiéramos… » : 1.33 s, 0.078 s/car (voix 0.071), pic 0.7, silences [0.12, 0.2] — conforme
+- « Le llamo por el contrato de arrendamiento. Termina en junio. » : 3.4 s, 0.057 s/car (voix 0.071), pic 0.71, silences [0.12, 0.19] — conforme
+- « El problema es que voy a subir el alquiler un quince por ciento. » : 3.71 s, 0.058 s/car (voix 0.071), pic 0.73, silences [0.11, 0.19] — conforme
+- « Los precios han subido mucho en el barrio. » : 2.77 s, 0.066 s/car (voix 0.071), pic 0.78, silences [0.12, 0.19] — conforme
+- « Es verdad, siempre ha pagado bien. » : 2.17 s, 0.064 s/car (voix 0.071), pic 0.7, silences [0.12, 0.19] — conforme
+- « ¿Qué propone? » : 1.1 s, 0.084 s/car (voix 0.071), pic 0.7, silences [0.12, 0.18] — conforme
+- « Déjeme pensarlo y le llamo mañana. » : 2.43 s, 0.071 s/car (voix 0.071), pic 0.71, silences [0.12, 0.2] — conforme
+- « llevo cinco años pagando » : 1.88 s, 0.078 s/car (voix 0.071), pic 0.68, silences [0.12, 0.19] — conforme
+- « si firmáramos » : 1.28 s, 0.098 s/car (voix 0.071), pic 0.67, silences [0.12, 0.2] — conforme
+- « ¿Qué tal con el nuevo tratamiento? » : 2.3 s, 0.068 s/car (voix 0.071), pic 0.7, silences [0.11, 0.19] — conforme
+- « ¿Qué síntomas tiene? » : 1.46 s, 0.073 s/car (voix 0.071), pic 0.7, silences [0.12, 0.2] — conforme
+- « Pasa mucho al principio. » : 1.85 s, 0.077 s/car (voix 0.071), pic 0.71, silences [0.12, 0.2] — conforme
+- « Prefiero esperar un poco. Si siguiera igual, lo cambiaríamos. » : 3.71 s, 0.061 s/car (voix 0.071), pic 0.73, silences [0.12, 0.18] — conforme
+- « Sí, no hay ningún problema. » : 1.75 s, 0.065 s/car (voix 0.071), pic 0.74, silences [0.12, 0.19] — conforme
+- « Sí, y llámeme si se encuentra peor. » : 2.14 s, 0.061 s/car (voix 0.071), pic 0.68, silences [0.12, 0.19] — conforme
+- « los efectos secundarios » : 1.72 s, 0.075 s/car (voix 0.071), pic 0.72, silences [0.12, 0.18] — conforme
+- « ¿No sería mejor…? » : 1.38 s, 0.081 s/car (voix 0.071), pic 0.74, silences [0.12, 0.19] — conforme
+- « ¿Has visto que van a cerrar la calle a los coches? » : 2.87 s, 0.057 s/car (voix 0.071), pic 0.73, silences [0.12, 0.19] — conforme
+- « A mí no me gusta. Habrá más atascos. » : 2.27 s, 0.063 s/car (voix 0.071), pic 0.73, silences [0.12, 0.18] — conforme
+- « Ya, pero las tiendas perderán clientes. » : 2.43 s, 0.062 s/car (voix 0.071), pic 0.7, silences [0.12, 0.18] — conforme
+- « ¿Tú crees? ¿Y cómo vamos a ir al centro? » : 2.56 s, 0.064 s/car (voix 0.071), pic 0.71, silences [0.12, 0.19] — conforme
+- « Si hubiera un carril bici, quizás la usaría. » : 2.61 s, 0.059 s/car (voix 0.071), pic 0.69, silences [0.13, 0.19] — conforme
+- « Bueno, ya veremos. Ojalá tengas razón. » : 2.64 s, 0.069 s/car (voix 0.071), pic 0.73, silences [0.12, 0.19] — conforme
+- « una zona peatonal » : 1.54 s, 0.091 s/car (voix 0.071), pic 0.71, silences [0.12, 0.21] — conforme
+- « No creo que sea así » : 1.65 s, 0.087 s/car (voix 0.071), pic 0.7, silences [0.12, 0.19] — conforme
+- « Hola, ¿querías hablar conmigo? » : 1.99 s, 0.066 s/car (voix 0.071), pic 0.69, silences [0.12, 0.21] — conforme
+- « ¡Vaya! No me lo esperaba. ¿Por qué? » : 2.06 s, 0.059 s/car (voix 0.071), pic 0.72, silences [0.12, 0.18] — conforme
+- « ¿Y si te pagáramos más? » : 1.67 s, 0.073 s/car (voix 0.071), pic 0.71, silences [0.12, 0.2] — conforme
+- « Lo entiendo. ¿Cuándo te irías? » : 1.91 s, 0.064 s/car (voix 0.071), pic 0.7, silences [0.12, 0.19] — conforme
+- « Gracias. ¿Podrías dejarlo todo preparado? » : 2.61 s, 0.064 s/car (voix 0.071), pic 0.73, silences [0.12, 0.2] — conforme
+- « Gracias. Te vamos a echar de menos. » : 2.22 s, 0.063 s/car (voix 0.071), pic 0.69, silences [0.12, 0.19] — conforme
+- « para que tengas tiempo » : 1.57 s, 0.071 s/car (voix 0.071), pic 0.72, silences [0.12, 0.19] — conforme
+- « Ha sido un placer » : 1.46 s, 0.086 s/car (voix 0.071), pic 0.72, silences [0.12, 0.2] — conforme
+- « Gracias por venir. Ha sido una semana muy dura. » : 2.95 s, 0.063 s/car (voix 0.071), pic 0.72, silences [0.12, 0.19] — conforme
+- « No pude avisar a casi nadie, todo fue muy rápido. » : 3.0 s, 0.061 s/car (voix 0.071), pic 0.72, silences [0.12, 0.2] — conforme
+- « Gracias. No sé cuándo voy a volver al trabajo. » : 2.72 s, 0.059 s/car (voix 0.071), pic 0.71, silences [0.12, 0.2] — conforme
+- « Me preocupan mis clientes, la verdad. » : 2.46 s, 0.066 s/car (voix 0.071), pic 0.72, silences [0.12, 0.18] — conforme
+- « No sé cómo agradecértelo. » : 1.93 s, 0.077 s/car (voix 0.071), pic 0.75, silences [0.12, 0.2] — conforme
+- « Eres un sol. Gracias de verdad. » : 2.09 s, 0.067 s/car (voix 0.071), pic 0.68, silences [0.12, 0.19] — conforme
+- « Si lo hubiera sabido » : 1.52 s, 0.076 s/car (voix 0.071), pic 0.73, silences [0.12, 0.18] — conforme
+- « Tómate el tiempo que necesites » : 2.06 s, 0.069 s/car (voix 0.071), pic 0.69, silences [0.12, 0.18] — conforme
+- « para lo que necesites » : 1.52 s, 0.072 s/car (voix 0.071), pic 0.72, silences [0.12, 0.18] — conforme
+- « La empresa va a presentar un expediente de regulación de empleo. » : 3.71 s, 0.058 s/car (voix 0.071), pic 0.72, silences [0.12, 0.18] — conforme
+- « Los números no nos dejan otra opción. » : 2.56 s, 0.069 s/car (voix 0.071), pic 0.72, silences [0.12, 0.21] — conforme
+- « Es cierto, pero este año va mal. » : 2.25 s, 0.07 s/car (voix 0.071), pic 0.69, silences [0.12, 0.19] — conforme
+- « Eso no depende de mí. » : 1.67 s, 0.08 s/car (voix 0.071), pic 0.7, silences [0.12, 0.2] — conforme
+- « No hace falta llegar a eso. ¿Qué proponen? » : 2.56 s, 0.061 s/car (voix 0.071), pic 0.71, silences [0.12, 0.19] — conforme
+- « Lo estudiaremos con la dirección. » : 2.04 s, 0.062 s/car (voix 0.071), pic 0.65, silences [0.12, 0.2] — conforme
+- « un expediente de regulación de empleo » : 2.38 s, 0.064 s/car (voix 0.071), pic 0.7, silences [0.12, 0.2] — conforme
+- « De lo contrario » : 1.25 s, 0.084 s/car (voix 0.071), pic 0.72, silences [0.12, 0.2] — conforme
+- « prorrogar el preaviso » : 1.65 s, 0.078 s/car (voix 0.071), pic 0.68, silences [0.12, 0.18] — conforme
+- « Buenas tardes a todos. ¿Quién quiere hablar primero? » : 3.03 s, 0.058 s/car (voix 0.071), pic 0.75, silences [0.12, 0.18] — conforme
+- « Es un problema que conocemos bien. » : 2.3 s, 0.068 s/car (voix 0.071), pic 0.72, silences [0.11, 0.19] — conforme
+- « Lo sabemos, y lo lamentamos. » : 1.91 s, 0.068 s/car (voix 0.071), pic 0.74, silences [0.12, 0.18] — conforme
+- « Vamos a aprobar una nueva ordenanza municipal. » : 3.16 s, 0.069 s/car (voix 0.071), pic 0.73, silences [0.12, 0.19] — conforme
+- « ¿Y qué propone usted? » : 1.59 s, 0.076 s/car (voix 0.071), pic 0.72, silences [0.12, 0.19] — conforme
+- « Lo estudiaremos con mucho interés. » : 2.19 s, 0.065 s/car (voix 0.071), pic 0.72, silences [0.12, 0.18] — conforme
+- « medidas concretas » : 1.44 s, 0.085 s/car (voix 0.071), pic 0.7, silences [0.12, 0.18] — conforme
+- « Según algunos, la ciudad no necesita más carriles bici. ¿Qué opina? » : 4.15 s, 0.062 s/car (voix 0.071), pic 0.72, silences [0.12, 0.19] — conforme
+- « ¿Por qué? » : 0.84 s, 0.093 s/car (voix 0.071), pic 0.71, silences [0.12, 0.2] — conforme
+- « Pero hay demasiados coches, ¿no? » : 2.12 s, 0.066 s/car (voix 0.071), pic 0.66, silences [0.12, 0.19] — conforme
+- « Hay un estudio que dice que los carriles bici no se usan. » : 3.32 s, 0.058 s/car (voix 0.071), pic 0.72, silences [0.12, 0.19] — conforme
+- « Nos queda un minuto. ¿Algo más? » : 2.04 s, 0.066 s/car (voix 0.071), pic 0.7, silences [0.12, 0.2] — conforme
+- « Para terminar, ¿qué nos dice? » : 1.88 s, 0.065 s/car (voix 0.071), pic 0.7, silences [0.12, 0.19] — conforme
+- « No comparto ese argumento » : 2.04 s, 0.082 s/car (voix 0.071), pic 0.76, silences [0.12, 0.19] — conforme
+- « No niego que sea… » : 1.41 s, 0.083 s/car (voix 0.071), pic 0.7, silences [0.12, 0.19] — conforme
+- « Buenos días. Cuénteme, ¿cuál es el problema? » : 2.8 s, 0.064 s/car (voix 0.071), pic 0.69, silences [0.12, 0.2] — conforme
+- « ¿Qué dice esa cláusula? » : 1.8 s, 0.078 s/car (voix 0.071), pic 0.7, silences [0.12, 0.2] — conforme
+- « Eso, efectivamente, podría ser abusivo. » : 2.82 s, 0.072 s/car (voix 0.071), pic 0.73, silences [0.12, 0.19] — conforme
+- « Primero, ¿lo firmó usted sin leerlo? » : 2.43 s, 0.067 s/car (voix 0.071), pic 0.69, silences [0.12, 0.21] — conforme
+- « Podemos presentar una reclamación. » : 2.46 s, 0.072 s/car (voix 0.071), pic 0.69, silences [0.12, 0.2] — conforme
+- « Unos tres meses, más o menos. » : 2.22 s, 0.077 s/car (voix 0.071), pic 0.73, silences [0.12, 0.19] — conforme
+- « una cláusula abusiva » : 1.65 s, 0.082 s/car (voix 0.071), pic 0.73, silences [0.12, 0.2] — conforme
+- « sin preaviso » : 1.28 s, 0.107 s/car (voix 0.071), pic 0.72, silences [0.12, 0.2] — conforme
+- « Bienvenidos a la bodega. Aquí hacemos vino desde hace cien años. » : 3.94 s, 0.062 s/car (voix 0.071), pic 0.71, silences [0.12, 0.18] — conforme
+- « En septiembre, al final del verano. » : 2.32 s, 0.066 s/car (voix 0.071), pic 0.7, silences [0.12, 0.18] — conforme
+- « Sobre todo una variedad de la zona. » : 2.19 s, 0.063 s/car (voix 0.071), pic 0.73, silences [0.12, 0.2] — conforme
+- « Sí, desde hace treinta años. » : 1.96 s, 0.07 s/car (voix 0.071), pic 0.73, silences [0.12, 0.2] — conforme
+- « Pues vuelva el año que viene, es precioso. » : 2.64 s, 0.063 s/car (voix 0.071), pic 0.72, silences [0.12, 0.19] — conforme
+- « Muy pocos, casi ninguno. » : 1.93 s, 0.081 s/car (voix 0.071), pic 0.69, silences [0.12, 0.21] — conforme
+- « Me habría gustado » : 1.36 s, 0.08 s/car (voix 0.071), pic 0.73, silences [0.12, 0.19] — conforme
+
+## Clips va_gina
+
+- « Diga? » : 0.55 s, 0.11 s/car (voix 0.067), pic 0.72, silences [0.12, 0.2] — conforme
+- « Vaja, ho sent. Què li passa? » : 1.85 s, 0.066 s/car (voix 0.067), pic 0.75, silences [0.12, 0.19] — conforme
+- « Serà una avaria. Cridaré un tècnic. » : 2.19 s, 0.063 s/car (voix 0.067), pic 0.71, silences [0.12, 0.2] — conforme
+- « El tècnic pot anar dijous per la vesprada. » : 2.56 s, 0.061 s/car (voix 0.067), pic 0.71, silences [0.12, 0.2] — conforme
+- « Sí, divendres a les deu. Li va bé? » : 2.09 s, 0.061 s/car (voix 0.067), pic 0.71, silences [0.12, 0.21] — conforme
+- « De res. Si hi ha un altre problema, cride'm. » : 2.77 s, 0.063 s/car (voix 0.067), pic 0.7, silences [0.12, 0.19] — conforme
+- « una avaria » : 0.86 s, 0.086 s/car (voix 0.067), pic 0.72, silences [0.12, 0.21] — conforme
+- « Podria ser…? » : 0.89 s, 0.074 s/car (voix 0.067), pic 0.72, silences [0.12, 0.19] — conforme
+- « Que tinga un bon dia! » : 1.31 s, 0.062 s/car (voix 0.067), pic 0.72, silences [0.12, 0.2] — conforme
+- « Bon dia. Per què vol este treball? » : 2.12 s, 0.062 s/car (voix 0.067), pic 0.72, silences [0.12, 0.21] — conforme
+- « Té experiència en vendes? » : 1.49 s, 0.06 s/car (voix 0.067), pic 0.72, silences [0.12, 0.21] — conforme
+- « Molt bé. El treball és a l'oficina, amb un dia de teletreball. » : 3.66 s, 0.059 s/car (voix 0.067), pic 0.73, silences [0.12, 0.19] — conforme
+- « De nou a cinc, amb un període de prova de dos mesos. » : 2.9 s, 0.056 s/car (voix 0.067), pic 0.72, silences [0.12, 0.19] — conforme
+- « El mes que ve, si tot va bé. Té alguna pregunta? » : 2.9 s, 0.06 s/car (voix 0.067), pic 0.71, silences [0.12, 0.19] — conforme
+- « Sí. El cridarem la setmana que ve. » : 2.3 s, 0.068 s/car (voix 0.067), pic 0.72, silences [0.12, 0.19] — conforme
+- « un contracte indefinit » : 1.44 s, 0.065 s/car (voix 0.067), pic 0.71, silences [0.12, 0.2] — conforme
+- « Quan començaria? » : 1.15 s, 0.072 s/car (voix 0.067), pic 0.73, silences [0.12, 0.19] — conforme
+- « Espere la seua cridada » : 1.46 s, 0.066 s/car (voix 0.067), pic 0.71, silences [0.12, 0.21] — conforme
+- « No és res greu, és un constipat. » : 2.09 s, 0.065 s/car (voix 0.067), pic 0.71, silences [0.12, 0.18] — conforme
+- « Sí, prenga açò tres vegades al dia, després de menjar. » : 3.34 s, 0.062 s/car (voix 0.067), pic 0.73, silences [0.12, 0.19] — conforme
+- « Una setmana. I prenga molta aigua. » : 2.25 s, 0.066 s/car (voix 0.067), pic 0.7, silences [0.12, 0.2] — conforme
+- « Sí, però si no està millor, torne dilluns. » : 2.61 s, 0.062 s/car (voix 0.067), pic 0.71, silences [0.12, 0.2] — conforme
+- « un constipat » : 1.04 s, 0.087 s/car (voix 0.067), pic 0.72, silences [0.12, 0.2] — conforme
+- « Menys mal » : 0.76 s, 0.084 s/car (voix 0.067), pic 0.71, silences [0.12, 0.2] — conforme
+- « Molt bé. Té cita? » : 1.31 s, 0.077 s/car (voix 0.067), pic 0.71, silences [0.12, 0.21] — conforme
+- « Em deixa el passaport i el contracte de lloguer? » : 2.59 s, 0.054 s/car (voix 0.067), pic 0.72, silences [0.12, 0.2] — conforme
+- « Sí, però també necessite una factura de la llum. » : 2.74 s, 0.057 s/car (voix 0.067), pic 0.69, silences [0.12, 0.21] — conforme
+- « Sí, per correu. Té deu dies. » : 1.83 s, 0.065 s/car (voix 0.067), pic 0.7, silences [0.12, 0.19] — conforme
+- « D'ací a una setmana, més o menys. » : 1.91 s, 0.058 s/car (voix 0.067), pic 0.71, silences [0.12, 0.2] — conforme
+- « la factura de la llum » : 1.38 s, 0.066 s/car (voix 0.067), pic 0.72, silences [0.12, 0.19] — conforme
+- « Quan estarà preparat? » : 1.2 s, 0.057 s/car (voix 0.067), pic 0.71, silences [0.12, 0.18] — conforme
+- « Bona vesprada. En què puc ajudar-lo? » : 2.38 s, 0.066 s/car (voix 0.067), pic 0.72, silences [0.12, 0.2] — conforme
+- « Ho sent molt. Em deixa el passaport? » : 2.35 s, 0.065 s/car (voix 0.067), pic 0.72, silences [0.12, 0.19] — conforme
+- « Hui no, però n'hi ha un demà a les set. » : 2.09 s, 0.054 s/car (voix 0.067), pic 0.69, silences [0.12, 0.19] — conforme
+- « La companyia li paga una habitació prop de l'aeroport. » : 2.74 s, 0.051 s/car (voix 0.067), pic 0.72, silences [0.12, 0.21] — conforme
+- « El seu equipatge viatja amb vosté demà. » : 2.17 s, 0.056 s/car (voix 0.067), pic 0.76, silences [0.12, 0.2] — conforme
+- « Clar, ací té. Perdone les molèsties. » : 2.32 s, 0.065 s/car (voix 0.067), pic 0.76, silences [0.12, 0.21] — conforme
+- « El meu vol no ix » : 1.18 s, 0.073 s/car (voix 0.067), pic 0.71, silences [0.12, 0.2] — conforme
+- « Perdone les molèsties » : 1.38 s, 0.066 s/car (voix 0.067), pic 0.71, silences [0.12, 0.19] — conforme
+- « Hola, vull aprendre a cuinar. Què em recomanes? » : 2.69 s, 0.057 s/car (voix 0.067), pic 0.74, silences [0.12, 0.23] — conforme
+- « Una escola és massa cara. » : 1.67 s, 0.067 s/car (voix 0.067), pic 0.69, silences [0.12, 0.19] — conforme
+- « D'acord. I quin plat faig primer? » : 2.06 s, 0.063 s/car (voix 0.067), pic 0.7, silences [0.12, 0.19] — conforme
+- « I si em ix malament? » : 1.33 s, 0.067 s/car (voix 0.067), pic 0.69, silences [0.12, 0.2] — conforme
+- « Tens raó. Vols vindre a menjar? » : 1.99 s, 0.064 s/car (voix 0.067), pic 0.72, silences [0.12, 0.19] — conforme
+- « Perfecte. Moltes gràcies per la teua ajuda! » : 2.66 s, 0.062 s/car (voix 0.067), pic 0.76, silences [0.12, 0.19] — conforme
+- « T'aconselle que… » : 1.04 s, 0.065 s/car (voix 0.067), pic 0.71, silences [0.12, 0.19] — conforme
+- « Et recomane que… » : 1.02 s, 0.064 s/car (voix 0.067), pic 0.7, silences [0.12, 0.19] — conforme
+- « És normal que isca malament » : 1.7 s, 0.063 s/car (voix 0.067), pic 0.75, silences [0.12, 0.2] — conforme
+- « quan estiga preparat » : 1.38 s, 0.069 s/car (voix 0.067), pic 0.72, silences [0.12, 0.19] — conforme
+- « Bon dia, en què el puc ajudar? » : 1.85 s, 0.062 s/car (voix 0.067), pic 0.72, silences [0.12, 0.2] — conforme
+- « Lamente molt el problema. Quan la va rebre? » : 2.51 s, 0.058 s/car (voix 0.067), pic 0.72, silences [0.12, 0.2] — conforme
+- « Vol que li n'enviem una altra? » : 1.65 s, 0.055 s/car (voix 0.067), pic 0.71, silences [0.12, 0.18] — conforme
+- « Sí, clar. Tardarà uns deu dies. » : 2.01 s, 0.065 s/car (voix 0.067), pic 0.74, silences [0.12, 0.22] — conforme
+- « Ho intentaré. » : 0.84 s, 0.064 s/car (voix 0.067), pic 0.72, silences [0.12, 0.2] — conforme
+- « Clar. Perdone les molèsties. » : 1.83 s, 0.065 s/car (voix 0.067), pic 0.71, silences [0.12, 0.21] — conforme
+- « la comanda » : 0.94 s, 0.094 s/car (voix 0.067), pic 0.72, silences [0.12, 0.2] — conforme
+- « Preferiria que em tornaren els diners » : 2.12 s, 0.057 s/car (voix 0.067), pic 0.73, silences [0.12, 0.21] — conforme
+- « Espere que tot vaja bé » : 1.46 s, 0.066 s/car (voix 0.067), pic 0.72, silences [0.12, 0.19] — conforme
+- « Bé, comencem. Com ha anat la facturació este trimestre? » : 3.45 s, 0.063 s/car (voix 0.067), pic 0.72, silences [0.12, 0.19] — conforme
+- « Molt bé. I les despeses? » : 1.75 s, 0.073 s/car (voix 0.067), pic 0.71, silences [0.12, 0.19] — conforme
+- « Llavors, hauríem d'invertir més en publicitat? » : 2.64 s, 0.057 s/car (voix 0.067), pic 0.73, silences [0.12, 0.19] — conforme
+- « Ja, però sense publicitat no hi ha creixement. » : 2.64 s, 0.057 s/car (voix 0.067), pic 0.7, silences [0.12, 0.18] — conforme
+- « Endavant, t'escolte. » : 1.44 s, 0.072 s/car (voix 0.067), pic 0.72, silences [0.12, 0.21] — conforme
+- « Em pareix bé. Pots preparar una proposta? » : 2.56 s, 0.062 s/car (voix 0.067), pic 0.75, silences [0.12, 0.19] — conforme
+- « les despeses » : 1.12 s, 0.094 s/car (voix 0.067), pic 0.73, silences [0.12, 0.19] — conforme
+- « Si invertírem… » : 1.04 s, 0.075 s/car (voix 0.067), pic 0.72, silences [0.12, 0.19] — conforme
+- « Li telefone pel contracte d'arrendament. S'acaba al juny. » : 3.13 s, 0.055 s/car (voix 0.067), pic 0.7, silences [0.12, 0.18] — conforme
+- « El problema és que pujaré el lloguer un quinze per cent. » : 3.19 s, 0.057 s/car (voix 0.067), pic 0.72, silences [0.12, 0.19] — conforme
+- « Els preus han pujat molt al barri. » : 2.01 s, 0.059 s/car (voix 0.067), pic 0.71, silences [0.12, 0.19] — conforme
+- « És veritat, sempre ha pagat bé. » : 1.96 s, 0.063 s/car (voix 0.067), pic 0.7, silences [0.12, 0.2] — conforme
+- « Què proposa? » : 0.91 s, 0.076 s/car (voix 0.067), pic 0.73, silences [0.12, 0.2] — conforme
+- « Deixe'm pensar-ho i el cride demà. » : 1.83 s, 0.054 s/car (voix 0.067), pic 0.7, silences [0.12, 0.18] — conforme
+- « porte cinc anys pagant » : 1.49 s, 0.068 s/car (voix 0.067), pic 0.73, silences [0.12, 0.19] — conforme
+- « si firmàrem » : 0.91 s, 0.083 s/car (voix 0.067), pic 0.71, silences [0.12, 0.19] — conforme
+- « Com va amb el nou tractament? » : 1.67 s, 0.058 s/car (voix 0.067), pic 0.71, silences [0.12, 0.2] — conforme
+- « Quins símptomes té? » : 1.2 s, 0.063 s/car (voix 0.067), pic 0.71, silences [0.12, 0.2] — conforme
+- « Passa molt al principi. » : 1.49 s, 0.065 s/car (voix 0.067), pic 0.74, silences [0.12, 0.2] — conforme
+- « Preferisc esperar un poc. Si continua igual, el canviarem. » : 3.6 s, 0.062 s/car (voix 0.067), pic 0.71, silences [0.12, 0.2] — conforme
+- « Sí, no hi ha cap problema. » : 1.67 s, 0.064 s/car (voix 0.067), pic 0.71, silences [0.12, 0.19] — conforme
+- « Sí, i telefone'm si es troba pitjor. » : 2.14 s, 0.06 s/car (voix 0.067), pic 0.7, silences [0.12, 0.19] — conforme
+- « un efecte secundari » : 1.23 s, 0.065 s/car (voix 0.067), pic 0.68, silences [0.12, 0.18] — conforme
+- « No seria millor…? » : 1.02 s, 0.06 s/car (voix 0.067), pic 0.7, silences [0.12, 0.2] — conforme
+- « Has vist que en el carrer ja no hi haurà cotxes? » : 2.43 s, 0.051 s/car (voix 0.067), pic 0.72, silences [0.12, 0.19] — conforme
+- « A mi no m'agrada. Hi haurà més embussos. » : 2.38 s, 0.059 s/car (voix 0.067), pic 0.71, silences [0.12, 0.19] — conforme
+- « Ja, però les botigues perdran clients. » : 2.27 s, 0.06 s/car (voix 0.067), pic 0.71, silences [0.12, 0.22] — conforme
+- « Tu creus? I com anirem al centre? » : 2.17 s, 0.066 s/car (voix 0.067), pic 0.72, silences [0.12, 0.2] — conforme
+- « Si hi haguera un carril bici, potser el faria servir. » : 2.77 s, 0.052 s/car (voix 0.067), pic 0.76, silences [0.12, 0.18] — conforme
+- « Bé, ja ho veurem. Tant de bo tingues raó. » : 2.48 s, 0.061 s/car (voix 0.067), pic 0.73, silences [0.12, 0.18] — conforme
+- « una zona de vianants » : 1.38 s, 0.069 s/car (voix 0.067), pic 0.71, silences [0.12, 0.21] — conforme
+- « No crec que siga així » : 1.31 s, 0.062 s/car (voix 0.067), pic 0.69, silences [0.12, 0.19] — conforme
+- « Hola, volies parlar amb mi? » : 1.65 s, 0.061 s/car (voix 0.067), pic 0.72, silences [0.12, 0.19] — conforme
+- « Vaja! No m'ho esperava. Per què? » : 1.93 s, 0.06 s/car (voix 0.067), pic 0.72, silences [0.12, 0.2] — conforme
+- « I si et pagàrem més? » : 1.25 s, 0.063 s/car (voix 0.067), pic 0.69, silences [0.12, 0.19] — conforme
+- « Ho entenc. Quan te n'aniries? » : 1.75 s, 0.06 s/car (voix 0.067), pic 0.74, silences [0.12, 0.21] — conforme
+- « Gràcies. Podries deixar-ho tot preparat? » : 2.46 s, 0.061 s/car (voix 0.067), pic 0.75, silences [0.12, 0.2] — conforme
+- « Gràcies. Et trobarem a faltar. » : 1.91 s, 0.064 s/car (voix 0.067), pic 0.75, silences [0.12, 0.19] — conforme
+- « perquè tingues temps » : 1.25 s, 0.063 s/car (voix 0.067), pic 0.73, silences [0.12, 0.19] — conforme
+- « trobar a faltar » : 1.04 s, 0.07 s/car (voix 0.067), pic 0.71, silences [0.12, 0.19] — conforme
+- « M'ha agradat molt » : 1.07 s, 0.063 s/car (voix 0.067), pic 0.72, silences [0.12, 0.19] — conforme
+- « Gràcies per vindre. Ha sigut una setmana molt dura. » : 3.11 s, 0.061 s/car (voix 0.067), pic 0.74, silences [0.12, 0.19] — conforme
+- « No vaig poder avisar quasi ningú, tot va ser molt ràpid. » : 3.27 s, 0.058 s/car (voix 0.067), pic 0.71, silences [0.12, 0.2] — conforme
+- « Gràcies. No sé quan tornaré a la faena. » : 2.4 s, 0.062 s/car (voix 0.067), pic 0.73, silences [0.12, 0.2] — conforme
+- « Em preocupen els meus clients, la veritat. » : 2.38 s, 0.057 s/car (voix 0.067), pic 0.71, silences [0.12, 0.19] — conforme
+- « No sé com agrair-t'ho. » : 1.28 s, 0.058 s/car (voix 0.067), pic 0.7, silences [0.12, 0.2] — conforme
+- « Ets un sol. Gràcies de veritat. » : 2.3 s, 0.074 s/car (voix 0.067), pic 0.7, silences [0.12, 0.2] — conforme
+- « Si ho haguera sabut » : 1.1 s, 0.058 s/car (voix 0.067), pic 0.72, silences [0.12, 0.2] — conforme
+- « Pren-te el temps que necessites » : 1.78 s, 0.057 s/car (voix 0.067), pic 0.71, silences [0.12, 0.2] — conforme
+- « per al que necessites » : 1.28 s, 0.061 s/car (voix 0.067), pic 0.7, silences [0.12, 0.21] — conforme
+- « L'empresa presentarà un expedient de regulació d'ocupació. » : 3.16 s, 0.054 s/car (voix 0.067), pic 0.71, silences [0.12, 0.18] — conforme
+- « Els números no són bons. » : 1.59 s, 0.066 s/car (voix 0.067), pic 0.72, silences [0.12, 0.19] — conforme
+- « És cert, però enguany va malament. » : 2.17 s, 0.064 s/car (voix 0.067), pic 0.71, silences [0.12, 0.18] — conforme
+- « Això no depén de mi. » : 1.28 s, 0.064 s/car (voix 0.067), pic 0.7, silences [0.12, 0.19] — conforme
+- « No cal arribar a això. Què proposen? » : 2.22 s, 0.062 s/car (voix 0.067), pic 0.72, silences [0.12, 0.2] — conforme
+- « Ho estudiarem. » : 0.99 s, 0.071 s/car (voix 0.067), pic 0.71, silences [0.12, 0.2] — conforme
+- « un expedient de regulació d'ocupació » : 2.09 s, 0.058 s/car (voix 0.067), pic 0.73, silences [0.12, 0.19] — conforme
+- « En cas contrari » : 1.07 s, 0.071 s/car (voix 0.067), pic 0.73, silences [0.12, 0.2] — conforme
+- « prorrogar el preavís » : 1.25 s, 0.063 s/car (voix 0.067), pic 0.71, silences [0.12, 0.19] — conforme
+- « Bona vesprada a tots. Qui vol parlar primer? » : 2.69 s, 0.061 s/car (voix 0.067), pic 0.72, silences [0.12, 0.21] — conforme
+- « És un problema que coneixem bé. » : 1.8 s, 0.058 s/car (voix 0.067), pic 0.71, silences [0.12, 0.19] — conforme
+- « Ho sabem, i ho lamentem. » : 1.54 s, 0.064 s/car (voix 0.067), pic 0.71, silences [0.12, 0.19] — conforme
+- « Aprovarem una nova ordenança municipal. » : 2.38 s, 0.061 s/car (voix 0.067), pic 0.7, silences [0.12, 0.18] — conforme
+- « I vosté què proposa? » : 1.36 s, 0.068 s/car (voix 0.067), pic 0.69, silences [0.12, 0.19] — conforme
+- « Ho estudiarem amb molt d'interés. » : 1.7 s, 0.051 s/car (voix 0.067), pic 0.71, silences [0.12, 0.18] — conforme
+- « mesures concretes » : 1.33 s, 0.078 s/car (voix 0.067), pic 0.72, silences [0.12, 0.2] — conforme
+- « Segons alguns, la ciutat no necessita més carrils bici. Què n'opina? » : 4.02 s, 0.059 s/car (voix 0.067), pic 0.72, silences [0.12, 0.2] — conforme
+- « Per què? » : 0.63 s, 0.078 s/car (voix 0.067), pic 0.71, silences [0.12, 0.19] — conforme
+- « Però hi ha massa cotxes, no? » : 1.62 s, 0.058 s/car (voix 0.067), pic 0.71, silences [0.12, 0.19] — conforme
+- « Hi ha un estudi que diu que els carrils bici no s'utilitzen. » : 3.08 s, 0.051 s/car (voix 0.067), pic 0.78, silences [0.12, 0.19] — conforme
+- « Ens queda un minut. Alguna cosa més? » : 2.4 s, 0.067 s/car (voix 0.067), pic 0.71, silences [0.12, 0.21] — conforme
+- « Per acabar, què ens diu? » : 1.36 s, 0.057 s/car (voix 0.067), pic 0.71, silences [0.12, 0.21] — conforme
+- « No compartisc eixe argument » : 1.67 s, 0.062 s/car (voix 0.067), pic 0.7, silences [0.12, 0.19] — conforme
+- « No negue que siga… » : 1.07 s, 0.06 s/car (voix 0.067), pic 0.69, silences [0.12, 0.19] — conforme
+- « Bon dia. Explique'm, quin és el problema? » : 2.82 s, 0.069 s/car (voix 0.067), pic 0.71, silences [0.12, 0.19] — conforme
+- « Què diu eixa clàusula? » : 1.44 s, 0.065 s/car (voix 0.067), pic 0.7, silences [0.12, 0.19] — conforme
+- « Això, efectivament, podria ser abusiu. » : 2.66 s, 0.07 s/car (voix 0.067), pic 0.69, silences [0.12, 0.18] — conforme
+- « Primer, el va firmar sense llegir-lo? » : 2.19 s, 0.059 s/car (voix 0.067), pic 0.71, silences [0.12, 0.19] — conforme
+- « Podem presentar una reclamació. » : 1.88 s, 0.061 s/car (voix 0.067), pic 0.71, silences [0.12, 0.2] — conforme
+- « Uns tres mesos, més o menys. » : 1.75 s, 0.063 s/car (voix 0.067), pic 0.72, silences [0.12, 0.18] — conforme
+- « una clàusula abusiva » : 1.44 s, 0.072 s/car (voix 0.067), pic 0.72, silences [0.12, 0.18] — conforme
+- « sense preavís » : 1.02 s, 0.078 s/car (voix 0.067), pic 0.71, silences [0.12, 0.18] — conforme
+- « Benvinguts al celler. Fa cent anys que treballem ací. » : 3.13 s, 0.059 s/car (voix 0.067), pic 0.76, silences [0.12, 0.18] — conforme
+- « Al setembre, a final de l'estiu. » : 2.06 s, 0.064 s/car (voix 0.067), pic 0.71, silences [0.12, 0.2] — conforme
+- « Sobretot una varietat de la zona. » : 1.99 s, 0.06 s/car (voix 0.067), pic 0.72, silences [0.12, 0.19] — conforme
+- « Sí, des de fa trenta anys. » : 1.75 s, 0.067 s/car (voix 0.067), pic 0.72, silences [0.12, 0.18] — conforme
+- « Torne l'any que ve. » : 0.99 s, 0.052 s/car (voix 0.067), pic 0.71, silences [0.12, 0.19] — conforme
+- « Molt pocs, quasi cap. » : 1.49 s, 0.071 s/car (voix 0.067), pic 0.71, silences [0.12, 0.18] — conforme
+- « M'hauria agradat » : 1.02 s, 0.064 s/car (voix 0.067), pic 0.71, silences [0.12, 0.19] — conforme
+
+## Clips va_lluc
+
+- « Diga? » : 0.52 s, 0.104 s/car (voix 0.069), pic 0.72, silences [0.12, 0.2] — conforme
+- « Vaja, ho sent. Què li passa? » : 1.93 s, 0.069 s/car (voix 0.069), pic 0.71, silences [0.12, 0.21] — conforme
+- « Serà una avaria. Cridaré un tècnic. » : 2.46 s, 0.07 s/car (voix 0.069), pic 0.7, silences [0.12, 0.19] — conforme
+- « El tècnic pot anar dijous per la vesprada. » : 2.66 s, 0.063 s/car (voix 0.069), pic 0.77, silences [0.12, 0.21] — conforme
+- « Sí, divendres a les deu. Li va bé? » : 2.46 s, 0.072 s/car (voix 0.069), pic 0.71, silences [0.12, 0.18] — conforme
+- « De res. Si hi ha un altre problema, cride'm. » : 2.72 s, 0.062 s/car (voix 0.069), pic 0.71, silences [0.12, 0.21] — conforme
+- « una avaria » : 0.91 s, 0.091 s/car (voix 0.069), pic 0.71, silences [0.12, 0.2] — conforme
+- « Podria ser…? » : 0.78 s, 0.065 s/car (voix 0.069), pic 0.72, silences [0.12, 0.2] — conforme
+- « Que tinga un bon dia! » : 1.31 s, 0.062 s/car (voix 0.069), pic 0.7, silences [0.12, 0.19] — conforme
+- « Bon dia. Per què vol este treball? » : 2.17 s, 0.064 s/car (voix 0.069), pic 0.73, silences [0.12, 0.19] — conforme
+- « Té experiència en vendes? » : 1.62 s, 0.065 s/car (voix 0.069), pic 0.72, silences [0.12, 0.19] — conforme
+- « Molt bé. El treball és a l'oficina, amb un dia de teletreball. » : 3.84 s, 0.062 s/car (voix 0.069), pic 0.75, silences [0.12, 0.18] — conforme
+- « De nou a cinc, amb un període de prova de dos mesos. » : 3.16 s, 0.061 s/car (voix 0.069), pic 0.74, silences [0.12, 0.19] — conforme
+- « El mes que ve, si tot va bé. Té alguna pregunta? » : 3.29 s, 0.069 s/car (voix 0.069), pic 0.78, silences [0.12, 0.2] — conforme
+- « Sí. El cridarem la setmana que ve. » : 2.46 s, 0.072 s/car (voix 0.069), pic 0.72, silences [0.12, 0.21] — conforme
+- « un contracte indefinit » : 1.54 s, 0.07 s/car (voix 0.069), pic 0.74, silences [0.12, 0.2] — conforme
+- « Quan començaria? » : 1.12 s, 0.07 s/car (voix 0.069), pic 0.7, silences [0.12, 0.19] — conforme
+- « Espere la seua cridada » : 1.67 s, 0.076 s/car (voix 0.069), pic 0.7, silences [0.12, 0.19] — conforme
+- « No és res greu, és un constipat. » : 2.25 s, 0.07 s/car (voix 0.069), pic 0.71, silences [0.12, 0.2] — conforme
+- « Sí, prenga açò tres vegades al dia, després de menjar. » : 3.58 s, 0.066 s/car (voix 0.069), pic 0.7, silences [0.12, 0.21] — conforme
+- « Una setmana. I prenga molta aigua. » : 2.32 s, 0.068 s/car (voix 0.069), pic 0.71, silences [0.12, 0.2] — conforme
+- « Sí, però si no està millor, torne dilluns. » : 3.03 s, 0.072 s/car (voix 0.069), pic 0.72, silences [0.12, 0.21] — conforme
+- « un constipat » : 0.97 s, 0.081 s/car (voix 0.069), pic 0.71, silences [0.12, 0.2] — conforme
+- « Menys mal » : 0.78 s, 0.087 s/car (voix 0.069), pic 0.71, silences [0.12, 0.19] — conforme
+- « Molt bé. Té cita? » : 1.41 s, 0.083 s/car (voix 0.069), pic 0.71, silences [0.12, 0.21] — conforme
+- « Em deixa el passaport i el contracte de lloguer? » : 2.66 s, 0.056 s/car (voix 0.069), pic 0.7, silences [0.12, 0.19] — conforme
+- « Sí, però també necessite una factura de la llum. » : 3.06 s, 0.064 s/car (voix 0.069), pic 0.72, silences [0.12, 0.21] — conforme
+- « Sí, per correu. Té deu dies. » : 2.04 s, 0.073 s/car (voix 0.069), pic 0.73, silences [0.12, 0.18] — conforme
+- « D'ací a una setmana, més o menys. » : 2.09 s, 0.063 s/car (voix 0.069), pic 0.71, silences [0.12, 0.18] — conforme
+- « la factura de la llum » : 1.44 s, 0.068 s/car (voix 0.069), pic 0.71, silences [0.12, 0.19] — conforme
+- « Quan estarà preparat? » : 1.38 s, 0.066 s/car (voix 0.069), pic 0.74, silences [0.12, 0.32] — conforme
+- « Bona vesprada. En què puc ajudar-lo? » : 2.35 s, 0.065 s/car (voix 0.069), pic 0.68, silences [0.12, 0.2] — conforme
+- « Ho sent molt. Em deixa el passaport? » : 2.3 s, 0.064 s/car (voix 0.069), pic 0.72, silences [0.12, 0.19] — conforme
+- « Hui no, però n'hi ha un demà a les set. » : 2.17 s, 0.056 s/car (voix 0.069), pic 0.7, silences [0.12, 0.2] — conforme
+- « La companyia li paga una habitació prop de l'aeroport. » : 2.98 s, 0.055 s/car (voix 0.069), pic 0.69, silences [0.12, 0.2] — conforme
+- « El seu equipatge viatja amb vosté demà. » : 2.3 s, 0.059 s/car (voix 0.069), pic 0.77, silences [0.12, 0.19] — conforme
+- « Clar, ací té. Perdone les molèsties. » : 2.77 s, 0.077 s/car (voix 0.069), pic 0.76, silences [0.12, 0.2] — conforme
+- « El meu vol no ix » : 1.2 s, 0.075 s/car (voix 0.069), pic 0.7, silences [0.12, 0.19] — conforme
+- « Perdone les molèsties » : 1.52 s, 0.072 s/car (voix 0.069), pic 0.73, silences [0.12, 0.18] — conforme
+- « Hola, vull aprendre a cuinar. Què em recomanes? » : 2.82 s, 0.06 s/car (voix 0.069), pic 0.78, silences [0.12, 0.21] — conforme
+- « Una escola és massa cara. » : 1.62 s, 0.065 s/car (voix 0.069), pic 0.71, silences [0.12, 0.18] — conforme
+- « D'acord. I quin plat faig primer? » : 2.25 s, 0.068 s/car (voix 0.069), pic 0.71, silences [0.12, 0.18] — conforme
+- « I si em ix malament? » : 1.38 s, 0.069 s/car (voix 0.069), pic 0.71, silences [0.12, 0.19] — conforme
+- « Tens raó. Vols vindre a menjar? » : 2.01 s, 0.065 s/car (voix 0.069), pic 0.74, silences [0.12, 0.2] — conforme
+- « Perfecte. Moltes gràcies per la teua ajuda! » : 2.82 s, 0.066 s/car (voix 0.069), pic 0.7, silences [0.12, 0.18] — conforme
+- « T'aconselle que… » : 1.04 s, 0.065 s/car (voix 0.069), pic 0.75, silences [0.12, 0.21] — conforme
+- « Et recomane que… » : 1.12 s, 0.07 s/car (voix 0.069), pic 0.72, silences [0.12, 0.19] — conforme
+- « És normal que isca malament » : 1.88 s, 0.07 s/car (voix 0.069), pic 0.73, silences [0.12, 0.19] — conforme
+- « quan estiga preparat » : 1.38 s, 0.069 s/car (voix 0.069), pic 0.79, silences [0.12, 0.19] — conforme
+- « Bon dia, en què el puc ajudar? » : 1.88 s, 0.063 s/car (voix 0.069), pic 0.72, silences [0.12, 0.21] — conforme
+- « Lamente molt el problema. Quan la va rebre? » : 2.72 s, 0.063 s/car (voix 0.069), pic 0.7, silences [0.12, 0.2] — conforme
+- « Vol que li n'enviem una altra? » : 1.72 s, 0.057 s/car (voix 0.069), pic 0.72, silences [0.12, 0.19] — conforme
+- « Sí, clar. Tardarà uns deu dies. » : 2.19 s, 0.071 s/car (voix 0.069), pic 0.8, silences [0.12, 0.18] — conforme
+- « Ho intentaré. » : 0.91 s, 0.07 s/car (voix 0.069), pic 0.69, silences [0.12, 0.18] — conforme
+- « Clar. Perdone les molèsties. » : 2.04 s, 0.073 s/car (voix 0.069), pic 0.7, silences [0.12, 0.2] — conforme
+- « la comanda » : 0.91 s, 0.091 s/car (voix 0.069), pic 0.72, silences [0.12, 0.19] — conforme
+- « Preferiria que em tornaren els diners » : 2.22 s, 0.06 s/car (voix 0.069), pic 0.71, silences [0.12, 0.17] — conforme
+- « Espere que tot vaja bé » : 1.65 s, 0.075 s/car (voix 0.069), pic 0.76, silences [0.12, 0.19] — conforme
+- « Bé, comencem. Com ha anat la facturació este trimestre? » : 3.47 s, 0.063 s/car (voix 0.069), pic 0.79, silences [0.12, 0.19] — conforme
+- « Molt bé. I les despeses? » : 1.78 s, 0.074 s/car (voix 0.069), pic 0.72, silences [0.12, 0.18] — conforme
+- « Llavors, hauríem d'invertir més en publicitat? » : 2.8 s, 0.061 s/car (voix 0.069), pic 0.71, silences [0.12, 0.21] — conforme
+- « Ja, però sense publicitat no hi ha creixement. » : 2.95 s, 0.064 s/car (voix 0.069), pic 0.72, silences [0.12, 0.19] — conforme
+- « Endavant, t'escolte. » : 1.36 s, 0.068 s/car (voix 0.069), pic 0.75, silences [0.12, 0.19] — conforme
+- « Em pareix bé. Pots preparar una proposta? » : 2.66 s, 0.065 s/car (voix 0.069), pic 0.74, silences [0.12, 0.2] — conforme
+- « les despeses » : 1.1 s, 0.091 s/car (voix 0.069), pic 0.72, silences [0.12, 0.2] — conforme
+- « Si invertírem… » : 1.1 s, 0.078 s/car (voix 0.069), pic 0.73, silences [0.12, 0.21] — conforme
+- « Li telefone pel contracte d'arrendament. S'acaba al juny. » : 3.42 s, 0.06 s/car (voix 0.069), pic 0.71, silences [0.12, 0.19] — conforme
+- « El problema és que pujaré el lloguer un quinze per cent. » : 3.21 s, 0.057 s/car (voix 0.069), pic 0.71, silences [0.12, 0.18] — conforme
+- « Els preus han pujat molt al barri. » : 2.09 s, 0.061 s/car (voix 0.069), pic 0.72, silences [0.12, 0.2] — conforme
+- « És veritat, sempre ha pagat bé. » : 2.25 s, 0.072 s/car (voix 0.069), pic 0.76, silences [0.12, 0.2] — conforme
+- « Què proposa? » : 0.89 s, 0.074 s/car (voix 0.069), pic 0.72, silences [0.12, 0.18] — conforme
+- « Deixe'm pensar-ho i el cride demà. » : 2.06 s, 0.061 s/car (voix 0.069), pic 0.75, silences [0.12, 0.2] — conforme
+- « porte cinc anys pagant » : 1.52 s, 0.069 s/car (voix 0.069), pic 0.74, silences [0.12, 0.2] — conforme
+- « si firmàrem » : 1.02 s, 0.093 s/car (voix 0.069), pic 0.71, silences [0.12, 0.2] — conforme
+- « Com va amb el nou tractament? » : 1.78 s, 0.061 s/car (voix 0.069), pic 0.71, silences [0.12, 0.19] — conforme
+- « Quins símptomes té? » : 1.15 s, 0.06 s/car (voix 0.069), pic 0.72, silences [0.12, 0.2] — conforme
+- « Passa molt al principi. » : 1.57 s, 0.068 s/car (voix 0.069), pic 0.73, silences [0.12, 0.21] — conforme
+- « Preferisc esperar un poc. Si continua igual, el canviarem. » : 3.87 s, 0.067 s/car (voix 0.069), pic 0.71, silences [0.12, 0.19] — conforme
+- « Sí, no hi ha cap problema. » : 1.8 s, 0.069 s/car (voix 0.069), pic 0.72, silences [0.12, 0.18] — conforme
+- « Sí, i telefone'm si es troba pitjor. » : 2.27 s, 0.063 s/car (voix 0.069), pic 0.74, silences [0.12, 0.21] — conforme
+- « un efecte secundari » : 1.36 s, 0.071 s/car (voix 0.069), pic 0.72, silences [0.12, 0.19] — conforme
+- « No seria millor…? » : 1.12 s, 0.066 s/car (voix 0.069), pic 0.75, silences [0.12, 0.2] — conforme
+- « Has vist que en el carrer ja no hi haurà cotxes? » : 2.53 s, 0.053 s/car (voix 0.069), pic 0.74, silences [0.12, 0.19] — conforme
+- « A mi no m'agrada. Hi haurà més embussos. » : 2.64 s, 0.066 s/car (voix 0.069), pic 0.72, silences [0.12, 0.21] — conforme
+- « Ja, però les botigues perdran clients. » : 2.59 s, 0.068 s/car (voix 0.069), pic 0.73, silences [0.12, 0.19] — conforme
+- « Tu creus? I com anirem al centre? » : 2.22 s, 0.067 s/car (voix 0.069), pic 0.73, silences [0.12, 0.21] — conforme
+- « Si hi haguera un carril bici, potser el faria servir. » : 3.19 s, 0.06 s/car (voix 0.069), pic 0.72, silences [0.12, 0.2] — conforme
+- « Bé, ja ho veurem. Tant de bo tingues raó. » : 2.48 s, 0.061 s/car (voix 0.069), pic 0.74, silences [0.12, 0.19] — conforme
+- « una zona de vianants » : 1.44 s, 0.072 s/car (voix 0.069), pic 0.71, silences [0.12, 0.2] — conforme
+- « No crec que siga així » : 1.46 s, 0.07 s/car (voix 0.069), pic 0.77, silences [0.12, 0.21] — conforme
+- « Hola, volies parlar amb mi? » : 1.65 s, 0.061 s/car (voix 0.069), pic 0.7, silences [0.12, 0.19] — conforme
+- « Vaja! No m'ho esperava. Per què? » : 2.25 s, 0.07 s/car (voix 0.069), pic 0.72, silences [0.12, 0.19] — conforme
+- « I si et pagàrem més? » : 1.33 s, 0.067 s/car (voix 0.069), pic 0.75, silences [0.12, 0.2] — conforme
+- « Ho entenc. Quan te n'aniries? » : 1.7 s, 0.059 s/car (voix 0.069), pic 0.75, silences [0.12, 0.22] — conforme
+- « Gràcies. Podries deixar-ho tot preparat? » : 2.56 s, 0.064 s/car (voix 0.069), pic 0.71, silences [0.12, 0.19] — conforme
+- « Gràcies. Et trobarem a faltar. » : 2.06 s, 0.069 s/car (voix 0.069), pic 0.72, silences [0.12, 0.2] — conforme
+- « perquè tingues temps » : 1.33 s, 0.067 s/car (voix 0.069), pic 0.75, silences [0.12, 0.18] — conforme
+- « trobar a faltar » : 1.02 s, 0.068 s/car (voix 0.069), pic 0.73, silences [0.12, 0.19] — conforme
+- « M'ha agradat molt » : 1.2 s, 0.071 s/car (voix 0.069), pic 0.75, silences [0.12, 0.2] — conforme
+- « Gràcies per vindre. Ha sigut una setmana molt dura. » : 3.32 s, 0.065 s/car (voix 0.069), pic 0.71, silences [0.12, 0.19] — conforme
+- « No vaig poder avisar quasi ningú, tot va ser molt ràpid. » : 3.58 s, 0.064 s/car (voix 0.069), pic 0.72, silences [0.12, 0.2] — conforme
+- « Gràcies. No sé quan tornaré a la faena. » : 2.51 s, 0.064 s/car (voix 0.069), pic 0.75, silences [0.12, 0.2] — conforme
+- « Em preocupen els meus clients, la veritat. » : 2.72 s, 0.065 s/car (voix 0.069), pic 0.69, silences [0.12, 0.2] — conforme
+- « No sé com agrair-t'ho. » : 1.33 s, 0.061 s/car (voix 0.069), pic 0.71, silences [0.12, 0.18] — conforme
+- « Ets un sol. Gràcies de veritat. » : 2.22 s, 0.072 s/car (voix 0.069), pic 0.72, silences [0.12, 0.2] — conforme
+- « Si ho haguera sabut » : 1.25 s, 0.066 s/car (voix 0.069), pic 0.67, silences [0.12, 0.18] — conforme
+- « Pren-te el temps que necessites » : 1.85 s, 0.06 s/car (voix 0.069), pic 0.71, silences [0.12, 0.18] — conforme
+- « per al que necessites » : 1.38 s, 0.066 s/car (voix 0.069), pic 0.71, silences [0.12, 0.2] — conforme
+- « L'empresa presentarà un expedient de regulació d'ocupació. » : 3.37 s, 0.058 s/car (voix 0.069), pic 0.72, silences [0.12, 0.18] — conforme
+- « Els números no són bons. » : 1.72 s, 0.072 s/car (voix 0.069), pic 0.7, silences [0.12, 0.18] — conforme
+- « És cert, però enguany va malament. » : 2.12 s, 0.062 s/car (voix 0.069), pic 0.72, silences [0.12, 0.19] — conforme
+- « Això no depén de mi. » : 1.36 s, 0.068 s/car (voix 0.069), pic 0.71, silences [0.12, 0.19] — conforme
+- « No cal arribar a això. Què proposen? » : 2.35 s, 0.065 s/car (voix 0.069), pic 0.74, silences [0.12, 0.2] — conforme
+- « Ho estudiarem. » : 0.94 s, 0.067 s/car (voix 0.069), pic 0.69, silences [0.12, 0.19] — conforme
+- « un expedient de regulació d'ocupació » : 2.25 s, 0.062 s/car (voix 0.069), pic 0.72, silences [0.12, 0.2] — conforme
+- « En cas contrari » : 1.15 s, 0.077 s/car (voix 0.069), pic 0.7, silences [0.12, 0.2] — conforme
+- « prorrogar el preavís » : 1.38 s, 0.069 s/car (voix 0.069), pic 0.73, silences [0.12, 0.19] — conforme
+- « Bona vesprada a tots. Qui vol parlar primer? » : 2.66 s, 0.061 s/car (voix 0.069), pic 0.73, silences [0.12, 0.18] — conforme
+- « És un problema que coneixem bé. » : 1.93 s, 0.062 s/car (voix 0.069), pic 0.72, silences [0.12, 0.19] — conforme
+- « Ho sabem, i ho lamentem. » : 1.59 s, 0.066 s/car (voix 0.069), pic 0.73, silences [0.12, 0.2] — conforme
+- « Aprovarem una nova ordenança municipal. » : 2.48 s, 0.064 s/car (voix 0.069), pic 0.72, silences [0.12, 0.19] — conforme
+- « I vosté què proposa? » : 1.33 s, 0.067 s/car (voix 0.069), pic 0.72, silences [0.12, 0.2] — conforme
+- « Ho estudiarem amb molt d'interés. » : 1.85 s, 0.056 s/car (voix 0.069), pic 0.68, silences [0.12, 0.18] — conforme
+- « mesures concretes » : 1.36 s, 0.08 s/car (voix 0.069), pic 0.72, silences [0.12, 0.18] — conforme
+- « Segons alguns, la ciutat no necessita més carrils bici. Què n'opina? » : 4.41 s, 0.065 s/car (voix 0.069), pic 0.76, silences [0.12, 0.21] — conforme
+- « Per què? » : 0.68 s, 0.085 s/car (voix 0.069), pic 0.74, silences [0.12, 0.21] — conforme
+- « Però hi ha massa cotxes, no? » : 1.72 s, 0.062 s/car (voix 0.069), pic 0.73, silences [0.12, 0.2] — conforme
+- « Hi ha un estudi que diu que els carrils bici no s'utilitzen. » : 3.16 s, 0.053 s/car (voix 0.069), pic 0.71, silences [0.12, 0.19] — conforme
+- « Ens queda un minut. Alguna cosa més? » : 2.59 s, 0.072 s/car (voix 0.069), pic 0.72, silences [0.12, 0.2] — conforme
+- « Per acabar, què ens diu? » : 1.54 s, 0.064 s/car (voix 0.069), pic 0.73, silences [0.12, 0.19] — conforme
+- « No compartisc eixe argument » : 1.91 s, 0.071 s/car (voix 0.069), pic 0.74, silences [0.12, 0.2] — conforme
+- « No negue que siga… » : 1.18 s, 0.065 s/car (voix 0.069), pic 0.71, silences [0.12, 0.19] — conforme
+- « Bon dia. Explique'm, quin és el problema? » : 2.87 s, 0.07 s/car (voix 0.069), pic 0.72, silences [0.12, 0.2] — conforme
+- « Què diu eixa clàusula? » : 1.46 s, 0.066 s/car (voix 0.069), pic 0.77, silences [0.12, 0.2] — conforme
+- « Això, efectivament, podria ser abusiu. » : 2.87 s, 0.076 s/car (voix 0.069), pic 0.71, silences [0.12, 0.18] — conforme
+- « Primer, el va firmar sense llegir-lo? » : 2.46 s, 0.066 s/car (voix 0.069), pic 0.71, silences [0.12, 0.2] — conforme
+- « Podem presentar una reclamació. » : 1.96 s, 0.063 s/car (voix 0.069), pic 0.71, silences [0.12, 0.19] — conforme
+- « Uns tres mesos, més o menys. » : 1.93 s, 0.069 s/car (voix 0.069), pic 0.72, silences [0.12, 0.18] — conforme
+- « una clàusula abusiva » : 1.49 s, 0.074 s/car (voix 0.069), pic 0.71, silences [0.12, 0.18] — conforme
+- « sense preavís » : 1.2 s, 0.092 s/car (voix 0.069), pic 0.73, silences [0.12, 0.22] — conforme
+- « Benvinguts al celler. Fa cent anys que treballem ací. » : 3.37 s, 0.064 s/car (voix 0.069), pic 0.76, silences [0.12, 0.19] — conforme
+- « Al setembre, a final de l'estiu. » : 2.19 s, 0.069 s/car (voix 0.069), pic 0.71, silences [0.12, 0.2] — conforme
+- « Sobretot una varietat de la zona. » : 2.09 s, 0.063 s/car (voix 0.069), pic 0.72, silences [0.12, 0.2] — conforme
+- « Sí, des de fa trenta anys. » : 1.88 s, 0.072 s/car (voix 0.069), pic 0.73, silences [0.12, 0.18] — conforme
+- « Torne l'any que ve. » : 1.07 s, 0.056 s/car (voix 0.069), pic 0.72, silences [0.12, 0.2] — conforme
+- « Molt pocs, quasi cap. » : 1.41 s, 0.067 s/car (voix 0.069), pic 0.69, silences [0.12, 0.19] — conforme
+- « M'hauria agradat » : 1.02 s, 0.064 s/car (voix 0.069), pic 0.7, silences [0.12, 0.2] — conforme
+
+## Clips ca_elia
+
+- « Digui? » : 0.47 s, 0.078 s/car (voix 0.072), pic 0.72, silences [0.12, 0.19] — conforme
+- « Vaja, ho sento. Què li passa? » : 2.09 s, 0.072 s/car (voix 0.072), pic 0.71, silences [0.12, 0.19] — conforme
+- « Deu ser una avaria. Trucaré a un tècnic. » : 2.48 s, 0.062 s/car (voix 0.072), pic 0.78, silences [0.12, 0.2] — conforme
+- « El tècnic hi pot anar dijous a la tarda. » : 2.32 s, 0.058 s/car (voix 0.072), pic 0.72, silences [0.12, 0.2] — conforme
+- « Sí, divendres a les deu. Li va bé? » : 2.4 s, 0.071 s/car (voix 0.072), pic 0.69, silences [0.12, 0.2] — conforme
+- « De res. Si hi ha cap altre problema, truqui'm. » : 3.0 s, 0.065 s/car (voix 0.072), pic 0.7, silences [0.12, 0.19] — conforme
+- « una avaria » : 0.94 s, 0.094 s/car (voix 0.072), pic 0.71, silences [0.12, 0.21] — conforme
+- « Podria ser…? » : 0.86 s, 0.072 s/car (voix 0.072), pic 0.66, silences [0.12, 0.2] — conforme
+- « Que tingui un bon dia! » : 1.31 s, 0.059 s/car (voix 0.072), pic 0.72, silences [0.12, 0.18] — conforme
+- « Bon dia. Per què vol aquesta feina? » : 2.35 s, 0.067 s/car (voix 0.072), pic 0.72, silences [0.12, 0.19] — conforme
+- « Té experiència en vendes? » : 1.67 s, 0.067 s/car (voix 0.072), pic 0.71, silences [0.12, 0.19] — conforme
+- « Molt bé. La feina és a l'oficina, amb un dia de teletreball. » : 3.81 s, 0.064 s/car (voix 0.072), pic 0.71, silences [0.12, 0.2] — conforme
+- « De nou a cinc, amb un període de prova de dos mesos. » : 3.13 s, 0.06 s/car (voix 0.072), pic 0.72, silences [0.12, 0.2] — conforme
+- « El mes que ve, si tot va bé. Té cap pregunta? » : 2.98 s, 0.066 s/car (voix 0.072), pic 0.74, silences [0.12, 0.21] — conforme
+- « Sí. Li trucarem la setmana que ve. » : 2.27 s, 0.067 s/car (voix 0.072), pic 0.72, silences [0.12, 0.19] — conforme
+- « un contracte indefinit » : 1.54 s, 0.07 s/car (voix 0.072), pic 0.68, silences [0.12, 0.21] — conforme
+- « Quan començaria? » : 1.15 s, 0.072 s/car (voix 0.072), pic 0.72, silences [0.12, 0.2] — conforme
+- « Espero la seva trucada » : 1.59 s, 0.072 s/car (voix 0.072), pic 0.67, silences [0.12, 0.19] — conforme
+- « No és res greu, és un refredat. » : 1.91 s, 0.062 s/car (voix 0.072), pic 0.72, silences [0.12, 0.2] — conforme
+- « Sí, prengui això tres vegades al dia, després de menjar. » : 3.66 s, 0.065 s/car (voix 0.072), pic 0.71, silences [0.12, 0.19] — conforme
+- « Una setmana. I begui molta aigua. » : 2.27 s, 0.069 s/car (voix 0.072), pic 0.71, silences [0.12, 0.2] — conforme
+- « Sí, però si no està millor, torni dilluns. » : 2.72 s, 0.065 s/car (voix 0.072), pic 0.72, silences [0.12, 0.18] — conforme
+- « un refredat » : 0.94 s, 0.085 s/car (voix 0.072), pic 0.69, silences [0.12, 0.19] — conforme
+- « Menys mal » : 0.86 s, 0.096 s/car (voix 0.072), pic 0.74, silences [0.12, 0.21] — conforme
+- « Molt bé. Té cita? » : 1.46 s, 0.086 s/car (voix 0.072), pic 0.72, silences [0.12, 0.19] — conforme
+- « Em deixa el passaport i el contracte de lloguer? » : 2.66 s, 0.056 s/car (voix 0.072), pic 0.71, silences [0.12, 0.2] — conforme
+- « Sí, però també necessito una factura de la llum. » : 2.95 s, 0.061 s/car (voix 0.072), pic 0.71, silences [0.12, 0.2] — conforme
+- « Sí, per correu. Té deu dies. » : 2.09 s, 0.075 s/car (voix 0.072), pic 0.71, silences [0.12, 0.19] — conforme
+- « D'aquí a una setmana, més o menys. » : 2.25 s, 0.066 s/car (voix 0.072), pic 0.73, silences [0.12, 0.2] — conforme
+- « la factura de la llum » : 1.44 s, 0.068 s/car (voix 0.072), pic 0.74, silences [0.12, 0.19] — conforme
+- « Quan estarà preparat? » : 1.23 s, 0.058 s/car (voix 0.072), pic 0.71, silences [0.12, 0.2] — conforme
+- « Bona tarda. En què el puc ajudar? » : 2.22 s, 0.067 s/car (voix 0.072), pic 0.7, silences [0.12, 0.18] — conforme
+- « Ho sento molt. Em deixa el passaport? » : 2.32 s, 0.063 s/car (voix 0.072), pic 0.7, silences [0.12, 0.18] — conforme
+- « Avui no, però n'hi ha un demà a les set. » : 2.17 s, 0.054 s/car (voix 0.072), pic 0.74, silences [0.12, 0.21] — conforme
+- « La companyia li paga una habitació a prop de l'aeroport. » : 2.9 s, 0.052 s/car (voix 0.072), pic 0.75, silences [0.12, 0.19] — conforme
+- « El seu equipatge viatja amb vostè demà. » : 2.22 s, 0.057 s/car (voix 0.072), pic 0.68, silences [0.12, 0.19] — conforme
+- « És clar, aquí té. Perdoni les molèsties. » : 2.9 s, 0.072 s/car (voix 0.072), pic 0.69, silences [0.12, 0.18] — conforme
+- « El meu vol no surt » : 1.31 s, 0.073 s/car (voix 0.072), pic 0.72, silences [0.12, 0.19] — conforme
+- « Perdoni les molèsties » : 1.67 s, 0.08 s/car (voix 0.072), pic 0.72, silences [0.12, 0.2] — conforme
+- « Hola, vull aprendre a cuinar. Què em recomanes? » : 3.11 s, 0.066 s/car (voix 0.072), pic 0.71, silences [0.12, 0.21] — conforme
+- « Una escola és massa cara. » : 1.67 s, 0.067 s/car (voix 0.072), pic 0.7, silences [0.12, 0.21] — conforme
+- « D'acord. I quin plat faig primer? » : 2.22 s, 0.067 s/car (voix 0.072), pic 0.73, silences [0.12, 0.21] — conforme
+- « I si em surt malament? » : 1.38 s, 0.063 s/car (voix 0.072), pic 0.7, silences [0.12, 0.2] — conforme
+- « Tens raó. Vols venir a menjar? » : 1.99 s, 0.066 s/car (voix 0.072), pic 0.7, silences [0.12, 0.2] — conforme
+- « Perfecte. Moltes gràcies per la teva ajuda! » : 2.85 s, 0.066 s/car (voix 0.072), pic 0.71, silences [0.12, 0.19] — conforme
+- « T'aconsello que… » : 1.07 s, 0.067 s/car (voix 0.072), pic 0.72, silences [0.12, 0.2] — conforme
+- « Et recomano que… » : 1.18 s, 0.073 s/car (voix 0.072), pic 0.7, silences [0.12, 0.19] — conforme
+- « És normal que surti malament » : 1.88 s, 0.067 s/car (voix 0.072), pic 0.7, silences [0.12, 0.2] — conforme
+- « quan estigui preparat » : 1.28 s, 0.061 s/car (voix 0.072), pic 0.7, silences [0.12, 0.2] — conforme
+- « Lamento molt el problema. Quan el va rebre? » : 2.69 s, 0.063 s/car (voix 0.072), pic 0.71, silences [0.12, 0.18] — conforme
+- « Vol que n'hi enviem un altre? » : 1.62 s, 0.056 s/car (voix 0.072), pic 0.68, silences [0.12, 0.2] — conforme
+- « Sí, és clar. Tardarà uns deu dies. » : 2.56 s, 0.075 s/car (voix 0.072), pic 0.73, silences [0.12, 0.2] — conforme
+- « Ho intentaré. » : 0.91 s, 0.07 s/car (voix 0.072), pic 0.68, silences [0.12, 0.2] — conforme
+- « És clar. Perdoni les molèsties. » : 2.3 s, 0.074 s/car (voix 0.072), pic 0.69, silences [0.12, 0.18] — conforme
+- « trencat » : 0.71 s, 0.101 s/car (voix 0.072), pic 0.72, silences [0.12, 0.19] — conforme
+- « Preferiria que em tornessin els diners » : 2.25 s, 0.059 s/car (voix 0.072), pic 0.75, silences [0.12, 0.18] — conforme
+- « Espero que tot vagi bé » : 1.52 s, 0.069 s/car (voix 0.072), pic 0.7, silences [0.12, 0.19] — conforme
+- « Bé, comencem. Com ha anat la facturació aquest trimestre? » : 3.66 s, 0.064 s/car (voix 0.072), pic 0.71, silences [0.12, 0.2] — conforme
+- « Molt bé. I les despeses? » : 1.99 s, 0.083 s/car (voix 0.072), pic 0.74, silences [0.12, 0.18] — conforme
+- « Llavors, hauríem d'invertir més en publicitat? » : 2.74 s, 0.06 s/car (voix 0.072), pic 0.69, silences [0.12, 0.19] — conforme
+- « Ja, però sense publicitat no hi ha creixement. » : 2.77 s, 0.06 s/car (voix 0.072), pic 0.74, silences [0.12, 0.2] — conforme
+- « Endavant, t'escolto. » : 1.46 s, 0.073 s/car (voix 0.072), pic 0.72, silences [0.12, 0.2] — conforme
+- « Em sembla bé. Pots preparar una proposta? » : 2.77 s, 0.068 s/car (voix 0.072), pic 0.72, silences [0.12, 0.2] — conforme
+- « Si invertíssim… » : 1.15 s, 0.077 s/car (voix 0.072), pic 0.68, silences [0.12, 0.19] — conforme
+- « Li truco pel contracte d'arrendament. S'acaba al juny. » : 3.06 s, 0.057 s/car (voix 0.072), pic 0.68, silences [0.12, 0.18] — conforme
+- « El problema és que apujaré el lloguer un quinze per cent. » : 2.95 s, 0.052 s/car (voix 0.072), pic 0.69, silences [0.12, 0.19] — conforme
+- « Els preus han pujat molt al barri. » : 2.01 s, 0.059 s/car (voix 0.072), pic 0.71, silences [0.12, 0.2] — conforme
+- « És veritat, sempre ha pagat bé. » : 2.04 s, 0.066 s/car (voix 0.072), pic 0.74, silences [0.12, 0.2] — conforme
+- « Què proposa? » : 0.91 s, 0.076 s/car (voix 0.072), pic 0.71, silences [0.12, 0.21] — conforme
+- « Deixi'm pensar-ho i el truco demà. » : 1.99 s, 0.058 s/car (voix 0.072), pic 0.69, silences [0.12, 0.2] — conforme
+- « fa cinc anys que pago » : 1.31 s, 0.062 s/car (voix 0.072), pic 0.68, silences [0.11, 0.18] — conforme
+- « si signéssim » : 0.99 s, 0.083 s/car (voix 0.072), pic 0.81, silences [0.12, 0.19] — conforme
+- « Com va amb el nou tractament? » : 1.67 s, 0.058 s/car (voix 0.072), pic 0.71, silences [0.12, 0.2] — conforme
+- « Quins símptomes té? » : 1.23 s, 0.065 s/car (voix 0.072), pic 0.71, silences [0.12, 0.19] — conforme
+- « Passa molt al principi. » : 1.49 s, 0.065 s/car (voix 0.072), pic 0.72, silences [0.12, 0.19] — conforme
+- « Prefereixo esperar una mica. Si continués igual, el canviaríem. » : 3.97 s, 0.063 s/car (voix 0.072), pic 0.72, silences [0.12, 0.18] — conforme
+- « Sí, no hi ha cap problema. » : 1.78 s, 0.068 s/car (voix 0.072), pic 0.72, silences [0.12, 0.19] — conforme
+- « Sí, i truqui'm si es troba pitjor. » : 2.01 s, 0.059 s/car (voix 0.072), pic 0.71, silences [0.12, 0.18] — conforme
+- « els efectes secundaris » : 1.67 s, 0.076 s/car (voix 0.072), pic 0.71, silences [0.12, 0.2] — conforme
+- « No seria millor…? » : 1.15 s, 0.068 s/car (voix 0.072), pic 0.77, silences [0.12, 0.2] — conforme
+- « Has vist que tancaran el carrer als cotxes? » : 2.46 s, 0.057 s/car (voix 0.072), pic 0.74, silences [0.12, 0.19] — conforme
+- « A mi no m'agrada. Hi haurà més embussos. » : 2.53 s, 0.063 s/car (voix 0.072), pic 0.71, silences [0.12, 0.19] — conforme
+- « Ja, però les botigues perdran clients. » : 2.61 s, 0.069 s/car (voix 0.072), pic 0.71, silences [0.12, 0.18] — conforme
+- « Tu creus? I com anirem al centre? » : 2.3 s, 0.07 s/car (voix 0.072), pic 0.7, silences [0.12, 0.2] — conforme
+- « Si hi hagués un carril bici, potser el faria servir. » : 2.82 s, 0.054 s/car (voix 0.072), pic 0.7, silences [0.12, 0.2] — conforme
+- « Bé, ja ho veurem. Tant de bo tinguis raó. » : 2.64 s, 0.064 s/car (voix 0.072), pic 0.7, silences [0.12, 0.21] — conforme
+- « una zona de vianants » : 1.54 s, 0.077 s/car (voix 0.072), pic 0.72, silences [0.12, 0.2] — conforme
+- « No crec que sigui així » : 1.38 s, 0.063 s/car (voix 0.072), pic 0.71, silences [0.12, 0.19] — conforme
+- « Hola, volies parlar amb mi? » : 1.67 s, 0.062 s/car (voix 0.072), pic 0.71, silences [0.12, 0.19] — conforme
+- « Vaja! No m'ho esperava. Per què? » : 1.99 s, 0.062 s/car (voix 0.072), pic 0.72, silences [0.12, 0.19] — conforme
+- « I si et paguéssim més? » : 1.38 s, 0.063 s/car (voix 0.072), pic 0.72, silences [0.12, 0.19] — conforme
+- « Ho entenc. Quan te n'aniries? » : 1.88 s, 0.065 s/car (voix 0.072), pic 0.72, silences [0.12, 0.21] — conforme
+- « Gràcies. Podries deixar-ho tot preparat? » : 2.56 s, 0.064 s/car (voix 0.072), pic 0.77, silences [0.12, 0.2] — conforme
+- « Gràcies. Et trobarem a faltar. » : 2.06 s, 0.069 s/car (voix 0.072), pic 0.71, silences [0.12, 0.19] — conforme
+- « perquè tinguis temps » : 1.38 s, 0.069 s/car (voix 0.072), pic 0.74, silences [0.12, 0.21] — conforme
+- « trobar a faltar » : 0.97 s, 0.064 s/car (voix 0.072), pic 0.72, silences [0.12, 0.2] — conforme
+- « M'ha agradat molt » : 1.1 s, 0.065 s/car (voix 0.072), pic 0.73, silences [0.12, 0.2] — conforme
+- « Gràcies per venir. Ha estat una setmana molt dura. » : 2.95 s, 0.059 s/car (voix 0.072), pic 0.69, silences [0.12, 0.2] — conforme
+- « No vaig poder avisar gairebé ningú, tot va anar molt de pressa. » : 3.55 s, 0.056 s/car (voix 0.072), pic 0.71, silences [0.12, 0.21] — conforme
+- « Gràcies. No sé quan tornaré a la feina. » : 2.53 s, 0.065 s/car (voix 0.072), pic 0.7, silences [0.12, 0.19] — conforme
+- « Em preocupen els meus clients, la veritat. » : 2.51 s, 0.06 s/car (voix 0.072), pic 0.71, silences [0.12, 0.2] — conforme
+- « No sé com agrair-t'ho. » : 1.36 s, 0.062 s/car (voix 0.072), pic 0.69, silences [0.12, 0.2] — conforme
+- « Ets un sol. Gràcies de veritat. » : 2.25 s, 0.072 s/car (voix 0.072), pic 0.7, silences [0.12, 0.2] — conforme
+- « Si ho hagués sabut » : 1.15 s, 0.064 s/car (voix 0.072), pic 0.7, silences [0.12, 0.19] — conforme
+- « Pren-te el temps que necessitis » : 1.88 s, 0.061 s/car (voix 0.072), pic 0.68, silences [0.12, 0.2] — conforme
+- « per al que necessitis » : 1.44 s, 0.068 s/car (voix 0.072), pic 0.74, silences [0.12, 0.2] — conforme
+- « L'empresa presentarà un expedient de regulació d'ocupació. » : 3.32 s, 0.057 s/car (voix 0.072), pic 0.72, silences [0.12, 0.2] — conforme
+- « Els números no són bons. » : 1.75 s, 0.073 s/car (voix 0.072), pic 0.7, silences [0.12, 0.18] — conforme
+- « És cert, però aquest any va malament. » : 2.19 s, 0.059 s/car (voix 0.072), pic 0.71, silences [0.12, 0.2] — conforme
+- « Això no depèn de mi. » : 1.36 s, 0.068 s/car (voix 0.072), pic 0.72, silences [0.12, 0.19] — conforme
+- « No cal arribar a això. Què proposen? » : 2.12 s, 0.059 s/car (voix 0.072), pic 0.73, silences [0.12, 0.18] — conforme
+- « Ho estudiarem amb la direcció. » : 1.72 s, 0.057 s/car (voix 0.072), pic 0.68, silences [0.12, 0.21] — conforme
+- « un expedient de regulació d'ocupació » : 2.22 s, 0.062 s/car (voix 0.072), pic 0.71, silences [0.12, 0.2] — conforme
+- « En cas contrari » : 1.15 s, 0.077 s/car (voix 0.072), pic 0.69, silences [0.12, 0.19] — conforme
+- « prorrogar el preavís » : 1.25 s, 0.063 s/car (voix 0.072), pic 0.71, silences [0.12, 0.19] — conforme
+- « Bona tarda a tothom. Qui vol parlar primer? » : 2.64 s, 0.061 s/car (voix 0.072), pic 0.72, silences [0.12, 0.21] — conforme
+- « És un problema que coneixem bé. » : 1.88 s, 0.061 s/car (voix 0.072), pic 0.74, silences [0.12, 0.19] — conforme
+- « Ho sabem, i ho lamentem. » : 1.7 s, 0.071 s/car (voix 0.072), pic 0.68, silences [0.12, 0.2] — conforme
+- « Aprovarem una nova ordenança municipal. » : 2.48 s, 0.064 s/car (voix 0.072), pic 0.72, silences [0.12, 0.19] — conforme
+- « I vostè què proposa? » : 1.38 s, 0.069 s/car (voix 0.072), pic 0.75, silences [0.12, 0.19] — conforme
+- « Ho estudiarem amb molt d'interès. » : 1.83 s, 0.055 s/car (voix 0.072), pic 0.73, silences [0.12, 0.18] — conforme
+- « mesures concretes » : 1.49 s, 0.088 s/car (voix 0.072), pic 0.7, silences [0.12, 0.2] — conforme
+- « Segons alguns, la ciutat no necessita més carrils bici. Què en pensa? » : 4.39 s, 0.064 s/car (voix 0.072), pic 0.66, silences [0.12, 0.18] — conforme
+- « Per què? » : 0.63 s, 0.078 s/car (voix 0.072), pic 0.7, silences [0.12, 0.19] — conforme
+- « Però hi ha massa cotxes, oi? » : 1.78 s, 0.063 s/car (voix 0.072), pic 0.71, silences [0.12, 0.19] — conforme
+- « Hi ha un estudi que diu que els carrils bici no s'utilitzen. » : 3.13 s, 0.052 s/car (voix 0.072), pic 0.68, silences [0.12, 0.19] — conforme
+- « Ens queda un minut. Res més? » : 2.04 s, 0.073 s/car (voix 0.072), pic 0.72, silences [0.12, 0.18] — conforme
+- « Per acabar, què ens diu? » : 1.52 s, 0.063 s/car (voix 0.072), pic 0.71, silences [0.12, 0.2] — conforme
+- « No comparteixo aquest argument » : 1.88 s, 0.063 s/car (voix 0.072), pic 0.69, silences [0.12, 0.19] — conforme
+- « No nego que sigui… » : 1.15 s, 0.064 s/car (voix 0.072), pic 0.71, silences [0.12, 0.18] — conforme
+- « Bon dia. Expliqui'm, quin és el problema? » : 2.93 s, 0.071 s/car (voix 0.072), pic 0.68, silences [0.12, 0.2] — conforme
+- « Què diu aquesta clàusula? » : 1.54 s, 0.062 s/car (voix 0.072), pic 0.72, silences [0.12, 0.2] — conforme
+- « Això, efectivament, podria ser abusiu. » : 2.8 s, 0.074 s/car (voix 0.072), pic 0.69, silences [0.12, 0.2] — conforme
+- « Primer, el va signar sense llegir-lo? » : 2.43 s, 0.066 s/car (voix 0.072), pic 0.73, silences [0.12, 0.2] — conforme
+- « Podem presentar una reclamació. » : 1.85 s, 0.06 s/car (voix 0.072), pic 0.72, silences [0.12, 0.2] — conforme
+- « Uns tres mesos, més o menys. » : 1.99 s, 0.071 s/car (voix 0.072), pic 0.71, silences [0.12, 0.2] — conforme
+- « una clàusula abusiva » : 1.49 s, 0.074 s/car (voix 0.072), pic 0.7, silences [0.12, 0.21] — conforme
+- « sense preavís » : 1.2 s, 0.092 s/car (voix 0.072), pic 0.7, silences [0.12, 0.2] — conforme
+- « Benvinguts al celler. Fa cent anys que treballem aquí. » : 3.37 s, 0.062 s/car (voix 0.072), pic 0.74, silences [0.12, 0.2] — conforme
+- « Al setembre, a final de l'estiu. » : 2.22 s, 0.069 s/car (voix 0.072), pic 0.71, silences [0.12, 0.19] — conforme
+- « Sobretot una varietat de la zona. » : 2.06 s, 0.063 s/car (voix 0.072), pic 0.71, silences [0.12, 0.2] — conforme
+- « Sí, des de fa trenta anys. » : 1.96 s, 0.075 s/car (voix 0.072), pic 0.71, silences [0.12, 0.19] — conforme
+- « Torni l'any que ve. » : 1.07 s, 0.056 s/car (voix 0.072), pic 0.71, silences [0.12, 0.2] — conforme
+- « Molt pocs, gairebé cap. » : 1.59 s, 0.069 s/car (voix 0.072), pic 0.76, silences [0.12, 0.2] — conforme
+- « M'hauria agradat » : 0.97 s, 0.06 s/car (voix 0.072), pic 0.71, silences [0.12, 0.21] — conforme
+
+## Clips ca_grau
+
+- « Digui? » : 0.52 s, 0.087 s/car (voix 0.069), pic 0.7, silences [0.12, 0.19] — conforme
+- « Vaja, ho sento. Què li passa? » : 1.96 s, 0.068 s/car (voix 0.069), pic 0.72, silences [0.12, 0.19] — conforme
+- « Deu ser una avaria. Trucaré a un tècnic. » : 2.77 s, 0.069 s/car (voix 0.069), pic 0.71, silences [0.12, 0.21] — conforme
+- « El tècnic hi pot anar dijous a la tarda. » : 2.35 s, 0.059 s/car (voix 0.069), pic 0.72, silences [0.12, 0.2] — conforme
+- « Sí, divendres a les deu. Li va bé? » : 2.48 s, 0.073 s/car (voix 0.069), pic 0.68, silences [0.12, 0.18] — conforme
+- « De res. Si hi ha cap altre problema, truqui'm. » : 2.95 s, 0.064 s/car (voix 0.069), pic 0.72, silences [0.12, 0.2] — conforme
+- « una avaria » : 0.89 s, 0.089 s/car (voix 0.069), pic 0.71, silences [0.12, 0.19] — conforme
+- « Podria ser…? » : 0.78 s, 0.065 s/car (voix 0.069), pic 0.72, silences [0.12, 0.19] — conforme
+- « Que tingui un bon dia! » : 1.31 s, 0.059 s/car (voix 0.069), pic 0.72, silences [0.12, 0.19] — conforme
+- « Bon dia. Per què vol aquesta feina? » : 2.27 s, 0.065 s/car (voix 0.069), pic 0.71, silences [0.12, 0.21] — conforme
+- « Té experiència en vendes? » : 1.67 s, 0.067 s/car (voix 0.069), pic 0.71, silences [0.12, 0.2] — conforme
+- « Molt bé. La feina és a l'oficina, amb un dia de teletreball. » : 3.81 s, 0.064 s/car (voix 0.069), pic 0.71, silences [0.12, 0.19] — conforme
+- « De nou a cinc, amb un període de prova de dos mesos. » : 3.34 s, 0.064 s/car (voix 0.069), pic 0.74, silences [0.12, 0.2] — conforme
+- « El mes que ve, si tot va bé. Té cap pregunta? » : 2.82 s, 0.063 s/car (voix 0.069), pic 0.73, silences [0.12, 0.18] — conforme
+- « Sí. Li trucarem la setmana que ve. » : 2.35 s, 0.069 s/car (voix 0.069), pic 0.73, silences [0.12, 0.2] — conforme
+- « un contracte indefinit » : 1.44 s, 0.065 s/car (voix 0.069), pic 0.7, silences [0.12, 0.2] — conforme
+- « Quan començaria? » : 1.1 s, 0.069 s/car (voix 0.069), pic 0.73, silences [0.12, 0.2] — conforme
+- « Espero la seva trucada » : 1.59 s, 0.072 s/car (voix 0.069), pic 0.67, silences [0.12, 0.19] — conforme
+- « No és res greu, és un refredat. » : 1.96 s, 0.063 s/car (voix 0.069), pic 0.72, silences [0.12, 0.2] — conforme
+- « Sí, prengui això tres vegades al dia, després de menjar. » : 3.71 s, 0.066 s/car (voix 0.069), pic 0.7, silences [0.12, 0.22] — conforme
+- « Una setmana. I begui molta aigua. » : 2.27 s, 0.069 s/car (voix 0.069), pic 0.66, silences [0.12, 0.19] — conforme
+- « Sí, però si no està millor, torni dilluns. » : 2.82 s, 0.067 s/car (voix 0.069), pic 0.71, silences [0.12, 0.21] — conforme
+- « un refredat » : 0.81 s, 0.074 s/car (voix 0.069), pic 0.76, silences [0.12, 0.19] — conforme
+- « Menys mal » : 0.81 s, 0.09 s/car (voix 0.069), pic 0.71, silences [0.12, 0.19] — conforme
+- « Molt bé. Té cita? » : 1.36 s, 0.08 s/car (voix 0.069), pic 0.7, silences [0.12, 0.19] — conforme
+- « Em deixa el passaport i el contracte de lloguer? » : 2.74 s, 0.057 s/car (voix 0.069), pic 0.69, silences [0.12, 0.2] — conforme
+- « Sí, però també necessito una factura de la llum. » : 2.9 s, 0.06 s/car (voix 0.069), pic 0.69, silences [0.12, 0.21] — conforme
+- « Sí, per correu. Té deu dies. » : 2.12 s, 0.076 s/car (voix 0.069), pic 0.7, silences [0.12, 0.21] — conforme
+- « D'aquí a una setmana, més o menys. » : 2.14 s, 0.063 s/car (voix 0.069), pic 0.71, silences [0.12, 0.19] — conforme
+- « la factura de la llum » : 1.44 s, 0.068 s/car (voix 0.069), pic 0.73, silences [0.12, 0.2] — conforme
+- « Quan estarà preparat? » : 1.2 s, 0.057 s/car (voix 0.069), pic 0.74, silences [0.12, 0.2] — conforme
+- « Bona tarda. En què el puc ajudar? » : 2.3 s, 0.07 s/car (voix 0.069), pic 0.76, silences [0.12, 0.2] — conforme
+- « Ho sento molt. Em deixa el passaport? » : 2.35 s, 0.064 s/car (voix 0.069), pic 0.74, silences [0.12, 0.2] — conforme
+- « Avui no, però n'hi ha un demà a les set. » : 2.19 s, 0.055 s/car (voix 0.069), pic 0.69, silences [0.12, 0.2] — conforme
+- « La companyia li paga una habitació a prop de l'aeroport. » : 2.95 s, 0.053 s/car (voix 0.069), pic 0.72, silences [0.12, 0.19] — conforme
+- « El seu equipatge viatja amb vostè demà. » : 2.22 s, 0.057 s/car (voix 0.069), pic 0.68, silences [0.12, 0.21] — conforme
+- « És clar, aquí té. Perdoni les molèsties. » : 2.87 s, 0.072 s/car (voix 0.069), pic 0.79, silences [0.12, 0.19] — conforme
+- « El meu vol no surt » : 1.18 s, 0.065 s/car (voix 0.069), pic 0.7, silences [0.12, 0.19] — conforme
+- « Perdoni les molèsties » : 1.52 s, 0.072 s/car (voix 0.069), pic 0.72, silences [0.12, 0.19] — conforme
+- « Hola, vull aprendre a cuinar. Què em recomanes? » : 2.82 s, 0.06 s/car (voix 0.069), pic 0.7, silences [0.12, 0.19] — conforme
+- « Una escola és massa cara. » : 1.72 s, 0.069 s/car (voix 0.069), pic 0.69, silences [0.12, 0.19] — conforme
+- « D'acord. I quin plat faig primer? » : 2.22 s, 0.067 s/car (voix 0.069), pic 0.74, silences [0.12, 0.19] — conforme
+- « I si em surt malament? » : 1.31 s, 0.059 s/car (voix 0.069), pic 0.7, silences [0.12, 0.19] — conforme
+- « Tens raó. Vols venir a menjar? » : 2.04 s, 0.068 s/car (voix 0.069), pic 0.71, silences [0.12, 0.2] — conforme
+- « Perfecte. Moltes gràcies per la teva ajuda! » : 2.87 s, 0.067 s/car (voix 0.069), pic 0.7, silences [0.12, 0.21] — conforme
+- « T'aconsello que… » : 1.04 s, 0.065 s/car (voix 0.069), pic 0.71, silences [0.12, 0.2] — conforme
+- « Et recomano que… » : 1.1 s, 0.069 s/car (voix 0.069), pic 0.71, silences [0.12, 0.19] — conforme
+- « És normal que surti malament » : 1.8 s, 0.064 s/car (voix 0.069), pic 0.7, silences [0.12, 0.19] — conforme
+- « quan estigui preparat » : 1.23 s, 0.058 s/car (voix 0.069), pic 0.68, silences [0.12, 0.2] — conforme
+- « Lamento molt el problema. Quan el va rebre? » : 2.72 s, 0.063 s/car (voix 0.069), pic 0.73, silences [0.12, 0.2] — conforme
+- « Vol que n'hi enviem un altre? » : 1.62 s, 0.056 s/car (voix 0.069), pic 0.7, silences [0.12, 0.2] — conforme
+- « Sí, és clar. Tardarà uns deu dies. » : 2.56 s, 0.075 s/car (voix 0.069), pic 0.76, silences [0.12, 0.21] — conforme
+- « Ho intentaré. » : 0.91 s, 0.07 s/car (voix 0.069), pic 0.68, silences [0.12, 0.21] — conforme
+- « És clar. Perdoni les molèsties. » : 2.22 s, 0.072 s/car (voix 0.069), pic 0.73, silences [0.12, 0.19] — conforme
+- « trencat » : 0.6 s, 0.086 s/car (voix 0.069), pic 0.68, silences [0.12, 0.18] — conforme
+- « Preferiria que em tornessin els diners » : 2.32 s, 0.061 s/car (voix 0.069), pic 0.7, silences [0.12, 0.18] — conforme
+- « Espero que tot vagi bé » : 1.52 s, 0.069 s/car (voix 0.069), pic 0.7, silences [0.12, 0.2] — conforme
+- « Bé, comencem. Com ha anat la facturació aquest trimestre? » : 3.79 s, 0.066 s/car (voix 0.069), pic 0.72, silences [0.12, 0.19] — conforme
+- « Molt bé. I les despeses? » : 1.91 s, 0.079 s/car (voix 0.069), pic 0.75, silences [0.12, 0.18] — conforme
+- « Llavors, hauríem d'invertir més en publicitat? » : 2.93 s, 0.064 s/car (voix 0.069), pic 0.7, silences [0.12, 0.19] — conforme
+- « Ja, però sense publicitat no hi ha creixement. » : 2.87 s, 0.062 s/car (voix 0.069), pic 0.72, silences [0.12, 0.2] — conforme
+- « Endavant, t'escolto. » : 1.52 s, 0.076 s/car (voix 0.069), pic 0.73, silences [0.12, 0.21] — conforme
+- « Em sembla bé. Pots preparar una proposta? » : 2.82 s, 0.069 s/car (voix 0.069), pic 0.71, silences [0.12, 0.18] — conforme
+- « Si invertíssim… » : 1.1 s, 0.073 s/car (voix 0.069), pic 0.68, silences [0.12, 0.19] — conforme
+- « Li truco pel contracte d'arrendament. S'acaba al juny. » : 3.13 s, 0.058 s/car (voix 0.069), pic 0.72, silences [0.12, 0.21] — conforme
+- « El problema és que apujaré el lloguer un quinze per cent. » : 3.08 s, 0.054 s/car (voix 0.069), pic 0.71, silences [0.12, 0.21] — conforme
+- « Els preus han pujat molt al barri. » : 2.01 s, 0.059 s/car (voix 0.069), pic 0.72, silences [0.12, 0.2] — conforme
+- « És veritat, sempre ha pagat bé. » : 2.06 s, 0.067 s/car (voix 0.069), pic 0.71, silences [0.12, 0.2] — conforme
+- « Què proposa? » : 0.86 s, 0.072 s/car (voix 0.069), pic 0.72, silences [0.12, 0.19] — conforme
+- « Deixi'm pensar-ho i el truco demà. » : 1.99 s, 0.058 s/car (voix 0.069), pic 0.7, silences [0.12, 0.19] — conforme
+- « fa cinc anys que pago » : 1.38 s, 0.066 s/car (voix 0.069), pic 0.75, silences [0.12, 0.2] — conforme
+- « si signéssim » : 0.99 s, 0.083 s/car (voix 0.069), pic 0.73, silences [0.12, 0.21] — conforme
+- « Com va amb el nou tractament? » : 1.65 s, 0.057 s/car (voix 0.069), pic 0.75, silences [0.12, 0.19] — conforme
+- « Quins símptomes té? » : 1.2 s, 0.063 s/car (voix 0.069), pic 0.72, silences [0.12, 0.21] — conforme
+- « Passa molt al principi. » : 1.44 s, 0.062 s/car (voix 0.069), pic 0.74, silences [0.12, 0.19] — conforme
+- « Prefereixo esperar una mica. Si continués igual, el canviaríem. » : 4.08 s, 0.065 s/car (voix 0.069), pic 0.75, silences [0.12, 0.21] — conforme
+- « Sí, no hi ha cap problema. » : 1.78 s, 0.068 s/car (voix 0.069), pic 0.68, silences [0.12, 0.19] — conforme
+- « Sí, i truqui'm si es troba pitjor. » : 2.14 s, 0.063 s/car (voix 0.069), pic 0.73, silences [0.12, 0.18] — conforme
+- « els efectes secundaris » : 1.62 s, 0.074 s/car (voix 0.069), pic 0.7, silences [0.12, 0.2] — conforme
+- « No seria millor…? » : 1.15 s, 0.068 s/car (voix 0.069), pic 0.7, silences [0.12, 0.2] — conforme
+- « Has vist que tancaran el carrer als cotxes? » : 2.43 s, 0.056 s/car (voix 0.069), pic 0.73, silences [0.12, 0.18] — conforme
+- « A mi no m'agrada. Hi haurà més embussos. » : 2.53 s, 0.063 s/car (voix 0.069), pic 0.71, silences [0.12, 0.19] — conforme
+- « Ja, però les botigues perdran clients. » : 2.51 s, 0.066 s/car (voix 0.069), pic 0.68, silences [0.12, 0.2] — conforme
+- « Tu creus? I com anirem al centre? » : 2.25 s, 0.068 s/car (voix 0.069), pic 0.7, silences [0.12, 0.2] — conforme
+- « Si hi hagués un carril bici, potser el faria servir. » : 2.9 s, 0.056 s/car (voix 0.069), pic 0.76, silences [0.12, 0.2] — conforme
+- « Bé, ja ho veurem. Tant de bo tinguis raó. » : 2.74 s, 0.067 s/car (voix 0.069), pic 0.73, silences [0.12, 0.2] — conforme
+- « una zona de vianants » : 1.44 s, 0.072 s/car (voix 0.069), pic 0.71, silences [0.12, 0.19] — conforme
+- « No crec que sigui així » : 1.36 s, 0.062 s/car (voix 0.069), pic 0.73, silences [0.12, 0.18] — conforme
+- « Hola, volies parlar amb mi? » : 1.59 s, 0.059 s/car (voix 0.069), pic 0.67, silences [0.12, 0.19] — conforme
+- « Vaja! No m'ho esperava. Per què? » : 2.06 s, 0.064 s/car (voix 0.069), pic 0.69, silences [0.12, 0.18] — conforme
+- « I si et paguéssim més? » : 1.33 s, 0.061 s/car (voix 0.069), pic 0.7, silences [0.12, 0.18] — conforme
+- « Ho entenc. Quan te n'aniries? » : 1.96 s, 0.068 s/car (voix 0.069), pic 0.7, silences [0.12, 0.18] — conforme
+- « Gràcies. Podries deixar-ho tot preparat? » : 2.43 s, 0.061 s/car (voix 0.069), pic 0.69, silences [0.12, 0.19] — conforme
+- « Gràcies. Et trobarem a faltar. » : 2.19 s, 0.073 s/car (voix 0.069), pic 0.75, silences [0.12, 0.18] — conforme
+- « perquè tinguis temps » : 1.33 s, 0.067 s/car (voix 0.069), pic 0.72, silences [0.12, 0.19] — conforme
+- « trobar a faltar » : 1.02 s, 0.068 s/car (voix 0.069), pic 0.74, silences [0.12, 0.2] — conforme
+- « M'ha agradat molt » : 1.15 s, 0.068 s/car (voix 0.069), pic 0.75, silences [0.12, 0.21] — conforme
+- « Gràcies per venir. Ha estat una setmana molt dura. » : 3.16 s, 0.063 s/car (voix 0.069), pic 0.73, silences [0.12, 0.19] — conforme
+- « No vaig poder avisar gairebé ningú, tot va anar molt de pressa. » : 3.66 s, 0.058 s/car (voix 0.069), pic 0.75, silences [0.12, 0.21] — conforme
+- « Gràcies. No sé quan tornaré a la feina. » : 2.64 s, 0.068 s/car (voix 0.069), pic 0.74, silences [0.12, 0.2] — conforme
+- « Em preocupen els meus clients, la veritat. » : 2.59 s, 0.062 s/car (voix 0.069), pic 0.71, silences [0.12, 0.2] — conforme
+- « No sé com agrair-t'ho. » : 1.38 s, 0.063 s/car (voix 0.069), pic 0.7, silences [0.12, 0.19] — conforme
+- « Ets un sol. Gràcies de veritat. » : 2.3 s, 0.074 s/car (voix 0.069), pic 0.73, silences [0.12, 0.2] — conforme
+- « Si ho hagués sabut » : 1.02 s, 0.057 s/car (voix 0.069), pic 0.72, silences [0.12, 0.21] — conforme
+- « Pren-te el temps que necessitis » : 1.96 s, 0.063 s/car (voix 0.069), pic 0.72, silences [0.12, 0.2] — conforme
+- « per al que necessitis » : 1.38 s, 0.066 s/car (voix 0.069), pic 0.73, silences [0.12, 0.21] — conforme
+- « L'empresa presentarà un expedient de regulació d'ocupació. » : 3.32 s, 0.057 s/car (voix 0.069), pic 0.73, silences [0.12, 0.18] — conforme
+- « Els números no són bons. » : 1.75 s, 0.073 s/car (voix 0.069), pic 0.72, silences [0.12, 0.2] — conforme
+- « És cert, però aquest any va malament. » : 2.32 s, 0.063 s/car (voix 0.069), pic 0.71, silences [0.12, 0.2] — conforme
+- « Això no depèn de mi. » : 1.31 s, 0.065 s/car (voix 0.069), pic 0.73, silences [0.12, 0.19] — conforme
+- « No cal arribar a això. Què proposen? » : 2.27 s, 0.063 s/car (voix 0.069), pic 0.75, silences [0.12, 0.2] — conforme
+- « Ho estudiarem amb la direcció. » : 1.7 s, 0.057 s/car (voix 0.069), pic 0.71, silences [0.12, 0.18] — conforme
+- « un expedient de regulació d'ocupació » : 2.22 s, 0.062 s/car (voix 0.069), pic 0.73, silences [0.12, 0.2] — conforme
+- « En cas contrari » : 1.18 s, 0.078 s/car (voix 0.069), pic 0.74, silences [0.12, 0.19] — conforme
+- « prorrogar el preavís » : 1.23 s, 0.061 s/car (voix 0.069), pic 0.71, silences [0.12, 0.21] — conforme
+- « Bona tarda a tothom. Qui vol parlar primer? » : 2.64 s, 0.061 s/car (voix 0.069), pic 0.75, silences [0.12, 0.19] — conforme
+- « És un problema que coneixem bé. » : 1.91 s, 0.062 s/car (voix 0.069), pic 0.7, silences [0.12, 0.2] — conforme
+- « Ho sabem, i ho lamentem. » : 1.78 s, 0.074 s/car (voix 0.069), pic 0.75, silences [0.12, 0.21] — conforme
+- « Aprovarem una nova ordenança municipal. » : 2.59 s, 0.066 s/car (voix 0.069), pic 0.7, silences [0.12, 0.18] — conforme
+- « I vostè què proposa? » : 1.36 s, 0.068 s/car (voix 0.069), pic 0.71, silences [0.12, 0.2] — conforme
+- « Ho estudiarem amb molt d'interès. » : 1.93 s, 0.059 s/car (voix 0.069), pic 0.73, silences [0.12, 0.18] — conforme
+- « mesures concretes » : 1.41 s, 0.083 s/car (voix 0.069), pic 0.71, silences [0.12, 0.18] — conforme
+- « Segons alguns, la ciutat no necessita més carrils bici. Què en pensa? » : 4.49 s, 0.065 s/car (voix 0.069), pic 0.72, silences [0.12, 0.18] — conforme
+- « Per què? » : 0.57 s, 0.072 s/car (voix 0.069), pic 0.76, silences [0.12, 0.19] — conforme
+- « Però hi ha massa cotxes, oi? » : 1.67 s, 0.06 s/car (voix 0.069), pic 0.76, silences [0.12, 0.18] — conforme
+- « Hi ha un estudi que diu que els carrils bici no s'utilitzen. » : 3.11 s, 0.052 s/car (voix 0.069), pic 0.76, silences [0.12, 0.21] — conforme
+- « Ens queda un minut. Res més? » : 2.06 s, 0.074 s/car (voix 0.069), pic 0.72, silences [0.12, 0.19] — conforme
+- « Per acabar, què ens diu? » : 1.52 s, 0.063 s/car (voix 0.069), pic 0.74, silences [0.12, 0.21] — conforme
+- « No comparteixo aquest argument » : 1.91 s, 0.064 s/car (voix 0.069), pic 0.71, silences [0.12, 0.2] — conforme
+- « No nego que sigui… » : 1.1 s, 0.061 s/car (voix 0.069), pic 0.71, silences [0.12, 0.19] — conforme
+- « Bon dia. Expliqui'm, quin és el problema? » : 2.93 s, 0.071 s/car (voix 0.069), pic 0.7, silences [0.12, 0.2] — conforme
+- « Què diu aquesta clàusula? » : 1.54 s, 0.062 s/car (voix 0.069), pic 0.71, silences [0.12, 0.2] — conforme
+- « Això, efectivament, podria ser abusiu. » : 2.74 s, 0.072 s/car (voix 0.069), pic 0.7, silences [0.12, 0.2] — conforme
+- « Primer, el va signar sense llegir-lo? » : 2.4 s, 0.065 s/car (voix 0.069), pic 0.69, silences [0.12, 0.19] — conforme
+- « Podem presentar una reclamació. » : 1.91 s, 0.062 s/car (voix 0.069), pic 0.71, silences [0.12, 0.19] — conforme
+- « Uns tres mesos, més o menys. » : 2.01 s, 0.072 s/car (voix 0.069), pic 0.72, silences [0.12, 0.18] — conforme
+- « una clàusula abusiva » : 1.46 s, 0.073 s/car (voix 0.069), pic 0.73, silences [0.12, 0.18] — conforme
+- « sense preavís » : 1.12 s, 0.086 s/car (voix 0.069), pic 0.71, silences [0.12, 0.19] — conforme
+- « Benvinguts al celler. Fa cent anys que treballem aquí. » : 3.34 s, 0.062 s/car (voix 0.069), pic 0.76, silences [0.12, 0.2] — conforme
+- « Al setembre, a final de l'estiu. » : 2.09 s, 0.065 s/car (voix 0.069), pic 0.68, silences [0.12, 0.2] — conforme
+- « Sobretot una varietat de la zona. » : 2.09 s, 0.063 s/car (voix 0.069), pic 0.7, silences [0.12, 0.2] — conforme
+- « Sí, des de fa trenta anys. » : 1.99 s, 0.076 s/car (voix 0.069), pic 0.7, silences [0.12, 0.17] — conforme
+- « Torni l'any que ve. » : 1.04 s, 0.055 s/car (voix 0.069), pic 0.72, silences [0.12, 0.19] — conforme
+- « Molt pocs, gairebé cap. » : 1.59 s, 0.069 s/car (voix 0.069), pic 0.72, silences [0.12, 0.19] — conforme
+- « M'hauria agradat » : 0.97 s, 0.06 s/car (voix 0.069), pic 0.72, silences [0.12, 0.18] — conforme
+
+## Clips gl_a
+
+- « Si, dígame? » : 0.99 s, 0.09 s/car (voix 0.082), pic 0.71, silences [0.12, 0.19] — conforme
+- « Vaia, síntoo. Que lle pasa? » : 2.56 s, 0.095 s/car (voix 0.082), pic 0.76, silences [0.12, 0.22] — conforme
+- « Será unha avaría. Vou chamar un técnico. » : 3.0 s, 0.075 s/car (voix 0.082), pic 0.71, silences [0.12, 0.19] — conforme
+- « O técnico pode ir o xoves pola tarde. » : 2.3 s, 0.062 s/car (voix 0.082), pic 0.74, silences [0.12, 0.2] — conforme
+- « Si, o venres ás dez. Vaille ben? » : 2.72 s, 0.085 s/car (voix 0.082), pic 0.73, silences [0.12, 0.2] — conforme
+- « De nada. Se hai outro problema, chámeme. » : 3.03 s, 0.076 s/car (voix 0.082), pic 0.71, silences [0.11, 0.18] — conforme
+- « unha avaría » : 0.97 s, 0.088 s/car (voix 0.082), pic 0.68, silences [0.12, 0.2] — conforme
+- « Podería ser…? » : 0.94 s, 0.072 s/car (voix 0.082), pic 0.7, silences [0.11, 0.18] — conforme
+- « Que teña un bo día! » : 1.15 s, 0.06 s/car (voix 0.082), pic 0.72, silences [0.12, 0.18] — conforme
+- « Bos días. Por que quere este posto? » : 2.74 s, 0.078 s/car (voix 0.082), pic 0.69, silences [0.12, 0.19] — conforme
+- « Ten experiencia en vendas? » : 1.52 s, 0.058 s/car (voix 0.082), pic 0.7, silences [0.12, 0.19] — conforme
+- « Moi ben. O posto é na oficina, cun día de teletraballo. » : 4.02 s, 0.073 s/car (voix 0.082), pic 0.71, silences [0.12, 0.18] — conforme
+- « De nove a cinco, cun período de proba de dous meses. » : 3.16 s, 0.061 s/car (voix 0.082), pic 0.71, silences [0.12, 0.2] — conforme
+- « O mes que vén, se todo vai ben. Ten algunha pregunta? » : 3.55 s, 0.067 s/car (voix 0.082), pic 0.71, silences [0.12, 0.2] — conforme
+- « Si. Chamarémolo a semana que vén. » : 2.64 s, 0.08 s/car (voix 0.082), pic 0.71, silences [0.11, 0.21] — conforme
+- « o posto » : 0.84 s, 0.119 s/car (voix 0.082), pic 0.71, silences [0.12, 0.18] — conforme
+- « un contrato indefinido » : 1.52 s, 0.069 s/car (voix 0.082), pic 0.73, silences [0.12, 0.19] — conforme
+- « Cando comezaría? » : 1.12 s, 0.07 s/car (voix 0.082), pic 0.71, silences [0.12, 0.19] — conforme
+- « Non é nada grave, é un arrefriado. » : 2.4 s, 0.071 s/car (voix 0.082), pic 0.74, silences [0.12, 0.18] — conforme
+- « Si, tome isto tres veces ao día, despois de comer. » : 3.03 s, 0.061 s/car (voix 0.082), pic 0.71, silences [0.12, 0.2] — conforme
+- « Unha semana. E beba moita auga. » : 2.64 s, 0.085 s/car (voix 0.082), pic 0.7, silences [0.12, 0.19] — conforme
+- « Si, pero se non está mellor, volva o luns. » : 2.64 s, 0.063 s/car (voix 0.082), pic 0.72, silences [0.12, 0.19] — conforme
+- « un arrefriado » : 1.12 s, 0.086 s/car (voix 0.082), pic 0.74, silences [0.12, 0.19] — conforme
+- « Menos mal » : 0.94 s, 0.104 s/car (voix 0.082), pic 0.71, silences [0.12, 0.19] — conforme
+- « Moi ben. Ten cita? » : 2.17 s, 0.12 s/car (voix 0.082), pic 0.71, silences [0.12, 0.21] — conforme
+- « Déixeme o seu pasaporte e o contrato de aluguer? » : 2.25 s, 0.047 s/car (voix 0.082), pic 0.75, silences [0.12, 0.19] — conforme
+- « Si, pero tamén necesito unha factura da luz. » : 2.56 s, 0.058 s/car (voix 0.082), pic 0.7, silences [0.12, 0.21] — conforme
+- « Si, por correo. Ten dez días. » : 2.82 s, 0.097 s/car (voix 0.082), pic 0.72, silences [0.12, 0.19] — conforme
+- « Nunha semana, máis ou menos. » : 2.01 s, 0.072 s/car (voix 0.082), pic 0.71, silences [0.12, 0.21] — conforme
+- « a factura da luz » : 1.23 s, 0.077 s/car (voix 0.082), pic 0.71, silences [0.12, 0.2] — conforme
+- « Cando estará listo? » : 1.12 s, 0.059 s/car (voix 0.082), pic 0.68, silences [0.12, 0.19] — conforme
+- « Boas tardes. En que podo axudalo? » : 2.74 s, 0.083 s/car (voix 0.082), pic 0.74, silences [0.12, 0.2] — conforme
+- « Síntoo moito. Déixeme o seu pasaporte? » : 3.08 s, 0.081 s/car (voix 0.082), pic 0.71, silences [0.11, 0.2] — conforme
+- « Hoxe non, pero hai un mañá ás sete. » : 1.99 s, 0.057 s/car (voix 0.082), pic 0.71, silences [0.12, 0.19] — conforme
+- « A compañía págalle unha habitación preto do aeroporto. » : 2.53 s, 0.047 s/car (voix 0.082), pic 0.71, silences [0.12, 0.2] — conforme
+- « A súa equipaxe viaxa con vostede mañá. » : 2.17 s, 0.057 s/car (voix 0.082), pic 0.71, silences [0.12, 0.19] — conforme
+- « Claro, aquí ten. Desculpe as molestias. » : 3.32 s, 0.085 s/car (voix 0.082), pic 0.72, silences [0.12, 0.21] — conforme
+- « cancelar un voo » : 1.12 s, 0.075 s/car (voix 0.082), pic 0.71, silences [0.12, 0.2] — conforme
+- « Desculpe as molestias » : 1.57 s, 0.075 s/car (voix 0.082), pic 0.7, silences [0.12, 0.2] — conforme
+- « Ola, quero aprender a cociñar. Que me recomendas? » : 3.6 s, 0.074 s/car (voix 0.082), pic 0.74, silences [0.12, 0.19] — conforme
+- « Unha escola é demasiado cara. » : 1.72 s, 0.059 s/car (voix 0.082), pic 0.72, silences [0.12, 0.2] — conforme
+- « Vale. E que prato fago primeiro? » : 2.59 s, 0.081 s/car (voix 0.082), pic 0.71, silences [0.12, 0.19] — conforme
+- « E se me sae mal? » : 0.94 s, 0.059 s/car (voix 0.082), pic 0.71, silences [0.12, 0.19] — conforme
+- « Tes razón. Queres vir probalo? » : 2.56 s, 0.085 s/car (voix 0.082), pic 0.72, silences [0.12, 0.2] — conforme
+- « Perfecto. Moitas grazas pola túa axuda! » : 3.03 s, 0.078 s/car (voix 0.082), pic 0.7, silences [0.12, 0.19] — conforme
+- « Recoméndoche que… » : 1.18 s, 0.069 s/car (voix 0.082), pic 0.71, silences [0.12, 0.19] — conforme
+- « Aconséllote que… » : 1.2 s, 0.075 s/car (voix 0.082), pic 0.71, silences [0.12, 0.21] — conforme
+- « É normal que saia mal » : 1.41 s, 0.067 s/car (voix 0.082), pic 0.68, silences [0.12, 0.21] — conforme
+- « cando estea listo » : 1.15 s, 0.068 s/car (voix 0.082), pic 0.71, silences [0.12, 0.18] — conforme
+- « Atención ao cliente, bos días. » : 2.14 s, 0.071 s/car (voix 0.082), pic 0.71, silences [0.12, 0.21] — conforme
+- « Síntoo moito. Cando o pediu? » : 2.61 s, 0.093 s/car (voix 0.082), pic 0.74, silences [0.12, 0.19] — conforme
+- « Quere que lle enviemos outro? » : 1.36 s, 0.047 s/car (voix 0.082), pic 0.72, silences [0.12, 0.18] — conforme
+- « Si, claro. Tardará uns dez días. » : 2.77 s, 0.087 s/car (voix 0.082), pic 0.73, silences [0.11, 0.19] — conforme
+- « Farei o posible. » : 1.23 s, 0.077 s/car (voix 0.082), pic 0.71, silences [0.11, 0.2] — conforme
+- « Claro. Desculpe as molestias. » : 2.64 s, 0.091 s/car (voix 0.082), pic 0.71, silences [0.12, 0.18] — conforme
+- « o pedido » : 0.89 s, 0.111 s/car (voix 0.082), pic 0.7, silences [0.12, 0.2] — conforme
+- « Preferiría que me devolvesen os cartos » : 2.19 s, 0.058 s/car (voix 0.082), pic 0.72, silences [0.12, 0.19] — conforme
+- « Espero que todo vaia ben » : 1.49 s, 0.062 s/car (voix 0.082), pic 0.72, silences [0.12, 0.2] — conforme
+- « Ben, comecemos. Como foi a facturación este trimestre? » : 3.68 s, 0.068 s/car (voix 0.082), pic 0.76, silences [0.12, 0.2] — conforme
+- « Moi ben. E os gastos? » : 2.19 s, 0.104 s/car (voix 0.082), pic 0.7, silences [0.12, 0.2] — conforme
+- « Entón, deberiamos investir máis en publicidade? » : 2.66 s, 0.057 s/car (voix 0.082), pic 0.75, silences [0.12, 0.19] — conforme
+- « Xa, pero sen publicidade non hai crecemento. » : 2.51 s, 0.057 s/car (voix 0.082), pic 0.72, silences [0.11, 0.19] — conforme
+- « Adiante, escoito. » : 1.41 s, 0.083 s/car (voix 0.082), pic 0.71, silences [0.12, 0.19] — conforme
+- « Paréceme razoable. Podes preparar unha proposta? » : 3.32 s, 0.069 s/car (voix 0.082), pic 0.72, silences [0.12, 0.2] — conforme
+- « Se investísemos… » : 1.2 s, 0.075 s/car (voix 0.082), pic 0.74, silences [0.12, 0.19] — conforme
+- « Chámoo polo contrato de arrendamento. Remata en xuño. » : 3.68 s, 0.069 s/car (voix 0.082), pic 0.71, silences [0.12, 0.19] — conforme
+- « O problema é que vou subir o aluguer un quince por cento. » : 2.82 s, 0.049 s/car (voix 0.082), pic 0.71, silences [0.12, 0.2] — conforme
+- « Os prezos subiron moito no barrio. » : 1.88 s, 0.055 s/car (voix 0.082), pic 0.69, silences [0.12, 0.2] — conforme
+- « É verdade, sempre pagou ben. » : 1.8 s, 0.064 s/car (voix 0.082), pic 0.72, silences [0.12, 0.21] — conforme
+- « Que propón? » : 0.84 s, 0.076 s/car (voix 0.082), pic 0.69, silences [0.12, 0.19] — conforme
+- « Déixeme pensalo e chámoo mañá. » : 1.88 s, 0.063 s/car (voix 0.082), pic 0.71, silences [0.11, 0.19] — conforme
+- « levo cinco anos pagando » : 1.7 s, 0.074 s/car (voix 0.082), pic 0.71, silences [0.12, 0.2] — conforme
+- « se asinásemos » : 1.2 s, 0.092 s/car (voix 0.082), pic 0.72, silences [0.12, 0.2] — conforme
+- « Que tal co novo tratamento? » : 1.49 s, 0.055 s/car (voix 0.082), pic 0.73, silences [0.12, 0.18] — conforme
+- « Pasa moito ao principio. » : 1.46 s, 0.061 s/car (voix 0.082), pic 0.73, silences [0.12, 0.2] — conforme
+- « Prefiro agardar un pouco. Se seguise igual, cambiariámolo. » : 4.05 s, 0.07 s/car (voix 0.082), pic 0.72, silences [0.12, 0.2] — conforme
+- « Si, non hai ningún problema. » : 1.83 s, 0.065 s/car (voix 0.082), pic 0.7, silences [0.12, 0.2] — conforme
+- « Si, e chámeme se se atopa peor. » : 1.85 s, 0.06 s/car (voix 0.082), pic 0.71, silences [0.12, 0.18] — conforme
+- « un efecto secundario » : 1.46 s, 0.073 s/car (voix 0.082), pic 0.72, silences [0.12, 0.2] — conforme
+- « Non sería mellor…? » : 1.12 s, 0.062 s/car (voix 0.082), pic 0.72, silences [0.12, 0.18] — conforme
+- « Viches que van pechar a rúa aos coches? » : 1.99 s, 0.051 s/car (voix 0.082), pic 0.72, silences [0.12, 0.2] — conforme
+- « A min non me gusta. Haberá máis atascos. » : 3.19 s, 0.08 s/car (voix 0.082), pic 0.72, silences [0.12, 0.2] — conforme
+- « Xa, pero as tendas perderán clientes. » : 2.12 s, 0.057 s/car (voix 0.082), pic 0.7, silences [0.12, 0.18] — conforme
+- « Ti cres? E como imos ir ao centro? » : 2.82 s, 0.083 s/car (voix 0.082), pic 0.73, silences [0.12, 0.2] — conforme
+- « Se houbese un carril bici, quizais o usaría. » : 2.51 s, 0.057 s/car (voix 0.082), pic 0.72, silences [0.12, 0.19] — conforme
+- « Ben, xa veremos. Oxalá teñas razón. » : 3.11 s, 0.089 s/car (voix 0.082), pic 0.72, silences [0.12, 0.18] — conforme
+- « unha zona peonil » : 1.2 s, 0.075 s/car (voix 0.082), pic 0.73, silences [0.12, 0.19] — conforme
+- « Non creo que sexa así » : 1.44 s, 0.068 s/car (voix 0.082), pic 0.75, silences [0.12, 0.19] — conforme
+- « Ola, querías falar comigo? » : 1.54 s, 0.059 s/car (voix 0.082), pic 0.72, silences [0.12, 0.17] — conforme
+- « Vaia! Non mo esperaba. Por que? » : 3.4 s, 0.11 s/car (voix 0.082), pic 0.69, silences [0.12, 0.2] — conforme
+- « E se che pagásemos máis? » : 1.41 s, 0.059 s/car (voix 0.082), pic 0.71, silences [0.12, 0.2] — conforme
+- « Enténdoo. Cando marcharías? » : 2.51 s, 0.093 s/car (voix 0.082), pic 0.72, silences [0.12, 0.19] — conforme
+- « Grazas. Poderías deixalo todo listo? » : 3.0 s, 0.083 s/car (voix 0.082), pic 0.71, silences [0.12, 0.19] — conforme
+- « Grazas. Imos botarte de menos. » : 2.95 s, 0.098 s/car (voix 0.082), pic 0.72, silences [0.12, 0.2] — conforme
+- « para que teñas tempo » : 1.28 s, 0.064 s/car (voix 0.082), pic 0.71, silences [0.12, 0.18] — conforme
+- « Foi un pracer » : 1.23 s, 0.094 s/car (voix 0.082), pic 0.73, silences [0.11, 0.2] — conforme
+- « Grazas por vir. Foi unha semana moi dura. » : 3.11 s, 0.076 s/car (voix 0.082), pic 0.71, silences [0.12, 0.19] — conforme
+- « Non puiden avisar a case ninguén, todo foi moi rápido. » : 3.16 s, 0.059 s/car (voix 0.082), pic 0.72, silences [0.12, 0.2] — conforme
+- « Grazas. Non sei cando volverei ao traballo. » : 3.21 s, 0.075 s/car (voix 0.082), pic 0.7, silences [0.12, 0.17] — conforme
+- « Preocúpanme os meus clientes, a verdade. » : 2.27 s, 0.057 s/car (voix 0.082), pic 0.69, silences [0.12, 0.2] — conforme
+- « Non sei como agradecercho. » : 1.72 s, 0.066 s/car (voix 0.082), pic 0.72, silences [0.12, 0.19] — conforme
+- « Es un sol. Grazas de verdade. » : 2.59 s, 0.089 s/car (voix 0.082), pic 0.72, silences [0.12, 0.19] — conforme
+- « Se o soubese » : 1.07 s, 0.089 s/car (voix 0.082), pic 0.71, silences [0.12, 0.19] — conforme
+- « Tómate o tempo que precises » : 1.7 s, 0.063 s/car (voix 0.082), pic 0.71, silences [0.12, 0.19] — conforme
+- « para o que precises » : 1.31 s, 0.069 s/car (voix 0.082), pic 0.71, silences [0.12, 0.18] — conforme
+- « A empresa vai presentar un expediente de regulación de emprego. » : 3.29 s, 0.052 s/car (voix 0.082), pic 0.69, silences [0.12, 0.2] — conforme
+- « Os números non nos deixan outra opción. » : 2.17 s, 0.056 s/car (voix 0.082), pic 0.72, silences [0.12, 0.2] — conforme
+- « É certo, pero este ano vai mal. » : 2.09 s, 0.067 s/car (voix 0.082), pic 0.72, silences [0.12, 0.2] — conforme
+- « Iso non depende de min. » : 1.62 s, 0.07 s/car (voix 0.082), pic 0.75, silences [0.12, 0.23] — conforme
+- « Non fai falta chegar a iso. Que propoñen? » : 3.11 s, 0.076 s/car (voix 0.082), pic 0.71, silences [0.12, 0.19] — conforme
+- « Imos estudalo coa dirección. » : 1.67 s, 0.06 s/car (voix 0.082), pic 0.73, silences [0.12, 0.19] — conforme
+- « un expediente de regulación de emprego » : 2.27 s, 0.06 s/car (voix 0.082), pic 0.7, silences [0.12, 0.21] — conforme
+- « En caso contrario » : 1.25 s, 0.074 s/car (voix 0.082), pic 0.72, silences [0.12, 0.18] — conforme
+- « prorrogar o preaviso » : 1.41 s, 0.071 s/car (voix 0.082), pic 0.71, silences [0.12, 0.22] — conforme
+- « Boas tardes a todos. Quen quere falar primeiro? » : 3.24 s, 0.069 s/car (voix 0.082), pic 0.73, silences [0.12, 0.18] — conforme
+- « É un problema que coñecemos ben. » : 1.7 s, 0.053 s/car (voix 0.082), pic 0.71, silences [0.12, 0.21] — conforme
+- « Xa o sabemos. » : 1.18 s, 0.09 s/car (voix 0.082), pic 0.75, silences [0.11, 0.18] — conforme
+- « Imos aprobar unha nova ordenanza municipal. » : 2.46 s, 0.057 s/car (voix 0.082), pic 0.72, silences [0.12, 0.18] — conforme
+- « E vostede que propón? » : 1.25 s, 0.06 s/car (voix 0.082), pic 0.74, silences [0.12, 0.2] — conforme
+- « Imos estudalo con moito interese. » : 2.09 s, 0.063 s/car (voix 0.082), pic 0.74, silences [0.12, 0.18] — conforme
+- « medidas concretas » : 1.46 s, 0.086 s/car (voix 0.082), pic 0.71, silences [0.12, 0.2] — conforme
+- « Segundo algúns, a cidade non precisa máis carrís bici. Que opina? » : 4.49 s, 0.069 s/car (voix 0.082), pic 0.7, silences [0.12, 0.2] — conforme
+- « Por que? » : 0.68 s, 0.085 s/car (voix 0.082), pic 0.71, silences [0.12, 0.21] — conforme
+- « Pero hai demasiados coches, non? » : 1.88 s, 0.059 s/car (voix 0.082), pic 0.73, silences [0.12, 0.2] — conforme
+- « Hai un estudo que di que os carrís bici non se usan. » : 2.64 s, 0.051 s/car (voix 0.082), pic 0.73, silences [0.12, 0.19] — conforme
+- « Quédanos un minuto. Algo máis? » : 2.72 s, 0.091 s/car (voix 0.082), pic 0.72, silences [0.12, 0.2] — conforme
+- « Para rematar, que nos di? » : 1.31 s, 0.052 s/car (voix 0.082), pic 0.73, silences [0.12, 0.2] — conforme
+- « Non comparto este argumento » : 1.7 s, 0.063 s/car (voix 0.082), pic 0.71, silences [0.12, 0.19] — conforme
+- « Non nego que sexa… » : 1.33 s, 0.074 s/car (voix 0.082), pic 0.73, silences [0.12, 0.19] — conforme
+- « Bos días. Cónteme, cal é o problema? » : 2.9 s, 0.081 s/car (voix 0.082), pic 0.7, silences [0.12, 0.19] — conforme
+- « Que di esa cláusula? » : 1.25 s, 0.063 s/car (voix 0.082), pic 0.7, silences [0.12, 0.2] — conforme
+- « Iso, efectivamente, podería ser abusivo. » : 2.69 s, 0.067 s/car (voix 0.082), pic 0.72, silences [0.12, 0.22] — conforme
+- « Primeiro, asinou o contrato sen lelo? » : 1.99 s, 0.054 s/car (voix 0.082), pic 0.69, silences [0.12, 0.2] — conforme
+- « Podemos presentar unha reclamación. » : 1.8 s, 0.051 s/car (voix 0.082), pic 0.72, silences [0.12, 0.19] — conforme
+- « Uns tres meses, máis ou menos. » : 2.25 s, 0.075 s/car (voix 0.082), pic 0.72, silences [0.12, 0.2] — conforme
+- « unha cláusula abusiva » : 1.44 s, 0.068 s/car (voix 0.082), pic 0.71, silences [0.12, 0.19] — conforme
+- « sen preaviso » : 1.18 s, 0.098 s/car (voix 0.082), pic 0.71, silences [0.12, 0.21] — conforme
+- « Benvidos á adega. Aquí facemos viño desde hai cen anos. » : 3.76 s, 0.068 s/car (voix 0.082), pic 0.71, silences [0.12, 0.2] — conforme
+- « En setembro, ao final do verán. » : 1.7 s, 0.055 s/car (voix 0.082), pic 0.72, silences [0.12, 0.19] — conforme
+- « Sobre todo unha variedade da zona. » : 2.01 s, 0.059 s/car (voix 0.082), pic 0.73, silences [0.11, 0.2] — conforme
+- « Si, desde hai trinta anos. » : 1.88 s, 0.072 s/car (voix 0.082), pic 0.73, silences [0.12, 0.19] — conforme
+- « Pois volva o ano que vén, é precioso. » : 2.46 s, 0.066 s/car (voix 0.082), pic 0.72, silences [0.12, 0.2] — conforme
+- « Moi poucos, case ningún. » : 1.7 s, 0.071 s/car (voix 0.082), pic 0.72, silences [0.12, 0.18] — conforme
+- « Gustaríame ter vido » : 1.41 s, 0.074 s/car (voix 0.082), pic 0.72, silences [0.12, 0.19] — conforme
+
+## Clips gl_b
+
+- « Si, dígame? » : 0.97 s, 0.088 s/car (voix 0.087), pic 0.74, silences [0.12, 0.21] — conforme
+- « Será unha avaría. Vou chamar un técnico. » : 3.27 s, 0.082 s/car (voix 0.087), pic 0.73, silences [0.12, 0.18] — conforme
+- « O técnico pode ir o xoves pola tarde. » : 2.3 s, 0.062 s/car (voix 0.087), pic 0.72, silences [0.12, 0.18] — conforme
+- « Si, o venres ás dez. Vaille ben? » : 2.9 s, 0.091 s/car (voix 0.087), pic 0.74, silences [0.12, 0.19] — conforme
+- « De nada. Se hai outro problema, chámeme. » : 3.16 s, 0.079 s/car (voix 0.087), pic 0.74, silences [0.12, 0.18] — conforme
+- « unha avaría » : 1.02 s, 0.093 s/car (voix 0.087), pic 0.73, silences [0.12, 0.18] — conforme
+- « Podería ser…? » : 0.91 s, 0.07 s/car (voix 0.087), pic 0.71, silences [0.12, 0.18] — conforme
+- « Que teña un bo día! » : 1.2 s, 0.063 s/car (voix 0.087), pic 0.69, silences [0.12, 0.21] — conforme
+- « Bos días. Por que quere este posto? » : 2.77 s, 0.079 s/car (voix 0.087), pic 0.73, silences [0.12, 0.2] — conforme
+- « Ten experiencia en vendas? » : 1.52 s, 0.058 s/car (voix 0.087), pic 0.73, silences [0.12, 0.2] — conforme
+- « Moi ben. O posto é na oficina, cun día de teletraballo. » : 3.97 s, 0.072 s/car (voix 0.087), pic 0.73, silences [0.12, 0.2] — conforme
+- « De nove a cinco, cun período de proba de dous meses. » : 2.98 s, 0.057 s/car (voix 0.087), pic 0.72, silences [0.12, 0.2] — conforme
+- « O mes que vén, se todo vai ben. Ten algunha pregunta? » : 3.68 s, 0.069 s/car (voix 0.087), pic 0.72, silences [0.12, 0.19] — conforme
+- « Si. Chamarémolo a semana que vén. » : 2.8 s, 0.085 s/car (voix 0.087), pic 0.72, silences [0.12, 0.2] — conforme
+- « o posto » : 0.89 s, 0.127 s/car (voix 0.087), pic 0.72, silences [0.12, 0.21] — conforme
+- « un contrato indefinido » : 1.57 s, 0.071 s/car (voix 0.087), pic 0.72, silences [0.12, 0.19] — conforme
+- « Cando comezaría? » : 1.18 s, 0.073 s/car (voix 0.087), pic 0.71, silences [0.12, 0.21] — conforme
+- « Non é nada grave, é un arrefriado. » : 2.22 s, 0.065 s/car (voix 0.087), pic 0.71, silences [0.12, 0.18] — conforme
+- « Si, tome isto tres veces ao día, despois de comer. » : 3.08 s, 0.062 s/car (voix 0.087), pic 0.72, silences [0.12, 0.2] — conforme
+- « Unha semana. E beba moita auga. » : 2.69 s, 0.087 s/car (voix 0.087), pic 0.71, silences [0.12, 0.19] — conforme
+- « Si, pero se non está mellor, volva o luns. » : 2.8 s, 0.067 s/car (voix 0.087), pic 0.71, silences [0.12, 0.19] — conforme
+- « un arrefriado » : 1.04 s, 0.08 s/car (voix 0.087), pic 0.69, silences [0.12, 0.2] — conforme
+- « Menos mal » : 0.89 s, 0.099 s/car (voix 0.087), pic 0.74, silences [0.12, 0.19] — conforme
+- « Moi ben. Ten cita? » : 2.04 s, 0.113 s/car (voix 0.087), pic 0.72, silences [0.12, 0.18] — conforme
+- « Déixeme o seu pasaporte e o contrato de aluguer? » : 2.48 s, 0.052 s/car (voix 0.087), pic 0.73, silences [0.12, 0.2] — conforme
+- « Si, pero tamén necesito unha factura da luz. » : 2.85 s, 0.065 s/car (voix 0.087), pic 0.73, silences [0.12, 0.2] — conforme
+- « Si, por correo. Ten dez días. » : 2.74 s, 0.095 s/car (voix 0.087), pic 0.71, silences [0.12, 0.2] — conforme
+- « Nunha semana, máis ou menos. » : 2.06 s, 0.074 s/car (voix 0.087), pic 0.71, silences [0.12, 0.19] — conforme
+- « a factura da luz » : 1.25 s, 0.078 s/car (voix 0.087), pic 0.7, silences [0.12, 0.22] — conforme
+- « Cando estará listo? » : 1.18 s, 0.062 s/car (voix 0.087), pic 0.7, silences [0.12, 0.2] — conforme
+- « Boas tardes. En que podo axudalo? » : 2.85 s, 0.086 s/car (voix 0.087), pic 0.72, silences [0.12, 0.2] — conforme
+- « Síntoo moito. Déixeme o seu pasaporte? » : 3.03 s, 0.08 s/car (voix 0.087), pic 0.72, silences [0.12, 0.19] — conforme
+- « Hoxe non, pero hai un mañá ás sete. » : 2.25 s, 0.064 s/car (voix 0.087), pic 0.72, silences [0.12, 0.18] — conforme
+- « A compañía págalle unha habitación preto do aeroporto. » : 3.19 s, 0.059 s/car (voix 0.087), pic 0.71, silences [0.12, 0.18] — conforme
+- « A súa equipaxe viaxa con vostede mañá. » : 2.43 s, 0.064 s/car (voix 0.087), pic 0.71, silences [0.11, 0.2] — conforme
+- « Claro, aquí ten. Desculpe as molestias. » : 3.29 s, 0.084 s/car (voix 0.087), pic 0.72, silences [0.12, 0.2] — conforme
+- « cancelar un voo » : 1.25 s, 0.084 s/car (voix 0.087), pic 0.74, silences [0.12, 0.19] — conforme
+- « Desculpe as molestias » : 1.49 s, 0.071 s/car (voix 0.087), pic 0.7, silences [0.12, 0.2] — conforme
+- « Ola, quero aprender a cociñar. Que me recomendas? » : 3.5 s, 0.071 s/car (voix 0.087), pic 0.72, silences [0.12, 0.19] — conforme
+- « Unha escola é demasiado cara. » : 2.09 s, 0.072 s/car (voix 0.087), pic 0.76, silences [0.12, 0.19] — conforme
+- « Vale. E que prato fago primeiro? » : 2.74 s, 0.086 s/car (voix 0.087), pic 0.72, silences [0.12, 0.2] — conforme
+- « E se me sae mal? » : 1.1 s, 0.069 s/car (voix 0.087), pic 0.78, silences [0.11, 0.18] — conforme
+- « Tes razón. Queres vir probalo? » : 2.59 s, 0.086 s/car (voix 0.087), pic 0.73, silences [0.12, 0.2] — conforme
+- « Perfecto. Moitas grazas pola túa axuda! » : 3.29 s, 0.084 s/car (voix 0.087), pic 0.71, silences [0.12, 0.19] — conforme
+- « Recoméndoche que… » : 1.25 s, 0.074 s/car (voix 0.087), pic 0.71, silences [0.12, 0.18] — conforme
+- « Aconséllote que… » : 1.25 s, 0.078 s/car (voix 0.087), pic 0.73, silences [0.11, 0.19] — conforme
+- « É normal que saia mal » : 1.54 s, 0.073 s/car (voix 0.087), pic 0.73, silences [0.11, 0.19] — conforme
+- « cando estea listo » : 1.31 s, 0.077 s/car (voix 0.087), pic 0.71, silences [0.12, 0.2] — conforme
+- « Atención ao cliente, bos días. » : 2.32 s, 0.077 s/car (voix 0.087), pic 0.7, silences [0.11, 0.2] — conforme
+- « Síntoo moito. Cando o pediu? » : 2.64 s, 0.094 s/car (voix 0.087), pic 0.71, silences [0.12, 0.19] — conforme
+- « Quere que lle enviemos outro? » : 1.46 s, 0.05 s/car (voix 0.087), pic 0.75, silences [0.12, 0.2] — conforme
+- « Si, claro. Tardará uns dez días. » : 3.08 s, 0.096 s/car (voix 0.087), pic 0.8, silences [0.12, 0.2] — conforme
+- « Farei o posible. » : 1.25 s, 0.078 s/car (voix 0.087), pic 0.72, silences [0.12, 0.19] — conforme
+- « Claro. Desculpe as molestias. » : 2.59 s, 0.089 s/car (voix 0.087), pic 0.72, silences [0.12, 0.2] — conforme
+- « o pedido » : 0.86 s, 0.108 s/car (voix 0.087), pic 0.71, silences [0.12, 0.2] — conforme
+- « Preferiría que me devolvesen os cartos » : 2.3 s, 0.06 s/car (voix 0.087), pic 0.66, silences [0.12, 0.19] — conforme
+- « Espero que todo vaia ben » : 1.62 s, 0.067 s/car (voix 0.087), pic 0.73, silences [0.12, 0.19] — conforme
+- « Ben, comecemos. Como foi a facturación este trimestre? » : 3.89 s, 0.072 s/car (voix 0.087), pic 0.74, silences [0.12, 0.21] — conforme
+- « Moi ben. E os gastos? » : 2.3 s, 0.109 s/car (voix 0.087), pic 0.72, silences [0.12, 0.2] — conforme
+- « Entón, deberiamos investir máis en publicidade? » : 2.77 s, 0.059 s/car (voix 0.087), pic 0.73, silences [0.12, 0.2] — conforme
+- « Xa, pero sen publicidade non hai crecemento. » : 2.51 s, 0.057 s/car (voix 0.087), pic 0.72, silences [0.12, 0.2] — conforme
+- « Adiante, escoito. » : 1.85 s, 0.109 s/car (voix 0.087), pic 0.72, silences [0.11, 0.2] — conforme
+- « Paréceme razoable. Podes preparar unha proposta? » : 3.6 s, 0.075 s/car (voix 0.087), pic 0.72, silences [0.12, 0.19] — conforme
+- « Se investísemos… » : 1.25 s, 0.078 s/car (voix 0.087), pic 0.71, silences [0.12, 0.21] — conforme
+- « Chámoo polo contrato de arrendamento. Remata en xuño. » : 3.79 s, 0.071 s/car (voix 0.087), pic 0.72, silences [0.12, 0.19] — conforme
+- « O problema é que vou subir o aluguer un quince por cento. » : 2.95 s, 0.052 s/car (voix 0.087), pic 0.7, silences [0.12, 0.19] — conforme
+- « Os prezos subiron moito no barrio. » : 1.99 s, 0.058 s/car (voix 0.087), pic 0.71, silences [0.12, 0.2] — conforme
+- « É verdade, sempre pagou ben. » : 1.91 s, 0.068 s/car (voix 0.087), pic 0.73, silences [0.11, 0.2] — conforme
+- « Que propón? » : 0.89 s, 0.081 s/car (voix 0.087), pic 0.71, silences [0.11, 0.21] — conforme
+- « Déixeme pensalo e chámoo mañá. » : 2.06 s, 0.069 s/car (voix 0.087), pic 0.72, silences [0.12, 0.2] — conforme
+- « levo cinco anos pagando » : 1.62 s, 0.07 s/car (voix 0.087), pic 0.73, silences [0.12, 0.2] — conforme
+- « se asinásemos » : 1.18 s, 0.09 s/car (voix 0.087), pic 0.7, silences [0.12, 0.19] — conforme
+- « Que tal co novo tratamento? » : 1.67 s, 0.062 s/car (voix 0.087), pic 0.74, silences [0.12, 0.2] — conforme
+- « Que síntomas ten? » : 1.18 s, 0.069 s/car (voix 0.087), pic 0.7, silences [0.11, 0.2] — conforme
+- « Pasa moito ao principio. » : 1.52 s, 0.063 s/car (voix 0.087), pic 0.72, silences [0.12, 0.19] — conforme
+- « Prefiro agardar un pouco. Se seguise igual, cambiariámolo. » : 4.21 s, 0.073 s/car (voix 0.087), pic 0.72, silences [0.12, 0.19] — conforme
+- « Si, non hai ningún problema. » : 2.14 s, 0.077 s/car (voix 0.087), pic 0.75, silences [0.12, 0.19] — conforme
+- « Si, e chámeme se se atopa peor. » : 2.19 s, 0.071 s/car (voix 0.087), pic 0.69, silences [0.12, 0.21] — conforme
+- « un efecto secundario » : 1.49 s, 0.074 s/car (voix 0.087), pic 0.72, silences [0.12, 0.19] — conforme
+- « Non sería mellor…? » : 1.23 s, 0.068 s/car (voix 0.087), pic 0.72, silences [0.12, 0.2] — conforme
+- « Viches que van pechar a rúa aos coches? » : 2.25 s, 0.058 s/car (voix 0.087), pic 0.74, silences [0.12, 0.2] — conforme
+- « A min non me gusta. Haberá máis atascos. » : 3.13 s, 0.078 s/car (voix 0.087), pic 0.73, silences [0.12, 0.19] — conforme
+- « Xa, pero as tendas perderán clientes. » : 2.3 s, 0.062 s/car (voix 0.087), pic 0.7, silences [0.12, 0.19] — conforme
+- « Ti cres? E como imos ir ao centro? » : 2.8 s, 0.082 s/car (voix 0.087), pic 0.7, silences [0.11, 0.2] — conforme
+- « Se houbese un carril bici, quizais o usaría. » : 2.82 s, 0.064 s/car (voix 0.087), pic 0.72, silences [0.12, 0.19] — conforme
+- « Ben, xa veremos. Oxalá teñas razón. » : 3.19 s, 0.091 s/car (voix 0.087), pic 0.74, silences [0.12, 0.19] — conforme
+- « unha zona peonil » : 1.33 s, 0.083 s/car (voix 0.087), pic 0.73, silences [0.12, 0.21] — conforme
+- « Non creo que sexa así » : 1.44 s, 0.068 s/car (voix 0.087), pic 0.71, silences [0.12, 0.18] — conforme
+- « Ola, querías falar comigo? » : 1.59 s, 0.061 s/car (voix 0.087), pic 0.72, silences [0.12, 0.21] — conforme
+- « Vaia! Non mo esperaba. Por que? » : 3.5 s, 0.113 s/car (voix 0.087), pic 0.74, silences [0.12, 0.2] — conforme
+- « E se che pagásemos máis? » : 1.49 s, 0.062 s/car (voix 0.087), pic 0.7, silences [0.11, 0.2] — conforme
+- « Enténdoo. Cando marcharías? » : 2.46 s, 0.091 s/car (voix 0.087), pic 0.76, silences [0.11, 0.2] — conforme
+- « Grazas. Poderías deixalo todo listo? » : 3.11 s, 0.086 s/car (voix 0.087), pic 0.7, silences [0.12, 0.19] — conforme
+- « Grazas. Imos botarte de menos. » : 2.74 s, 0.091 s/car (voix 0.087), pic 0.72, silences [0.12, 0.19] — conforme
+- « para que teñas tempo » : 1.33 s, 0.067 s/car (voix 0.087), pic 0.72, silences [0.12, 0.2] — conforme
+- « Foi un pracer » : 1.1 s, 0.084 s/car (voix 0.087), pic 0.71, silences [0.12, 0.19] — conforme
+- « Grazas por vir. Foi unha semana moi dura. » : 3.16 s, 0.077 s/car (voix 0.087), pic 0.73, silences [0.12, 0.2] — conforme
+- « Non puiden avisar a case ninguén, todo foi moi rápido. » : 3.16 s, 0.059 s/car (voix 0.087), pic 0.72, silences [0.12, 0.2] — conforme
+- « Grazas. Non sei cando volverei ao traballo. » : 3.24 s, 0.075 s/car (voix 0.087), pic 0.75, silences [0.12, 0.19] — conforme
+- « Preocúpanme os meus clientes, a verdade. » : 2.51 s, 0.063 s/car (voix 0.087), pic 0.69, silences [0.12, 0.2] — conforme
+- « Non sei como agradecercho. » : 1.65 s, 0.063 s/car (voix 0.087), pic 0.71, silences [0.12, 0.19] — conforme
+- « Es un sol. Grazas de verdade. » : 2.77 s, 0.095 s/car (voix 0.087), pic 0.75, silences [0.12, 0.19] — conforme
+- « Se o soubese » : 1.1 s, 0.091 s/car (voix 0.087), pic 0.71, silences [0.12, 0.2] — conforme
+- « Tómate o tempo que precises » : 1.67 s, 0.062 s/car (voix 0.087), pic 0.73, silences [0.12, 0.19] — conforme
+- « para o que precises » : 1.23 s, 0.065 s/car (voix 0.087), pic 0.72, silences [0.12, 0.19] — conforme
+- « A empresa vai presentar un expediente de regulación de emprego. » : 3.5 s, 0.056 s/car (voix 0.087), pic 0.7, silences [0.11, 0.2] — conforme
+- « Os números non nos deixan outra opción. » : 2.59 s, 0.066 s/car (voix 0.087), pic 0.73, silences [0.12, 0.2] — conforme
+- « É certo, pero este ano vai mal. » : 2.01 s, 0.065 s/car (voix 0.087), pic 0.74, silences [0.11, 0.19] — conforme
+- « Iso non depende de min. » : 1.67 s, 0.073 s/car (voix 0.087), pic 0.72, silences [0.12, 0.21] — conforme
+- « Non fai falta chegar a iso. Que propoñen? » : 3.13 s, 0.076 s/car (voix 0.087), pic 0.71, silences [0.12, 0.2] — conforme
+- « Imos estudalo coa dirección. » : 1.8 s, 0.064 s/car (voix 0.087), pic 0.74, silences [0.12, 0.2] — conforme
+- « un expediente de regulación de emprego » : 2.25 s, 0.059 s/car (voix 0.087), pic 0.72, silences [0.12, 0.19] — conforme
+- « En caso contrario » : 1.23 s, 0.072 s/car (voix 0.087), pic 0.74, silences [0.11, 0.19] — conforme
+- « prorrogar o preaviso » : 1.36 s, 0.068 s/car (voix 0.087), pic 0.71, silences [0.12, 0.2] — conforme
+- « Boas tardes a todos. Quen quere falar primeiro? » : 3.45 s, 0.073 s/car (voix 0.087), pic 0.71, silences [0.12, 0.19] — conforme
+- « É un problema que coñecemos ben. » : 1.91 s, 0.06 s/car (voix 0.087), pic 0.75, silences [0.12, 0.19] — conforme
+- « Xa o sabemos. » : 1.18 s, 0.09 s/car (voix 0.087), pic 0.71, silences [0.12, 0.2] — conforme
+- « Imos aprobar unha nova ordenanza municipal. » : 2.53 s, 0.059 s/car (voix 0.087), pic 0.74, silences [0.12, 0.2] — conforme
+- « E vostede que propón? » : 1.36 s, 0.065 s/car (voix 0.087), pic 0.78, silences [0.11, 0.2] — conforme
+- « Imos estudalo con moito interese. » : 2.09 s, 0.063 s/car (voix 0.087), pic 0.73, silences [0.12, 0.2] — conforme
+- « medidas concretas » : 1.38 s, 0.081 s/car (voix 0.087), pic 0.72, silences [0.12, 0.21] — conforme
+- « Segundo algúns, a cidade non precisa máis carrís bici. Que opina? » : 4.68 s, 0.072 s/car (voix 0.087), pic 0.71, silences [0.12, 0.21] — conforme
+- « Por que? » : 0.65 s, 0.082 s/car (voix 0.087), pic 0.73, silences [0.12, 0.19] — conforme
+- « Pero hai demasiados coches, non? » : 1.78 s, 0.056 s/car (voix 0.087), pic 0.74, silences [0.12, 0.19] — conforme
+- « Hai un estudo que di que os carrís bici non se usan. » : 2.93 s, 0.056 s/car (voix 0.087), pic 0.75, silences [0.12, 0.19] — conforme
+- « Quédanos un minuto. Algo máis? » : 2.59 s, 0.086 s/car (voix 0.087), pic 0.72, silences [0.12, 0.21] — conforme
+- « Para rematar, que nos di? » : 1.41 s, 0.056 s/car (voix 0.087), pic 0.72, silences [0.12, 0.21] — conforme
+- « Non comparto este argumento » : 1.67 s, 0.062 s/car (voix 0.087), pic 0.72, silences [0.12, 0.19] — conforme
+- « Non nego que sexa… » : 1.18 s, 0.065 s/car (voix 0.087), pic 0.72, silences [0.12, 0.2] — conforme
+- « Bos días. Cónteme, cal é o problema? » : 3.03 s, 0.084 s/car (voix 0.087), pic 0.73, silences [0.12, 0.21] — conforme
+- « Que di esa cláusula? » : 1.33 s, 0.067 s/car (voix 0.087), pic 0.7, silences [0.12, 0.2] — conforme
+- « Iso, efectivamente, podería ser abusivo. » : 2.8 s, 0.07 s/car (voix 0.087), pic 0.72, silences [0.12, 0.2] — conforme
+- « Primeiro, asinou o contrato sen lelo? » : 2.32 s, 0.063 s/car (voix 0.087), pic 0.7, silences [0.12, 0.2] — conforme
+- « Podemos presentar unha reclamación. » : 2.06 s, 0.059 s/car (voix 0.087), pic 0.72, silences [0.12, 0.2] — conforme
+- « Uns tres meses, máis ou menos. » : 2.17 s, 0.072 s/car (voix 0.087), pic 0.71, silences [0.12, 0.2] — conforme
+- « unha cláusula abusiva » : 1.72 s, 0.082 s/car (voix 0.087), pic 0.75, silences [0.12, 0.2] — conforme
+- « sen preaviso » : 1.04 s, 0.087 s/car (voix 0.087), pic 0.74, silences [0.12, 0.2] — conforme
+- « Benvidos á adega. Aquí facemos viño desde hai cen anos. » : 4.02 s, 0.073 s/car (voix 0.087), pic 0.71, silences [0.12, 0.19] — conforme
+- « En setembro, ao final do verán. » : 2.12 s, 0.068 s/car (voix 0.087), pic 0.72, silences [0.12, 0.19] — conforme
+- « Sobre todo unha variedade da zona. » : 2.14 s, 0.063 s/car (voix 0.087), pic 0.73, silences [0.12, 0.18] — conforme
+- « Si, desde hai trinta anos. » : 1.93 s, 0.074 s/car (voix 0.087), pic 0.74, silences [0.12, 0.2] — conforme
+- « Pois volva o ano que vén, é precioso. » : 2.35 s, 0.064 s/car (voix 0.087), pic 0.74, silences [0.12, 0.19] — conforme
+- « Moi poucos, case ningún. » : 1.88 s, 0.078 s/car (voix 0.087), pic 0.74, silences [0.12, 0.2] — conforme
+- « Gustaríame ter vido » : 1.46 s, 0.077 s/car (voix 0.087), pic 0.79, silences [0.12, 0.2] — conforme
+
+## Clips gl_c
+
+- « Si, dígame? » : 1.02 s, 0.093 s/car (voix 0.084), pic 0.7, silences [0.12, 0.19] — conforme
+- « Vaia, síntoo. Que lle pasa? » : 2.64 s, 0.098 s/car (voix 0.084), pic 0.72, silences [0.12, 0.2] — conforme
+- « Será unha avaría. Vou chamar un técnico. » : 3.03 s, 0.076 s/car (voix 0.084), pic 0.75, silences [0.12, 0.19] — conforme
+- « O técnico pode ir o xoves pola tarde. » : 2.17 s, 0.059 s/car (voix 0.084), pic 0.71, silences [0.12, 0.19] — conforme
+- « Si, o venres ás dez. Vaille ben? » : 2.9 s, 0.091 s/car (voix 0.084), pic 0.7, silences [0.12, 0.17] — conforme
+- « De nada. Se hai outro problema, chámeme. » : 3.21 s, 0.08 s/car (voix 0.084), pic 0.71, silences [0.12, 0.19] — conforme
+- « unha avaría » : 0.91 s, 0.083 s/car (voix 0.084), pic 0.73, silences [0.12, 0.2] — conforme
+- « Podería ser…? » : 1.04 s, 0.08 s/car (voix 0.084), pic 0.71, silences [0.12, 0.19] — conforme
+- « Que teña un bo día! » : 1.18 s, 0.062 s/car (voix 0.084), pic 0.69, silences [0.11, 0.21] — conforme
+- « Bos días. Por que quere este posto? » : 2.64 s, 0.075 s/car (voix 0.084), pic 0.72, silences [0.12, 0.19] — conforme
+- « Ten experiencia en vendas? » : 1.59 s, 0.061 s/car (voix 0.084), pic 0.69, silences [0.12, 0.19] — conforme
+- « Moi ben. O posto é na oficina, cun día de teletraballo. » : 4.23 s, 0.077 s/car (voix 0.084), pic 0.72, silences [0.12, 0.19] — conforme
+- « De nove a cinco, cun período de proba de dous meses. » : 3.16 s, 0.061 s/car (voix 0.084), pic 0.72, silences [0.12, 0.19] — conforme
+- « O mes que vén, se todo vai ben. Ten algunha pregunta? » : 3.81 s, 0.072 s/car (voix 0.084), pic 0.74, silences [0.12, 0.2] — conforme
+- « Si. Chamarémolo a semana que vén. » : 2.74 s, 0.083 s/car (voix 0.084), pic 0.72, silences [0.12, 0.21] — conforme
+- « o posto » : 0.86 s, 0.123 s/car (voix 0.084), pic 0.73, silences [0.12, 0.18] — conforme
+- « un contrato indefinido » : 1.52 s, 0.069 s/car (voix 0.084), pic 0.73, silences [0.12, 0.21] — conforme
+- « Cando comezaría? » : 1.07 s, 0.067 s/car (voix 0.084), pic 0.72, silences [0.12, 0.2] — conforme
+- « Non é nada grave, é un arrefriado. » : 2.14 s, 0.063 s/car (voix 0.084), pic 0.68, silences [0.12, 0.2] — conforme
+- « Si, tome isto tres veces ao día, despois de comer. » : 3.27 s, 0.065 s/car (voix 0.084), pic 0.68, silences [0.12, 0.19] — conforme
+- « Unha semana. E beba moita auga. » : 2.66 s, 0.086 s/car (voix 0.084), pic 0.72, silences [0.12, 0.2] — conforme
+- « Si, pero se non está mellor, volva o luns. » : 2.61 s, 0.062 s/car (voix 0.084), pic 0.7, silences [0.12, 0.18] — conforme
+- « un arrefriado » : 1.18 s, 0.09 s/car (voix 0.084), pic 0.7, silences [0.12, 0.19] — conforme
+- « Menos mal » : 0.84 s, 0.093 s/car (voix 0.084), pic 0.73, silences [0.12, 0.21] — conforme
+- « Moi ben. Ten cita? » : 2.14 s, 0.119 s/car (voix 0.084), pic 0.7, silences [0.12, 0.2] — conforme
+- « Déixeme o seu pasaporte e o contrato de aluguer? » : 2.38 s, 0.05 s/car (voix 0.084), pic 0.69, silences [0.12, 0.19] — conforme
+- « Si, pero tamén necesito unha factura da luz. » : 2.77 s, 0.063 s/car (voix 0.084), pic 0.71, silences [0.12, 0.19] — conforme
+- « Si, por correo. Ten dez días. » : 2.8 s, 0.096 s/car (voix 0.084), pic 0.7, silences [0.12, 0.19] — conforme
+- « Nunha semana, máis ou menos. » : 2.12 s, 0.076 s/car (voix 0.084), pic 0.72, silences [0.12, 0.2] — conforme
+- « a factura da luz » : 1.23 s, 0.077 s/car (voix 0.084), pic 0.7, silences [0.12, 0.19] — conforme
+- « Cando estará listo? » : 1.2 s, 0.063 s/car (voix 0.084), pic 0.72, silences [0.12, 0.2] — conforme
+- « Boas tardes. En que podo axudalo? » : 2.8 s, 0.085 s/car (voix 0.084), pic 0.69, silences [0.12, 0.2] — conforme
+- « Síntoo moito. Déixeme o seu pasaporte? » : 3.16 s, 0.083 s/car (voix 0.084), pic 0.73, silences [0.12, 0.21] — conforme
+- « Hoxe non, pero hai un mañá ás sete. » : 2.3 s, 0.066 s/car (voix 0.084), pic 0.72, silences [0.12, 0.19] — conforme
+- « A compañía págalle unha habitación preto do aeroporto. » : 2.77 s, 0.051 s/car (voix 0.084), pic 0.7, silences [0.12, 0.2] — conforme
+- « A súa equipaxe viaxa con vostede mañá. » : 2.27 s, 0.06 s/car (voix 0.084), pic 0.7, silences [0.12, 0.21] — conforme
+- « Claro, aquí ten. Desculpe as molestias. » : 3.27 s, 0.084 s/car (voix 0.084), pic 0.74, silences [0.12, 0.18] — conforme
+- « cancelar un voo » : 1.07 s, 0.071 s/car (voix 0.084), pic 0.71, silences [0.12, 0.2] — conforme
+- « Desculpe as molestias » : 1.38 s, 0.066 s/car (voix 0.084), pic 0.76, silences [0.12, 0.19] — conforme
+- « Ola, quero aprender a cociñar. Que me recomendas? » : 3.68 s, 0.075 s/car (voix 0.084), pic 0.71, silences [0.12, 0.19] — conforme
+- « Unha escola é demasiado cara. » : 1.65 s, 0.057 s/car (voix 0.084), pic 0.73, silences [0.12, 0.19] — conforme
+- « Vale. E que prato fago primeiro? » : 2.64 s, 0.082 s/car (voix 0.084), pic 0.69, silences [0.12, 0.18] — conforme
+- « E se me sae mal? » : 1.04 s, 0.065 s/car (voix 0.084), pic 0.7, silences [0.12, 0.2] — conforme
+- « Tes razón. Queres vir probalo? » : 2.48 s, 0.083 s/car (voix 0.084), pic 0.71, silences [0.12, 0.19] — conforme
+- « Perfecto. Moitas grazas pola túa axuda! » : 3.13 s, 0.08 s/car (voix 0.084), pic 0.7, silences [0.12, 0.2] — conforme
+- « Recoméndoche que… » : 1.1 s, 0.065 s/car (voix 0.084), pic 0.7, silences [0.12, 0.18] — conforme
+- « Aconséllote que… » : 1.2 s, 0.075 s/car (voix 0.084), pic 0.7, silences [0.12, 0.19] — conforme
+- « É normal que saia mal » : 1.36 s, 0.065 s/car (voix 0.084), pic 0.67, silences [0.12, 0.2] — conforme
+- « cando estea listo » : 1.12 s, 0.066 s/car (voix 0.084), pic 0.7, silences [0.12, 0.18] — conforme
+- « Atención ao cliente, bos días. » : 2.01 s, 0.067 s/car (voix 0.084), pic 0.7, silences [0.12, 0.18] — conforme
+- « Síntoo moito. Cando o pediu? » : 2.56 s, 0.091 s/car (voix 0.084), pic 0.73, silences [0.12, 0.19] — conforme
+- « Quere que lle enviemos outro? » : 1.46 s, 0.05 s/car (voix 0.084), pic 0.71, silences [0.12, 0.19] — conforme
+- « Si, claro. Tardará uns dez días. » : 2.9 s, 0.091 s/car (voix 0.084), pic 0.73, silences [0.12, 0.19] — conforme
+- « Farei o posible. » : 1.18 s, 0.073 s/car (voix 0.084), pic 0.71, silences [0.11, 0.23] — conforme
+- « Claro. Desculpe as molestias. » : 2.53 s, 0.087 s/car (voix 0.084), pic 0.72, silences [0.12, 0.19] — conforme
+- « o pedido » : 0.81 s, 0.101 s/car (voix 0.084), pic 0.7, silences [0.12, 0.17] — conforme
+- « Preferiría que me devolvesen os cartos » : 2.17 s, 0.057 s/car (voix 0.084), pic 0.69, silences [0.12, 0.19] — conforme
+- « Espero que todo vaia ben » : 1.49 s, 0.062 s/car (voix 0.084), pic 0.71, silences [0.12, 0.2] — conforme
+- « Ben, comecemos. Como foi a facturación este trimestre? » : 4.0 s, 0.074 s/car (voix 0.084), pic 0.7, silences [0.12, 0.19] — conforme
+- « Moi ben. E os gastos? » : 2.32 s, 0.111 s/car (voix 0.084), pic 0.68, silences [0.12, 0.2] — conforme
+- « Entón, deberiamos investir máis en publicidade? » : 2.87 s, 0.061 s/car (voix 0.084), pic 0.73, silences [0.12, 0.21] — conforme
+- « Xa, pero sen publicidade non hai crecemento. » : 2.38 s, 0.054 s/car (voix 0.084), pic 0.72, silences [0.12, 0.19] — conforme
+- « Adiante, escoito. » : 1.54 s, 0.091 s/car (voix 0.084), pic 0.74, silences [0.12, 0.2] — conforme
+- « Paréceme razoable. Podes preparar unha proposta? » : 3.42 s, 0.071 s/car (voix 0.084), pic 0.74, silences [0.12, 0.19] — conforme
+- « Se investísemos… » : 1.31 s, 0.082 s/car (voix 0.084), pic 0.77, silences [0.12, 0.2] — conforme
+- « Chámoo polo contrato de arrendamento. Remata en xuño. » : 3.66 s, 0.069 s/car (voix 0.084), pic 0.69, silences [0.12, 0.2] — conforme
+- « O problema é que vou subir o aluguer un quince por cento. » : 2.82 s, 0.049 s/car (voix 0.084), pic 0.74, silences [0.12, 0.19] — conforme
+- « Os prezos subiron moito no barrio. » : 1.96 s, 0.058 s/car (voix 0.084), pic 0.74, silences [0.12, 0.21] — conforme
+- « É verdade, sempre pagou ben. » : 1.91 s, 0.068 s/car (voix 0.084), pic 0.71, silences [0.12, 0.19] — conforme
+- « Que propón? » : 0.86 s, 0.078 s/car (voix 0.084), pic 0.71, silences [0.11, 0.19] — conforme
+- « Déixeme pensalo e chámoo mañá. » : 1.72 s, 0.057 s/car (voix 0.084), pic 0.71, silences [0.12, 0.21] — conforme
+- « levo cinco anos pagando » : 1.59 s, 0.069 s/car (voix 0.084), pic 0.69, silences [0.12, 0.2] — conforme
+- « se asinásemos » : 1.25 s, 0.096 s/car (voix 0.084), pic 0.71, silences [0.12, 0.18] — conforme
+- « Que tal co novo tratamento? » : 1.7 s, 0.063 s/car (voix 0.084), pic 0.73, silences [0.12, 0.19] — conforme
+- « Que síntomas ten? » : 1.12 s, 0.066 s/car (voix 0.084), pic 0.72, silences [0.12, 0.2] — conforme
+- « Pasa moito ao principio. » : 1.38 s, 0.058 s/car (voix 0.084), pic 0.72, silences [0.12, 0.19] — conforme
+- « Prefiro agardar un pouco. Se seguise igual, cambiariámolo. » : 4.23 s, 0.073 s/car (voix 0.084), pic 0.72, silences [0.12, 0.21] — conforme
+- « Si, non hai ningún problema. » : 1.59 s, 0.057 s/car (voix 0.084), pic 0.72, silences [0.12, 0.19] — conforme
+- « Si, e chámeme se se atopa peor. » : 2.04 s, 0.066 s/car (voix 0.084), pic 0.71, silences [0.12, 0.19] — conforme
+- « un efecto secundario » : 1.38 s, 0.069 s/car (voix 0.084), pic 0.7, silences [0.12, 0.21] — conforme
+- « Non sería mellor…? » : 1.15 s, 0.064 s/car (voix 0.084), pic 0.69, silences [0.12, 0.2] — conforme
+- « Viches que van pechar a rúa aos coches? » : 2.17 s, 0.056 s/car (voix 0.084), pic 0.69, silences [0.12, 0.2] — conforme
+- « A min non me gusta. Haberá máis atascos. » : 3.13 s, 0.078 s/car (voix 0.084), pic 0.7, silences [0.12, 0.19] — conforme
+- « Xa, pero as tendas perderán clientes. » : 2.38 s, 0.064 s/car (voix 0.084), pic 0.71, silences [0.12, 0.2] — conforme
+- « Ti cres? E como imos ir ao centro? » : 3.03 s, 0.089 s/car (voix 0.084), pic 0.7, silences [0.12, 0.2] — conforme
+- « Se houbese un carril bici, quizais o usaría. » : 2.61 s, 0.059 s/car (voix 0.084), pic 0.69, silences [0.12, 0.21] — conforme
+- « Ben, xa veremos. Oxalá teñas razón. » : 3.19 s, 0.091 s/car (voix 0.084), pic 0.72, silences [0.12, 0.21] — conforme
+- « unha zona peonil » : 1.04 s, 0.065 s/car (voix 0.084), pic 0.72, silences [0.12, 0.19] — conforme
+- « Non creo que sexa así » : 1.36 s, 0.065 s/car (voix 0.084), pic 0.69, silences [0.12, 0.2] — conforme
+- « Ola, querías falar comigo? » : 1.72 s, 0.066 s/car (voix 0.084), pic 0.68, silences [0.12, 0.19] — conforme
+- « Vaia! Non mo esperaba. Por que? » : 3.42 s, 0.11 s/car (voix 0.084), pic 0.72, silences [0.12, 0.2] — conforme
+- « E se che pagásemos máis? » : 1.59 s, 0.066 s/car (voix 0.084), pic 0.72, silences [0.12, 0.18] — conforme
+- « Enténdoo. Cando marcharías? » : 2.59 s, 0.096 s/car (voix 0.084), pic 0.71, silences [0.12, 0.2] — conforme
+- « Grazas. Poderías deixalo todo listo? » : 3.08 s, 0.086 s/car (voix 0.084), pic 0.73, silences [0.12, 0.2] — conforme
+- « Grazas. Imos botarte de menos. » : 2.8 s, 0.093 s/car (voix 0.084), pic 0.7, silences [0.12, 0.18] — conforme
+- « para que teñas tempo » : 1.25 s, 0.063 s/car (voix 0.084), pic 0.73, silences [0.12, 0.2] — conforme
+- « Foi un pracer » : 1.07 s, 0.082 s/car (voix 0.084), pic 0.71, silences [0.11, 0.19] — conforme
+- « Grazas por vir. Foi unha semana moi dura. » : 3.0 s, 0.073 s/car (voix 0.084), pic 0.7, silences [0.12, 0.2] — conforme
+- « Non puiden avisar a case ninguén, todo foi moi rápido. » : 3.13 s, 0.058 s/car (voix 0.084), pic 0.72, silences [0.12, 0.18] — conforme
+- « Grazas. Non sei cando volverei ao traballo. » : 3.06 s, 0.071 s/car (voix 0.084), pic 0.67, silences [0.12, 0.2] — conforme
+- « Preocúpanme os meus clientes, a verdade. » : 2.53 s, 0.063 s/car (voix 0.084), pic 0.7, silences [0.12, 0.2] — conforme
+- « Non sei como agradecercho. » : 1.49 s, 0.057 s/car (voix 0.084), pic 0.73, silences [0.12, 0.19] — conforme
+- « Es un sol. Grazas de verdade. » : 2.56 s, 0.088 s/car (voix 0.084), pic 0.7, silences [0.12, 0.2] — conforme
+- « Se o soubese » : 1.07 s, 0.089 s/car (voix 0.084), pic 0.71, silences [0.12, 0.19] — conforme
+- « Tómate o tempo que precises » : 1.7 s, 0.063 s/car (voix 0.084), pic 0.72, silences [0.12, 0.19] — conforme
+- « para o que precises » : 1.31 s, 0.069 s/car (voix 0.084), pic 0.72, silences [0.12, 0.2] — conforme
+- « A empresa vai presentar un expediente de regulación de emprego. » : 3.06 s, 0.049 s/car (voix 0.084), pic 0.71, silences [0.12, 0.19] — conforme
+- « Os números non nos deixan outra opción. » : 2.04 s, 0.052 s/car (voix 0.084), pic 0.71, silences [0.12, 0.18] — conforme
+- « É certo, pero este ano vai mal. » : 2.04 s, 0.066 s/car (voix 0.084), pic 0.72, silences [0.12, 0.19] — conforme
+- « Iso non depende de min. » : 1.52 s, 0.066 s/car (voix 0.084), pic 0.69, silences [0.12, 0.19] — conforme
+- « Imos estudalo coa dirección. » : 1.62 s, 0.058 s/car (voix 0.084), pic 0.7, silences [0.12, 0.19] — conforme
+- « un expediente de regulación de emprego » : 2.06 s, 0.054 s/car (voix 0.084), pic 0.72, silences [0.12, 0.18] — conforme
+- « En caso contrario » : 1.2 s, 0.071 s/car (voix 0.084), pic 0.73, silences [0.12, 0.2] — conforme
+- « prorrogar o preaviso » : 1.23 s, 0.061 s/car (voix 0.084), pic 0.68, silences [0.12, 0.19] — conforme
+- « Boas tardes a todos. Quen quere falar primeiro? » : 3.4 s, 0.072 s/car (voix 0.084), pic 0.76, silences [0.12, 0.23] — conforme
+- « É un problema que coñecemos ben. » : 1.78 s, 0.056 s/car (voix 0.084), pic 0.71, silences [0.12, 0.2] — conforme
+- « Xa o sabemos. » : 1.15 s, 0.088 s/car (voix 0.084), pic 0.7, silences [0.12, 0.19] — conforme
+- « Imos aprobar unha nova ordenanza municipal. » : 2.35 s, 0.055 s/car (voix 0.084), pic 0.7, silences [0.12, 0.19] — conforme
+- « E vostede que propón? » : 1.33 s, 0.063 s/car (voix 0.084), pic 0.69, silences [0.12, 0.15] — conforme
+- « Imos estudalo con moito interese. » : 1.91 s, 0.058 s/car (voix 0.084), pic 0.74, silences [0.12, 0.2] — conforme
+- « medidas concretas » : 1.41 s, 0.083 s/car (voix 0.084), pic 0.7, silences [0.12, 0.19] — conforme
+- « Segundo algúns, a cidade non precisa máis carrís bici. Que opina? » : 4.47 s, 0.069 s/car (voix 0.084), pic 0.71, silences [0.12, 0.19] — conforme
+- « Por que? » : 0.71 s, 0.088 s/car (voix 0.084), pic 0.74, silences [0.12, 0.19] — conforme
+- « Pero hai demasiados coches, non? » : 1.99 s, 0.062 s/car (voix 0.084), pic 0.7, silences [0.12, 0.2] — conforme
+- « Hai un estudo que di que os carrís bici non se usan. » : 2.46 s, 0.047 s/car (voix 0.084), pic 0.71, silences [0.12, 0.19] — conforme
+- « Quédanos un minuto. Algo máis? » : 2.72 s, 0.091 s/car (voix 0.084), pic 0.74, silences [0.12, 0.2] — conforme
+- « Para rematar, que nos di? » : 1.67 s, 0.067 s/car (voix 0.084), pic 0.72, silences [0.12, 0.19] — conforme
+- « Non comparto este argumento » : 1.7 s, 0.063 s/car (voix 0.084), pic 0.7, silences [0.12, 0.21] — conforme
+- « Non nego que sexa… » : 1.2 s, 0.067 s/car (voix 0.084), pic 0.72, silences [0.12, 0.19] — conforme
+- « Bos días. Cónteme, cal é o problema? » : 3.08 s, 0.086 s/car (voix 0.084), pic 0.72, silences [0.12, 0.19] — conforme
+- « Que di esa cláusula? » : 1.28 s, 0.064 s/car (voix 0.084), pic 0.69, silences [0.12, 0.19] — conforme
+- « Iso, efectivamente, podería ser abusivo. » : 2.87 s, 0.072 s/car (voix 0.084), pic 0.69, silences [0.12, 0.2] — conforme
+- « Primeiro, asinou o contrato sen lelo? » : 2.22 s, 0.06 s/car (voix 0.084), pic 0.73, silences [0.12, 0.2] — conforme
+- « Podemos presentar unha reclamación. » : 1.88 s, 0.054 s/car (voix 0.084), pic 0.7, silences [0.12, 0.19] — conforme
+- « Uns tres meses, máis ou menos. » : 2.19 s, 0.073 s/car (voix 0.084), pic 0.71, silences [0.12, 0.2] — conforme
+- « unha cláusula abusiva » : 1.52 s, 0.072 s/car (voix 0.084), pic 0.73, silences [0.12, 0.26] — conforme
+- « sen preaviso » : 1.04 s, 0.087 s/car (voix 0.084), pic 0.73, silences [0.12, 0.19] — conforme
+- « Benvidos á adega. Aquí facemos viño desde hai cen anos. » : 3.66 s, 0.066 s/car (voix 0.084), pic 0.68, silences [0.12, 0.19] — conforme
+- « En setembro, ao final do verán. » : 1.88 s, 0.061 s/car (voix 0.084), pic 0.71, silences [0.12, 0.19] — conforme
+- « Sobre todo unha variedade da zona. » : 2.01 s, 0.059 s/car (voix 0.084), pic 0.72, silences [0.12, 0.19] — conforme
+- « Si, desde hai trinta anos. » : 2.04 s, 0.078 s/car (voix 0.084), pic 0.7, silences [0.12, 0.2] — conforme
+- « Pois volva o ano que vén, é precioso. » : 2.32 s, 0.063 s/car (voix 0.084), pic 0.69, silences [0.12, 0.19] — conforme
+- « Moi poucos, case ningún. » : 1.75 s, 0.073 s/car (voix 0.084), pic 0.72, silences [0.12, 0.2] — conforme
+- « Gustaríame ter vido » : 1.31 s, 0.069 s/car (voix 0.084), pic 0.71, silences [0.12, 0.19] — conforme
+
+## Clips eu_antton
+
+- « Bai, esan? » : 1.59 s, 0.159 s/car (voix 0.101), pic 0.79, silences [0.12, 0.21] — conforme
+- « A, sentitzen dut. Zer gertatzen da? » : 3.66 s, 0.104 s/car (voix 0.101), pic 0.71, silences [0.12, 0.2] — conforme
+- « Matxura bat izango da. Teknikari bati deituko diot. » : 4.36 s, 0.086 s/car (voix 0.101), pic 0.7, silences [0.12, 0.19] — conforme
+- « Teknikaria ostegun arratsaldean joan daiteke. » : 2.95 s, 0.066 s/car (voix 0.101), pic 0.75, silences [0.12, 0.18] — conforme
+- « Bai, ostiralean hamarretan. Ondo datorkizu? » : 4.15 s, 0.097 s/car (voix 0.101), pic 0.76, silences [0.12, 0.19] — conforme
+- « Ez horregatik. Zerbait behar baduzu, deitu iezadazu. » : 4.34 s, 0.083 s/car (voix 0.101), pic 0.72, silences [0.12, 0.2] — conforme
+- « berogailua » : 1.12 s, 0.112 s/car (voix 0.101), pic 0.72, silences [0.12, 0.18] — conforme
+- « …izan daiteke? » : 1.07 s, 0.077 s/car (voix 0.101), pic 0.75, silences [0.12, 0.19] — conforme
+- « Egun ona izan! » : 1.31 s, 0.093 s/car (voix 0.101), pic 0.78, silences [0.12, 0.2] — conforme
+- « Egun on. Zergatik nahi duzu lanpostu hau? » : 3.6 s, 0.088 s/car (voix 0.101), pic 0.72, silences [0.12, 0.19] — conforme
+- « Salmentan esperientziarik duzu? » : 2.19 s, 0.071 s/car (voix 0.101), pic 0.69, silences [0.12, 0.2] — conforme
+- « Oso ondo. Lana bulegoan da, telelan egun batekin. » : 4.44 s, 0.091 s/car (voix 0.101), pic 0.72, silences [0.12, 0.18] — conforme
+- « Bederatzietatik bostetara, bi hilabeteko proba aldiarekin. » : 4.18 s, 0.072 s/car (voix 0.101), pic 0.75, silences [0.12, 0.2] — conforme
+- « Datorren hilean. Galderarik duzu? » : 3.13 s, 0.095 s/car (voix 0.101), pic 0.76, silences [0.12, 0.2] — conforme
+- « Bai. Datorren astean deituko dizugu. » : 3.37 s, 0.094 s/car (voix 0.101), pic 0.7, silences [0.12, 0.19] — conforme
+- « lanpostua » : 1.07 s, 0.119 s/car (voix 0.101), pic 0.73, silences [0.12, 0.19] — conforme
+- « proba aldia » : 1.15 s, 0.104 s/car (voix 0.101), pic 0.72, silences [0.12, 0.22] — conforme
+- « Noiz hasiko nintzateke? » : 1.8 s, 0.078 s/car (voix 0.101), pic 0.7, silences [0.12, 0.19] — conforme
+- « Sukarra duzu? » : 1.23 s, 0.094 s/car (voix 0.101), pic 0.69, silences [0.12, 0.2] — conforme
+- « Ez da ezer larria, hotzeria da. » : 2.09 s, 0.067 s/car (voix 0.101), pic 0.7, silences [0.12, 0.19] — conforme
+- « Bai, hartu hau egunean hiru aldiz, jan ondoren. » : 3.13 s, 0.067 s/car (voix 0.101), pic 0.71, silences [0.12, 0.21] — conforme
+- « Astebete. Eta edan ur asko. » : 3.19 s, 0.118 s/car (voix 0.101), pic 0.72, silences [0.12, 0.2] — conforme
+- « Bai, baina hobeto ez bazaude, itzuli astelehenean. » : 3.34 s, 0.067 s/car (voix 0.101), pic 0.73, silences [0.12, 0.19] — conforme
+- « eztula » : 0.99 s, 0.165 s/car (voix 0.101), pic 0.74, silences [0.12, 0.2] — conforme
+- « hotzeria » : 1.02 s, 0.127 s/car (voix 0.101), pic 0.7, silences [0.12, 0.2] — conforme
+- « sendagaia » : 1.04 s, 0.116 s/car (voix 0.101), pic 0.73, silences [0.12, 0.19] — conforme
+- « Oso ondo. Hitzordua duzu? » : 3.16 s, 0.126 s/car (voix 0.101), pic 0.71, silences [0.12, 0.2] — conforme
+- « Pasaportea eta alokairu kontratua utziko dizkidazu? » : 3.71 s, 0.073 s/car (voix 0.101), pic 0.7, silences [0.12, 0.2] — conforme
+- « Bai, baina argiaren faktura ere behar dut. » : 2.48 s, 0.059 s/car (voix 0.101), pic 0.68, silences [0.12, 0.19] — conforme
+- « Bai, posta elektronikoz. Hamar egun dituzu. » : 3.92 s, 0.091 s/car (voix 0.101), pic 0.74, silences [0.12, 0.2] — conforme
+- « Astebete barru. » : 1.2 s, 0.08 s/car (voix 0.101), pic 0.74, silences [0.12, 0.19] — conforme
+- « erroldatu » : 1.07 s, 0.119 s/car (voix 0.101), pic 0.74, silences [0.12, 0.2] — conforme
+- « argiaren faktura » : 1.41 s, 0.088 s/car (voix 0.101), pic 0.71, silences [0.12, 0.19] — conforme
+- « Noiz egongo da prest? » : 1.52 s, 0.072 s/car (voix 0.101), pic 0.72, silences [0.12, 0.2] — conforme
+- « Arratsalde on. Zertan lagun zaitzaket? » : 3.66 s, 0.096 s/car (voix 0.101), pic 0.74, silences [0.12, 0.2] — conforme
+- « Asko sentitzen dut. Pasaportea, mesedez? » : 4.02 s, 0.101 s/car (voix 0.101), pic 0.71, silences [0.12, 0.22] — conforme
+- « Gaur ez, baina bihar zazpietan bat dago. » : 2.74 s, 0.069 s/car (voix 0.101), pic 0.73, silences [0.12, 0.2] — conforme
+- « Aireportutik gertu gela bat ordainduko dizugu. » : 2.98 s, 0.065 s/car (voix 0.101), pic 0.74, silences [0.12, 0.18] — conforme
+- « Zure ekipajea zurekin bidaiatuko da bihar. » : 2.93 s, 0.07 s/car (voix 0.101), pic 0.73, silences [0.12, 0.19] — conforme
+- « Noski, hemen duzu. Barkatu eragozpenengatik. » : 4.08 s, 0.093 s/car (voix 0.101), pic 0.73, silences [0.12, 0.2] — conforme
+- « ekipajea » : 1.07 s, 0.134 s/car (voix 0.101), pic 0.67, silences [0.12, 0.2] — conforme
+- « Kaixo, sukaldatzen ikasi nahi dut. Zer gomendatzen duzu? » : 4.57 s, 0.082 s/car (voix 0.101), pic 0.76, silences [0.12, 0.2] — conforme
+- « Eskola bat garestiegia da. » : 1.91 s, 0.073 s/car (voix 0.101), pic 0.7, silences [0.12, 0.18] — conforme
+- « Ados. Eta zein plater egingo dut lehenengo? » : 3.87 s, 0.09 s/car (voix 0.101), pic 0.76, silences [0.12, 0.21] — conforme
+- « Eta gaizki egiten badut? » : 1.8 s, 0.075 s/car (voix 0.101), pic 0.67, silences [0.12, 0.2] — conforme
+- « Arrazoi duzu. Etxera etorri nahi duzu? » : 3.55 s, 0.093 s/car (voix 0.101), pic 0.73, silences [0.12, 0.19] — conforme
+- « Oso ondo. Eskerrik asko zure laguntzagatik! » : 4.23 s, 0.098 s/car (voix 0.101), pic 0.72, silences [0.12, 0.2] — conforme
+- « …gomendatzen dizut » : 1.46 s, 0.081 s/car (voix 0.101), pic 0.72, silences [0.12, 0.2] — conforme
+- « …aholkatzen dizut » : 1.46 s, 0.086 s/car (voix 0.101), pic 0.77, silences [0.12, 0.22] — conforme
+- « normala da » : 1.12 s, 0.112 s/car (voix 0.101), pic 0.72, silences [0.12, 0.18] — conforme
+- « prest dagoenean » : 1.36 s, 0.091 s/car (voix 0.101), pic 0.73, silences [0.12, 0.19] — conforme
+- « Asko sentitzen dut. Noiz jaso zenuen? » : 3.53 s, 0.095 s/car (voix 0.101), pic 0.71, silences [0.12, 0.21] — conforme
+- « Beste bat bidaltzea nahi duzu? » : 1.91 s, 0.064 s/car (voix 0.101), pic 0.78, silences [0.12, 0.19] — conforme
+- « Bai, noski. Hamar bat egun beharko ditu. » : 3.89 s, 0.097 s/car (voix 0.101), pic 0.69, silences [0.12, 0.2] — conforme
+- « Noski. Barkatu eragozpenengatik. » : 3.42 s, 0.107 s/car (voix 0.101), pic 0.74, silences [0.12, 0.2] — conforme
+- « Nahiago nuke dirua itzultzea » : 2.17 s, 0.077 s/car (voix 0.101), pic 0.72, silences [0.12, 0.2] — conforme
+- « Dena ondo joatea espero dut » : 1.99 s, 0.074 s/car (voix 0.101), pic 0.69, silences [0.12, 0.2] — conforme
+- « Hasiko gara. Nola joan dira salmentak azken hiru hilabeteetan? » : 4.99 s, 0.08 s/car (voix 0.101), pic 0.7, silences [0.12, 0.19] — conforme
+- « Oso ondo. Eta fakturak? » : 3.08 s, 0.134 s/car (voix 0.101), pic 0.72, silences [0.12, 0.2] — conforme
+- « Orduan, publizitatean gehiago inbertitu beharko genuke? » : 3.45 s, 0.063 s/car (voix 0.101), pic 0.73, silences [0.12, 0.19] — conforme
+- « Bai, baina publizitaterik gabe ez dago hazkunderik. » : 3.06 s, 0.06 s/car (voix 0.101), pic 0.73, silences [0.12, 0.2] — conforme
+- « Aurrera, entzuten zaitut. » : 2.09 s, 0.084 s/car (voix 0.101), pic 0.72, silences [0.12, 0.19] — conforme
+- « Zentzuzkoa iruditzen zait. Proposamen bat prestatu dezakezu? » : 4.99 s, 0.083 s/car (voix 0.101), pic 0.71, silences [0.12, 0.2] — conforme
+- « salmentak » : 1.1 s, 0.122 s/car (voix 0.101), pic 0.75, silences [0.12, 0.22] — conforme
+- « fakturak » : 0.97 s, 0.121 s/car (voix 0.101), pic 0.7, silences [0.12, 0.19] — conforme
+- « inbertitzen badugu » : 1.49 s, 0.083 s/car (voix 0.101), pic 0.7, silences [0.12, 0.19] — conforme
+- « Errentamendu kontratuagatik deitzen dizut. Ekainean amaitzen da. » : 4.96 s, 0.078 s/car (voix 0.101), pic 0.72, silences [0.12, 0.2] — conforme
+- « Baina alokairua ehuneko hamabost igoko dut. » : 2.77 s, 0.064 s/car (voix 0.101), pic 0.71, silences [0.12, 0.19] — conforme
+- « Prezioak asko igo dira auzoan. » : 2.3 s, 0.077 s/car (voix 0.101), pic 0.7, silences [0.12, 0.2] — conforme
+- « Egia da, beti ondo ordaindu duzu. » : 2.46 s, 0.074 s/car (voix 0.101), pic 0.71, silences [0.12, 0.19] — conforme
+- « Zer proposatzen duzu? » : 1.7 s, 0.081 s/car (voix 0.101), pic 0.73, silences [0.12, 0.19] — conforme
+- « Utzi pentsatzen, eta bihar deituko dizut. » : 2.9 s, 0.071 s/car (voix 0.101), pic 0.74, silences [0.12, 0.2] — conforme
+- « errentamendu kontratua » : 1.78 s, 0.081 s/car (voix 0.101), pic 0.71, silences [0.12, 0.2] — conforme
+- « bost urtez » : 1.18 s, 0.118 s/car (voix 0.101), pic 0.8, silences [0.12, 0.21] — conforme
+- « sinatzen badugu » : 1.46 s, 0.098 s/car (voix 0.101), pic 0.72, silences [0.12, 0.19] — conforme
+- « Zer moduz tratamendu berriarekin? » : 2.3 s, 0.07 s/car (voix 0.101), pic 0.72, silences [0.12, 0.2] — conforme
+- « Zer sintoma dituzu? » : 1.57 s, 0.082 s/car (voix 0.101), pic 0.75, silences [0.12, 0.19] — conforme
+- « Asko gertatzen da hasieran. » : 2.09 s, 0.077 s/car (voix 0.101), pic 0.73, silences [0.12, 0.18] — conforme
+- « Pixka bat itxarotea nahiago dut. Berdin jarraituko bazenu, aldatuko genuke. » : 5.46 s, 0.073 s/car (voix 0.101), pic 0.75, silences [0.12, 0.19] — conforme
+- « Bai, eta deitu iezadazu gaizki bazaude. » : 2.98 s, 0.076 s/car (voix 0.101), pic 0.72, silences [0.12, 0.18] — conforme
+- « tratamendua » : 1.15 s, 0.104 s/car (voix 0.101), pic 0.7, silences [0.12, 0.18] — conforme
+- « albo ondorioak » : 1.41 s, 0.101 s/car (voix 0.101), pic 0.72, silences [0.12, 0.19] — conforme
+- « Ez litzateke hobe…? » : 1.38 s, 0.073 s/car (voix 0.101), pic 0.7, silences [0.12, 0.21] — conforme
+- « Ikusi duzu kalea autoei itxiko dietela? » : 2.72 s, 0.07 s/car (voix 0.101), pic 0.73, silences [0.12, 0.2] — conforme
+- « Niri ez zait gustatzen. Auto ilara gehiago egongo dira. » : 4.39 s, 0.08 s/car (voix 0.101), pic 0.7, silences [0.12, 0.19] — conforme
+- « Bai, baina dendek bezeroak galduko dituzte. » : 2.82 s, 0.066 s/car (voix 0.101), pic 0.71, silences [0.12, 0.2] — conforme
+- « Benetan? Eta nola joango gara erdigunera? » : 3.94 s, 0.096 s/car (voix 0.101), pic 0.72, silences [0.12, 0.2] — conforme
+- « Bidegorri bat egongo balitz, agian erabiliko nuke. » : 3.21 s, 0.064 s/car (voix 0.101), pic 0.71, silences [0.12, 0.2] — conforme
+- « Ikusiko dugu. Agian arrazoi duzu. » : 3.42 s, 0.104 s/car (voix 0.101), pic 0.69, silences [0.12, 0.2] — conforme
+- « oinezkoentzako gunea » : 1.78 s, 0.089 s/car (voix 0.101), pic 0.67, silences [0.12, 0.19] — conforme
+- « Ez dut uste egia denik » : 1.75 s, 0.08 s/car (voix 0.101), pic 0.77, silences [0.12, 0.19] — conforme
+- « jasangarria » : 1.28 s, 0.116 s/car (voix 0.101), pic 0.73, silences [0.12, 0.19] — conforme
+- « bidegorria » : 1.15 s, 0.115 s/car (voix 0.101), pic 0.71, silences [0.12, 0.2] — conforme
+- « Kaixo, nirekin hitz egin nahi zenuen? » : 2.59 s, 0.07 s/car (voix 0.101), pic 0.71, silences [0.12, 0.18] — conforme
+- « Benetan? Zergatik? » : 2.64 s, 0.147 s/car (voix 0.101), pic 0.73, silences [0.12, 0.21] — conforme
+- « Eta soldata igotzen badugu? » : 1.93 s, 0.072 s/car (voix 0.101), pic 0.69, silences [0.12, 0.19] — conforme
+- « Ulertzen dut. Noiz joango zinateke? » : 3.66 s, 0.104 s/car (voix 0.101), pic 0.71, silences [0.12, 0.2] — conforme
+- « Eskerrik asko. Dena prest utziko duzu? » : 3.58 s, 0.094 s/car (voix 0.101), pic 0.72, silences [0.12, 0.2] — conforme
+- « Eskerrik asko. Faltan botako zaitugu. » : 3.4 s, 0.092 s/car (voix 0.101), pic 0.74, silences [0.12, 0.18] — conforme
+- « denbora izan dezazun » : 1.62 s, 0.081 s/car (voix 0.101), pic 0.68, silences [0.12, 0.19] — conforme
+- « Plazer bat izan da » : 1.46 s, 0.081 s/car (voix 0.101), pic 0.72, silences [0.12, 0.2] — conforme
+- « Eskerrik asko etortzeagatik. Aste oso gogorra izan da. » : 4.55 s, 0.084 s/car (voix 0.101), pic 0.67, silences [0.12, 0.19] — conforme
+- « Ia inori ez nion abisatu, dena oso azkar gertatu zen. » : 3.74 s, 0.07 s/car (voix 0.101), pic 0.7, silences [0.12, 0.19] — conforme
+- « Eskerrik asko. Ez dakit noiz itzuliko naizen lanera. » : 4.39 s, 0.084 s/car (voix 0.101), pic 0.73, silences [0.12, 0.19] — conforme
+- « Nire bezeroek kezkatzen naute, egia esan. » : 3.29 s, 0.08 s/car (voix 0.101), pic 0.73, silences [0.12, 0.2] — conforme
+- « Ez dakit nola eskertu. » : 1.8 s, 0.082 s/car (voix 0.101), pic 0.71, silences [0.12, 0.2] — conforme
+- « Oso ona zara. Eskerrik asko benetan. » : 3.71 s, 0.103 s/car (voix 0.101), pic 0.7, silences [0.12, 0.18] — conforme
+- « Jakin izan banu » : 1.36 s, 0.091 s/car (voix 0.101), pic 0.74, silences [0.12, 0.19] — conforme
+- « Behar duzun denbora hartu » : 1.8 s, 0.072 s/car (voix 0.101), pic 0.8, silences [0.12, 0.21] — conforme
+- « behar duzun guztirako » : 1.7 s, 0.081 s/car (voix 0.101), pic 0.73, silences [0.12, 0.21] — conforme
+- « Enpresak enplegu erregulazioko espediente bat aurkeztuko du. » : 3.81 s, 0.064 s/car (voix 0.101), pic 0.7, silences [0.12, 0.19] — conforme
+- « Zenbakiak ez dira onak. » : 1.88 s, 0.082 s/car (voix 0.101), pic 0.73, silences [0.12, 0.2] — conforme
+- « Egia da, baina urte hau txarra da. » : 2.3 s, 0.068 s/car (voix 0.101), pic 0.75, silences [0.12, 0.19] — conforme
+- « Hori ez dago nire esku. » : 1.7 s, 0.074 s/car (voix 0.101), pic 0.72, silences [0.12, 0.2] — conforme
+- « Ez da horraino iritsi behar. Zer proposatzen duzue? » : 4.18 s, 0.082 s/car (voix 0.101), pic 0.73, silences [0.12, 0.2] — conforme
+- « enplegu erregulazioko espedientea » : 2.46 s, 0.074 s/car (voix 0.101), pic 0.72, silences [0.12, 0.2] — conforme
+- « soldata masa » : 1.31 s, 0.109 s/car (voix 0.101), pic 0.74, silences [0.12, 0.2] — conforme
+- « Bestela » : 0.97 s, 0.138 s/car (voix 0.101), pic 0.77, silences [0.12, 0.2] — conforme
+- « aurreabisua luzatu » : 1.62 s, 0.09 s/car (voix 0.101), pic 0.68, silences [0.12, 0.19] — conforme
+- « Arratsalde on guztioi. Nork hitz egin nahi du lehenengo? » : 4.31 s, 0.077 s/car (voix 0.101), pic 0.82, silences [0.12, 0.2] — conforme
+- « Ondo ezagutzen dugu hori. » : 1.78 s, 0.071 s/car (voix 0.101), pic 0.75, silences [0.12, 0.24] — conforme
+- « Badakigu, eta sentitzen dugu. » : 2.38 s, 0.082 s/car (voix 0.101), pic 0.74, silences [0.12, 0.2] — conforme
+- « Udal ordenantza berri bat onartuko dugu. » : 2.64 s, 0.066 s/car (voix 0.101), pic 0.71, silences [0.12, 0.2] — conforme
+- « Eta zuk zer proposatzen duzu? » : 2.32 s, 0.08 s/car (voix 0.101), pic 0.71, silences [0.12, 0.2] — conforme
+- « Ondo pentsatuko dugu. » : 1.59 s, 0.076 s/car (voix 0.101), pic 0.72, silences [0.12, 0.2] — conforme
+- « udal ordenantza » : 1.44 s, 0.096 s/car (voix 0.101), pic 0.69, silences [0.12, 0.19] — conforme
+- « neurri zehatzak » : 1.44 s, 0.096 s/car (voix 0.101), pic 0.72, silences [0.12, 0.19] — conforme
+- « Batzuen ustez, hiriak ez du bidegorri gehiago behar. Zer iritzi duzu? » : 5.17 s, 0.075 s/car (voix 0.101), pic 0.72, silences [0.12, 0.19] — conforme
+- « Zergatik? » : 1.02 s, 0.113 s/car (voix 0.101), pic 0.75, silences [0.12, 0.19] — conforme
+- « Baina auto gehiegi daude, ezta? » : 2.32 s, 0.075 s/car (voix 0.101), pic 0.69, silences [0.12, 0.2] — conforme
+- « Ikerketa baten arabera, bidegorriak ez dira erabiltzen. » : 3.66 s, 0.066 s/car (voix 0.101), pic 0.73, silences [0.12, 0.19] — conforme
+- « Minutu bat geratzen zaigu. Beste zerbait? » : 3.66 s, 0.089 s/car (voix 0.101), pic 0.7, silences [0.12, 0.18] — conforme
+- « Amaitzeko, zer esango zenuke? » : 2.32 s, 0.08 s/car (voix 0.101), pic 0.72, silences [0.12, 0.2] — conforme
+- « Ez nago argudio horrekin ados » : 1.91 s, 0.066 s/car (voix 0.101), pic 0.72, silences [0.12, 0.18] — conforme
+- « Ez dut ukatzen… denik » : 1.67 s, 0.08 s/car (voix 0.101), pic 0.75, silences [0.12, 0.2] — conforme
+- « inpartziala » : 1.2 s, 0.109 s/car (voix 0.101), pic 0.69, silences [0.12, 0.2] — conforme
+- « Egun on. Kontatu, zer gertatzen da? » : 3.66 s, 0.104 s/car (voix 0.101), pic 0.74, silences [0.12, 0.2] — conforme
+- « Zer esaten du klausula horrek? » : 2.09 s, 0.07 s/car (voix 0.101), pic 0.74, silences [0.12, 0.2] — conforme
+- « Hori, egiaz, abusiboa izan daiteke. » : 2.69 s, 0.077 s/car (voix 0.101), pic 0.73, silences [0.12, 0.19] — conforme
+- « Lehenik, irakurri gabe sinatu zenuen? » : 2.61 s, 0.071 s/car (voix 0.101), pic 0.68, silences [0.12, 0.2] — conforme
+- « Erreklamazio bat aurkez dezakegu. » : 2.35 s, 0.071 s/car (voix 0.101), pic 0.74, silences [0.12, 0.19] — conforme
+- « Hiru hilabete inguru. » : 1.49 s, 0.071 s/car (voix 0.101), pic 0.78, silences [0.12, 0.2] — conforme
+- « aurreabisurik gabe » : 1.59 s, 0.089 s/car (voix 0.101), pic 0.69, silences [0.12, 0.19] — conforme
+- « horren inguruan » : 1.31 s, 0.087 s/car (voix 0.101), pic 0.71, silences [0.12, 0.2] — conforme
+- « Ongi etorri upategira. Hemen ardoa egiten dugu. » : 4.13 s, 0.088 s/car (voix 0.101), pic 0.73, silences [0.12, 0.2] — conforme
+- « Irailean, udaren amaieran. » : 2.12 s, 0.081 s/car (voix 0.101), pic 0.76, silences [0.12, 0.22] — conforme
+- « Batez ere inguruko mota bat. » : 2.04 s, 0.073 s/car (voix 0.101), pic 0.73, silences [0.12, 0.19] — conforme
+- « Bai, aspalditik. » : 1.78 s, 0.111 s/car (voix 0.101), pic 0.71, silences [0.12, 0.2] — conforme
+- « Etorri datorren urtean, oso polita da. » : 2.77 s, 0.073 s/car (voix 0.101), pic 0.73, silences [0.12, 0.18] — conforme
+- « Oso gutxi, ia batere ez. » : 2.09 s, 0.087 s/car (voix 0.101), pic 0.7, silences [0.12, 0.22] — conforme
+- « mahats bilketa » : 1.33 s, 0.095 s/car (voix 0.101), pic 0.76, silences [0.12, 0.19] — conforme
+- « mahats mota » : 1.15 s, 0.104 s/car (voix 0.101), pic 0.74, silences [0.12, 0.2] — conforme
+- « jatorri deitura » : 1.33 s, 0.089 s/car (voix 0.101), pic 0.72, silences [0.12, 0.19] — conforme
+- « …gustatuko litzaidake » : 1.72 s, 0.082 s/car (voix 0.101), pic 0.68, silences [0.12, 0.2] — conforme
+
+## Extraits d'écoute (dossier ecoute/)
+
+### es_dora_comparaison_clip_actuel_puis_regenere.mp3
+
+-   0.0 s — castillan · es_dora · « Un kilo de naranjas, por favor. » · clip actuel de l'appli
+-   2.7 s — castillan · es_dora · « Un kilo de naranjas, por favor. » · régénéré par kokoro ef_dora
+-   5.6 s — castillan · es_dora · « Tengo dolor de cabeza. » · clip actuel de l'appli
+-   8.0 s — castillan · es_dora · « Tengo dolor de cabeza. » · régénéré par kokoro ef_dora
+
+### va_gina_comparaison_clip_actuel_puis_regenere.mp3
+
+-   0.0 s — valencien · va_gina · « Ja és tard, toque el dos. » · clip actuel de l'appli
+-   2.3 s — valencien · va_gina · « Ja és tard, toque el dos. » · régénéré par matxa (locuteur 7, accent valencia)
+-   4.7 s — valencien · va_gina · « si tinguera diners » · clip actuel de l'appli
+-   6.7 s — valencien · va_gina · « si tinguera diners » · régénéré par matxa (locuteur 7, accent valencia)
+
+### va_lluc_comparaison_clip_actuel_puis_regenere.mp3
+
+-   0.0 s — valencien · va_lluc · « Ja és tard, toque el dos. » · clip actuel de l'appli
+-   2.4 s — valencien · va_lluc · « Ja és tard, toque el dos. » · régénéré par matxa (locuteur 6, accent valencia)
+-   4.8 s — valencien · va_lluc · « si tinguera diners » · clip actuel de l'appli
+-   6.9 s — valencien · va_lluc · « si tinguera diners » · régénéré par matxa (locuteur 6, accent valencia)
+
+### ca_elia_comparaison_clip_actuel_puis_regenere.mp3
+
+-   0.0 s — catalan · ca_elia · « Reconec que em vaig equivocar. » · clip actuel de l'appli
+-   2.5 s — catalan · ca_elia · « Reconec que em vaig equivocar. » · régénéré par matxa (locuteur 3, accent central)
+-   5.0 s — catalan · ca_elia · « Mengem en un restaurant. » · clip actuel de l'appli
+-   7.3 s — catalan · ca_elia · « Mengem en un restaurant. » · régénéré par matxa (locuteur 3, accent central)
+
+### ca_grau_comparaison_clip_actuel_puis_regenere.mp3
+
+-   0.0 s — catalan · ca_grau · « Reconec que em vaig equivocar. » · clip actuel de l'appli
+-   2.5 s — catalan · ca_grau · « Reconec que em vaig equivocar. » · régénéré par matxa (locuteur 2, accent central)
+-   5.0 s — catalan · ca_grau · « Mengem en un restaurant. » · clip actuel de l'appli
+-   7.4 s — catalan · ca_grau · « Mengem en un restaurant. » · régénéré par matxa (locuteur 2, accent central)
+
+### gl_a_comparaison_clip_actuel_puis_regenere.mp3
+
+-   0.0 s — galicien · gl_a · « Quero que pagues » · clip actuel de l'appli
+-   1.9 s — galicien · gl_a · « Quero que pagues » · régénéré par hitz_gl_iago
+-   3.9 s — galicien · gl_a · « Despois de comermos, fomos pasear » · clip actuel de l'appli
+-   6.8 s — galicien · gl_a · « Despois de comermos, fomos pasear » · régénéré par hitz_gl_iago
+
+### gl_b_comparaison_clip_actuel_puis_regenere.mp3
+
+-   0.0 s — galicien · gl_b · « Quero que pagues » · clip actuel de l'appli
+-   1.9 s — galicien · gl_b · « Quero que pagues » · régénéré par hitz_gl_celtia
+-   3.8 s — galicien · gl_b · « Despois de comermos, fomos pasear » · clip actuel de l'appli
+-   6.6 s — galicien · gl_b · « Despois de comermos, fomos pasear » · régénéré par hitz_gl_celtia
+
+### gl_c_comparaison_clip_actuel_puis_regenere.mp3
+
+-   0.0 s — galicien · gl_c · « Quero que pagues » · clip actuel de l'appli
+-   1.9 s — galicien · gl_c · « Quero que pagues » · régénéré par hitz_gl_paulo
+-   3.8 s — galicien · gl_c · « Despois de comermos, fomos pasear » · clip actuel de l'appli
+-   6.8 s — galicien · gl_c · « Despois de comermos, fomos pasear » · régénéré par hitz_gl_paulo
+
+### eu_antton_comparaison_clip_actuel_puis_regenere.mp3
+
+-   0.0 s — basque · eu_antton · « beldur izaten nintzen » · clip actuel de l'appli
+-   2.4 s — basque · eu_antton · « beldur izaten nintzen » · régénéré par hitz_eu_antton
+-   4.9 s — basque · eu_antton · « Elkarteak diru-laguntza publiko bat jaso du. » · clip actuel de l'appli
+-   8.6 s — basque · eu_antton · « Elkarteak diru-laguntza publiko bat jaso du. » · régénéré par hitz_eu_antton
+
+### es_dora_nouveaux_textes.mp3
+
+-   0.0 s — castillan · es_dora · « ¿Dígame? » · nouveau clip, kokoro ef_dora
+-   1.7 s — castillan · es_dora · « Vaya, lo siento. ¿Qué le pasa? » · nouveau clip, kokoro ef_dora
+-   4.5 s — castillan · es_dora · « Será una avería. Voy a llamar a un técnico. » · nouveau clip, kokoro ef_dora
+-   8.0 s — castillan · es_dora · « El técnico puede ir el jueves por la tarde. » · nouveau clip, kokoro ef_dora
+-  11.6 s — castillan · es_dora · « Sí, el viernes a las diez. ¿Le va bien? » · nouveau clip, kokoro ef_dora
+-  14.6 s — castillan · es_dora · « De nada. Si hay otro problema, llámeme. » · nouveau clip, kokoro ef_dora
+-  17.8 s — castillan · es_dora · « el calentador » · nouveau clip, kokoro ef_dora
+-  19.8 s — castillan · es_dora · « una avería » · nouveau clip, kokoro ef_dora
+-  21.7 s — castillan · es_dora · « ¿Podría ser…? » · nouveau clip, kokoro ef_dora
+-  23.6 s — castillan · es_dora · « ¡Que tenga un buen día! » · nouveau clip, kokoro ef_dora
+-  26.1 s — castillan · es_dora · « Buenos días. ¿Por qué quiere este puesto? » · nouveau clip, kokoro ef_dora
+-  29.3 s — castillan · es_dora · « ¿Tiene experiencia en ventas? » · nouveau clip, kokoro ef_dora
+-  31.9 s — castillan · es_dora · « Muy bien. El puesto es en la oficina, con un día de teletrabajo. » · nouveau clip, kokoro ef_dora
+-  36.4 s — castillan · es_dora · « De nueve a cinco, con un periodo de prueba de dos meses. » · nouveau clip, kokoro ef_dora
+-  40.5 s — castillan · es_dora · « El mes que viene, si todo va bien. ¿Tiene alguna pregunta? » · nouveau clip, kokoro ef_dora
+-  44.7 s — castillan · es_dora · « Sí. Le llamaremos la semana que viene. » · nouveau clip, kokoro ef_dora
+-  47.8 s — castillan · es_dora · « el puesto » · nouveau clip, kokoro ef_dora
+-  49.6 s — castillan · es_dora · « el periodo de prueba » · nouveau clip, kokoro ef_dora
+-  51.9 s — castillan · es_dora · « un contrato indefinido » · nouveau clip, kokoro ef_dora
+-  54.4 s — castillan · es_dora · « ¿Cuándo empezaría? » · nouveau clip, kokoro ef_dora
+-  56.6 s — castillan · es_dora · « No es nada grave, es un resfriado. » · nouveau clip, kokoro ef_dora
+-  59.7 s — castillan · es_dora · « Sí, tome esto tres veces al día, después de comer. » · nouveau clip, kokoro ef_dora
+-  63.7 s — castillan · es_dora · « Una semana. Y beba mucha agua. » · nouveau clip, kokoro ef_dora
+-  66.7 s — castillan · es_dora · « Sí, pero si no está mejor, vuelva el lunes. » · nouveau clip, kokoro ef_dora
+-  70.1 s — castillan · es_dora · « un resfriado » · nouveau clip, kokoro ef_dora
+-  72.1 s — castillan · es_dora · « Muy bien. ¿Tiene cita? » · nouveau clip, kokoro ef_dora
+-  74.5 s — castillan · es_dora · « ¿Me deja su pasaporte y el contrato de alquiler? » · nouveau clip, kokoro ef_dora
+-  78.3 s — castillan · es_dora · « Sí, falta una factura de la luz. » · nouveau clip, kokoro ef_dora
+-  81.1 s — castillan · es_dora · « Sí, por correo. Tiene diez días. » · nouveau clip, kokoro ef_dora
+-  84.2 s — castillan · es_dora · « En una semana, más o menos. » · nouveau clip, kokoro ef_dora
+-  87.0 s — castillan · es_dora · « la factura de la luz » · nouveau clip, kokoro ef_dora
+-  89.3 s — castillan · es_dora · « ¿Cuándo estará listo? » · nouveau clip, kokoro ef_dora
+-  91.6 s — castillan · es_dora · « Buenas tardes. ¿En qué puedo ayudarle? » · nouveau clip, kokoro ef_dora
+-  94.7 s — castillan · es_dora · « Lo siento mucho. ¿Me deja su pasaporte? » · nouveau clip, kokoro ef_dora
+-  98.2 s — castillan · es_dora · « Hoy no, pero hay uno mañana a las siete. » · nouveau clip, kokoro ef_dora
+- 101.4 s — castillan · es_dora · « La compañía le paga una habitación cerca del aeropuerto. » · nouveau clip, kokoro ef_dora
+- 106.0 s — castillan · es_dora · « Su equipaje viaja con usted mañana. » · nouveau clip, kokoro ef_dora
+- 109.2 s — castillan · es_dora · « Claro, aquí tiene. Perdone las molestias. » · nouveau clip, kokoro ef_dora
+- 112.6 s — castillan · es_dora · « cancelar un vuelo » · nouveau clip, kokoro ef_dora
+- 114.8 s — castillan · es_dora · « Perdone las molestias » · nouveau clip, kokoro ef_dora
+- 117.2 s — castillan · es_dora · « Hola, quiero aprender a cocinar. ¿Qué me recomiendas? » · nouveau clip, kokoro ef_dora
+- 121.0 s — castillan · es_dora · « Una escuela es demasiado cara. » · nouveau clip, kokoro ef_dora
+- 123.9 s — castillan · es_dora · « Vale. ¿Y qué plato hago primero? » · nouveau clip, kokoro ef_dora
+- 126.7 s — castillan · es_dora · « ¿Y si me sale mal? » · nouveau clip, kokoro ef_dora
+- 128.9 s — castillan · es_dora · « Tienes razón. ¿Quieres venir a probarlo? » · nouveau clip, kokoro ef_dora
+- 132.1 s — castillan · es_dora · « Perfecto. ¡Muchas gracias por tu ayuda! » · nouveau clip, kokoro ef_dora
+- 135.5 s — castillan · es_dora · « Te recomiendo que… » · nouveau clip, kokoro ef_dora
+- 137.7 s — castillan · es_dora · « Te aconsejo que… » · nouveau clip, kokoro ef_dora
+- 139.9 s — castillan · es_dora · « Es normal que salga mal » · nouveau clip, kokoro ef_dora
+- 142.5 s — castillan · es_dora · « cuando esté listo » · nouveau clip, kokoro ef_dora
+- 144.6 s — castillan · es_dora · « Atención al cliente, buenos días. » · nouveau clip, kokoro ef_dora
+- 147.9 s — castillan · es_dora · « Lamento mucho el problema. ¿Cuándo lo recibió? » · nouveau clip, kokoro ef_dora
+- 151.4 s — castillan · es_dora · « ¿Quiere que le enviemos otro? » · nouveau clip, kokoro ef_dora
+- 153.9 s — castillan · es_dora · « Sí, claro. Tardará unos diez días. » · nouveau clip, kokoro ef_dora
+- 157.1 s — castillan · es_dora · « Lo intentaré, pero no le puedo prometer nada. » · nouveau clip, kokoro ef_dora
+- 160.7 s — castillan · es_dora · « Claro. Disculpe las molestias. » · nouveau clip, kokoro ef_dora
+- 163.6 s — castillan · es_dora · « el pedido » · nouveau clip, kokoro ef_dora
+- 165.3 s — castillan · es_dora · « Preferiría que me devolvieran el dinero » · nouveau clip, kokoro ef_dora
+- 168.7 s — castillan · es_dora · « Espero que todo vaya bien » · nouveau clip, kokoro ef_dora
+- 171.5 s — castillan · es_dora · « Bueno, empecemos. ¿Cómo ha ido la facturación este trimestre? » · nouveau clip, kokoro ef_dora
+- 175.8 s — castillan · es_dora · « Muy bien. ¿Y los gastos? » · nouveau clip, kokoro ef_dora
+- 178.3 s — castillan · es_dora · « Entonces, ¿deberíamos invertir más en publicidad? » · nouveau clip, kokoro ef_dora
+- 182.3 s — castillan · es_dora · « Ya, pero sin publicidad no hay crecimiento. » · nouveau clip, kokoro ef_dora
+- 185.9 s — castillan · es_dora · « Adelante, te escucho. » · nouveau clip, kokoro ef_dora
+- 188.3 s — castillan · es_dora · « Me parece razonable. ¿Puedes preparar una propuesta? » · nouveau clip, kokoro ef_dora
+- 192.3 s — castillan · es_dora · « los gastos » · nouveau clip, kokoro ef_dora
+- 194.2 s — castillan · es_dora · « Si invirtiéramos… » · nouveau clip, kokoro ef_dora
+- 196.3 s — castillan · es_dora · « Le llamo por el contrato de arrendamiento. Termina en junio. » · nouveau clip, kokoro ef_dora
+- 200.5 s — castillan · es_dora · « El problema es que voy a subir el alquiler un quince por ciento. » · nouveau clip, kokoro ef_dora
+- 205.0 s — castillan · es_dora · « Los precios han subido mucho en el barrio. » · nouveau clip, kokoro ef_dora
+- 208.6 s — castillan · es_dora · « Es verdad, siempre ha pagado bien. » · nouveau clip, kokoro ef_dora
+- 211.6 s — castillan · es_dora · « ¿Qué propone? » · nouveau clip, kokoro ef_dora
+- 213.5 s — castillan · es_dora · « Déjeme pensarlo y le llamo mañana. » · nouveau clip, kokoro ef_dora
+- 216.7 s — castillan · es_dora · « llevo cinco años pagando » · nouveau clip, kokoro ef_dora
+- 219.4 s — castillan · es_dora · « si firmáramos » · nouveau clip, kokoro ef_dora
+- 221.5 s — castillan · es_dora · « ¿Qué tal con el nuevo tratamiento? » · nouveau clip, kokoro ef_dora
+- 224.6 s — castillan · es_dora · « ¿Qué síntomas tiene? » · nouveau clip, kokoro ef_dora
+- 226.8 s — castillan · es_dora · « Pasa mucho al principio. » · nouveau clip, kokoro ef_dora
+- 229.5 s — castillan · es_dora · « Prefiero esperar un poco. Si siguiera igual, lo cambiaríamos. » · nouveau clip, kokoro ef_dora
+- 234.0 s — castillan · es_dora · « Sí, no hay ningún problema. » · nouveau clip, kokoro ef_dora
+- 236.5 s — castillan · es_dora · « Sí, y llámeme si se encuentra peor. » · nouveau clip, kokoro ef_dora
+- 239.5 s — castillan · es_dora · « los efectos secundarios » · nouveau clip, kokoro ef_dora
+- 242.0 s — castillan · es_dora · « ¿No sería mejor…? » · nouveau clip, kokoro ef_dora
+- 244.2 s — castillan · es_dora · « ¿Has visto que van a cerrar la calle a los coches? » · nouveau clip, kokoro ef_dora
+- 247.9 s — castillan · es_dora · « A mí no me gusta. Habrá más atascos. » · nouveau clip, kokoro ef_dora
+- 250.9 s — castillan · es_dora · « Ya, pero las tiendas perderán clientes. » · nouveau clip, kokoro ef_dora
+- 254.2 s — castillan · es_dora · « ¿Tú crees? ¿Y cómo vamos a ir al centro? » · nouveau clip, kokoro ef_dora
+- 257.5 s — castillan · es_dora · « Si hubiera un carril bici, quizás la usaría. » · nouveau clip, kokoro ef_dora
+- 260.9 s — castillan · es_dora · « Bueno, ya veremos. Ojalá tengas razón. » · nouveau clip, kokoro ef_dora
+- 264.4 s — castillan · es_dora · « una zona peatonal » · nouveau clip, kokoro ef_dora
+- 266.7 s — castillan · es_dora · « No creo que sea así » · nouveau clip, kokoro ef_dora
+- 269.2 s — castillan · es_dora · « Hola, ¿querías hablar conmigo? » · nouveau clip, kokoro ef_dora
+- 271.9 s — castillan · es_dora · « ¡Vaya! No me lo esperaba. ¿Por qué? » · nouveau clip, kokoro ef_dora
+- 274.8 s — castillan · es_dora · « ¿Y si te pagáramos más? » · nouveau clip, kokoro ef_dora
+- 277.3 s — castillan · es_dora · « Lo entiendo. ¿Cuándo te irías? » · nouveau clip, kokoro ef_dora
+- 280.0 s — castillan · es_dora · « Gracias. ¿Podrías dejarlo todo preparado? » · nouveau clip, kokoro ef_dora
+- 283.4 s — castillan · es_dora · « Gracias. Te vamos a echar de menos. » · nouveau clip, kokoro ef_dora
+- 286.4 s — castillan · es_dora · « para que tengas tiempo » · nouveau clip, kokoro ef_dora
+- 288.8 s — castillan · es_dora · « Ha sido un placer » · nouveau clip, kokoro ef_dora
+- 291.1 s — castillan · es_dora · « Gracias por venir. Ha sido una semana muy dura. » · nouveau clip, kokoro ef_dora
+- 294.8 s — castillan · es_dora · « No pude avisar a casi nadie, todo fue muy rápido. » · nouveau clip, kokoro ef_dora
+- 298.6 s — castillan · es_dora · « Gracias. No sé cuándo voy a volver al trabajo. » · nouveau clip, kokoro ef_dora
+- 302.1 s — castillan · es_dora · « Me preocupan mis clientes, la verdad. » · nouveau clip, kokoro ef_dora
+- 305.4 s — castillan · es_dora · « No sé cómo agradecértelo. » · nouveau clip, kokoro ef_dora
+- 308.1 s — castillan · es_dora · « Eres un sol. Gracias de verdad. » · nouveau clip, kokoro ef_dora
+- 311.0 s — castillan · es_dora · « Si lo hubiera sabido » · nouveau clip, kokoro ef_dora
+- 313.3 s — castillan · es_dora · « Tómate el tiempo que necesites » · nouveau clip, kokoro ef_dora
+- 316.2 s — castillan · es_dora · « para lo que necesites » · nouveau clip, kokoro ef_dora
+- 318.5 s — castillan · es_dora · « La empresa va a presentar un expediente de regulación de empleo. » · nouveau clip, kokoro ef_dora
+- 323.0 s — castillan · es_dora · « Los números no nos dejan otra opción. » · nouveau clip, kokoro ef_dora
+- 326.4 s — castillan · es_dora · « Es cierto, pero este año va mal. » · nouveau clip, kokoro ef_dora
+- 329.4 s — castillan · es_dora · « Eso no depende de mí. » · nouveau clip, kokoro ef_dora
+- 331.9 s — castillan · es_dora · « No hace falta llegar a eso. ¿Qué proponen? » · nouveau clip, kokoro ef_dora
+- 335.2 s — castillan · es_dora · « Lo estudiaremos con la dirección. » · nouveau clip, kokoro ef_dora
+- 338.1 s — castillan · es_dora · « un expediente de regulación de empleo » · nouveau clip, kokoro ef_dora
+- 341.3 s — castillan · es_dora · « De lo contrario » · nouveau clip, kokoro ef_dora
+- 343.3 s — castillan · es_dora · « prorrogar el preaviso » · nouveau clip, kokoro ef_dora
+- 345.8 s — castillan · es_dora · « Buenas tardes a todos. ¿Quién quiere hablar primero? » · nouveau clip, kokoro ef_dora
+- 349.6 s — castillan · es_dora · « Es un problema que conocemos bien. » · nouveau clip, kokoro ef_dora
+- 352.7 s — castillan · es_dora · « Lo sabemos, y lo lamentamos. » · nouveau clip, kokoro ef_dora
+- 355.4 s — castillan · es_dora · « Vamos a aprobar una nueva ordenanza municipal. » · nouveau clip, kokoro ef_dora
+- 359.4 s — castillan · es_dora · « ¿Y qué propone usted? » · nouveau clip, kokoro ef_dora
+- 361.8 s — castillan · es_dora · « Lo estudiaremos con mucho interés. » · nouveau clip, kokoro ef_dora
+- 364.7 s — castillan · es_dora · « medidas concretas » · nouveau clip, kokoro ef_dora
+- 367.0 s — castillan · es_dora · « Según algunos, la ciudad no necesita más carriles bici. ¿Qué opina? » · nouveau clip, kokoro ef_dora
+- 371.9 s — castillan · es_dora · « ¿Por qué? » · nouveau clip, kokoro ef_dora
+- 373.6 s — castillan · es_dora · « Pero hay demasiados coches, ¿no? » · nouveau clip, kokoro ef_dora
+- 376.5 s — castillan · es_dora · « Hay un estudio que dice que los carriles bici no se usan. » · nouveau clip, kokoro ef_dora
+- 380.6 s — castillan · es_dora · « Nos queda un minuto. ¿Algo más? » · nouveau clip, kokoro ef_dora
+- 383.4 s — castillan · es_dora · « Para terminar, ¿qué nos dice? » · nouveau clip, kokoro ef_dora
+- 386.1 s — castillan · es_dora · « No comparto ese argumento » · nouveau clip, kokoro ef_dora
+- 389.0 s — castillan · es_dora · « No niego que sea… » · nouveau clip, kokoro ef_dora
+- 391.2 s — castillan · es_dora · « Buenos días. Cuénteme, ¿cuál es el problema? » · nouveau clip, kokoro ef_dora
+- 394.8 s — castillan · es_dora · « ¿Qué dice esa cláusula? » · nouveau clip, kokoro ef_dora
+- 397.4 s — castillan · es_dora · « Eso, efectivamente, podría ser abusivo. » · nouveau clip, kokoro ef_dora
+- 401.0 s — castillan · es_dora · « Primero, ¿lo firmó usted sin leerlo? » · nouveau clip, kokoro ef_dora
+- 404.2 s — castillan · es_dora · « Podemos presentar una reclamación. » · nouveau clip, kokoro ef_dora
+- 407.5 s — castillan · es_dora · « Unos tres meses, más o menos. » · nouveau clip, kokoro ef_dora
+- 410.5 s — castillan · es_dora · « una cláusula abusiva » · nouveau clip, kokoro ef_dora
+- 412.9 s — castillan · es_dora · « sin preaviso » · nouveau clip, kokoro ef_dora
+- 415.0 s — castillan · es_dora · « Bienvenidos a la bodega. Aquí hacemos vino desde hace cien años. » · nouveau clip, kokoro ef_dora
+- 419.8 s — castillan · es_dora · « En septiembre, al final del verano. » · nouveau clip, kokoro ef_dora
+- 422.9 s — castillan · es_dora · « Sobre todo una variedad de la zona. » · nouveau clip, kokoro ef_dora
+- 425.9 s — castillan · es_dora · « Sí, desde hace treinta años. » · nouveau clip, kokoro ef_dora
+- 428.6 s — castillan · es_dora · « Pues vuelva el año que viene, es precioso. » · nouveau clip, kokoro ef_dora
+- 432.1 s — castillan · es_dora · « Muy pocos, casi ninguno. » · nouveau clip, kokoro ef_dora
+- 434.8 s — castillan · es_dora · « Me habría gustado » · nouveau clip, kokoro ef_dora
+
+### va_gina_nouveaux_textes.mp3
+
+-   0.0 s — valencien · va_gina · « Diga? » · nouveau clip, matxa (locuteur 7, accent valencia)
+-   1.3 s — valencien · va_gina · « Vaja, ho sent. Què li passa? » · nouveau clip, matxa (locuteur 7, accent valencia)
+-   4.0 s — valencien · va_gina · « Serà una avaria. Cridaré un tècnic. » · nouveau clip, matxa (locuteur 7, accent valencia)
+-   7.0 s — valencien · va_gina · « El tècnic pot anar dijous per la vesprada. » · nouveau clip, matxa (locuteur 7, accent valencia)
+-  10.4 s — valencien · va_gina · « Sí, divendres a les deu. Li va bé? » · nouveau clip, matxa (locuteur 7, accent valencia)
+-  13.2 s — valencien · va_gina · « De res. Si hi ha un altre problema, cride'm. » · nouveau clip, matxa (locuteur 7, accent valencia)
+-  16.8 s — valencien · va_gina · « una avaria » · nouveau clip, matxa (locuteur 7, accent valencia)
+-  18.5 s — valencien · va_gina · « Podria ser…? » · nouveau clip, matxa (locuteur 7, accent valencia)
+-  20.2 s — valencien · va_gina · « Que tinga un bon dia! » · nouveau clip, matxa (locuteur 7, accent valencia)
+-  22.3 s — valencien · va_gina · « Bon dia. Per què vol este treball? » · nouveau clip, matxa (locuteur 7, accent valencia)
+-  25.2 s — valencien · va_gina · « Té experiència en vendes? » · nouveau clip, matxa (locuteur 7, accent valencia)
+-  27.5 s — valencien · va_gina · « Molt bé. El treball és a l'oficina, amb un dia de teletreball. » · nouveau clip, matxa (locuteur 7, accent valencia)
+-  31.9 s — valencien · va_gina · « De nou a cinc, amb un període de prova de dos mesos. » · nouveau clip, matxa (locuteur 7, accent valencia)
+-  35.6 s — valencien · va_gina · « El mes que ve, si tot va bé. Té alguna pregunta? » · nouveau clip, matxa (locuteur 7, accent valencia)
+-  39.3 s — valencien · va_gina · « Sí. El cridarem la setmana que ve. » · nouveau clip, matxa (locuteur 7, accent valencia)
+-  42.4 s — valencien · va_gina · « un contracte indefinit » · nouveau clip, matxa (locuteur 7, accent valencia)
+-  44.7 s — valencien · va_gina · « Quan començaria? » · nouveau clip, matxa (locuteur 7, accent valencia)
+-  46.6 s — valencien · va_gina · « Espere la seua cridada » · nouveau clip, matxa (locuteur 7, accent valencia)
+-  48.9 s — valencien · va_gina · « No és res greu, és un constipat. » · nouveau clip, matxa (locuteur 7, accent valencia)
+-  51.8 s — valencien · va_gina · « Sí, prenga açò tres vegades al dia, després de menjar. » · nouveau clip, matxa (locuteur 7, accent valencia)
+-  55.9 s — valencien · va_gina · « Una setmana. I prenga molta aigua. » · nouveau clip, matxa (locuteur 7, accent valencia)
+-  59.0 s — valencien · va_gina · « Sí, però si no està millor, torne dilluns. » · nouveau clip, matxa (locuteur 7, accent valencia)
+-  62.4 s — valencien · va_gina · « un constipat » · nouveau clip, matxa (locuteur 7, accent valencia)
+-  64.2 s — valencien · va_gina · « Menys mal » · nouveau clip, matxa (locuteur 7, accent valencia)
+-  65.8 s — valencien · va_gina · « Molt bé. Té cita? » · nouveau clip, matxa (locuteur 7, accent valencia)
+-  67.9 s — valencien · va_gina · « Em deixa el passaport i el contracte de lloguer? » · nouveau clip, matxa (locuteur 7, accent valencia)
+-  71.3 s — valencien · va_gina · « Sí, però també necessite una factura de la llum. » · nouveau clip, matxa (locuteur 7, accent valencia)
+-  74.8 s — valencien · va_gina · « Sí, per correu. Té deu dies. » · nouveau clip, matxa (locuteur 7, accent valencia)
+-  77.4 s — valencien · va_gina · « D'ací a una setmana, més o menys. » · nouveau clip, matxa (locuteur 7, accent valencia)
+-  80.1 s — valencien · va_gina · « la factura de la llum » · nouveau clip, matxa (locuteur 7, accent valencia)
+-  82.3 s — valencien · va_gina · « Quan estarà preparat? » · nouveau clip, matxa (locuteur 7, accent valencia)
+-  84.3 s — valencien · va_gina · « Bona vesprada. En què puc ajudar-lo? » · nouveau clip, matxa (locuteur 7, accent valencia)
+-  87.5 s — valencien · va_gina · « Ho sent molt. Em deixa el passaport? » · nouveau clip, matxa (locuteur 7, accent valencia)
+-  90.7 s — valencien · va_gina · « Hui no, però n'hi ha un demà a les set. » · nouveau clip, matxa (locuteur 7, accent valencia)
+-  93.6 s — valencien · va_gina · « La companyia li paga una habitació prop de l'aeroport. » · nouveau clip, matxa (locuteur 7, accent valencia)
+-  97.1 s — valencien · va_gina · « El seu equipatge viatja amb vosté demà. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 100.1 s — valencien · va_gina · « Clar, ací té. Perdone les molèsties. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 103.2 s — valencien · va_gina · « El meu vol no ix » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 105.2 s — valencien · va_gina · « Perdone les molèsties » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 107.3 s — valencien · va_gina · « Hola, vull aprendre a cuinar. Què em recomanes? » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 110.8 s — valencien · va_gina · « Una escola és massa cara. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 113.3 s — valencien · va_gina · « D'acord. I quin plat faig primer? » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 116.2 s — valencien · va_gina · « I si em ix malament? » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 118.3 s — valencien · va_gina · « Tens raó. Vols vindre a menjar? » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 121.1 s — valencien · va_gina · « Perfecte. Moltes gràcies per la teua ajuda! » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 124.6 s — valencien · va_gina · « T'aconselle que… » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 126.4 s — valencien · va_gina · « Et recomane que… » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 128.2 s — valencien · va_gina · « És normal que isca malament » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 130.7 s — valencien · va_gina · « quan estiga preparat » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 132.9 s — valencien · va_gina · « Bon dia, en què el puc ajudar? » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 135.6 s — valencien · va_gina · « Lamente molt el problema. Quan la va rebre? » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 138.9 s — valencien · va_gina · « Vol que li n'enviem una altra? » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 141.3 s — valencien · va_gina · « Sí, clar. Tardarà uns deu dies. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 144.1 s — valencien · va_gina · « Ho intentaré. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 145.8 s — valencien · va_gina · « Clar. Perdone les molèsties. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 148.4 s — valencien · va_gina · « la comanda » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 150.1 s — valencien · va_gina · « Preferiria que em tornaren els diners » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 153.0 s — valencien · va_gina · « Espere que tot vaja bé » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 155.3 s — valencien · va_gina · « Bé, comencem. Com ha anat la facturació este trimestre? » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 159.6 s — valencien · va_gina · « Molt bé. I les despeses? » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 162.1 s — valencien · va_gina · « Llavors, hauríem d'invertir més en publicitat? » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 165.5 s — valencien · va_gina · « Ja, però sense publicitat no hi ha creixement. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 169.0 s — valencien · va_gina · « Endavant, t'escolte. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 171.2 s — valencien · va_gina · « Em pareix bé. Pots preparar una proposta? » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 174.6 s — valencien · va_gina · « les despeses » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 176.5 s — valencien · va_gina · « Si invertírem… » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 178.3 s — valencien · va_gina · « Li telefone pel contracte d'arrendament. S'acaba al juny. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 182.3 s — valencien · va_gina · « El problema és que pujaré el lloguer un quinze per cent. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 186.3 s — valencien · va_gina · « Els preus han pujat molt al barri. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 189.1 s — valencien · va_gina · « És veritat, sempre ha pagat bé. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 191.8 s — valencien · va_gina · « Què proposa? » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 193.6 s — valencien · va_gina · « Deixe'm pensar-ho i el cride demà. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 196.2 s — valencien · va_gina · « porte cinc anys pagant » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 198.5 s — valencien · va_gina · « si firmàrem » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 200.2 s — valencien · va_gina · « Com va amb el nou tractament? » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 202.7 s — valencien · va_gina · « Quins símptomes té? » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 204.7 s — valencien · va_gina · « Passa molt al principi. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 206.9 s — valencien · va_gina · « Preferisc esperar un poc. Si continua igual, el canviarem. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 211.4 s — valencien · va_gina · « Sí, no hi ha cap problema. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 213.8 s — valencien · va_gina · « Sí, i telefone'm si es troba pitjor. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 216.8 s — valencien · va_gina · « un efecte secundari » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 218.8 s — valencien · va_gina · « No seria millor…? » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 220.6 s — valencien · va_gina · « Has vist que en el carrer ja no hi haurà cotxes? » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 223.8 s — valencien · va_gina · « A mi no m'agrada. Hi haurà més embussos. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 227.0 s — valencien · va_gina · « Ja, però les botigues perdran clients. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 230.1 s — valencien · va_gina · « Tu creus? I com anirem al centre? » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 233.1 s — valencien · va_gina · « Si hi haguera un carril bici, potser el faria servir. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 236.6 s — valencien · va_gina · « Bé, ja ho veurem. Tant de bo tingues raó. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 239.9 s — valencien · va_gina · « una zona de vianants » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 242.1 s — valencien · va_gina · « No crec que siga així » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 244.2 s — valencien · va_gina · « Hola, volies parlar amb mi? » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 246.6 s — valencien · va_gina · « Vaja! No m'ho esperava. Per què? » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 249.4 s — valencien · va_gina · « I si et pagàrem més? » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 251.4 s — valencien · va_gina · « Ho entenc. Quan te n'aniries? » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 254.0 s — valencien · va_gina · « Gràcies. Podries deixar-ho tot preparat? » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 257.2 s — valencien · va_gina · « Gràcies. Et trobarem a faltar. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 259.9 s — valencien · va_gina · « perquè tingues temps » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 262.0 s — valencien · va_gina · « trobar a faltar » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 263.8 s — valencien · va_gina · « M'ha agradat molt » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 265.7 s — valencien · va_gina · « Gràcies per vindre. Ha sigut una setmana molt dura. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 269.6 s — valencien · va_gina · « No vaig poder avisar quasi ningú, tot va ser molt ràpid. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 273.7 s — valencien · va_gina · « Gràcies. No sé quan tornaré a la faena. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 276.9 s — valencien · va_gina · « Em preocupen els meus clients, la veritat. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 280.1 s — valencien · va_gina · « No sé com agrair-t'ho. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 282.1 s — valencien · va_gina · « Ets un sol. Gràcies de veritat. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 285.2 s — valencien · va_gina · « Si ho haguera sabut » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 287.1 s — valencien · va_gina · « Pren-te el temps que necessites » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 289.7 s — valencien · va_gina · « per al que necessites » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 291.8 s — valencien · va_gina · « L'empresa presentarà un expedient de regulació d'ocupació. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 295.8 s — valencien · va_gina · « Els números no són bons. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 298.2 s — valencien · va_gina · « És cert, però enguany va malament. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 301.1 s — valencien · va_gina · « Això no depén de mi. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 303.2 s — valencien · va_gina · « No cal arribar a això. Què proposen? » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 306.2 s — valencien · va_gina · « Ho estudiarem. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 308.0 s — valencien · va_gina · « un expedient de regulació d'ocupació » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 310.9 s — valencien · va_gina · « En cas contrari » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 312.8 s — valencien · va_gina · « prorrogar el preavís » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 314.8 s — valencien · va_gina · « Bona vesprada a tots. Qui vol parlar primer? » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 318.3 s — valencien · va_gina · « És un problema que coneixem bé. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 320.9 s — valencien · va_gina · « Ho sabem, i ho lamentem. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 323.3 s — valencien · va_gina · « Aprovarem una nova ordenança municipal. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 326.4 s — valencien · va_gina · « I vosté què proposa? » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 328.6 s — valencien · va_gina · « Ho estudiarem amb molt d'interés. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 331.1 s — valencien · va_gina · « mesures concretes » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 333.2 s — valencien · va_gina · « Segons alguns, la ciutat no necessita més carrils bici. Què n'opina? » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 338.1 s — valencien · va_gina · « Per què? » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 339.5 s — valencien · va_gina · « Però hi ha massa cotxes, no? » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 341.9 s — valencien · va_gina · « Hi ha un estudi que diu que els carrils bici no s'utilitzen. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 345.8 s — valencien · va_gina · « Ens queda un minut. Alguna cosa més? » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 349.0 s — valencien · va_gina · « Per acabar, què ens diu? » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 351.1 s — valencien · va_gina · « No compartisc eixe argument » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 353.6 s — valencien · va_gina · « No negue que siga… » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 355.5 s — valencien · va_gina · « Bon dia. Explique'm, quin és el problema? » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 359.1 s — valencien · va_gina · « Què diu eixa clàusula? » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 361.3 s — valencien · va_gina · « Això, efectivament, podria ser abusiu. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 364.8 s — valencien · va_gina · « Primer, el va firmar sense llegir-lo? » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 367.8 s — valencien · va_gina · « Podem presentar una reclamació. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 370.5 s — valencien · va_gina · « Uns tres mesos, més o menys. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 373.0 s — valencien · va_gina · « una clàusula abusiva » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 375.3 s — valencien · va_gina · « sense preavís » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 377.1 s — valencien · va_gina · « Benvinguts al celler. Fa cent anys que treballem ací. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 381.0 s — valencien · va_gina · « Al setembre, a final de l'estiu. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 383.9 s — valencien · va_gina · « Sobretot una varietat de la zona. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 386.7 s — valencien · va_gina · « Sí, des de fa trenta anys. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 389.2 s — valencien · va_gina · « Torne l'any que ve. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 391.0 s — valencien · va_gina · « Molt pocs, quasi cap. » · nouveau clip, matxa (locuteur 7, accent valencia)
+- 393.3 s — valencien · va_gina · « M'hauria agradat » · nouveau clip, matxa (locuteur 7, accent valencia)
+
+### va_lluc_nouveaux_textes.mp3
+
+-   0.0 s — valencien · va_lluc · « Diga? » · nouveau clip, matxa (locuteur 6, accent valencia)
+-   1.3 s — valencien · va_lluc · « Vaja, ho sent. Què li passa? » · nouveau clip, matxa (locuteur 6, accent valencia)
+-   4.1 s — valencien · va_lluc · « Serà una avaria. Cridaré un tècnic. » · nouveau clip, matxa (locuteur 6, accent valencia)
+-   7.3 s — valencien · va_lluc · « El tècnic pot anar dijous per la vesprada. » · nouveau clip, matxa (locuteur 6, accent valencia)
+-  10.8 s — valencien · va_lluc · « Sí, divendres a les deu. Li va bé? » · nouveau clip, matxa (locuteur 6, accent valencia)
+-  14.0 s — valencien · va_lluc · « De res. Si hi ha un altre problema, cride'm. » · nouveau clip, matxa (locuteur 6, accent valencia)
+-  17.5 s — valencien · va_lluc · « una avaria » · nouveau clip, matxa (locuteur 6, accent valencia)
+-  19.3 s — valencien · va_lluc · « Podria ser…? » · nouveau clip, matxa (locuteur 6, accent valencia)
+-  20.8 s — valencien · va_lluc · « Que tinga un bon dia! » · nouveau clip, matxa (locuteur 6, accent valencia)
+-  23.0 s — valencien · va_lluc · « Bon dia. Per què vol este treball? » · nouveau clip, matxa (locuteur 6, accent valencia)
+-  25.9 s — valencien · va_lluc · « Té experiència en vendes? » · nouveau clip, matxa (locuteur 6, accent valencia)
+-  28.3 s — valencien · va_lluc · « Molt bé. El treball és a l'oficina, amb un dia de teletreball. » · nouveau clip, matxa (locuteur 6, accent valencia)
+-  33.0 s — valencien · va_lluc · « De nou a cinc, amb un període de prova de dos mesos. » · nouveau clip, matxa (locuteur 6, accent valencia)
+-  36.9 s — valencien · va_lluc · « El mes que ve, si tot va bé. Té alguna pregunta? » · nouveau clip, matxa (locuteur 6, accent valencia)
+-  41.0 s — valencien · va_lluc · « Sí. El cridarem la setmana que ve. » · nouveau clip, matxa (locuteur 6, accent valencia)
+-  44.3 s — valencien · va_lluc · « un contracte indefinit » · nouveau clip, matxa (locuteur 6, accent valencia)
+-  46.6 s — valencien · va_lluc · « Quan començaria? » · nouveau clip, matxa (locuteur 6, accent valencia)
+-  48.6 s — valencien · va_lluc · « Espere la seua cridada » · nouveau clip, matxa (locuteur 6, accent valencia)
+-  51.0 s — valencien · va_lluc · « No és res greu, és un constipat. » · nouveau clip, matxa (locuteur 6, accent valencia)
+-  54.1 s — valencien · va_lluc · « Sí, prenga açò tres vegades al dia, després de menjar. » · nouveau clip, matxa (locuteur 6, accent valencia)
+-  58.4 s — valencien · va_lluc · « Una setmana. I prenga molta aigua. » · nouveau clip, matxa (locuteur 6, accent valencia)
+-  61.6 s — valencien · va_lluc · « Sí, però si no està millor, torne dilluns. » · nouveau clip, matxa (locuteur 6, accent valencia)
+-  65.4 s — valencien · va_lluc · « un constipat » · nouveau clip, matxa (locuteur 6, accent valencia)
+-  67.2 s — valencien · va_lluc · « Menys mal » · nouveau clip, matxa (locuteur 6, accent valencia)
+-  68.8 s — valencien · va_lluc · « Molt bé. Té cita? » · nouveau clip, matxa (locuteur 6, accent valencia)
+-  71.0 s — valencien · va_lluc · « Em deixa el passaport i el contracte de lloguer? » · nouveau clip, matxa (locuteur 6, accent valencia)
+-  74.4 s — valencien · va_lluc · « Sí, però també necessite una factura de la llum. » · nouveau clip, matxa (locuteur 6, accent valencia)
+-  78.3 s — valencien · va_lluc · « Sí, per correu. Té deu dies. » · nouveau clip, matxa (locuteur 6, accent valencia)
+-  81.1 s — valencien · va_lluc · « D'ací a una setmana, més o menys. » · nouveau clip, matxa (locuteur 6, accent valencia)
+-  84.0 s — valencien · va_lluc · « la factura de la llum » · nouveau clip, matxa (locuteur 6, accent valencia)
+-  86.2 s — valencien · va_lluc · « Quan estarà preparat? » · nouveau clip, matxa (locuteur 6, accent valencia)
+-  88.4 s — valencien · va_lluc · « Bona vesprada. En què puc ajudar-lo? » · nouveau clip, matxa (locuteur 6, accent valencia)
+-  91.6 s — valencien · va_lluc · « Ho sent molt. Em deixa el passaport? » · nouveau clip, matxa (locuteur 6, accent valencia)
+-  94.7 s — valencien · va_lluc · « Hui no, però n'hi ha un demà a les set. » · nouveau clip, matxa (locuteur 6, accent valencia)
+-  97.7 s — valencien · va_lluc · « La companyia li paga una habitació prop de l'aeroport. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 101.4 s — valencien · va_lluc · « El seu equipatge viatja amb vosté demà. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 104.5 s — valencien · va_lluc · « Clar, ací té. Perdone les molèsties. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 108.1 s — valencien · va_lluc · « El meu vol no ix » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 110.1 s — valencien · va_lluc · « Perdone les molèsties » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 112.4 s — valencien · va_lluc · « Hola, vull aprendre a cuinar. Què em recomanes? » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 116.0 s — valencien · va_lluc · « Una escola és massa cara. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 118.5 s — valencien · va_lluc · « D'acord. I quin plat faig primer? » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 121.5 s — valencien · va_lluc · « I si em ix malament? » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 123.7 s — valencien · va_lluc · « Tens raó. Vols vindre a menjar? » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 126.5 s — valencien · va_lluc · « Perfecte. Moltes gràcies per la teua ajuda! » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 130.1 s — valencien · va_lluc · « T'aconselle que… » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 132.0 s — valencien · va_lluc · « Et recomane que… » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 133.9 s — valencien · va_lluc · « És normal que isca malament » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 136.6 s — valencien · va_lluc · « quan estiga preparat » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 138.8 s — valencien · va_lluc · « Bon dia, en què el puc ajudar? » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 141.4 s — valencien · va_lluc · « Lamente molt el problema. Quan la va rebre? » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 145.0 s — valencien · va_lluc · « Vol que li n'enviem una altra? » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 147.5 s — valencien · va_lluc · « Sí, clar. Tardarà uns deu dies. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 150.5 s — valencien · va_lluc · « Ho intentaré. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 152.2 s — valencien · va_lluc · « Clar. Perdone les molèsties. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 155.0 s — valencien · va_lluc · « la comanda » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 156.7 s — valencien · va_lluc · « Preferiria que em tornaren els diners » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 159.8 s — valencien · va_lluc · « Espere que tot vaja bé » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 162.2 s — valencien · va_lluc · « Bé, comencem. Com ha anat la facturació este trimestre? » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 166.5 s — valencien · va_lluc · « Molt bé. I les despeses? » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 169.1 s — valencien · va_lluc · « Llavors, hauríem d'invertir més en publicitat? » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 172.6 s — valencien · va_lluc · « Ja, però sense publicitat no hi ha creixement. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 176.4 s — valencien · va_lluc · « Endavant, t'escolte. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 178.6 s — valencien · va_lluc · « Em pareix bé. Pots preparar una proposta? » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 182.0 s — valencien · va_lluc · « les despeses » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 183.9 s — valencien · va_lluc · « Si invertírem… » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 185.8 s — valencien · va_lluc · « Li telefone pel contracte d'arrendament. S'acaba al juny. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 190.0 s — valencien · va_lluc · « El problema és que pujaré el lloguer un quinze per cent. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 194.1 s — valencien · va_lluc · « Els preus han pujat molt al barri. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 196.9 s — valencien · va_lluc · « És veritat, sempre ha pagat bé. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 200.0 s — valencien · va_lluc · « Què proposa? » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 201.7 s — valencien · va_lluc · « Deixe'm pensar-ho i el cride demà. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 204.5 s — valencien · va_lluc · « porte cinc anys pagant » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 206.9 s — valencien · va_lluc · « si firmàrem » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 208.7 s — valencien · va_lluc · « Com va amb el nou tractament? » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 211.2 s — valencien · va_lluc · « Quins símptomes té? » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 213.2 s — valencien · va_lluc · « Passa molt al principi. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 215.6 s — valencien · va_lluc · « Preferisc esperar un poc. Si continua igual, el canviarem. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 220.2 s — valencien · va_lluc · « Sí, no hi ha cap problema. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 222.8 s — valencien · va_lluc · « Sí, i telefone'm si es troba pitjor. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 225.9 s — valencien · va_lluc · « un efecte secundari » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 228.1 s — valencien · va_lluc · « No seria millor…? » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 230.0 s — valencien · va_lluc · « Has vist que en el carrer ja no hi haurà cotxes? » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 233.3 s — valencien · va_lluc · « A mi no m'agrada. Hi haurà més embussos. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 236.8 s — valencien · va_lluc · « Ja, però les botigues perdran clients. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 240.1 s — valencien · va_lluc · « Tu creus? I com anirem al centre? » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 243.2 s — valencien · va_lluc · « Si hi haguera un carril bici, potser el faria servir. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 247.2 s — valencien · va_lluc · « Bé, ja ho veurem. Tant de bo tingues raó. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 250.4 s — valencien · va_lluc · « una zona de vianants » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 252.7 s — valencien · va_lluc · « No crec que siga així » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 254.9 s — valencien · va_lluc · « Hola, volies parlar amb mi? » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 257.4 s — valencien · va_lluc · « Vaja! No m'ho esperava. Per què? » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 260.4 s — valencien · va_lluc · « I si et pagàrem més? » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 262.6 s — valencien · va_lluc · « Ho entenc. Quan te n'aniries? » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 265.1 s — valencien · va_lluc · « Gràcies. Podries deixar-ho tot preparat? » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 268.4 s — valencien · va_lluc · « Gràcies. Et trobarem a faltar. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 271.3 s — valencien · va_lluc · « perquè tingues temps » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 273.4 s — valencien · va_lluc · « trobar a faltar » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 275.2 s — valencien · va_lluc · « M'ha agradat molt » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 277.2 s — valencien · va_lluc · « Gràcies per vindre. Ha sigut una setmana molt dura. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 281.4 s — valencien · va_lluc · « No vaig poder avisar quasi ningú, tot va ser molt ràpid. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 285.7 s — valencien · va_lluc · « Gràcies. No sé quan tornaré a la faena. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 289.0 s — valencien · va_lluc · « Em preocupen els meus clients, la veritat. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 292.6 s — valencien · va_lluc · « No sé com agrair-t'ho. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 294.7 s — valencien · va_lluc · « Ets un sol. Gràcies de veritat. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 297.7 s — valencien · va_lluc · « Si ho haguera sabut » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 299.8 s — valencien · va_lluc · « Pren-te el temps que necessites » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 302.4 s — valencien · va_lluc · « per al que necessites » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 304.6 s — valencien · va_lluc · « L'empresa presentarà un expedient de regulació d'ocupació. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 308.8 s — valencien · va_lluc · « Els números no són bons. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 311.3 s — valencien · va_lluc · « És cert, però enguany va malament. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 314.2 s — valencien · va_lluc · « Això no depén de mi. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 316.4 s — valencien · va_lluc · « No cal arribar a això. Què proposen? » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 319.5 s — valencien · va_lluc · « Ho estudiarem. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 321.3 s — valencien · va_lluc · « un expedient de regulació d'ocupació » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 324.3 s — valencien · va_lluc · « En cas contrari » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 326.3 s — valencien · va_lluc · « prorrogar el preavís » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 328.4 s — valencien · va_lluc · « Bona vesprada a tots. Qui vol parlar primer? » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 331.9 s — valencien · va_lluc · « És un problema que coneixem bé. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 334.6 s — valencien · va_lluc · « Ho sabem, i ho lamentem. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 337.0 s — valencien · va_lluc · « Aprovarem una nova ordenança municipal. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 340.3 s — valencien · va_lluc · « I vosté què proposa? » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 342.4 s — valencien · va_lluc · « Ho estudiarem amb molt d'interés. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 345.1 s — valencien · va_lluc · « mesures concretes » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 347.3 s — valencien · va_lluc · « Segons alguns, la ciutat no necessita més carrils bici. Què n'opina? » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 352.5 s — valencien · va_lluc · « Per què? » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 354.0 s — valencien · va_lluc · « Però hi ha massa cotxes, no? » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 356.5 s — valencien · va_lluc · « Hi ha un estudi que diu que els carrils bici no s'utilitzen. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 360.4 s — valencien · va_lluc · « Ens queda un minut. Alguna cosa més? » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 363.8 s — valencien · va_lluc · « Per acabar, què ens diu? » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 366.2 s — valencien · va_lluc · « No compartisc eixe argument » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 368.9 s — valencien · va_lluc · « No negue que siga… » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 370.8 s — valencien · va_lluc · « Bon dia. Explique'm, quin és el problema? » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 374.5 s — valencien · va_lluc · « Què diu eixa clàusula? » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 376.8 s — valencien · va_lluc · « Això, efectivament, podria ser abusiu. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 380.5 s — valencien · va_lluc · « Primer, el va firmar sense llegir-lo? » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 383.7 s — valencien · va_lluc · « Podem presentar una reclamació. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 386.5 s — valencien · va_lluc · « Uns tres mesos, més o menys. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 389.2 s — valencien · va_lluc · « una clàusula abusiva » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 391.5 s — valencien · va_lluc · « sense preavís » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 393.5 s — valencien · va_lluc · « Benvinguts al celler. Fa cent anys que treballem ací. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 397.7 s — valencien · va_lluc · « Al setembre, a final de l'estiu. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 400.7 s — valencien · va_lluc · « Sobretot una varietat de la zona. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 403.5 s — valencien · va_lluc · « Sí, des de fa trenta anys. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 406.2 s — valencien · va_lluc · « Torne l'any que ve. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 408.1 s — valencien · va_lluc · « Molt pocs, quasi cap. » · nouveau clip, matxa (locuteur 6, accent valencia)
+- 410.3 s — valencien · va_lluc · « M'hauria agradat » · nouveau clip, matxa (locuteur 6, accent valencia)
+
+### ca_elia_nouveaux_textes.mp3
+
+-   0.0 s — catalan · ca_elia · « Digui? » · nouveau clip, matxa (locuteur 3, accent central)
+-   1.3 s — catalan · ca_elia · « Vaja, ho sento. Què li passa? » · nouveau clip, matxa (locuteur 3, accent central)
+-   4.2 s — catalan · ca_elia · « Deu ser una avaria. Trucaré a un tècnic. » · nouveau clip, matxa (locuteur 3, accent central)
+-   7.4 s — catalan · ca_elia · « El tècnic hi pot anar dijous a la tarda. » · nouveau clip, matxa (locuteur 3, accent central)
+-  10.6 s — catalan · ca_elia · « Sí, divendres a les deu. Li va bé? » · nouveau clip, matxa (locuteur 3, accent central)
+-  13.8 s — catalan · ca_elia · « De res. Si hi ha cap altre problema, truqui'm. » · nouveau clip, matxa (locuteur 3, accent central)
+-  17.6 s — catalan · ca_elia · « una avaria » · nouveau clip, matxa (locuteur 3, accent central)
+-  19.3 s — catalan · ca_elia · « Podria ser…? » · nouveau clip, matxa (locuteur 3, accent central)
+-  21.0 s — catalan · ca_elia · « Que tingui un bon dia! » · nouveau clip, matxa (locuteur 3, accent central)
+-  23.1 s — catalan · ca_elia · « Bon dia. Per què vol aquesta feina? » · nouveau clip, matxa (locuteur 3, accent central)
+-  26.2 s — catalan · ca_elia · « Té experiència en vendes? » · nouveau clip, matxa (locuteur 3, accent central)
+-  28.7 s — catalan · ca_elia · « Molt bé. La feina és a l'oficina, amb un dia de teletreball. » · nouveau clip, matxa (locuteur 3, accent central)
+-  33.3 s — catalan · ca_elia · « De nou a cinc, amb un període de prova de dos mesos. » · nouveau clip, matxa (locuteur 3, accent central)
+-  37.3 s — catalan · ca_elia · « El mes que ve, si tot va bé. Té cap pregunta? » · nouveau clip, matxa (locuteur 3, accent central)
+-  41.0 s — catalan · ca_elia · « Sí. Li trucarem la setmana que ve. » · nouveau clip, matxa (locuteur 3, accent central)
+-  44.1 s — catalan · ca_elia · « un contracte indefinit » · nouveau clip, matxa (locuteur 3, accent central)
+-  46.4 s — catalan · ca_elia · « Quan començaria? » · nouveau clip, matxa (locuteur 3, accent central)
+-  48.4 s — catalan · ca_elia · « Espero la seva trucada » · nouveau clip, matxa (locuteur 3, accent central)
+-  50.8 s — catalan · ca_elia · « No és res greu, és un refredat. » · nouveau clip, matxa (locuteur 3, accent central)
+-  53.5 s — catalan · ca_elia · « Sí, prengui això tres vegades al dia, després de menjar. » · nouveau clip, matxa (locuteur 3, accent central)
+-  58.0 s — catalan · ca_elia · « Una setmana. I begui molta aigua. » · nouveau clip, matxa (locuteur 3, accent central)
+-  61.0 s — catalan · ca_elia · « Sí, però si no està millor, torni dilluns. » · nouveau clip, matxa (locuteur 3, accent central)
+-  64.5 s — catalan · ca_elia · « un refredat » · nouveau clip, matxa (locuteur 3, accent central)
+-  66.3 s — catalan · ca_elia · « Menys mal » · nouveau clip, matxa (locuteur 3, accent central)
+-  67.9 s — catalan · ca_elia · « Molt bé. Té cita? » · nouveau clip, matxa (locuteur 3, accent central)
+-  70.2 s — catalan · ca_elia · « Em deixa el passaport i el contracte de lloguer? » · nouveau clip, matxa (locuteur 3, accent central)
+-  73.7 s — catalan · ca_elia · « Sí, però també necessito una factura de la llum. » · nouveau clip, matxa (locuteur 3, accent central)
+-  77.4 s — catalan · ca_elia · « Sí, per correu. Té deu dies. » · nouveau clip, matxa (locuteur 3, accent central)
+-  80.3 s — catalan · ca_elia · « D'aquí a una setmana, més o menys. » · nouveau clip, matxa (locuteur 3, accent central)
+-  83.4 s — catalan · ca_elia · « la factura de la llum » · nouveau clip, matxa (locuteur 3, accent central)
+-  85.6 s — catalan · ca_elia · « Quan estarà preparat? » · nouveau clip, matxa (locuteur 3, accent central)
+-  87.6 s — catalan · ca_elia · « Bona tarda. En què el puc ajudar? » · nouveau clip, matxa (locuteur 3, accent central)
+-  90.6 s — catalan · ca_elia · « Ho sento molt. Em deixa el passaport? » · nouveau clip, matxa (locuteur 3, accent central)
+-  93.8 s — catalan · ca_elia · « Avui no, però n'hi ha un demà a les set. » · nouveau clip, matxa (locuteur 3, accent central)
+-  96.7 s — catalan · ca_elia · « La companyia li paga una habitació a prop de l'aeroport. » · nouveau clip, matxa (locuteur 3, accent central)
+- 100.4 s — catalan · ca_elia · « El seu equipatge viatja amb vostè demà. » · nouveau clip, matxa (locuteur 3, accent central)
+- 103.5 s — catalan · ca_elia · « És clar, aquí té. Perdoni les molèsties. » · nouveau clip, matxa (locuteur 3, accent central)
+- 107.2 s — catalan · ca_elia · « El meu vol no surt » · nouveau clip, matxa (locuteur 3, accent central)
+- 109.3 s — catalan · ca_elia · « Perdoni les molèsties » · nouveau clip, matxa (locuteur 3, accent central)
+- 111.7 s — catalan · ca_elia · « Hola, vull aprendre a cuinar. Què em recomanes? » · nouveau clip, matxa (locuteur 3, accent central)
+- 115.6 s — catalan · ca_elia · « Una escola és massa cara. » · nouveau clip, matxa (locuteur 3, accent central)
+- 118.1 s — catalan · ca_elia · « D'acord. I quin plat faig primer? » · nouveau clip, matxa (locuteur 3, accent central)
+- 121.1 s — catalan · ca_elia · « I si em surt malament? » · nouveau clip, matxa (locuteur 3, accent central)
+- 123.3 s — catalan · ca_elia · « Tens raó. Vols venir a menjar? » · nouveau clip, matxa (locuteur 3, accent central)
+- 126.1 s — catalan · ca_elia · « Perfecte. Moltes gràcies per la teva ajuda! » · nouveau clip, matxa (locuteur 3, accent central)
+- 129.8 s — catalan · ca_elia · « T'aconsello que… » · nouveau clip, matxa (locuteur 3, accent central)
+- 131.6 s — catalan · ca_elia · « Et recomano que… » · nouveau clip, matxa (locuteur 3, accent central)
+- 133.6 s — catalan · ca_elia · « És normal que surti malament » · nouveau clip, matxa (locuteur 3, accent central)
+- 136.3 s — catalan · ca_elia · « quan estigui preparat » · nouveau clip, matxa (locuteur 3, accent central)
+- 138.4 s — catalan · ca_elia · « Lamento molt el problema. Quan el va rebre? » · nouveau clip, matxa (locuteur 3, accent central)
+- 141.9 s — catalan · ca_elia · « Vol que n'hi enviem un altre? » · nouveau clip, matxa (locuteur 3, accent central)
+- 144.3 s — catalan · ca_elia · « Sí, és clar. Tardarà uns deu dies. » · nouveau clip, matxa (locuteur 3, accent central)
+- 147.6 s — catalan · ca_elia · « Ho intentaré. » · nouveau clip, matxa (locuteur 3, accent central)
+- 149.3 s — catalan · ca_elia · « És clar. Perdoni les molèsties. » · nouveau clip, matxa (locuteur 3, accent central)
+- 152.4 s — catalan · ca_elia · « trencat » · nouveau clip, matxa (locuteur 3, accent central)
+- 153.9 s — catalan · ca_elia · « Preferiria que em tornessin els diners » · nouveau clip, matxa (locuteur 3, accent central)
+- 157.0 s — catalan · ca_elia · « Espero que tot vagi bé » · nouveau clip, matxa (locuteur 3, accent central)
+- 159.3 s — catalan · ca_elia · « Bé, comencem. Com ha anat la facturació aquest trimestre? » · nouveau clip, matxa (locuteur 3, accent central)
+- 163.8 s — catalan · ca_elia · « Molt bé. I les despeses? » · nouveau clip, matxa (locuteur 3, accent central)
+- 166.6 s — catalan · ca_elia · « Llavors, hauríem d'invertir més en publicitat? » · nouveau clip, matxa (locuteur 3, accent central)
+- 170.1 s — catalan · ca_elia · « Ja, però sense publicitat no hi ha creixement. » · nouveau clip, matxa (locuteur 3, accent central)
+- 173.7 s — catalan · ca_elia · « Endavant, t'escolto. » · nouveau clip, matxa (locuteur 3, accent central)
+- 175.9 s — catalan · ca_elia · « Em sembla bé. Pots preparar una proposta? » · nouveau clip, matxa (locuteur 3, accent central)
+- 179.5 s — catalan · ca_elia · « Si invertíssim… » · nouveau clip, matxa (locuteur 3, accent central)
+- 181.4 s — catalan · ca_elia · « Li truco pel contracte d'arrendament. S'acaba al juny. » · nouveau clip, matxa (locuteur 3, accent central)
+- 185.3 s — catalan · ca_elia · « El problema és que apujaré el lloguer un quinze per cent. » · nouveau clip, matxa (locuteur 3, accent central)
+- 189.1 s — catalan · ca_elia · « Els preus han pujat molt al barri. » · nouveau clip, matxa (locuteur 3, accent central)
+- 191.9 s — catalan · ca_elia · « És veritat, sempre ha pagat bé. » · nouveau clip, matxa (locuteur 3, accent central)
+- 194.7 s — catalan · ca_elia · « Què proposa? » · nouveau clip, matxa (locuteur 3, accent central)
+- 196.4 s — catalan · ca_elia · « Deixi'm pensar-ho i el truco demà. » · nouveau clip, matxa (locuteur 3, accent central)
+- 199.2 s — catalan · ca_elia · « fa cinc anys que pago » · nouveau clip, matxa (locuteur 3, accent central)
+- 201.3 s — catalan · ca_elia · « si signéssim » · nouveau clip, matxa (locuteur 3, accent central)
+- 203.1 s — catalan · ca_elia · « Com va amb el nou tractament? » · nouveau clip, matxa (locuteur 3, accent central)
+- 205.6 s — catalan · ca_elia · « Quins símptomes té? » · nouveau clip, matxa (locuteur 3, accent central)
+- 207.6 s — catalan · ca_elia · « Passa molt al principi. » · nouveau clip, matxa (locuteur 3, accent central)
+- 209.9 s — catalan · ca_elia · « Prefereixo esperar una mica. Si continués igual, el canviaríem. » · nouveau clip, matxa (locuteur 3, accent central)
+- 214.7 s — catalan · ca_elia · « Sí, no hi ha cap problema. » · nouveau clip, matxa (locuteur 3, accent central)
+- 217.2 s — catalan · ca_elia · « Sí, i truqui'm si es troba pitjor. » · nouveau clip, matxa (locuteur 3, accent central)
+- 220.0 s — catalan · ca_elia · « els efectes secundaris » · nouveau clip, matxa (locuteur 3, accent central)
+- 222.5 s — catalan · ca_elia · « No seria millor…? » · nouveau clip, matxa (locuteur 3, accent central)
+- 224.5 s — catalan · ca_elia · « Has vist que tancaran el carrer als cotxes? » · nouveau clip, matxa (locuteur 3, accent central)
+- 227.7 s — catalan · ca_elia · « A mi no m'agrada. Hi haurà més embussos. » · nouveau clip, matxa (locuteur 3, accent central)
+- 231.1 s — catalan · ca_elia · « Ja, però les botigues perdran clients. » · nouveau clip, matxa (locuteur 3, accent central)
+- 234.5 s — catalan · ca_elia · « Tu creus? I com anirem al centre? » · nouveau clip, matxa (locuteur 3, accent central)
+- 237.6 s — catalan · ca_elia · « Si hi hagués un carril bici, potser el faria servir. » · nouveau clip, matxa (locuteur 3, accent central)
+- 241.2 s — catalan · ca_elia · « Bé, ja ho veurem. Tant de bo tinguis raó. » · nouveau clip, matxa (locuteur 3, accent central)
+- 244.6 s — catalan · ca_elia · « una zona de vianants » · nouveau clip, matxa (locuteur 3, accent central)
+- 247.0 s — catalan · ca_elia · « No crec que sigui així » · nouveau clip, matxa (locuteur 3, accent central)
+- 249.2 s — catalan · ca_elia · « Hola, volies parlar amb mi? » · nouveau clip, matxa (locuteur 3, accent central)
+- 251.6 s — catalan · ca_elia · « Vaja! No m'ho esperava. Per què? » · nouveau clip, matxa (locuteur 3, accent central)
+- 254.4 s — catalan · ca_elia · « I si et paguéssim més? » · nouveau clip, matxa (locuteur 3, accent central)
+- 256.6 s — catalan · ca_elia · « Ho entenc. Quan te n'aniries? » · nouveau clip, matxa (locuteur 3, accent central)
+- 259.3 s — catalan · ca_elia · « Gràcies. Podries deixar-ho tot preparat? » · nouveau clip, matxa (locuteur 3, accent central)
+- 262.6 s — catalan · ca_elia · « Gràcies. Et trobarem a faltar. » · nouveau clip, matxa (locuteur 3, accent central)
+- 265.5 s — catalan · ca_elia · « perquè tinguis temps » · nouveau clip, matxa (locuteur 3, accent central)
+- 267.7 s — catalan · ca_elia · « trobar a faltar » · nouveau clip, matxa (locuteur 3, accent central)
+- 269.5 s — catalan · ca_elia · « M'ha agradat molt » · nouveau clip, matxa (locuteur 3, accent central)
+- 271.4 s — catalan · ca_elia · « Gràcies per venir. Ha estat una setmana molt dura. » · nouveau clip, matxa (locuteur 3, accent central)
+- 275.1 s — catalan · ca_elia · « No vaig poder avisar gairebé ningú, tot va anar molt de pressa. » · nouveau clip, matxa (locuteur 3, accent central)
+- 279.5 s — catalan · ca_elia · « Gràcies. No sé quan tornaré a la feina. » · nouveau clip, matxa (locuteur 3, accent central)
+- 282.8 s — catalan · ca_elia · « Em preocupen els meus clients, la veritat. » · nouveau clip, matxa (locuteur 3, accent central)
+- 286.1 s — catalan · ca_elia · « No sé com agrair-t'ho. » · nouveau clip, matxa (locuteur 3, accent central)
+- 288.3 s — catalan · ca_elia · « Ets un sol. Gràcies de veritat. » · nouveau clip, matxa (locuteur 3, accent central)
+- 291.3 s — catalan · ca_elia · « Si ho hagués sabut » · nouveau clip, matxa (locuteur 3, accent central)
+- 293.3 s — catalan · ca_elia · « Pren-te el temps que necessitis » · nouveau clip, matxa (locuteur 3, accent central)
+- 295.9 s — catalan · ca_elia · « per al que necessitis » · nouveau clip, matxa (locuteur 3, accent central)
+- 298.2 s — catalan · ca_elia · « L'empresa presentarà un expedient de regulació d'ocupació. » · nouveau clip, matxa (locuteur 3, accent central)
+- 302.3 s — catalan · ca_elia · « Els números no són bons. » · nouveau clip, matxa (locuteur 3, accent central)
+- 304.8 s — catalan · ca_elia · « És cert, però aquest any va malament. » · nouveau clip, matxa (locuteur 3, accent central)
+- 307.8 s — catalan · ca_elia · « Això no depèn de mi. » · nouveau clip, matxa (locuteur 3, accent central)
+- 310.0 s — catalan · ca_elia · « No cal arribar a això. Què proposen? » · nouveau clip, matxa (locuteur 3, accent central)
+- 312.9 s — catalan · ca_elia · « Ho estudiarem amb la direcció. » · nouveau clip, matxa (locuteur 3, accent central)
+- 315.4 s — catalan · ca_elia · « un expedient de regulació d'ocupació » · nouveau clip, matxa (locuteur 3, accent central)
+- 318.4 s — catalan · ca_elia · « En cas contrari » · nouveau clip, matxa (locuteur 3, accent central)
+- 320.4 s — catalan · ca_elia · « prorrogar el preavís » · nouveau clip, matxa (locuteur 3, accent central)
+- 322.5 s — catalan · ca_elia · « Bona tarda a tothom. Qui vol parlar primer? » · nouveau clip, matxa (locuteur 3, accent central)
+- 325.9 s — catalan · ca_elia · « És un problema que coneixem bé. » · nouveau clip, matxa (locuteur 3, accent central)
+- 328.6 s — catalan · ca_elia · « Ho sabem, i ho lamentem. » · nouveau clip, matxa (locuteur 3, accent central)
+- 331.1 s — catalan · ca_elia · « Aprovarem una nova ordenança municipal. » · nouveau clip, matxa (locuteur 3, accent central)
+- 334.4 s — catalan · ca_elia · « I vostè què proposa? » · nouveau clip, matxa (locuteur 3, accent central)
+- 336.5 s — catalan · ca_elia · « Ho estudiarem amb molt d'interès. » · nouveau clip, matxa (locuteur 3, accent central)
+- 339.2 s — catalan · ca_elia · « mesures concretes » · nouveau clip, matxa (locuteur 3, accent central)
+- 341.5 s — catalan · ca_elia · « Segons alguns, la ciutat no necessita més carrils bici. Què en pensa? » · nouveau clip, matxa (locuteur 3, accent central)
+- 346.6 s — catalan · ca_elia · « Per què? » · nouveau clip, matxa (locuteur 3, accent central)
+- 348.1 s — catalan · ca_elia · « Però hi ha massa cotxes, oi? » · nouveau clip, matxa (locuteur 3, accent central)
+- 350.6 s — catalan · ca_elia · « Hi ha un estudi que diu que els carrils bici no s'utilitzen. » · nouveau clip, matxa (locuteur 3, accent central)
+- 354.6 s — catalan · ca_elia · « Ens queda un minut. Res més? » · nouveau clip, matxa (locuteur 3, accent central)
+- 357.4 s — catalan · ca_elia · « Per acabar, què ens diu? » · nouveau clip, matxa (locuteur 3, accent central)
+- 359.7 s — catalan · ca_elia · « No comparteixo aquest argument » · nouveau clip, matxa (locuteur 3, accent central)
+- 362.4 s — catalan · ca_elia · « No nego que sigui… » · nouveau clip, matxa (locuteur 3, accent central)
+- 364.4 s — catalan · ca_elia · « Bon dia. Expliqui'm, quin és el problema? » · nouveau clip, matxa (locuteur 3, accent central)
+- 368.1 s — catalan · ca_elia · « Què diu aquesta clàusula? » · nouveau clip, matxa (locuteur 3, accent central)
+- 370.4 s — catalan · ca_elia · « Això, efectivament, podria ser abusiu. » · nouveau clip, matxa (locuteur 3, accent central)
+- 374.0 s — catalan · ca_elia · « Primer, el va signar sense llegir-lo? » · nouveau clip, matxa (locuteur 3, accent central)
+- 377.3 s — catalan · ca_elia · « Podem presentar una reclamació. » · nouveau clip, matxa (locuteur 3, accent central)
+- 379.9 s — catalan · ca_elia · « Uns tres mesos, més o menys. » · nouveau clip, matxa (locuteur 3, accent central)
+- 382.7 s — catalan · ca_elia · « una clàusula abusiva » · nouveau clip, matxa (locuteur 3, accent central)
+- 385.0 s — catalan · ca_elia · « sense preavís » · nouveau clip, matxa (locuteur 3, accent central)
+- 387.0 s — catalan · ca_elia · « Benvinguts al celler. Fa cent anys que treballem aquí. » · nouveau clip, matxa (locuteur 3, accent central)
+- 391.2 s — catalan · ca_elia · « Al setembre, a final de l'estiu. » · nouveau clip, matxa (locuteur 3, accent central)
+- 394.2 s — catalan · ca_elia · « Sobretot una varietat de la zona. » · nouveau clip, matxa (locuteur 3, accent central)
+- 397.0 s — catalan · ca_elia · « Sí, des de fa trenta anys. » · nouveau clip, matxa (locuteur 3, accent central)
+- 399.8 s — catalan · ca_elia · « Torni l'any que ve. » · nouveau clip, matxa (locuteur 3, accent central)
+- 401.7 s — catalan · ca_elia · « Molt pocs, gairebé cap. » · nouveau clip, matxa (locuteur 3, accent central)
+- 404.1 s — catalan · ca_elia · « M'hauria agradat » · nouveau clip, matxa (locuteur 3, accent central)
+
+### ca_grau_nouveaux_textes.mp3
+
+-   0.0 s — catalan · ca_grau · « Digui? » · nouveau clip, matxa (locuteur 2, accent central)
+-   1.3 s — catalan · ca_grau · « Vaja, ho sento. Què li passa? » · nouveau clip, matxa (locuteur 2, accent central)
+-   4.1 s — catalan · ca_grau · « Deu ser una avaria. Trucaré a un tècnic. » · nouveau clip, matxa (locuteur 2, accent central)
+-   7.7 s — catalan · ca_grau · « El tècnic hi pot anar dijous a la tarda. » · nouveau clip, matxa (locuteur 2, accent central)
+-  10.8 s — catalan · ca_grau · « Sí, divendres a les deu. Li va bé? » · nouveau clip, matxa (locuteur 2, accent central)
+-  14.1 s — catalan · ca_grau · « De res. Si hi ha cap altre problema, truqui'm. » · nouveau clip, matxa (locuteur 2, accent central)
+-  17.8 s — catalan · ca_grau · « una avaria » · nouveau clip, matxa (locuteur 2, accent central)
+-  19.5 s — catalan · ca_grau · « Podria ser…? » · nouveau clip, matxa (locuteur 2, accent central)
+-  21.1 s — catalan · ca_grau · « Que tingui un bon dia! » · nouveau clip, matxa (locuteur 2, accent central)
+-  23.2 s — catalan · ca_grau · « Bon dia. Per què vol aquesta feina? » · nouveau clip, matxa (locuteur 2, accent central)
+-  26.3 s — catalan · ca_grau · « Té experiència en vendes? » · nouveau clip, matxa (locuteur 2, accent central)
+-  28.8 s — catalan · ca_grau · « Molt bé. La feina és a l'oficina, amb un dia de teletreball. » · nouveau clip, matxa (locuteur 2, accent central)
+-  33.4 s — catalan · ca_grau · « De nou a cinc, amb un període de prova de dos mesos. » · nouveau clip, matxa (locuteur 2, accent central)
+-  37.5 s — catalan · ca_grau · « El mes que ve, si tot va bé. Té cap pregunta? » · nouveau clip, matxa (locuteur 2, accent central)
+-  41.1 s — catalan · ca_grau · « Sí. Li trucarem la setmana que ve. » · nouveau clip, matxa (locuteur 2, accent central)
+-  44.3 s — catalan · ca_grau · « un contracte indefinit » · nouveau clip, matxa (locuteur 2, accent central)
+-  46.5 s — catalan · ca_grau · « Quan començaria? » · nouveau clip, matxa (locuteur 2, accent central)
+-  48.4 s — catalan · ca_grau · « Espero la seva trucada » · nouveau clip, matxa (locuteur 2, accent central)
+-  50.8 s — catalan · ca_grau · « No és res greu, és un refredat. » · nouveau clip, matxa (locuteur 2, accent central)
+-  53.6 s — catalan · ca_grau · « Sí, prengui això tres vegades al dia, després de menjar. » · nouveau clip, matxa (locuteur 2, accent central)
+-  58.1 s — catalan · ca_grau · « Una setmana. I begui molta aigua. » · nouveau clip, matxa (locuteur 2, accent central)
+-  61.2 s — catalan · ca_grau · « Sí, però si no està millor, torni dilluns. » · nouveau clip, matxa (locuteur 2, accent central)
+-  64.8 s — catalan · ca_grau · « un refredat » · nouveau clip, matxa (locuteur 2, accent central)
+-  66.4 s — catalan · ca_grau · « Menys mal » · nouveau clip, matxa (locuteur 2, accent central)
+-  68.0 s — catalan · ca_grau · « Molt bé. Té cita? » · nouveau clip, matxa (locuteur 2, accent central)
+-  70.2 s — catalan · ca_grau · « Em deixa el passaport i el contracte de lloguer? » · nouveau clip, matxa (locuteur 2, accent central)
+-  73.7 s — catalan · ca_grau · « Sí, però també necessito una factura de la llum. » · nouveau clip, matxa (locuteur 2, accent central)
+-  77.4 s — catalan · ca_grau · « Sí, per correu. Té deu dies. » · nouveau clip, matxa (locuteur 2, accent central)
+-  80.3 s — catalan · ca_grau · « D'aquí a una setmana, més o menys. » · nouveau clip, matxa (locuteur 2, accent central)
+-  83.3 s — catalan · ca_grau · « la factura de la llum » · nouveau clip, matxa (locuteur 2, accent central)
+-  85.5 s — catalan · ca_grau · « Quan estarà preparat? » · nouveau clip, matxa (locuteur 2, accent central)
+-  87.5 s — catalan · ca_grau · « Bona tarda. En què el puc ajudar? » · nouveau clip, matxa (locuteur 2, accent central)
+-  90.6 s — catalan · ca_grau · « Ho sento molt. Em deixa el passaport? » · nouveau clip, matxa (locuteur 2, accent central)
+-  93.7 s — catalan · ca_grau · « Avui no, però n'hi ha un demà a les set. » · nouveau clip, matxa (locuteur 2, accent central)
+-  96.7 s — catalan · ca_grau · « La companyia li paga una habitació a prop de l'aeroport. » · nouveau clip, matxa (locuteur 2, accent central)
+- 100.5 s — catalan · ca_grau · « El seu equipatge viatja amb vostè demà. » · nouveau clip, matxa (locuteur 2, accent central)
+- 103.5 s — catalan · ca_grau · « És clar, aquí té. Perdoni les molèsties. » · nouveau clip, matxa (locuteur 2, accent central)
+- 107.2 s — catalan · ca_grau · « El meu vol no surt » · nouveau clip, matxa (locuteur 2, accent central)
+- 109.2 s — catalan · ca_grau · « Perdoni les molèsties » · nouveau clip, matxa (locuteur 2, accent central)
+- 111.5 s — catalan · ca_grau · « Hola, vull aprendre a cuinar. Què em recomanes? » · nouveau clip, matxa (locuteur 2, accent central)
+- 115.1 s — catalan · ca_grau · « Una escola és massa cara. » · nouveau clip, matxa (locuteur 2, accent central)
+- 117.6 s — catalan · ca_grau · « D'acord. I quin plat faig primer? » · nouveau clip, matxa (locuteur 2, accent central)
+- 120.6 s — catalan · ca_grau · « I si em surt malament? » · nouveau clip, matxa (locuteur 2, accent central)
+- 122.7 s — catalan · ca_grau · « Tens raó. Vols venir a menjar? » · nouveau clip, matxa (locuteur 2, accent central)
+- 125.6 s — catalan · ca_grau · « Perfecte. Moltes gràcies per la teva ajuda! » · nouveau clip, matxa (locuteur 2, accent central)
+- 129.3 s — catalan · ca_grau · « T'aconsello que… » · nouveau clip, matxa (locuteur 2, accent central)
+- 131.1 s — catalan · ca_grau · « Et recomano que… » · nouveau clip, matxa (locuteur 2, accent central)
+- 133.0 s — catalan · ca_grau · « És normal que surti malament » · nouveau clip, matxa (locuteur 2, accent central)
+- 135.6 s — catalan · ca_grau · « quan estigui preparat » · nouveau clip, matxa (locuteur 2, accent central)
+- 137.6 s — catalan · ca_grau · « Lamento molt el problema. Quan el va rebre? » · nouveau clip, matxa (locuteur 2, accent central)
+- 141.1 s — catalan · ca_grau · « Vol que n'hi enviem un altre? » · nouveau clip, matxa (locuteur 2, accent central)
+- 143.6 s — catalan · ca_grau · « Sí, és clar. Tardarà uns deu dies. » · nouveau clip, matxa (locuteur 2, accent central)
+- 146.9 s — catalan · ca_grau · « Ho intentaré. » · nouveau clip, matxa (locuteur 2, accent central)
+- 148.6 s — catalan · ca_grau · « És clar. Perdoni les molèsties. » · nouveau clip, matxa (locuteur 2, accent central)
+- 151.7 s — catalan · ca_grau · « trencat » · nouveau clip, matxa (locuteur 2, accent central)
+- 153.1 s — catalan · ca_grau · « Preferiria que em tornessin els diners » · nouveau clip, matxa (locuteur 2, accent central)
+- 156.2 s — catalan · ca_grau · « Espero que tot vagi bé » · nouveau clip, matxa (locuteur 2, accent central)
+- 158.5 s — catalan · ca_grau · « Bé, comencem. Com ha anat la facturació aquest trimestre? » · nouveau clip, matxa (locuteur 2, accent central)
+- 163.1 s — catalan · ca_grau · « Molt bé. I les despeses? » · nouveau clip, matxa (locuteur 2, accent central)
+- 165.8 s — catalan · ca_grau · « Llavors, hauríem d'invertir més en publicitat? » · nouveau clip, matxa (locuteur 2, accent central)
+- 169.5 s — catalan · ca_grau · « Ja, però sense publicitat no hi ha creixement. » · nouveau clip, matxa (locuteur 2, accent central)
+- 173.2 s — catalan · ca_grau · « Endavant, t'escolto. » · nouveau clip, matxa (locuteur 2, accent central)
+- 175.5 s — catalan · ca_grau · « Em sembla bé. Pots preparar una proposta? » · nouveau clip, matxa (locuteur 2, accent central)
+- 179.1 s — catalan · ca_grau · « Si invertíssim… » · nouveau clip, matxa (locuteur 2, accent central)
+- 181.0 s — catalan · ca_grau · « Li truco pel contracte d'arrendament. S'acaba al juny. » · nouveau clip, matxa (locuteur 2, accent central)
+- 185.0 s — catalan · ca_grau · « El problema és que apujaré el lloguer un quinze per cent. » · nouveau clip, matxa (locuteur 2, accent central)
+- 188.8 s — catalan · ca_grau · « Els preus han pujat molt al barri. » · nouveau clip, matxa (locuteur 2, accent central)
+- 191.7 s — catalan · ca_grau · « És veritat, sempre ha pagat bé. » · nouveau clip, matxa (locuteur 2, accent central)
+- 194.5 s — catalan · ca_grau · « Què proposa? » · nouveau clip, matxa (locuteur 2, accent central)
+- 196.2 s — catalan · ca_grau · « Deixi'm pensar-ho i el truco demà. » · nouveau clip, matxa (locuteur 2, accent central)
+- 199.0 s — catalan · ca_grau · « fa cinc anys que pago » · nouveau clip, matxa (locuteur 2, accent central)
+- 201.2 s — catalan · ca_grau · « si signéssim » · nouveau clip, matxa (locuteur 2, accent central)
+- 202.9 s — catalan · ca_grau · « Com va amb el nou tractament? » · nouveau clip, matxa (locuteur 2, accent central)
+- 205.4 s — catalan · ca_grau · « Quins símptomes té? » · nouveau clip, matxa (locuteur 2, accent central)
+- 207.4 s — catalan · ca_grau · « Passa molt al principi. » · nouveau clip, matxa (locuteur 2, accent central)
+- 209.6 s — catalan · ca_grau · « Prefereixo esperar una mica. Si continués igual, el canviaríem. » · nouveau clip, matxa (locuteur 2, accent central)
+- 214.5 s — catalan · ca_grau · « Sí, no hi ha cap problema. » · nouveau clip, matxa (locuteur 2, accent central)
+- 217.1 s — catalan · ca_grau · « Sí, i truqui'm si es troba pitjor. » · nouveau clip, matxa (locuteur 2, accent central)
+- 220.0 s — catalan · ca_grau · « els efectes secundaris » · nouveau clip, matxa (locuteur 2, accent central)
+- 222.4 s — catalan · ca_grau · « No seria millor…? » · nouveau clip, matxa (locuteur 2, accent central)
+- 224.4 s — catalan · ca_grau · « Has vist que tancaran el carrer als cotxes? » · nouveau clip, matxa (locuteur 2, accent central)
+- 227.6 s — catalan · ca_grau · « A mi no m'agrada. Hi haurà més embussos. » · nouveau clip, matxa (locuteur 2, accent central)
+- 231.0 s — catalan · ca_grau · « Ja, però les botigues perdran clients. » · nouveau clip, matxa (locuteur 2, accent central)
+- 234.3 s — catalan · ca_grau · « Tu creus? I com anirem al centre? » · nouveau clip, matxa (locuteur 2, accent central)
+- 237.3 s — catalan · ca_grau · « Si hi hagués un carril bici, potser el faria servir. » · nouveau clip, matxa (locuteur 2, accent central)
+- 241.0 s — catalan · ca_grau · « Bé, ja ho veurem. Tant de bo tinguis raó. » · nouveau clip, matxa (locuteur 2, accent central)
+- 244.6 s — catalan · ca_grau · « una zona de vianants » · nouveau clip, matxa (locuteur 2, accent central)
+- 246.8 s — catalan · ca_grau · « No crec que sigui així » · nouveau clip, matxa (locuteur 2, accent central)
+- 248.9 s — catalan · ca_grau · « Hola, volies parlar amb mi? » · nouveau clip, matxa (locuteur 2, accent central)
+- 251.3 s — catalan · ca_grau · « Vaja! No m'ho esperava. Per què? » · nouveau clip, matxa (locuteur 2, accent central)
+- 254.2 s — catalan · ca_grau · « I si et paguéssim més? » · nouveau clip, matxa (locuteur 2, accent central)
+- 256.3 s — catalan · ca_grau · « Ho entenc. Quan te n'aniries? » · nouveau clip, matxa (locuteur 2, accent central)
+- 259.1 s — catalan · ca_grau · « Gràcies. Podries deixar-ho tot preparat? » · nouveau clip, matxa (locuteur 2, accent central)
+- 262.3 s — catalan · ca_grau · « Gràcies. Et trobarem a faltar. » · nouveau clip, matxa (locuteur 2, accent central)
+- 265.3 s — catalan · ca_grau · « perquè tinguis temps » · nouveau clip, matxa (locuteur 2, accent central)
+- 267.5 s — catalan · ca_grau · « trobar a faltar » · nouveau clip, matxa (locuteur 2, accent central)
+- 269.3 s — catalan · ca_grau · « M'ha agradat molt » · nouveau clip, matxa (locuteur 2, accent central)
+- 271.2 s — catalan · ca_grau · « Gràcies per venir. Ha estat una setmana molt dura. » · nouveau clip, matxa (locuteur 2, accent central)
+- 275.2 s — catalan · ca_grau · « No vaig poder avisar gairebé ningú, tot va anar molt de pressa. » · nouveau clip, matxa (locuteur 2, accent central)
+- 279.6 s — catalan · ca_grau · « Gràcies. No sé quan tornaré a la feina. » · nouveau clip, matxa (locuteur 2, accent central)
+- 283.1 s — catalan · ca_grau · « Em preocupen els meus clients, la veritat. » · nouveau clip, matxa (locuteur 2, accent central)
+- 286.5 s — catalan · ca_grau · « No sé com agrair-t'ho. » · nouveau clip, matxa (locuteur 2, accent central)
+- 288.6 s — catalan · ca_grau · « Ets un sol. Gràcies de veritat. » · nouveau clip, matxa (locuteur 2, accent central)
+- 291.7 s — catalan · ca_grau · « Si ho hagués sabut » · nouveau clip, matxa (locuteur 2, accent central)
+- 293.6 s — catalan · ca_grau · « Pren-te el temps que necessitis » · nouveau clip, matxa (locuteur 2, accent central)
+- 296.3 s — catalan · ca_grau · « per al que necessitis » · nouveau clip, matxa (locuteur 2, accent central)
+- 298.5 s — catalan · ca_grau · « L'empresa presentarà un expedient de regulació d'ocupació. » · nouveau clip, matxa (locuteur 2, accent central)
+- 302.6 s — catalan · ca_grau · « Els números no són bons. » · nouveau clip, matxa (locuteur 2, accent central)
+- 305.2 s — catalan · ca_grau · « És cert, però aquest any va malament. » · nouveau clip, matxa (locuteur 2, accent central)
+- 308.3 s — catalan · ca_grau · « Això no depèn de mi. » · nouveau clip, matxa (locuteur 2, accent central)
+- 310.4 s — catalan · ca_grau · « No cal arribar a això. Què proposen? » · nouveau clip, matxa (locuteur 2, accent central)
+- 313.5 s — catalan · ca_grau · « Ho estudiarem amb la direcció. » · nouveau clip, matxa (locuteur 2, accent central)
+- 316.0 s — catalan · ca_grau · « un expedient de regulació d'ocupació » · nouveau clip, matxa (locuteur 2, accent central)
+- 319.0 s — catalan · ca_grau · « En cas contrari » · nouveau clip, matxa (locuteur 2, accent central)
+- 321.0 s — catalan · ca_grau · « prorrogar el preavís » · nouveau clip, matxa (locuteur 2, accent central)
+- 323.0 s — catalan · ca_grau · « Bona tarda a tothom. Qui vol parlar primer? » · nouveau clip, matxa (locuteur 2, accent central)
+- 326.4 s — catalan · ca_grau · « És un problema que coneixem bé. » · nouveau clip, matxa (locuteur 2, accent central)
+- 329.1 s — catalan · ca_grau · « Ho sabem, i ho lamentem. » · nouveau clip, matxa (locuteur 2, accent central)
+- 331.7 s — catalan · ca_grau · « Aprovarem una nova ordenança municipal. » · nouveau clip, matxa (locuteur 2, accent central)
+- 335.1 s — catalan · ca_grau · « I vostè què proposa? » · nouveau clip, matxa (locuteur 2, accent central)
+- 337.3 s — catalan · ca_grau · « Ho estudiarem amb molt d'interès. » · nouveau clip, matxa (locuteur 2, accent central)
+- 340.0 s — catalan · ca_grau · « mesures concretes » · nouveau clip, matxa (locuteur 2, accent central)
+- 342.2 s — catalan · ca_grau · « Segons alguns, la ciutat no necessita més carrils bici. Què en pensa? » · nouveau clip, matxa (locuteur 2, accent central)
+- 347.5 s — catalan · ca_grau · « Per què? » · nouveau clip, matxa (locuteur 2, accent central)
+- 348.9 s — catalan · ca_grau · « Però hi ha massa cotxes, oi? » · nouveau clip, matxa (locuteur 2, accent central)
+- 351.4 s — catalan · ca_grau · « Hi ha un estudi que diu que els carrils bici no s'utilitzen. » · nouveau clip, matxa (locuteur 2, accent central)
+- 355.3 s — catalan · ca_grau · « Ens queda un minut. Res més? » · nouveau clip, matxa (locuteur 2, accent central)
+- 358.1 s — catalan · ca_grau · « Per acabar, què ens diu? » · nouveau clip, matxa (locuteur 2, accent central)
+- 360.4 s — catalan · ca_grau · « No comparteixo aquest argument » · nouveau clip, matxa (locuteur 2, accent central)
+- 363.1 s — catalan · ca_grau · « No nego que sigui… » · nouveau clip, matxa (locuteur 2, accent central)
+- 365.0 s — catalan · ca_grau · « Bon dia. Expliqui'm, quin és el problema? » · nouveau clip, matxa (locuteur 2, accent central)
+- 368.8 s — catalan · ca_grau · « Què diu aquesta clàusula? » · nouveau clip, matxa (locuteur 2, accent central)
+- 371.1 s — catalan · ca_grau · « Això, efectivament, podria ser abusiu. » · nouveau clip, matxa (locuteur 2, accent central)
+- 374.7 s — catalan · ca_grau · « Primer, el va signar sense llegir-lo? » · nouveau clip, matxa (locuteur 2, accent central)
+- 377.9 s — catalan · ca_grau · « Podem presentar una reclamació. » · nouveau clip, matxa (locuteur 2, accent central)
+- 380.6 s — catalan · ca_grau · « Uns tres mesos, més o menys. » · nouveau clip, matxa (locuteur 2, accent central)
+- 383.4 s — catalan · ca_grau · « una clàusula abusiva » · nouveau clip, matxa (locuteur 2, accent central)
+- 385.6 s — catalan · ca_grau · « sense preavís » · nouveau clip, matxa (locuteur 2, accent central)
+- 387.6 s — catalan · ca_grau · « Benvinguts al celler. Fa cent anys que treballem aquí. » · nouveau clip, matxa (locuteur 2, accent central)
+- 391.7 s — catalan · ca_grau · « Al setembre, a final de l'estiu. » · nouveau clip, matxa (locuteur 2, accent central)
+- 394.6 s — catalan · ca_grau · « Sobretot una varietat de la zona. » · nouveau clip, matxa (locuteur 2, accent central)
+- 397.5 s — catalan · ca_grau · « Sí, des de fa trenta anys. » · nouveau clip, matxa (locuteur 2, accent central)
+- 400.3 s — catalan · ca_grau · « Torni l'any que ve. » · nouveau clip, matxa (locuteur 2, accent central)
+- 402.1 s — catalan · ca_grau · « Molt pocs, gairebé cap. » · nouveau clip, matxa (locuteur 2, accent central)
+- 404.5 s — catalan · ca_grau · « M'hauria agradat » · nouveau clip, matxa (locuteur 2, accent central)
+
+### gl_a_nouveaux_textes.mp3
+
+-   0.0 s — galicien · gl_a · « Si, dígame? » · nouveau clip, hitz_gl_iago
+-   1.8 s — galicien · gl_a · « Vaia, síntoo. Que lle pasa? » · nouveau clip, hitz_gl_iago
+-   5.2 s — galicien · gl_a · « Será unha avaría. Vou chamar un técnico. » · nouveau clip, hitz_gl_iago
+-   9.0 s — galicien · gl_a · « O técnico pode ir o xoves pola tarde. » · nouveau clip, hitz_gl_iago
+-  12.1 s — galicien · gl_a · « Si, o venres ás dez. Vaille ben? » · nouveau clip, hitz_gl_iago
+-  15.6 s — galicien · gl_a · « De nada. Se hai outro problema, chámeme. » · nouveau clip, hitz_gl_iago
+-  19.4 s — galicien · gl_a · « unha avaría » · nouveau clip, hitz_gl_iago
+-  21.2 s — galicien · gl_a · « Podería ser…? » · nouveau clip, hitz_gl_iago
+-  22.9 s — galicien · gl_a · « Que teña un bo día! » · nouveau clip, hitz_gl_iago
+-  24.9 s — galicien · gl_a · « Bos días. Por que quere este posto? » · nouveau clip, hitz_gl_iago
+-  28.4 s — galicien · gl_a · « Ten experiencia en vendas? » · nouveau clip, hitz_gl_iago
+-  30.7 s — galicien · gl_a · « Moi ben. O posto é na oficina, cun día de teletraballo. » · nouveau clip, hitz_gl_iago
+-  35.5 s — galicien · gl_a · « De nove a cinco, cun período de proba de dous meses. » · nouveau clip, hitz_gl_iago
+-  39.5 s — galicien · gl_a · « O mes que vén, se todo vai ben. Ten algunha pregunta? » · nouveau clip, hitz_gl_iago
+-  43.9 s — galicien · gl_a · « Si. Chamarémolo a semana que vén. » · nouveau clip, hitz_gl_iago
+-  47.3 s — galicien · gl_a · « o posto » · nouveau clip, hitz_gl_iago
+-  48.9 s — galicien · gl_a · « un contrato indefinido » · nouveau clip, hitz_gl_iago
+-  51.2 s — galicien · gl_a · « Cando comezaría? » · nouveau clip, hitz_gl_iago
+-  53.2 s — galicien · gl_a · « Non é nada grave, é un arrefriado. » · nouveau clip, hitz_gl_iago
+-  56.4 s — galicien · gl_a · « Si, tome isto tres veces ao día, despois de comer. » · nouveau clip, hitz_gl_iago
+-  60.2 s — galicien · gl_a · « Unha semana. E beba moita auga. » · nouveau clip, hitz_gl_iago
+-  63.6 s — galicien · gl_a · « Si, pero se non está mellor, volva o luns. » · nouveau clip, hitz_gl_iago
+-  67.1 s — galicien · gl_a · « un arrefriado » · nouveau clip, hitz_gl_iago
+-  69.0 s — galicien · gl_a · « Menos mal » · nouveau clip, hitz_gl_iago
+-  70.7 s — galicien · gl_a · « Moi ben. Ten cita? » · nouveau clip, hitz_gl_iago
+-  73.7 s — galicien · gl_a · « Déixeme o seu pasaporte e o contrato de aluguer? » · nouveau clip, hitz_gl_iago
+-  76.8 s — galicien · gl_a · « Si, pero tamén necesito unha factura da luz. » · nouveau clip, hitz_gl_iago
+-  80.1 s — galicien · gl_a · « Si, por correo. Ten dez días. » · nouveau clip, hitz_gl_iago
+-  83.7 s — galicien · gl_a · « Nunha semana, máis ou menos. » · nouveau clip, hitz_gl_iago
+-  86.5 s — galicien · gl_a · « a factura da luz » · nouveau clip, hitz_gl_iago
+-  88.6 s — galicien · gl_a · « Cando estará listo? » · nouveau clip, hitz_gl_iago
+-  90.5 s — galicien · gl_a · « Boas tardes. En que podo axudalo? » · nouveau clip, hitz_gl_iago
+-  94.0 s — galicien · gl_a · « Síntoo moito. Déixeme o seu pasaporte? » · nouveau clip, hitz_gl_iago
+-  97.9 s — galicien · gl_a · « Hoxe non, pero hai un mañá ás sete. » · nouveau clip, hitz_gl_iago
+- 100.7 s — galicien · gl_a · « A compañía págalle unha habitación preto do aeroporto. » · nouveau clip, hitz_gl_iago
+- 104.0 s — galicien · gl_a · « A súa equipaxe viaxa con vostede mañá. » · nouveau clip, hitz_gl_iago
+- 107.0 s — galicien · gl_a · « Claro, aquí ten. Desculpe as molestias. » · nouveau clip, hitz_gl_iago
+- 111.1 s — galicien · gl_a · « cancelar un voo » · nouveau clip, hitz_gl_iago
+- 113.1 s — galicien · gl_a · « Desculpe as molestias » · nouveau clip, hitz_gl_iago
+- 115.4 s — galicien · gl_a · « Ola, quero aprender a cociñar. Que me recomendas? » · nouveau clip, hitz_gl_iago
+- 119.8 s — galicien · gl_a · « Unha escola é demasiado cara. » · nouveau clip, hitz_gl_iago
+- 122.3 s — galicien · gl_a · « Vale. E que prato fago primeiro? » · nouveau clip, hitz_gl_iago
+- 125.7 s — galicien · gl_a · « E se me sae mal? » · nouveau clip, hitz_gl_iago
+- 127.5 s — galicien · gl_a · « Tes razón. Queres vir probalo? » · nouveau clip, hitz_gl_iago
+- 130.8 s — galicien · gl_a · « Perfecto. Moitas grazas pola túa axuda! » · nouveau clip, hitz_gl_iago
+- 134.7 s — galicien · gl_a · « Recoméndoche que… » · nouveau clip, hitz_gl_iago
+- 136.6 s — galicien · gl_a · « Aconséllote que… » · nouveau clip, hitz_gl_iago
+- 138.6 s — galicien · gl_a · « É normal que saia mal » · nouveau clip, hitz_gl_iago
+- 140.9 s — galicien · gl_a · « cando estea listo » · nouveau clip, hitz_gl_iago
+- 142.8 s — galicien · gl_a · « Atención ao cliente, bos días. » · nouveau clip, hitz_gl_iago
+- 145.7 s — galicien · gl_a · « Síntoo moito. Cando o pediu? » · nouveau clip, hitz_gl_iago
+- 149.2 s — galicien · gl_a · « Quere que lle enviemos outro? » · nouveau clip, hitz_gl_iago
+- 151.3 s — galicien · gl_a · « Si, claro. Tardará uns dez días. » · nouveau clip, hitz_gl_iago
+- 154.9 s — galicien · gl_a · « Farei o posible. » · nouveau clip, hitz_gl_iago
+- 156.9 s — galicien · gl_a · « Claro. Desculpe as molestias. » · nouveau clip, hitz_gl_iago
+- 160.3 s — galicien · gl_a · « o pedido » · nouveau clip, hitz_gl_iago
+- 162.0 s — galicien · gl_a · « Preferiría que me devolvesen os cartos » · nouveau clip, hitz_gl_iago
+- 165.0 s — galicien · gl_a · « Espero que todo vaia ben » · nouveau clip, hitz_gl_iago
+- 167.3 s — galicien · gl_a · « Ben, comecemos. Como foi a facturación este trimestre? » · nouveau clip, hitz_gl_iago
+- 171.8 s — galicien · gl_a · « Moi ben. E os gastos? » · nouveau clip, hitz_gl_iago
+- 174.8 s — galicien · gl_a · « Entón, deberiamos investir máis en publicidade? » · nouveau clip, hitz_gl_iago
+- 178.3 s — galicien · gl_a · « Xa, pero sen publicidade non hai crecemento. » · nouveau clip, hitz_gl_iago
+- 181.6 s — galicien · gl_a · « Adiante, escoito. » · nouveau clip, hitz_gl_iago
+- 183.8 s — galicien · gl_a · « Paréceme razoable. Podes preparar unha proposta? » · nouveau clip, hitz_gl_iago
+- 187.9 s — galicien · gl_a · « Se investísemos… » · nouveau clip, hitz_gl_iago
+- 189.9 s — galicien · gl_a · « Chámoo polo contrato de arrendamento. Remata en xuño. » · nouveau clip, hitz_gl_iago
+- 194.4 s — galicien · gl_a · « O problema é que vou subir o aluguer un quince por cento. » · nouveau clip, hitz_gl_iago
+- 198.0 s — galicien · gl_a · « Os prezos subiron moito no barrio. » · nouveau clip, hitz_gl_iago
+- 200.7 s — galicien · gl_a · « É verdade, sempre pagou ben. » · nouveau clip, hitz_gl_iago
+- 203.3 s — galicien · gl_a · « Que propón? » · nouveau clip, hitz_gl_iago
+- 204.9 s — galicien · gl_a · « Déixeme pensalo e chámoo mañá. » · nouveau clip, hitz_gl_iago
+- 207.6 s — galicien · gl_a · « levo cinco anos pagando » · nouveau clip, hitz_gl_iago
+- 210.1 s — galicien · gl_a · « se asinásemos » · nouveau clip, hitz_gl_iago
+- 212.1 s — galicien · gl_a · « Que tal co novo tratamento? » · nouveau clip, hitz_gl_iago
+- 214.4 s — galicien · gl_a · « Pasa moito ao principio. » · nouveau clip, hitz_gl_iago
+- 216.7 s — galicien · gl_a · « Prefiro agardar un pouco. Se seguise igual, cambiariámolo. » · nouveau clip, hitz_gl_iago
+- 221.5 s — galicien · gl_a · « Si, non hai ningún problema. » · nouveau clip, hitz_gl_iago
+- 224.1 s — galicien · gl_a · « Si, e chámeme se se atopa peor. » · nouveau clip, hitz_gl_iago
+- 226.8 s — galicien · gl_a · « un efecto secundario » · nouveau clip, hitz_gl_iago
+- 229.1 s — galicien · gl_a · « Non sería mellor…? » · nouveau clip, hitz_gl_iago
+- 231.0 s — galicien · gl_a · « Viches que van pechar a rúa aos coches? » · nouveau clip, hitz_gl_iago
+- 233.8 s — galicien · gl_a · « A min non me gusta. Haberá máis atascos. » · nouveau clip, hitz_gl_iago
+- 237.7 s — galicien · gl_a · « Xa, pero as tendas perderán clientes. » · nouveau clip, hitz_gl_iago
+- 240.7 s — galicien · gl_a · « Ti cres? E como imos ir ao centro? » · nouveau clip, hitz_gl_iago
+- 244.3 s — galicien · gl_a · « Se houbese un carril bici, quizais o usaría. » · nouveau clip, hitz_gl_iago
+- 247.6 s — galicien · gl_a · « Ben, xa veremos. Oxalá teñas razón. » · nouveau clip, hitz_gl_iago
+- 251.5 s — galicien · gl_a · « unha zona peonil » · nouveau clip, hitz_gl_iago
+- 253.5 s — galicien · gl_a · « Non creo que sexa así » · nouveau clip, hitz_gl_iago
+- 255.7 s — galicien · gl_a · « Ola, querías falar comigo? » · nouveau clip, hitz_gl_iago
+- 258.1 s — galicien · gl_a · « Vaia! Non mo esperaba. Por que? » · nouveau clip, hitz_gl_iago
+- 262.3 s — galicien · gl_a · « E se che pagásemos máis? » · nouveau clip, hitz_gl_iago
+- 264.5 s — galicien · gl_a · « Enténdoo. Cando marcharías? » · nouveau clip, hitz_gl_iago
+- 267.8 s — galicien · gl_a · « Grazas. Poderías deixalo todo listo? » · nouveau clip, hitz_gl_iago
+- 271.6 s — galicien · gl_a · « Grazas. Imos botarte de menos. » · nouveau clip, hitz_gl_iago
+- 275.4 s — galicien · gl_a · « para que teñas tempo » · nouveau clip, hitz_gl_iago
+- 277.4 s — galicien · gl_a · « Foi un pracer » · nouveau clip, hitz_gl_iago
+- 279.5 s — galicien · gl_a · « Grazas por vir. Foi unha semana moi dura. » · nouveau clip, hitz_gl_iago
+- 283.4 s — galicien · gl_a · « Non puiden avisar a case ninguén, todo foi moi rápido. » · nouveau clip, hitz_gl_iago
+- 287.3 s — galicien · gl_a · « Grazas. Non sei cando volverei ao traballo. » · nouveau clip, hitz_gl_iago
+- 291.3 s — galicien · gl_a · « Preocúpanme os meus clientes, a verdade. » · nouveau clip, hitz_gl_iago
+- 294.4 s — galicien · gl_a · « Non sei como agradecercho. » · nouveau clip, hitz_gl_iago
+- 296.9 s — galicien · gl_a · « Es un sol. Grazas de verdade. » · nouveau clip, hitz_gl_iago
+- 300.3 s — galicien · gl_a · « Se o soubese » · nouveau clip, hitz_gl_iago
+- 302.2 s — galicien · gl_a · « Tómate o tempo que precises » · nouveau clip, hitz_gl_iago
+- 304.7 s — galicien · gl_a · « para o que precises » · nouveau clip, hitz_gl_iago
+- 306.8 s — galicien · gl_a · « A empresa vai presentar un expediente de regulación de emprego. » · nouveau clip, hitz_gl_iago
+- 310.9 s — galicien · gl_a · « Os números non nos deixan outra opción. » · nouveau clip, hitz_gl_iago
+- 313.9 s — galicien · gl_a · « É certo, pero este ano vai mal. » · nouveau clip, hitz_gl_iago
+- 316.7 s — galicien · gl_a · « Iso non depende de min. » · nouveau clip, hitz_gl_iago
+- 319.2 s — galicien · gl_a · « Non fai falta chegar a iso. Que propoñen? » · nouveau clip, hitz_gl_iago
+- 323.1 s — galicien · gl_a · « Imos estudalo coa dirección. » · nouveau clip, hitz_gl_iago
+- 325.5 s — galicien · gl_a · « un expediente de regulación de emprego » · nouveau clip, hitz_gl_iago
+- 328.6 s — galicien · gl_a · « En caso contrario » · nouveau clip, hitz_gl_iago
+- 330.7 s — galicien · gl_a · « prorrogar o preaviso » · nouveau clip, hitz_gl_iago
+- 332.9 s — galicien · gl_a · « Boas tardes a todos. Quen quere falar primeiro? » · nouveau clip, hitz_gl_iago
+- 336.9 s — galicien · gl_a · « É un problema que coñecemos ben. » · nouveau clip, hitz_gl_iago
+- 339.4 s — galicien · gl_a · « Xa o sabemos. » · nouveau clip, hitz_gl_iago
+- 341.4 s — galicien · gl_a · « Imos aprobar unha nova ordenanza municipal. » · nouveau clip, hitz_gl_iago
+- 344.7 s — galicien · gl_a · « E vostede que propón? » · nouveau clip, hitz_gl_iago
+- 346.7 s — galicien · gl_a · « Imos estudalo con moito interese. » · nouveau clip, hitz_gl_iago
+- 349.6 s — galicien · gl_a · « medidas concretas » · nouveau clip, hitz_gl_iago
+- 351.9 s — galicien · gl_a · « Segundo algúns, a cidade non precisa máis carrís bici. Que opina? » · nouveau clip, hitz_gl_iago
+- 357.2 s — galicien · gl_a · « Por que? » · nouveau clip, hitz_gl_iago
+- 358.6 s — galicien · gl_a · « Pero hai demasiados coches, non? » · nouveau clip, hitz_gl_iago
+- 361.3 s — galicien · gl_a · « Hai un estudo que di que os carrís bici non se usan. » · nouveau clip, hitz_gl_iago
+- 364.8 s — galicien · gl_a · « Quédanos un minuto. Algo máis? » · nouveau clip, hitz_gl_iago
+- 368.3 s — galicien · gl_a · « Para rematar, que nos di? » · nouveau clip, hitz_gl_iago
+- 370.4 s — galicien · gl_a · « Non comparto este argumento » · nouveau clip, hitz_gl_iago
+- 372.9 s — galicien · gl_a · « Non nego que sexa… » · nouveau clip, hitz_gl_iago
+- 375.0 s — galicien · gl_a · « Bos días. Cónteme, cal é o problema? » · nouveau clip, hitz_gl_iago
+- 378.7 s — galicien · gl_a · « Que di esa cláusula? » · nouveau clip, hitz_gl_iago
+- 380.8 s — galicien · gl_a · « Iso, efectivamente, podería ser abusivo. » · nouveau clip, hitz_gl_iago
+- 384.2 s — galicien · gl_a · « Primeiro, asinou o contrato sen lelo? » · nouveau clip, hitz_gl_iago
+- 387.0 s — galicien · gl_a · « Podemos presentar unha reclamación. » · nouveau clip, hitz_gl_iago
+- 389.6 s — galicien · gl_a · « Uns tres meses, máis ou menos. » · nouveau clip, hitz_gl_iago
+- 392.7 s — galicien · gl_a · « unha cláusula abusiva » · nouveau clip, hitz_gl_iago
+- 394.9 s — galicien · gl_a · « sen preaviso » · nouveau clip, hitz_gl_iago
+- 396.9 s — galicien · gl_a · « Benvidos á adega. Aquí facemos viño desde hai cen anos. » · nouveau clip, hitz_gl_iago
+- 401.5 s — galicien · gl_a · « En setembro, ao final do verán. » · nouveau clip, hitz_gl_iago
+- 404.0 s — galicien · gl_a · « Sobre todo unha variedade da zona. » · nouveau clip, hitz_gl_iago
+- 406.8 s — galicien · gl_a · « Si, desde hai trinta anos. » · nouveau clip, hitz_gl_iago
+- 409.4 s — galicien · gl_a · « Pois volva o ano que vén, é precioso. » · nouveau clip, hitz_gl_iago
+- 412.7 s — galicien · gl_a · « Moi poucos, case ningún. » · nouveau clip, hitz_gl_iago
+- 415.2 s — galicien · gl_a · « Gustaríame ter vido » · nouveau clip, hitz_gl_iago
+
+### gl_b_nouveaux_textes.mp3
+
+-   0.0 s — galicien · gl_b · « Si, dígame? » · nouveau clip, hitz_gl_celtia
+-   1.8 s — galicien · gl_b · « Será unha avaría. Vou chamar un técnico. » · nouveau clip, hitz_gl_celtia
+-   5.8 s — galicien · gl_b · « O técnico pode ir o xoves pola tarde. » · nouveau clip, hitz_gl_celtia
+-   8.9 s — galicien · gl_b · « Si, o venres ás dez. Vaille ben? » · nouveau clip, hitz_gl_celtia
+-  12.6 s — galicien · gl_b · « De nada. Se hai outro problema, chámeme. » · nouveau clip, hitz_gl_celtia
+-  16.6 s — galicien · gl_b · « unha avaría » · nouveau clip, hitz_gl_celtia
+-  18.4 s — galicien · gl_b · « Podería ser…? » · nouveau clip, hitz_gl_celtia
+-  20.1 s — galicien · gl_b · « Que teña un bo día! » · nouveau clip, hitz_gl_celtia
+-  22.1 s — galicien · gl_b · « Bos días. Por que quere este posto? » · nouveau clip, hitz_gl_celtia
+-  25.7 s — galicien · gl_b · « Ten experiencia en vendas? » · nouveau clip, hitz_gl_celtia
+-  28.0 s — galicien · gl_b · « Moi ben. O posto é na oficina, cun día de teletraballo. » · nouveau clip, hitz_gl_celtia
+-  32.8 s — galicien · gl_b · « De nove a cinco, cun período de proba de dous meses. » · nouveau clip, hitz_gl_celtia
+-  36.6 s — galicien · gl_b · « O mes que vén, se todo vai ben. Ten algunha pregunta? » · nouveau clip, hitz_gl_celtia
+-  41.0 s — galicien · gl_b · « Si. Chamarémolo a semana que vén. » · nouveau clip, hitz_gl_celtia
+-  44.6 s — galicien · gl_b · « o posto » · nouveau clip, hitz_gl_celtia
+-  46.3 s — galicien · gl_b · « un contrato indefinido » · nouveau clip, hitz_gl_celtia
+-  48.7 s — galicien · gl_b · « Cando comezaría? » · nouveau clip, hitz_gl_celtia
+-  50.7 s — galicien · gl_b · « Non é nada grave, é un arrefriado. » · nouveau clip, hitz_gl_celtia
+-  53.7 s — galicien · gl_b · « Si, tome isto tres veces ao día, despois de comer. » · nouveau clip, hitz_gl_celtia
+-  57.6 s — galicien · gl_b · « Unha semana. E beba moita auga. » · nouveau clip, hitz_gl_celtia
+-  61.1 s — galicien · gl_b · « Si, pero se non está mellor, volva o luns. » · nouveau clip, hitz_gl_celtia
+-  64.7 s — galicien · gl_b · « un arrefriado » · nouveau clip, hitz_gl_celtia
+-  66.5 s — galicien · gl_b · « Menos mal » · nouveau clip, hitz_gl_celtia
+-  68.2 s — galicien · gl_b · « Moi ben. Ten cita? » · nouveau clip, hitz_gl_celtia
+-  71.0 s — galicien · gl_b · « Déixeme o seu pasaporte e o contrato de aluguer? » · nouveau clip, hitz_gl_celtia
+-  74.3 s — galicien · gl_b · « Si, pero tamén necesito unha factura da luz. » · nouveau clip, hitz_gl_celtia
+-  78.0 s — galicien · gl_b · « Si, por correo. Ten dez días. » · nouveau clip, hitz_gl_celtia
+-  81.5 s — galicien · gl_b · « Nunha semana, máis ou menos. » · nouveau clip, hitz_gl_celtia
+-  84.4 s — galicien · gl_b · « a factura da luz » · nouveau clip, hitz_gl_celtia
+-  86.4 s — galicien · gl_b · « Cando estará listo? » · nouveau clip, hitz_gl_celtia
+-  88.4 s — galicien · gl_b · « Boas tardes. En que podo axudalo? » · nouveau clip, hitz_gl_celtia
+-  92.0 s — galicien · gl_b · « Síntoo moito. Déixeme o seu pasaporte? » · nouveau clip, hitz_gl_celtia
+-  95.9 s — galicien · gl_b · « Hoxe non, pero hai un mañá ás sete. » · nouveau clip, hitz_gl_celtia
+-  98.9 s — galicien · gl_b · « A compañía págalle unha habitación preto do aeroporto. » · nouveau clip, hitz_gl_celtia
+- 102.9 s — galicien · gl_b · « A súa equipaxe viaxa con vostede mañá. » · nouveau clip, hitz_gl_celtia
+- 106.1 s — galicien · gl_b · « Claro, aquí ten. Desculpe as molestias. » · nouveau clip, hitz_gl_celtia
+- 110.2 s — galicien · gl_b · « cancelar un voo » · nouveau clip, hitz_gl_celtia
+- 112.3 s — galicien · gl_b · « Desculpe as molestias » · nouveau clip, hitz_gl_celtia
+- 114.6 s — galicien · gl_b · « Ola, quero aprender a cociñar. Que me recomendas? » · nouveau clip, hitz_gl_celtia
+- 118.9 s — galicien · gl_b · « Unha escola é demasiado cara. » · nouveau clip, hitz_gl_celtia
+- 121.8 s — galicien · gl_b · « Vale. E que prato fago primeiro? » · nouveau clip, hitz_gl_celtia
+- 125.3 s — galicien · gl_b · « E se me sae mal? » · nouveau clip, hitz_gl_celtia
+- 127.2 s — galicien · gl_b · « Tes razón. Queres vir probalo? » · nouveau clip, hitz_gl_celtia
+- 130.6 s — galicien · gl_b · « Perfecto. Moitas grazas pola túa axuda! » · nouveau clip, hitz_gl_celtia
+- 134.7 s — galicien · gl_b · « Recoméndoche que… » · nouveau clip, hitz_gl_celtia
+- 136.7 s — galicien · gl_b · « Aconséllote que… » · nouveau clip, hitz_gl_celtia
+- 138.8 s — galicien · gl_b · « É normal que saia mal » · nouveau clip, hitz_gl_celtia
+- 141.1 s — galicien · gl_b · « cando estea listo » · nouveau clip, hitz_gl_celtia
+- 143.2 s — galicien · gl_b · « Atención ao cliente, bos días. » · nouveau clip, hitz_gl_celtia
+- 146.4 s — galicien · gl_b · « Síntoo moito. Cando o pediu? » · nouveau clip, hitz_gl_celtia
+- 149.8 s — galicien · gl_b · « Quere que lle enviemos outro? » · nouveau clip, hitz_gl_celtia
+- 152.1 s — galicien · gl_b · « Si, claro. Tardará uns dez días. » · nouveau clip, hitz_gl_celtia
+- 155.9 s — galicien · gl_b · « Farei o posible. » · nouveau clip, hitz_gl_celtia
+- 158.0 s — galicien · gl_b · « Claro. Desculpe as molestias. » · nouveau clip, hitz_gl_celtia
+- 161.4 s — galicien · gl_b · « o pedido » · nouveau clip, hitz_gl_celtia
+- 163.0 s — galicien · gl_b · « Preferiría que me devolvesen os cartos » · nouveau clip, hitz_gl_celtia
+- 166.1 s — galicien · gl_b · « Espero que todo vaia ben » · nouveau clip, hitz_gl_celtia
+- 168.6 s — galicien · gl_b · « Ben, comecemos. Como foi a facturación este trimestre? » · nouveau clip, hitz_gl_celtia
+- 173.3 s — galicien · gl_b · « Moi ben. E os gastos? » · nouveau clip, hitz_gl_celtia
+- 176.3 s — galicien · gl_b · « Entón, deberiamos investir máis en publicidade? » · nouveau clip, hitz_gl_celtia
+- 179.9 s — galicien · gl_b · « Xa, pero sen publicidade non hai crecemento. » · nouveau clip, hitz_gl_celtia
+- 183.2 s — galicien · gl_b · « Adiante, escoito. » · nouveau clip, hitz_gl_celtia
+- 185.9 s — galicien · gl_b · « Paréceme razoable. Podes preparar unha proposta? » · nouveau clip, hitz_gl_celtia
+- 190.3 s — galicien · gl_b · « Se investísemos… » · nouveau clip, hitz_gl_celtia
+- 192.3 s — galicien · gl_b · « Chámoo polo contrato de arrendamento. Remata en xuño. » · nouveau clip, hitz_gl_celtia
+- 196.9 s — galicien · gl_b · « O problema é que vou subir o aluguer un quince por cento. » · nouveau clip, hitz_gl_celtia
+- 200.7 s — galicien · gl_b · « Os prezos subiron moito no barrio. » · nouveau clip, hitz_gl_celtia
+- 203.5 s — galicien · gl_b · « É verdade, sempre pagou ben. » · nouveau clip, hitz_gl_celtia
+- 206.2 s — galicien · gl_b · « Que propón? » · nouveau clip, hitz_gl_celtia
+- 207.9 s — galicien · gl_b · « Déixeme pensalo e chámoo mañá. » · nouveau clip, hitz_gl_celtia
+- 210.7 s — galicien · gl_b · « levo cinco anos pagando » · nouveau clip, hitz_gl_celtia
+- 213.1 s — galicien · gl_b · « se asinásemos » · nouveau clip, hitz_gl_celtia
+- 215.1 s — galicien · gl_b · « Que tal co novo tratamento? » · nouveau clip, hitz_gl_celtia
+- 217.6 s — galicien · gl_b · « Que síntomas ten? » · nouveau clip, hitz_gl_celtia
+- 219.6 s — galicien · gl_b · « Pasa moito ao principio. » · nouveau clip, hitz_gl_celtia
+- 221.9 s — galicien · gl_b · « Prefiro agardar un pouco. Se seguise igual, cambiariámolo. » · nouveau clip, hitz_gl_celtia
+- 226.9 s — galicien · gl_b · « Si, non hai ningún problema. » · nouveau clip, hitz_gl_celtia
+- 229.8 s — galicien · gl_b · « Si, e chámeme se se atopa peor. » · nouveau clip, hitz_gl_celtia
+- 232.8 s — galicien · gl_b · « un efecto secundario » · nouveau clip, hitz_gl_celtia
+- 235.1 s — galicien · gl_b · « Non sería mellor…? » · nouveau clip, hitz_gl_celtia
+- 237.1 s — galicien · gl_b · « Viches que van pechar a rúa aos coches? » · nouveau clip, hitz_gl_celtia
+- 240.2 s — galicien · gl_b · « A min non me gusta. Haberá máis atascos. » · nouveau clip, hitz_gl_celtia
+- 244.1 s — galicien · gl_b · « Xa, pero as tendas perderán clientes. » · nouveau clip, hitz_gl_celtia
+- 247.2 s — galicien · gl_b · « Ti cres? E como imos ir ao centro? » · nouveau clip, hitz_gl_celtia
+- 250.8 s — galicien · gl_b · « Se houbese un carril bici, quizais o usaría. » · nouveau clip, hitz_gl_celtia
+- 254.4 s — galicien · gl_b · « Ben, xa veremos. Oxalá teñas razón. » · nouveau clip, hitz_gl_celtia
+- 258.4 s — galicien · gl_b · « unha zona peonil » · nouveau clip, hitz_gl_celtia
+- 260.6 s — galicien · gl_b · « Non creo que sexa así » · nouveau clip, hitz_gl_celtia
+- 262.8 s — galicien · gl_b · « Ola, querías falar comigo? » · nouveau clip, hitz_gl_celtia
+- 265.2 s — galicien · gl_b · « Vaia! Non mo esperaba. Por que? » · nouveau clip, hitz_gl_celtia
+- 269.5 s — galicien · gl_b · « E se che pagásemos máis? » · nouveau clip, hitz_gl_celtia
+- 271.8 s — galicien · gl_b · « Enténdoo. Cando marcharías? » · nouveau clip, hitz_gl_celtia
+- 275.0 s — galicien · gl_b · « Grazas. Poderías deixalo todo listo? » · nouveau clip, hitz_gl_celtia
+- 278.9 s — galicien · gl_b · « Grazas. Imos botarte de menos. » · nouveau clip, hitz_gl_celtia
+- 282.5 s — galicien · gl_b · « para que teñas tempo » · nouveau clip, hitz_gl_celtia
+- 284.6 s — galicien · gl_b · « Foi un pracer » · nouveau clip, hitz_gl_celtia
+- 286.5 s — galicien · gl_b · « Grazas por vir. Foi unha semana moi dura. » · nouveau clip, hitz_gl_celtia
+- 290.5 s — galicien · gl_b · « Non puiden avisar a case ninguén, todo foi moi rápido. » · nouveau clip, hitz_gl_celtia
+- 294.4 s — galicien · gl_b · « Grazas. Non sei cando volverei ao traballo. » · nouveau clip, hitz_gl_celtia
+- 298.5 s — galicien · gl_b · « Preocúpanme os meus clientes, a verdade. » · nouveau clip, hitz_gl_celtia
+- 301.8 s — galicien · gl_b · « Non sei como agradecercho. » · nouveau clip, hitz_gl_celtia
+- 304.2 s — galicien · gl_b · « Es un sol. Grazas de verdade. » · nouveau clip, hitz_gl_celtia
+- 307.8 s — galicien · gl_b · « Se o soubese » · nouveau clip, hitz_gl_celtia
+- 309.7 s — galicien · gl_b · « Tómate o tempo que precises » · nouveau clip, hitz_gl_celtia
+- 312.2 s — galicien · gl_b · « para o que precises » · nouveau clip, hitz_gl_celtia
+- 314.2 s — galicien · gl_b · « A empresa vai presentar un expediente de regulación de emprego. » · nouveau clip, hitz_gl_celtia
+- 318.5 s — galicien · gl_b · « Os números non nos deixan outra opción. » · nouveau clip, hitz_gl_celtia
+- 321.9 s — galicien · gl_b · « É certo, pero este ano vai mal. » · nouveau clip, hitz_gl_celtia
+- 324.7 s — galicien · gl_b · « Iso non depende de min. » · nouveau clip, hitz_gl_celtia
+- 327.2 s — galicien · gl_b · « Non fai falta chegar a iso. Que propoñen? » · nouveau clip, hitz_gl_celtia
+- 331.1 s — galicien · gl_b · « Imos estudalo coa dirección. » · nouveau clip, hitz_gl_celtia
+- 333.7 s — galicien · gl_b · « un expediente de regulación de emprego » · nouveau clip, hitz_gl_celtia
+- 336.7 s — galicien · gl_b · « En caso contrario » · nouveau clip, hitz_gl_celtia
+- 338.8 s — galicien · gl_b · « prorrogar o preaviso » · nouveau clip, hitz_gl_celtia
+- 340.9 s — galicien · gl_b · « Boas tardes a todos. Quen quere falar primeiro? » · nouveau clip, hitz_gl_celtia
+- 345.2 s — galicien · gl_b · « É un problema que coñecemos ben. » · nouveau clip, hitz_gl_celtia
+- 347.9 s — galicien · gl_b · « Xa o sabemos. » · nouveau clip, hitz_gl_celtia
+- 349.9 s — galicien · gl_b · « Imos aprobar unha nova ordenanza municipal. » · nouveau clip, hitz_gl_celtia
+- 353.2 s — galicien · gl_b · « E vostede que propón? » · nouveau clip, hitz_gl_celtia
+- 355.4 s — galicien · gl_b · « Imos estudalo con moito interese. » · nouveau clip, hitz_gl_celtia
+- 358.2 s — galicien · gl_b · « medidas concretas » · nouveau clip, hitz_gl_celtia
+- 360.4 s — galicien · gl_b · « Segundo algúns, a cidade non precisa máis carrís bici. Que opina? » · nouveau clip, hitz_gl_celtia
+- 365.9 s — galicien · gl_b · « Por que? » · nouveau clip, hitz_gl_celtia
+- 367.4 s — galicien · gl_b · « Pero hai demasiados coches, non? » · nouveau clip, hitz_gl_celtia
+- 369.9 s — galicien · gl_b · « Hai un estudo que di que os carrís bici non se usan. » · nouveau clip, hitz_gl_celtia
+- 373.7 s — galicien · gl_b · « Quédanos un minuto. Algo máis? » · nouveau clip, hitz_gl_celtia
+- 377.0 s — galicien · gl_b · « Para rematar, que nos di? » · nouveau clip, hitz_gl_celtia
+- 379.3 s — galicien · gl_b · « Non comparto este argumento » · nouveau clip, hitz_gl_celtia
+- 381.7 s — galicien · gl_b · « Non nego que sexa… » · nouveau clip, hitz_gl_celtia
+- 383.7 s — galicien · gl_b · « Bos días. Cónteme, cal é o problema? » · nouveau clip, hitz_gl_celtia
+- 387.5 s — galicien · gl_b · « Que di esa cláusula? » · nouveau clip, hitz_gl_celtia
+- 389.7 s — galicien · gl_b · « Iso, efectivamente, podería ser abusivo. » · nouveau clip, hitz_gl_celtia
+- 393.3 s — galicien · gl_b · « Primeiro, asinou o contrato sen lelo? » · nouveau clip, hitz_gl_celtia
+- 396.4 s — galicien · gl_b · « Podemos presentar unha reclamación. » · nouveau clip, hitz_gl_celtia
+- 399.2 s — galicien · gl_b · « Uns tres meses, máis ou menos. » · nouveau clip, hitz_gl_celtia
+- 402.2 s — galicien · gl_b · « unha cláusula abusiva » · nouveau clip, hitz_gl_celtia
+- 404.7 s — galicien · gl_b · « sen preaviso » · nouveau clip, hitz_gl_celtia
+- 406.6 s — galicien · gl_b · « Benvidos á adega. Aquí facemos viño desde hai cen anos. » · nouveau clip, hitz_gl_celtia
+- 411.4 s — galicien · gl_b · « En setembro, ao final do verán. » · nouveau clip, hitz_gl_celtia
+- 414.3 s — galicien · gl_b · « Sobre todo unha variedade da zona. » · nouveau clip, hitz_gl_celtia
+- 417.3 s — galicien · gl_b · « Si, desde hai trinta anos. » · nouveau clip, hitz_gl_celtia
+- 420.0 s — galicien · gl_b · « Pois volva o ano que vén, é precioso. » · nouveau clip, hitz_gl_celtia
+- 423.2 s — galicien · gl_b · « Moi poucos, case ningún. » · nouveau clip, hitz_gl_celtia
+- 425.8 s — galicien · gl_b · « Gustaríame ter vido » · nouveau clip, hitz_gl_celtia
+
+### gl_c_nouveaux_textes.mp3
+
+-   0.0 s — galicien · gl_c · « Si, dígame? » · nouveau clip, hitz_gl_paulo
+-   1.8 s — galicien · gl_c · « Vaia, síntoo. Que lle pasa? » · nouveau clip, hitz_gl_paulo
+-   5.3 s — galicien · gl_c · « Será unha avaría. Vou chamar un técnico. » · nouveau clip, hitz_gl_paulo
+-   9.1 s — galicien · gl_c · « O técnico pode ir o xoves pola tarde. » · nouveau clip, hitz_gl_paulo
+-  12.1 s — galicien · gl_c · « Si, o venres ás dez. Vaille ben? » · nouveau clip, hitz_gl_paulo
+-  15.8 s — galicien · gl_c · « De nada. Se hai outro problema, chámeme. » · nouveau clip, hitz_gl_paulo
+-  19.8 s — galicien · gl_c · « unha avaría » · nouveau clip, hitz_gl_paulo
+-  21.5 s — galicien · gl_c · « Podería ser…? » · nouveau clip, hitz_gl_paulo
+-  23.3 s — galicien · gl_c · « Que teña un bo día! » · nouveau clip, hitz_gl_paulo
+-  25.3 s — galicien · gl_c · « Bos días. Por que quere este posto? » · nouveau clip, hitz_gl_paulo
+-  28.7 s — galicien · gl_c · « Ten experiencia en vendas? » · nouveau clip, hitz_gl_paulo
+-  31.1 s — galicien · gl_c · « Moi ben. O posto é na oficina, cun día de teletraballo. » · nouveau clip, hitz_gl_paulo
+-  36.2 s — galicien · gl_c · « De nove a cinco, cun período de proba de dous meses. » · nouveau clip, hitz_gl_paulo
+-  40.1 s — galicien · gl_c · « O mes que vén, se todo vai ben. Ten algunha pregunta? » · nouveau clip, hitz_gl_paulo
+-  44.7 s — galicien · gl_c · « Si. Chamarémolo a semana que vén. » · nouveau clip, hitz_gl_paulo
+-  48.3 s — galicien · gl_c · « o posto » · nouveau clip, hitz_gl_paulo
+-  49.9 s — galicien · gl_c · « un contrato indefinido » · nouveau clip, hitz_gl_paulo
+-  52.3 s — galicien · gl_c · « Cando comezaría? » · nouveau clip, hitz_gl_paulo
+-  54.1 s — galicien · gl_c · « Non é nada grave, é un arrefriado. » · nouveau clip, hitz_gl_paulo
+-  57.1 s — galicien · gl_c · « Si, tome isto tres veces ao día, despois de comer. » · nouveau clip, hitz_gl_paulo
+-  61.1 s — galicien · gl_c · « Unha semana. E beba moita auga. » · nouveau clip, hitz_gl_paulo
+-  64.6 s — galicien · gl_c · « Si, pero se non está mellor, volva o luns. » · nouveau clip, hitz_gl_paulo
+-  68.0 s — galicien · gl_c · « un arrefriado » · nouveau clip, hitz_gl_paulo
+-  70.0 s — galicien · gl_c · « Menos mal » · nouveau clip, hitz_gl_paulo
+-  71.6 s — galicien · gl_c · « Moi ben. Ten cita? » · nouveau clip, hitz_gl_paulo
+-  74.6 s — galicien · gl_c · « Déixeme o seu pasaporte e o contrato de aluguer? » · nouveau clip, hitz_gl_paulo
+-  77.7 s — galicien · gl_c · « Si, pero tamén necesito unha factura da luz. » · nouveau clip, hitz_gl_paulo
+-  81.3 s — galicien · gl_c · « Si, por correo. Ten dez días. » · nouveau clip, hitz_gl_paulo
+-  84.9 s — galicien · gl_c · « Nunha semana, máis ou menos. » · nouveau clip, hitz_gl_paulo
+-  87.8 s — galicien · gl_c · « a factura da luz » · nouveau clip, hitz_gl_paulo
+-  89.9 s — galicien · gl_c · « Cando estará listo? » · nouveau clip, hitz_gl_paulo
+-  91.9 s — galicien · gl_c · « Boas tardes. En que podo axudalo? » · nouveau clip, hitz_gl_paulo
+-  95.5 s — galicien · gl_c · « Síntoo moito. Déixeme o seu pasaporte? » · nouveau clip, hitz_gl_paulo
+-  99.4 s — galicien · gl_c · « Hoxe non, pero hai un mañá ás sete. » · nouveau clip, hitz_gl_paulo
+- 102.5 s — galicien · gl_c · « A compañía págalle unha habitación preto do aeroporto. » · nouveau clip, hitz_gl_paulo
+- 106.1 s — galicien · gl_c · « A súa equipaxe viaxa con vostede mañá. » · nouveau clip, hitz_gl_paulo
+- 109.2 s — galicien · gl_c · « Claro, aquí ten. Desculpe as molestias. » · nouveau clip, hitz_gl_paulo
+- 113.2 s — galicien · gl_c · « cancelar un voo » · nouveau clip, hitz_gl_paulo
+- 115.1 s — galicien · gl_c · « Desculpe as molestias » · nouveau clip, hitz_gl_paulo
+- 117.3 s — galicien · gl_c · « Ola, quero aprender a cociñar. Que me recomendas? » · nouveau clip, hitz_gl_paulo
+- 121.8 s — galicien · gl_c · « Unha escola é demasiado cara. » · nouveau clip, hitz_gl_paulo
+- 124.2 s — galicien · gl_c · « Vale. E que prato fago primeiro? » · nouveau clip, hitz_gl_paulo
+- 127.6 s — galicien · gl_c · « E se me sae mal? » · nouveau clip, hitz_gl_paulo
+- 129.5 s — galicien · gl_c · « Tes razón. Queres vir probalo? » · nouveau clip, hitz_gl_paulo
+- 132.8 s — galicien · gl_c · « Perfecto. Moitas grazas pola túa axuda! » · nouveau clip, hitz_gl_paulo
+- 136.7 s — galicien · gl_c · « Recoméndoche que… » · nouveau clip, hitz_gl_paulo
+- 138.6 s — galicien · gl_c · « Aconséllote que… » · nouveau clip, hitz_gl_paulo
+- 140.6 s — galicien · gl_c · « É normal que saia mal » · nouveau clip, hitz_gl_paulo
+- 142.8 s — galicien · gl_c · « cando estea listo » · nouveau clip, hitz_gl_paulo
+- 144.7 s — galicien · gl_c · « Atención ao cliente, bos días. » · nouveau clip, hitz_gl_paulo
+- 147.5 s — galicien · gl_c · « Síntoo moito. Cando o pediu? » · nouveau clip, hitz_gl_paulo
+- 150.9 s — galicien · gl_c · « Quere que lle enviemos outro? » · nouveau clip, hitz_gl_paulo
+- 153.1 s — galicien · gl_c · « Si, claro. Tardará uns dez días. » · nouveau clip, hitz_gl_paulo
+- 156.8 s — galicien · gl_c · « Farei o posible. » · nouveau clip, hitz_gl_paulo
+- 158.8 s — galicien · gl_c · « Claro. Desculpe as molestias. » · nouveau clip, hitz_gl_paulo
+- 162.1 s — galicien · gl_c · « o pedido » · nouveau clip, hitz_gl_paulo
+- 163.7 s — galicien · gl_c · « Preferiría que me devolvesen os cartos » · nouveau clip, hitz_gl_paulo
+- 166.7 s — galicien · gl_c · « Espero que todo vaia ben » · nouveau clip, hitz_gl_paulo
+- 169.0 s — galicien · gl_c · « Ben, comecemos. Como foi a facturación este trimestre? » · nouveau clip, hitz_gl_paulo
+- 173.8 s — galicien · gl_c · « Moi ben. E os gastos? » · nouveau clip, hitz_gl_paulo
+- 176.9 s — galicien · gl_c · « Entón, deberiamos investir máis en publicidade? » · nouveau clip, hitz_gl_paulo
+- 180.6 s — galicien · gl_c · « Xa, pero sen publicidade non hai crecemento. » · nouveau clip, hitz_gl_paulo
+- 183.8 s — galicien · gl_c · « Adiante, escoito. » · nouveau clip, hitz_gl_paulo
+- 186.1 s — galicien · gl_c · « Paréceme razoable. Podes preparar unha proposta? » · nouveau clip, hitz_gl_paulo
+- 190.3 s — galicien · gl_c · « Se investísemos… » · nouveau clip, hitz_gl_paulo
+- 192.4 s — galicien · gl_c · « Chámoo polo contrato de arrendamento. Remata en xuño. » · nouveau clip, hitz_gl_paulo
+- 196.9 s — galicien · gl_c · « O problema é que vou subir o aluguer un quince por cento. » · nouveau clip, hitz_gl_paulo
+- 200.5 s — galicien · gl_c · « Os prezos subiron moito no barrio. » · nouveau clip, hitz_gl_paulo
+- 203.3 s — galicien · gl_c · « É verdade, sempre pagou ben. » · nouveau clip, hitz_gl_paulo
+- 206.0 s — galicien · gl_c · « Que propón? » · nouveau clip, hitz_gl_paulo
+- 207.6 s — galicien · gl_c · « Déixeme pensalo e chámoo mañá. » · nouveau clip, hitz_gl_paulo
+- 210.2 s — galicien · gl_c · « levo cinco anos pagando » · nouveau clip, hitz_gl_paulo
+- 212.6 s — galicien · gl_c · « se asinásemos » · nouveau clip, hitz_gl_paulo
+- 214.6 s — galicien · gl_c · « Que tal co novo tratamento? » · nouveau clip, hitz_gl_paulo
+- 217.1 s — galicien · gl_c · « Que síntomas ten? » · nouveau clip, hitz_gl_paulo
+- 219.0 s — galicien · gl_c · « Pasa moito ao principio. » · nouveau clip, hitz_gl_paulo
+- 221.2 s — galicien · gl_c · « Prefiro agardar un pouco. Se seguise igual, cambiariámolo. » · nouveau clip, hitz_gl_paulo
+- 226.2 s — galicien · gl_c · « Si, non hai ningún problema. » · nouveau clip, hitz_gl_paulo
+- 228.6 s — galicien · gl_c · « Si, e chámeme se se atopa peor. » · nouveau clip, hitz_gl_paulo
+- 231.5 s — galicien · gl_c · « un efecto secundario » · nouveau clip, hitz_gl_paulo
+- 233.7 s — galicien · gl_c · « Non sería mellor…? » · nouveau clip, hitz_gl_paulo
+- 235.6 s — galicien · gl_c · « Viches que van pechar a rúa aos coches? » · nouveau clip, hitz_gl_paulo
+- 238.6 s — galicien · gl_c · « A min non me gusta. Haberá máis atascos. » · nouveau clip, hitz_gl_paulo
+- 242.5 s — galicien · gl_c · « Xa, pero as tendas perderán clientes. » · nouveau clip, hitz_gl_paulo
+- 245.7 s — galicien · gl_c · « Ti cres? E como imos ir ao centro? » · nouveau clip, hitz_gl_paulo
+- 249.5 s — galicien · gl_c · « Se houbese un carril bici, quizais o usaría. » · nouveau clip, hitz_gl_paulo
+- 252.9 s — galicien · gl_c · « Ben, xa veremos. Oxalá teñas razón. » · nouveau clip, hitz_gl_paulo
+- 256.9 s — galicien · gl_c · « unha zona peonil » · nouveau clip, hitz_gl_paulo
+- 258.8 s — galicien · gl_c · « Non creo que sexa así » · nouveau clip, hitz_gl_paulo
+- 260.9 s — galicien · gl_c · « Ola, querías falar comigo? » · nouveau clip, hitz_gl_paulo
+- 263.5 s — galicien · gl_c · « Vaia! Non mo esperaba. Por que? » · nouveau clip, hitz_gl_paulo
+- 267.7 s — galicien · gl_c · « E se che pagásemos máis? » · nouveau clip, hitz_gl_paulo
+- 270.1 s — galicien · gl_c · « Enténdoo. Cando marcharías? » · nouveau clip, hitz_gl_paulo
+- 273.5 s — galicien · gl_c · « Grazas. Poderías deixalo todo listo? » · nouveau clip, hitz_gl_paulo
+- 277.3 s — galicien · gl_c · « Grazas. Imos botarte de menos. » · nouveau clip, hitz_gl_paulo
+- 280.9 s — galicien · gl_c · « para que teñas tempo » · nouveau clip, hitz_gl_paulo
+- 283.0 s — galicien · gl_c · « Foi un pracer » · nouveau clip, hitz_gl_paulo
+- 284.9 s — galicien · gl_c · « Grazas por vir. Foi unha semana moi dura. » · nouveau clip, hitz_gl_paulo
+- 288.7 s — galicien · gl_c · « Non puiden avisar a case ninguén, todo foi moi rápido. » · nouveau clip, hitz_gl_paulo
+- 292.6 s — galicien · gl_c · « Grazas. Non sei cando volverei ao traballo. » · nouveau clip, hitz_gl_paulo
+- 296.5 s — galicien · gl_c · « Preocúpanme os meus clientes, a verdade. » · nouveau clip, hitz_gl_paulo
+- 299.8 s — galicien · gl_c · « Non sei como agradecercho. » · nouveau clip, hitz_gl_paulo
+- 302.1 s — galicien · gl_c · « Es un sol. Grazas de verdade. » · nouveau clip, hitz_gl_paulo
+- 305.4 s — galicien · gl_c · « Se o soubese » · nouveau clip, hitz_gl_paulo
+- 307.3 s — galicien · gl_c · « Tómate o tempo que precises » · nouveau clip, hitz_gl_paulo
+- 309.8 s — galicien · gl_c · « para o que precises » · nouveau clip, hitz_gl_paulo
+- 311.9 s — galicien · gl_c · « A empresa vai presentar un expediente de regulación de emprego. » · nouveau clip, hitz_gl_paulo
+- 315.8 s — galicien · gl_c · « Os números non nos deixan outra opción. » · nouveau clip, hitz_gl_paulo
+- 318.6 s — galicien · gl_c · « É certo, pero este ano vai mal. » · nouveau clip, hitz_gl_paulo
+- 321.4 s — galicien · gl_c · « Iso non depende de min. » · nouveau clip, hitz_gl_paulo
+- 323.8 s — galicien · gl_c · « Imos estudalo coa dirección. » · nouveau clip, hitz_gl_paulo
+- 326.2 s — galicien · gl_c · « un expediente de regulación de emprego » · nouveau clip, hitz_gl_paulo
+- 329.0 s — galicien · gl_c · « En caso contrario » · nouveau clip, hitz_gl_paulo
+- 331.0 s — galicien · gl_c · « prorrogar o preaviso » · nouveau clip, hitz_gl_paulo
+- 333.1 s — galicien · gl_c · « Boas tardes a todos. Quen quere falar primeiro? » · nouveau clip, hitz_gl_paulo
+- 337.3 s — galicien · gl_c · « É un problema que coñecemos ben. » · nouveau clip, hitz_gl_paulo
+- 339.8 s — galicien · gl_c · « Xa o sabemos. » · nouveau clip, hitz_gl_paulo
+- 341.8 s — galicien · gl_c · « Imos aprobar unha nova ordenanza municipal. » · nouveau clip, hitz_gl_paulo
+- 344.9 s — galicien · gl_c · « E vostede que propón? » · nouveau clip, hitz_gl_paulo
+- 347.1 s — galicien · gl_c · « Imos estudalo con moito interese. » · nouveau clip, hitz_gl_paulo
+- 349.8 s — galicien · gl_c · « medidas concretas » · nouveau clip, hitz_gl_paulo
+- 352.0 s — galicien · gl_c · « Segundo algúns, a cidade non precisa máis carrís bici. Que opina? » · nouveau clip, hitz_gl_paulo
+- 357.3 s — galicien · gl_c · « Por que? » · nouveau clip, hitz_gl_paulo
+- 358.8 s — galicien · gl_c · « Pero hai demasiados coches, non? » · nouveau clip, hitz_gl_paulo
+- 361.5 s — galicien · gl_c · « Hai un estudo que di que os carrís bici non se usan. » · nouveau clip, hitz_gl_paulo
+- 364.8 s — galicien · gl_c · « Quédanos un minuto. Algo máis? » · nouveau clip, hitz_gl_paulo
+- 368.3 s — galicien · gl_c · « Para rematar, que nos di? » · nouveau clip, hitz_gl_paulo
+- 370.8 s — galicien · gl_c · « Non comparto este argumento » · nouveau clip, hitz_gl_paulo
+- 373.3 s — galicien · gl_c · « Non nego que sexa… » · nouveau clip, hitz_gl_paulo
+- 375.3 s — galicien · gl_c · « Bos días. Cónteme, cal é o problema? » · nouveau clip, hitz_gl_paulo
+- 379.2 s — galicien · gl_c · « Que di esa cláusula? » · nouveau clip, hitz_gl_paulo
+- 381.3 s — galicien · gl_c · « Iso, efectivamente, podería ser abusivo. » · nouveau clip, hitz_gl_paulo
+- 384.9 s — galicien · gl_c · « Primeiro, asinou o contrato sen lelo? » · nouveau clip, hitz_gl_paulo
+- 387.9 s — galicien · gl_c · « Podemos presentar unha reclamación. » · nouveau clip, hitz_gl_paulo
+- 390.6 s — galicien · gl_c · « Uns tres meses, máis ou menos. » · nouveau clip, hitz_gl_paulo
+- 393.6 s — galicien · gl_c · « unha cláusula abusiva » · nouveau clip, hitz_gl_paulo
+- 395.9 s — galicien · gl_c · « sen preaviso » · nouveau clip, hitz_gl_paulo
+- 397.8 s — galicien · gl_c · « Benvidos á adega. Aquí facemos viño desde hai cen anos. » · nouveau clip, hitz_gl_paulo
+- 402.2 s — galicien · gl_c · « En setembro, ao final do verán. » · nouveau clip, hitz_gl_paulo
+- 404.9 s — galicien · gl_c · « Sobre todo unha variedade da zona. » · nouveau clip, hitz_gl_paulo
+- 407.7 s — galicien · gl_c · « Si, desde hai trinta anos. » · nouveau clip, hitz_gl_paulo
+- 410.6 s — galicien · gl_c · « Pois volva o ano que vén, é precioso. » · nouveau clip, hitz_gl_paulo
+- 413.7 s — galicien · gl_c · « Moi poucos, case ningún. » · nouveau clip, hitz_gl_paulo
+- 416.2 s — galicien · gl_c · « Gustaríame ter vido » · nouveau clip, hitz_gl_paulo
+
+### eu_antton_nouveaux_textes.mp3
+
+-   0.0 s — basque · eu_antton · « Bai, esan? » · nouveau clip, hitz_eu_antton
+-   2.4 s — basque · eu_antton · « A, sentitzen dut. Zer gertatzen da? » · nouveau clip, hitz_eu_antton
+-   6.9 s — basque · eu_antton · « Matxura bat izango da. Teknikari bati deituko diot. » · nouveau clip, hitz_eu_antton
+-  12.0 s — basque · eu_antton · « Teknikaria ostegun arratsaldean joan daiteke. » · nouveau clip, hitz_eu_antton
+-  15.8 s — basque · eu_antton · « Bai, ostiralean hamarretan. Ondo datorkizu? » · nouveau clip, hitz_eu_antton
+-  20.7 s — basque · eu_antton · « Ez horregatik. Zerbait behar baduzu, deitu iezadazu. » · nouveau clip, hitz_eu_antton
+-  25.9 s — basque · eu_antton · « berogailua » · nouveau clip, hitz_eu_antton
+-  27.8 s — basque · eu_antton · « …izan daiteke? » · nouveau clip, hitz_eu_antton
+-  29.6 s — basque · eu_antton · « Egun ona izan! » · nouveau clip, hitz_eu_antton
+-  31.8 s — basque · eu_antton · « Egun on. Zergatik nahi duzu lanpostu hau? » · nouveau clip, hitz_eu_antton
+-  36.2 s — basque · eu_antton · « Salmentan esperientziarik duzu? » · nouveau clip, hitz_eu_antton
+-  39.2 s — basque · eu_antton · « Oso ondo. Lana bulegoan da, telelan egun batekin. » · nouveau clip, hitz_eu_antton
+-  44.4 s — basque · eu_antton · « Bederatzietatik bostetara, bi hilabeteko proba aldiarekin. » · nouveau clip, hitz_eu_antton
+-  49.4 s — basque · eu_antton · « Datorren hilean. Galderarik duzu? » · nouveau clip, hitz_eu_antton
+-  53.3 s — basque · eu_antton · « Bai. Datorren astean deituko dizugu. » · nouveau clip, hitz_eu_antton
+-  57.5 s — basque · eu_antton · « lanpostua » · nouveau clip, hitz_eu_antton
+-  59.4 s — basque · eu_antton · « proba aldia » · nouveau clip, hitz_eu_antton
+-  61.3 s — basque · eu_antton · « Noiz hasiko nintzateke? » · nouveau clip, hitz_eu_antton
+-  63.9 s — basque · eu_antton · « Sukarra duzu? » · nouveau clip, hitz_eu_antton
+-  65.9 s — basque · eu_antton · « Ez da ezer larria, hotzeria da. » · nouveau clip, hitz_eu_antton
+-  68.8 s — basque · eu_antton · « Bai, hartu hau egunean hiru aldiz, jan ondoren. » · nouveau clip, hitz_eu_antton
+-  72.8 s — basque · eu_antton · « Astebete. Eta edan ur asko. » · nouveau clip, hitz_eu_antton
+-  76.7 s — basque · eu_antton · « Bai, baina hobeto ez bazaude, itzuli astelehenean. » · nouveau clip, hitz_eu_antton
+-  80.9 s — basque · eu_antton · « eztula » · nouveau clip, hitz_eu_antton
+-  82.7 s — basque · eu_antton · « hotzeria » · nouveau clip, hitz_eu_antton
+-  84.5 s — basque · eu_antton · « sendagaia » · nouveau clip, hitz_eu_antton
+-  86.3 s — basque · eu_antton · « Oso ondo. Hitzordua duzu? » · nouveau clip, hitz_eu_antton
+-  90.3 s — basque · eu_antton · « Pasaportea eta alokairu kontratua utziko dizkidazu? » · nouveau clip, hitz_eu_antton
+-  94.8 s — basque · eu_antton · « Bai, baina argiaren faktura ere behar dut. » · nouveau clip, hitz_eu_antton
+-  98.1 s — basque · eu_antton · « Bai, posta elektronikoz. Hamar egun dituzu. » · nouveau clip, hitz_eu_antton
+- 102.8 s — basque · eu_antton · « Astebete barru. » · nouveau clip, hitz_eu_antton
+- 104.8 s — basque · eu_antton · « erroldatu » · nouveau clip, hitz_eu_antton
+- 106.7 s — basque · eu_antton · « argiaren faktura » · nouveau clip, hitz_eu_antton
+- 108.9 s — basque · eu_antton · « Noiz egongo da prest? » · nouveau clip, hitz_eu_antton
+- 111.2 s — basque · eu_antton · « Arratsalde on. Zertan lagun zaitzaket? » · nouveau clip, hitz_eu_antton
+- 115.7 s — basque · eu_antton · « Asko sentitzen dut. Pasaportea, mesedez? » · nouveau clip, hitz_eu_antton
+- 120.5 s — basque · eu_antton · « Gaur ez, baina bihar zazpietan bat dago. » · nouveau clip, hitz_eu_antton
+- 124.0 s — basque · eu_antton · « Aireportutik gertu gela bat ordainduko dizugu. » · nouveau clip, hitz_eu_antton
+- 127.8 s — basque · eu_antton · « Zure ekipajea zurekin bidaiatuko da bihar. » · nouveau clip, hitz_eu_antton
+- 131.5 s — basque · eu_antton · « Noski, hemen duzu. Barkatu eragozpenengatik. » · nouveau clip, hitz_eu_antton
+- 136.4 s — basque · eu_antton · « ekipajea » · nouveau clip, hitz_eu_antton
+- 138.3 s — basque · eu_antton · « Kaixo, sukaldatzen ikasi nahi dut. Zer gomendatzen duzu? » · nouveau clip, hitz_eu_antton
+- 143.7 s — basque · eu_antton · « Eskola bat garestiegia da. » · nouveau clip, hitz_eu_antton
+- 146.4 s — basque · eu_antton · « Ados. Eta zein plater egingo dut lehenengo? » · nouveau clip, hitz_eu_antton
+- 151.0 s — basque · eu_antton · « Eta gaizki egiten badut? » · nouveau clip, hitz_eu_antton
+- 153.6 s — basque · eu_antton · « Arrazoi duzu. Etxera etorri nahi duzu? » · nouveau clip, hitz_eu_antton
+- 158.0 s — basque · eu_antton · « Oso ondo. Eskerrik asko zure laguntzagatik! » · nouveau clip, hitz_eu_antton
+- 163.0 s — basque · eu_antton · « …gomendatzen dizut » · nouveau clip, hitz_eu_antton
+- 165.3 s — basque · eu_antton · « …aholkatzen dizut » · nouveau clip, hitz_eu_antton
+- 167.5 s — basque · eu_antton · « normala da » · nouveau clip, hitz_eu_antton
+- 169.5 s — basque · eu_antton · « prest dagoenean » · nouveau clip, hitz_eu_antton
+- 171.6 s — basque · eu_antton · « Asko sentitzen dut. Noiz jaso zenuen? » · nouveau clip, hitz_eu_antton
+- 175.9 s — basque · eu_antton · « Beste bat bidaltzea nahi duzu? » · nouveau clip, hitz_eu_antton
+- 178.7 s — basque · eu_antton · « Bai, noski. Hamar bat egun beharko ditu. » · nouveau clip, hitz_eu_antton
+- 183.3 s — basque · eu_antton · « Noski. Barkatu eragozpenengatik. » · nouveau clip, hitz_eu_antton
+- 187.6 s — basque · eu_antton · « Nahiago nuke dirua itzultzea » · nouveau clip, hitz_eu_antton
+- 190.5 s — basque · eu_antton · « Dena ondo joatea espero dut » · nouveau clip, hitz_eu_antton
+- 193.3 s — basque · eu_antton · « Hasiko gara. Nola joan dira salmentak azken hiru hilabeteetan? » · nouveau clip, hitz_eu_antton
+- 199.1 s — basque · eu_antton · « Oso ondo. Eta fakturak? » · nouveau clip, hitz_eu_antton
+- 203.0 s — basque · eu_antton · « Orduan, publizitatean gehiago inbertitu beharko genuke? » · nouveau clip, hitz_eu_antton
+- 207.2 s — basque · eu_antton · « Bai, baina publizitaterik gabe ez dago hazkunderik. » · nouveau clip, hitz_eu_antton
+- 211.1 s — basque · eu_antton · « Aurrera, entzuten zaitut. » · nouveau clip, hitz_eu_antton
+- 214.0 s — basque · eu_antton · « Zentzuzkoa iruditzen zait. Proposamen bat prestatu dezakezu? » · nouveau clip, hitz_eu_antton
+- 219.8 s — basque · eu_antton · « salmentak » · nouveau clip, hitz_eu_antton
+- 221.7 s — basque · eu_antton · « fakturak » · nouveau clip, hitz_eu_antton
+- 223.4 s — basque · eu_antton · « inbertitzen badugu » · nouveau clip, hitz_eu_antton
+- 225.7 s — basque · eu_antton · « Errentamendu kontratuagatik deitzen dizut. Ekainean amaitzen da. » · nouveau clip, hitz_eu_antton
+- 231.5 s — basque · eu_antton · « Baina alokairua ehuneko hamabost igoko dut. » · nouveau clip, hitz_eu_antton
+- 235.1 s — basque · eu_antton · « Prezioak asko igo dira auzoan. » · nouveau clip, hitz_eu_antton
+- 238.2 s — basque · eu_antton · « Egia da, beti ondo ordaindu duzu. » · nouveau clip, hitz_eu_antton
+- 241.4 s — basque · eu_antton · « Zer proposatzen duzu? » · nouveau clip, hitz_eu_antton
+- 243.9 s — basque · eu_antton · « Utzi pentsatzen, eta bihar deituko dizut. » · nouveau clip, hitz_eu_antton
+- 247.6 s — basque · eu_antton · « errentamendu kontratua » · nouveau clip, hitz_eu_antton
+- 250.2 s — basque · eu_antton · « bost urtez » · nouveau clip, hitz_eu_antton
+- 252.2 s — basque · eu_antton · « sinatzen badugu » · nouveau clip, hitz_eu_antton
+- 254.4 s — basque · eu_antton · « Zer moduz tratamendu berriarekin? » · nouveau clip, hitz_eu_antton
+- 257.5 s — basque · eu_antton · « Zer sintoma dituzu? » · nouveau clip, hitz_eu_antton
+- 259.9 s — basque · eu_antton · « Asko gertatzen da hasieran. » · nouveau clip, hitz_eu_antton
+- 262.8 s — basque · eu_antton · « Pixka bat itxarotea nahiago dut. Berdin jarraituko bazenu, aldatuko genuke. » · nouveau clip, hitz_eu_antton
+- 269.0 s — basque · eu_antton · « Bai, eta deitu iezadazu gaizki bazaude. » · nouveau clip, hitz_eu_antton
+- 272.8 s — basque · eu_antton · « tratamendua » · nouveau clip, hitz_eu_antton
+- 274.8 s — basque · eu_antton · « albo ondorioak » · nouveau clip, hitz_eu_antton
+- 277.0 s — basque · eu_antton · « Ez litzateke hobe…? » · nouveau clip, hitz_eu_antton
+- 279.2 s — basque · eu_antton · « Ikusi duzu kalea autoei itxiko dietela? » · nouveau clip, hitz_eu_antton
+- 282.7 s — basque · eu_antton · « Niri ez zait gustatzen. Auto ilara gehiago egongo dira. » · nouveau clip, hitz_eu_antton
+- 287.9 s — basque · eu_antton · « Bai, baina dendek bezeroak galduko dituzte. » · nouveau clip, hitz_eu_antton
+- 291.5 s — basque · eu_antton · « Benetan? Eta nola joango gara erdigunera? » · nouveau clip, hitz_eu_antton
+- 296.2 s — basque · eu_antton · « Bidegorri bat egongo balitz, agian erabiliko nuke. » · nouveau clip, hitz_eu_antton
+- 300.3 s — basque · eu_antton · « Ikusiko dugu. Agian arrazoi duzu. » · nouveau clip, hitz_eu_antton
+- 304.5 s — basque · eu_antton · « oinezkoentzako gunea » · nouveau clip, hitz_eu_antton
+- 307.0 s — basque · eu_antton · « Ez dut uste egia denik » · nouveau clip, hitz_eu_antton
+- 309.6 s — basque · eu_antton · « jasangarria » · nouveau clip, hitz_eu_antton
+- 311.7 s — basque · eu_antton · « bidegorria » · nouveau clip, hitz_eu_antton
+- 313.6 s — basque · eu_antton · « Kaixo, nirekin hitz egin nahi zenuen? » · nouveau clip, hitz_eu_antton
+- 317.0 s — basque · eu_antton · « Benetan? Zergatik? » · nouveau clip, hitz_eu_antton
+- 320.5 s — basque · eu_antton · « Eta soldata igotzen badugu? » · nouveau clip, hitz_eu_antton
+- 323.2 s — basque · eu_antton · « Ulertzen dut. Noiz joango zinateke? » · nouveau clip, hitz_eu_antton
+- 327.6 s — basque · eu_antton · « Eskerrik asko. Dena prest utziko duzu? » · nouveau clip, hitz_eu_antton
+- 332.0 s — basque · eu_antton · « Eskerrik asko. Faltan botako zaitugu. » · nouveau clip, hitz_eu_antton
+- 336.2 s — basque · eu_antton · « denbora izan dezazun » · nouveau clip, hitz_eu_antton
+- 338.6 s — basque · eu_antton · « Plazer bat izan da » · nouveau clip, hitz_eu_antton
+- 340.9 s — basque · eu_antton · « Eskerrik asko etortzeagatik. Aste oso gogorra izan da. » · nouveau clip, hitz_eu_antton
+- 346.2 s — basque · eu_antton · « Ia inori ez nion abisatu, dena oso azkar gertatu zen. » · nouveau clip, hitz_eu_antton
+- 350.8 s — basque · eu_antton · « Eskerrik asko. Ez dakit noiz itzuliko naizen lanera. » · nouveau clip, hitz_eu_antton
+- 356.0 s — basque · eu_antton · « Nire bezeroek kezkatzen naute, egia esan. » · nouveau clip, hitz_eu_antton
+- 360.1 s — basque · eu_antton · « Ez dakit nola eskertu. » · nouveau clip, hitz_eu_antton
+- 362.7 s — basque · eu_antton · « Oso ona zara. Eskerrik asko benetan. » · nouveau clip, hitz_eu_antton
+- 367.2 s — basque · eu_antton · « Jakin izan banu » · nouveau clip, hitz_eu_antton
+- 369.3 s — basque · eu_antton · « Behar duzun denbora hartu » · nouveau clip, hitz_eu_antton
+- 371.9 s — basque · eu_antton · « behar duzun guztirako » · nouveau clip, hitz_eu_antton
+- 374.4 s — basque · eu_antton · « Enpresak enplegu erregulazioko espediente bat aurkeztuko du. » · nouveau clip, hitz_eu_antton
+- 379.0 s — basque · eu_antton · « Zenbakiak ez dira onak. » · nouveau clip, hitz_eu_antton
+- 381.7 s — basque · eu_antton · « Egia da, baina urte hau txarra da. » · nouveau clip, hitz_eu_antton
+- 384.8 s — basque · eu_antton · « Hori ez dago nire esku. » · nouveau clip, hitz_eu_antton
+- 387.3 s — basque · eu_antton · « Ez da horraino iritsi behar. Zer proposatzen duzue? » · nouveau clip, hitz_eu_antton
+- 392.3 s — basque · eu_antton · « enplegu erregulazioko espedientea » · nouveau clip, hitz_eu_antton
+- 395.6 s — basque · eu_antton · « soldata masa » · nouveau clip, hitz_eu_antton
+- 397.7 s — basque · eu_antton · « Bestela » · nouveau clip, hitz_eu_antton
+- 399.4 s — basque · eu_antton · « aurreabisua luzatu » · nouveau clip, hitz_eu_antton
+- 401.9 s — basque · eu_antton · « Arratsalde on guztioi. Nork hitz egin nahi du lehenengo? » · nouveau clip, hitz_eu_antton
+- 407.0 s — basque · eu_antton · « Ondo ezagutzen dugu hori. » · nouveau clip, hitz_eu_antton
+- 409.5 s — basque · eu_antton · « Badakigu, eta sentitzen dugu. » · nouveau clip, hitz_eu_antton
+- 412.7 s — basque · eu_antton · « Udal ordenantza berri bat onartuko dugu. » · nouveau clip, hitz_eu_antton
+- 416.2 s — basque · eu_antton · « Eta zuk zer proposatzen duzu? » · nouveau clip, hitz_eu_antton
+- 419.3 s — basque · eu_antton · « Ondo pentsatuko dugu. » · nouveau clip, hitz_eu_antton
+- 421.7 s — basque · eu_antton · « udal ordenantza » · nouveau clip, hitz_eu_antton
+- 423.9 s — basque · eu_antton · « neurri zehatzak » · nouveau clip, hitz_eu_antton
+- 426.1 s — basque · eu_antton · « Batzuen ustez, hiriak ez du bidegorri gehiago behar. Zer iritzi duzu? » · nouveau clip, hitz_eu_antton
+- 432.1 s — basque · eu_antton · « Zergatik? » · nouveau clip, hitz_eu_antton
+- 433.9 s — basque · eu_antton · « Baina auto gehiegi daude, ezta? » · nouveau clip, hitz_eu_antton
+- 437.1 s — basque · eu_antton · « Ikerketa baten arabera, bidegorriak ez dira erabiltzen. » · nouveau clip, hitz_eu_antton
+- 441.5 s — basque · eu_antton · « Minutu bat geratzen zaigu. Beste zerbait? » · nouveau clip, hitz_eu_antton
+- 446.0 s — basque · eu_antton · « Amaitzeko, zer esango zenuke? » · nouveau clip, hitz_eu_antton
+- 449.1 s — basque · eu_antton · « Ez nago argudio horrekin ados » · nouveau clip, hitz_eu_antton
+- 451.8 s — basque · eu_antton · « Ez dut ukatzen… denik » · nouveau clip, hitz_eu_antton
+- 454.3 s — basque · eu_antton · « inpartziala » · nouveau clip, hitz_eu_antton
+- 456.3 s — basque · eu_antton · « Egun on. Kontatu, zer gertatzen da? » · nouveau clip, hitz_eu_antton
+- 460.7 s — basque · eu_antton · « Zer esaten du klausula horrek? » · nouveau clip, hitz_eu_antton
+- 463.6 s — basque · eu_antton · « Hori, egiaz, abusiboa izan daiteke. » · nouveau clip, hitz_eu_antton
+- 467.1 s — basque · eu_antton · « Lehenik, irakurri gabe sinatu zenuen? » · nouveau clip, hitz_eu_antton
+- 470.5 s — basque · eu_antton · « Erreklamazio bat aurkez dezakegu. » · nouveau clip, hitz_eu_antton
+- 473.7 s — basque · eu_antton · « Hiru hilabete inguru. » · nouveau clip, hitz_eu_antton
+- 476.0 s — basque · eu_antton · « aurreabisurik gabe » · nouveau clip, hitz_eu_antton
+- 478.4 s — basque · eu_antton · « horren inguruan » · nouveau clip, hitz_eu_antton
+- 480.5 s — basque · eu_antton · « Ongi etorri upategira. Hemen ardoa egiten dugu. » · nouveau clip, hitz_eu_antton
+- 485.4 s — basque · eu_antton · « Irailean, udaren amaieran. » · nouveau clip, hitz_eu_antton
+- 488.3 s — basque · eu_antton · « Batez ere inguruko mota bat. » · nouveau clip, hitz_eu_antton
+- 491.2 s — basque · eu_antton · « Bai, aspalditik. » · nouveau clip, hitz_eu_antton
+- 493.7 s — basque · eu_antton · « Etorri datorren urtean, oso polita da. » · nouveau clip, hitz_eu_antton
+- 497.3 s — basque · eu_antton · « Oso gutxi, ia batere ez. » · nouveau clip, hitz_eu_antton
+- 500.2 s — basque · eu_antton · « mahats bilketa » · nouveau clip, hitz_eu_antton
+- 502.3 s — basque · eu_antton · « mahats mota » · nouveau clip, hitz_eu_antton
+- 504.3 s — basque · eu_antton · « jatorri deitura » · nouveau clip, hitz_eu_antton
+- 506.4 s — basque · eu_antton · « …gustatuko litzaidake » · nouveau clip, hitz_eu_antton
