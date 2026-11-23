@@ -54,9 +54,13 @@ with sync_playwright() as p:
         # exercice de leçon qui écrit (type) et scène guidée (immersion) avec #ti
         pg.evaluate("()=>{S.lang='es';S.lvl=1;build();R={mode:'lesson',t:'Mélange',n:0,ok:0,xp:0};R.q=mkQ0('type',0);R.done=false;show()}");pg.wait_for_timeout(250)
         ck("exercice « écris » : #ti étiqueté",pg.get_by_role("textbox",name="Écris ta réponse…").count()==1,pg.evaluate("(document.getElementById('ti')||{}).outerHTML"))
-        n=pg.evaluate("()=>{const L=immP(lg());for(const s of L){const i=s.st.findIndex(x=>x.k!=='R');if(i>=0){imStart(s.id);IM.i=i;IM.typed=true;IM.done=false;imDraw();return 1}}return 0}")
+        # vraie étape écrite : une étape adaptative « T » dont les notions sont mises au palier 2 s'affiche au format écrit (W) ;
+        # les notions ajoutées pour l'occasion sont ensuite retirées (et les valeurs déjà présentes restaurées)
+        n=pg.evaluate("()=>{S.sr=S.sr||{};const l=lg(),L=immP(l);for(const s of L){const i=s.st.findIndex(x=>{if(x.k!=='T')return false;if(!x.ks){x.ks=sitNo(l,x.m||x.g);x.kn=sitNo(l,x.n)}return x.ks.length>0});if(i>=0){const sv={};for(const k of s.st[i].ks){sv[k]=k in S.sr?JSON.stringify(S.sr[k]):null;S.sr[k]=Object.assign({},S.sr[k]||{},{p:2})}window.__a11ySr=sv;imStart(s.id);IM.i=i;imShow();return IM.cur.k}}return ''}")
         if not n:print("     (scènes d'immersion non chargées sur cette page : contrôle de leur champ #ti sauté)")
-        if n:ck("scène (étape écrite) : #ti étiqueté",pg.get_by_role("textbox",name="Écris ta réponse…").count()==1,pg.evaluate("(document.getElementById('ti')||{}).outerHTML"))
+        if n:
+            ck("scène (étape écrite, palier 2) : #ti étiqueté",n=="W" and pg.get_by_role("textbox",name="Écris ta réponse…").count()==1,(n,pg.evaluate("(document.getElementById('ti')||{}).outerHTML")))
+            pg.evaluate("()=>{const sv=window.__a11ySr||{};for(const k in sv){if(sv[k]===null)delete S.sr[k];else S.sr[k]=JSON.parse(sv[k])}delete window.__a11ySr}")
         # heure du rappel
         pg.evaluate("()=>{window.SOB_PUSH=1;S.rp={h:19};$.innerHTML=rpUI()}")
         ck("rappel : la liste des heures a un nom accessible",pg.get_by_role("combobox",name="Heure du rappel").count()==1)
