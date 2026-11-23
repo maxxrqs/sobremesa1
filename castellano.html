@@ -9411,9 +9411,9 @@ function imDraw(){
   if(IM.done)b=`<div class="fb fbm ${IM.g?"ok":"ko"}">${mas(IM.g?"bravo":"triste",56)}<div><span>${IM.g?"¡Muy bien!":tr("Pas tout à fait.")}</span> ${IM.fbt}</div></div><button class="btn" onclick="IM.i++;imShow()">${tr("Continuer")}</button>`;
   else{
     const hid=st.k==="R"&&st.a&&!IM.rev;
-    b=`<div class="bub npc">${sp} <span translate="no">${hid?"<i>🎧 …</i>":esc(st.n)}</span></div>`;
+    b=`<div class="bub npc">${sp} <span translate="no">${hid?"<i>🎧 …</i>":esc(st.n)}</span>${hid?` <button class="chip" onclick="IM.rev=true;imDraw()">${tr("Voir le texte")}</button>`:""}</div>`;
     if(st.i)b+=`<p class="sub">${esc(gl(st.i))}</p>`;
-    if(st.k==="R")b+=(hid?`<p class="skl">${tr("Écoute, puis choisis la bonne réponse.")} <button class="chip" onclick="IM.rev=true;imDraw()">${tr("Voir le texte")}</button></p>`:st.i?"":`<p class="skl">${tr("Choisis la bonne réponse.")}</p>`)+IM.opts.map((o,i)=>`<button class="opt" translate="no" onclick="imR(${i})">${esc(o)}</button>`).join("");
+    if(st.k==="R")b+=(hid||st.i?"":`<p class="skl">${tr("Choisis la bonne réponse.")}</p>`)+IM.opts.map((o,i)=>`<button class="opt" translate="no" onclick="imR(${i})">${esc(o)}</button>`).join("");
     else{
       const inp=`<input class="in" id="ti" aria-label="${tr("Écris ta réponse…")}" autocomplete="off" autocapitalize="none" spellcheck="false" onkeydown="if(event.key==='Enter')imW()"><button class="btn" onclick="imW()">${tr("Vérifier")}</button> `;
       if(st.k==="W"||IM.typed||!SR)b+=(st.k==="O"&&!SR?`<p class="skl">${tr("Reconnaissance vocale indisponible sur ce navigateur : écris ta réponse.")}</p>`:"")+inp;
