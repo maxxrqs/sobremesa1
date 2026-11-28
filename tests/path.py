@@ -13,7 +13,7 @@ SIM=r"""(a)=>{const out={n:0,bad:[],types:{},steps:0};
  for(const lang of a.langs)for(let L=1;L<=5;L++){S.lang=lang;S.lvl=L;S.pth={};S.pmv={};S.rat={};S.rq={};S.md={};build();PLC=null;
   const pl=pathPlanMain(),pd=pqData(),phS=new Set(PH.map(x=>x[0])),txS=new Map(TX.map(x=>[x[0],x])),wr=new Map(pd.WR.map(x=>[x[0][0],x[1]])),xr=new Map(pd.XR.map(x=>[x[0].e,x[1]]));
   const scM=new Map(xdP(lang).map(z=>[z.m,z]));
-  for(const st of pl.flat){if(st.test)continue;out.steps++;const rk=st.rk,kn=st.kn,tag=lang+L+":"+st.id;
+  for(const st of pl.flat){if(st.test||st.sit)continue;out.steps++;const rk=st.rk,kn=st.kn,tag=lang+L+":"+st.id;
    R={mode:"lesson",t:st.t||"Chunk",n:0,ok:0,xp:0,cat:null,pid:st.id,pt:st.pt||null,ws:st.ws||null,dp:st.dp||null,gp:st.gp||null,go:st.go||null,xs:st.xs||null,qs:st.qs||null,vs:st.vs||null,pp:st.pp||null,kn:st.kn||null,tn:st.tn||null};
    const own=new Set((st.ws||[]).map(w=>w[0])),wok=w=>own.has(w)||(wr.has(w)?wr.get(w)<=rk:true);
    const tnames=new Set();const ks=st.tn||kn.tk;Object.values(VD[lang]).slice(0,40).forEach(d=>vlist(lang,d).forEach(t=>{if(ks.includes(t.imv?"imv":t.k))tnames.add(gl(t.fr))}));

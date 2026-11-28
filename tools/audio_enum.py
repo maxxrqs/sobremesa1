@@ -6,6 +6,7 @@ GEN="""(a)=>{const lang=a.lang,N=a.n,SRC={};const add=(s,t)=>{if(typeof t!=="str
  S.lang=lang;S.pthAll=1;build();try{xens()}catch(e){};
  try{(SCN[lang]||[]).forEach(k=>k.split("|").forEach(t=>add("scene",t)))}catch(e){}; ALL.forEach(w=>add("word",w[0]));PH.forEach(p=>add("phrase",p[0]));
  TX.forEach(t=>{add("text",t[0]);(t[0].match(/[^.!?]+[.!?]+\\s*/g)||[t[0]]).forEach(s=>add("textsent",s))});
+ try{immP(lang).forEach(s=>{s.st.forEach(st=>add("situation",st.n));s.v.forEach(v=>add("situation",v[0]))})}catch(e){}
  try{xdP(lang).forEach(z=>{add("dlg-npc",z.n);add("dlg-model",z.m);z.va.forEach(v=>add("dlg-model",v))})}catch(e){}
  for(let L=1;L<=5;L++){S.lang=lang;S.lvl=L;S.pth={};S.rat={};S.rq={};S.md={};build();try{xens()}catch(e){};PLC=null;
  for(const st of pathPlanMain().flat){if(st.test)continue;

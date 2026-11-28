@@ -78,3 +78,37 @@ Moteur : la reconnaissance du navigateur/système (`SpeechRecognition`), réglé
 - non validés : autre mot réel (pero/perro, playa/plaza, hablo/habla), ñ/ç (año/ano, plaça/placa), négation ajoutée ou oubliée, mot important manquant ;
 - « répète » sans note : français entendu, castillan renvoyé pour une autre langue, phrase coupée, résultat partiel incomplet, hésitation du micro entre deux mots, confiance très basse (Chrome seulement).
 Tests : `node tests/asr.test.js` (notation) et `python3 tests/mic.py URL` (micro simulé). Les essais sur vrais appareils restent manuels.
+
+## 6. Explications contextuelles (chantier 3, lot A)
+
+- Après une réponse, au plus **une** explication, repliée sous « Pourquoi ? » : erreur repérée par la correction (genre, nombre, terminaison du verbe) → règle qui illustre exactement cette forme ; erreur sur une notion encore fragile (palier ≤ 2) → sa règle, l'emploi du temps, le registre de l'expression ou une phrase d'exemple ; premier réemploi réussi d'une notion de grammaire, de conjugaison ou d'expression → une seule fois. Rien quand la notion est maîtrisée et la réponse juste.
+- Le jour de la dernière explication est noté dans l'entrée du carnet (champ `x`) : pas de répétition le même jour, pas de second rappel après une réussite.
+- Notions d'appui : dans une phrase à comprendre ou à écrire, les mots et expressions déjà suivis par le carnet gagnent une preuve (paliers 1–2 seulement, une à la fois) ; jamais de nouvelle entrée ni de date de révision modifiée ; une preuve partielle n'est retirée que si la correction situe l'erreur sur ce mot.
+- Rattachement question → règle : `tools/qr_rattachements.tsv` (relu à la main ; « - » = aucune règle ne couvre la question). Après une modification des questions ou des règles (`XC`) : `python3 tools/qr_rattachements.py fiche <langue>` (questions à rattacher), compléter le TSV, puis `python3 tools/qr_rattachements.py generer` et `python3 build_pwa.py`. Contrôle : `python3 tools/qr_rattachements.py verifier`.
+- Tests : `python3 tests/explications.py URL`.
+
+## 7. Exercices intégrés (chantier 3, lot B)
+
+Trois formats, déclarés dans `MKA` (autonomie exigée) et tirés comme les autres exercices (`NX`, `pickType`, `mkQ`) :
+- **Complète** : phrase du corpus à 2 ou 3 trous (verbe conjugué, mot, préposition). Palier ≤ 1 : 2 trous et étiquettes (`itr`, autonomie 2) ; palier 2 : jusqu'à 3 trous ; palier ≥ 3 : trous à écrire (`itrE`, autonomie 3, infinitif indiqué pour un verbe).
+- **Transforme** : phrase à un seul verbe, à la 1re ou 2e personne du singulier, sans pronom, possessif, subordonnée ni salutation. Palier ≤ 1 : autre personne du singulier, avec choix (`itf`, 2) ; palier 2 : personne ou vouvoiement (tú → usted, vostè/vosté, vostede) à écrire (`itfE`, 3) ; palier ≥ 3 : de préférence un autre temps enseigné (indicatif courant ; jamais avec un marqueur de temps, « ser », une périphrase verbe + infinitif). Basque : changement de personne seulement.
+- **Réponds** : réplique d'un échange `XD`, réponse contrôlée par ses modèles. Palier ≤ 2 : étiquettes de la réponse modèle, 8 mots au plus (`irp`, 2) ; palier ≥ 3 : réponse libre notée par `eoGrade` (`irpE`, 4). La cible n'est comptée que si le modèle reconnu la contient.
+
+Règles communes :
+- Cible : notion du carnet fragile (palier ≤ 2) ou à revoir, jamais ancrée, par urgence (`mkUrg`) ; en révision (`mkRvQ`), la notion échue elle-même, une fois sur trois environ. Elle est jugée sur son propre trou (`q.ks`).
+- Appuis : autres notions du carnet au palier ≥ 2 ; une preuve par appui réussi (`mkApp`, palier 2 au plus, ni entrée créée ni date changée) ; un trou d'appui faux ne fait reculer aucun palier.
+- Rien d'exigé qui n'ait été enseigné : trous et réponses portent sur des notions du carnet, verbes à un temps enseigné (`R.kn.tk`, sinon `tLad`) ; phrases et échanges de la progression réellement effectuée (`R.kn`) ou, hors parcours, dont tous les mots suivis sont introduits (`adIn`).
+- Trous sur des mots entiers (en basque, l'auxiliaire est un mot entier ; un auxiliaire seul après un participe n'est jamais pris pour « izan » ou « ukan »).
+- Pas dans les étapes de découverte ni dans « S'entraîner » par compétence ; au plus 2 ou 3 par série de 10, sans en ajouter.
+- Voix : seules les phrases du corpus et les répliques `XD` sont lues (enregistrées) ; la phrase transformée ne l'est jamais.
+- Relecture linguistique : `python3 tools/integres_relecture.py URL` écrit `qa/integres_<langue>.md` (exemples par niveau), à faire valider par un locuteur natif avant publication.
+- Tests : `python3 tests/integres.py URL`.
+
+## 8. Mises en situation A1–C1 et contenus B1–C1 (chantier 3, lots C et D)
+
+- **Situations** (`XI`, moteur d'immersion `immP`/`imStart`, étapes « T » dont le format suit le carnet) : 12 A1 + 12 A2 (lot C) et 6 B1 + 6 B2 + 6 C1 (lot D) par langue, soit 210. Sources : `tools/sit_data.py` (2 situations d'origine) et `tools/sit_suite_*.txt` (format décrit en tête de `sit_suite_a1.txt`) ; une consigne propre à une langue (6e champ) remplace la consigne commune quand le contenu diffère. Après modification : `python3 tools/sit_build.py`, `python3 tools/sit_relecture.py` (fiches `qa/situations_<langue>.md`, à faire relire), traductions de l'interface (`tools/sit_tr.json` puis `tr/*.json`), `python3 build_pwa.py`.
+- Chaque phrase (réplique, modèle, réponses fausses) n'utilise que des notions introduites au plus tard dans le niveau de la situation ; la place dans le parcours (`sitLayout`) et l'ouverture (`sitOK`) suivent la progression réellement effectuée, indépendamment de la langue d'interface. Le premier échange (qui affiche aussi le contexte) est court pour tenir sur 360 × 640.
+- **Paires à distinguer** (`XK`, lot D) : `tools/xk_data.txt` → `python3 tools/xk_build.py`. Dans la correction (`xpl`) : confusion précise entre les deux notions (forme de l'une attendue, forme de l'autre donnée, en réponse écrite ou en choix multiple) → explication de la paire, priorité 1 ; réponse juste sur une notion encore fragile (palier ≤ 2) → différence d'usage, une seule fois (marque dans `S.tp`, déjà utilisé par les astuces) et dans le budget des astuces. Une paire n'apparaît qu'à partir de son niveau et quand ses deux exemples ne contiennent que des notions déjà rencontrées. Aucune entrée de carnet créée, aucune date modifiée.
+- **Astuces** (`TIPS`) : complétées pour le valencien, le catalan, le galicien et le basque (20 à 29 par langue, A1–C1) ; déclencheur = mot, expression ou phrase du parcours.
+- **Audio** : répliques et mots « À retenir » à enregistrer avec `.github/workflows/audio-gen.yml` (plan `audio/plan.json`, 9 voix, jamais Laura), puis `tools/audio_merge.py`. Tant que ce n'est pas fait, `tests/situations.py` (contrôle audio) et `tests/audio_cover_full.py` signalent les textes lus par la voix de secours.
+- Tests : `python3 tests/situations.py URL`, `python3 tests/xk.py URL`.

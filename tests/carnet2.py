@@ -20,7 +20,7 @@ with sync_playwright() as p:
             if(a===undefined)bad.push(q.ty+': non classé');else if(aide&&a>=4)bad.push(q.ty+': choix ou aide classé production seule');else if(!aide&&a===4&&!q.acc&&!['type','speakF'].includes(q.ty))bad.push(q.ty+'?')}}}
         return {bad:[...new Set(bad)],types:Object.keys(seen).length,qcm4:Object.keys(MKA).filter(k=>MKA[k]===4)}}""")
     ck(f"classification : aucun choix multiple ni exercice avec aide n'est compté comme production seule ({r['types']} types générés)",not r["bad"],r)
-    ck("production seule (4) réservée à : écrire, phrase de grammaire écrite, conjugaison écrite, traduire à l'oral",sorted(r["qcm4"])==sorted(["type","excT","conjT","speakF"]),r["qcm4"])
+    ck("production seule (4) réservée à : écrire, phrase de grammaire écrite, conjugaison écrite, traduire à l'oral, réponse libre (lot B)",sorted(r["qcm4"])==sorted(["type","excT","conjT","speakF","irpE"]),r["qcm4"])
     # ---------- 2. cohérence carnet / boîte / dates ----------
     r=ev("""()=>{SET_('es',3);CLR_();const ks=['hola','gracias','e:'+XP[3].e,'q:'+EQ[5].k,'v:tener','v:hablar'];const tys=Object.keys(MKA);const bad=[];
         S.sc.gracias=4;S.sr.gracias={b:3,d:dayN()+2};

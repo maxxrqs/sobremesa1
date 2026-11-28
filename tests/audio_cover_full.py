@@ -13,6 +13,7 @@ JS = r"""async(lang)=>{const SRC={};const add=(s,t)=>{if(typeof t!=="string")ret
   TX.forEach(t=>(t[0].match(/[^.!?]+[.!?]+\s*/g)||[t[0]]).forEach(s=>add("texte",s)))}
  try{(SCN[lang]||[]).forEach(k=>k.split("|").forEach(t=>add("scène",t)))}catch(e){}
  try{const k=LK.indexOf(lang);RX.trim().split("\n").forEach(z=>{const s=z.split("|")[1+k];if(s)add("exemple",ctxTxt(s))})}catch(e){}
+ try{immP(lang).forEach(s=>{s.st.forEach(st=>add("situation",st.n));s.v.forEach(v=>add("situation",v[0]))})}catch(e){}
  try{xdP(lang).forEach(z=>{add("dialogue",z.n);add("dialogue",z.m);z.va.forEach(v=>add("dialogue",v))})}catch(e){}
  const m=await vxMan();AX.manv=m||{};const ids=(AX.manv[lang]||[]).map(v=>v.id);const ix=[];
  for(const v of ids){const x=await axIdx(lang,v);if(x)ix.push(x)}
