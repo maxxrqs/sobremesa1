@@ -15,6 +15,8 @@ window.QCM_=()=>{for(let i=0;i<30;i++){if(R.q&&Array.isArray(R.q.o)&&R.q.o.lengt
 /* laisse passer les observateurs de l'écran qui vient d'être dessiné (comme entre deux gestes réels) */
 window.TICK_=(ms)=>new Promise(r=>setTimeout(r,ms||30));
 window.PLAYED_=()=>SMAO.played.map(x=>x[1]);
+/* une enveloppe plus récente (lot 2) peut entourer celle du lot 1 : on remonte la chaîne _sm0 */
+window.CH_=(f,re)=>{for(let k=0;f&&k<6;k++,f=f._sm0)if(re.test(String(f)))return true;return false};
 0;
 """
 with sync_playwright() as p:
@@ -24,7 +26,7 @@ with sync_playwright() as p:
     # ---------- présence ----------
     r=ev("""()=>{const css=(document.getElementById('sm-anim')||{}).textContent||'';const cls=['.smW','.smFill','.smChk','.smKo','.smSol','.smOut','.smBarW','.smHd','.hop','.glow','.smFire','.smPt','.smBub'];
         return {css:cls.filter(k=>!css.includes(k)),js:!!document.getElementById('sm-anim-js'),smao:['say','once','clean','confRecent','holdToasts','rm'].filter(k=>typeof SMAO[k]!=='function'),
-          draw:/barSetup/.test(String(window.draw)),fin:/SMAO\\.once/.test(String(window.fin)),end:/holdToasts/.test(String(window.end)),toasts:/unlOpen|hold/.test(String(window.toasts)),
+          draw:CH_(window.draw,/barSetup/),fin:CH_(window.fin,/SMAO\\.once/),end:/holdToasts/.test(String(window.end)),toasts:/unlOpen|hold/.test(String(window.toasts)),
           play:/celEnd|fbAt/.test(String(FX.play)),conf:/lastConf/.test(String(FX.confetti)),tr:[tr("Plus que 2 !"),tr("Tu l'as retenu ! 💪"),tr("On la reverra en révision 💪")].every(Boolean)}}""")
     ck("présence : styles du lot 1, orchestrateur SMAO, enveloppes de draw, fin, end, toasts, sons et confettis",not r["css"] and r["js"] and not r["smao"] and r["draw"] and r["fin"] and r["end"] and r["toasts"] and r["play"] and r["conf"] and r["tr"],r)
     # ---------- barre et mascotte ----------
@@ -73,7 +75,7 @@ with sync_playwright() as p:
           ans(g);ans(g);fin(true);document.querySelectorAll('.q .opt').forEach(o=>o.click());
           const ra=document.getAnimations().filter(a=>a.playState==='running'&&!(a instanceof CSSAnimation)&&!(a instanceof CSSTransition)&&a.effect&&a.effect.target&&a.effect.target.isConnected&&a.effect.target.closest&&a.effect.target.closest('.smBarW')).map(a=>a.effect.getKeyframes()),wd=ra.filter(k=>k[0]&&k[0].width).length,hd=ra.filter(k=>k[0]&&/translateX/.test(k[0].transform||'')).length;maxRun=Math.max(maxRun,wd,hd);maxPt=Math.max(maxPt,document.querySelectorAll('.smPt').length);
           adv();adv();adv();await new Promise(r=>setTimeout(r,140));if(R.n!==n+1)dbl++;seen.push(R.n)}
-        const w=parseFloat((document.querySelector('.smBarW .bar i')||{style:{}}).style.width)||0;return {maxRun,maxPt,dbl,seen,w,n:R.n,chk:document.querySelectorAll('.smChk').length}}""")
+        const w=parseFloat((document.querySelector('.smBarW .bar i')||{style:{}}).style.width)||0;return {maxRun,maxPt,dbl,seen,w,n:R.n,chk:document.querySelectorAll('#app .smChk').length}}""")
     ck("réponses et passages rapides répétés : une seule question avancée par geste, une seule animation de largeur de barre et un seul déplacement de la mascotte à la fois (les anciens annulés), éclats bornés",r["dbl"]==0 and r["n"]==9 and r["maxRun"]<=1 and r["maxPt"]<=12 and r["chk"]==0,r)
     # ---------- chantier 2 : consolidation et révision ----------
     r=ev("""async()=>{S.lang='es';S.lvl=1;PLC=null;build();XDIRTY=1;xens();S.sr={};S.sc={};S.cns={};S.pthAll=1;const ws=ALL.filter(w=>(w[2]||1)===1).slice(10,20);
